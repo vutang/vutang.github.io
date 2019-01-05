@@ -62,15 +62,19 @@
     <a class="current" href="./">mkdocs</a>
     <ul class="subnav">
             
-    <li class="toctree-l3"><a href="#mkdocs-technote">MkDocs technote</a></li>
+    <li class="toctree-l3"><a href="#mkdocs-documentation">MkDocs documentation</a></li>
     
         <ul>
         
-            <li><a class="toctree-l4" href="#get-starting">Get starting</a></li>
+            <li><a class="toctree-l4" href="#getting-started">Getting started</a></li>
         
             <li><a class="toctree-l4" href="#deploy-in-github-page">Deploy in Github Page</a></li>
         
             <li><a class="toctree-l4" href="#test-with-local-webserver">Test with local webserver</a></li>
+        
+            <li><a class="toctree-l4" href="#commands">Commands</a></li>
+        
+            <li><a class="toctree-l4" href="#project-layout">Project layout</a></li>
         
         </ul>
     
@@ -82,6 +86,11 @@
     <a class="" href="../../zedboard/zedboard/">zedboard</a>
                 </li>
     </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../whatnext/">What's next</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -125,13 +134,14 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="mkdocs-technote">MkDocs technote</h1>
-<p>More detail at <a href="https://www.mkdocs.org/">MKdocs</a></p>
-<h2 id="get-starting">Get starting</h2>
+                <h1 id="mkdocs-documentation">MkDocs documentation</h1>
+<p>Using mkdocs for documentation. More detail about this tool at <a href="https://www.mkdocs.org/">MKdocs</a></p>
+<h2 id="getting-started">Getting started</h2>
 <ul>
 <li><code>mkdocs new my-project</code> - Create a new project</li>
 </ul>
 <h2 id="deploy-in-github-page">Deploy in Github Page</h2>
+<p>This document will be published in Github Page. To do this, you need:</p>
 <ul>
 <li>Create a repository in github with name: vutang.github.io</li>
 <li>Clone this repo to local machine</li>
@@ -142,6 +152,19 @@
 <li>use <code>mkdocs serve</code> to run local web server</li>
 <li>in your browser, access http://127.0.0.1:8000</li>
 </ul>
+<h2 id="commands">Commands</h2>
+<ul>
+<li><code>mkdocs new [dir-name]</code> - Create a new project.</li>
+<li><code>mkdocs serve</code> - Start the live-reloading docs server.</li>
+<li><code>mkdocs build</code> - Build the documentation site.</li>
+<li><code>mkdocs help</code> - Print this help message.</li>
+</ul>
+<h2 id="project-layout">Project layout</h2>
+<pre><code>mkdocs.yml    # The configuration file.
+docs/
+    index.md  # The documentation homepage.
+    ...       # Other markdown pages, images and other files.
+</code></pre>
               
             </div>
           </div>
