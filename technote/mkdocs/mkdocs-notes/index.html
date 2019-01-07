@@ -356,6 +356,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../books/utlk/" title="Understanding Linux Kernel" class="md-nav__link">
+      Understanding Linux Kernel
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -526,17 +538,20 @@
                 
                 
                 <h1 id="mkdocs-documentation">MkDocs documentation</h1>
-<p>Using mkdocs for documentation. More detail about this tool at <a href="https://www.mkdocs.org/">MKdocs</a></p>
+<p>This technote is built by <strong>Mkdocs</strong>.</p>
+<p>MkDocs is a fast, simple and downright gorgeous static site generator that's geared towards building project documentation. Documentation source files are written in <strong>Markdown</strong>, and configured with a single <strong>YAML configuration file</strong> (see <a href="#projectlayout">Project Layout</a>).</p>
+<p>More detail about this tool at <a href="https://www.mkdocs.org/">MKdocs</a>.</p>
 <h2 id="getting-started">Getting started</h2>
 <ul>
-<li><code>mkdocs new my-project</code> - Create a new project</li>
+<li><code>mkdocs new [project name]</code> - Create a new project</li>
 </ul>
 <h2 id="deploy-in-github-page">Deploy in Github Page</h2>
-<p>This document will be published in Github Page. To do this, you need:</p>
+<p>This document will be published in <a href="https://pages.github.com/">Github Page</a>. To do this, you need:</p>
 <ul>
 <li>Create a repository in github with name: vutang.github.io</li>
 <li>Clone this repo to local machine</li>
-<li>In local machine, use command: <code>mkdocs gh-deploy --config-file ../mkdocs-vux-note/mkdocs.yml --remote-branch master</code></li>
+<li>In local machine, use command:<br />
+<code>mkdocs gh-deploy --config-file [directory to mkdocs.yml config-file in docs] --remote-branch master</code></li>
 </ul>
 <h2 id="test-with-local-webserver">Test with local webserver</h2>
 <ul>
@@ -551,6 +566,7 @@
 <li><code>mkdocs help</code> - Print this help message.</li>
 </ul>
 <h2 id="project-layout">Project layout</h2>
+<p><a name="projectlayout"></a></p>
 <pre><code>mkdocs.yml    # The configuration file.
 docs/
     index.md  # The documentation homepage.
@@ -565,7 +581,11 @@ docs/
 <li>Readthedocs-DropDown: <code>rtd-dropdown</code> - trying but not really successful by now, need to figure out what happens</li>
 </ul>
 <h3 id="material">Material</h3>
-<p>To install Material theme for Mkdocs: <code>sudo pip install mkdocs-material</code></p>
+<p>Material is a theme for <a href="https://www.mkdocs.org">MkDocs</a>, an excellent static site generator geared
+towards project documentation. It is built using Google's <a href="https://material.io/guidelines/material-design/">Material Design</a>
+guidelines.</p>
+
+<p>To install Material theme for Mkdocs: <code>sudo pip install mkdocs-material</code>. Folow instruction in <a href="https://squidfunk.github.io/mkdocs-material/">here</a>.</p>
                 
                   
                 
