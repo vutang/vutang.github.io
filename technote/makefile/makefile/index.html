@@ -409,7 +409,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../projects/zedboard/" title="Zedboard" class="md-nav__link">
+    <a href="../../../projects/zedboard/zedboard/" title="Zedboard" class="md-nav__link">
       Zedboard
     </a>
   </li>
@@ -549,6 +549,7 @@
                 
                 <h1 id="make-system-in-linux">Make system in Linux</h1>
 <p><a href="https://drive.google.com/file/d/1cEFI4f18T4-iQ3K5axx81D0zwpLkryAk/view?usp=sharing">Original Note</a></p>
+<p>Tài liệu này mô tả chung về Makefile, trong đó nhắc đến các khái niệm quan trọng để có thể đọc được các Makefile phức tạp.</p>
 <h2 id="make">make</h2>
 <h3 id="khai-niem">Khái niệm</h3>
 <p>"make" là một "build tool" được sử dụng để gọi đến các thành phần trong một toolchain (như compiler, linker) để build ra executable programs từ source code.</p>
@@ -559,7 +560,9 @@
 <h3 id="rules">Rules</h3>
 <p>Một Rules có dạng như sau</p>
 <pre><code>target … : prerequisites …        
-    recipe        …        … 
+    recipe        
+    …        
+    … 
 </code></pre>
 
 <p>Target: thông thường là đầu ra (executable hoặc object file) của make. Ngoài ra trong make định nghĩa thêm một loại target đặc biệt: Phony Targets.</p>
