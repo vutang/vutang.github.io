@@ -583,6 +583,7 @@ thể boot được từ SD Card.</p>
 <p>make: *** [package-rootfs-initramfs] Fehler 2\
  ERROR: Failed to package component linux/rootfs</p>
 </blockquote>
+<p><em>*** Need to use extention to emphasize error notes, see in <a href="../../../technote/mkdocs/mkdocs-notes/">Mkdocs Tool</a></em></p>
 <p>Trong diễn đàn của Xilinx (<a href="https://forums.xilinx.com/t5/Embedded-Linux/Error-when-rootfs-is-placed-on-SD-card/td-p/684101">link</a>) có thảo luận về phương pháp để khắc phục được lỗi trên. Bao gồm các bước xử lý như sau:</p>
 <ul>
 <li>Tắt chế độ automatic kernel configuration</li>
@@ -646,7 +647,7 @@ khởi động.</p>
 <p>Trong quá trình chuẩn bị SD Card xuất hiện các thuật ngữ. Trong mục này
 sẽ đi phân tích và giải thích các thuật ngữ đó.</p>
 <h4 id="cpio">CPIO</h4>
-<p>Trong hệ điều hành Linux xuất hiện khái niệm archive file, là kết quả
+<p>Trong hệ điều hành Linux xuất hiện khái niệm <strong>archive (/ˈɑːkaɪv/) file</strong>, là kết quả
 của quá trình đóng gói nhiều file dữ liệu thành một file thống nhất
 (không có quá trình nén dữ liệu). Mục đích của quá trình đóng gói này là
 dễ dàng cho quá trình lưu trữ cũng như trao đổi dữ liệu. Archive file
@@ -661,8 +662,8 @@ chất là quá trình tháo dỡ các archive file trở về các file phân b
 hoặc pax. Trong hướng dẫn của Xilinx sử dụng pax để tháo dỡ rootfs.</p>
 <h4 id="file-system-format-fat32-va-ext4">File system format: fat32 và ext4.</h4>
 <p>File system là cách mà một hệ thống file được tổ chức trên các bộ nhớ
-lưu trữ. Các bộ nhớ lưu trữ có thể là: disk file system hoặc flash file
-system.</p>
+lưu trữ. Các bộ nhớ lưu trữ có thể là: <strong>disk file system</strong> hoặc <strong>flash file
+system</strong>.</p>
 <p>Fat32 và ext4 là tên của các dạng file system được tổ chức phổ biến trên
 các dòng disk file system như SD Card trong bài viết này là một ví dụ.
 Ngoài ra trong quá trình làm việc với Rootfs của zynq có thể sử dụng đến
