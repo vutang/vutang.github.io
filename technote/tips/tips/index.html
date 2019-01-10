@@ -300,6 +300,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#busybox" title="BusyBox" class="md-nav__link">
+    BusyBox
+  </a>
+  
+</li>
+      
       
       
       
@@ -552,6 +559,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#busybox" title="BusyBox" class="md-nav__link">
+    BusyBox
+  </a>
+  
+</li>
+      
       
       
       
@@ -572,6 +586,7 @@
                   <h1>Tips</h1>
                 
                 <h2 id="ssh-for-remote-control">SSH for remote control</h2>
+<p>Secure Shell (SSH) is a <strong>cryptographic network protocol</strong> for operating network services securely over an unsecured network. Typical applications include <strong>remote command-line login</strong> and <strong>remote command execution</strong>, but any network service can be secured with SSH.</p>
 <p><strong>Advanced options</strong></p>
 <ul>
 <li>Disable host key checking: <code>ssh -o StrictHostKeyChecking=no</code></li>
@@ -604,6 +619,56 @@ This command will remote to <code>root@10.61.61.195</code> machine and then exec
 <p><strong>References</strong></p>
 <p>More information about SSH config can be found at <a href="https://linux.die.net/man/5/ssh_config">https://linux.die.net/man/5/ssh_config</a></p>
 <h2 id="tftp-server">TFTP Server</h2>
+<p>Trivial File Transfer Protocol (TFTP) is a simple lockstep File Transfer Protocol which allows a client to get a file from or put a file onto a remote host (<a href="https://en.wikipedia.org/wiki/Trivial_File_Transfer_Protocol">Wiki</a>).</p>
+<p>TFTP uses UDP as its transport protocol.</p>
+<p><strong>Install TFTP server</strong></p>
+<p>With Ubuntu machine, install tftp by installing following packages:</p>
+<p><code>sudo apt-get install xinetd tftpd tftp</code></p>
+<p>Build tftp server for embedded system:
+<em>How to build?</em></p>
+<p><strong>Configure TFTP server</strong></p>
+<p>Create /etc/xinetd.d/tftp and put this entry</p>
+<pre><code>service tftp
+{
+protocol        = udp
+port            = 69
+socket_type     = dgram
+wait            = yes
+user            = nobody
+server          = /usr/sbin/in.tftpd
+server_args     = /tftpboot
+disable         = no
+}
+</code></pre>
+
+<p>Create a folder /tftpboot this should match whatever you gave in server_args. mostly it will be tftpboot</p>
+<pre><code>sudo mkdir /tftpboot
+sudo chmod -R 777 /tftpboot
+sudo chown -R nobody /tftpboot
+</code></pre>
+
+<p>Restart the xinetd service.</p>
+<ul>
+<li>newer systems:</li>
+</ul>
+<p><code>sudo service xinetd restart</code></p>
+<ul>
+<li>older systems:</li>
+</ul>
+<p><code>sudo /etc/init.d/xinetd restart</code></p>
+<p><strong>Testing tftp server</strong></p>
+<p>Create a file named test with some content in /tftpboot path of the tftp server. Obtain the ip address of the tftp server using ifconfig command.</p>
+<p>Now in some other system (client - which want to get file) follow the following steps.</p>
+<pre><code>tftp 192.168.1.2 # tftp server ip
+tftp&gt; get test
+Sent 159 bytes in 0.0 seconds
+
+tftp&gt; quit
+
+cat test
+</code></pre>
+
+<h2 id="busybox">BusyBox</h2>
                 
                   
                 
