@@ -46,7 +46,22 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>https://www.vutang.github.io/embedded_system/es/</loc>
+     <lastmod>2019-01-11</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>https://www.vutang.github.io/linux_device_driver/overview/</loc>
+     <lastmod>2019-01-11</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://www.vutang.github.io/linux_device_driver/platform_dev/platform_device/</loc>
+     <lastmod>2019-01-11</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://www.vutang.github.io/linux_device_driver/spi_dev/spi_dev/</loc>
      <lastmod>2019-01-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
