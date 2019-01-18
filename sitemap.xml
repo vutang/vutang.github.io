@@ -2,97 +2,102 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
      <loc>https://www.vutang.github.io/</loc>
-     <lastmod>2019-01-11</lastmod>
+     <lastmod>2019-01-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/technote/mkdocs/mkdocs-notes/</loc>
-     <lastmod>2019-01-11</lastmod>
+     <lastmod>2019-01-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/technote/markdown/markdown/</loc>
-     <lastmod>2019-01-11</lastmod>
+     <lastmod>2019-01-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/technote/version_control/verctl/</loc>
-     <lastmod>2019-01-11</lastmod>
+     <lastmod>2019-01-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/technote/makefile/makefile/</loc>
-     <lastmod>2019-01-11</lastmod>
+     <lastmod>2019-01-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/technote/shellscript/shellscript/</loc>
-     <lastmod>2019-01-11</lastmod>
+     <lastmod>2019-01-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/technote/tips/tips/</loc>
-     <lastmod>2019-01-11</lastmod>
+     <lastmod>2019-01-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/books/ldd3/</loc>
-     <lastmod>2019-01-11</lastmod>
+     <lastmod>2019-01-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/books/utlk/</loc>
-     <lastmod>2019-01-11</lastmod>
+     <lastmod>2019-01-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/embedded_system/es/</loc>
-     <lastmod>2019-01-11</lastmod>
+     <lastmod>2019-01-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/linux_device_driver/overview/</loc>
-     <lastmod>2019-01-11</lastmod>
+     <lastmod>2019-01-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://www.vutang.github.io/linux_device_driver/kernel_module/</loc>
+     <lastmod>2019-01-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/linux_device_driver/platform_dev/platform_device/</loc>
-     <lastmod>2019-01-11</lastmod>
+     <lastmod>2019-01-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/linux_device_driver/spi_dev/spi_dev/</loc>
-     <lastmod>2019-01-11</lastmod>
+     <lastmod>2019-01-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/fpga/timing_analysis/timing_analysis/</loc>
-     <lastmod>2019-01-11</lastmod>
+     <lastmod>2019-01-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/projects/zedboard/zedboard/</loc>
-     <lastmod>2019-01-11</lastmod>
+     <lastmod>2019-01-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/projects/zc706/</loc>
-     <lastmod>2019-01-11</lastmod>
+     <lastmod>2019-01-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/bookmarks/bookmarks/</loc>
-     <lastmod>2019-01-11</lastmod>
+     <lastmod>2019-01-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/whatnext/</loc>
-     <lastmod>2019-01-11</lastmod>
+     <lastmod>2019-01-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/about/about/</loc>
-     <lastmod>2019-01-11</lastmod>
+     <lastmod>2019-01-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>
