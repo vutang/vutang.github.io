@@ -321,6 +321,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#print-a-string-to-output" title="Print a string to output" class="md-nav__link">
+    Print a string to output
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passing-argurments" title="Passing Argurments" class="md-nav__link">
+    Passing Argurments
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -693,6 +707,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#print-a-string-to-output" title="Print a string to output" class="md-nav__link">
+    Print a string to output
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passing-argurments" title="Passing Argurments" class="md-nav__link">
+    Passing Argurments
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -735,7 +763,7 @@
 </code></pre>
 
 <h3 id="loop">Loop</h3>
-<p>For</p>
+<p><strong>For</strong></p>
 <pre><code>    for i in 0 1 2 3
     do
         rxPwr[$i]=`dpdctl check $i | grep &quot;rx&quot; | awk {'print $4'}`
@@ -743,13 +771,16 @@
     done
 </code></pre>
 
-<p>While</p>
+<p><strong>While</strong></p>
 <pre><code>    while true; do
         # Do something here
     done
 </code></pre>
 
-<pre><code>    while [ $(($ADDR)) -lt $((0x43c00010)) ]; do
+<p>Example:</p>
+<pre><code>    ADDR=0x43c40000
+
+    while [ $(($ADDR)) -lt $((0x43c00010)) ]; do
         VALUE=`peek $ADDR`
         printf &quot;0x%08x\t0x%08x\n&quot; $ADDR $VALUE &gt;&gt; regdump.txt
         ADDR=$(($ADDR + 4))
@@ -768,10 +799,15 @@
     fi
 </code></pre>
 
-<ul>
-<li><strong>printf</strong>: print a string with format</li>
-</ul>
+<h3 id="print-a-string-to-output">Print a string to output</h3>
+<p><strong>printf</strong>: print a string with format</p>
 <pre><code>    printf &quot;%0.2f, &quot; ${txCpl[$i]} &gt;&gt; $logdir
+    printf &quot;0x%08x&quot; $ADDR
+</code></pre>
+
+<h3 id="passing-argurments">Passing Argurments</h3>
+<pre><code>    $#: number of arguments
+    $i: the i-th argument
 </code></pre>
                 
                   
