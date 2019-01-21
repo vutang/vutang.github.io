@@ -447,6 +447,60 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#controller-driver" title="Controller Driver" class="md-nav__link">
+    Controller Driver
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#probing-controller" title="Probing controller" class="md-nav__link">
+    Probing controller
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#khoi-tao-spi-master" title="Khởi tạo spi master" class="md-nav__link">
+    Khởi tạo spi master
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#luu-tru-spi-master-vao-private-data-cua-device" title="Lưu trữ spi master vào private data của device" class="md-nav__link">
+    Lưu trữ spi master vào private data của device
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ang-ky-spi-master-voi-kernel" title="Đăng ký spi master với Kernel" class="md-nav__link">
+    Đăng ký spi master với Kernel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#huy-ang-ky-master-voi-kernel" title="Hủy đăng ký master với Kernel" class="md-nav__link">
+    Hủy đăng ký master với Kernel
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#refereneces" title="Refereneces" class="md-nav__link">
     Refereneces
   </a>
@@ -610,6 +664,60 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#controller-driver" title="Controller Driver" class="md-nav__link">
+    Controller Driver
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#probing-controller" title="Probing controller" class="md-nav__link">
+    Probing controller
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#khoi-tao-spi-master" title="Khởi tạo spi master" class="md-nav__link">
+    Khởi tạo spi master
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#luu-tru-spi-master-vao-private-data-cua-device" title="Lưu trữ spi master vào private data của device" class="md-nav__link">
+    Lưu trữ spi master vào private data của device
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ang-ky-spi-master-voi-kernel" title="Đăng ký spi master với Kernel" class="md-nav__link">
+    Đăng ký spi master với Kernel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#huy-ang-ky-master-voi-kernel" title="Hủy đăng ký master với Kernel" class="md-nav__link">
+    Hủy đăng ký master với Kernel
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#refereneces" title="Refereneces" class="md-nav__link">
     Refereneces
   </a>
@@ -634,6 +742,44 @@
                 
                 
                 <h1 id="spi-device-driver">SPI Device Driver</h1>
+<p>Trong SPI Subsystem, phân biệt ra hai loại driver tương ứng cho 2 loại device:</p>
+<ul>
+<li>Controller </li>
+<li>Protocol Driver</li>
+</ul>
+<h2 id="controller-driver">Controller Driver</h2>
+<h3 id="probing-controller">Probing controller</h3>
+<h4 id="khoi-tao-spi-master">Khởi tạo spi master</h4>
+<p>Một controller sẽ được đặc trưng bởi kiểu dữ liệu: <code>struct spi_master</code> (được định nghĩa trong: linux/include/spi/spi.h). Quá trình khai báo controller được thực hiện trong hàm probe.</p>
+<pre><code>struct spi_master *master;
+
+/*Allocate spi master*/
+master = spi_alloc_master(&amp;spi-&gt;dev, sizeof(*spi_ad9250));
+if (!master)
+    return -ENOMEM;
+</code></pre>
+
+<h4 id="luu-tru-spi-master-vao-private-data-cua-device">Lưu trữ spi master vào private data của device</h4>
+<p>Thông thường, con trỏ chứa địa chỉ của spi_master sẽ được lưu trữ trong các private data của device để thuận tiện cho quá trình sử dụng sau này. Cụ thể các API được sử dụng để lưu trữ master vào <em>drvdata</em> như sau:</p>
+<ul>
+<li>Nếu controller là một <em>platform device pdev</em>: <code>platform_set_drvdata(pdev, master);</code></li>
+<li>Nếu controller là một <em>spi device spi</em>: <code>spi_set_drvdata(spi, master)</code></li>
+</ul>
+<h4 id="ang-ky-spi-master-voi-kernel">Đăng ký spi master với Kernel</h4>
+<pre><code>ret = spi_register_master(master);
+if (ret) {
+    dev_err(&amp;pdev-&gt;dev, &quot;spi_register_master failed\n&quot;);
+    return -1;
+}
+</code></pre>
+
+<h4 id="huy-ang-ky-master-voi-kernel">Hủy đăng ký master với Kernel</h4>
+<p>Ví dụ đối với trường hợp controller là spi device:</p>
+<pre><code>struct spi_master *master = spi_get_drvdata(spi);
+
+spi_unregister_master(master);
+</code></pre>
+
 <h2 id="refereneces">Refereneces</h2>
 <ul>
 <li><a href="http://events17.linuxfoundation.org/sites/events/files/slides/Groking%20the%20Linux%20SPI%20Subsystem.pdf">Groking the Linux SPI Subsystem</a> - Embedded Linux Conference 2017</li>

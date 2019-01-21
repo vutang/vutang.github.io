@@ -335,6 +335,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#operations" title="Operations" class="md-nav__link">
+    Operations
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -721,6 +728,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#operations" title="Operations" class="md-nav__link">
+    Operations
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -808,6 +822,24 @@
 <h3 id="passing-argurments">Passing Argurments</h3>
 <pre><code>    $#: number of arguments
     $i: the i-th argument
+</code></pre>
+
+<h3 id="operations">Operations</h3>
+<ul>
+<li><strong>Bitwise</strong>: <code>&amp;, |, ~</code></li>
+</ul>
+<pre><code>    a=0x1
+    b=0x2
+    c=$(($a | $b)) # or (two operands)
+    c=$((($a | $b) &amp; $b)) # more than two operands
+    c=$((~$a)) # not (only one operands)
+</code></pre>
+
+<ul>
+<li><strong>Shift</strong>:</li>
+</ul>
+<pre><code>    a=0x1
+    c=$(($a &lt;&lt; 2)) # shift left a 2 postition and then assign result to c
 </code></pre>
                 
                   
