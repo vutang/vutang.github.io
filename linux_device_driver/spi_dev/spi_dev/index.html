@@ -490,8 +490,42 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#khai-bao-thiet-bi-trong-device-tree" title="Khai báo thiết bị trong Device Tree" class="md-nav__link">
+    Khai báo thiết bị trong Device Tree
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#register-spi-master-to-kernel" title="Register spi master to kernel" class="md-nav__link">
+    Register spi master to kernel
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#protocol-driver" title="Protocol Driver" class="md-nav__link">
+    Protocol Driver
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#probing" title="Probing" class="md-nav__link">
+    Probing
+  </a>
   
 </li>
         
@@ -707,8 +741,42 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#khai-bao-thiet-bi-trong-device-tree" title="Khai báo thiết bị trong Device Tree" class="md-nav__link">
+    Khai báo thiết bị trong Device Tree
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#register-spi-master-to-kernel" title="Register spi master to kernel" class="md-nav__link">
+    Register spi master to kernel
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#protocol-driver" title="Protocol Driver" class="md-nav__link">
+    Protocol Driver
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#probing" title="Probing" class="md-nav__link">
+    Probing
+  </a>
   
 </li>
         
@@ -780,6 +848,20 @@ if (ret) {
 spi_unregister_master(master);
 </code></pre>
 
+<h4 id="khai-bao-thiet-bi-trong-device-tree">Khai báo thiết bị trong Device Tree</h4>
+<p>Quá trình khai báo một thiết bị trong device tree cần lưu ý đến:</p>
+<ul>
+<li>thuộc tính num-cs củm father-node</li>
+<li>Thuộc tính spi-max-frequency của node (why???)</li>
+</ul>
+<h3 id="register-spi-master-to-kernel">Register spi master to kernel</h3>
+<h2 id="protocol-driver">Protocol Driver</h2>
+<p>Tượng tự như controller driver và platform device driver, spi protocol driver cũng cần chứa các thủ tục cơ bản của một device driver.</p>
+<ul>
+<li>Khai báo spi driver <code>struct spi_driver</code> và đăng ký với kernel bằng macro <code>module_spi_driver()</code>. Struct driver này chứa các con trỏ chỉ đến các hàm khởi tao (probe) và hàm hủy (remove) của driver, các hàm này sau khi được đăng ký sẽ được gọi bởi Kernel.</li>
+<li>Khai báo id_table <code>struct spi_device_id</code> chứa thông tin của các device mà driver này hỗ trợ.</li>
+</ul>
+<h3 id="probing">Probing</h3>
 <h2 id="refereneces">Refereneces</h2>
 <ul>
 <li><a href="http://events17.linuxfoundation.org/sites/events/files/slides/Groking%20the%20Linux%20SPI%20Subsystem.pdf">Groking the Linux SPI Subsystem</a> - Embedded Linux Conference 2017</li>
