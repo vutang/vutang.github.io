@@ -71,6 +71,11 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>https://www.vutang.github.io/linux_kernel/overview/</loc>
+     <lastmod>2019-01-23</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>https://www.vutang.github.io/fpga/timing_analysis/timing_analysis/</loc>
      <lastmod>2019-01-23</lastmod>
      <changefreq>daily</changefreq>

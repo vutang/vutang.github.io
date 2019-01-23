@@ -11,7 +11,7 @@
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
       
-        <link rel="canonical" href="https://www.vutang.github.io/technote/makefile/makefile/">
+        <link rel="canonical" href="https://www.vutang.github.io/linux_kernel/overview/">
       
       
       
@@ -33,21 +33,21 @@
       
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
-      <link rel="shortcut icon" href="../../../assets/images/favicon.png">
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.2.0">
     
     
       
-        <title>Makefile - Vu Tang's Docs</title>
+        <title>Overview - Vu Tang's Docs</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/application.572ca0f0.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.572ca0f0.css">
       
       
     
     
-      <script src="../../../assets/javascripts/modernizr.8c900955.js"></script>
+      <script src="../../assets/javascripts/modernizr.8c900955.js"></script>
     
     
       
@@ -56,7 +56,7 @@
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
-    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
     
     
@@ -74,7 +74,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#make-system-in-linux" tabindex="1" class="md-skip">
+      <a href="#overview" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -100,7 +100,7 @@
                 Vu Tang's Docs
               </span>
               <span class="md-header-nav__topic">
-                Makefile
+                Overview
               </span>
             
           
@@ -171,7 +171,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../.." title="Introduction" class="md-nav__link">
+    <a href="../.." title="Introduction" class="md-nav__link">
       Introduction
     </a>
   </li>
@@ -181,12 +181,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
     
     <label class="md-nav__link" for="nav-2">
       Tech note
@@ -204,7 +202,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../mkdocs/mkdocs-notes/" title="Mkdocs Tool" class="md-nav__link">
+    <a href="../../technote/mkdocs/mkdocs-notes/" title="Mkdocs Tool" class="md-nav__link">
       Mkdocs Tool
     </a>
   </li>
@@ -216,7 +214,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../markdown/markdown/" title="Markdown Language" class="md-nav__link">
+    <a href="../../technote/markdown/markdown/" title="Markdown Language" class="md-nav__link">
       Markdown Language
     </a>
   </li>
@@ -228,7 +226,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../version_control/verctl/" title="Version Control" class="md-nav__link">
+    <a href="../../technote/version_control/verctl/" title="Version Control" class="md-nav__link">
       Version Control
     </a>
   </li>
@@ -238,96 +236,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Makefile
-      </label>
-    
-    <a href="./" title="Makefile" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../technote/makefile/makefile/" title="Makefile" class="md-nav__link">
       Makefile
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#make" title="make" class="md-nav__link">
-    make
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#khai-niem" title="Khái niệm" class="md-nav__link">
-    Khái niệm
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#makefile" title="Makefile" class="md-nav__link">
-    Makefile
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#rules" title="Rules" class="md-nav__link">
-    Rules
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#implicit-rules" title="Implicit Rules" class="md-nav__link">
-    Implicit Rules
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#variables" title="Variables" class="md-nav__link">
-    Variables
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -337,7 +250,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../shellscript/shellscript/" title="Shell Script" class="md-nav__link">
+    <a href="../../technote/shellscript/shellscript/" title="Shell Script" class="md-nav__link">
       Shell Script
     </a>
   </li>
@@ -349,7 +262,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../tips/tips/" title="Tips" class="md-nav__link">
+    <a href="../../technote/tips/tips/" title="Tips" class="md-nav__link">
       Tips
     </a>
   </li>
@@ -385,7 +298,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../books/ldd3/" title="Linux Device Driver" class="md-nav__link">
+    <a href="../../books/ldd3/" title="Linux Device Driver" class="md-nav__link">
       Linux Device Driver
     </a>
   </li>
@@ -397,7 +310,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../books/utlk/" title="Understanding Linux Kernel" class="md-nav__link">
+    <a href="../../books/utlk/" title="Understanding Linux Kernel" class="md-nav__link">
       Understanding Linux Kernel
     </a>
   </li>
@@ -433,7 +346,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../embedded_system/es/" title="Overview" class="md-nav__link">
+    <a href="../../embedded_system/es/" title="Overview" class="md-nav__link">
       Overview
     </a>
   </li>
@@ -469,7 +382,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../linux_device_driver/overview/" title="Overview" class="md-nav__link">
+    <a href="../../linux_device_driver/overview/" title="Overview" class="md-nav__link">
       Overview
     </a>
   </li>
@@ -481,7 +394,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../linux_device_driver/kernel_module/" title="Kernel Module" class="md-nav__link">
+    <a href="../../linux_device_driver/kernel_module/" title="Kernel Module" class="md-nav__link">
       Kernel Module
     </a>
   </li>
@@ -493,7 +406,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../linux_device_driver/platform_dev/platform_device/" title="Platform Device" class="md-nav__link">
+    <a href="../../linux_device_driver/platform_dev/platform_device/" title="Platform Device" class="md-nav__link">
       Platform Device
     </a>
   </li>
@@ -505,7 +418,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../linux_device_driver/spi_dev/spi_dev/" title="SPI Device" class="md-nav__link">
+    <a href="../../linux_device_driver/spi_dev/spi_dev/" title="SPI Device" class="md-nav__link">
       SPI Device
     </a>
   </li>
@@ -520,10 +433,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
     
     <label class="md-nav__link" for="nav-6">
       Linux Kernel
@@ -539,11 +454,49 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../../linux_kernel/overview/" title="Overview" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Overview
+      </label>
+    
+    <a href="./" title="Overview" class="md-nav__link md-nav__link--active">
       Overview
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#linux-kthread_worker-and-work" title="Linux kthread_worker and work" class="md-nav__link">
+    Linux kthread_worker and work
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -577,7 +530,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../fpga/timing_analysis/timing_analysis/" title="Static Timing Analysis" class="md-nav__link">
+    <a href="../../fpga/timing_analysis/timing_analysis/" title="Static Timing Analysis" class="md-nav__link">
       Static Timing Analysis
     </a>
   </li>
@@ -613,7 +566,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../projects/zedboard/zedboard/" title="Zedboard" class="md-nav__link">
+    <a href="../../projects/zedboard/zedboard/" title="Zedboard" class="md-nav__link">
       Zedboard
     </a>
   </li>
@@ -625,7 +578,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../projects/zc706/" title="ZC706" class="md-nav__link">
+    <a href="../../projects/zc706/" title="ZC706" class="md-nav__link">
       ZC706
     </a>
   </li>
@@ -642,7 +595,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../bookmarks/bookmarks/" title="Bookmarks" class="md-nav__link">
+    <a href="../../bookmarks/bookmarks/" title="Bookmarks" class="md-nav__link">
       Bookmarks
     </a>
   </li>
@@ -654,7 +607,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../whatnext/" title="What's next" class="md-nav__link">
+    <a href="../../whatnext/" title="What's next" class="md-nav__link">
       What's next
     </a>
   </li>
@@ -666,7 +619,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../about/about/" title="About me" class="md-nav__link">
+    <a href="../../about/about/" title="About me" class="md-nav__link">
       About me
     </a>
   </li>
@@ -693,56 +646,9 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#make" title="make" class="md-nav__link">
-    make
+  <a href="#linux-kthread_worker-and-work" title="Linux kthread_worker and work" class="md-nav__link">
+    Linux kthread_worker and work
   </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#khai-niem" title="Khái niệm" class="md-nav__link">
-    Khái niệm
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#makefile" title="Makefile" class="md-nav__link">
-    Makefile
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#rules" title="Rules" class="md-nav__link">
-    Rules
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#implicit-rules" title="Implicit Rules" class="md-nav__link">
-    Implicit Rules
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#variables" title="Variables" class="md-nav__link">
-    Variables
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -763,50 +669,10 @@
               
                 
                 
-                <h1 id="make-system-in-linux">Make system in Linux</h1>
-<p><a href="https://drive.google.com/file/d/1cEFI4f18T4-iQ3K5axx81D0zwpLkryAk/view?usp=sharing">Original Note</a></p>
-<p>Tài liệu này mô tả chung về Makefile, trong đó nhắc đến các khái niệm quan trọng để có thể đọc được các Makefile phức tạp.</p>
-<h2 id="make">make</h2>
-<h3 id="khai-niem">Khái niệm</h3>
-<p>"make" là một "build tool" được sử dụng để gọi đến các thành phần trong một toolchain (như compiler, linker) để build ra executable programs từ source code.</p>
-<p>"make" tự động phát hiện được phần nào của source code được sửa đổi để tiến hành build lại cục bộ từng bộ phận đó. Tránh được trường hợp phải build lại toàn bộ hệ thống khi chỉ một phần được thay đổi.</p>
-<p>"make" cần một file đặc biệt để mô tả các bước để build ra image, được gọi là: Makefile. Thông thường khi được gọi đến, "make" sẽ tìm kiếm trong thư mục hiện tại các tên file như sau: makefile, Makefile hoặc GNUmakefile. Trong trường hợp makefile không được đặt theo chuẩn trên, khai báo makefile với "make" bằng chỉ dẫn –f &lt;filename> hoặc –file=&lt;name>.</p>
-<h2 id="makefile">Makefile</h2>
-<p>Makefile là tập hợp các đoạn lệnh mô tả cho "make" biết phải làm gì để build chương trình. Các đoạn lệnh mô tả này được gọi là Rules.</p>
-<h3 id="rules">Rules</h3>
-<p>Một Rules có dạng như sau</p>
-<pre><code>target … : prerequisites …        
-    recipe        
-    …        
-    … 
-</code></pre>
-
-<p>Target: thông thường là đầu ra (executable hoặc object file) của make. Ngoài ra trong make định nghĩa thêm một loại target đặc biệt: Phony Targets.</p>
-<p>Một target được định nghĩa out-of-date khi:</p>
+                <h1 id="overview">Overview</h1>
+<h2 id="linux-kthread_worker-and-work">Linux kthread_worker and work</h2>
 <ul>
-<li>Target đó không tồn tại.</li>
-<li>Các prerequisites bị thay đổi.</li>
-</ul>
-<h3 id="implicit-rules">Implicit Rules</h3>
-<p>Để thuận tiện cho người dùng cũng như làm đơn giản Makefile, "make" định nghĩa các <a href="https://www.gnu.org/software/make/manual/make.html##Implicit-Rules">Implicit Rules</a>. Trong một số Rules, nếu recipe không được định nghĩa, "make" sẽ thực hiện build theo một số luật ngầm đã được định nghĩa trước.</p>
-<p>Ví dụ như khi rule có dạng</p>
-<pre><code>main: main.c
-</code></pre>
-
-<p>Hoặc đơn giản hơn nữa</p>
-<pre><code>main:
-</code></pre>
-
-<p>Trong rule trên không mô tả recipe để "make" có thể tiến hành build, do đó "make" sử dụng implicit rule khi build với C source và sẽ gọi đến:</p>
-<p><code>cc main.c –o main</code></p>
-<p>Trong đó cc là system compiler.</p>
-<h3 id="variables">Variables</h3>
-<p>Biến (hoặc cũng có thể gọi là macro) được định nghĩa trong Makefile để đại diện cho một chuỗi ký tự.</p>
-<p>Trong Makefile có thể sử dụng các <a href="https://www.gnu.org/software/make/manual/make.html##Automatic-Variables">Automatic Variables</a>.</p>
-<ul>
-<li>$@: là target của rules</li>
-<li>$&lt;: là tên của prerequisites</li>
-<li>$^: tên của tất cả các prerequisites được các nhau bằng dấu cách trắng.</li>
+<li>A dicussion in Stackoverflow: <a href="https://stackoverflow.com/questions/33909947/kthread-work-and-kthread-worker-functionality">https://stackoverflow.com/questions/33909947/kthread-work-and-kthread-worker-functionality</a></li>
 </ul>
                 
                   
@@ -828,7 +694,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../version_control/verctl/" title="Version Control" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../linux_device_driver/spi_dev/spi_dev/" title="SPI Device" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -837,19 +703,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Version Control
+                SPI Device
               </span>
             </div>
           </a>
         
         
-          <a href="../../shellscript/shellscript/" title="Shell Script" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../fpga/timing_analysis/timing_analysis/" title="Static Timing Analysis" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Shell Script
+                Static Timing Analysis
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
@@ -883,9 +749,9 @@
       
     </div>
     
-      <script src="../../../assets/javascripts/application.b41f3d20.js"></script>
+      <script src="../../assets/javascripts/application.b41f3d20.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
       
     
     

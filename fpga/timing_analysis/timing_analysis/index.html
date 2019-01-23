@@ -433,18 +433,54 @@
       
       
 
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Linux Kernel
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Linux Kernel
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../linux_kernel/overview/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
   
 
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" checked>
     
-    <label class="md-nav__link" for="nav-6">
+    <label class="md-nav__link" for="nav-7">
       FPGA
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-6">
+      <label class="md-nav__title" for="nav-7">
         FPGA
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -606,13 +642,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
     
-    <label class="md-nav__link" for="nav-7">
+    <label class="md-nav__link" for="nav-8">
       Projects
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-7">
+      <label class="md-nav__title" for="nav-8">
         Projects
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1115,17 +1151,18 @@ một nửa die.</p>
 CMT chứa: 01 Mixed-Mode Clock Managers (MMCMs), 01 Phase Locked Loop
 (PLL).</p>
 <ul>
-<li>
-<p><strong>Clock-Capable Inputs (CCIO)</strong>: bất kì một thiết kế FPGA đồng bộ
+<li><strong>Clock-Capable Inputs (CCIO)</strong>: bất kì một thiết kế FPGA đồng bộ
     nào (synchronous design) đều cần phải cung cấp ít nhất một đường
     clock reference từ bên ngoài chip. Đường clock này sẽ được đưa vào
     chip FPGA bằng các port đặc biệt (clock-capable) được thiết kế riêng
     cho clock. Đối với 7 series FPGA sẽ có 4 ports clock-capable. Trong
     đó: 2 port là Multi-Region Clock Capable (MRCC), 2 ports còn lại là
     Single Region Clock Capable (SRCC). IBUFG, IBUFGS có thể được sử
-    dụng để map tín hiệu clock đến các chân clock-capable.</p>
-<p><img alt="" src="media/image19.png" />{width="6.5in" height="3.88125in"}</p>
-</li>
+    dụng để map tín hiệu clock đến các chân clock-capable.</li>
+</ul>
+<!--    ![](media/image19.png){width="6.5in" height="3.88125in"} -->
+
+<ul>
 <li>
 <p><strong>Global Clocking:</strong> Global clock networks cho pheps phân phối
     clocks đến các clocked element trên chip die. Global clocks are
@@ -1474,7 +1511,7 @@ False Path
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../../linux_device_driver/spi_dev/spi_dev/" title="SPI Device" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../../linux_kernel/overview/" title="Overview" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1483,7 +1520,7 @@ False Path
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                SPI Device
+                Overview
               </span>
             </div>
           </a>
