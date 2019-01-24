@@ -262,6 +262,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../../technote/python/python/" title="Python" class="md-nav__link">
+      Python
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../../technote/tips/tips/" title="Tips" class="md-nav__link">
       Tips
     </a>
@@ -466,80 +478,12 @@
     Probing controller
   </a>
   
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#khoi-tao-spi-master" title="Khởi tạo spi master" class="md-nav__link">
-    Khởi tạo spi master
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#luu-tru-spi-master-vao-private-data-cua-device" title="Lưu trữ spi master vào private data của device" class="md-nav__link">
-    Lưu trữ spi master vào private data của device
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ang-ky-spi-master-voi-kernel" title="Đăng ký spi master với Kernel" class="md-nav__link">
-    Đăng ký spi master với Kernel
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#huy-ang-ky-master-voi-kernel" title="Hủy đăng ký master với Kernel" class="md-nav__link">
-    Hủy đăng ký master với Kernel
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#khai-bao-thiet-bi-trong-device-tree" title="Khai báo thiết bị trong Device Tree" class="md-nav__link">
-    Khai báo thiết bị trong Device Tree
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
           <li class="md-nav__item">
   <a href="#struct-spi_master" title="Struct spi_master" class="md-nav__link">
     Struct spi_master
   </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cac-thuoc-tinh-quan-trong-cua-struct-spi_master" title="Các thuộc tính quan trọng của struct spi_master" class="md-nav__link">
-    Các thuộc tính quan trọng của struct spi_master
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#master-queue" title="Master queue" class="md-nav__link">
-    Master queue
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#register-devices-from-device" title="Register devices from device" class="md-nav__link">
-    Register devices from device
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -801,80 +745,12 @@
     Probing controller
   </a>
   
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#khoi-tao-spi-master" title="Khởi tạo spi master" class="md-nav__link">
-    Khởi tạo spi master
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#luu-tru-spi-master-vao-private-data-cua-device" title="Lưu trữ spi master vào private data của device" class="md-nav__link">
-    Lưu trữ spi master vào private data của device
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ang-ky-spi-master-voi-kernel" title="Đăng ký spi master với Kernel" class="md-nav__link">
-    Đăng ký spi master với Kernel
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#huy-ang-ky-master-voi-kernel" title="Hủy đăng ký master với Kernel" class="md-nav__link">
-    Hủy đăng ký master với Kernel
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#khai-bao-thiet-bi-trong-device-tree" title="Khai báo thiết bị trong Device Tree" class="md-nav__link">
-    Khai báo thiết bị trong Device Tree
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
           <li class="md-nav__item">
   <a href="#struct-spi_master" title="Struct spi_master" class="md-nav__link">
     Struct spi_master
   </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cac-thuoc-tinh-quan-trong-cua-struct-spi_master" title="Các thuộc tính quan trọng của struct spi_master" class="md-nav__link">
-    Các thuộc tính quan trọng của struct spi_master
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#master-queue" title="Master queue" class="md-nav__link">
-    Master queue
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#register-devices-from-device" title="Register devices from device" class="md-nav__link">
-    Register devices from device
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -965,7 +841,7 @@ có thể được gọi bằng các tên khác như: CS, LE, … Tín hiệu SS
 <p><em>Figure 1. Components in SPI Subsystem</em></p>
 <h2 id="controller-driver">Controller Driver</h2>
 <h3 id="probing-controller">Probing controller</h3>
-<h4 id="khoi-tao-spi-master">Khởi tạo spi master</h4>
+<p><strong>Init spi master</strong></p>
 <p>Một controller sẽ được đặc trưng bởi kiểu dữ liệu: <code>struct spi_master</code> (được định nghĩa trong: linux/include/spi/spi.h). Quá trình khai báo controller được thực hiện trong hàm probe.</p>
 <pre><code>struct spi_master *master;
 
@@ -975,13 +851,13 @@ if (!master)
     return -ENOMEM;
 </code></pre>
 
-<h4 id="luu-tru-spi-master-vao-private-data-cua-device">Lưu trữ spi master vào private data của device</h4>
+<p><strong>Set spi master to spi private private data</strong></p>
 <p>Thông thường, con trỏ chứa địa chỉ của spi_master sẽ được lưu trữ trong các private data của device để thuận tiện cho quá trình sử dụng sau này. Cụ thể các API được sử dụng để lưu trữ master vào <em>drvdata</em> như sau:</p>
 <ul>
 <li>Nếu controller là một <em>platform device pdev</em>: <code>platform_set_drvdata(pdev, master);</code></li>
 <li>Nếu controller là một <em>spi device spi</em>: <code>spi_set_drvdata(spi, master)</code></li>
 </ul>
-<h4 id="ang-ky-spi-master-voi-kernel">Đăng ký spi master với Kernel</h4>
+<p><strong>Register spi master</strong></p>
 <pre><code>ret = spi_register_master(master);
 if (ret) {
     dev_err(&amp;pdev-&gt;dev, &quot;spi_register_master failed\n&quot;);
@@ -989,14 +865,14 @@ if (ret) {
 }
 </code></pre>
 
-<h4 id="huy-ang-ky-master-voi-kernel">Hủy đăng ký master với Kernel</h4>
+<p><strong>Unregister spi master</strong></p>
 <p>Ví dụ đối với trường hợp controller là spi device:</p>
 <pre><code>struct spi_master *master = spi_get_drvdata(spi);
 
 spi_unregister_master(master);
 </code></pre>
 
-<h4 id="khai-bao-thiet-bi-trong-device-tree">Khai báo thiết bị trong Device Tree</h4>
+<p><strong><em>Declare devices in Device Tree</em></strong></p>
 <p>Quá trình khai báo một thiết bị trong device tree cần lưu ý đến:</p>
 <ul>
 <li>thuộc tính num-cs củm father-node</li>
@@ -1005,14 +881,14 @@ spi_unregister_master(master);
 <h3 id="struct-spi_master">Struct spi_master</h3>
 <p>Với tất cả các spi controller, spi controller driver cần có các hàm thủ tục để có thể giao tiếp được với các controller tương ứng. Các hàm và thủ tục này được chuẩn hóa và khái quát hóa thành một cấu trúc dữ liệu: struct spi_master.</p>
 <p>Struct spi_master được định nghĩa trong <a href="https://elixir.bootlin.com/linux/v4.8/source/include/linux/spi/spi.h#L400">spi.h</a>.</p>
-<h4 id="cac-thuoc-tinh-quan-trong-cua-struct-spi_master">Các thuộc tính quan trọng của struct spi_master</h4>
+<p><strong>About struct spi_master</strong>*</p>
 <ul>
 <li><strong>transfer_one_message</strong></li>
 <li><strong>transfer_one</strong></li>
 </ul>
-<h4 id="master-queue">Master queue</h4>
+<p><strong>Master queue</strong></p>
 <p>spi_master_initialize_queue</p>
-<h4 id="register-devices-from-device">Register devices from device</h4>
+<p><strong>Register devices from device</strong></p>
 <p>Đăng ký các thiết bị thuộc bus SPI mà spi master đang quản lý bằng API:</p>
 <p><code>static void of_register_spi_devices(struct spi_master *master);</code></p>
 <p>API này sẽ duyệt hết tất cả các child-node xuất hiện trên Device Tree và tiến hành thêm thiết bị đó vào hệ thống bằng API: <code>spi_add_device</code></p>
