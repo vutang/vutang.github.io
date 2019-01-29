@@ -588,6 +588,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#whats-next" title="What's next?" class="md-nav__link">
+    What's next?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#refereneces" title="Refereneces" class="md-nav__link">
     Refereneces
   </a>
@@ -916,6 +923,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#whats-next" title="What's next?" class="md-nav__link">
+    What's next?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#refereneces" title="Refereneces" class="md-nav__link">
     Refereneces
   </a>
@@ -939,7 +953,8 @@
               
                 
                 
-                <h1 id="spi-device-driver"><span style="color:red">SPI Device Driver</span></h1>
+                <h1 id="spi-device-driver"><strong><span style="color:red">SPI Device Driver</span></strong></h1>
+<p><em>Hanoi Tuesday, January 29, 2019 -- by <a href="../../../about/about/">VuTang</a></em></p>
 <h2 id="introduction">Introduction</h2>
 <p>SPI là chuẩn giao tiếp nối tiếp dựa trên mô hình Master-Slaves, trong đó một master có thể được
 kết nối đến một hoặc nhiều thiết bị slave. Một bus SPI thông thường có 4 tín hiệu:</p>
@@ -959,22 +974,16 @@ có thể được gọi bằng các tên khác như: CS (chip sellect), LE (Lat
 <li><a href="xxx">spi.c</a>: SPI core APIs are implemented in this file.</li>
 </ul>
 <h3 id="spi-device-driver-model">SPI Device Driver Model</h3>
-<p>Trong SPI Subsystem, hệ thống SPI cơ bản sẽ phân biệt ra hai loại driver tương ứng cho 2 loại device (Như trong <a href="#figure1">Figure 1</a>):</p>
+<p>Trong Figure 1 thể hiện mô hình của một hệ thống SPI trong Linux, bao gồm:</p>
 <ul>
-<li><strong>Controller Driver</strong>: Đóng vai trò là SPI master device </li>
-<li><strong>Protocol Driver</strong>: SPI slave device</li>
+<li>Về phần cứng, một SPI device (slave device) được kết nối với SPI controller thông qua một bus vật lý (các tín hiệu của SPI bus mô tả ở phần trước được thiết kế trên mạch cứng). Một SPI device được đặc mô tả bởi <code>struct spi_device</code>.</li>
+<li>Về phần mềm, hai thực thể phần cứng trên cần driver để giao tiếp và quản lý, driver cho controller (<strong><span style="color:red">controller driver</span></strong>) và driver cho spi device (<strong><span style="color:red">protocol driver</span></strong> - this deffinition is used in Linux Kernel official document). Linux Kernel provides a sub-system to manage these device drivers, called SPI-core. All controller driver &amp; protocol driver have to register to Spi-core. Cấu trúc dữ liệu đặc quan trọng nhất cho một controller là <code>struct spi_master</code></li>
 </ul>
-<p>Một thiết bị spi được kernel mô tả dưới dạng <code>struct spi_device</code>.</p>
 <p><a name="figure1"></a></p>
 <p><img alt="spi_platform" src="../img/spi-platform.png" /></p>
 <p><em><span style="color:blue">Figure 1. Components in SPI Subsystem</span></em></p>
-<p>Trong Figure 1,</p>
-<ul>
-<li>Về phần cứng, một SPI device (slave device) được kết nối với SPI controller thông qua một bus vật lý (các tín hiệu vật lý liên kết giữa hai thực thể được thiết kế trên mạch cứng). </li>
-<li>Về phần mềm, hai thực thể phần cứng trên cần driver để giao tiếp và quản lý. Tương ứng xuất hiện driver cho controller (controller driver) và driver cho spi device (protocol driver - this deffinition is used in Linux Kernel official document). Linux Kernel provides a sub-system to manage these device drivers, called SPI-core. All controller driver &amp; protocol driver have to register to Spi-core.</li>
-</ul>
 <h3 id="spi-message-transfer">SPI Message &amp; Transfer</h3>
-<p>Thông tin trao đổi giữa controller và device được khái quát hóa trong Linux SPI subsystem thành dạng các message. Các message này được chia nhỏ thành các transfer.</p>
+<p>Thông tin trao đổi giữa controller và device được khái quát hóa trong Linux SPI subsystem thành dạng các message. Các message này được chia nhỏ thành các transfer. Linux cung cấp <code>struct spi_message</code> và <code>struct spi_transfer</code> để mô tả các đối tượng này. Các struct này đều được định nghĩa trong spi.h.</p>
 <h3 id="for-engineer">For Engineer</h3>
 <p>So, what is mission for engineer in a SPI system?</p>
 <ul>
@@ -982,10 +991,10 @@ có thể được gọi bằng các tên khác như: CS (chip sellect), LE (Lat
 <p>Phát triển protocol driver: các ứng dụng trên tầng ứng dụng cần truy cập đến thông tin trên các SPI Device (ví dụ như đọc giá trị nhiệt độ từ một cảm biến, cấu hình tín hiệu clock cho một hệ thống...). Do đó nhiệm vụ đầu tiên của một kỹ sư là phát triển Protocol Driver để cung cấp các API giao tiếp để ứng dụng có thể truy cập đến phần cứng chứa giao diện SPI.</p>
 </li>
 <li>
-<p>Phát triển controller driver: thông thường các SPI controller được phát triển bởi các nhà phát triển core ASIC (Ví dụ như dòng chip Zynq7000 của Xilinx sử dụng SPI controller của Cadence), do vậy controller driver thường được các nhà phát triển này tích hợp kèm trong hệ thống. Nhiệm vụ của kỹ sư trong một số trường hợp là tiến hành thay đổi controller driver này cho phù hợp với hệ thống hiện tại. Ngoài ra, kỹ sư có thể phát triển thêm các controller driver để phù hợp với yêu cầu của hệ thống.</p>
+<p>Phát triển controller driver: thông thường driver của controller thường được các nhà phát triển tích hợp kèm với controller. Nhiệm vụ của kỹ sư trong một số trường hợp là tiến hành thay đổi controller driver này cho phù hợp với hệ thống hiện tại. Ngoài ra, kỹ sư có thể phát triển thêm các controller driver để phù hợp với yêu cầu của hệ thống.</p>
 </li>
 <li>
-<p>Bổ sung thêm một số chức năng cho SPI-Core: giao diện SPI với các tín hiệu như mục giới thiệu là giao diện chuẩn, trong khi các biến tấu của giao diện SPI trong thực tế là rất nhiều. Do đó yêu cầu kỹ sư phải hiểu sâu về SPI-Core để trong một số trường hợp có thể bổ sung thêm một số API. Hoạt động bổ sung vào SPI-Core này nên hạn chế vì can thiệp sâu vào SPI-Core tức là can thiệp vào một phần nào đó của Linux Kernel, phần đáng ra là independent.</p>
+<p>Bổ sung thêm một số chức năng cho SPI-Core: giao diện SPI với các tín hiệu như mục giới thiệu là giao diện chuẩn, trong khi các biến tấu của giao diện SPI trong thực tế là rất nhiều. Những biến tấu này yêu cầu kỹ sư phải hiểu sâu về SPI-Core để trong một số trường hợp có thể bổ sung thêm một số API. Về tư tưởng phát triển, quá trình viết một driver phải độc lập với Linux kernel, do đó hoạt động thay đổi và bổ sung vào SPI-Core này nên hạn chế vì rõ ràng can thiệp vào SPI-Core tức là ít nhiều can thiệp vào Linux Kernel.</p>
 </li>
 </ul>
 <h2 id="protocol-driver">Protocol Driver</h2>
@@ -1043,7 +1052,7 @@ Trong ví dụ sau, user buffer có kích thước 3 bytes được sử dụng 
 </code></pre>
 
 <h2 id="controller-driver">Controller Driver</h2>
-<p>Là kernel module giao tiếp trực tiếp với SPI Controller. SPI controller này có thể là Hard-controller (như controller của Cadence được tích hợp sẵn trong phần PS của Zynq7000) hoặc cũng có thể là Soft-controller như SPI-GPIO (Bitbanging).</p>
+<p>Là kernel module giao tiếp trực tiếp với SPI Controller. SPI controller này có thể là Hard-controller (như controller của Cadence được tích hợp sẵn trong ngoại vi của SoC) hoặc cũng có thể là Soft-controller như SPI-GPIO (Bitbanging).</p>
 <h3 id="probing-controller">Probing controller</h3>
 <p><strong><em>Initialize a spi master</em></strong></p>
 <p>Một controller sẽ được đặc trưng bởi kiểu dữ liệu: <code>struct spi_master</code> (được định nghĩa trong: linux/include/spi/spi.h). Quá trình khai báo controller được thực hiện trong hàm probe.</p>
@@ -1132,8 +1141,6 @@ spi_unregister_master(master);
 <li><strong>transfer_one_message</strong></li>
 <li><strong>transfer_one</strong></li>
 </ul>
-<p><strong><em>Master queue</em></strong></p>
-<p>spi_master_initialize_queue</p>
 <p><strong><em>Register devices from device</em></strong></p>
 <p>Đăng ký các thiết bị thuộc bus SPI mà spi master đang quản lý bằng API:</p>
 <p><code>static void of_register_spi_devices(struct spi_master *master);</code></p>
@@ -1174,15 +1181,25 @@ spi_message_add_tail(&amp;t, &amp;m);
 <p>Về tư tưởng <code>kworker/kwork</code> trong Linux Kernel, một <code>kworker</code> được cấp phát tài nguyên (CPU) sẽ được sử dụng đề hoàn thành các <code>kwork</code>.</p>
 <p>Trong SPI-subsystem cũng hoạt động với cơ chế tương tự, mỗi master được khởi tạo một <code>struct kthread_worker kworker</code> bằng API <code>init_kthread_worker</code> trong <code>spi_init_queue</code>. <code>spi_init_queue</code> đồng thời khởi tạo một kernel thread dành riêng để thực hiện <code>kthread_worker</code> này.</p>
 <p>Đối với Cadence Controller, hàm <code>master-&gt;transfer</code> được định nghĩa bằng <code>spi_queued_transfer</code> trong SPI core. Quá trình thực hiện của <code>spi_queued_transfer</code> bản chất là đưa <code>spi_message</code> vào work queue để chờ <code>kwork</code> xử lý.</p>
-<p>Như vậy, các request message từ protocol driver được xếp thành hàng để kworker/kwork xử lý. Bản chất kwork-&gt;fn trỏ đến <code>spi_pump_messages</code>.</p>
+<p>Như vậy, các request message từ protocol driver được xếp thành hàng để kworker/kwork xử lý. Bản chất <code>kwork-&gt;fn</code> trỏ đến <code>spi_pump_messages</code>.</p>
 <p><strong><code>spi_pump_messages</code></strong></p>
 <p>Thực hiện "bơm" bản tin vào SPI bus bằng các gọi đến <code>master-&gt;transfer_one_message</code></p>
 <p><strong><code>master-&gt;transfer_one_message</code></strong></p>
 <p><code>transfer_one_message</code> có thể được định nghĩa trong controller driver. Trong trường hợp không được định nghĩa trong quá trình khai báo <code>spi_master</code> của controller driver, <code>transfer_one_message</code> được trỏ đến hàm <code>spi_transfer_one_massge</code> định nghĩa trong SPI core.</p>
+<h2 id="whats-next">What's next?</h2>
+<ul>
+<li>
+<p>spi_master có thể cần cung cấp hàm cho các phương thức như: <code>transfer_one_message</code>, <code>transfer_one</code>. Vậy khác nhau giữa hai phương thức này là gì?</p>
+</li>
+<li>
+<p>Mô tả các trường hợp thiết kế SPI bus trong thực tế.</p>
+</li>
+</ul>
 <h2 id="refereneces">Refereneces</h2>
 <ul>
 <li><a href="http://events17.linuxfoundation.org/sites/events/files/slides/Groking%20the%20Linux%20SPI%20Subsystem.pdf">Groking the Linux SPI Subsystem</a> - Embedded Linux Conference 2017</li>
 <li>spi/spi-summary - Linux Kernel Document (<a href="https://elixir.bootlin.com/linux/latest/source/Documentation/spi/spi-summary">link</a>)</li>
+<li>The Linux Kernel - <a href="https://www.kernel.org/doc/html/v4.15/driver-api/spi.html">SPI</a></li>
 </ul>
                 
                   
