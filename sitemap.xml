@@ -96,6 +96,11 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>https://www.vutang.github.io/fpga/x_ipcore/xipcore/</loc>
+     <lastmod>2019-02-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>https://www.vutang.github.io/projects/zedboard/zedboard/</loc>
      <lastmod>2019-02-13</lastmod>
      <changefreq>daily</changefreq>

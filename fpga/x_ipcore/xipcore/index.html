@@ -11,7 +11,7 @@
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
       
-        <link rel="canonical" href="https://www.vutang.github.io/books/ldd3/">
+        <link rel="canonical" href="https://www.vutang.github.io/fpga/x_ipcore/xipcore/">
       
       
       
@@ -33,21 +33,21 @@
       
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
-      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <link rel="shortcut icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.2.0">
     
     
       
-        <title>Linux Device Driver - Vu Tang's Docs</title>
+        <title>Xilinx IPCore - Vu Tang's Docs</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application.572ca0f0.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.572ca0f0.css">
       
       
     
     
-      <script src="../../assets/javascripts/modernizr.8c900955.js"></script>
+      <script src="../../../assets/javascripts/modernizr.8c900955.js"></script>
     
     
       
@@ -56,7 +56,7 @@
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
-    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
     
     
     
@@ -73,6 +73,10 @@
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#xilinx-ipcore" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
     
     
       <header class="md-header" data-md-component="header">
@@ -96,7 +100,7 @@
                 Vu Tang's Docs
               </span>
               <span class="md-header-nav__topic">
-                Linux Device Driver
+                Xilinx IPCore
               </span>
             
           
@@ -167,7 +171,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../.." title="Preface" class="md-nav__link">
+    <a href="../../.." title="Preface" class="md-nav__link">
       Preface
     </a>
   </li>
@@ -198,7 +202,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../technote/mkdocs/mkdocs-notes/" title="Mkdocs Tool" class="md-nav__link">
+    <a href="../../../technote/mkdocs/mkdocs-notes/" title="Mkdocs Tool" class="md-nav__link">
       Mkdocs Tool
     </a>
   </li>
@@ -210,7 +214,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../technote/markdown/markdown/" title="Markdown Language" class="md-nav__link">
+    <a href="../../../technote/markdown/markdown/" title="Markdown Language" class="md-nav__link">
       Markdown Language
     </a>
   </li>
@@ -222,7 +226,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../technote/shellscript/shellscript/" title="Shell Script" class="md-nav__link">
+    <a href="../../../technote/shellscript/shellscript/" title="Shell Script" class="md-nav__link">
       Shell Script
     </a>
   </li>
@@ -234,7 +238,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../technote/python/python/" title="Python" class="md-nav__link">
+    <a href="../../../technote/python/python/" title="Python" class="md-nav__link">
       Python
     </a>
   </li>
@@ -246,7 +250,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../technote/tips/tips/" title="Tips" class="md-nav__link">
+    <a href="../../../technote/tips/tips/" title="Tips" class="md-nav__link">
       Tips
     </a>
   </li>
@@ -261,12 +265,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
     
     <label class="md-nav__link" for="nav-3">
       Book & Materials
@@ -282,18 +284,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-    <a href="./" title="Linux Device Driver" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../../books/ldd3/" title="Linux Device Driver" class="md-nav__link">
       Linux Device Driver
     </a>
-    
   </li>
 
         
@@ -303,7 +298,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../utlk/" title="Understanding Linux Kernel" class="md-nav__link">
+    <a href="../../../books/utlk/" title="Understanding Linux Kernel" class="md-nav__link">
       Understanding Linux Kernel
     </a>
   </li>
@@ -339,7 +334,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../embedded_system/es/" title="Overview" class="md-nav__link">
+    <a href="../../../embedded_system/es/" title="Overview" class="md-nav__link">
       Overview
     </a>
   </li>
@@ -351,7 +346,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../technote/makefile/makefile/" title="Makefile" class="md-nav__link">
+    <a href="../../../technote/makefile/makefile/" title="Makefile" class="md-nav__link">
       Makefile
     </a>
   </li>
@@ -363,7 +358,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../technote/version_control/verctl/" title="Version Control" class="md-nav__link">
+    <a href="../../../technote/version_control/verctl/" title="Version Control" class="md-nav__link">
       Version Control
     </a>
   </li>
@@ -399,7 +394,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../linux_device_driver/overview/" title="Overview" class="md-nav__link">
+    <a href="../../../linux_device_driver/overview/" title="Overview" class="md-nav__link">
       Overview
     </a>
   </li>
@@ -411,7 +406,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../linux_device_driver/kernel_module/" title="Kernel Module" class="md-nav__link">
+    <a href="../../../linux_device_driver/kernel_module/" title="Kernel Module" class="md-nav__link">
       Kernel Module
     </a>
   </li>
@@ -423,7 +418,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../linux_device_driver/platform_dev/platform_device/" title="Platform Device" class="md-nav__link">
+    <a href="../../../linux_device_driver/platform_dev/platform_device/" title="Platform Device" class="md-nav__link">
       Platform Device
     </a>
   </li>
@@ -435,7 +430,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../linux_device_driver/spi_dev/spi_dev/" title="SPI Device" class="md-nav__link">
+    <a href="../../../linux_device_driver/spi_dev/spi_dev/" title="SPI Device" class="md-nav__link">
       SPI Device
     </a>
   </li>
@@ -447,7 +442,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../linux_device_driver/spi_dev/spi_advance/" title="SPI Device Advance" class="md-nav__link">
+    <a href="../../../linux_device_driver/spi_dev/spi_advance/" title="SPI Device Advance" class="md-nav__link">
       SPI Device Advance
     </a>
   </li>
@@ -459,7 +454,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../linux_device_driver/gpio/gpio/" title="GPIO" class="md-nav__link">
+    <a href="../../../linux_device_driver/gpio/gpio/" title="GPIO" class="md-nav__link">
       GPIO
     </a>
   </li>
@@ -495,7 +490,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../linux_kernel/kernel_data_structure/" title="Kernel Data Structure" class="md-nav__link">
+    <a href="../../../linux_kernel/kernel_data_structure/" title="Kernel Data Structure" class="md-nav__link">
       Kernel Data Structure
     </a>
   </li>
@@ -510,10 +505,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" checked>
     
     <label class="md-nav__link" for="nav-7">
       FPGA
@@ -531,7 +528,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../fpga/timing_analysis/timing_analysis/" title="Static Timing Analysis" class="md-nav__link">
+    <a href="../../timing_analysis/timing_analysis/" title="Static Timing Analysis" class="md-nav__link">
       Static Timing Analysis
     </a>
   </li>
@@ -541,11 +538,49 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../fpga/x_ipcore/xipcore/" title="Xilinx IPCore" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Xilinx IPCore
+      </label>
+    
+    <a href="./" title="Xilinx IPCore" class="md-nav__link md-nav__link--active">
       Xilinx IPCore
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#clocking-wizard" title="Clocking Wizard" class="md-nav__link">
+    Clocking Wizard
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -579,7 +614,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../projects/zedboard/zedboard/" title="Zedboard" class="md-nav__link">
+    <a href="../../../projects/zedboard/zedboard/" title="Zedboard" class="md-nav__link">
       Zedboard
     </a>
   </li>
@@ -591,7 +626,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../projects/zc706/" title="ZC706" class="md-nav__link">
+    <a href="../../../projects/zc706/" title="ZC706" class="md-nav__link">
       ZC706
     </a>
   </li>
@@ -608,7 +643,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../bookmarks/bookmarks/" title="Bookmarks" class="md-nav__link">
+    <a href="../../../bookmarks/bookmarks/" title="Bookmarks" class="md-nav__link">
       Bookmarks
     </a>
   </li>
@@ -620,7 +655,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../whatnext/" title="What's next" class="md-nav__link">
+    <a href="../../../whatnext/" title="What's next" class="md-nav__link">
       What's next
     </a>
   </li>
@@ -632,7 +667,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../about/about/" title="About me" class="md-nav__link">
+    <a href="../../../about/about/" title="About me" class="md-nav__link">
       About me
     </a>
   </li>
@@ -645,15 +680,67 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#clocking-wizard" title="Clocking Wizard" class="md-nav__link">
+    Clocking Wizard
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
                 
                 
-                  <h1>Linux Device Driver</h1>
-                
-                <p>This is note for LDD3</p>
+                <h1 id="xilinx-ipcore">Xilinx IPCore</h1>
+<p>This note for Xilinx Core implementation.</p>
+<h2 id="clocking-wizard">Clocking Wizard</h2>
+<p>Configure Clock Wizard using Dynamic Reconfiguration through AXI4-Lite interface.</p>
+<p>Dòng chip Series 7 của Xilinx cung cấp các tài nguyên liên quan đến clock như MMCM và PLL (clock synthesizer). Ngoài ra, trong môi trường Vivado, Xilinx cung cấp thêm IPCore Clocking Wizard nhằm tạo giao diện làm việc đơn giản cho người dùng khi sử dụng các tài nguyên clock trên chip FPGA.</p>
+<p>Trong quá trình chạy (run-time), các clock synthesizer có thể cấu hình lại để có thể thay đổi được giá trị tần số đầu ra. </p>
+<p><strong>Configuration</strong></p>
+<p>Giá trị tần số của một đầu ra của khối clock wizard được tính như sau:</p>
+<pre><code>VCO = CLKin * CLKFBOUT_MULT/DIVCLK_DIVICE
+
+CLKOUT0 = VCO / CLKOUT0_DIVIDE
+</code></pre>
+
+<p>Trong quá trình chạy, khi thay đổi các giá trị <code>CLKFBOUT_MULT</code> (Reg-offset: 0x200) hoặc giá trị <code>CLOCKOUT0_DEVICE</code> (Reg-offset: 0x208) thì giá trị <code>CLKOUT0</code> sẽ thay đổi. Tham khảo thêm Register Space trong tài liệu PG065.</p>
+<p><strong><em>Quy trình cấu hình lai clock</em></strong></p>
+<p>Trong PG065 mô tả quy trình cấu hình lại clock tại "Dynamic Reconfiguration through AXI4-Lite"</p>
+<p>Lưu ý quá trình cấu hình:</p>
+<ul>
+<li>Nhập mới giá trị thanh ghi</li>
+<li>Ghi giá trị 0x7 vào thanh ghi 0x25c</li>
+<li>Ghi giá trị 0x3 vào thanh ghi 0x25c</li>
+</ul>
+<p>This configuration sequence is referenced from Clocking Wizard example design.</p>
+<p><strong>References</strong></p>
                 
                   
                 
@@ -674,7 +761,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../technote/tips/tips/" title="Tips" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../timing_analysis/timing_analysis/" title="Static Timing Analysis" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -683,19 +770,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Tips
+                Static Timing Analysis
               </span>
             </div>
           </a>
         
         
-          <a href="../utlk/" title="Understanding Linux Kernel" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../../projects/zedboard/zedboard/" title="Zedboard" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Understanding Linux Kernel
+                Zedboard
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
@@ -729,9 +816,9 @@
       
     </div>
     
-      <script src="../../assets/javascripts/application.b41f3d20.js"></script>
+      <script src="../../../assets/javascripts/application.b41f3d20.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
       
     
     
