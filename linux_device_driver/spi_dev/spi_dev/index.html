@@ -624,6 +624,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../gpio/gpio/" title="GPIO" class="md-nav__link">
+      GPIO
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -654,7 +666,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../linux_kernel/overview/" title="Kernel Data Structure" class="md-nav__link">
+    <a href="../../../linux_kernel/kernel_data_structure/" title="Kernel Data Structure" class="md-nav__link">
       Kernel Data Structure
     </a>
   </li>
@@ -966,6 +978,7 @@
                 
                 
                 <h1 id="spi-device-driver"><strong><span style="color:red">SPI Device Driver</span></strong></h1>
+<p><img alt="spi_bus_signals" src="../img/spi-bus-signals-2.jpg" /></p>
 <p><em>Hanoi - Tuesday, January 29, 2019 - by <a href="../../../about/about/">VuTang</a></em></p>
 <h2 id="introduction">Introduction</h2>
 <p>SPI là chuẩn giao tiếp nối tiếp dựa trên mô hình Master-Slaves, trong đó một master có thể được
@@ -1011,6 +1024,8 @@ có thể được gọi bằng các tên khác như: CS (chip sellect), LE (Lat
 }
 </code></pre>
 
+<p>this function is used in <code>spi_transfer_one_message()</code> - a default implementation of <code>transfer_one_message()</code> in spi.c.</p>
+<p>See in <a href="../../../linux_kernel/kernel_data_structure/#linked-list">Kernel Data Structure</a> for more information about  Linked List in device driver development.</p>
 <h3 id="for-engineer">For Engineer</h3>
 <p>So, what is mission for engineer in a SPI system?</p>
 <ul>
@@ -1061,10 +1076,10 @@ In example below, <code>spi_write</code> is used in a function for writing a val
 </code></pre>
 
 <ul>
-<li><code>int spi_write_then_read(struct spi_device *spi, const void *txbuf, unsigned n_tx, void *rxbuf, unsigned n_rx)</code><br />
-API này thường được sử dụng để đọc thanh ghi của một thiết bị. Một bản tin từ controller được gửi cho device về yêu cầu đọc thanh ghi, device phản hồi thông tin cho controller và trả lại kết quả cho protocl driver.<br />
-Trong ví dụ sau, user buffer có kích thước 3 bytes được sử dụng như tx_buf và rx_buf (2 bytes đầu tiên được sử dụng cho tx, 1 byte tiếp theo sử dụng cho rx). Message buf[0:1] được gửi đi đến device, kết quả trả lại của device được lưu trữ trong buf[2].</li>
+<li><code>int spi_write_then_read(struct spi_device *spi, const void *txbuf, unsigned n_tx, void *rxbuf, unsigned n_rx)</code></li>
 </ul>
+<p>API này thường được sử dụng để đọc thanh ghi của một thiết bị. Một bản tin từ controller được gửi cho device về yêu cầu đọc thanh ghi, device phản hồi thông tin cho controller và trả lại kết quả cho protocl driver.</p>
+<p>Trong ví dụ sau, user buffer có kích thước 3 bytes được sử dụng như tx_buf và rx_buf (2 bytes đầu tiên được sử dụng cho tx, 1 byte tiếp theo sử dụng cho rx). Message buf[0:1] được gửi đi đến device, kết quả trả lại của device được lưu trữ trong buf[2].</p>
 <pre><code>int xxx_read(struct spi_device *spi, unsigned addr) {
     unsigned char buf[3];
     int rc;
@@ -1078,6 +1093,7 @@ Trong ví dụ sau, user buffer có kích thước 3 bytes được sử dụng 
 }
 </code></pre>
 
+<p>Bản chất hoạt động của các API trên sẽ được mô tả ở trong phần cuối của tài liệu này.</p>
 <h2 id="controller-driver">Controller Driver</h2>
 <p>Là kernel module giao tiếp trực tiếp với SPI Controller. SPI controller này có thể là Hard-controller (như controller của Cadence được tích hợp sẵn trong ngoại vi của SoC) hoặc cũng có thể là Soft-controller như SPI-GPIO (Bitbanging).</p>
 <h3 id="probing-controller">Probing controller</h3>
@@ -1165,8 +1181,8 @@ spi_unregister_master(master);
 <p>Struct spi_master được định nghĩa trong <a href="https://elixir.bootlin.com/linux/v4.8/source/include/linux/spi/spi.h#L400">spi.h</a>.</p>
 <p><strong><em>About struct spi_master</em></strong></p>
 <ul>
-<li><strong>transfer_one_message</strong></li>
-<li><strong>transfer_one</strong></li>
+<li><strong>transfer_one_message</strong>: transfer a single message. SPI GPIO (bitbanging) uses this method.</li>
+<li><strong>transfer_one</strong>: transfer a single spi_transfer. SPI Cadence controller uses this method.</li>
 </ul>
 <p><strong><em>Register devices from device</em></strong></p>
 <p>Đăng ký các thiết bị thuộc bus SPI mà spi master đang quản lý bằng API:</p>
