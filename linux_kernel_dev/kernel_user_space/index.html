@@ -11,7 +11,7 @@
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
       
-        <link rel="canonical" href="https://www.vutang.github.io/linux_kernel/kernel_data_structure/">
+        <link rel="canonical" href="https://www.vutang.github.io/linux_kernel_dev/kernel_user_space/">
       
       
       
@@ -38,7 +38,7 @@
     
     
       
-        <title>Kernel Data Structure - Vu Tang's Docs</title>
+        <title>Kernel Space, User Space Interfaces - Vu Tang's Docs</title>
       
     
     
@@ -74,7 +74,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#kernel-data-structure" tabindex="1" class="md-skip">
+      <a href="#kernel-space-user-space-interfaces" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -100,7 +100,7 @@
                 Vu Tang's Docs
               </span>
               <span class="md-header-nav__topic">
-                Kernel Data Structure
+                Kernel Space, User Space Interfaces
               </span>
             
           
@@ -490,6 +490,18 @@
           
           
 
+
+  <li class="md-nav__item">
+    <a href="../kernel_data_structure/" title="Kernel Data Structure" class="md-nav__link">
+      Kernel Data Structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
   
 
 
@@ -500,79 +512,9 @@
       
     
     
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Kernel Data Structure
-      </label>
-    
-    <a href="./" title="Kernel Data Structure" class="md-nav__link md-nav__link--active">
-      Kernel Data Structure
+    <a href="./" title="Kernel Space, User Space Interfaces" class="md-nav__link md-nav__link--active">
+      Kernel Space, User Space Interfaces
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#references" title="References" class="md-nav__link">
-    References
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#linked-list" title="Linked List" class="md-nav__link">
-    Linked List
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#the-linked-list-structure" title="The Linked List Structure" class="md-nav__link">
-    The Linked List Structure
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#defining-a-linked-list" title="Defining a Linked List" class="md-nav__link">
-    Defining a Linked List
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#traversing-linked-lists" title="Traversing Linked Lists" class="md-nav__link">
-    Traversing Linked Lists
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#container_of" title="container_of()" class="md-nav__link">
-    container_of()
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
     
   </li>
 
@@ -731,63 +673,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#references" title="References" class="md-nav__link">
-    References
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#linked-list" title="Linked List" class="md-nav__link">
-    Linked List
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#the-linked-list-structure" title="The Linked List Structure" class="md-nav__link">
-    The Linked List Structure
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#defining-a-linked-list" title="Defining a Linked List" class="md-nav__link">
-    Defining a Linked List
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#traversing-linked-lists" title="Traversing Linked Lists" class="md-nav__link">
-    Traversing Linked Lists
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#container_of" title="container_of()" class="md-nav__link">
-    container_of()
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -799,113 +684,8 @@
               
                 
                 
-                <h1 id="kernel-data-structure">Kernel Data Structure</h1>
-<h2 id="references">References</h2>
-<p>[1] <a href="https://drive.google.com/open?id=1WMBs5SCG3Qr4Rw645AEBkJm5dR8tiDas">Linux Kernel Development, 3nd</a></p>
-<h2 id="linked-list"><strong><span style="color:red">Linked List</span></strong></h2>
-<h3 id="the-linked-list-structure">The Linked List Structure</h3>
-<p>Linked list is popular data structure that is used in programming. The Linux Kernel approach is different. Instead of turning the structure into a linked list, the Linux approach is to <em>embed a linked list noed in the structure!</em></p>
-<p>The linked-list code is declared in the header file &lt;linux/list.h> and the data structure is simple:</p>
-<p><a href="https://elixir.bootlin.com/linux/latest/source/scripts/kconfig/list.h#L24">list_head: include/list.h#L24</a></p>
-<pre><code>struct list_head {
-    struct list_head *next
-    struct list_head *prev;
-};
-</code></pre>
-
-<p>embed in a structure:</p>
-<pre><code>struct fox {
-    unsigned long tail_length; /* length in centimeters of tail */
-    unsigned long weight; /* weight in kilograms */
-    bool is_fantastic; /* is this fox fantastic? */
-
-    struct list_head list; /* list of all fox structures */
-};
-</code></pre>
-
-<p>From a pointer that points to the <code>struct list_head</code> in a structure, we can get pointer to this structure by using macro <code>list_entry</code> (see <code>container_of()</code>):</p>
-<pre><code>#define list_entry(ptr, type, member) \
-    container_of(ptr, type, member)
-</code></pre>
-
-<p>Example:</p>
-<pre><code>    struct fox red_fox, *fox_ptr;                       // fox_ptr is pointing to nothing
-
-    struct list_head *list_ptr = &amp;red_fox.list;         // make list_ptr point to struct list inside red_fox
-    fox_ptr = list_entry(list_ptr, struct fox, list);   // fox_ptr now is pointing to red_fox
-</code></pre>
-
-<h3 id="defining-a-linked-list">Defining a Linked List</h3>
-<p>There are two ways to define a linked-list:</p>
-<ul>
-<li>Defining listed-list with the first entry:  </li>
-</ul>
-<p>Dynamic Allocation,  </p>
-<pre><code>struct fox *red_fox;
-red_fox = kmalloc(sizeof(*red_fox), GFP_KERNEL);
-red_fox-&gt;tail_length = 40;
-red_fox-&gt;weight = 6;
-red_fox-&gt;is_fantastic = false;
-INIT_LIST_HEAD(&amp;red_fox-&gt;list);
-</code></pre>
-
-<p>And static alocation,</p>
-<pre><code>struct fox red_fox = {
-    .tail_length = 40,
-    .weight = 6,
-    .list = LIST_HEAD_INIT(red_fox.list),
-};
-</code></pre>
-
-<ul>
-<li>Defining a empty linked-list:</li>
-</ul>
-<p><code>static LIST_HEAD(fox_list);</code></p>
-<p>The second approach is used popularly in Linux Kernel (see spi.c).</p>
-<h3 id="traversing-linked-lists">Traversing Linked Lists</h3>
-<p>The kernel (thank goodness) provides a nice set of interfaces for traversing linked lists and referencing the data structures that include them.  </p>
-<p><strong>The Basic Approach</strong></p>
-<pre><code>struct list_head *p;
-struct fox *f;
-
-list_for_each(p, fox_list) {
-    /* p points to an entry (struct list_head) in the list */
-
-    f = list_entry(p, struct fox, list); // We need to use list_entry to get the &quot;fox&quot; structure
-}
-</code></pre>
-
-<p><strong>The Usable Approach</strong></p>
-<pre><code>struct fox *f;
-
-list_for_each_entry(f, &amp;fox_list, list) {
-    /* on each iteration, ‘f’ points to the next fox structure ... */
-}
-</code></pre>
-
-<h3 id="container_of"><strong>container_of()</strong></h3>
-<p><a href="https://elixir.bootlin.com/linux/latest/source/tools/virtio/linux/kernel.h#L108">container_of: include/linux/kerne.h#108</a></p>
-<pre><code>#define container_of(ptr, type, member) ({          \
-    const typeof( ((type *)0)-&gt;member ) *__mptr = (ptr);    \
-    (type *)( (char *)__mptr - offsetof(type,member) );})
-</code></pre>
-
-<p>Assume that we have a structure:</p>
-<pre><code>struct data {
-    int data1;
-    int data2;
-}
-</code></pre>
-
-<p>And a pointer <code>int *child_ptr</code> point to data2 which is a member of <code>struct data</code>. </p>
-<pre><code>int *child_ptr = &amp;data2;
-</code></pre>
-
-<p>We can user <code>container_of()</code> to get a pointer pointing to <code>struct data</code>.</p>
-<pre><code>struct data *data_ptr = container_of(child_ptr, struct container, data2);
-</code></pre>
-
-<p><span style="color:red">Can we implement "container_of" in c for user space application?</span></p>
+                <h1 id="kernel-space-user-space-interfaces">Kernel Space, User Space Interfaces</h1>
+<p><a href="http://wiki.tldp.org/kernel_user_space_howto">http://wiki.tldp.org/kernel_user_space_howto</a></p>
                 
                   
                 
@@ -926,7 +706,7 @@ list_for_each_entry(f, &amp;fox_list, list) {
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../linux_device_driver/gpio/gpio/" title="GPIO" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../kernel_data_structure/" title="Kernel Data Structure" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -935,7 +715,7 @@ list_for_each_entry(f, &amp;fox_list, list) {
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                GPIO
+                Kernel Data Structure
               </span>
             </div>
           </a>

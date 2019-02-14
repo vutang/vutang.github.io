@@ -11,7 +11,7 @@
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
       
-        <link rel="canonical" href="https://www.vutang.github.io/technote/markdown/markdown/">
+        <link rel="canonical" href="https://www.vutang.github.io/linux_kernel_dev/kernel_data_structure/">
       
       
       
@@ -33,21 +33,21 @@
       
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
-      <link rel="shortcut icon" href="../../../assets/images/favicon.png">
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.2.0">
     
     
       
-        <title>Markdown Language - Vu Tang's Docs</title>
+        <title>Kernel Data Structure - Vu Tang's Docs</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/application.572ca0f0.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.572ca0f0.css">
       
       
     
     
-      <script src="../../../assets/javascripts/modernizr.8c900955.js"></script>
+      <script src="../../assets/javascripts/modernizr.8c900955.js"></script>
     
     
       
@@ -56,7 +56,7 @@
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
-    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
     
     
@@ -74,7 +74,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#markdown-language" tabindex="1" class="md-skip">
+      <a href="#kernel-data-structure" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -100,7 +100,7 @@
                 Vu Tang's Docs
               </span>
               <span class="md-header-nav__topic">
-                Markdown Language
+                Kernel Data Structure
               </span>
             
           
@@ -171,7 +171,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../.." title="Preface" class="md-nav__link">
+    <a href="../.." title="Preface" class="md-nav__link">
       Preface
     </a>
   </li>
@@ -181,12 +181,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
     
     <label class="md-nav__link" for="nav-2">
       General Technote
@@ -204,7 +202,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../mkdocs/mkdocs-notes/" title="Mkdocs Tool" class="md-nav__link">
+    <a href="../../technote/mkdocs/mkdocs-notes/" title="Mkdocs Tool" class="md-nav__link">
       Mkdocs Tool
     </a>
   </li>
@@ -214,83 +212,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Markdown Language
-      </label>
-    
-    <a href="./" title="Markdown Language" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../technote/markdown/markdown/" title="Markdown Language" class="md-nav__link">
       Markdown Language
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#about-markdown" title="About Markdown" class="md-nav__link">
-    About Markdown
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#basic-syntax" title="Basic Syntax" class="md-nav__link">
-    Basic Syntax
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#markdown-extentions" title="Markdown Extentions" class="md-nav__link">
-    Markdown Extentions
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pymdown" title="PyMdown" class="md-nav__link">
-    PyMdown
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" title="References" class="md-nav__link">
-    References
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -300,7 +226,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../shellscript/shellscript/" title="Shell Script" class="md-nav__link">
+    <a href="../../technote/shellscript/shellscript/" title="Shell Script" class="md-nav__link">
       Shell Script
     </a>
   </li>
@@ -312,7 +238,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../python/python/" title="Python" class="md-nav__link">
+    <a href="../../technote/python/python/" title="Python" class="md-nav__link">
       Python
     </a>
   </li>
@@ -324,7 +250,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../tips/tips/" title="Tips" class="md-nav__link">
+    <a href="../../technote/tips/tips/" title="Tips" class="md-nav__link">
       Tips
     </a>
   </li>
@@ -360,7 +286,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../books/ldd3/" title="Linux Device Driver" class="md-nav__link">
+    <a href="../../books/ldd3/" title="Linux Device Driver" class="md-nav__link">
       Linux Device Driver
     </a>
   </li>
@@ -372,7 +298,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../books/utlk/" title="Understanding Linux Kernel" class="md-nav__link">
+    <a href="../../books/utlk/" title="Understanding Linux Kernel" class="md-nav__link">
       Understanding Linux Kernel
     </a>
   </li>
@@ -408,7 +334,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../embedded_system/es/" title="Overview" class="md-nav__link">
+    <a href="../../embedded_system/es/" title="Overview" class="md-nav__link">
       Overview
     </a>
   </li>
@@ -420,7 +346,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../makefile/makefile/" title="Makefile" class="md-nav__link">
+    <a href="../../technote/makefile/makefile/" title="Makefile" class="md-nav__link">
       Makefile
     </a>
   </li>
@@ -432,7 +358,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../version_control/verctl/" title="Version Control" class="md-nav__link">
+    <a href="../../technote/version_control/verctl/" title="Version Control" class="md-nav__link">
       Version Control
     </a>
   </li>
@@ -468,7 +394,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../linux_device_driver/overview/" title="Overview" class="md-nav__link">
+    <a href="../../linux_device_driver/overview/" title="Overview" class="md-nav__link">
       Overview
     </a>
   </li>
@@ -480,7 +406,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../linux_device_driver/kernel_module/" title="Kernel Module" class="md-nav__link">
+    <a href="../../linux_device_driver/kernel_module/" title="Kernel Module" class="md-nav__link">
       Kernel Module
     </a>
   </li>
@@ -492,7 +418,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../linux_device_driver/platform_dev/platform_device/" title="Platform Device" class="md-nav__link">
+    <a href="../../linux_device_driver/platform_dev/platform_device/" title="Platform Device" class="md-nav__link">
       Platform Device
     </a>
   </li>
@@ -504,7 +430,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../linux_device_driver/spi_dev/spi_dev/" title="SPI Device" class="md-nav__link">
+    <a href="../../linux_device_driver/spi_dev/spi_dev/" title="SPI Device" class="md-nav__link">
       SPI Device
     </a>
   </li>
@@ -516,7 +442,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../linux_device_driver/spi_dev/spi_advance/" title="SPI Device Advance" class="md-nav__link">
+    <a href="../../linux_device_driver/spi_dev/spi_advance/" title="SPI Device Advance" class="md-nav__link">
       SPI Device Advance
     </a>
   </li>
@@ -528,7 +454,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../linux_device_driver/gpio/gpio/" title="GPIO" class="md-nav__link">
+    <a href="../../linux_device_driver/gpio/gpio/" title="GPIO" class="md-nav__link">
       GPIO
     </a>
   </li>
@@ -543,10 +469,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
     
     <label class="md-nav__link" for="nav-6">
       Linux Kernel Development
@@ -562,11 +490,90 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../../linux_kernel_dev/kernel_data_structure/" title="Kernel Data Structure" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Kernel Data Structure
+      </label>
+    
+    <a href="./" title="Kernel Data Structure" class="md-nav__link md-nav__link--active">
       Kernel Data Structure
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#references" title="References" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linked-list" title="Linked List" class="md-nav__link">
+    Linked List
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-linked-list-structure" title="The Linked List Structure" class="md-nav__link">
+    The Linked List Structure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defining-a-linked-list" title="Defining a Linked List" class="md-nav__link">
+    Defining a Linked List
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#traversing-linked-lists" title="Traversing Linked Lists" class="md-nav__link">
+    Traversing Linked Lists
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#container_of" title="container_of()" class="md-nav__link">
+    container_of()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -576,7 +583,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../linux_kernel_dev/kernel_user_space/" title="Kernel Space, User Space Interfaces" class="md-nav__link">
+    <a href="../kernel_user_space/" title="Kernel Space, User Space Interfaces" class="md-nav__link">
       Kernel Space, User Space Interfaces
     </a>
   </li>
@@ -612,7 +619,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../fpga/timing_analysis/timing_analysis/" title="Static Timing Analysis" class="md-nav__link">
+    <a href="../../fpga/timing_analysis/timing_analysis/" title="Static Timing Analysis" class="md-nav__link">
       Static Timing Analysis
     </a>
   </li>
@@ -624,7 +631,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../fpga/x_ipcore/xipcore/" title="Xilinx IPCore" class="md-nav__link">
+    <a href="../../fpga/x_ipcore/xipcore/" title="Xilinx IPCore" class="md-nav__link">
       Xilinx IPCore
     </a>
   </li>
@@ -660,7 +667,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../projects/zedboard/zedboard/" title="Zedboard" class="md-nav__link">
+    <a href="../../projects/zedboard/zedboard/" title="Zedboard" class="md-nav__link">
       Zedboard
     </a>
   </li>
@@ -672,7 +679,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../projects/zc706/" title="ZC706" class="md-nav__link">
+    <a href="../../projects/zc706/" title="ZC706" class="md-nav__link">
       ZC706
     </a>
   </li>
@@ -689,7 +696,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../bookmarks/bookmarks/" title="Bookmarks" class="md-nav__link">
+    <a href="../../bookmarks/bookmarks/" title="Bookmarks" class="md-nav__link">
       Bookmarks
     </a>
   </li>
@@ -701,7 +708,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../whatnext/" title="What's next" class="md-nav__link">
+    <a href="../../whatnext/" title="What's next" class="md-nav__link">
       What's next
     </a>
   </li>
@@ -713,7 +720,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../about/about/" title="About me" class="md-nav__link">
+    <a href="../../about/about/" title="About me" class="md-nav__link">
       About me
     </a>
   </li>
@@ -740,43 +747,50 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#about-markdown" title="About Markdown" class="md-nav__link">
-    About Markdown
+  <a href="#references" title="References" class="md-nav__link">
+    References
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#basic-syntax" title="Basic Syntax" class="md-nav__link">
-    Basic Syntax
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#markdown-extentions" title="Markdown Extentions" class="md-nav__link">
-    Markdown Extentions
+  <a href="#linked-list" title="Linked List" class="md-nav__link">
+    Linked List
   </a>
   
     <nav class="md-nav">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#pymdown" title="PyMdown" class="md-nav__link">
-    PyMdown
+  <a href="#the-linked-list-structure" title="The Linked List Structure" class="md-nav__link">
+    The Linked List Structure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defining-a-linked-list" title="Defining a Linked List" class="md-nav__link">
+    Defining a Linked List
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#traversing-linked-lists" title="Traversing Linked Lists" class="md-nav__link">
+    Traversing Linked Lists
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#container_of" title="container_of()" class="md-nav__link">
+    container_of()
   </a>
   
 </li>
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" title="References" class="md-nav__link">
-    References
-  </a>
   
 </li>
       
@@ -797,82 +811,113 @@
               
                 
                 
-                <h1 id="markdown-language">Markdown Language</h1>
-<p>Markdown is used for writing this website. So, the first thing I need to learn is about Markdown Language.
-<!-- ## Table of contents
-1. <a href="#introduction">Introduction</a>
-2. <a href="#aboutmarkdown">About Markdown</a>
-3. <a href="#basicsyntax">Basic Syntax</a> --></p>
-<h2 id="about-markdown">About Markdown</h2>
-<p><a name="aboutmarkdown"></a>
-<img alt="Markdown icon" src="../img/markdown-icon.png" /></p>
-<p><em>Figure 1. Markdown icon</em></p>
+                <h1 id="kernel-data-structure">Kernel Data Structure</h1>
+<h2 id="references">References</h2>
+<p>[1] <a href="https://drive.google.com/open?id=1WMBs5SCG3Qr4Rw645AEBkJm5dR8tiDas">Linux Kernel Development, 3nd</a></p>
+<h2 id="linked-list"><strong><span style="color:red">Linked List</span></strong></h2>
+<h3 id="the-linked-list-structure">The Linked List Structure</h3>
+<p>Linked list is popular data structure that is used in programming. The Linux Kernel approach is different. Instead of turning the structure into a linked list, the Linux approach is to <em>embed a linked list noed in the structure!</em></p>
+<p>The linked-list code is declared in the header file &lt;linux/list.h> and the data structure is simple:</p>
+<p><a href="https://elixir.bootlin.com/linux/latest/source/scripts/kconfig/list.h#L24">list_head: include/list.h#L24</a></p>
+<pre><code>struct list_head {
+    struct list_head *next
+    struct list_head *prev;
+};
+</code></pre>
+
+<p>embed in a structure:</p>
+<pre><code>struct fox {
+    unsigned long tail_length; /* length in centimeters of tail */
+    unsigned long weight; /* weight in kilograms */
+    bool is_fantastic; /* is this fox fantastic? */
+
+    struct list_head list; /* list of all fox structures */
+};
+</code></pre>
+
+<p>From a pointer that points to the <code>struct list_head</code> in a structure, we can get pointer to this structure by using macro <code>list_entry</code> (see <code>container_of()</code>):</p>
+<pre><code>#define list_entry(ptr, type, member) \
+    container_of(ptr, type, member)
+</code></pre>
+
+<p>Example:</p>
+<pre><code>    struct fox red_fox, *fox_ptr;                       // fox_ptr is pointing to nothing
+
+    struct list_head *list_ptr = &amp;red_fox.list;         // make list_ptr point to struct list inside red_fox
+    fox_ptr = list_entry(list_ptr, struct fox, list);   // fox_ptr now is pointing to red_fox
+</code></pre>
+
+<h3 id="defining-a-linked-list">Defining a Linked List</h3>
+<p>There are two ways to define a linked-list:</p>
 <ul>
-<li>lightweight markup language</li>
-<li>was created by John Gruber in 2004</li>
+<li>Defining listed-list with the first entry:  </li>
 </ul>
-<h2 id="basic-syntax">Basic Syntax</h2>
-<p><a name="basicsyntax"></a>
-This section notes about Markdown basic syntax.</p>
-<ul>
-<li>Insert a picture in Markdown: <code>![picture_name](direction_to_picture)</code></li>
-<li>Insert a hyperlink: <code>[Name](Link)</code>. Hyperlink is used in <a href="#references">References</a> in this note.</li>
-<li>Colour for Text: (need to use HTML language)<br />
-<span style="color:red">Red</span>, <span style="color:green">Green</span>, <span style="color:blue">Blue</span>, <span style="color:yellow">Yellow</span>, <span style="color:pink">Pink</span>, <span style="color:violet">Violet</span>, <span style="color:orange">Orange</span>, </li>
-<li>Code and emphasize C syntax:</li>
-</ul>
-<pre><code class="c">    int main() {
-        printf(&quot;Hello world!&quot;);
-        return 0;
-    }
+<p>Dynamic Allocation,  </p>
+<pre><code>struct fox *red_fox;
+red_fox = kmalloc(sizeof(*red_fox), GFP_KERNEL);
+red_fox-&gt;tail_length = 40;
+red_fox-&gt;weight = 6;
+red_fox-&gt;is_fantastic = false;
+INIT_LIST_HEAD(&amp;red_fox-&gt;list);
+</code></pre>
+
+<p>And static alocation,</p>
+<pre><code>struct fox red_fox = {
+    .tail_length = 40,
+    .weight = 6,
+    .list = LIST_HEAD_INIT(red_fox.list),
+};
 </code></pre>
 
 <ul>
-<li>Quote (put '&gt;' before writing quote):</li>
+<li>Defining a empty linked-list:</li>
 </ul>
-<blockquote>
-<p>This is example of block quote<br />
-This is example of block quote</p>
-</blockquote>
-<ul>
-<li>Horizontal Rule: put a horizontal rule in doc by typing <code>***</code>, see result below</li>
-</ul>
-<hr />
-<ul>
-<li>
-<p>Task list (do not success by now)</p>
-<ul>
-<li>[x] Write the press release</li>
-<li>[ ] Update the website</li>
-<li>[ ] Contact the media</li>
-</ul>
-</li>
-</ul>
-<!-- In HTML -->
+<p><code>static LIST_HEAD(fox_list);</code></p>
+<p>The second approach is used popularly in Linux Kernel (see spi.c).</p>
+<h3 id="traversing-linked-lists">Traversing Linked Lists</h3>
+<p>The kernel (thank goodness) provides a nice set of interfaces for traversing linked lists and referencing the data structures that include them.  </p>
+<p><strong>The Basic Approach</strong></p>
+<pre><code>struct list_head *p;
+struct fox *f;
 
-<!-- <ul class="contains-task-list">
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox"> read-only checkboxes in README.md</li>
-<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox"> users want it</li>
-</ul> -->
+list_for_each(p, fox_list) {
+    /* p points to an entry (struct list_head) in the list */
 
-<ul>
-<li>Inserting a figure to docs:<br />
-    refer <a href="#aboutmarkdown">About Markdown</a> in this page for example</li>
-</ul>
-<p>!!! note with "admonition" in mkdocs.yml
-    add markdown_extensions: -admonition to mkdocs.yml file. Read more at <a href="#markdownextentions">Markdown Extentions</a></p>
-<h2 id="markdown-extentions">Markdown Extentions</h2>
-<p><a name="markdownextentions"></a>
-Got information about markdown extentions at <a href="https://squidfunk.github.io/mkdocs-material/extensions/admonition/">https://squidfunk.github.io/mkdocs-material/extensions/admonition/</a></p>
-<h3 id="pymdown">PyMdown</h3>
-<p><a href="https://squidfunk.github.io/mkdocs-material/extensions/pymdown/">https://squidfunk.github.io/mkdocs-material/extensions/pymdown/</a></p>
-<h2 id="references">References</h2>
-<ol>
-<li><a href="https://www.markdownguide.org/assets/book/markdown-guide.pdf">The Markdown Guide</a> - Matt Cone</li>
-<li><a href="https://www.markdownguide.org/">Markdown Guide</a> - Website</li>
-<li><a href="https://help.github.com/articles/basic-writing-and-formatting-syntax/">Basic writing and formatting syntax</a> - GitHub </li>
-<li><a href="https://about.gitlab.com/handbook/product/technical-writing/markdown-guide/">Markdown Guide</a> - Gitlab</li>
-</ol>
+    f = list_entry(p, struct fox, list); // We need to use list_entry to get the &quot;fox&quot; structure
+}
+</code></pre>
+
+<p><strong>The Usable Approach</strong></p>
+<pre><code>struct fox *f;
+
+list_for_each_entry(f, &amp;fox_list, list) {
+    /* on each iteration, ‘f’ points to the next fox structure ... */
+}
+</code></pre>
+
+<h3 id="container_of"><strong>container_of()</strong></h3>
+<p><a href="https://elixir.bootlin.com/linux/latest/source/tools/virtio/linux/kernel.h#L108">container_of: include/linux/kerne.h#108</a></p>
+<pre><code>#define container_of(ptr, type, member) ({          \
+    const typeof( ((type *)0)-&gt;member ) *__mptr = (ptr);    \
+    (type *)( (char *)__mptr - offsetof(type,member) );})
+</code></pre>
+
+<p>Assume that we have a structure:</p>
+<pre><code>struct data {
+    int data1;
+    int data2;
+}
+</code></pre>
+
+<p>And a pointer <code>int *child_ptr</code> point to data2 which is a member of <code>struct data</code>. </p>
+<pre><code>int *child_ptr = &amp;data2;
+</code></pre>
+
+<p>We can user <code>container_of()</code> to get a pointer pointing to <code>struct data</code>.</p>
+<pre><code>struct data *data_ptr = container_of(child_ptr, struct container, data2);
+</code></pre>
+
+<p><span style="color:red">Can we implement "container_of" in c for user space application?</span></p>
                 
                   
                 
@@ -893,7 +938,7 @@ Got information about markdown extentions at <a href="https://squidfunk.github.i
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../mkdocs/mkdocs-notes/" title="Mkdocs Tool" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../linux_device_driver/gpio/gpio/" title="GPIO" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -902,19 +947,19 @@ Got information about markdown extentions at <a href="https://squidfunk.github.i
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Mkdocs Tool
+                GPIO
               </span>
             </div>
           </a>
         
         
-          <a href="../../shellscript/shellscript/" title="Shell Script" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../kernel_user_space/" title="Kernel Space, User Space Interfaces" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Shell Script
+                Kernel Space, User Space Interfaces
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
@@ -948,9 +993,9 @@ Got information about markdown extentions at <a href="https://squidfunk.github.i
       
     </div>
     
-      <script src="../../../assets/javascripts/application.b41f3d20.js"></script>
+      <script src="../../assets/javascripts/application.b41f3d20.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
       
     
     

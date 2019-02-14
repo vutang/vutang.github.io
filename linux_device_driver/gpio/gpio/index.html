@@ -464,9 +464,59 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        GPIO
+      </label>
+    
     <a href="./" title="GPIO" class="md-nav__link md-nav__link--active">
       GPIO
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#driver-perspective" title="Driver perspective" class="md-nav__link">
+    Driver perspective
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#userspace-software-perspective" title="Userspace software perspective" class="md-nav__link">
+    Userspace software perspective
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardware-perspective" title="Hardware perspective" class="md-nav__link">
+    Hardware perspective
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" title="References" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -501,8 +551,20 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../linux_kernel/kernel_data_structure/" title="Kernel Data Structure" class="md-nav__link">
+    <a href="../../../linux_kernel_dev/kernel_data_structure/" title="Kernel Data Structure" class="md-nav__link">
       Kernel Data Structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../linux_kernel_dev/kernel_user_space/" title="Kernel Space, User Space Interfaces" class="md-nav__link">
+      Kernel Space, User Space Interfaces
     </a>
   </li>
 
@@ -661,6 +723,43 @@
     
   
   
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#driver-perspective" title="Driver perspective" class="md-nav__link">
+    Driver perspective
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#userspace-software-perspective" title="Userspace software perspective" class="md-nav__link">
+    Userspace software perspective
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardware-perspective" title="Hardware perspective" class="md-nav__link">
+    Hardware perspective
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" title="References" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -674,11 +773,25 @@
                 
                 <h1 id="general-purpose-input-or-output">General Purpose Input or Output</h1>
 <p><img alt="gpio-subsystem" src="../img/gpio-subsystem-blockdiagram.png" /></p>
+<h2 id="driver-perspective">Driver perspective</h2>
 <p>Về cơ bản, các subsytem của Linux Kernel như SPI, I2C, GPIO ... đều hoạt động với mô hình (concept) tương tự nhau. Các tài nguyên phần cứng được đăng ký với Kernel, các module khác của Kernel muốn truy cập đến các phần cứng này sẽ cần phải gửi yêu cầu.</p>
 <ul>
-<li>
-<p><strong>GPIO Controlller Driver</strong>: thực hiện đăng ký một <code>struct gpio_chip</code> với Linux kernel, khai báo các tài nguyên có thể cung cấp được của GPIO controller. <code>gpio_chip</code> cung cấp các phương thức như <code>request</code>, <code>set</code>, <code>get</code>... và thông qua các phương thức này có thể tác động đến phần cứng GPIO.</p>
-</li>
+<li><strong>GPIO Controlller Driver</strong>: thực hiện đăng ký một <code>struct gpio_chip</code> với Linux kernel, khai báo các tài nguyên có thể cung cấp được của GPIO controller. <code>gpio_chip</code> cung cấp các phương thức như <code>request</code>, <code>set</code>, <code>get</code>... và thông qua các phương thức này có thể tác động đến phần cứng GPIO.</li>
+</ul>
+<pre><code>gpio@e000a000 {
+    compatible = &quot;xlnx,zynq-gpio-1.0&quot;;
+    #gpio-cells = &lt;0x2&gt;;
+    clocks = &lt;0x1 0x2a&gt;;
+    gpio-controller;
+    interrupt-parent = &lt;0x3&gt;;
+    interrupts = &lt;0x0 0x14 0x4&gt;;
+    reg = &lt;0xe000a000 0x1000&gt;;
+    ...
+};
+</code></pre>
+
+<p><em>Zynq GPIO Controller is described as a node in Device Tree</em>.</p>
+<ul>
 <li>
 <p><strong>Other Modules</strong>: các module khác trong trong trường hợp muốn sử dụng một pin GPIO thuộc quyền quản lý của GPIO Controller sẽ gửi yêu cầu đến kernel để xin tài nguyên. GPIO Subsystem cung cấp các APIs như <code>gpio_request_one</code> và <code>gpio_request_array</code> để các module có thể yêu cầu tài nguyên. Nếu quá trình yêu cầu tài nguyên thành công, module sẽ điều khiển GPIO thông qua các APIs như <code>gpio_set_value</code> và <code>gpio_get_value</code>.</p>
 </li>
@@ -688,6 +801,75 @@
 Quá trình 1, từ gpio_number có thể gọi đến gpio_desc bằng các API như <code>gpio_to_desc</code>. Về bản chất, gpio_desc được lưu trữ bằng một mảng tĩnh: <code>static struct gpio_desc gpio_desc[ARCH_NR_GPIOS];</code> trong đó gpio_number là chỉ số của mảng tĩnh này, do đó truy cập đến gpio_desc của một gpio_number đơn giản là truy cập đến một phần tử của mảng.<br />
 Quá trình 2, gpio_desc chứa con trỏ trỏ đến <code>struct gpio_chip   *chip;</code>, do đó từ gpio_desc có thể dễ dàng truy cập được đến gpio_chip (desc-&gt;chip).</p>
 </li>
+</ul>
+<p>Quy trình gửi yêu cầu và sử dụng GPIO được mô tả trong một tài liệu khoa học trong mục References.</p>
+<h2 id="userspace-software-perspective">Userspace software perspective</h2>
+<p><strong>Truy cập trực tiếp từ các device attribute trong sysfs</strong></p>
+<ul>
+<li>GPIO Class</li>
+</ul>
+<p>module gpiolib-sysfs báo <code>struct class gpio_class</code> trong <code>__init</code> với thuộc tính <code>gpio_class_attrs</code>:</p>
+<pre><code>static struct class gpio_class = {
+    .name =     &quot;gpio&quot;,
+    .owner =    THIS_MODULE,
+
+    .class_attrs =  gpio_class_attrs,
+};
+</code></pre>
+
+<p>Kết quả trong <code>sys/class/gpio/</code> xuất hiện hai thuộc tính <code>export/unexport</code>.</p>
+<pre><code>/sys/class/gpio# ls -l
+--w-------    1 root     root          4096 Jan  1 00:00 export
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 gpiochip0 -&gt; ../../devices/soc0/amba/e000a000.gpio/gpio/gpiochip0
+--w-------    1 root     root          4096 Jan  1 00:00 unexport
+
+</code></pre>
+
+<p>Hai thuộc tính <code>export/unexport</code> được sử dụng để yêu cầu/hủy yêu cầu đối với một GPIO.</p>
+<ul>
+<li>GPIO controller device</li>
+</ul>
+<p>Trong quá trình controller driver đăng ký GPIO với Kernel (gpiolib), các attribute của <code>gpiochip</code> device được khởi tạo thông qua <code>int gpiochip_export(struct gpio_chip *chip)</code>. Kết quả là một device được khởi tạo:</p>
+<p><code>/sys/devices/soc0/amba/e000a000.gpio/gpio/gpiochip0</code></p>
+<p>Các thuộc tính bên trong device này có dạng như sau</p>
+<pre><code>-r--r--r--    1 root     root          4096 Jan  1 00:00 base
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 device -&gt; ../../../e000a000.gpio
+-r--r--r--    1 root     root          4096 Jan  1 00:00 label
+-r--r--r--    1 root     root          4096 Jan  1 00:00 ngpio
+drwxr-xr-x    2 root     root             0 Jan  1 00:00 power
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 subsystem -&gt; ../../../../../../class/gpio
+-rw-r--r--    1 root     root          4096 Jan  1 00:00 uevent
+
+</code></pre>
+
+<ul>
+<li>GPIO Pin Device</li>
+</ul>
+<p>Quá trình một module gửi yêu cầu cần sử dụng đến một pin GPIO, nếu yêu cầu thành công thì một device GPIO được khởi tạo. Quá trình khởi tạo device này sẽ đi kèm khai báo các thuộc tính trong sysfs.</p>
+<p>Ví dụ với gpioN:</p>
+<p><code>/sys/devices/soc0/amba/e000a000.gpio/gpio/gpioN</code></p>
+<p>Các thuộc tính đó bao gồm:</p>
+<pre><code>/sys/devices/soc0/amba/e000a000.gpio/gpio/gpio1# ls -l
+-rw-r--r--    1 root     root          4096 Jan  3 22:42 active_low
+lrwxrwxrwx    1 root     root             0 Jan  3 22:42 device -&gt; ../../../e000a000.gpio
+-rw-r--r--    1 root     root          4096 Jan  3 22:42 direction
+-rw-r--r--    1 root     root          4096 Jan  3 22:42 edge
+drwxr-xr-x    2 root     root             0 Jan  3 22:42 power
+lrwxrwxrwx    1 root     root             0 Jan  3 22:42 subsystem -&gt; ../../../../../../class/gpio
+-rw-r--r--    1 root     root          4096 Jan  3 22:42 uevent
+-rw-r--r--    1 root     root          4096 Jan  3 22:42 value
+</code></pre>
+
+<p><strong>Truy cập thông qua các user module</strong></p>
+<p>Về cơ bản, quá trình truy cập một chân GPIO thông qua một user module cũng được thực hiện tương tự như truy cập trực tiếp qua các thuộc tính của <code>gpio class</code> và <code>gpio device</code>. Quá trình này chỉ khác nhau ở phương thức giao tiếp giữa User Space và Kernel Space. Thay vì trực tiếp sử dụng các thuộc tính của <code>gpio class</code> thì các ứng dụng user space sẽ tương tác qua các thuộc tính của User module (có thể là IOCTL hoặc device attributes).</p>
+<h2 id="hardware-perspective">Hardware perspective</h2>
+<p><strong>Zynq7000</strong></p>
+<p>In Zynq, GPIO controller registers are memory mapped at base address 0xe000a000.</p>
+<p><img alt="gpio-pin-in-zynq" src="../img/gpio-pin-in-zynq.png" /></p>
+<p><em>Figure. GPIO pin in Zynq7000</em></p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://lwn.net/Articles/532714/">GPIO in the kernel: an introduction</a> - lwn.net</li>
 </ul>
                 
                   
@@ -724,7 +906,7 @@ Quá trình 2, gpio_desc chứa con trỏ trỏ đến <code>struct gpio_chip   
           </a>
         
         
-          <a href="../../../linux_kernel/kernel_data_structure/" title="Kernel Data Structure" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../../linux_kernel_dev/kernel_data_structure/" title="Kernel Data Structure" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
