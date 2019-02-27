@@ -11,7 +11,7 @@
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
       
-        <link rel="canonical" href="https://www.vutang.github.io/embedded_system/es/">
+        <link rel="canonical" href="https://www.vutang.github.io/es/ptlnx_20174/">
       
       
       
@@ -38,7 +38,7 @@
     
     
       
-        <title>Overview - Vu Tang's Docs</title>
+        <title>Petalinux 2017.4 - Vu Tang's Docs</title>
       
     
     
@@ -74,7 +74,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#embedded-linux-system-development" tabindex="1" class="md-skip">
+      <a href="#petalinux-20174" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -100,7 +100,7 @@
                 Vu Tang's Docs
               </span>
               <span class="md-header-nav__topic">
-                Overview
+                Petalinux 2017.4
               </span>
             
           
@@ -334,49 +334,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Overview
-      </label>
-    
-    <a href="./" title="Overview" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../es/" title="Overview" class="md-nav__link">
       Overview
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#gpio-subsystem" title="GPIO Subsystem" class="md-nav__link">
-    GPIO Subsystem
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -401,6 +363,63 @@
     <a href="../../technote/version_control/verctl/" title="Version Control" class="md-nav__link">
       Version Control
     </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Petalinux 2017.4
+      </label>
+    
+    <a href="./" title="Petalinux 2017.4" class="md-nav__link md-nav__link--active">
+      Petalinux 2017.4
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tips" title="Tips" class="md-nav__link">
+    Tips
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#worknote" title="Worknote" class="md-nav__link">
+    Worknote
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -718,8 +737,15 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#gpio-subsystem" title="GPIO Subsystem" class="md-nav__link">
-    GPIO Subsystem
+  <a href="#tips" title="Tips" class="md-nav__link">
+    Tips
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#worknote" title="Worknote" class="md-nav__link">
+    Worknote
   </a>
   
 </li>
@@ -741,10 +767,36 @@
               
                 
                 
-                <h1 id="embedded-linux-system-development"><strong>Embedded Linux System Development</strong></h1>
-<p><img alt="header" src="../img/header.jpg" /></p>
-<h2 id="gpio-subsystem">GPIO Subsystem</h2>
-<p><a href="https://lwn.net/Articles/532714/">https://lwn.net/Articles/532714/</a></p>
+                <h1 id="petalinux-20174">Petalinux 2017.4</h1>
+<h2 id="tips">Tips</h2>
+<p><strong>Speed up sstate checking</strong></p>
+<p><a href="https://forums.xilinx.com/t5/Embedded-Linux/Checking-sstate-mirror-taking-forever/td-p/775404">https://forums.xilinx.com/t5/Embedded-Linux/Checking-sstate-mirror-taking-forever/td-p/775404</a></p>
+<ul>
+<li>Diable sstate online in Yocto</li>
+</ul>
+<p><strong>Applications with user customed library</strong></p>
+<p><strong>Mounting SD card automatically</strong></p>
+<p><a href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842475/PetaLinux+Yocto+Tips">https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842475/PetaLinux+Yocto+Tips</a></p>
+<h2 id="worknote">Worknote</h2>
+<ul>
+<li>
+<p>build target when use <code>petalinux build</code> is petalinux-user-image.bb. Bitbake file dir: [project dir]/project-spec/meta-plnx-generated/recipes-core/images/petalinux-user-image.bb</p>
+</li>
+<li>
+<p>based-bitbake file be used for all project is found at: [installation dir]/components/yocto/source/</p>
+</li>
+<li>
+<p><code>petalinux-build -x clean/distclean</code> is not affect to download dir  </p>
+</li>
+<li>Removing build/tmp dir need to rebuild all project (except fetching source code). This job takes a while.</li>
+<li><code>petalinux-build -x distclean</code> will call <code>bitbake -c cleansstate</code> -&gt; what is cleansstate?</li>
+<li>
+<p><code>clean</code> -&gt; bitbake -c clean. what is defference btw <code>clean</code> &amp; <code>cleansstate</code></p>
+</li>
+<li>
+<p>$WORKDIR: build/tmp/work/plnx_arm-xilinx-linux-gnueabi/libsample-tar/1.0-r0</p>
+</li>
+</ul>
                 
                   
                 
@@ -765,7 +817,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../books/utlk/" title="Understanding Linux Kernel" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../technote/version_control/verctl/" title="Version Control" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -774,19 +826,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Understanding Linux Kernel
+                Version Control
               </span>
             </div>
           </a>
         
         
-          <a href="../../technote/makefile/makefile/" title="Makefile" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../ldd/overview/" title="Overview" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Makefile
+                Overview
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
