@@ -334,7 +334,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../es/es/" title="Overview" class="md-nav__link">
+    <a href="../../../lnx_es/es/" title="Overview" class="md-nav__link">
       Overview
     </a>
   </li>
@@ -370,8 +370,20 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../es/ptlnx_20174/" title="Petalinux 2017.4" class="md-nav__link">
+    <a href="../../../lnx_es/ptlnx_20174/" title="Petalinux 2017.4" class="md-nav__link">
       Petalinux 2017.4
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lnx_es/yocto/" title="Yocto" class="md-nav__link">
+      Yocto
     </a>
   </li>
 
@@ -654,15 +666,29 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#chuan-bi-sd-card" title="Chuẩn bị SD Card" class="md-nav__link">
-    Chuẩn bị SD Card
+  <a href="#chuan-bi-images" title="Chuẩn bị images" class="md-nav__link">
+    Chuẩn bị images
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#cai-at-boot-image-va-rootfs-len-sd-card" title="Cài đặt boot image và rootfs lên SD Card" class="md-nav__link">
-    Cài đặt boot image và rootfs lên SD Card
+  <a href="#kernel-args" title="Kernel Args" class="md-nav__link">
+    Kernel Args
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phan-vung-cho-sd-card" title="Phân vùng cho SD card" class="md-nav__link">
+    Phân vùng cho SD card
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cai-at-boot-image-va-rootfs-len-sd-card" title="Cài đặt boot image và rootfs lên SD card" class="md-nav__link">
+    Cài đặt boot image và rootfs lên SD card
   </a>
   
 </li>
@@ -683,8 +709,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#file-system-format-fat32-va-ext4" title="File system format: fat32 và ext4." class="md-nav__link">
-    File system format: fat32 và ext4.
+  <a href="#fs-format-fat32-va-ext4" title="Fs format: fat32 và ext4." class="md-nav__link">
+    Fs format: fat32 và ext4.
   </a>
   
 </li>
@@ -799,15 +825,29 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#chuan-bi-sd-card" title="Chuẩn bị SD Card" class="md-nav__link">
-    Chuẩn bị SD Card
+  <a href="#chuan-bi-images" title="Chuẩn bị images" class="md-nav__link">
+    Chuẩn bị images
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#cai-at-boot-image-va-rootfs-len-sd-card" title="Cài đặt boot image và rootfs lên SD Card" class="md-nav__link">
-    Cài đặt boot image và rootfs lên SD Card
+  <a href="#kernel-args" title="Kernel Args" class="md-nav__link">
+    Kernel Args
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phan-vung-cho-sd-card" title="Phân vùng cho SD card" class="md-nav__link">
+    Phân vùng cho SD card
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cai-at-boot-image-va-rootfs-len-sd-card" title="Cài đặt boot image và rootfs lên SD card" class="md-nav__link">
+    Cài đặt boot image và rootfs lên SD card
   </a>
   
 </li>
@@ -828,8 +868,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#file-system-format-fat32-va-ext4" title="File system format: fat32 và ext4." class="md-nav__link">
-    File system format: fat32 và ext4.
+  <a href="#fs-format-fat32-va-ext4" title="Fs format: fat32 và ext4." class="md-nav__link">
+    Fs format: fat32 và ext4.
   </a>
   
 </li>
@@ -867,7 +907,8 @@
 <p><a href="http://zedboard.org/product/zedboard">ZedBoard™</a> is a complete development kit for designers interested in exploring designs using the Xilinx Zynq®-7000 All Programmable SoC .</p>
 <h2 id="boot-from-sd-card-with-ext4-filesystem">Boot from SD Card with ext4 filesystem</h2>
 <p><a href="https://1drv.ms/w/s!Ai73O1i3QXDegSRrRM90Eg6kw66H">Origin Note</a></p>
-<p><strong>Chuẩn bị images</strong></p>
+<p>Tài liệu này mô tả các khởi động Zed từ SD card với rootfs được lưu trữ trên một phân vùng định dạng ext4. Phương pháp này có thể được sử dụng cho các board zynq khác như ZC706, PicoZed.</p>
+<h3 id="chuan-bi-images">Chuẩn bị images</h3>
 <p>Trong tài liệu <a href="https://www.xilinx.com/support/documentation/sw_manuals/petalinux2015_4/ug1144-petalinux-tools-reference-guide.pdf">UG1144</a> có hướng dẫn quá trình cấu hình để có thể khởi động Zynq7000 từ SD Card. Trong hướng dẫn này cần lưu ý đến 2 điểm sau:</p>
 <ul>
 <li>
@@ -882,10 +923,10 @@ thể boot được từ SD Card.</p>
 </ul>
 <p>Nếu sử dụng lệnh package để tạo rootfs.cpio xuất hiện lỗi sau:</p>
 <blockquote>
-<p>[INFO ] package rootfs.cpio to /tmp/petalinux/images/linux\
- ERROR: Linux kernel gen_init_cpio /tmp/petalinux/build/linux/kernel/usr/gen_init_cpio doesn\'t exits! Please build Linux kernel first!\</p>
-<p>make[1]: *** [package-rootfs-cpio] Fehler 255\</p>
-<p>make: *** [package-rootfs-initramfs] Fehler 2\
+<p>[INFO ] package rootfs.cpio to /tmp/petalinux/images/linux<br />
+ ERROR: Linux kernel gen_init_cpio /tmp/petalinux/build/linux/kernel/usr/gen_init_cpio doesn\'t exits! Please build Linux kernel first!</p>
+<p>make[1]: *** [package-rootfs-cpio] Fehler 255</p>
+<p>make: *** [package-rootfs-initramfs] Fehler 2<br />
  ERROR: Failed to package component linux/rootfs</p>
 </blockquote>
 <p><em>*** Need to use extention to emphasize error notes, see in <a href="../../../technote/mkdocs/mkdocs-notes/">Mkdocs Tool</a></em></p>
@@ -894,20 +935,25 @@ thể boot được từ SD Card.</p>
 <li>Tắt chế độ automatic kernel configuration</li>
 </ul>
 <blockquote>
-<p>petalinux-config\
-  Image Packaging Configuration ---> Root filesystem type = SD card\
-  Auto Config Settings ---> [ ] kernel autoconfig</p>
+<p>petalinux-config</p>
+<p>Image Packaging Configuration ---> Root filesystem type = SD card</p>
+<p>Auto Config Settings ---> [ ] kernel autoconfig</p>
 </blockquote>
 <ul>
 <li>Bật chế độ hỗ trọ INITRAMFS trong cấu hình của kernel</li>
 </ul>
 <blockquote>
-<p>$ petalinux-config -c kernel                                         </p>
-<p>General setup -&gt;                                                 </p>
+<p>$ petalinux-config -c kernel</p>
+<p>General setup -&gt;</p>
 <p>[*] Initial RAM filesystem and RAM disk (initramfs/initrd) support </p>
-<p>() Initramfs source file(s)                                           </p>
+<p>() Initramfs source file(s)</p>
 </blockquote>
-<h3 id="chuan-bi-sd-card">Chuẩn bị SD Card</h3>
+<h3 id="kernel-args">Kernel Args</h3>
+<p>Kernel Args bên trong device-tree chứa một số thông tin để kernel có thể tìm kiếm được chính xác root filesystem cần được sử dụng cho hệ thống. Để kernel có thể tìm đến được phân vùng rootfs trên SD card vừa được khởi tạo cần thiết lập kernel args như sau:</p>
+<p><code>bootargs = "console=ttyPS0,115200 earlyprint root=/dev/mmcblk0p2 rw rootwait";</code></p>
+<p>Khi khởi động, kernel sẽ tìm đến phân vùng <code>/dev/mmcblk0p2</code> để mounting rootfs, sau đó khởi động tiến trình <code>init</code>. Do trong kernel args không khai báo định dạng của phân vùng rootfs này nên kernel sẽ tiến hành thử mounting phân vùng với các định dạng khác nhau và tìm kiếm đến định dạng phù hợp (ở đây là <code>ext4</code>).</p>
+<p>Tìm hiểu thêm thông tin về các tham số trong cấu hình trên ở chuyên mục tìm hiểu về Kernel Args.</p>
+<h3 id="phan-vung-cho-sd-card">Phân vùng cho SD card</h3>
 <p>Cần chuẩn bị SD Card với 02 phân vùng:</p>
 <ul>
 <li>
@@ -926,7 +972,7 @@ của Xilinx.</p>
 <p>Kết quả của quá trình phân vùng và format này như sau:</p>
 <p><img alt="sdpartition" src="../img/sd-card-partition.png" /></p>
 <p><em>Figure. SD Card Partitions</em></p>
-<h3 id="cai-at-boot-image-va-rootfs-len-sd-card">Cài đặt boot image và rootfs lên SD Card</h3>
+<h3 id="cai-at-boot-image-va-rootfs-len-sd-card">Cài đặt boot image và rootfs lên SD card</h3>
 <p>Kết quả sau khi thực hiện xong các bước chuẩn bị liên quan đến images và
 SD Card:</p>
 <ul>
@@ -939,15 +985,19 @@ SD Card:</p>
 </ul>
 <p>Các images và filesystem phải được cài đặt lên SD Card trước khi board
 có thể khởi động được từ SD Card.</p>
+<p><strong>Bootloader &amp;&amp; Kernel</strong></p>
 <p>Quá trình cài đặt bootloader và Linux kernel là quá trình copy BOOT.BIN
 và image.ub lên phân vùng BOOT của sdcard. BootROM của zynq đủ mạnh để
 có thể tìm kiếm được zynq_fsbl.elf trên phân vùng định dạng FAT32 để
 khởi động.</p>
+<p><strong>Rootfs</strong></p>
 <p>Riêng rootfs đang được đóng gói ở file rootfs.cpio. Sử dụng ứng dụng pax
 để tháo dỡ filesystem đang được đóng gói ở định dạng cpio.</p>
 <p><code>cp images/linux/rootfs.cpio /media/rootfs/</code></p>
 <p><code>cd /media/rootfs</code></p>
 <p><code>sudo pax -rvf rootfs.cpio</code></p>
+<p>Ngoài ra, <code>rootfs.cpio</code> có thể được tháo dỡ bằng mã lệnh <code>cpio</code>. Trong một số trường hợp hệ nhúng không tích hợp sẵn gói <code>pax</code>, <code>cpio</code> sẽ là một thay thế cần thiết. Cú pháp như sau:</p>
+<p><code>cpio -i -F rootfs.cpio</code></p>
 <h3 id="phan-tich-va-ket-luan">Phân tích và kết luận</h3>
 <p>Trong quá trình chuẩn bị SD Card xuất hiện các thuật ngữ. Trong mục này
 sẽ đi phân tích và giải thích các thuật ngữ đó.</p>
@@ -965,7 +1015,7 @@ chất là quá trình tháo dỡ các archive file trở về các file phân b
 đầu.</p>
 <p>Quá trình extract này có thể được thực hiện bởi các Linux tool như: cpio
 hoặc pax. Trong hướng dẫn của Xilinx sử dụng pax để tháo dỡ rootfs.</p>
-<h4 id="file-system-format-fat32-va-ext4">File system format: fat32 và ext4.</h4>
+<h4 id="fs-format-fat32-va-ext4">Fs format: fat32 và ext4.</h4>
 <p>File system là cách mà một hệ thống file được tổ chức trên các bộ nhớ
 lưu trữ. Các bộ nhớ lưu trữ có thể là: <strong>disk file system</strong> hoặc <strong>flash file
 system</strong>.</p>
