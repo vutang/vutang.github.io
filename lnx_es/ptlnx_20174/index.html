@@ -441,6 +441,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#mounting-sd-card-in-booting-time" title="Mounting SD card in booting-time" class="md-nav__link">
+    Mounting SD card in booting-time
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#add-user-custom-package" title="Add user custom package" class="md-nav__link">
     Add user custom package
   </a>
@@ -722,6 +729,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../projects/pi3b/" title="Raspberrypi 3B" class="md-nav__link">
+      Raspberrypi 3B
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -826,6 +845,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#mounting-sd-card-in-booting-time" title="Mounting SD card in booting-time" class="md-nav__link">
+    Mounting SD card in booting-time
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#add-user-custom-package" title="Add user custom package" class="md-nav__link">
     Add user custom package
   </a>
@@ -852,15 +878,13 @@
                 <h1 id="petalinux-20174-technical-note">Petalinux 2017.4 technical note</h1>
 <p><em>Vu Tang - 2/2019</em></p>
 <h2 id="introdutions">Introdutions</h2>
-<p>Tài liệu này là báo cáo tìm hiểu petalinux 2017.4. Tổng kết những kinh nghiệm làm việc với phiên bản mới này. Petalinux 2017.4 là một thể hiện rõ ràng của việc ứng dụng Yocto project trong quá trình phát triển một hệ nhúng Linux. Để hiểu rõ hơn quá trình làm việc của petalinux 2017.4, cần tìm hiểu rõ về nguyên tắc hoạt động của Yocto project. </p>
+<p>Tài liệu này là tổng hợp các điểm lưu ý trong quá trình làm việc với Petalinux 2017.4. Version 2017.4 này của Xilinx là một thể hiện rõ ràng của việc ứng dụng <a href="https://www.yoctoproject.org/">YOCTO PROJECT</a> trong quá trình phát triển một hệ nhúng Linux. Để hiểu rõ hơn quá trình làm việc của petalinux 2017.4, cần tìm hiểu thêm về nguyên tắc hoạt động của Yocto. </p>
 <h2 id="tips">Tips</h2>
 <p><strong>Speed up sstate checking</strong></p>
 <p><a href="https://forums.xilinx.com/t5/Embedded-Linux/Checking-sstate-mirror-taking-forever/td-p/775404">https://forums.xilinx.com/t5/Embedded-Linux/Checking-sstate-mirror-taking-forever/td-p/775404</a></p>
 <ul>
 <li>Diable sstate online in Yocto</li>
 </ul>
-<p><strong>Mounting SD card automatically</strong><br />
-Refer <a href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842475/PetaLinux+Yocto+Tips">PetaLinux Yocto Tips</a> (xilinx-wiki.atlassian.net) for step-by-step instructions.</p>
 <h2 id="worknote">Worknote</h2>
 <ul>
 <li>
@@ -973,8 +997,10 @@ Như vậy, bản cài đặt mặc định của petalinux không chứa đủ 
 <p><strong>External kernel - How to?</strong></p>
 <h2 id="boot-from-sd-card">Boot from SD card</h2>
 <p>Về cơ bản, boot từ SD Card được thực hiện giống với hướng dẫn trong mục Zedboard. Tệp rootfs.cpio được chứa trong thư mục <project>/image/linux/ sẵn sàng cho quá trình đưa lên thẻ nhớ.</p>
+<h2 id="mounting-sd-card-in-booting-time">Mounting SD card in booting-time</h2>
+<p>Refer <a href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842475/PetaLinux+Yocto+Tips">PetaLinux Yocto Tips</a> (xilinx-wiki.atlassian.net) for step-by-step instructions.</p>
 <h2 id="add-user-custom-package">Add user custom package</h2>
-<p>Bản chất quản lý gói phần mềm trong petalinux là Yocto project. Các gói phần mềm có thể được download từ các online repository. Trong mục này sẽ lấy ví dụ về một gói phần mềm phổ biến, hay được sử dụng trong quá trình đánh giá chất lượng mạng: IPERF.</p>
+<p>Bản chất quản lý gói phần mềm trong petalinux là Yocto project. Mã nguồn của các gói phần mềm có thể được download từ các online repository hoặc lưu trữ trực tiếp trên máy local. Trong mục này sẽ lấy ví dụ về một gói phần mềm phổ biến, hay được sử dụng trong quá trình đánh giá chất lượng mạng: IPERF.</p>
 <p>Petalinux sẽ thực hiện tải source code của iperf từ Github sau đó tiến hành cấu hình, build và tích hợp vào hệ thống.</p>
 <p>Khi khởi tạo một ứng dụng (apps) mới, một package được tạo tại <code>project-spec/meta-user/recipes-apps</code>. Cấu trúc của một recipes như sau:</p>
 <pre><code>vux-iperf/
@@ -985,8 +1011,36 @@ Như vậy, bản cài đặt mặc định của petalinux không chứa đủ 
 └── vux-iperf.bb
 </code></pre>
 
-<p>Trong ví dụ là cấu hình để build bản phần mềm iperf3. Bitbake file cho recipes này được tải tại <a href="https://layers.openembedded.org/layerindex/recipe/32243/">iperf3 3.6</a> (layers.openembedded.org).
-Trong file vux-iperf.bb có một số khái niệm và thông tin cần lưu ý như sau.</p>
+<p>Trong ví dụ là cấu hình để build bản phần mềm iperf3. Bitbake file cho recipes này được tải tại <a href="https://layers.openembedded.org/layerindex/recipe/32243/">iperf3 3.6</a> (layers.openembedded.org). Nội dung file iperf3_3.6.bb như sau:</p>
+<pre><code>SUMMARY = &quot;Network benchmark tool&quot;
+HOMEPAGE = &quot;http://software.es.net/iperf/&quot;
+SECTION = &quot;console/network&quot;
+BUGTRACKER = &quot;https://github.com/esnet/iperf/issues&quot;
+AUTHOR = &quot;ESNET &lt;info@es.net&gt;, Lawrence Berkeley National Laboratory &lt;websupport@lbl.gov&gt;&quot;
+LICENSE = &quot;BSD&quot;
+LIC_FILES_CHKSUM = &quot;file://LICENSE;md5=a9a036136b748453e839c0eb8906ef2e&quot;
+
+DEPENDS = &quot;openssl&quot;
+
+SRC_URI = &quot;git://github.com/esnet/iperf.git \
+           file://automake-foreign.patch \
+           file://0002-Remove-pg-from-profile_CFLAGS.patch \
+           &quot;
+SRCREV = &quot;88f3ad87f38762081a6d7127890ff5c3a052b06a&quot;
+
+S = &quot;${WORKDIR}/git&quot;
+
+inherit autotools
+
+PACKAGECONFIG[lksctp] = &quot;ac_cv_header_netinet_sctp_h=yes,ac_cv_header_netinet_sctp_h=no,lksctp-tools&quot;
+
+CFLAGS += &quot;-D_GNU_SOURCE&quot;
+EXTRA_OECONF = &quot;--with-openssl=${RECIPE_SYSROOT}${prefix}&quot;
+BBCLASSEXTEND = &quot;native&quot;
+</code></pre>
+
+<p><em><a href="http://cgit.openembedded.org/meta-openembedded/tree/meta-oe/recipes-benchmark/iperf3/iperf3_3.6.bb?h=master">http://cgit.openembedded.org/meta-openembedded/tree/meta-oe/recipes-benchmark/iperf3/iperf3_3.6.bb?h=master</a></em></p>
+<p>Trong file vux-iperf.bb có một số khái niệm và thông tin cần lưu ý như sau.</p>
 <p><strong>Đường dẫn đến source code của package</strong></p>
 <p>Tham số SRC_URI chứa đường dẫn đến source code của pakcage. Thông qua thông tin chứa trong đường dẫn này, bitbake thực hiện nhiệm vụ do_fetch. </p>
 <p>SRC_URI = "git://github.com/esnet/iperf.git \

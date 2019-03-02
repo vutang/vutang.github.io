@@ -367,45 +367,32 @@
     Embedded Linux System Development - What I have to do?
   </a>
   
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#bring-up-a-board" title="Bring up a board" class="md-nav__link">
-    Bring up a board
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#porting-linux" title="Porting Linux" class="md-nav__link">
+    Porting Linux
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#bootloader" title="Bootloader" class="md-nav__link">
-    Bootloader
+      
+        <li class="md-nav__item">
+  <a href="#embedded-application-development" title="Embedded application development" class="md-nav__link">
+    Embedded application development
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#linux-kernel" title="Linux Kernel" class="md-nav__link">
-    Linux Kernel
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#linux-device-driver" title="Linux Device Driver" class="md-nav__link">
     Linux Device Driver
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
       
         <li class="md-nav__item">
-  <a href="#gpio-subsystem" title="GPIO Subsystem" class="md-nav__link">
-    GPIO Subsystem
+  <a href="#references" title="References" class="md-nav__link">
+    References
   </a>
   
 </li>
@@ -721,6 +708,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../projects/pi3b/" title="Raspberrypi 3B" class="md-nav__link">
+      Raspberrypi 3B
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -787,45 +786,32 @@
     Embedded Linux System Development - What I have to do?
   </a>
   
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#bring-up-a-board" title="Bring up a board" class="md-nav__link">
-    Bring up a board
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#porting-linux" title="Porting Linux" class="md-nav__link">
+    Porting Linux
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#bootloader" title="Bootloader" class="md-nav__link">
-    Bootloader
+      
+        <li class="md-nav__item">
+  <a href="#embedded-application-development" title="Embedded application development" class="md-nav__link">
+    Embedded application development
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#linux-kernel" title="Linux Kernel" class="md-nav__link">
-    Linux Kernel
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#linux-device-driver" title="Linux Device Driver" class="md-nav__link">
     Linux Device Driver
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
       
         <li class="md-nav__item">
-  <a href="#gpio-subsystem" title="GPIO Subsystem" class="md-nav__link">
-    GPIO Subsystem
+  <a href="#references" title="References" class="md-nav__link">
+    References
   </a>
   
 </li>
@@ -848,14 +834,50 @@
                 
                 
                 <h1 id="embedded-linux-system-development"><strong>Embedded Linux System Development</strong></h1>
+<p><em>Vu Tang - 2/2019</em></p>
 <p><img alt="header" src="../img/header.jpg" /></p>
 <h2 id="embedded-linux-system-development-what-i-have-to-do">Embedded Linux System Development - What I have to do?</h2>
-<h3 id="bring-up-a-board">Bring up a board</h3>
-<h3 id="bootloader">Bootloader</h3>
-<h3 id="linux-kernel">Linux Kernel</h3>
-<h3 id="linux-device-driver">Linux Device Driver</h3>
-<h2 id="gpio-subsystem">GPIO Subsystem</h2>
-<p><a href="https://lwn.net/Articles/532714/">https://lwn.net/Articles/532714/</a></p>
+<p>Khái niệm phát triển một hệ nhúng Linux rất rộng. Nhiệm vụ chính của một "Embedded System Engineer" sẽ là:</p>
+<ul>
+<li>Porting Linux OS cho một custom board</li>
+<li>Tích hợp hoặc phát triển các User-space application cho một hệ nhúng</li>
+<li>Phát triển Linux Device Driver cho các ngoại vi</li>
+</ul>
+<h2 id="porting-linux">Porting Linux</h2>
+<p>Porting Linux, ở một khía cạnh khái quát, là quá trình làm cho một bo mạch mới khởi động với hệ điều hành Linux. Để hoàn thành được nhiệm vụ này cần tổ hợp rất nhiều kiến thức khác nhau. Trong đó có một số mục cần lưu ý sau:</p>
+<ul>
+<li>Kiến trúc máy tính (Computer system architecture). Kiến trúc chung của một hệ máy tính, các thành phần cấu thành. Quá trình hoạt động của một CPU.</li>
+<li>Trình biên dịch và quá trình biên dịch một chương trình. Quá trình hoạt động của compiler, các khái niệm liên quan đến <strong>make system</strong> (Makefile). Ngoài ra trong mục này cũng có thể mở rộng đến các công cụ sử dụng cho porting linux như: <strong>Xilinx Petalinux</strong>, <strong>Yocto Bitbake</strong>...</li>
+<li>Linux booting sequence. Các khái niệm liên quan đến <strong>bootloader</strong> cũng nhưng quá trình khởi động của <strong>Linux kernel</strong>. Quá trình mounting <strong>root file system</strong>.</li>
+</ul>
+<h2 id="embedded-application-development">Embedded application development</h2>
+<p>Một cách minh họa, máy tính cá nhân sau khi cài đặt xong hệ điều hành, người dùng tiến hành cài đặt các ứng dụng (ví dụ như Office...) để thực hiện các nhiệm vụ (ví dụ như soạn thảo văn bản...). Một hệ nhúng cũng tương tự vậy. Quá trình poring Linux giúp board khởi động thành công với hệ điều hành, kỹ sư cần phát triển thêm các ứng dụng nhúng tùy theo yêu cầu của từng hệ thống. Tích hợp và phát triển ứng dụng có thể chia làm hai loại:</p>
+<ul>
+<li>
+<p>Các ứng dụng mã nguồn mở (open source) được phát triển bởi cộng đồng. Nhiệm vụ của kỹ sư trong trường hợp này là tích hợp được ứng dụng này vào hệ thống của mình. Trong một số trường hợp, kỹ sư có thể kết hợp tích hợp và tùy biến lại mã nguồn để phù hợp với từng hệ thống. Một số khái niệm quan trọng cần lưu ý trong mục này là:</p>
+<ul>
+<li>Cross compling</li>
+<li>Các hệ thống build như cmake, autoconf, make ...</li>
+</ul>
+</li>
+<li>
+<p>Các ứng dụng đặc biệt chỉ có tại hệ thống. Các hệ nhúng thực hiện các nhiệm vụ đặc thù, do đó kỹ sư đặc trong rất nhiều trường hợp cần phát triển các ứng dụng cho hệ nhúng (các ứng dụng này không được phát triển bởi cộng đồng).</p>
+</li>
+</ul>
+<p>Quy trình phát triển một ứng dụng trên hệ nhúng Linux không quá khác biệt so với phát triển một ứng dụng trên Linux Destop.</p>
+<h2 id="linux-device-driver">Linux Device Driver</h2>
+<p>Quá trình porting giúp board có thể khởi động với hệ điều hành (Linux) nhưng không đảm bảo được tất cả các tài nguyên phần cứng trên board đã có các <strong>driver</strong> (*) tương ứng. Nhiệm vụ của kỹ sư trong trường hợp này sẽ là:</p>
+<ul>
+<li>
+<p>Poring các driver cho các phần cứng. Một số phần cứng cung cấp bởi các vendor sẽ đi kèm mã nguồn cho driver, nhiệm vụ của kỹ sư là tích hợp driver này vào hệ thống để có thể tương thích được với phần cứng.</p>
+</li>
+<li>
+<p>Phát triển các driver cho các phần cứng chuyên dụng trên board.</p>
+</li>
+</ul>
+<p><em>(*) Khái niệm driver sẽ được thảo luận thêm ở các tài liệu chuyên sâu khác.</em></p>
+<h2 id="references">References</h2>
+<p>[1] - <a href="https://bootlin.com/doc/training/embedded-linux/embedded-linux-slides.pdf">Embedded Linux system development</a> - bootlin.com</p>
                 
                   
                 
