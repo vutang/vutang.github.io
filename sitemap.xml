@@ -66,6 +66,11 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>https://www.vutang.github.io/lnx_es/u-boot-zynq/</loc>
+     <lastmod>2019-03-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>https://www.vutang.github.io/ldd/overview/</loc>
      <lastmod>2019-03-03</lastmod>
      <changefreq>daily</changefreq>
