@@ -11,7 +11,7 @@
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
       
-        <link rel="canonical" href="https://www.vutang.github.io/lnx_es/u-boot-zynq/">
+        <link rel="canonical" href="https://www.vutang.github.io/lnx_es/u-boot/">
       
       
       
@@ -38,7 +38,7 @@
     
     
       
-        <title>U-boot - Vu Tang's Docs</title>
+        <title>Zynq from scratch - Vu Tang's Docs</title>
       
     
     
@@ -74,6 +74,10 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
+      <a href="#u-boot" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -96,7 +100,7 @@
                 Vu Tang's Docs
               </span>
               <span class="md-header-nav__topic">
-                U-boot
+                Zynq from scratch
               </span>
             
           
@@ -397,10 +401,68 @@
     
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
+      
     
-    <a href="./" title="U-boot" class="md-nav__link md-nav__link--active">
-      U-boot
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Zynq from scratch
+      </label>
+    
+    <a href="./" title="Zynq from scratch" class="md-nav__link md-nav__link--active">
+      Zynq from scratch
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#u-boot-on-zynq" title="U-Boot on Zynq" class="md-nav__link">
+    U-Boot on Zynq
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build-u-boot-for-zedboard" title="Build U-Boot for Zedboard" class="md-nav__link">
+    Build U-Boot for Zedboard
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nhan-xet" title="Nhận xét" class="md-nav__link">
+    Nhận xét
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#references" title="References" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -717,15 +779,99 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#u-boot-on-zynq" title="U-Boot on Zynq" class="md-nav__link">
+    U-Boot on Zynq
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build-u-boot-for-zedboard" title="Build U-Boot for Zedboard" class="md-nav__link">
+    Build U-Boot for Zedboard
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nhan-xet" title="Nhận xét" class="md-nav__link">
+    Nhận xét
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#references" title="References" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
                 
                 
-                  <h1>U-boot</h1>
-                
-                
+                <h1 id="u-boot">U-Boot</h1>
+<h2 id="u-boot-on-zynq">U-Boot on Zynq</h2>
+<h3 id="build-u-boot-for-zedboard">Build U-Boot for Zedboard</h3>
+<p>Tiến hành build u-boot cho chip Zynq7000 trên Zedboard theo hướng dẫn từ xilinx-wiki.atlassian.net - <a href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841973/Build+U-Boot">Build U-Boot</a>.</p>
+<p>Quá trình build U-Boot cho một thiết bị Zynq7000 có thể tiến hành bằng cách sử dụng bộ công cụ Petalinux của Xilinx. Thử nghiệm này sẽ trực tiếp build U-Boot từ mã nguồn cung cấp bởi Xilinx từ Github bằng compiler cung cấp bởi Xilinx SDK.</p>
+<p><strong><code>make</code> U-Boot</strong></p>
+<p>Tiến hành theo các bước hướng dẫn trong [1], tiến hành fetch source code, cấu hình và make U-Boot.</p>
+<pre><code>&gt; git clone https://github.com/Xilinx/u-boot-xlnx.git
+&gt; cd u-boot-xlnx
+&gt; export CROSS_COMPILE=arm-linux-gnueabihf-
+&gt; export ARCH=arm
+&gt; source &lt;SDK setting.sh file&gt; // khai báo arm-linux-gnueabihf compiler
+&gt; make distclean
+&gt; make zynq_zed_defconfig
+&gt; make
+</code></pre>
+
+<p>Kết quả build là file <code>u-boot.elf</code>. File này có thể tiến hành chạy thử nghiệm bằng phương pháp sử dụng XSCT được mô tả ở phần <code>Zedboard</code>.</p>
+<h3 id="nhan-xet">Nhận xét</h3>
+<ul>
+<li>
+<p>Compiler sử dụng cho build U-Boot là họ chương trình: arm-linux-gnueabihf-*. Ví dụ gcc được định nghĩa tại [SDX Installation Dir]/SDK/2018.2/gnu/aarch32/lin/gcc-arm-linux-gnueabi/bin/arm-linux-gnueabihf-gcc.</p>
+</li>
+<li>
+<p><code>zynq_zed_defconfig</code> là bộ cấu hình dành riêng cho board zed. Các phần cứng khác sẽ có bộ cấu hình tương tự, ví dụ <code>zynq_zc706_defconfig</code> cho ZC706.</p>
+</li>
+</ul>
+<h3 id="references">References</h3>
+<p>[1] - <a href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841973/Build+U-Boot">Build U-Boot</a> - xilinx-wiki.atlassian.net</p>
                 
                   
                 
