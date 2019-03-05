@@ -1055,9 +1055,11 @@ BBCLASSEXTEND = &quot;native&quot;
 <p>Trong file vux-iperf.bb có một số khái niệm và thông tin cần lưu ý như sau.</p>
 <p><strong>Đường dẫn đến source code của package</strong></p>
 <p>Tham số SRC_URI chứa đường dẫn đến source code của pakcage. Thông qua thông tin chứa trong đường dẫn này, bitbake thực hiện nhiệm vụ do_fetch. </p>
-<p>SRC_URI = "git://github.com/esnet/iperf.git \
+<pre><code>SRC_URI = &quot;git://github.com/esnet/iperf.git \
            file://automake-foreign.patch \
-Trong ví dụ này, SRC_URI chỉ đến một git repository của esnet. Người dùng có thể truy cập trực tiếp vào repo này để xem source code. Ngoài ra SRC_URI chỉ đến một file được lưu trữ local chứa bản patch. Bản patch này có thể được tìm thấy trên openembedded.org.</p>
+</code></pre>
+
+<p>Trong ví dụ này, SRC_URI chỉ đến một git repository của esnet. Người dùng có thể truy cập trực tiếp vào repo này để xem source code. Ngoài ra SRC_URI chỉ đến một file được lưu trữ local chứa bản patch. Bản patch này có thể được tìm thấy trên openembedded.org.</p>
 <p><strong>Revision của source code</strong></p>
 <p>Tham số SRCREV chỉ cho bitbake biết được revision nào của source code cần được sử dụng để build package.</p>
 <p><code>SRCREV = "88d907f7fb58bfab5d086c5da60c922e1c582c92"</code></p>
