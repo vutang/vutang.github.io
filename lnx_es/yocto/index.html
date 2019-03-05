@@ -436,15 +436,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#image-generation" title="Image Generation" class="md-nav__link">
-    Image Generation
+  <a href="#rpm-package-generation" title="RPM Package Generation" class="md-nav__link">
+    RPM Package Generation
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#rpm-package-generation" title="RPM Package Generation" class="md-nav__link">
-    RPM Package Generation
+  <a href="#rootfs-generation" title="Rootfs Generation" class="md-nav__link">
+    Rootfs Generation
   </a>
   
 </li>
@@ -837,15 +837,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#image-generation" title="Image Generation" class="md-nav__link">
-    Image Generation
+  <a href="#rpm-package-generation" title="RPM Package Generation" class="md-nav__link">
+    RPM Package Generation
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#rpm-package-generation" title="RPM Package Generation" class="md-nav__link">
-    RPM Package Generation
+  <a href="#rootfs-generation" title="Rootfs Generation" class="md-nav__link">
+    Rootfs Generation
   </a>
   
 </li>
@@ -886,38 +886,39 @@
 <h3 id="source-fetching-patching">Source Fetching, Patching</h3>
 <p>do_fetch -&gt; do_unpack -&gt; do_patch</p>
 <h3 id="configuration-compilation-and-staging">Configuration, Compilation, and Staging</h3>
-<p>do_configure -&gt; do_compile -&gt; do_install</p>
+<p><code>do_configure -&gt; do_compile -&gt; do_install</code></p>
+<p><strong>do_configure</strong> tiến hành các tác vụ cấu hình trước khi build một gói phần mềm. Có thể hình dung quá trình này giống như chạy ./configure trước khi make một chương trình.</p>
+<p><strong>do_compile</strong> đa phần sẽ tiến hành gọi <code>make</code> đến <code>Makefile</code> của mã nguồn gói phần mềm. Kết quả của quá trình được lưu trữ ngay cùng mới mã nguồn vừa được build. Gọi là directory S/B.</p>
 <p><strong>do_install</strong></p>
-<p>Copy file from B (Build?) dir to D (Destination dir) dir.</p>
+<p>Copy binarry file from S/B (kết quả của task do_compile) dir to D (image - destination dir). Binary lưu trữ tại thư mục D sẽ được sử dụng cho quá các quá trình <code>do_package</code>, <code>do_packagedata</code> và <code>do_populate_sysroot</code></p>
 <h3 id="package-splitting">Package Splitting</h3>
-<p>do_package, do_packagedata, </p>
+<p><strong>do_package, do_packagedata</strong></p>
+<p>Một bộ mã nguồn có thể compile một lúc ra rất nhiều ứng dụng, các ứng dụng này có thể được nhóm lại với nhau thành các packages. Ví dụ với mã nguồn libiio có thể build ra được các gói như: libiio, libiio-test (chứa iio_infor), libiio-iiod (chứa IIO Deamon)... Tác dụng của <code>do_package</code> là phân tác các binary (cũng như dữ liệu đi kèm nếu có) thành các gói phần mềm khác nhau.</p>
 <p><strong>do_populate_sysroot</strong></p>
-<p>Được định nghĩa trong <code>layers/core/meta/classes/staging.bbclass</code> sử dụng để stagging kết quả build tail build directory teporary đến <code>build/tmp/work/cortexa9hf-neon-xilinx-linux-gnueabi/libiio/0.15+gitAUTOINC+6ecff5d46e-r0/sysroot-destdir/</code>.</p>
+<p>Được định nghĩa trong <code>layers/core/meta/classes/staging.bbclass</code> sử dụng để staging kết quả build tail build directory temporary đến <code>build/tmp/work/cortexa9hf-neon-xilinx-linux-gnueabi/libiio/0.15+gitAUTOINC+6ecff5d46e-r0/sysroot-destdir/</code>.</p>
 <p>Quá trình <code>-c do_populate_sysroot</code> sẽ tiến hành thêm <code>do_qa_staging</code> và <code>sstate_task_postfunc</code> (được định nghĩa trong <code>sstate.bbclass</code>).</p>
-<p>Hàm <code>sstate_task_postfunc</code> sẽ tiến hành stagging file từ <code>sysroot-destdir</code> đến <code>build/tmp/sysroots/plnx_arm</code>.</p>
-<h3 id="image-generation">Image Generation</h3>
+<p>Hàm <code>sstate_task_postfunc</code> sẽ tiến hành stagging file từ <code>sysroot-destdir</code> đến <code>build/tmp/sysroots/plnx_arm</code>. Hiện tại vẫn chưa tìm hiểu được tác dụng của thư mục này cũng như tác dụng của <code>do_populate_sysroot</code>.</p>
+<h3 id="rpm-package-generation">RPM Package Generation</h3>
+<p><strong>do_package_write_rpm</strong></p>
+<p>Được định nghĩa trong <code>layers/core/meta/classes/package_rpm.bbclass</code> có nhiệm vu creates RPM packages (i.e. *.rpm files) and places them in the <code>${DEPLOY_DIR_RPM}</code> directory in the package feeds area. Trong Petalinux 2017.4 (một thực thể ứng dụng Yocto) thì <code>${DEPLOY_DIR_RPM}</code> được định nghĩa là <code>build/tmp/deploy/rpm</code>. Các gói phần mềm đã được đóng gói dưới định dạng RPM sẽ được đưa đến thư mục này. Ví dụ như các gói trong libiio: (liệt kê các gói tại đây).</p>
+<p>Bản chất hàm <code>do_package_rpm</code> trong <code>package_rpm.bbclass</code> sẽ gọi đến công cụ <a href="https://linux.die.net/man/8/rpmbuild">rpmbuild</a> - linux.die.net (một công cụ được sử dụng để build RPM package). Quá trình chạy <code>rpmbuild</code> cần đến SPEC File. Tham khảo thêm về SPEC file <a href="https://rpm-packaging-guide.github.io/">tại đây</a>. Quá trình thực hiện rpmbuild được thực hiện tại khu vực build của từng package. Ví dụ trong trường hợp package là libiio:</p>
+<p><code>build/tmp/work/cortexa9hf-neon-xilinx-linux-gnueabi/libiio/0.15+gitAUTOINC+6ecff5d46e-r0</code></p>
+<p><em>For checking an un-installed RPM pkg, use <code>rpm -qip &lt;name&gt;.rpm</code>. Read more at: <a href="https://www.tecmint.com/20-practical-examples-of-rpm-commands-in-linux/">https://www.tecmint.com/20-practical-examples-of-rpm-commands-in-linux/</a></em></p>
+<p>Như vậy, từ các binary được build bởi các tác vụ <code>do_configure/do_compile/do_install</code>, <code>do_package_write_rpm</code> sẽ đóng gói thành các rpm package sẵn sàng cho cài đặt.</p>
+<h3 id="rootfs-generation">Rootfs Generation</h3>
 <p><strong>do_rootfs</strong></p>
 <p>Tiến hành theo package <code>petalinux-user-image</code>.</p>
-<p><code>do_rootfs</code> được định nghĩa tại <code>layers/core/meta/classes/image.bbclass</code> thực hiện tìm các <strong>package (.rpm, .deb)</strong> được chứa trong biến môi trường <code>PACKAGE_INSTALL</code> để tiến hành copy đến <code>IMAGE_ROOTFS</code>. Theo định nghĩa của Yocto, <code>IMAGE_ROOTFS</code> là "The location of the root filesystem while it is under construction". Trong một trường hợp thực tế, <code>IMAGE_ROOTFS</code> là:</p>
+<p><code>do_rootfs</code> được định nghĩa tại <code>layers/core/meta/classes/image.bbclass</code> thực hiện tìm một danh sách các <strong>package (.rpm, .deb)</strong> (thông tin về các packages này được chứa trong biến môi trường <code>PACKAGE_INSTALL</code>) để tiến hành copy đến <code>IMAGE_ROOTFS</code>. Theo định nghĩa của Yocto, <code>IMAGE_ROOTFS</code> là "The location of the root filesystem while it is under construction". Trong một trường hợp thực tế, <code>IMAGE_ROOTFS</code> là:</p>
 <p><code>build/tmp/work/plnx_arm-xilinx-linux-gnueabi/petalinux-user-image/1.0-r0/rootfs</code></p>
 <ul>
 <li>What is relation ship between <code>PACKAGE_INSTALL</code> and <code>IMAGE_INSTALL</code>?</li>
 <li>how Yocto creates these .rpm, .deb packages?</li>
 </ul>
+<p><code>IMAGE_ROOTFS</code> là nơi chứa rootfs, kết quả build của hệ thống. Từ rootfs có thể được đóng gói thành các định dạng khác nhau như: cpio, ext4, ext3, jffs2, ...</p>
 <p><strong>do_image_ext3/4</strong></p>
 <p>Đóng gói rootfs trong <code>IMAGE_ROOTFS</code> thành các định dạng filesystem ext3/ext4.</p>
 <p>Tiến hành đóng gói rootfs dưới định dạng ext3. Bản chất của hàm này sẽ gọi đến <code>oe_mkext234fs</code> được định nghĩa trong <code>layers/core/meta/classes/image_types.bbclass</code>.</p>
-<p>Hàm <code>oe_mkext234fs</code> gọi đến <code>mkfs.ext3/4</code> để tiến hành đóng gói rootfs.</p>
-<h3 id="rpm-package-generation">RPM Package Generation</h3>
-<p><strong>do_package_write_rpm</strong></p>
-<p>Được định nghĩa trong <code>layers/core/meta/classes/package_rpm.bbclass</code> có nhiệm vu creates RPM packages (i.e. *.rpm files) and places them in the <code>${DEPLOY_DIR_RPM}</code> directory in the package feeds area. Trong một trường hợp cụ thể:</p>
-<ul>
-<li><code>${DEPLOY_DIR_RPM}</code> là <code>build/tmp/deploy/rpm</code></li>
-</ul>
-<p>For checking an un-installed RPM pkg, use <code>rpm -qip &lt;name&gt;.rpm</code>. Read more at: <a href="https://www.tecmint.com/20-practical-examples-of-rpm-commands-in-linux/">https://www.tecmint.com/20-practical-examples-of-rpm-commands-in-linux/</a></p>
-<p>Bản chất hàm <code>do_package_rpm</code> trong <code>package_rpm.bbclass</code> sẽ gọi đến công cụ <a href="https://linux.die.net/man/8/rpmbuild">rpmbuild</a> - linux.die.net (một công cụ được sử dụng để build RPM package). Quá trình chạy <code>rpmbuild</code> cần đến SPEC File. Tham khảo thêm về SPEC file <a href="https://rpm-packaging-guide.github.io/">tại đây</a>.</p>
-<p>Quá trình thực hiện rpmbuild được thực hiện tại khu vực build của từng package. Ví dụ trong trường hợp package là libiio:</p>
-<p><code>build/tmp/work/cortexa9hf-neon-xilinx-linux-gnueabi/libiio/0.15+gitAUTOINC+6ecff5d46e-r0</code></p>
+<p>Hàm <code>oe_mkext234fs</code> gọi đến <code>mkfs.ext3/4</code> (là một bộ công cụ đóng gói một bộ tập tin dưới dạng file có thể được sử dụng cho các định dạng ext3/ext4) để tiến hành đóng gói rootfs.</p>
 <h3 id="sdk-generation">SDK Generation</h3>
                 
                   
