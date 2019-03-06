@@ -41,22 +41,17 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://www.vutang.github.io/technote/tips/tips/</loc>
+     <loc>https://www.vutang.github.io/lnx_es/hw_platform/</loc>
      <lastmod>2019-03-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://www.vutang.github.io/technote/makefile/makefile/</loc>
+     <loc>https://www.vutang.github.io/lnx_es/cmn_tool/</loc>
      <lastmod>2019-03-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://www.vutang.github.io/technote/version_control/verctl/</loc>
-     <lastmod>2019-03-06</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://www.vutang.github.io/lnx_es/ptlnx_20174/</loc>
+     <loc>https://www.vutang.github.io/lnx_es/ptlnx/</loc>
      <lastmod>2019-03-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -66,7 +61,7 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://www.vutang.github.io/lnx_es/u-boot/</loc>
+     <loc>https://www.vutang.github.io/technote/tips/tips/</loc>
      <lastmod>2019-03-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -137,6 +132,11 @@
     </url>
     <url>
      <loc>https://www.vutang.github.io/projects/pi3b/</loc>
+     <lastmod>2019-03-06</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://www.vutang.github.io/lnx_es/u-boot/</loc>
      <lastmod>2019-03-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
