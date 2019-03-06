@@ -181,12 +181,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
     
     <label class="md-nav__link" for="nav-2">
       General Technote
@@ -243,73 +241,6 @@
     <a href="../../python/python/" title="Python" class="md-nav__link">
       Python
     </a>
-  </li>
-
-        
-          
-          
-          
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Tips
-      </label>
-    
-    <a href="./" title="Tips" class="md-nav__link md-nav__link--active">
-      Tips
-    </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#ssh-for-remote-control" title="SSH for remote control" class="md-nav__link">
-    SSH for remote control
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tftp-server" title="TFTP Server" class="md-nav__link">
-    TFTP Server
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#busybox" title="BusyBox" class="md-nav__link">
-    BusyBox
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#disk" title="Disk" class="md-nav__link">
-    Disk
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -370,10 +301,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
     
     <label class="md-nav__link" for="nav-4">
       Linux ES Development
@@ -394,6 +327,73 @@
     <a href="../../../lnx_es/es/" title="Overview" class="md-nav__link">
       Overview
     </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Tips
+      </label>
+    
+    <a href="./" title="Tips" class="md-nav__link md-nav__link--active">
+      Tips
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ssh-for-remote-control" title="SSH for remote control" class="md-nav__link">
+    SSH for remote control
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tftp-server" title="TFTP Server" class="md-nav__link">
+    TFTP Server
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#busybox" title="BusyBox" class="md-nav__link">
+    BusyBox
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#removable-disk" title="Removable Disk" class="md-nav__link">
+    Removable Disk
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -802,8 +802,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#disk" title="Disk" class="md-nav__link">
-    Disk
+  <a href="#removable-disk" title="Removable Disk" class="md-nav__link">
+    Removable Disk
   </a>
   
 </li>
@@ -911,12 +911,17 @@ cat test
 </code></pre>
 
 <h2 id="busybox">BusyBox</h2>
-<h2 id="disk">Disk</h2>
+<h2 id="removable-disk">Removable Disk</h2>
 <p><strong>Remount SD Card for clear Read-only Flag</strong></p>
+<p>Sometimes, your SD card in someways is mounted in Read-only mode. In this case, you can not modify anything stored in these memory. To solve this problem, just re-mount its.</p>
 <ul>
 <li>Use <code>sudo fdisk -l</code> for show all disk</li>
 <li>Remount SD Card with folow command: <code>sudo mount /dev/sdc -o remount,rw</code></li>
 </ul>
+<p><strong>Backup SD card image</strong></p>
+<p>https://stackoverflow.com/questions/19355036/how-to-create-an-img-image-of-a-disc-sd-card-without-including-free-space</p>
+<p>sudo dd if=/dev/mmcblk0 | gzip &gt; /tmp/sdimage_backup.img.gz</p>
+<p>cat backup.img.gz | gunzip | dd of=/dev/sdb</p>
                 
                   
                 
@@ -937,7 +942,7 @@ cat test
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../python/python/" title="Python" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../../lnx_es/es/" title="Overview" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -946,19 +951,19 @@ cat test
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Python
+                Overview
               </span>
             </div>
           </a>
         
         
-          <a href="../../../books/ldd3/" title="Linux Device Driver" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../makefile/makefile/" title="Makefile" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Linux Device Driver
+                Makefile
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

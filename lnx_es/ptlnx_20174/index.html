@@ -244,18 +244,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../technote/tips/tips/" title="Tips" class="md-nav__link">
-      Tips
-    </a>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -348,6 +336,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../technote/tips/tips/" title="Tips" class="md-nav__link">
+      Tips
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../technote/makefile/makefile/" title="Makefile" class="md-nav__link">
       Makefile
     </a>
@@ -420,30 +420,43 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#experiences" title="Experiences" class="md-nav__link">
+    Experiences
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#create-and-initialize-a-project" title="Create and initialize a project" class="md-nav__link">
     Create and initialize a project
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#build-a-new-project-without-internet" title="Build a new project without Internet" class="md-nav__link">
     Build a new project without Internet
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#boot-from-sd-card" title="Boot from SD card" class="md-nav__link">
     Boot from SD card
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#mounting-sd-card-in-booting-time" title="Mounting SD card in booting-time" class="md-nav__link">
     Mounting SD card in booting-time
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -836,30 +849,43 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#experiences" title="Experiences" class="md-nav__link">
+    Experiences
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#create-and-initialize-a-project" title="Create and initialize a project" class="md-nav__link">
     Create and initialize a project
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#build-a-new-project-without-internet" title="Build a new project without Internet" class="md-nav__link">
     Build a new project without Internet
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#boot-from-sd-card" title="Boot from SD card" class="md-nav__link">
     Boot from SD card
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#mounting-sd-card-in-booting-time" title="Mounting SD card in booting-time" class="md-nav__link">
     Mounting SD card in booting-time
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -917,7 +943,8 @@
 <p>$WORKDIR: build/tmp/work/plnx_arm-xilinx-linux-gnueabi/libsample-tar/1.0-r0</p>
 </li>
 </ul>
-<h2 id="create-and-initialize-a-project">Create and initialize a project</h2>
+<h2 id="experiences">Experiences</h2>
+<h3 id="create-and-initialize-a-project">Create and initialize a project</h3>
 <p>Quá trình khởi tạo project (1) và import hdf (2) tiến hành tương tự với petalinux 2015.4 (xem thêm ug1144 để biết về các cmd tương ứng cho từng quá trình). </p>
 <pre><code>├── config.project
 └── project-spec
@@ -968,7 +995,7 @@
 <li>Xuất hiện thêm Yocto layer “meta-plnx-generated” trong thư mục “project-spec”, chứa các Yocto recipes liên quan đến kernel, core, bsp.</li>
 </ul>
 <p>Xem thêm Apendix A trong tài liệu ug1144 để biết thêm thông tin về Petalinux project structure.</p>
-<h2 id="build-a-new-project-without-internet">Build a new project without Internet</h2>
+<h3 id="build-a-new-project-without-internet">Build a new project without Internet</h3>
 <p>Để thực hiện build, chạy lệnh “petalinux-build”. </p>
 <p><strong>Pre-build configuration</strong></p>
 <ul>
@@ -1007,9 +1034,9 @@ Như vậy, bản cài đặt mặc định của petalinux không chứa đủ 
 </ul>
 <p><strong>Linaro - what is this?</strong></p>
 <p><strong>External kernel - How to?</strong></p>
-<h2 id="boot-from-sd-card">Boot from SD card</h2>
+<h3 id="boot-from-sd-card">Boot from SD card</h3>
 <p>Về cơ bản, boot từ SD Card được thực hiện giống với hướng dẫn trong mục Zedboard. Tệp rootfs.cpio được chứa trong thư mục <project>/image/linux/ sẵn sàng cho quá trình đưa lên thẻ nhớ.</p>
-<h2 id="mounting-sd-card-in-booting-time">Mounting SD card in booting-time</h2>
+<h3 id="mounting-sd-card-in-booting-time">Mounting SD card in booting-time</h3>
 <p>Refer <a href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842475/PetaLinux+Yocto+Tips">PetaLinux Yocto Tips</a> (xilinx-wiki.atlassian.net) for step-by-step instructions.</p>
 <h2 id="add-user-custom-package">Add user custom package</h2>
 <p>Bản chất quản lý gói phần mềm trong petalinux là Yocto project. Mã nguồn của các gói phần mềm có thể được download từ các online repository hoặc lưu trữ trực tiếp trên máy local. Trong mục này sẽ lấy ví dụ về một gói phần mềm phổ biến, hay được sử dụng trong quá trình đánh giá chất lượng mạng: IPERF.</p>

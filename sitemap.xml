@@ -2,157 +2,157 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
      <loc>https://www.vutang.github.io/</loc>
-     <lastmod>2019-03-05</lastmod>
+     <lastmod>2019-03-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/technote/mkdocs/mkdocs-notes/</loc>
-     <lastmod>2019-03-05</lastmod>
+     <lastmod>2019-03-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/technote/markdown/markdown/</loc>
-     <lastmod>2019-03-05</lastmod>
+     <lastmod>2019-03-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/technote/shellscript/shellscript/</loc>
-     <lastmod>2019-03-05</lastmod>
+     <lastmod>2019-03-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/technote/python/python/</loc>
-     <lastmod>2019-03-05</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://www.vutang.github.io/technote/tips/tips/</loc>
-     <lastmod>2019-03-05</lastmod>
+     <lastmod>2019-03-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/books/ldd3/</loc>
-     <lastmod>2019-03-05</lastmod>
+     <lastmod>2019-03-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/books/utlk/</loc>
-     <lastmod>2019-03-05</lastmod>
+     <lastmod>2019-03-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/lnx_es/es/</loc>
-     <lastmod>2019-03-05</lastmod>
+     <lastmod>2019-03-06</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://www.vutang.github.io/technote/tips/tips/</loc>
+     <lastmod>2019-03-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/technote/makefile/makefile/</loc>
-     <lastmod>2019-03-05</lastmod>
+     <lastmod>2019-03-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/technote/version_control/verctl/</loc>
-     <lastmod>2019-03-05</lastmod>
+     <lastmod>2019-03-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/lnx_es/ptlnx_20174/</loc>
-     <lastmod>2019-03-05</lastmod>
+     <lastmod>2019-03-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/lnx_es/yocto/</loc>
-     <lastmod>2019-03-05</lastmod>
+     <lastmod>2019-03-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/lnx_es/u-boot/</loc>
-     <lastmod>2019-03-05</lastmod>
+     <lastmod>2019-03-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/ldd/overview/</loc>
-     <lastmod>2019-03-05</lastmod>
+     <lastmod>2019-03-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/ldd/kernel_module/</loc>
-     <lastmod>2019-03-05</lastmod>
+     <lastmod>2019-03-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/ldd/platform_dev/platform_device/</loc>
-     <lastmod>2019-03-05</lastmod>
+     <lastmod>2019-03-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/ldd/spi_dev/spi_dev/</loc>
-     <lastmod>2019-03-05</lastmod>
+     <lastmod>2019-03-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/ldd/spi_dev/spi_advance/</loc>
-     <lastmod>2019-03-05</lastmod>
+     <lastmod>2019-03-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/ldd/gpio/gpio/</loc>
-     <lastmod>2019-03-05</lastmod>
+     <lastmod>2019-03-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/ldd/uart/uart/</loc>
-     <lastmod>2019-03-05</lastmod>
+     <lastmod>2019-03-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/linux_kernel_dev/kernel_data_structure/</loc>
-     <lastmod>2019-03-05</lastmod>
+     <lastmod>2019-03-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/linux_kernel_dev/kernel_user_space/</loc>
-     <lastmod>2019-03-05</lastmod>
+     <lastmod>2019-03-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/fpga/timing_analysis/timing_analysis/</loc>
-     <lastmod>2019-03-05</lastmod>
+     <lastmod>2019-03-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/fpga/x_ipcore/xipcore/</loc>
-     <lastmod>2019-03-05</lastmod>
+     <lastmod>2019-03-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/projects/zedboard/zedboard/</loc>
-     <lastmod>2019-03-05</lastmod>
+     <lastmod>2019-03-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/projects/zc706/</loc>
-     <lastmod>2019-03-05</lastmod>
+     <lastmod>2019-03-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/projects/pi3b/</loc>
-     <lastmod>2019-03-05</lastmod>
+     <lastmod>2019-03-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/bookmarks/bookmarks/</loc>
-     <lastmod>2019-03-05</lastmod>
+     <lastmod>2019-03-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/whatnext/</loc>
-     <lastmod>2019-03-05</lastmod>
+     <lastmod>2019-03-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://www.vutang.github.io/about/about/</loc>
-     <lastmod>2019-03-05</lastmod>
+     <lastmod>2019-03-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>

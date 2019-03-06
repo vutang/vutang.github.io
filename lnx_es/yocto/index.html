@@ -244,18 +244,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../technote/tips/tips/" title="Tips" class="md-nav__link">
-      Tips
-    </a>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -338,6 +326,18 @@
   <li class="md-nav__item">
     <a href="../es/" title="Overview" class="md-nav__link">
       Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../technote/tips/tips/" title="Tips" class="md-nav__link">
+      Tips
     </a>
   </li>
 
@@ -458,6 +458,27 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terms-and-definitions-in-yocto" title="Terms and definitions in Yocto" class="md-nav__link">
+    Terms and definitions in Yocto
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terms-and-definitions-in-bitbake" title="Terms and definitions in Bitbake" class="md-nav__link">
+    Terms and definitions in Bitbake
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bitbake-variables" title="Bitbake variables" class="md-nav__link">
+    Bitbake variables
+  </a>
   
 </li>
       
@@ -862,6 +883,27 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#terms-and-definitions-in-yocto" title="Terms and definitions in Yocto" class="md-nav__link">
+    Terms and definitions in Yocto
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terms-and-definitions-in-bitbake" title="Terms and definitions in Bitbake" class="md-nav__link">
+    Terms and definitions in Bitbake
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bitbake-variables" title="Bitbake variables" class="md-nav__link">
+    Bitbake variables
+  </a>
+  
+</li>
+      
       
       
       
@@ -920,6 +962,35 @@
 <p>Tiến hành đóng gói rootfs dưới định dạng ext3. Bản chất của hàm này sẽ gọi đến <code>oe_mkext234fs</code> được định nghĩa trong <code>layers/core/meta/classes/image_types.bbclass</code>.</p>
 <p>Hàm <code>oe_mkext234fs</code> gọi đến <code>mkfs.ext3/4</code> (là một bộ công cụ đóng gói một bộ tập tin dưới dạng file có thể được sử dụng cho các định dạng ext3/ext4) để tiến hành đóng gói rootfs.</p>
 <h3 id="sdk-generation">SDK Generation</h3>
+<h2 id="terms-and-definitions-in-yocto">Terms and definitions in Yocto</h2>
+<p>Các khái niệm này được mô tả tại <a href="https://www.yoctoproject.org/docs/latest/ref-manual/ref-manual.html">Yocto Reference Manual</a>.</p>
+<p><strong>Build Directory</strong></p>
+<p>Là khu vực Yocto sử dụng để build hệ thống. Trong trường hợp của Petalinux 2017.4, Build Dir là <project>/build. TOPDIR được sử dụng để lưu trữ đường dẫn đến Build Dir.</p>
+<p><strong>Package</strong></p>
+<p>Đối tượng tác động đến trong Yocto là Package. Trong đó một application, library, bootloader hay kernel đều được định nghĩa và coi là Package trong phạm vi của Yocto project. Người dùng cần cung cấp các thông tin để Yocto có thể "bake" được từng package, thông tin này được lưu trữ dưới dạng các <strong>Recipes file</strong> (with .bb extention).</p>
+<p>Một package được đặt tên theo dạng: ${PN}-${EXTENDPE}${PV}-${PR}. Trong đó:</p>
+<ul>
+<li>PN: package name, đồng thời là recipe name của package đó.</li>
+<li>PV: version of recipe</li>
+<li>PR: revision of recipe</li>
+</ul>
+<p><em>Các khái niệm này rất hữu ích trong quá trình đọc các recipe files</em></p>
+<h2 id="terms-and-definitions-in-bitbake">Terms and definitions in Bitbake</h2>
+<p><strong><a href="https://www.yoctoproject.org/docs/2.7/bitbake-user-manual/bitbake-user-manual.html#idm45270752297552">File Download Support</a></strong></p>
+<p>Bitbake cung cấp cơ chế download/unpack/patching source code. Fetcher (Downloader) tiến hành download source code từ local/remote repository.</p>
+<p>Quá trình unpack thực hiện giải nén source code ngay sau quá trình download source code. Unpacker hỗ trợ decompress/extract các file có phần mở rộng như sau: ".Z", ".z", ".gz", ".xz", ".zip", ".jar", ".ipk", ".rpm". ".srpm", ".deb" and ".bz2".</p>
+<p><strong><a href="https://www.yoctoproject.org/docs/2.7/bitbake-user-manual/bitbake-user-manual.html#bitbake-user-manual-metadata">Syntax and Operators</a></strong></p>
+<p>Định nghĩa cú pháp và các phép toán sử dụng được trong các file recipe của Bitbake.</p>
+<p><strong><em>require</em></strong></p>
+<p><strong><em>inherit</em></strong></p>
+<h2 id="bitbake-variables">Bitbake variables</h2>
+<p><strong><a href="https://www.yoctoproject.org/docs/latest/ref-manual/ref-manual.html#var-SRC_URI">${SRC_URI}</a></strong></p>
+<p>The list of source files - local or remote.</p>
+<p>Được sử dụng trong recipe file để thông báo cho Yocto source code nào của package sẽ được sử dụng để build. Yocto Fetcher (Downloader) tiến hành download và bổ sung các bản vá vào source code trước khi tiến hành các bước tiếp theo.</p>
+<p><strong>${IMAGE_INSTALL}</strong><br />
+Used by recipes to specify the packages to install into an image through the image class</p>
+<p><strong>${PACKAGES}</strong><br />
+The list of packages the recipe creates.</p>
                 
                   
                 
