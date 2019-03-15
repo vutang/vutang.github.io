@@ -31,12 +31,27 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://www.vutang.github.io/books/ldd3/</loc>
+     <loc>https://www.vutang.github.io/books/linux/</loc>
      <lastmod>2019-03-15</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://www.vutang.github.io/books/utlk/</loc>
+     <loc>https://www.vutang.github.io/books/device_driver/</loc>
+     <lastmod>2019-03-15</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://www.vutang.github.io/books/linux_kernel/</loc>
+     <lastmod>2019-03-15</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://www.vutang.github.io/books/es_linux/</loc>
+     <lastmod>2019-03-15</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://www.vutang.github.io/books/others/</loc>
      <lastmod>2019-03-15</lastmod>
      <changefreq>daily</changefreq>
     </url>
