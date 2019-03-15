@@ -274,6 +274,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../books/c_books/" title="C Programing" class="md-nav__link">
+      C Programing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../books/ldd3/" title="Linux Device Driver" class="md-nav__link">
       Linux Device Driver
     </a>
@@ -794,6 +806,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#petalinux-imagebbappend" title="petalinux-image.bbappend" class="md-nav__link">
+    petalinux-image.bbappend
+  </a>
+  
+</li>
+      
       
       
       
@@ -933,7 +952,7 @@ Như vậy, bản cài đặt mặc định của petalinux không chứa đủ 
 <p><strong>Linaro - what is this?</strong></p>
 <p><strong>External kernel - How to?</strong></p>
 <h3 id="boot-from-sd-card">Boot from SD card</h3>
-<p>Về cơ bản, boot từ SD Card được thực hiện giống với hướng dẫn trong mục Zedboard. Tệp rootfs.cpio được chứa trong thư mục <project>/image/linux/ sẵn sàng cho quá trình đưa lên thẻ nhớ.</p>
+<p>Về cơ bản, boot từ SD Card được thực hiện giống với hướng dẫn trong mục <a href="../../projects/zedboard/zedboard/#bootext4rootfs">Zedboard</a>. Tệp rootfs.cpio được chứa trong thư mục <project>/image/linux/ sẵn sàng cho quá trình đưa lên thẻ nhớ.</p>
 <h3 id="mounting-sd-card-in-booting-time">Mounting SD card in booting-time</h3>
 <p>Refer <a href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842475/PetaLinux+Yocto+Tips">PetaLinux Yocto Tips</a> (xilinx-wiki.atlassian.net) for step-by-step instructions.</p>
 <h2 id="add-user-custom-package">Add user custom package</h2>
@@ -996,6 +1015,8 @@ BBCLASSEXTEND = &quot;native&quot;
 <p>Tương ứng với mỗi revision chứa một file LICENSE đi kèm với MD5SUM.</p>
 <p><code>LIC_FILES_CHKSUM = "file://LICENSE;md5=d098223e44bdd19585315ee75cd9d2d7"</code></p>
 <p>Lưu ý rằng LIC_FILES có thể là LICENSE hoặc bất cứ tên khác. </p>
+<h2 id="petalinux-imagebbappend">petalinux-image.bbappend</h2>
+<p>Lưu trữ tại project-spec/meta-user/recipes-core/images/petalinux-image.bbappend chứa các package có thể được install vào hệ thống. Khi xóa các package trong file này sẽ ảnh hưởng đến petalinux-config -c rootfs.</p>
                 
                   
                 
