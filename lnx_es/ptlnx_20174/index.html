@@ -355,10 +355,46 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
     
     <label class="md-nav__link" for="nav-4">
-      Linux ES Development
+      Linux
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-4">
+        Linux
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lnx/linux/" title="Unsorted" class="md-nav__link">
+      Unsorted
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Linux ES Development
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
         Linux ES Development
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -448,13 +484,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
     
-    <label class="md-nav__link" for="nav-5">
+    <label class="md-nav__link" for="nav-6">
       Linux Device Driver
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-5">
+      <label class="md-nav__title" for="nav-6">
         Linux Device Driver
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -556,13 +592,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
     
-    <label class="md-nav__link" for="nav-6">
+    <label class="md-nav__link" for="nav-7">
       Linux Kernel Development
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-6">
+      <label class="md-nav__title" for="nav-7">
         Linux Kernel Development
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -604,13 +640,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
     
-    <label class="md-nav__link" for="nav-7">
+    <label class="md-nav__link" for="nav-8">
       FPGA
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-7">
+      <label class="md-nav__title" for="nav-8">
         FPGA
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -652,13 +688,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
     
-    <label class="md-nav__link" for="nav-8">
+    <label class="md-nav__link" for="nav-9">
       Projects
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-8">
+      <label class="md-nav__title" for="nav-9">
         Projects
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -845,6 +881,13 @@
         <li class="md-nav__item">
   <a href="#petalinux-imagebbappend" title="petalinux-image.bbappend" class="md-nav__link">
     petalinux-image.bbappend
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#application-auto-run-at-startup" title="Application Auto Run at Startup" class="md-nav__link">
+    Application Auto Run at Startup
   </a>
   
 </li>
@@ -1053,6 +1096,43 @@ BBCLASSEXTEND = &quot;native&quot;
 <p>Lưu ý rằng LIC_FILES có thể là LICENSE hoặc bất cứ tên khác. </p>
 <h2 id="petalinux-imagebbappend">petalinux-image.bbappend</h2>
 <p>Lưu trữ tại project-spec/meta-user/recipes-core/images/petalinux-image.bbappend chứa các package có thể được install vào hệ thống. Khi xóa các package trong file này sẽ ảnh hưởng đến petalinux-config -c rootfs.</p>
+<h2 id="application-auto-run-at-startup">Application Auto Run at Startup</h2>
+<p>Thuật ngữ: <code>update-rc.d</code>, <code>System V</code></p>
+<p>Các ứng dụng được cài đặt trên Rootfs dưới dạng các binary và thông thường chỉ được khởi động khi có yêu cầu của người dùng. Trong một số trường hợp ứng dụng cần khởi động trong quá trình booting cùng hệ thống.</p>
+<p>Ý tưởng cho phương pháp này là sử dụng Yocto class <code>update-rc.d.bbclass</code> để cài đặt <code>init script</code> dạng <code>System V</code> vào hệ thống. <code>update-rc.d.bbclass</code> sử dụng update-rc.d (a Debian utility) đề "safety install" init script vào hệ thống.</p>
+<p>Dưới đây là recipe file của một package yêu cầu Yocto tiến hành cài đặt một <code>init script</code> vào hệ thống. </p>
+<pre><code>SUMMARY = &quot;Simple iiod-init application&quot;
+SECTION = &quot;PETALINUX/apps&quot;
+LICENSE = &quot;MIT&quot;
+LIC_FILES_CHKSUM = &quot;file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302&quot;
+
+SRC_URI = &quot;file://iiod-init \
+    &quot;
+
+S = &quot;${WORKDIR}&quot;
+
+FILESEXTRAPATHS_prepend := &quot;${THISDIR}/files:&quot;
+
+inherit update-rc.d
+
+INITSCRIPT_NAME = &quot;iiod-init&quot;
+INITSCRIPT_PARAMS = &quot;start 99 S .&quot;
+
+do_install() {
+    install -d ${D}${sysconfdir}/init.d
+    install -m 0755 ${S}/iiod-init ${D}${sysconfdir}/init.d/iiod-init
+}
+
+FILES_${PN} += &quot;${sysconfdir}/*&quot;
+</code></pre>
+
+<p>Một số điểm lưu ý trong recipe:</p>
+<ul>
+<li><code>inherit update-rc.d</code>: gọi đến class <code>update-rc.d</code>.</li>
+<li><code>INITSCRIPT_NAME</code> &amp; <code>INITSCRIPT_PARAMS</code>: là các biến số cho class <code>update-rc.d</code>. Tham khảo thêm tại <a href="https://www.yoctoproject.org/docs/2.1/ref-manual/ref-manual.html#ref-classes-update-rc.d">update-rc.d.bbclass</a> của Yocto ref-manual.</li>
+<li>init script trong <code>recipe</code> này là "iiod-init" được định nghĩa tại biến <code>INITSCRIPT_NAME</code>. Gói cần cung cấp mã nguồn là script <code>iiod-init</code>.</li>
+</ul>
+<p>Init script cần được viết theo <code>System V init</code> style. Về cơ bản script cần cung cấp được các phương thức: <code>start</code>, <code>stop</code> và <code>restart</code>. Các phương thức này được sử dụng để tác động đến chương trình.</p>
                 
                   
                 
