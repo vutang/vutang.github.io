@@ -11,7 +11,7 @@
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
       
-        <link rel="canonical" href="https://www.vutang.github.io/books/cbooks/head_first_c/">
+        <link rel="canonical" href="https://www.vutang.github.io/books/dsa/dsa_toc/">
       
       
       
@@ -38,7 +38,7 @@
     
     
       
-        <title>Head first c - Vu Tang's Docs</title>
+        <title>Data Structure & Algorithms - Vu Tang's Docs</title>
       
     
     
@@ -74,7 +74,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#chapter-2-memory-and-pointer" tabindex="1" class="md-skip">
+      <a href="#data-structure-algorithm" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -100,7 +100,7 @@
                 Vu Tang's Docs
               </span>
               <span class="md-header-nav__topic">
-                Head first c
+                Data Structure & Algorithms
               </span>
             
           
@@ -253,10 +253,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
       Book & Materials
@@ -332,11 +334,56 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../dsa/dsa_toc/" title="Data Structure & Algorithms" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Data Structure & Algorithms
+      </label>
+    
+    <a href="./" title="Data Structure & Algorithms" class="md-nav__link md-nav__link--active">
       Data Structure & Algorithms
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#algorithm-4th-robert-sedgwick" title="Algorithm 4th - Robert Sedgwick" class="md-nav__link">
+    Algorithm 4th - Robert Sedgwick
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#algorithm-in-c-3rd-robert-sedgewick" title="Algorithm in C - 3rd - Robert Sedgewick" class="md-nav__link">
+    Algorithm in C - 3rd - Robert Sedgewick
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -815,20 +862,22 @@
 <nav class="md-nav md-nav--secondary">
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#chapter-2-memory-and-pointer" title="Chapter 2: Memory and Pointer" class="md-nav__link">
-    Chapter 2: Memory and Pointer
+  <a href="#algorithm-4th-robert-sedgwick" title="Algorithm 4th - Robert Sedgwick" class="md-nav__link">
+    Algorithm 4th - Robert Sedgwick
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#chapter-3" title="Chapter 3" class="md-nav__link">
-    Chapter 3
+  <a href="#algorithm-in-c-3rd-robert-sedgewick" title="Algorithm in C - 3rd - Robert Sedgewick" class="md-nav__link">
+    Algorithm in C - 3rd - Robert Sedgewick
   </a>
   
 </li>
@@ -850,32 +899,12 @@
               
                 
                 
-                  <h1>Head first c</h1>
-                
-                <h2 id="chapter-2-memory-and-pointer">Chapter 2: Memory and Pointer</h2>
-<ul>
-<li>Use <code>printf("%p", pointer);</code> to print a pointer</li>
-<li>Explain in easy-way to understand about Stack &amp; Heap</li>
-<li>sizeof()<ul>
-<li>is not a function, it's operator (?)</li>
-<li>sizeof() is calculated in compile-time.</li>
-<li>array &amp; pointer is defference in sizeof()</li>
-</ul>
-</li>
-</ul>
-<h2 id="chapter-3">Chapter 3</h2>
-<ul>
-<li>Explain about <strong>Standard Input and Output</strong> and how to redirect in Linux (uses '&gt;' and '&lt;'').</li>
-<li>scanf() and printf() are two functions that use for communicate with STDIO.</li>
-<li>
-<p>Problem about editing a string:</p>
-<ul>
-<li>In case a pointer points to constant string like this <code>char *ptr = "JQK";</code>. You can not modify string by <code>*(ptr + i) = 'x'</code>.</li>
-<li>But when using array, you can: <code>char ptr[] = "JQK"</code>.</li>
-</ul>
-<p>In first case, "JQK" is constant and be stored in a part of memory that you can not modify. In the second case, "JQK" stills is stored in this read-only memory but when you call <code>char ptr[] = "JQK"</code>, another memory is allocate for array <code>ptr</code> and "JQK" will be coppied in there -&gt; that can be modified.</p>
-</li>
-</ul>
+                <h1 id="data-structure-algorithm">Data structure &amp; algorithm</h1>
+<p><em>Figure size: [150,x]</em></p>
+<h2 id="algorithm-4th-robert-sedgwick"><a href="../algorithm4th/">Algorithm 4th</a> - Robert Sedgwick</h2>
+<p><img alt="algs4th" src="../img/algorthms-4th-cover.png" /></p>
+<h2 id="algorithm-in-c-3rd-robert-sedgewick"><a href="../algorithm4th/">Algorithm in C</a> - 3rd - Robert Sedgewick</h2>
+<p><img alt="algs-in-c" src="../img/algorithm-in-c-3rd-robert-sedgewick.jpg" /></p>
                 
                   
                 
@@ -892,6 +921,41 @@
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../../es_linux/" title="Linux Embedded" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Linux Embedded
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../others/" title="Others" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Others
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
