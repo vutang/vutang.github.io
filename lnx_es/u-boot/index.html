@@ -38,7 +38,7 @@
     
     
       
-        <title>Zynq from scratch - Vu Tang's Docs</title>
+        <title>Porting Linux for Zynq - Vu Tang's Docs</title>
       
     
     
@@ -100,7 +100,7 @@
                 Vu Tang's Docs
               </span>
               <span class="md-header-nav__topic">
-                Zynq from scratch
+                Porting Linux for Zynq
               </span>
             
           
@@ -697,12 +697,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
     
     <label class="md-nav__link" for="nav-9">
       Projects
@@ -720,20 +718,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../projects/zedboard/zedboard/" title="Zedboard" class="md-nav__link">
-      Zedboard
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../projects/zc706/" title="ZC706" class="md-nav__link">
-      ZC706
+    <a href="../../projects/zynq/zynq/" title="Zynq" class="md-nav__link">
+      Zynq
     </a>
   </li>
 
@@ -747,138 +733,6 @@
     <a href="../../projects/pi3b/" title="Raspberrypi 3B" class="md-nav__link">
       Raspberrypi 3B
     </a>
-  </li>
-
-        
-          
-          
-          
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Zynq from scratch
-      </label>
-    
-    <a href="./" title="Zynq from scratch" class="md-nav__link md-nav__link--active">
-      Zynq from scratch
-    </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#u-boot-on-zynq" title="U-Boot on Zynq" class="md-nav__link">
-    U-Boot on Zynq
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#references" title="References" class="md-nav__link">
-    References
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#build-u-boot-for-zedboard" title="Build U-Boot for Zedboard" class="md-nav__link">
-    Build U-Boot for Zedboard
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nhan-xet" title="Nhận xét" class="md-nav__link">
-    Nhận xét
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#linux-kernel" title="Linux Kernel" class="md-nav__link">
-    Linux Kernel
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#device-tree" title="Device Tree" class="md-nav__link">
-    Device Tree
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#generate-device-tree-bang-hsmhsi" title="Generate Device Tree bằng HSM/HSI" class="md-nav__link">
-    Generate Device Tree bằng HSM/HSI
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tong-hop-dtb-bang-cong-cu-dtc" title="Tổng hợp DTB bằng công cụ dtc" class="md-nav__link">
-    Tổng hợp DTB bằng công cụ dtc
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-rootfs" title="Build rootfs" class="md-nav__link">
-    Build rootfs
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-boot-image" title="Create boot image" class="md-nav__link">
-    Create boot image
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tool-for-package-images" title="Tool for package images" class="md-nav__link">
-    Tool for package images
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -1139,41 +993,6 @@ drwxrwxr-x 2 vutt6 vutt6    73728 Feb 15 00:53 dts
       
         
 <footer class="md-footer">
-  
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
-        
-          <a href="../../projects/pi3b/" title="Raspberrypi 3B" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
-            </div>
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Previous
-                </span>
-                Raspberrypi 3B
-              </span>
-            </div>
-          </a>
-        
-        
-          <a href="../../bookmarks/bookmarks/" title="Bookmarks" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                Bookmarks
-              </span>
-            </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
-          </a>
-        
-      </nav>
-    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

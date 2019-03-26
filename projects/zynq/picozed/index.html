@@ -11,7 +11,7 @@
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
       
-        <link rel="canonical" href="https://www.vutang.github.io/ldd/platform_dev/platform_device/">
+        <link rel="canonical" href="https://www.vutang.github.io/projects/zynq/picozed/">
       
       
       
@@ -38,7 +38,7 @@
     
     
       
-        <title>Platform Device - Vu Tang's Docs</title>
+        <title>Picozed - Vu Tang's Docs</title>
       
     
     
@@ -96,7 +96,7 @@
                 Vu Tang's Docs
               </span>
               <span class="md-header-nav__topic">
-                Platform Device
+                Picozed
               </span>
             
           
@@ -489,12 +489,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
     
     <label class="md-nav__link" for="nav-6">
       Linux Device Driver
@@ -512,7 +510,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../overview/" title="Overview" class="md-nav__link">
+    <a href="../../../ldd/overview/" title="Overview" class="md-nav__link">
       Overview
     </a>
   </li>
@@ -524,7 +522,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../kernel_module/" title="Kernel Module" class="md-nav__link">
+    <a href="../../../ldd/kernel_module/" title="Kernel Module" class="md-nav__link">
       Kernel Module
     </a>
   </li>
@@ -534,18 +532,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-    <a href="./" title="Platform Device" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../../ldd/platform_dev/platform_device/" title="Platform Device" class="md-nav__link">
       Platform Device
     </a>
-    
   </li>
 
         
@@ -555,7 +546,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../spi_dev/spi_dev/" title="SPI Device" class="md-nav__link">
+    <a href="../../../ldd/spi_dev/spi_dev/" title="SPI Device" class="md-nav__link">
       SPI Device
     </a>
   </li>
@@ -567,7 +558,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../spi_dev/spi_advance/" title="SPI Device Advance" class="md-nav__link">
+    <a href="../../../ldd/spi_dev/spi_advance/" title="SPI Device Advance" class="md-nav__link">
       SPI Device Advance
     </a>
   </li>
@@ -579,7 +570,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../gpio/gpio/" title="GPIO" class="md-nav__link">
+    <a href="../../../ldd/gpio/gpio/" title="GPIO" class="md-nav__link">
       GPIO
     </a>
   </li>
@@ -591,7 +582,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../uart/uart/" title="UART" class="md-nav__link">
+    <a href="../../../ldd/uart/uart/" title="UART" class="md-nav__link">
       UART
     </a>
   </li>
@@ -723,7 +714,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../projects/zynq/zynq/" title="Zynq" class="md-nav__link">
+    <a href="../zynq/" title="Zynq" class="md-nav__link">
       Zynq
     </a>
   </li>
@@ -735,7 +726,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../projects/pi3b/" title="Raspberrypi 3B" class="md-nav__link">
+    <a href="../../pi3b/" title="Raspberrypi 3B" class="md-nav__link">
       Raspberrypi 3B
     </a>
   </li>
@@ -795,9 +786,11 @@
               
                 
                 
-                  <h1>Platform Device</h1>
+                  <h1>Picozed</h1>
                 
-                
+                <p><a href="https://1drv.ms/w/s!Ai73O1i3QXDegSxNrffgNfkZD2Qk">Original article</a></p>
+<p>Theo [1],  KIT Picozed SDR chứa 2 giao diện Ethernet trong đó Ethernet 0 được nối vào PS thông qua giao diện MIO và Ethernet 1 nối vào phần PL của Zynq thông qua EMIO. Cả hai giao diện Ethernet đều được nối đến chip PHY Marvell 88E1510. </p>
+<p>Chip PHY Marvell trên Picozed sử dụng giao diện RGMII trong khi Zyng Eth1 sử dụng giao diện GMII. Do đó, cần phải sử dụng một cơ chế chuyển đổi giữa GMII &lt;-&gt; RGMII. </p>
                 
                   
                 
@@ -814,41 +807,6 @@
       
         
 <footer class="md-footer">
-  
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
-        
-          <a href="../../kernel_module/" title="Kernel Module" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
-            </div>
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Previous
-                </span>
-                Kernel Module
-              </span>
-            </div>
-          </a>
-        
-        
-          <a href="../../spi_dev/spi_dev/" title="SPI Device" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                SPI Device
-              </span>
-            </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
-          </a>
-        
-      </nav>
-    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

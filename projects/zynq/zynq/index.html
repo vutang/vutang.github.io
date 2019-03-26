@@ -11,7 +11,7 @@
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
       
-        <link rel="canonical" href="https://www.vutang.github.io/ldd/platform_dev/platform_device/">
+        <link rel="canonical" href="https://www.vutang.github.io/projects/zynq/zynq/">
       
       
       
@@ -38,7 +38,7 @@
     
     
       
-        <title>Platform Device - Vu Tang's Docs</title>
+        <title>Zynq - Vu Tang's Docs</title>
       
     
     
@@ -74,6 +74,10 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
+      <a href="#project-in-zynq-platform" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -96,7 +100,7 @@
                 Vu Tang's Docs
               </span>
               <span class="md-header-nav__topic">
-                Platform Device
+                Zynq
               </span>
             
           
@@ -489,12 +493,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
     
     <label class="md-nav__link" for="nav-6">
       Linux Device Driver
@@ -512,7 +514,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../overview/" title="Overview" class="md-nav__link">
+    <a href="../../../ldd/overview/" title="Overview" class="md-nav__link">
       Overview
     </a>
   </li>
@@ -524,7 +526,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../kernel_module/" title="Kernel Module" class="md-nav__link">
+    <a href="../../../ldd/kernel_module/" title="Kernel Module" class="md-nav__link">
       Kernel Module
     </a>
   </li>
@@ -534,18 +536,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-    <a href="./" title="Platform Device" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../../ldd/platform_dev/platform_device/" title="Platform Device" class="md-nav__link">
       Platform Device
     </a>
-    
   </li>
 
         
@@ -555,7 +550,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../spi_dev/spi_dev/" title="SPI Device" class="md-nav__link">
+    <a href="../../../ldd/spi_dev/spi_dev/" title="SPI Device" class="md-nav__link">
       SPI Device
     </a>
   </li>
@@ -567,7 +562,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../spi_dev/spi_advance/" title="SPI Device Advance" class="md-nav__link">
+    <a href="../../../ldd/spi_dev/spi_advance/" title="SPI Device Advance" class="md-nav__link">
       SPI Device Advance
     </a>
   </li>
@@ -579,7 +574,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../gpio/gpio/" title="GPIO" class="md-nav__link">
+    <a href="../../../ldd/gpio/gpio/" title="GPIO" class="md-nav__link">
       GPIO
     </a>
   </li>
@@ -591,7 +586,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../uart/uart/" title="UART" class="md-nav__link">
+    <a href="../../../ldd/uart/uart/" title="UART" class="md-nav__link">
       UART
     </a>
   </li>
@@ -702,10 +697,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9" checked>
     
     <label class="md-nav__link" for="nav-9">
       Projects
@@ -721,11 +718,90 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../../projects/zynq/zynq/" title="Zynq" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Zynq
+      </label>
+    
+    <a href="./" title="Zynq" class="md-nav__link md-nav__link--active">
       Zynq
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#hw-platform" title="HW platform" class="md-nav__link">
+    HW platform
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#projects" title="Projects" class="md-nav__link">
+    Projects
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#porting-zynq-from-scratch-zedboard" title="Porting Zynq from scratch - Zedboard" class="md-nav__link">
+    Porting Zynq from scratch - Zedboard
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boot-from-sd-card-with-ext4-filesystem-zedboard" title="Boot from SD Card with ext4 filesystem - Zedboard" class="md-nav__link">
+    Boot from SD Card with ext4 filesystem - Zedboard
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xsct-zedboard" title="XSCT - Zedboard" class="md-nav__link">
+    XSCT - Zedboard
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gmii-to-rgmii-bridge-picozed" title="GMII to RGMII Bridge - Picozed" class="md-nav__link">
+    GMII to RGMII Bridge - Picozed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -735,7 +811,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../projects/pi3b/" title="Raspberrypi 3B" class="md-nav__link">
+    <a href="../../pi3b/" title="Raspberrypi 3B" class="md-nav__link">
       Raspberrypi 3B
     </a>
   </li>
@@ -789,15 +865,99 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#hw-platform" title="HW platform" class="md-nav__link">
+    HW platform
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#projects" title="Projects" class="md-nav__link">
+    Projects
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#porting-zynq-from-scratch-zedboard" title="Porting Zynq from scratch - Zedboard" class="md-nav__link">
+    Porting Zynq from scratch - Zedboard
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boot-from-sd-card-with-ext4-filesystem-zedboard" title="Boot from SD Card with ext4 filesystem - Zedboard" class="md-nav__link">
+    Boot from SD Card with ext4 filesystem - Zedboard
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xsct-zedboard" title="XSCT - Zedboard" class="md-nav__link">
+    XSCT - Zedboard
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gmii-to-rgmii-bridge-picozed" title="GMII to RGMII Bridge - Picozed" class="md-nav__link">
+    GMII to RGMII Bridge - Picozed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
                 
                 
-                  <h1>Platform Device</h1>
-                
-                
+                <h1 id="project-in-zynq-platform">Project in Zynq Platform</h1>
+<h2 id="hw-platform">HW platform</h2>
+<p><em>*picturesize: x*150</em></p>
+<p>Zedboard</p>
+<p><img alt="zedboard" src="../zedboard/img/ZedBoard_RevA_sideA_0_0.png" /></p>
+<p>Picozed</p>
+<p><img alt="picoze" src="../PIC-AES-Z7PZ-7Z015-SOM-G-front-080514.png" /></p>
+<h2 id="projects">Projects</h2>
+<h3 id="porting-zynq-from-scratch-zedboard"><a href="../u-boot/">Porting Zynq from scratch</a> - <strong><span style="color:red">Zedboard</span></strong></h3>
+<p>In this project, images for booting Zedboard will be built without using Petalinux. From Xilinx source, Xilinx SDK is used for building fsbl, u-boot, kernel. Rootfs is made manually.</p>
+<h3 id="boot-from-sd-card-with-ext4-filesystem-zedboard"><a href="../zedboard/zedboard/#bootext4rootfs">Boot from SD Card with ext4 filesystem</a> - <strong><span style="color:red">Zedboard</span></strong></h3>
+<p>Zedboard is boot from SD Card with rootfs is stored in an ext4 partion.</p>
+<h3 id="xsct-zedboard"><a href="../zedboard/zedboard/#zedboardxsct">XSCT</a> - <strong><span style="color:red">Zedboard</span></strong></h3>
+<p>Demo using XSCT (Xilinx Software Command-Line Tool)</p>
+<h3 id="gmii-to-rgmii-bridge-picozed"><a href="../picozed/">GMII to RGMII Bridge</a> - <strong><span style="color:red">Picozed</span></strong></h3>
                 
                   
                 
@@ -818,7 +978,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../kernel_module/" title="Kernel Module" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../../fpga/x_ipcore/xipcore/" title="Xilinx IPCore" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -827,19 +987,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Kernel Module
+                Xilinx IPCore
               </span>
             </div>
           </a>
         
         
-          <a href="../../spi_dev/spi_dev/" title="SPI Device" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../pi3b/" title="Raspberrypi 3B" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                SPI Device
+                Raspberrypi 3B
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
