@@ -983,10 +983,11 @@
 <h2 id="references">References</h2>
 <p>[1] <a href="https://drive.google.com/open?id=1WMBs5SCG3Qr4Rw645AEBkJm5dR8tiDas">Linux Kernel Development, 3nd</a></p>
 <h2 id="linked-list"><strong><span style="color:red">Linked List</span></strong></h2>
+<p><a name="linkedlist"></a></p>
+<p><a href="https://elixir.bootlin.com/linux/latest/source/scripts/kconfig/list.h#L24">list_head: include/list.h#L24</a></p>
 <h3 id="the-linked-list-structure">The Linked List Structure</h3>
 <p>Linked list is popular data structure that is used in programming. The Linux Kernel approach is different. Instead of turning the structure into a linked list, the Linux approach is to <em>embed a linked list noed in the structure!</em></p>
 <p>The linked-list code is declared in the header file &lt;linux/list.h> and the data structure is simple:</p>
-<p><a href="https://elixir.bootlin.com/linux/latest/source/scripts/kconfig/list.h#L24">list_head: include/list.h#L24</a></p>
 <pre><code>struct list_head {
     struct list_head *next
     struct list_head *prev;
