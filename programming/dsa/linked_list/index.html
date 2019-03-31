@@ -834,8 +834,15 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#linked-list-in-linux-kernel" title="Linked list in Linux Kernel" class="md-nav__link">
-    Linked list in Linux Kernel
+  <a href="#doubly-linked-list-an-example-from-cs144" title="Doubly Linked List - An example from CS144" class="md-nav__link">
+    Doubly Linked List - An example from CS144
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#circular-list-linked-list-in-linux-kernel" title="Circular List - Linked list in Linux Kernel" class="md-nav__link">
+    Circular List - Linked list in Linux Kernel
   </a>
   
     <nav class="md-nav">
@@ -871,25 +878,26 @@
                 
                 
                 <h1 id="linked-list">Linked list</h1>
-<h2 id="linked-list-in-linux-kernel">Linked list in Linux Kernel</h2>
-<p>Refer <a href="../../../linux_kernel_dev/kernel_data_structure/#linkedlist">kernel data structure</a></p>
+<h2 id="doubly-linked-list-an-example-from-cs144">Doubly Linked List - An example from CS144</h2>
+<h2 id="circular-list-linked-list-in-linux-kernel">Circular List - Linked list in Linux Kernel</h2>
+<p>Kernel provides a built-in data structure: linked list. This built-in linked list is modified to use in user space applications. In this note, we will talk about API in Kernel <code>list.h</code> and how this kind of list grow up. For more information such as list definition, data structure ... please refer <a href="../../../linux_kernel_dev/kernel_data_structure/#linkedlist">kernel data structure</a>.</p>
+<p>List in <code>list.h</code> is "cirlular linked list".</p>
 <h3 id="add-to-list">Add to list</h3>
-<p><code>list.h</code> provides an inline function for adding a <code>new</code> node between <code>prev</code> and <code>next</code> node.</p>
+<p><code>list.h</code> provides a fundamental inline function for adding a <code>new</code> node between <code>prev</code> and <code>next</code> node. That function is <code>__list_add()</code>.</p>
 <pre><code>static inline void __list_add(struct list_head *new, struct list_head *prev, 
     struct list_head *next);
 </code></pre>
 
 <p>The below figure (100*x) illustrates how <code>__list_add</code> works.</p>
 <p><img alt="ll_add" src="../img/__ll_add().PNG" /></p>
-<p><code>__list_add()</code> makes 4 connection changes, that are:</p>
+<p><code>__list_add()</code> makes 4 connection changes, these are:</p>
 <pre><code>next-&gt;prev = new;
 new-&gt;next = next;
 new-&gt;prev = prev;
 prev-&gt;next = new;
 </code></pre>
 
-<p>Base on <code>__list_add()</code>, <code>list.h</code> also provides two wrapper-function that often be used for adding list element. That are <code>list_add</code> and <code>list_add_tail</code>.</p>
-<p>So, what is basic deference between <code>list_add</code> and <code>list_add_tail</code>? The answer appears when looking at the way that APIs use <code>__list_add</code>.</p>
+<p>Base on <code>__list_add()</code>, <code>list.h</code> also provides two wrapper-function that often be used for adding list element: <code>list_add</code> and <code>list_add_tail</code>. So, what is basic difference between <code>list_add</code> and <code>list_add_tail</code>? The answer appears when looking deeply at the way that APIs use <code>__list_add</code>.</p>
 <pre><code>static inline void list_add(struct list_head *new, struct list_head *head)
 {
     __list_add(new, head, head-&gt;next);
@@ -904,10 +912,11 @@ prev-&gt;next = new;
 </code></pre>
 
 <p><strong><code>list_add</code></strong></p>
-<p>Adding new element right after head.</p>
+<p>Adding new element right after head: <code>__list_add(new, head, head-&gt;next);</code></p>
 <p><img alt="list_add" src="../img/ll_add.PNG" /></p>
+<p><em>*The gray node is head</em></p>
 <p><strong><code>list_add_tail</code></strong></p>
-<p>Adding new element right before head.</p>
+<p>Adding new element right before head: <code>__list_add(new, head-&gt;prev, head);</code></p>
 <p><img alt="list_add_tail" src="../img/ll_add_tail.PNG" /></p>
                 
                   
