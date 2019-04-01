@@ -879,9 +879,14 @@
                 
                 <h1 id="linked-list">Linked list</h1>
 <h2 id="doubly-linked-list-an-example-from-cs144">Doubly Linked List - An example from CS144</h2>
+<p>In an online course CS144, Standford provides source code that has a library for hanlding linked list.</p>
+<p><img alt="ll_doubly" src="../img/doubly_ll.PNG" /></p>
+<p><em>Figure. Doubly Linked List</em></p>
+<p>In this library, you can create a list, add a node to the tail/head of list, add a node to a specific node in list.</p>
+<p><code>head</code> and <code>tail</code> node are <code>NULL</code> pointers when list is initialized.</p>
 <h2 id="circular-list-linked-list-in-linux-kernel">Circular List - Linked list in Linux Kernel</h2>
-<p>Kernel provides a built-in data structure: linked list. This built-in linked list is modified to use in user space applications. In this note, we will talk about API in Kernel <code>list.h</code> and how this kind of list grow up. For more information such as list definition, data structure ... please refer <a href="../../../linux_kernel_dev/kernel_data_structure/#linkedlist">kernel data structure</a>.</p>
-<p>List in <code>list.h</code> is "cirlular linked list".</p>
+<p>Kernel provides a built-in data structure: linked list. This built-in linked list can be modified to use in user space applications. In this note, we will talk about API in Kernel <code>list.h</code> and how this kind of list grow up. For more information such as list definition, data structure ... please refer <a href="../../../linux_kernel_dev/kernel_data_structure/#linkedlist">kernel data structure</a>.</p>
+<p>Basically, <code>list.h</code> is "cirlular linked list".</p>
 <h3 id="add-to-list">Add to list</h3>
 <p><code>list.h</code> provides a fundamental inline function for adding a <code>new</code> node between <code>prev</code> and <code>next</code> node. That function is <code>__list_add()</code>.</p>
 <pre><code>static inline void __list_add(struct list_head *new, struct list_head *prev, 
