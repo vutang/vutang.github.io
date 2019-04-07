@@ -382,6 +382,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../C/cprogramming/" title="C" class="md-nav__link">
+      C
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../dsa/" title="DSA" class="md-nav__link">
       DSA
     </a>
@@ -842,6 +854,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#find-and-replace" title="Find and Replace" class="md-nav__link">
+    Find and Replace
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#bubble-sort" title="Bubble sort" class="md-nav__link">
     Bubble sort
   </a>
@@ -852,6 +872,65 @@
   <a href="#selection-sort" title="Selection sort" class="md-nav__link">
     Selection sort
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#insertion-sort" title="Insertion sort" class="md-nav__link">
+    Insertion sort
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#devide-and-conquer" title="Devide and Conquer" class="md-nav__link">
+    Devide and Conquer
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#merge-sort" title="Merge Sort" class="md-nav__link">
+    Merge Sort
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quick-sort" title="Quick Sort" class="md-nav__link">
+    Quick Sort
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribution-sort" title="Distribution Sort" class="md-nav__link">
+    Distribution Sort
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#counting-sort" title="Counting sort" class="md-nav__link">
+    Counting sort
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -880,7 +959,8 @@
                 <h1 id="algorithm">Algorithm</h1>
 <h2 id="sorting">Sorting</h2>
 <p><a href="https://www.geeksforgeeks.org/sorting-algorithms/">https://www.geeksforgeeks.org/sorting-algorithms/</a></p>
-<h3 id="bubble-sort">Bubble sort</h3>
+<h3 id="find-and-replace"><strong><span style="color:red">Find and Replace</span></strong></h3>
+<h4 id="bubble-sort">Bubble sort</h4>
 <p><strong>Worst and Average Case Time Complexity</strong>: O(n*n). Worst case occurs when array is reverse sorted.<br />
 <strong>Best Case Time Complexity</strong>: O(n). Best case occurs when array is already sorted.<br />
 <strong>Auxiliary Space</strong>: O(1)</p>
@@ -938,7 +1018,8 @@ i = 3: 9 11 79 82 100
 --&gt;2 3 
 </code></pre>
 
-<h3 id="selection-sort">Selection sort</h3>
+<h4 id="selection-sort">Selection sort</h4>
+<p><img alt="selection_sort" src="../img/selection_sort.PNG" /></p>
 <p>Ý tưởng của "selection sort" là tìm phần tử bé nhất của mảng (select) và đổi chỗ cho phần tử đầu tiên. Tiến hành tuần tự như vậy cho mảng con (là kết quả của mảng cha loại bỏ đi phần tử có chỉ số bé nhất -&gt; chính là phần tử nhỏ nhất vừa được đổi chỗ)</p>
 <pre><code>Round 0
 84 66 98 55 70 
@@ -956,6 +1037,15 @@ Round 3
 
 <p>Vấn đề của selection gặp phải đó là tính ổn định "stable". Giả sử có hai phần tử trong mảng A và B có giá trị key bằng nhau, nhưng kết quả của "selection sort" có thể dẫn đến B đứng trước A trong sorted array.</p>
 <p>Giải thuật "selection sort" có thể được cải tiến để thỏa mãn tính chất "stable" này. Thay vì giá trị nhỏ nhất trong một dãy được đổi chỗ với vị trí hiện tại thì toàn bộ mảng sẽ được dịch phải một đơn vị để tạo khoảng trống cho số bé nhất. Giải thuật này có một số điểm tương tự với insertion sort.</p>
+<h4 id="insertion-sort">Insertion sort</h4>
+<p>Ý tưởng của "insertion sort" là tìm phần tử bé nhất trong mảng và đưa về đầu mảng. Ý tưởng này có phần nào giống với selection sort nhưng khác ở cách phần tử bé nhât được đưa về đầu mảng.</p>
+<p>Ở "selection sort" phần tử bé nhất được đổi chỗ cho phần tử đầu mảng, trong khi ở "insertion sort" phần tử bé nhất được chèn vào đầu mảng. Điều này có nghĩa là các phần tử tính từ đầu mảng đến trước phần tử bé nhất</p>
+<p><img alt="insert_tion_img" src="../img/insertion_sort.PNG" /></p>
+<h3 id="devide-and-conquer"><strong><span style="color:red">Devide and Conquer</span></strong></h3>
+<h4 id="merge-sort">Merge Sort</h4>
+<h4 id="quick-sort">Quick Sort</h4>
+<h3 id="distribution-sort"><strong><span style="color:red">Distribution Sort</span></strong></h3>
+<h4 id="counting-sort">Counting sort</h4>
                 
                   
                 
