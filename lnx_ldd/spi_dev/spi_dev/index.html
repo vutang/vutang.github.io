@@ -1,0 +1,1559 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+        <link rel="canonical" href="https://www.vutang.github.io/lnx_ldd/spi_dev/spi_dev/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.2.0">
+    
+    
+      
+        <title>SPI Device - Vu Tang's Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.572ca0f0.css">
+      
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.8c900955.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#spi-device-driver" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://www.vutang.github.io/" title="Vu Tang's Docs" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Vu Tang's Docs
+              </span>
+              <span class="md-header-nav__topic">
+                SPI Device
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://www.vutang.github.io/" title="Vu Tang's Docs" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Vu Tang's Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Preface" class="md-nav__link">
+      Preface
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      General Technote
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        General Technote
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../technote/mkdocs/mkdocs-notes/" title="Mkdocs Tool" class="md-nav__link">
+      Mkdocs Tool
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../technote/markdown/markdown/" title="Markdown Language" class="md-nav__link">
+      Markdown Language
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../technote/shellscript/shellscript/" title="Shell Script" class="md-nav__link">
+      Shell Script
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../technote/python/python/" title="Python" class="md-nav__link">
+      Python
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Book & Materials
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Book & Materials
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../books/c_books/" title="C Programing" class="md-nav__link">
+      C Programing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../books/linux/" title="Linux Programing" class="md-nav__link">
+      Linux Programing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../books/device_driver/" title="Linux Device Driver" class="md-nav__link">
+      Linux Device Driver
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../books/linux_kernel/" title="Linux Kernel" class="md-nav__link">
+      Linux Kernel
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../books/es_linux/" title="Linux Embedded" class="md-nav__link">
+      Linux Embedded
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../books/dsa/dsa_toc/" title="Data Structure & Algorithms" class="md-nav__link">
+      Data Structure & Algorithms
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../books/others/" title="Others" class="md-nav__link">
+      Others
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Programming
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Programming
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../programming/C/cprogramming/" title="C" class="md-nav__link">
+      C
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../programming/dsa/dsa/" title="DSA" class="md-nav__link">
+      DSA
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../programming/sql/mysql/" title="SQL" class="md-nav__link">
+      SQL
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../programming/lnx/lpi/" title="Linux Programming Interfaces" class="md-nav__link">
+      Linux Programming Interfaces
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Linux General
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Linux General
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lnx/linux/" title="Unsorted" class="md-nav__link">
+      Unsorted
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Linux ES Development
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Linux ES Development
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lnx_es/es/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lnx_es/hw_platform/" title="HW Platforms" class="md-nav__link">
+      HW Platforms
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lnx_es/cmn_tool/" title="Common Tools" class="md-nav__link">
+      Common Tools
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lnx_es/ptlnx/" title="Xilinx Petalinux" class="md-nav__link">
+      Xilinx Petalinux
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lnx_es/yocto/" title="Yocto" class="md-nav__link">
+      Yocto
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lnx_es/tips/tips/" title="Tips" class="md-nav__link">
+      Tips
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" checked>
+    
+    <label class="md-nav__link" for="nav-7">
+      Linux Device Driver
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        Linux Device Driver
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../overview/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../kernel_module/" title="Kernel Module" class="md-nav__link">
+      Kernel Module
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../platform_dev/platform_device/" title="Platform Device" class="md-nav__link">
+      Platform Device
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        SPI Device
+      </label>
+    
+    <a href="./" title="SPI Device" class="md-nav__link md-nav__link--active">
+      SPI Device
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" title="Introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spi-subsystem-in-linux" title="SPI Subsystem in Linux" class="md-nav__link">
+    SPI Subsystem in Linux
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spi-device-driver-model" title="SPI Device Driver Model" class="md-nav__link">
+    SPI Device Driver Model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spi-message-transfer" title="SPI Message &amp; Transfer" class="md-nav__link">
+    SPI Message &amp; Transfer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-engineer" title="For Engineer" class="md-nav__link">
+    For Engineer
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#protocol-driver" title="Protocol Driver" class="md-nav__link">
+    Protocol Driver
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#probing" title="Probing" class="md-nav__link">
+    Probing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cac-api-khac" title="Các API khác" class="md-nav__link">
+    Các API khác
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spi-write-spi-read" title="SPI-Write &amp; SPI-Read" class="md-nav__link">
+    SPI-Write &amp; SPI-Read
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controller-driver" title="Controller Driver" class="md-nav__link">
+    Controller Driver
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#probing-controller" title="Probing controller" class="md-nav__link">
+    Probing controller
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#struct-spi_master" title="Struct spi_master" class="md-nav__link">
+    Struct spi_master
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controller-driver-protocol-driver-spi-core" title="Controller Driver, Protocol Driver &amp; SPI-Core" class="md-nav__link">
+    Controller Driver, Protocol Driver &amp; SPI-Core
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spi_writespi_read" title="spi_write/spi_read" class="md-nav__link">
+    spi_write/spi_read
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#master-transfer" title="master-&gt;transfer" class="md-nav__link">
+    master-&gt;transfer
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-next" title="What's next?" class="md-nav__link">
+    What's next?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#refereneces" title="Refereneces" class="md-nav__link">
+    Refereneces
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../spi_advance/" title="SPI Device Advance" class="md-nav__link">
+      SPI Device Advance
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../gpio/gpio/" title="GPIO" class="md-nav__link">
+      GPIO
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../uart/uart/" title="UART" class="md-nav__link">
+      UART
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Linux Kernel Development
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        Linux Kernel Development
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lnx_kernel/kernel_data_structure/" title="Kernel Data Structure" class="md-nav__link">
+      Kernel Data Structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lnx_kernel/kernel_user_space/" title="Kernel Space, User Space Interfaces" class="md-nav__link">
+      Kernel Space, User Space Interfaces
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      FPGA
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        FPGA
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../fpga/timing_analysis/timing_analysis/" title="Static Timing Analysis" class="md-nav__link">
+      Static Timing Analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../fpga/x_ipcore/xipcore/" title="Xilinx IPCore" class="md-nav__link">
+      Xilinx IPCore
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      Projects
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        Projects
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../projects/zynq/zynq/" title="Zynq" class="md-nav__link">
+      Zynq
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../projects/pi3b/" title="Raspberrypi 3B" class="md-nav__link">
+      Raspberrypi 3B
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../bookmarks/bookmarks/" title="Bookmarks" class="md-nav__link">
+      Bookmarks
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../whatnext/" title="What's next" class="md-nav__link">
+      What's next
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../about/about/" title="About me" class="md-nav__link">
+      About me
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" title="Introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spi-subsystem-in-linux" title="SPI Subsystem in Linux" class="md-nav__link">
+    SPI Subsystem in Linux
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spi-device-driver-model" title="SPI Device Driver Model" class="md-nav__link">
+    SPI Device Driver Model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spi-message-transfer" title="SPI Message &amp; Transfer" class="md-nav__link">
+    SPI Message &amp; Transfer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-engineer" title="For Engineer" class="md-nav__link">
+    For Engineer
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#protocol-driver" title="Protocol Driver" class="md-nav__link">
+    Protocol Driver
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#probing" title="Probing" class="md-nav__link">
+    Probing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cac-api-khac" title="Các API khác" class="md-nav__link">
+    Các API khác
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spi-write-spi-read" title="SPI-Write &amp; SPI-Read" class="md-nav__link">
+    SPI-Write &amp; SPI-Read
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controller-driver" title="Controller Driver" class="md-nav__link">
+    Controller Driver
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#probing-controller" title="Probing controller" class="md-nav__link">
+    Probing controller
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#struct-spi_master" title="Struct spi_master" class="md-nav__link">
+    Struct spi_master
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#controller-driver-protocol-driver-spi-core" title="Controller Driver, Protocol Driver &amp; SPI-Core" class="md-nav__link">
+    Controller Driver, Protocol Driver &amp; SPI-Core
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spi_writespi_read" title="spi_write/spi_read" class="md-nav__link">
+    spi_write/spi_read
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#master-transfer" title="master-&gt;transfer" class="md-nav__link">
+    master-&gt;transfer
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-next" title="What's next?" class="md-nav__link">
+    What's next?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#refereneces" title="Refereneces" class="md-nav__link">
+    Refereneces
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="spi-device-driver"><strong><span style="color:red">SPI Device Driver</span></strong></h1>
+<p><img alt="spi_bus_signals" src="../img/spi-bus-signals-2.jpg" /></p>
+<p><em>Hanoi - Tuesday, January 29, 2019 - by <a href="../../../about/about/">VuTang</a></em></p>
+<h2 id="introduction">Introduction</h2>
+<p>SPI là chuẩn giao tiếp nối tiếp dựa trên mô hình Master-Slaves, trong đó một master có thể được
+kết nối đến một hoặc nhiều thiết bị slave. Một bus SPI thông thường có 4 tín hiệu:</p>
+<ul>
+<li>SCLK: clock dùng cho đồng bộ tín hiệu</li>
+<li>SS: Slave Select, dùng để đánh dấu thiết bị Slave nào được active để trao đổi dữ liệu. Pin này
+có thể được gọi bằng các tên khác như: CS (chip sellect), LE (Latch Enable), … Tín hiệu SS thông thường active mức thấp.</li>
+<li>MISO: dữ liệu vào của master</li>
+<li>MOSI: dữ liệu ra của master. Trong một số trường hợp, pin MISO/MOSI có thể được sử dụng chung trên một đường tín hiệu đảm nhiệm cả hai chức năng in/out.</li>
+</ul>
+<p><img alt="spi_bus_signals" src="../img/spi-bus-signals.png" /><br />
+<em><span style="color:blue">Figure. SPI bus signals</span></em></p>
+<h2 id="spi-subsystem-in-linux">SPI Subsystem in Linux</h2>
+<p>Các kiến thức trong technote này được khái quát hóa sau quá trình tìm hiểu hệ thống SPI sử dụng Cadence Controller và SPI-GPIO, do đó có thể không mang được tính tổng quát hóa lên toàn bộ các thiết bị SPI.</p>
+<ul>
+<li><a href="xxx">spi.h</a>: defines important data structures what are used for SPI subsystem.</li>
+<li><a href="xxx">spi.c</a>: SPI core APIs are implemented in this file.</li>
+</ul>
+<h3 id="spi-device-driver-model">SPI Device Driver Model</h3>
+<p>Trong Figure 1 thể hiện mô hình của một hệ thống SPI trong Linux, bao gồm:</p>
+<ul>
+<li>Về phần cứng, một SPI device (slave device) được kết nối với SPI controller thông qua một bus vật lý (các tín hiệu của SPI bus mô tả ở phần trước được thiết kế trên mạch cứng). Một SPI device được đặc mô tả bởi <code>struct spi_device</code>.</li>
+<li>Về phần mềm, hai thực thể phần cứng trên cần driver để giao tiếp và quản lý, driver cho controller (<strong><span style="color:red">controller driver</span></strong>) và driver cho spi device (<strong><span style="color:red">protocol driver</span></strong> - this deffinition is used in Linux Kernel official document). Linux Kernel provides a sub-system to manage these device drivers, called SPI-core. All controller driver &amp; protocol driver have to register to Spi-core. Cấu trúc dữ liệu đặc quan trọng nhất cho một controller là <code>struct spi_master</code></li>
+</ul>
+<p><a name="figure1"></a></p>
+<p><img alt="spi_platform" src="../img/spi-platform.png" /></p>
+<p><em><span style="color:blue">Figure 1. Components in SPI Subsystem</span></em></p>
+<h3 id="spi-message-transfer">SPI Message &amp; Transfer</h3>
+<p>Thông tin trao đổi giữa controller và device được khái quát hóa trong Linux SPI subsystem thành dạng các message. Các message này được chia nhỏ thành các transfer. Linux cung cấp <code>struct spi_message</code> và <code>struct spi_transfer</code> để mô tả các đối tượng này. Các struct này đều được định nghĩa trong spi.h.</p>
+<p><img alt="spi_msg_wth_xfer" src="../img/spi-msg-xfer.PNG" /></p>
+<p><em><span style="color:blue">Figure. SPI msg has a list of SPI transfer</span></em></p>
+<p>spi_message chứa một danh sách các transfer:</p>
+<pre><code>struct spi_message {
+    struct list_head    transfers;
+    ...
+}
+</code></pre>
+
+<p>Quá trình duyệt toàn bộ transfers trong list có thể thực hiện như sau:</p>
+<pre><code>list_for_each_entry(xfer, &amp;msg-&gt;transfers, transfer_list) {
+    ...
+}
+</code></pre>
+
+<p>this function is used in <code>spi_transfer_one_message()</code> - a default implementation of <code>transfer_one_message()</code> in spi.c.</p>
+<p>See in <a href="../../../lnx_kernel/kernel_data_structure/#linked-list">Kernel Data Structure</a> for more information about  Linked List in device driver development.</p>
+<h3 id="for-engineer">For Engineer</h3>
+<p>So, what is mission for engineer in a SPI system?</p>
+<ul>
+<li>
+<p>Phát triển protocol driver: các ứng dụng trên tầng ứng dụng cần truy cập đến thông tin trên các SPI Device (ví dụ như đọc giá trị nhiệt độ từ một cảm biến, cấu hình tín hiệu clock cho một hệ thống...). Do đó nhiệm vụ đầu tiên của một kỹ sư là phát triển Protocol Driver để cung cấp các API giao tiếp để ứng dụng có thể truy cập đến phần cứng chứa giao diện SPI.</p>
+</li>
+<li>
+<p>Phát triển controller driver: thông thường driver của controller thường được các nhà phát triển tích hợp kèm với controller. Nhiệm vụ của kỹ sư trong một số trường hợp là tiến hành thay đổi controller driver này cho phù hợp với hệ thống hiện tại. Ngoài ra, kỹ sư có thể phát triển thêm các controller driver để phù hợp với yêu cầu của hệ thống.</p>
+</li>
+<li>
+<p>Bổ sung thêm một số chức năng cho SPI-Core: giao diện SPI với các tín hiệu như mục giới thiệu là giao diện chuẩn, trong khi các biến tấu của giao diện SPI trong thực tế là rất nhiều. Những biến tấu này yêu cầu kỹ sư phải hiểu sâu về SPI-Core để trong một số trường hợp có thể bổ sung thêm một số API. Về tư tưởng phát triển, quá trình viết một driver phải độc lập với Linux kernel, do đó hoạt động thay đổi và bổ sung vào SPI-Core này nên hạn chế vì rõ ràng can thiệp vào SPI-Core tức là ít nhiều can thiệp vào Linux Kernel.</p>
+</li>
+</ul>
+<h2 id="protocol-driver">Protocol Driver</h2>
+<p>Các phần khác của hệ thống (ví dụ như các ứng dụng trên user space, các kernel module khác) sử dụng các API của Protocol Driver để có thể giao tiếp được với SPI Device.</p>
+<p>Tượng tự như controller driver và platform device driver, spi protocol driver cũng cần chứa các thủ tục cơ bản của một device driver.</p>
+<ul>
+<li>Khai báo spi driver <code>struct spi_driver</code> và đăng ký với kernel bằng macro <code>module_spi_driver()</code>. Struct driver này chứa các con trỏ chỉ đến các hàm khởi tao (probe) và hàm hủy (remove) của driver, các hàm này sau khi được đăng ký sẽ được gọi bởi Kernel.</li>
+<li>Khai báo id_table <code>struct spi_device_id</code> chứa thông tin của các device mà driver này hỗ trợ.</li>
+</ul>
+<h3 id="probing">Probing</h3>
+<p>Hàm probing của Protocol Driver có thể thực hiện chức năng như:</p>
+<ul>
+<li>Lấy thông tin của struct spi_device *spi lưu trữ nội bộ của module để sử dụng cho các API khác.</li>
+<li>Thực hiện cấu hình ban đầu cho spi device.</li>
+</ul>
+<h3 id="cac-api-khac">Các API khác</h3>
+<p>Giống như các Device Driver khác, protocol driver có chứa các API cung cấp các cổng giao tiếp với User Space thông quan Device File (/dev/), procfs, sysfs. Thông qua các system call như IOCTL, read, write..., các ứng dụng user space có thể truy cập đến thiết bị.</p>
+<p>Vấn đề đặt ra là làm thế nào để Protocol Driver có thể giao tiếp được đến Spi device?</p>
+<h3 id="spi-write-spi-read">SPI-Write &amp; SPI-Read</h3>
+<p>Protocol uses APIs from SPI-core to communicate with SPI device. These APIs are:</p>
+<ul>
+<li><code>int spi_write(struct spi_device *spi, const void *buf, size_t len)</code><br />
+Take buffer (with length) as a pointer and then initialize a spi message. This message will be sent to slave device through spi controller (this procedure will be discussed detail in next part).<br />
+In example below, <code>spi_write</code> is used in a function for writing a value to a register (specified by address) in device. An message with header (0x80), register address (addr) and expected value (val) will be sent to device.  </li>
+</ul>
+<pre><code>int xxx_write(struct spi_device *spi, unsigned addr, unsigned val) {
+    unsigned char  txbuf[3];
+    int rc;
+
+    txbuf[0] = 0x00;
+    txbuf[1] = addr &amp; 0xFF;
+    txbuf[2] = val;
+
+    rc = spi_write(spi, txbuf, 3);
+    return rc;
+}
+</code></pre>
+
+<ul>
+<li><code>int spi_write_then_read(struct spi_device *spi, const void *txbuf, unsigned n_tx, void *rxbuf, unsigned n_rx)</code></li>
+</ul>
+<p>API này thường được sử dụng để đọc thanh ghi của một thiết bị. Một bản tin từ controller được gửi cho device về yêu cầu đọc thanh ghi, device phản hồi thông tin cho controller và trả lại kết quả cho protocl driver.</p>
+<p>Trong ví dụ sau, user buffer có kích thước 3 bytes được sử dụng như tx_buf và rx_buf (2 bytes đầu tiên được sử dụng cho tx, 1 byte tiếp theo sử dụng cho rx). Message buf[0:1] được gửi đi đến device, kết quả trả lại của device được lưu trữ trong buf[2].</p>
+<pre><code>int xxx_read(struct spi_device *spi, unsigned addr) {
+    unsigned char buf[3];
+    int rc;
+
+    buf[0] = 0x80;
+    buf[1] = addr &amp; 0xFF;
+    buf[2] = 0x00;
+
+    rc = spi_write_then_read(spi, buf, 2, &amp;buf[2],1);
+    return (rc &lt; 0 ? rc : buf[2]);
+}
+</code></pre>
+
+<p>Bản chất hoạt động của các API trên sẽ được mô tả ở trong phần cuối của tài liệu này.</p>
+<h2 id="controller-driver">Controller Driver</h2>
+<p>Là kernel module giao tiếp trực tiếp với SPI Controller. SPI controller này có thể là Hard-controller (như controller của Cadence được tích hợp sẵn trong ngoại vi của SoC) hoặc cũng có thể là Soft-controller như SPI-GPIO (Bitbanging).</p>
+<h3 id="probing-controller">Probing controller</h3>
+<p><strong><em>Initialize a spi master</em></strong></p>
+<p>Một controller sẽ được đặc trưng bởi kiểu dữ liệu: <code>struct spi_master</code> (được định nghĩa trong: linux/include/spi/spi.h). Quá trình khai báo controller được thực hiện trong hàm probe.</p>
+<pre><code>struct spi_master *master;
+
+/*Allocate spi master*/
+master = spi_alloc_master(&amp;spi-&gt;dev, sizeof(*spi_ad9250));
+if (!master)
+    return -ENOMEM;
+</code></pre>
+
+<p><strong><em>Set spi master to spi private private data</em></strong></p>
+<p>Thông thường, con trỏ chứa địa chỉ của spi_master sẽ được lưu trữ trong các private data của device để thuận tiện cho quá trình sử dụng sau này. Cụ thể các API được sử dụng để lưu trữ master vào <em>drvdata</em> như sau:</p>
+<ul>
+<li>Nếu controller là một <em>platform device pdev</em>: <code>platform_set_drvdata(pdev, master);</code></li>
+<li>Nếu controller là một <em>spi device spi</em>: <code>spi_set_drvdata(spi, master)</code></li>
+</ul>
+<p><strong><em>Register spi master</em></strong></p>
+<pre><code>ret = spi_register_master(master);
+if (ret) {
+    dev_err(&amp;pdev-&gt;dev, &quot;spi_register_master failed\n&quot;);
+    return -1;
+}
+</code></pre>
+
+<p><strong><em>Unregister spi master</em></strong></p>
+<p>Ví dụ đối với trường hợp controller là spi device:</p>
+<pre><code>struct spi_master *master = spi_get_drvdata(spi);
+
+spi_unregister_master(master);
+</code></pre>
+
+<p><strong><em>Declare devices in Device Tree</em></strong></p>
+<p>Quá trình khai báo một thiết bị trong device tree cần lưu ý đến:</p>
+<ul>
+<li>thuộc tính num-cs củm father-node</li>
+<li>Thuộc tính spi-max-frequency của node (why???)</li>
+</ul>
+<pre><code>spi@e0006000 {
+    compatible = &quot;xlnx,zynq-spi-r1p6&quot;;
+    reg = &lt;0xe0006000 0x1000&gt;;
+    status = &quot;okay&quot;;
+    interrupt-parent = &lt;0x1&gt;;
+    interrupts = &lt;0x0 0x1a 0x4&gt;;
+    clocks = &lt;0x2 0x19 0x2 0x22&gt;;
+    clock-names = &quot;ref_clk&quot;, &quot;pclk&quot;;
+    #address-cells = &lt;0x1&gt;;
+    #size-cells = &lt;0x0&gt;;
+
+    spi-fmcjesdadc1@0 {
+        #address-cells = &lt;0x1&gt;;
+        #size-cells = &lt;0x0&gt;;
+        compatible = &quot;spi-ad9250&quot;;
+        reg = &lt;0x0&gt;;
+        spi-max-frequency = &lt;0x989680&gt;;
+
+        ad9517@1 {
+            #clock-cells = &lt;0x1&gt;;
+            compatible = &quot;ad9517-1&quot;;
+            reg = &lt;0x1&gt;;
+            spi-max-frequency = &lt;0x989680&gt;;
+            adi,spi-3wire-enable;
+            clocks = &lt;0x4 0x5&gt;;
+            clock-names = &quot;refclk&quot;, &quot;clkin&quot;;
+            clock-output-names = &quot;out0&quot;, &quot;out1&quot;, &quot;out2&quot;, &quot;out3&quot;, &quot;out4&quot;, &quot;out5&quot;, &quot;out6&quot;, &quot;out7&quot;;
+            linux,phandle = &lt;0x15&gt;;
+            phandle = &lt;0x15&gt;;
+        };
+
+        ad9250-0@0 {
+            compatible = &quot;ad9250&quot;;
+            reg = &lt;0x2&gt;;
+            spi-max-frequency = &lt;0x989680&gt;;
+            clocks = &lt;0x6&gt;;
+            clock-names = &quot;adc_clk&quot;;
+            linux,phandle = &lt;0x11&gt;;
+            phandle = &lt;0x11&gt;;
+        };
+</code></pre>
+
+<h3 id="struct-spi_master">Struct spi_master</h3>
+<p>Với tất cả các spi controller, spi controller driver cần có các hàm thủ tục để có thể giao tiếp được với các controller tương ứng. Các hàm và thủ tục này được chuẩn hóa và khái quát hóa thành một cấu trúc dữ liệu: struct spi_master.</p>
+<p>Struct spi_master được định nghĩa trong <a href="https://elixir.bootlin.com/linux/v4.8/source/include/linux/spi/spi.h#L400">spi.h</a>.</p>
+<p><strong><em>About struct spi_master</em></strong></p>
+<ul>
+<li><strong>transfer_one_message</strong>: transfer a single message. SPI GPIO (bitbanging) uses this method.</li>
+<li><strong>transfer_one</strong>: transfer a single spi_transfer. SPI Cadence controller uses this method.</li>
+</ul>
+<p><strong><em>Register devices from device</em></strong></p>
+<p>Đăng ký các thiết bị thuộc bus SPI mà spi master đang quản lý bằng API:</p>
+<p><code>static void of_register_spi_devices(struct spi_master *master);</code></p>
+<p>API này sẽ duyệt hết tất cả các child-node xuất hiện trên Device Tree và tiến hành thêm thiết bị đó vào hệ thống bằng API: <code>spi_add_device</code></p>
+<h2 id="controller-driver-protocol-driver-spi-core">Controller Driver, Protocol Driver &amp; SPI-Core</h2>
+<p>Mục này mô tả quá trình Protocol Driver thông qua các API để sử dụng các tài nguyên của Controller Driver.</p>
+<h3 id="spi_writespi_read"><span style="color:blue">spi_write/spi_read</span></h3>
+<p>Các protocol driver gọi đến các API như <code>spi_write/spi_read/spi_write_then_read</code>, bản chất trong các API này sẽ thực hiện các bước sau:</p>
+<ul>
+<li>Khai báo và cấp phát <code>struct spi_transfer</code> và <code>struct spi_message</code>  </li>
+</ul>
+<pre><code>struct spi_transfer t = {
+    .tx_buf     = buf,
+    .len        = len,
+};
+
+struct spi_message  m;
+spi_message_init(&amp;m);
+spi_message_add_tail(&amp;t, &amp;m);
+</code></pre>
+
+<ul>
+<li>Gọi đến <code>spi_sync</code> - blocking/synchronous SPI data transfers. <code>spi_sync</code> sẽ gọi đến con trỏ hàm <code>master-&gt;transfer</code>, một phương thức cung cấp bởi <code>spi_master</code>.<br />
+<code>master-&gt;transfer(spi, message);</code></li>
+</ul>
+<h3 id="master-transfer"><span style="color:blue">master-&gt;transfer</span></h3>
+<p>Đa phần trong các trường hợp, controller trong một lúc sẽ nhận được rất nhiều yêu cầu trao đổi thông tin với các device. Do đó, để tránh quá trình xung đột trong chia sẻ tài nguyên liên quan đến controller, SPI-core sử dụng mô hình hàng đợi cho các yêu cầu.</p>
+<p><strong><code>master-&gt;transfer</code> làm việc như thế nào trong SPI subsytem?</strong></p>
+<ul>
+<li>
+<p>Trong quá trình đăng ký <code>spi_master</code> cho controller driver, API <code>spi_register_master</code> khởi tạo một hàng đợi cho <code>spi_master</code> bằng API <code>spi_master_initialize_queue</code> (hàm này sẽ gọi đến <code>spi_init_queue</code>).</p>
+</li>
+<li>
+<p><code>spi_init_queue</code> này sẽ thực hiện khởi tạo một kernel thread bằng <code>kthread_run</code>. SPI-core sử dụng khái niệm <code>kworker</code> và <code>kwork</code> để xử lý các <code>master-&gt;transfer</code>.</p>
+</li>
+</ul>
+<p><strong><code>master-&gt;transfer</code> và <code>kworker/kwork</code></strong></p>
+<p>Về tư tưởng <code>kworker/kwork</code> trong Linux Kernel, một <code>kworker</code> được cấp phát tài nguyên (CPU) sẽ được sử dụng đề hoàn thành các <code>kwork</code>.</p>
+<p>Trong SPI-subsystem cũng hoạt động với cơ chế tương tự, mỗi master được khởi tạo một <code>struct kthread_worker kworker</code> bằng API <code>init_kthread_worker</code> trong <code>spi_init_queue</code>. <code>spi_init_queue</code> đồng thời khởi tạo một kernel thread dành riêng để thực hiện <code>kthread_worker</code> này.</p>
+<p>Đối với Cadence Controller, hàm <code>master-&gt;transfer</code> được định nghĩa bằng <code>spi_queued_transfer</code> trong SPI core. Quá trình thực hiện của <code>spi_queued_transfer</code> bản chất là đưa <code>spi_message</code> vào work queue để chờ <code>kwork</code> xử lý.</p>
+<p>Như vậy, các request message từ protocol driver được xếp thành hàng để kworker/kwork xử lý. Bản chất <code>kwork-&gt;fn</code> trỏ đến <code>spi_pump_messages</code>.</p>
+<p><strong><code>spi_pump_messages</code></strong></p>
+<p>Thực hiện "bơm" bản tin vào SPI bus bằng các gọi đến <code>master-&gt;transfer_one_message</code></p>
+<p><strong><code>master-&gt;transfer_one_message</code></strong></p>
+<p><code>transfer_one_message</code> có thể được định nghĩa trong controller driver. Trong trường hợp không được định nghĩa trong quá trình khai báo <code>spi_master</code> của controller driver, <code>transfer_one_message</code> được trỏ đến hàm <code>spi_transfer_one_massge</code> định nghĩa trong SPI core.</p>
+<h2 id="whats-next">What's next?</h2>
+<ul>
+<li>
+<p>spi_master có thể cần cung cấp hàm cho các phương thức như: <code>transfer_one_message</code>, <code>transfer_one</code>. Vậy khác nhau giữa hai phương thức này là gì?</p>
+</li>
+<li>
+<p>Mô tả các trường hợp thiết kế SPI bus trong thực tế.</p>
+</li>
+</ul>
+<h2 id="refereneces">Refereneces</h2>
+<ul>
+<li><a href="http://events17.linuxfoundation.org/sites/events/files/slides/Groking%20the%20Linux%20SPI%20Subsystem.pdf">Groking the Linux SPI Subsystem</a> - Embedded Linux Conference 2017</li>
+<li>spi/spi-summary - Linux Kernel Document (<a href="https://elixir.bootlin.com/linux/latest/source/Documentation/spi/spi-summary">link</a>)</li>
+<li>The Linux Kernel - <a href="https://www.kernel.org/doc/html/v4.15/driver-api/spi.html">SPI</a></li>
+</ul>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../../platform_dev/platform_device/" title="Platform Device" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Platform Device
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../spi_advance/" title="SPI Device Advance" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                SPI Device Advance
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2018 Vu Tang.
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.b41f3d20.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+    
+    
+      
+    
+  </body>
+</html>
