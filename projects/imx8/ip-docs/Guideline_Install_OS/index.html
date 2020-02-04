@@ -1,0 +1,1375 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+        <link rel="canonical" href="https://www.vutang.github.io/projects/imx8/ip-docs/Guideline_Install_OS/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.2.0">
+    
+    
+      
+        <title>i.MX Linux User's Guide - Vu Tang's Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/application.572ca0f0.css">
+      
+      
+    
+    
+      <script src="../../../../assets/javascripts/modernizr.8c900955.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../../assets/fonts/material-icons.css">
+    
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#imx-linux-users-guide" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://www.vutang.github.io/" title="Vu Tang's Docs" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Vu Tang's Docs
+              </span>
+              <span class="md-header-nav__topic">
+                i.MX Linux User's Guide
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://www.vutang.github.io/" title="Vu Tang's Docs" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Vu Tang's Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../.." title="Preface" class="md-nav__link">
+      Preface
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      General Technote
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        General Technote
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../technote/mkdocs/mkdocs-notes/" title="Mkdocs Tool" class="md-nav__link">
+      Mkdocs Tool
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../technote/markdown/markdown/" title="Markdown Language" class="md-nav__link">
+      Markdown Language
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../technote/shellscript/shellscript/" title="Shell Script" class="md-nav__link">
+      Shell Script
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../technote/python/python/" title="Python" class="md-nav__link">
+      Python
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Book & Materials
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Book & Materials
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../books/c_books/" title="C Programing" class="md-nav__link">
+      C Programing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../books/linux/" title="Linux Programing" class="md-nav__link">
+      Linux Programing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../books/device_driver/" title="Linux Device Driver" class="md-nav__link">
+      Linux Device Driver
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../books/linux_kernel/" title="Linux Kernel" class="md-nav__link">
+      Linux Kernel
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../books/es_linux/" title="Linux Embedded" class="md-nav__link">
+      Linux Embedded
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../books/dsa/dsa_toc/" title="Data Structure & Algorithms" class="md-nav__link">
+      Data Structure & Algorithms
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../books/others/" title="Others" class="md-nav__link">
+      Others
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Programming
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Programming
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../programming/C/cprogramming/" title="C" class="md-nav__link">
+      C
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../programming/dsa/dsa/" title="DSA" class="md-nav__link">
+      DSA
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../programming/sql/mysql/" title="SQL" class="md-nav__link">
+      SQL
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../programming/lnx/lpi/" title="Linux Programming Interfaces" class="md-nav__link">
+      Linux Programming Interfaces
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../programming/dsg_patterns/" title="Design Patterns" class="md-nav__link">
+      Design Patterns
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../programming/multi-threaded-programming/" title="Multi-threads" class="md-nav__link">
+      Multi-threads
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Linux General
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Linux General
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lnx/linux/" title="Unsorted" class="md-nav__link">
+      Unsorted
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Linux ES Development
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Linux ES Development
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lnx_es/es/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lnx_es/hw_platform/" title="HW Platforms" class="md-nav__link">
+      HW Platforms
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lnx_es/cmn_tool/" title="Common Tools" class="md-nav__link">
+      Common Tools
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lnx_es/ptlnx/" title="Xilinx Petalinux" class="md-nav__link">
+      Xilinx Petalinux
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lnx_es/yocto/" title="Yocto" class="md-nav__link">
+      Yocto
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lnx_es/tips/tips/" title="Tips" class="md-nav__link">
+      Tips
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Linux Device Driver
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        Linux Device Driver
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lnx_ldd/overview/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lnx_ldd/kernel_module/" title="Kernel Module" class="md-nav__link">
+      Kernel Module
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lnx_ldd/platform_dev/platform_device/" title="Platform Device" class="md-nav__link">
+      Platform Device
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lnx_ldd/spi_dev/spi_dev/" title="SPI Device" class="md-nav__link">
+      SPI Device
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lnx_ldd/spi_dev/spi_advance/" title="SPI Device Advance" class="md-nav__link">
+      SPI Device Advance
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lnx_ldd/gpio/gpio/" title="GPIO" class="md-nav__link">
+      GPIO
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lnx_ldd/uart/uart/" title="UART" class="md-nav__link">
+      UART
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lnx_ldd/jesd/jesd/" title="JESD" class="md-nav__link">
+      JESD
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Linux Kernel Development
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        Linux Kernel Development
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lnx_kernel/kernel_data_structure/" title="Kernel Data Structure" class="md-nav__link">
+      Kernel Data Structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lnx_kernel/kernel_user_space/" title="Kernel Space, User Space Interfaces" class="md-nav__link">
+      Kernel Space, User Space Interfaces
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      FPGA
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        FPGA
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../fpga/timing_analysis/timing_analysis/" title="Static Timing Analysis" class="md-nav__link">
+      Static Timing Analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../fpga/x_ipcore/xipcore/" title="Xilinx IPCore" class="md-nav__link">
+      Xilinx IPCore
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      Projects
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        Projects
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../pcie/pcie/" title="PCIe" class="md-nav__link">
+      PCIe
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../zynq/zynq/" title="Zynq" class="md-nav__link">
+      Zynq
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../imx8/" title="IMX8" class="md-nav__link">
+      IMX8
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../pi3b/" title="Raspberrypi 3B" class="md-nav__link">
+      Raspberrypi 3B
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../../bookmarks/bookmarks/" title="Bookmarks" class="md-nav__link">
+      Bookmarks
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../../whatnext/" title="What's next" class="md-nav__link">
+      What's next
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../../about/about/" title="About me" class="md-nav__link">
+      About me
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="imx-linux-users-guide">i.MX Linux User's Guide</h1>
+<p><strong><em>Booting Linux OS.</em></strong></p>
+<h1 id="1-software-overview">1. Software Overview</h1>
+<p>Một boot Linux image trên i.MX 8M Quad hoặc i.MX 8M Mini gồm 4 thành phần:</p>
+<ul>
+<li>imx-boot (built bằng imx-mkimage), gồm SPL, U-Boot, Arm Trusted Firmware, DDR firmware và HDMI firmware.</li>
+<li>Linux kernel images.</li>
+<li>Device tree file (.dtb).</li>
+<li>Root file system (rootfs).</li>
+</ul>
+<h1 id="2-universal-update-utility">2. Universal update utility</h1>
+<p>UUU chạy trên Windows hoặc Linux OS, được dùng để tải images vào các devices khác nhau của i.MX board.</p>
+<h1 id="3-preparing-an-sdmmc-card-to-boot">3. Preparing an SD/MMC card to boot</h1>
+<p>Yocto Project build tạo ra SD card image và có thể dùng trực tiếp nó để tạo boot SD card. Do đó, có thể copy full SD card image hoặc copy từng thành phần.</p>
+<h1 id="4-downloading-images">4. Downloading images</h1>
+<p>Có thể download images vào device bằng U-Boot khi U-Boot đã được loaded vào boot device.</p>
+<p>Dùng TFTP để tải images vào RAM rồi ghi vào SD card. Ví dụ:</p>
+<ol>
+<li>
+<p>Reset boot environments về default:</p>
+<pre><code>U-Boot &gt; env default -f -a
+U-Boot &gt; saveenv
+U-Boot &gt; reset
+</code></pre>
+</li>
+<li>
+<p>Cấu hình boot environments để tải được images:</p>
+<pre><code>U-Boot &gt; setenv serverip &lt;TFTP server ip&gt;
+U-Boot &gt; setenv bootfile &lt;kernel name zImage/Image&gt;
+U-Boot &gt; setenv fdt_file &lt;dtb image&gt;
+</code></pre>
+<p>Có thể đặt facke MAC address:</p>
+<pre><code>U-Boot &gt; setenv ethaddr 00:01:02:03:04:05
+U-Boot &gt; save
+</code></pre>
+</li>
+<li>
+<p>Copy zImage/Image vào TFTP server, sau đó tải nó vào RAM:</p>
+<pre><code>U-Boot &gt; dhcp
+</code></pre>
+</li>
+<li>
+<p>Kiểm tra thông tin MMC/SD card:</p>
+<pre><code>U-Boot &gt; mmc dev
+U-Boot &gt; mmcinfo
+</code></pre>
+</li>
+<li>
+<p>Xem usage của lệnh <em>mmc</em>. "blk#" bằng với "&lt;offset của read/write&gt;/&lt;block length of the card&gt;". "cnt" bằng "&lt;the size of read/write&gt;/&lt;block length of the card&gt;".</p>
+<pre><code>U-Boot &gt; help mmc
+Usage:
+mmc read addr blk# cnt
+mmc write addr blk# cnt
+mmc erase blk# cnt
+mmc rescan
+mmc part - lists available partition on current mmc device
+mmc dev [dev] [part] - show or set current mmc device [partition]
+mmc list - lists available devices
+</code></pre>
+</li>
+<li>
+<p>Program kernel đã tải vào RAM (tại <em>loadaddr</em>) vào SD card. Ví dụ image có size 0x800000 từ ${loadaddr} vào offset 0x100000 của microSD card:</p>
+<p>Tính toán thông số như sau:</p>
+<pre><code>blk# = (microSD Offset)/(SD block length) = 0x100000/0x200 = 0x800
+cnt = (image Size)/(SD block length) = 0x800000/0x200 = 0x4000
+</code></pre>
+<p>Lệnh trong U-Boot:</p>
+<pre><code>U-Boot &gt; mmc dev 2 0
+U-Boot &gt; tftpboot ${loadaddr} ${bootfile}
+### Suppose the kernel zImage is less than 8M.
+U-Boot &gt; mmc write ${loadaddr} 0x800 0x4000
+</code></pre>
+</li>
+<li>
+<p>Program dtb file:</p>
+<pre><code>U-Boot &gt; tftpboot ${fdt_addr} ${fdt_file}
+U-Boot &gt; mmc write ${fdt_addr} 0x5000 0x800
+</code></pre>
+</li>
+<li>
+<p>Với i.MX 8M Quad EVK board, dùng SD1 slot với mmcblk1 để boot.</p>
+</li>
+<li>
+<p>Boot the board:</p>
+<pre><code>U-Boot &gt;setenv bootcmd_mmc 'run bootargs_base mmcargs;mmc dev;mmc read ${loadaddr} 0x800 0x4000;mmc read ${fdt_addr} 0x5000 0x800;bootz ${loadaddr} - $ {fdt_addr}'
+U-Boot &gt; setenv bootcmd 'run bootcmd_mmc'
+U-Boot &gt; saveenv
+</code></pre>
+</li>
+</ol>
+<h2 id="41-using-emmc">4.1. Using eMMC</h2>
+<p>Có một eMMC chip trên kit i.MX 8M Quad và i.MX 8M Mini. Truy cập chip này thông qua SDHC1.</p>
+<p>Table 22. Switch setup for booting from eMMC on i.MX 8M Quad EVK</p>
+<table>
+<thead>
+<tr>
+<th>Switch</th>
+<th>D1</th>
+<th>D2</th>
+<th>D3</th>
+<th>D4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SW801</td>
+<td>OFF</td>
+<td>OFF</td>
+<td>ON</td>
+<td>OFF</td>
+</tr>
+</tbody>
+</table>
+<p>Custom U-Boot đã hỗ trợ các lệnh install U-Boot, kernel, device-tree, rootfs trong môi trường U-Boot. Việc cần làm là partition eMMC cho phù hợp.
+Có thể partiton trong môi trường U-Boot. Ở đây trình bày partition trong môi trường Linux và install OS trong cả 2 môi trường.</p>
+<ol>
+<li>
+<p>Partitioning eMMC</p>
+<p>1.1. Boot mạch bằng SD card.</p>
+<p>1.2. Thực hiện partition:</p>
+<pre><code>$ for dev in /dev/mmcblk0p*; do umount $dev; done
+$ fdisk /dev/mmcblk0 # Lưu ý: có 2 phiên bản fdisk có cách sử dụng tương đối khác nhau
+</code></pre>
+<p>Ví dụ:</p>
+<pre><code>Welcome to fdisk (util-linux 2.32.1).
+Changes will remain in memory only, until you decide to write them.
+Be careful before using the write command.
+</code></pre>
+<p><strong>Command (m for help):</strong> m</p>
+<pre><code>Help:
+
+  GPT
+   M   enter protective/hybrid MBR
+
+  Generic
+   d   delete a partition
+   F   list free unpartitioned space
+   l   list known partition types
+   n   add a new partition
+   p   print the partition table
+   t   change a partition type
+   v   verify the partition table
+   i   print information about a partition
+
+  Misc
+   m   print this menu
+   x   extra functionality (experts only)
+
+  Script
+   I   load disk layout from sfdisk script file
+   O   dump disk layout to sfdisk script file
+
+  Save &amp; Exit
+   w   write table to disk and exit
+   q   quit without saving changes
+
+  Create a new label
+   g   create a new empty GPT partition table
+   G   create a new empty SGI (IRIX) partition table
+   o   create a new empty DOS partition table
+   s   create a new empty Sun partition table
+</code></pre>
+<p><strong>Command (m for help):</strong> p</p>
+<pre><code>Disk /dev/mmcblk0: 14.7 GiB, 15758000128 bytes, 30777344 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: 7A880C17-75F2-4CD1-AF51-E8B99D98B90E
+
+Device            Start      End  Sectors  Size Type
+/dev/mmcblk0p1    20480   282623   262144  128M Linux filesystem
+/dev/mmcblk0p2   282624 12582911 12300288  5.9G Linux filesystem
+/dev/mmcblk0p3 12582912 12845055   262144  128M Linux filesystem
+/dev/mmcblk0p4 12845056 16777215  3932160  1.9G Linux filesystem
+</code></pre>
+<p><strong>Command (m for help):</strong> d</p>
+<pre><code>Partition number (1-4, default 4):
+
+Partition 4 has been deleted.
+</code></pre>
+<p><strong>Command (m for help):</strong> d</p>
+<pre><code>Partition number (1-3, default 3):
+
+Partition 3 has been deleted.
+</code></pre>
+<p><strong>Command (m for help):</strong> d</p>
+<pre><code>Partition number (1,2, default 2):
+
+Partition 2 has been deleted.
+</code></pre>
+<p><strong>Command (m for help):</strong> d</p>
+<pre><code>Selected partition 1
+Partition 1 has been deleted.
+</code></pre>
+<p><strong>Command (m for help):</strong> p</p>
+<pre><code>Disk /dev/mmcblk0: 14.7 GiB, 15758000128 bytes, 30777344 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: 7A880C17-75F2-4CD1-AF51-E8B99D98B90E
+</code></pre>
+<p><strong>Command (m for help):</strong> n</p>
+<pre><code>Partition number (1-128, default 1): 1
+First sector (34-30777310, default 2048): 20480
+Last sector, +sectors or +size{K,M,G,T,P} (20480-30777310, default 30777310): +128M
+
+Created a new partition 1 of type 'Linux filesystem' and of size 128 MiB.
+Partition #1 contains a vfat signature.
+
+Do you want to remove the signature? [Y]es/[N]o: Y
+
+The signature will be removed by a write command.
+</code></pre>
+<p><strong>Command (m for help):</strong> n</p>
+<pre><code>Partition number (2-128, default 2): 
+First sector (34-30777310, default 282624): 
+Last sector, +sectors or +size{K,M,G,T,P} (282624-30777310, default 30777310): +6006M
+
+Created a new partition 2 of type 'Linux filesystem' and of size 5.9 GiB.
+Partition #2 contains a ext4 signature.
+
+Do you want to remove the signature? [Y]es/[N]o: Y
+
+The signature will be removed by a write command.
+</code></pre>
+<p><strong>Command (m for help):</strong> n</p>
+<pre><code>Partition number (3-128, default 3): 
+First sector (34-30777310, default 12582912): 
+Last sector, +sectors or +size{K,M,G,T,P} (12582912-30777310, default 30777310): +128M
+
+Created a new partition 3 of type 'Linux filesystem' and of size 128 MiB.
+Partition #3 contains a vfat signature.
+
+Do you want to remove the signature? [Y]es/[N]o: Y
+
+The signature will be removed by a write command.
+</code></pre>
+<p><strong>Command (m for help):</strong> n</p>
+<pre><code>Partition number (4-128, default 4): 
+First sector (34-30777310, default 12845056): 
+Last sector, +sectors or +size{K,M,G,T,P} (12845056-30777310, default 30777310):
+
+Created a new partition 4 of type 'Linux filesystem' and of size 8.6 GiB.
+Partition #4 contains a ext4 signature.
+
+Do you want to remove the signature? [Y]es/[N]o: Y
+
+The signature will be removed by a write command.
+</code></pre>
+<p><strong>Command (m for help):</strong> w</p>
+<pre><code>The partition table has been altered.
+Syncing disks.
+</code></pre>
+</li>
+<li>
+<p>Install OS to eMMC </p>
+<p>2.1. Clean boot environments lưu trong eMMC</p>
+<pre><code>U-Boot &gt; env default -f -a
+U-Boot &gt; save
+U-Boot &gt; reset
+</code></pre>
+<p>2.2. Program U-Boot</p>
+<p>File nằm ở <em>tmp/deploy/images/imx8mqevk/imx-boot-imx8mqevk-sd.bin-flash_evk</em> khi build bằng Yocto hoặc trong <em>package/flash.bin</em> khi build standalone. Copy và đổi tên thành <em>/tftpboot/flash.bin</em>.</p>
+<p>Trên linux:</p>
+<pre><code>$ echo 0 &gt; /sys/block/mmcblk0boot0/force_ro
+$ dd if=u-flash.bin of=/dev/mmcblk0boot0 bs=1k seek=33 conv=fsync
+</code></pre>
+<p>Trong U-Boot. Xác định size in block của U-Boot: lấy size (byte) của flash.bin / 512. Đổi kết quả ra hex rồi + 1. Ví dụ được 0xb0d.</p>
+<pre><code>U-Boot &gt; setenv uboot_size_blk 0xb0d
+U-Boot &gt; run installuboot
+</code></pre>
+<p>2.3. Program kernel, device-tree</p>
+<p>Kernel nằm ở <em>tmp/deploy/images/imx8mqevk/Image</em> khi build Yocto hoặc <em>arch/arm64/boot/Image</em> khi build standalone. Copy vào <em>/tftpboot</em>.</p>
+<p>Device-tree nằm ở: <em>tmp/deploy/images/imx8mqevk/fsl-imx8mq-evk.dtb</em> khi build Yocto hoặc <em>arch/arm64/boot/dts/freescale/fsl-imx8mq-evk.dtb</em> khi biuld standalone. Copy và đổi tên thành <em>/tftpboot/devicetree.dtb</em>.</p>
+<p>Trên linux:</p>
+<pre><code>$ mkdir /mnt/p1
+$ mount -t vfat /dev/mmcblk0p1 /mnt/p1
+$ cp /run/{fsl-imx8mq-evk.dtb,Image} /mnt/p1
+$ sync
+$ umount /mnt/p1
+</code></pre>
+<p>Trong U-Boot: </p>
+<pre><code>U-Boot &gt; run installkernel
+U-Boot &gt; run installfdt
+</code></pre>
+<p>2.4. Program rootfs</p>
+<p>File nằm ở <em>tmp/deploy/images/imx8mqevk/core-image-minimal-imx8mqevk.ext4</em>. Copy và đổi tên thành <em>/tftpboot/rootfs.ext4</em></p>
+<p>Trên Linux: </p>
+<pre><code>$ mkdir /mnt/p2
+$ mount -t ext4 /dev/mmcblk0p2 /mnt/p2
+$ cp rootfs.ext4 /mnt/p2
+$ sync
+$ umount /mnt/p2
+</code></pre>
+<p>Trong U-Boot: xác định size in block của rootfs.ext4. Ví dụ 0x20000</p>
+<pre><code>U-Boot &gt; setenv root_size_blk 0x20000
+U-Boot &gt; run installroot
+</code></pre>
+<p>2.5. Thiết lập bootargs</p>
+<p>Với các loại display khác nhau, cần bootargs khác nhau. Xem i.MX Linux User Guide để biết chi tiết.</p>
+<p>Trong custom U-Boot đã có sẵn lệnh boot nên sau khi cập nhật OS, mạch đã có thể boot được.</p>
+<p>2.8. Install recovery OS</p>
+<p>Tương tự như trên.</p>
+</li>
+</ol>
+<h2 id="42-using-sd-card">4.2. Using SD card</h2>
+<p>Với i.MX 8M Quad EVK, boot từ SD card đặt ở slot SD2</p>
+<p>Table 9. Switch setup for booting from TF on i.MX 8M Quad EVK</p>
+<table>
+<thead>
+<tr>
+<th>Switch</th>
+<th>D1</th>
+<th>D2</th>
+<th>D3</th>
+<th>D4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SW801</td>
+<td>ON</td>
+<td>ON</td>
+<td>OFF</td>
+<td>OFF</td>
+</tr>
+<tr>
+<td>SW802</td>
+<td>ON</td>
+<td>OFF</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>SD card image cung cấp đủ để boot với U-Boot và kernel. Để flash SD card image, kết nối SD card với máy tính và chạy các lệnh sau:</p>
+<pre><code>$ bunzip2 -dk -f &lt;image_name&gt;.sdcard.bz2 
+$ sudo dd if=&lt;image name&gt;.sdcard of=/dev/&lt;sdcard&gt; bs=1M conv=fsync
+</code></pre>
+<p>Xem thêm tại phần  "Preparing an SD/MMC Card to Boot" trong the i.MX Linux® User's Guide (IMXLUG).
+Ví dụ:</p>
+<pre><code>$ bunzip2 -dk -f core-image-minimal-imx8mqevk.sdcard.bz2
+$ sudo dd if=core-image-minimal-imx8mqevk.sdcard of=/dev/mmcblk0 bs=1M conv=fsync
+</code></pre>
+<p>Để cập nhật các thành phần OS (kernel, device-tree, rootfs) thì làm như sau:</p>
+<p>Khi thực hiện các lệnh trên, SD card đã có các partition là mmcblk0p1 (cho kernel, DTB) và mmcblk0p2 (cho rootfs). Việc cần làm làm mount các parition này và copy image vào. Ví dụ cụ thể:</p>
+<pre><code>* Với kernel, DTB:
+
+$ mkdir /tmp/p1
+$ sudo mkfs.vfat /dev/mmcblk0p1 (Thường phải umount partition này trước)
+$ sudo mount -t vfat /dev/mmcblk0p1 /tmp/p1/
+$ sudo cp &lt;build_dir&gt;/tmp/deploy/images/imx8mqevk/{Image,fsl-imx8mq-evk.dtb} /tmp/p1/
+$ sudo umount /tmp/p1
+
+* Với rootfs:
+
+$ mkdir /tmp/p2
+$ sudo mkfs.ext4 /dev/mmcblk0p2
+$ sudo mount -t ext4 /dev/mmcblk0p2 /tmp/p2
+$ tar -xjvf &lt;build_dir&gt;/tmp/deploy/images/imx8mqevk/core-image-minimal-imx8mqevk.tar.bz2 -C /tmp/p2/
+$ sudo umount /tmp/p2
+$ sync
+</code></pre>
+<h2 id="43-using-usb">4.3. Using USB</h2>
+<p>Chỉ hỗ trợ boot từ phần kernel, không hỗ trợ U-Boot.
+Để boot từ USB, cần làm như sau:</p>
+<ul>
+<li>Partition USB thành 2 phân vùng: fat32 chứa kernel, device-tree; ext4 chứa rootfs.</li>
+<li>Copy kernel (Image), device-tree (devicetree.dtb) vào phân vùng fat32.</li>
+<li>Copy rootfs (rootfs.ext4) vào phân vùng ext4.</li>
+<li>Trong U-Boot:<pre><code>U-Boot &gt; usb start
+U-Boot &gt; setenv usbroot /dev/sda2 rootwait rw
+U-Boot &gt; setenv bootargs ${jh_clk} console=${console} root=${usbroot}
+U-Boot &gt; fatload usb 0:1 $loadaddr Image
+U-Boot &gt; fatload usb 0:1 $fdt_addr device-tree.dtb
+U-Boot &gt; booti $loadaddr - $fdt_addr
+</code></pre>
+</li>
+</ul>
+<h1 id="5-manufacturing-tool-mfgtool">5. Manufacturing Tool, MFGTool</h1>
+<p>MFGTool cung cấp khả năng boot thông qua USB Download Protocol. Các recipes để build manufacturing tool image là <em>linux-imx-mfgtool</em> và <em>u-boot-mfgtool</em>.</p>
+<p>Để buld manufacturing tool, chạy lệnh:</p>
+<pre><code>$ bitbake fsl-image-mfgtool-initramfs
+</code></pre>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2018 Vu Tang.
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../../assets/javascripts/application.b41f3d20.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../../.."}})</script>
+      
+    
+    
+      
+    
+  </body>
+</html>

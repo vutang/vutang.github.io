@@ -1,0 +1,1196 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+        <link rel="canonical" href="https://www.vutang.github.io/projects/imx8/ip-docs/Giai-phap-secured-boot-ipphone/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.2.0">
+    
+    
+      
+        <title>Secured boot cho IMX - Vu Tang's Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/application.572ca0f0.css">
+      
+      
+    
+    
+      <script src="../../../../assets/javascripts/modernizr.8c900955.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../../assets/fonts/material-icons.css">
+    
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#secured-boot-cho-imx" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://www.vutang.github.io/" title="Vu Tang's Docs" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Vu Tang's Docs
+              </span>
+              <span class="md-header-nav__topic">
+                Secured boot cho IMX
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://www.vutang.github.io/" title="Vu Tang's Docs" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Vu Tang's Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../.." title="Preface" class="md-nav__link">
+      Preface
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      General Technote
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        General Technote
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../technote/mkdocs/mkdocs-notes/" title="Mkdocs Tool" class="md-nav__link">
+      Mkdocs Tool
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../technote/markdown/markdown/" title="Markdown Language" class="md-nav__link">
+      Markdown Language
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../technote/shellscript/shellscript/" title="Shell Script" class="md-nav__link">
+      Shell Script
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../technote/python/python/" title="Python" class="md-nav__link">
+      Python
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Book & Materials
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Book & Materials
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../books/c_books/" title="C Programing" class="md-nav__link">
+      C Programing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../books/linux/" title="Linux Programing" class="md-nav__link">
+      Linux Programing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../books/device_driver/" title="Linux Device Driver" class="md-nav__link">
+      Linux Device Driver
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../books/linux_kernel/" title="Linux Kernel" class="md-nav__link">
+      Linux Kernel
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../books/es_linux/" title="Linux Embedded" class="md-nav__link">
+      Linux Embedded
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../books/dsa/dsa_toc/" title="Data Structure & Algorithms" class="md-nav__link">
+      Data Structure & Algorithms
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../books/others/" title="Others" class="md-nav__link">
+      Others
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Programming
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Programming
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../programming/C/cprogramming/" title="C" class="md-nav__link">
+      C
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../programming/dsa/dsa/" title="DSA" class="md-nav__link">
+      DSA
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../programming/sql/mysql/" title="SQL" class="md-nav__link">
+      SQL
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../programming/lnx/lpi/" title="Linux Programming Interfaces" class="md-nav__link">
+      Linux Programming Interfaces
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../programming/dsg_patterns/" title="Design Patterns" class="md-nav__link">
+      Design Patterns
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../programming/multi-threaded-programming/" title="Multi-threads" class="md-nav__link">
+      Multi-threads
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Linux General
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Linux General
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lnx/linux/" title="Unsorted" class="md-nav__link">
+      Unsorted
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Linux ES Development
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Linux ES Development
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lnx_es/es/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lnx_es/hw_platform/" title="HW Platforms" class="md-nav__link">
+      HW Platforms
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lnx_es/cmn_tool/" title="Common Tools" class="md-nav__link">
+      Common Tools
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lnx_es/ptlnx/" title="Xilinx Petalinux" class="md-nav__link">
+      Xilinx Petalinux
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lnx_es/yocto/" title="Yocto" class="md-nav__link">
+      Yocto
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lnx_es/tips/tips/" title="Tips" class="md-nav__link">
+      Tips
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Linux Device Driver
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        Linux Device Driver
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lnx_ldd/overview/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lnx_ldd/kernel_module/" title="Kernel Module" class="md-nav__link">
+      Kernel Module
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lnx_ldd/platform_dev/platform_device/" title="Platform Device" class="md-nav__link">
+      Platform Device
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lnx_ldd/spi_dev/spi_dev/" title="SPI Device" class="md-nav__link">
+      SPI Device
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lnx_ldd/spi_dev/spi_advance/" title="SPI Device Advance" class="md-nav__link">
+      SPI Device Advance
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lnx_ldd/gpio/gpio/" title="GPIO" class="md-nav__link">
+      GPIO
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lnx_ldd/uart/uart/" title="UART" class="md-nav__link">
+      UART
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lnx_ldd/jesd/jesd/" title="JESD" class="md-nav__link">
+      JESD
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Linux Kernel Development
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        Linux Kernel Development
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lnx_kernel/kernel_data_structure/" title="Kernel Data Structure" class="md-nav__link">
+      Kernel Data Structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../lnx_kernel/kernel_user_space/" title="Kernel Space, User Space Interfaces" class="md-nav__link">
+      Kernel Space, User Space Interfaces
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      FPGA
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        FPGA
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../fpga/timing_analysis/timing_analysis/" title="Static Timing Analysis" class="md-nav__link">
+      Static Timing Analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../fpga/x_ipcore/xipcore/" title="Xilinx IPCore" class="md-nav__link">
+      Xilinx IPCore
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      Projects
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        Projects
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../pcie/pcie/" title="PCIe" class="md-nav__link">
+      PCIe
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../zynq/zynq/" title="Zynq" class="md-nav__link">
+      Zynq
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../imx8/" title="IMX8" class="md-nav__link">
+      IMX8
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../pi3b/" title="Raspberrypi 3B" class="md-nav__link">
+      Raspberrypi 3B
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../../bookmarks/bookmarks/" title="Bookmarks" class="md-nav__link">
+      Bookmarks
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../../whatnext/" title="What's next" class="md-nav__link">
+      What's next
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../../about/about/" title="About me" class="md-nav__link">
+      About me
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-secured-boot-co-bao-mat-rieng-biet-cho-tung-board-san-xuat-ra-uoc-khong" title="1. Secured boot có bảo mật riêng biệt cho từng board sản xuất ra được không?" class="md-nav__link">
+    1. Secured boot có bảo mật riêng biệt cho từng board sản xuất ra được không?
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tra-loi-co" title="Trả lời: CÓ." class="md-nav__link">
+    Trả lời: CÓ.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-sau-khi-fused-key-vao-otp-thi-co-cach-nao-kiem-tra-la-burn-thanh-cong-khong" title="2. Sau khi fused key vào OTP thì có cách nào kiểm tra là burn thành công không?" class="md-nav__link">
+    2. Sau khi fused key vào OTP thì có cách nào kiểm tra là burn thành công không?
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tra-loi-co_1" title="Trả lời: CÓ." class="md-nav__link">
+    Trả lời: CÓ.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-sau-khi-enabled-secured-boot-roi-thi-co-cac-nao-e-can-thiep-vao-qua-trinh-boot-chain-e-cap-nhat-lai-uboot-khong-e-phong-truong-hop-enabled-secured-boot-nhung-uboot-tren-mach-chua-uoc-signed" title="3. Sau khi enabled Secured boot rồi thì có các nào để can thiệp vào quá trình boot chain để cập nhật lại Uboot không? Đề phòng trường hợp enabled Secured boot nhưng Uboot trên mạch chưa được signed" class="md-nav__link">
+    3. Sau khi enabled Secured boot rồi thì có các nào để can thiệp vào quá trình boot chain để cập nhật lại Uboot không? Đề phòng trường hợp enabled Secured boot nhưng Uboot trên mạch chưa được signed
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tra-loi-khong" title="Trả lời: Không." class="md-nav__link">
+    Trả lời: Không.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-san-xuat-1000-bo-chua-co-secured-boot-thi-cap-nhat-thanh-co-secured-boot-nhu-the-nao" title="4. Sản xuất 1000 bộ chưa có Secured boot thì cập nhật thành có Secured boot như thế nào?" class="md-nav__link">
+    4. Sản xuất 1000 bộ chưa có Secured boot thì cập nhật thành có Secured boot như thế nào?
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#e-xuat-1" title="Đề xuất 1:" class="md-nav__link">
+    Đề xuất 1:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e-xuat-2" title="Đề xuất 2:" class="md-nav__link">
+    Đề xuất 2:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-secured-boot-anh-huong-en-qua-trinh-booting-kernel-rootfs-nhu-the-nao" title="5. Secured boot ảnh hưởng đến quá trình booting Kernel, Rootfs như thế nào?" class="md-nav__link">
+    5. Secured boot ảnh hưởng đến quá trình booting Kernel, Rootfs như thế nào?
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tra-loi-khong-va-co-tuy-theo-nhu-cau" title="Trả lời: Không và Có tùy theo nhu cầu" class="md-nav__link">
+    Trả lời: Không và Có tùy theo nhu cầu
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-co-can-cong-cu-ac-biet-gi-e-fused-keys-khong" title="6. Có cần công cụ đặc biệt gì để Fused Keys không?" class="md-nav__link">
+    6. Có cần công cụ đặc biệt gì để Fused Keys không?
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tra-loi-khong_1" title="Trả lời: Không" class="md-nav__link">
+    Trả lời: Không
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e-xuat-quy-trinh-san-xuat" title="Đề xuất quy trình sản xuất" class="md-nav__link">
+    Đề xuất quy trình sản xuất
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-quy-trinh-thiet-lap-secured-boot-voi-binary-signed-uboot-cho-mach-can-nhung-buoc-gi" title="7. Quy trình thiết lập Secured Boot với binary Signed Uboot cho mạch cần những bước gì ?" class="md-nav__link">
+    7. Quy trình thiết lập Secured Boot với binary Signed Uboot cho mạch cần những bước gì ?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-quy-trinh-thiet-lap-secured-boot-voi-signed-encrypted-uboot-can-nhung-buoc-gi" title="8. Quy trình thiết lập Secured Boot với Signed &amp; Encrypted Uboot cần những bước gì ?" class="md-nav__link">
+    8. Quy trình thiết lập Secured Boot với Signed &amp; Encrypted Uboot cần những bước gì ?
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="secured-boot-cho-imx">Secured boot cho IMX</h1>
+<p>Câu hỏi đặt ra</p>
+<h2 id="1-secured-boot-co-bao-mat-rieng-biet-cho-tung-board-san-xuat-ra-uoc-khong">1. Secured boot có bảo mật riêng biệt cho từng board sản xuất ra được không?</h2>
+<h3 id="tra-loi-co">Trả lời: CÓ.</h3>
+<p>Uboot phải được Signed và Encrypt</p>
+<p>Để Encrypt Uboot cần có một file được generated từ mạch sử dụng Unique ID và Key Fuse đã được nạp</p>
+<p>Uboot chỉ Signed mà không Encrypt thì có thể chạy trên nhiều mạch khác nhau</p>
+<h2 id="2-sau-khi-fused-key-vao-otp-thi-co-cach-nao-kiem-tra-la-burn-thanh-cong-khong">2. Sau khi fused key vào OTP thì có cách nào kiểm tra là burn thành công không?</h2>
+<h3 id="tra-loi-co_1">Trả lời: CÓ.</h3>
+<p>Khi fused key, mạch đang ở chế độ Open sẽ khởi động cùng với Scured Uboot. Sau khi boot lại sẽ mạch sẽ thông báo trạng thái của Secured Uboot, dựa vào các thông tin log sẽ biết được mạch đã được fused keys thành công hay không.</p>
+<h2 id="3-sau-khi-enabled-secured-boot-roi-thi-co-cac-nao-e-can-thiep-vao-qua-trinh-boot-chain-e-cap-nhat-lai-uboot-khong-e-phong-truong-hop-enabled-secured-boot-nhung-uboot-tren-mach-chua-uoc-signed">3. Sau khi enabled Secured boot rồi thì có các nào để can thiệp vào quá trình boot chain để cập nhật lại Uboot không? Đề phòng trường hợp enabled Secured boot nhưng Uboot trên mạch chưa được signed</h2>
+<h3 id="tra-loi-khong">Trả lời: Không.</h3>
+<p>Đang tiếp tục tìm hiểu thêm.</p>
+<h2 id="4-san-xuat-1000-bo-chua-co-secured-boot-thi-cap-nhat-thanh-co-secured-boot-nhu-the-nao">4. Sản xuất 1000 bộ chưa có Secured boot thì cập nhật thành có Secured boot như thế nào?</h2>
+<h3 id="e-xuat-1">Đề xuất 1:</h3>
+<p>B1. Sản xuất 1000 bộ với keys được fused trong quá trình sản xuất, Uboot ở chế độ Signed nhưng Kernel/Rootfs không cần Signed</p>
+<p>B2. Tùy theo yêu cầu sẽ update lại Kernel/Rootfs với Signed Keys</p>
+<h3 id="e-xuat-2">Đề xuất 2:</h3>
+<p>B1. Sản xuất 1000 bộ bình thường</p>
+<p>B2. Tùy theo yêu cầu sẽ thực hiện Fused và cập nhật Signed Uboot/Kernel/Rootfs trong một lần duy nhất.</p>
+<h2 id="5-secured-boot-anh-huong-en-qua-trinh-booting-kernel-rootfs-nhu-the-nao">5. Secured boot ảnh hưởng đến quá trình booting Kernel, Rootfs như thế nào?</h2>
+<h3 id="tra-loi-khong-va-co-tuy-theo-nhu-cau">Trả lời: Không và Có tùy theo nhu cầu</h3>
+<p>Secured Boot có thể verify kernel/rootfs có được Signed với đúng Keys hay không</p>
+<p>Hoặc có thể load Kernel/Rootfs không được Signed như một Uboot thường.</p>
+<h2 id="6-co-can-cong-cu-ac-biet-gi-e-fused-keys-khong">6. Có cần công cụ đặc biệt gì để Fused Keys không?</h2>
+<h3 id="tra-loi-khong_1">Trả lời: Không</h3>
+<p>Có thể Fused Keys bằng Uboot thường</p>
+<h3 id="e-xuat-quy-trinh-san-xuat">Đề xuất quy trình sản xuất</h3>
+<p>B1. Nạp Signed Uboot/Kernel/Rootfs trước vào eMMC</p>
+<p>B2. Boot uboot thường từ SDcard và Fused Keys từ đây</p>
+<p>B3. Boot Signed Uboot từ eMMC và kiểm tra trạng thái secured boot</p>
+<p>B4. Bật cờ chuyển mạch sang chế độ Secured Boot</p>
+<h2 id="7-quy-trinh-thiet-lap-secured-boot-voi-binary-signed-uboot-cho-mach-can-nhung-buoc-gi">7. Quy trình thiết lập Secured Boot với binary Signed Uboot cho mạch cần những bước gì ?</h2>
+<p>B1. Tạo Keys</p>
+<p>B2. Tạo Signed Uboot với Key và Uboot thường</p>
+<p>B3. Nạp Keys vào mạch</p>
+<p>B4. Nạp Signed Uboot</p>
+<p>B5. Khởi động lại mạch (Mạch đang ở chế độ Secured Boot Open)</p>
+<p>B6. Kiểm tra log để biết Secured Boot khởi động thành công (Mạch đang ở chế độ Secured Boot Open)</p>
+<p>B7. Thực hiện enabled chế độ Secured Boot (Mạch sẽ ở chế độ Secured Boot Close ở lần boot tiếp theo)</p>
+<h2 id="8-quy-trinh-thiet-lap-secured-boot-voi-signed-encrypted-uboot-can-nhung-buoc-gi">8. Quy trình thiết lập Secured Boot với Signed &amp; Encrypted Uboot cần những bước gì ?</h2>
+<p>B1. Tạo Keys</p>
+<p>B2. Tạo Signed Uboot với Key và Uboot thường</p>
+<p>B2. Nạp Keys vào mạch</p>
+<p>B3. Tạo binary unique với Key đã được fused vào mạch và Unique ID trên mạch (Tạo binary này trên mạch)</p>
+<p>B4. Tạo Signed &amp; Encrypted Uboot với Key, binary unique và Uboot thường (Tạo binary này trên PC) </p>
+<p>B5. Nạp Signed &amp; Encrypted Uboot</p>
+<p>B6. Khởi động lại mạch (Mạch đang ở chế độ Secured Boot Open)</p>
+<p>B6. Kiểm tra log để biết Secured Boot khởi động thành công (Mạch đang ở chế độ Secured Boot Open)</p>
+<p>B7. Thực hiện enabled chế độ Secured Boot (Mạch sẽ ở chế độ Secured Boot Close ở lần boot tiếp theo) </p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2018 Vu Tang.
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../../assets/javascripts/application.b41f3d20.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../../.."}})</script>
+      
+    
+    
+      
+    
+  </body>
+</html>
