@@ -244,6 +244,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../technote/virutal_machine/virtual_box.md" title="Virtual Machine" class="md-nav__link">
+      Virtual Machine
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -484,6 +496,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lnx/cmds/" title="Commands" class="md-nav__link">
+      Commands
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -493,10 +517,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
     
     <label class="md-nav__link" for="nav-6">
       Linux ES Development
@@ -541,6 +567,70 @@
     <a href="../../cmn_tool/" title="Common Tools" class="md-nav__link">
       Common Tools
     </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Git
+      </label>
+    
+    <a href="./" title="Git" class="md-nav__link md-nav__link--active">
+      Git
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#merge-two-git-repositories" title="Merge two GIt repositories" class="md-nav__link">
+    Merge two GIt repositories
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#link-local-repo-to-remote" title="Link local repo to remote" class="md-nav__link">
+    Link local repo to remote
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#branches" title="Branches" class="md-nav__link">
+    Branches
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -926,6 +1016,36 @@
     
   
   
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#merge-two-git-repositories" title="Merge two GIt repositories" class="md-nav__link">
+    Merge two GIt repositories
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#link-local-repo-to-remote" title="Link local repo to remote" class="md-nav__link">
+    Link local repo to remote
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#branches" title="Branches" class="md-nav__link">
+    Branches
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -938,8 +1058,47 @@
                 
                 
                 <h1 id="git">Git</h1>
-<p><strong>Merge two GIt repositories</strong></p>
+<h2 id="merge-two-git-repositories">Merge two GIt repositories</h2>
 <p><a href="https://stackoverflow.com/questions/1425892/how-do-you-merge-two-git-repositories">https://stackoverflow.com/questions/1425892/how-do-you-merge-two-git-repositories</a></p>
+<h2 id="link-local-repo-to-remote">Link local repo to remote</h2>
+<p><code>git remote add origin &lt;link_to_remote_repo&gt;</code></p>
+<p>For example,</p>
+<p><code>git remote add origin git@github.com:vutang/test_git_repo.git</code></p>
+<p>All remote repo can be listed by using:</p>
+<p><code>git remote -v</code></p>
+<p>The results look like:</p>
+<pre><code>origin  git@github.com:vutang/test_git_repo.git (fetch)
+origin  git@github.com:vutang/test_git_repo.git (push)
+</code></pre>
+
+<h2 id="branches">Branches</h2>
+<p>When a first commit is commited by <code>git commit -m "mesage"</code>. A master branch is created.</p>
+<p><code>git push origin master</code> will push your local branch to remote.</p>
+<ul>
+<li>Create a new local branch: <code>git branch &lt;branch-name&gt;</code>. </li>
+<li>Switch to new branch: <code>git checkout &lt;branch-name&gt;</code></li>
+<li>Push to remote repo: <code>git push &lt;remote-name&gt; &lt;branch-name&gt;</code></li>
+<li>Pull a remote branch to local: <code>git checkout &lt;branch-name&gt;</code></li>
+</ul>
+<p>Before,</p>
+<pre><code>* master
+  remotes/origin/HEAD -&gt; origin/master
+  remotes/origin/branch1
+  remotes/origin/master
+</code></pre>
+<p>After, </p>
+<pre><code>* branch1
+  master
+  remotes/origin/HEAD -&gt; origin/master
+  remotes/origin/branch1
+  remotes/origin/master
+</code></pre>
+<ul>
+<li>
+<p>merge branches </p>
+<p><code>git merge &lt;source&gt; &lt;dest&gt;</code></p>
+</li>
+</ul>
                 
                   
                 
@@ -956,6 +1115,41 @@
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../../cmn_tool/" title="Common Tools" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Common Tools
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../ptlnx/" title="Xilinx Petalinux" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Xilinx Petalinux
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
