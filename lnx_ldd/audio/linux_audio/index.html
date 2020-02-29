@@ -798,16 +798,30 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#dapm" title="DAPM" class="md-nav__link">
-    DAPM
+  <a href="#dapm-dynamic-audio-power-management" title="DAPM - Dynamic Audio Power Management" class="md-nav__link">
+    DAPM - Dynamic Audio Power Management
   </a>
   
     <nav class="md-nav">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#dapm-widgets" title="DAPM Widgets" class="md-nav__link">
-    DAPM Widgets
+  <a href="#what-is-dapm" title="What is DAPM?" class="md-nav__link">
+    What is DAPM?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-dapm-works" title="How DAPM works?" class="md-nav__link">
+    How DAPM works?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#case-study-wm8960" title="Case Study - WM8960" class="md-nav__link">
+    Case Study - WM8960
   </a>
   
 </li>
@@ -848,6 +862,13 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" title="References" class="md-nav__link">
+    References
+  </a>
   
 </li>
       
@@ -1119,16 +1140,30 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#dapm" title="DAPM" class="md-nav__link">
-    DAPM
+  <a href="#dapm-dynamic-audio-power-management" title="DAPM - Dynamic Audio Power Management" class="md-nav__link">
+    DAPM - Dynamic Audio Power Management
   </a>
   
     <nav class="md-nav">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#dapm-widgets" title="DAPM Widgets" class="md-nav__link">
-    DAPM Widgets
+  <a href="#what-is-dapm" title="What is DAPM?" class="md-nav__link">
+    What is DAPM?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-dapm-works" title="How DAPM works?" class="md-nav__link">
+    How DAPM works?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#case-study-wm8960" title="Case Study - WM8960" class="md-nav__link">
+    Case Study - WM8960
   </a>
   
 </li>
@@ -1169,6 +1204,13 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" title="References" class="md-nav__link">
+    References
+  </a>
   
 </li>
       
@@ -1215,10 +1257,31 @@ definition and codec IO functions.</p>
 </li>
 </ul>
 <p><code>imx-wm8960.c</code> is <em>ASoC Platform Driver</em>.</p>
-<h2 id="dapm">DAPM</h2>
-<p>DAPM (Dynamic Audio Power Management) makes power switching decisions based upon any audio stream (capture/playback) activity and audio mixer settings within the device.</p>
-<p>All audio components that effect power are called widgets hereafter.</p>
-<h3 id="dapm-widgets">DAPM Widgets</h3>
+<h2 id="dapm-dynamic-audio-power-management">DAPM - Dynamic Audio Power Management</h2>
+<p>Modern sound cards consist of many independent discrete components and each component has functional units that can be powered independently.</p>
+<p><img alt="view-of-sound-card" src="../imgs/dapm-view-of-modern-sound-card.png" /></p>
+<p><em>Figure. Anatomy of a modern sound card (Lars-Peter Clausen – Analog Devices)</em></p>
+<h3 id="what-is-dapm">What is DAPM?</h3>
+<p>DAPM is model data flow and power dependencies in a directed graph. Each <strong>node</strong> in graph represents a functional unit (called <strong>widget</strong>). <strong>Route</strong> or <strong>Path</strong> represent connections between functional units.</p>
+<p><img alt="dapm-simple-path" src="../imgs/dapm-simple-graph.png" /></p>
+<p>Eache widget (node) has a type and this type defines how the widget behaves in the graph. E.g. Speaker, Microphone, Amplifier, DAC, ADC, internal supply, external supply, headphone output, line-in input, line-out output, audio interface, audio interface link, mixer, mux, input pin, output pin ...</p>
+<h3 id="how-dapm-works">How DAPM works?</h3>
+<p>DAPM operation has two phases: </p>
+<ul>
+<li>Phase 1: Determine target power state</li>
+<li>Phase 2: Power sequencing</li>
+</ul>
+<p>In phase 1, finding out the power state DAPM differentiates between three different categories of widgets: Enpoint widgets, Pass-through widgets, Supply widgets.</p>
+<p><img alt="enpoint-widgets" src="../imgs/dapm-example-endpoint-widget.png" /></p>
+<p>Power state of eache widget in graph is determined.</p>
+<p><img alt="power-state" src="../imgs/dapm-power-state-determination.png" /></p>
+<p>After Phase 1, target power state is determined. Widgets in graph is powered.</p>
+<ul>
+<li>Power-down all newly disabled widgets</li>
+<li>Perform routing changes (if any)</li>
+<li>Power-up all newly enabled widgets</li>
+</ul>
+<h3 id="case-study-wm8960">Case Study - WM8960</h3>
 <p>Macro for defining widgets can be found at <code>/include/sound/soc-dapm.h</code>.</p>
 <p>DAPM widgets in <code>wm8960.c</code> fall into a number of types:</p>
 <ul>
@@ -1278,6 +1341,8 @@ SOC_DAPM_SINGLE("Right Switch", WM8960_MONOMIX2, 7, 1, 0),</code></p>
 <p><img alt="imx-sai" src="../imgs/sai-imx.png" /></p>
 <h3 id="dai-digital-audio-interfaces">DAI - Digital Audio Interfaces</h3>
 <p>ASoC currently supports the three main <strong>Digital Audio Interfaces (DAI)</strong> found on SoC controllers and portable audio CODECs today, namely AC97, I2S and PCM (PCM means a kind of bus, not a type of digital audio data).</p>
+<h2 id="references">References</h2>
+<p>[1] DAPM - Analog Device - Lars-Petter Clausen.</p>
                 
                   
                 
