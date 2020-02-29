@@ -771,8 +771,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#alsa-advanced-linux-sound-architecture" title="ALSA - Advanced Linux Sound Architecture" class="md-nav__link">
-    ALSA - Advanced Linux Sound Architecture
+  <a href="#alsa" title="ALSA" class="md-nav__link">
+    ALSA
   </a>
   
     <nav class="md-nav">
@@ -786,8 +786,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#asoc-alsa-system-on-chip" title="ASoC - ALSA System on Chip" class="md-nav__link">
-    ASoC - ALSA System on Chip
+  <a href="#asoc" title="ASoC" class="md-nav__link">
+    ASoC
   </a>
   
 </li>
@@ -798,8 +798,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#dapm-dynamic-audio-power-management" title="DAPM - Dynamic Audio Power Management" class="md-nav__link">
-    DAPM - Dynamic Audio Power Management
+  <a href="#dapm" title="DAPM" class="md-nav__link">
+    DAPM
   </a>
   
     <nav class="md-nav">
@@ -808,6 +808,40 @@
           <li class="md-nav__item">
   <a href="#dapm-widgets" title="DAPM Widgets" class="md-nav__link">
     DAPM Widgets
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#physical-interface-definitions" title="Physical interface definitions" class="md-nav__link">
+    Physical interface definitions
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#i2s-inter-ic-sound" title="I2S - Inter IC Sound" class="md-nav__link">
+    I2S - Inter IC Sound
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sai-synchronous-audio-interface" title="SAI - Synchronous Audio Interface" class="md-nav__link">
+    SAI - Synchronous Audio Interface
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dai-digital-audio-interfaces" title="DAI - Digital Audio Interfaces" class="md-nav__link">
+    DAI - Digital Audio Interfaces
   </a>
   
 </li>
@@ -1058,8 +1092,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#alsa-advanced-linux-sound-architecture" title="ALSA - Advanced Linux Sound Architecture" class="md-nav__link">
-    ALSA - Advanced Linux Sound Architecture
+  <a href="#alsa" title="ALSA" class="md-nav__link">
+    ALSA
   </a>
   
     <nav class="md-nav">
@@ -1073,8 +1107,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#asoc-alsa-system-on-chip" title="ASoC - ALSA System on Chip" class="md-nav__link">
-    ASoC - ALSA System on Chip
+  <a href="#asoc" title="ASoC" class="md-nav__link">
+    ASoC
   </a>
   
 </li>
@@ -1085,8 +1119,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#dapm-dynamic-audio-power-management" title="DAPM - Dynamic Audio Power Management" class="md-nav__link">
-    DAPM - Dynamic Audio Power Management
+  <a href="#dapm" title="DAPM" class="md-nav__link">
+    DAPM
   </a>
   
     <nav class="md-nav">
@@ -1095,6 +1129,40 @@
           <li class="md-nav__item">
   <a href="#dapm-widgets" title="DAPM Widgets" class="md-nav__link">
     DAPM Widgets
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#physical-interface-definitions" title="Physical interface definitions" class="md-nav__link">
+    Physical interface definitions
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#i2s-inter-ic-sound" title="I2S - Inter IC Sound" class="md-nav__link">
+    I2S - Inter IC Sound
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sai-synchronous-audio-interface" title="SAI - Synchronous Audio Interface" class="md-nav__link">
+    SAI - Synchronous Audio Interface
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dai-digital-audio-interfaces" title="DAI - Digital Audio Interfaces" class="md-nav__link">
+    DAI - Digital Audio Interfaces
   </a>
   
 </li>
@@ -1122,27 +1190,21 @@
                 
                 
                 <h1 id="audio-in-linux">Audio in Linux</h1>
-<h2 id="alsa-advanced-linux-sound-architecture">ALSA - Advanced Linux Sound Architecture</h2>
-<p>Advanced Linux Sound Architecture (ALSA) is a software framework and part of the Linux kernel that provides an application programming interface (API) for sound card device drivers. </p>
+<h2 id="alsa">ALSA</h2>
+<p><a href="https://alsa-project.org/wiki/Main_Page">Advanced Linux Sound Architecture (ALSA)</a> is a software framework and part of the Linux kernel that provides an application programming interface (API) for sound card device drivers. </p>
+<p>The project to develop ALSA was led by Jaroslav Kysela, and it started in 1998 and was developed separately from the Linux kernel until it was introduced in the 2.5 development series in 2002. In the 2.6 version, ALSA replaced the previous system, <strong>Open Sound System (OSS)</strong>, by default (although a backwards-compatibility layer does exist).</p>
+<p><img alt="asla-lnx-blockdiagram" src="../imgs/alsa-linux-bd.png" /></p>
+<p><em>Figure. A block diagram for ALSA in Linux</em></p>
 <h3 id="alsa-concept">ALSA concept</h3>
-<p>This section provides an overview of basic concepts pertaining to ALSA.[7][8][9]</p>
-<p>Typically, ALSA supports up to eight <strong>cards</strong>, numbered 0 through 7; each card is a physical or logical kernel device capable of input and output. Furthermore, each card may also be addressed by its id, which is an explanatory string such as "Headset" or "ICH9".</p>
-<p>A card has <strong>devices</strong>, numbered starting at 0; a device may be of playback type, meaning it outputs sound from the computer, or some other type such as capture, control, timer, or sequencer[10]; device number 0 is used by default when no particular device is specified.</p>
-<p>A device may have <strong>subdevices</strong>, numbered starting at 0; a subdevice represents some relevant sound endpoint for the device, such as a speaker pair. If the subdevice is not specified, or if subdevice number −1 is specified, then any available subdevice is used.</p>
-<p>A card's interface is a description of an ALSA protocol for accessing the card; possible interfaces include: hw, plughw, default, and plug:dmix. The hw interface provides direct access to the kernel device, but no software mixing or stream adaptation support. The plughw and default enable sound output where the hw interface would produce an error.</p>
-<p>An application typically describes sound output by combining all of the aforementioned specifications together in a device string[citation needed], which has one of the following forms (which are case-sensitive):</p>
-<pre><code>interface:card,device,subdevice
-interface:CARD=1,DEV=3,SUBDEV=2.
-</code></pre>
-<p>An ALSA <strong>stream</strong> is a data flow representing sound; the most common stream format is PCM that must be produced in such a way as to match the characteristics or parameters of the hardware, including:</p>
-<pre><code>sampling rate: often 44.1 kHz on home stereos, or 48 kHz on home theaters, yet up to 88.2 kHz, 96 kHz, or even 192 kHz for hi-fi audio production or reproduction.
-sample width: measured in some number of bits per sample (such as 8, 16, 24, or 32 bits/sample)
-sample encoding: such as endianness
-number of channels: 1 for mono, 2 for stereo, or 6 for AC-3/IEC958
-</code></pre>
-<h3 id="asoc-alsa-system-on-chip">ASoC - ALSA System on Chip</h3>
-<p>The ASoC layer aims to provide better support for ALSA on embedded systems that use a system-on-chip (SoC) design.</p>
+<p><em>*TBD</em></p>
+<h3 id="asoc">ASoC</h3>
+<p>The ASoC (ALSA System on Chip) layer aims to provide better support for ALSA on embedded systems that use a system-on-chip (SoC) design.</p>
+<p>The codec class driver is platform independent and contains audio controls, audio interface capabilities, codec DAPM
+definition and codec IO functions.</p>
+<p>The platform class driver includes the audio DMA engine driver, digital audio interface (DAI) drivers (e.g. I2S, AC97, PCM) and any audio DSP drivers for that platform.</p>
+<p>The machine driver class acts as the glue that describes and binds the other component drivers together to form an ALSA "sound card device". It handles any machine specific controls and machine level audio events (e.g. turning on an amp at start of playback).</p>
 <p><a href="https://01.org/linuxgraphics/gfx-docs/drm/sound/soc/index.html">ALSA SoC Layer in Kernel Document</a>.</p>
+<p>For example with iMX8MQ and wm8960 Codec.</p>
 <p><code>wm8960.c</code> is <em>ASoC Codec Class driver</em>:</p>
 <ul>
 <li>
@@ -1153,35 +1215,24 @@ number of channels: 1 for mono, 2 for stereo, or 6 for AC-3/IEC958
 </li>
 </ul>
 <p><code>imx-wm8960.c</code> is <em>ASoC Platform Driver</em>.</p>
-<h2 id="dapm-dynamic-audio-power-management">DAPM - Dynamic Audio Power Management</h2>
-<ul>
-<li>
-<p>DAPM makes power switching decisions based upon any audio stream (capture/playback) activity and audio mixer settings within the device.</p>
-</li>
-<li>
+<h2 id="dapm">DAPM</h2>
+<p>DAPM (Dynamic Audio Power Management) makes power switching decisions based upon any audio stream (capture/playback) activity and audio mixer settings within the device.</p>
 <p>All audio components that effect power are called widgets hereafter.</p>
-</li>
-</ul>
 <h3 id="dapm-widgets">DAPM Widgets</h3>
 <p>Macro for defining widgets can be found at <code>/include/sound/soc-dapm.h</code>.</p>
 <p>DAPM widgets in <code>wm8960.c</code> fall into a number of types:</p>
 <ul>
 <li>
 <p>Stream Domain Widgets: ADCs (analog to digital converters), DACs (digital to analog converters). </p>
-<ul>
-<li>SND_SOC_DAPM_ADC("Left ADC", "Capture", WM8960_POWER1, 3, 0),</li>
-<li>SND_SOC_DAPM_ADC("Right ADC", "Capture", WM8960_POWER1, 2, 0),</li>
-<li>SND_SOC_DAPM_DAC("Left DAC", "Playback", WM8960_POWER2, 8, 0),</li>
-<li>SND_SOC_DAPM_DAC("Right DAC", "Playback", WM8960_POWER2, 7, 0),</li>
-</ul>
+<p><code>SND_SOC_DAPM_ADC("Left ADC", "Capture", WM8960_POWER1, 3, 0),
+SND_SOC_DAPM_ADC("Right ADC", "Capture", WM8960_POWER1, 2, 0),
+SND_SOC_DAPM_DAC("Left DAC", "Playback", WM8960_POWER2, 8, 0),
+SND_SOC_DAPM_DAC("Right DAC", "Playback", WM8960_POWER2, 7, 0),</code></p>
 </li>
 <li>
 <p>Path Domain Widgets: Path domain widgets have a ability to control or affect the audio signal or audio paths within the audio subsystem</p>
-<ul>
-<li>SOC_DAPM_SINGLE("Left Switch", WM8960_MONOMIX1, 7, 1, 0),</li>
-<li>SOC_DAPM_SINGLE("Right Switch", WM8960_MONOMIX2, 7, 1, 0),</li>
-<li>...</li>
-</ul>
+<p><code>SOC_DAPM_SINGLE("Left Switch", WM8960_MONOMIX1, 7, 1, 0),
+SOC_DAPM_SINGLE("Right Switch", WM8960_MONOMIX2, 7, 1, 0),</code></p>
 </li>
 </ul>
 <p>Machine Widgets appears in <code>imx-wm8960.c</code>. A machine widget is assigned to each machine audio component (non codec or DSP) that can be independently powered. e.g Microphone Bias, Jack Connectors. In iMX8-MQ, machine widget and codec widget interconnections are defined in device tree:</p>
@@ -1200,6 +1251,33 @@ number of channels: 1 for mono, 2 for stereo, or 6 for AC-3/IEC958
 </code></pre>
 
 <p>Headphone Jack, Ext Spk, Main MIC, Mic Jack are machine widgets.</p>
+<h2 id="physical-interface-definitions">Physical interface definitions</h2>
+<h3 id="i2s-inter-ic-sound">I2S - Inter IC Sound</h3>
+<p><strong>What is I2S? and What is I2S used for?</strong></p>
+<p>I2S - Inter IC Sound is an electrical serial bus interface standard used for connecting digital audio devices together. This standard was introduced in 1986 by <strong>Philips Semiconductor</strong> (now <strong>NXP Semiconductors</strong>) and was last revised on June 5, 1996.</p>
+<p><img alt="i2s-bus-in-system" src="../imgs/i2s-bus-in-a-system.png" /></p>
+<p><strong>What is I2S made from?</strong></p>
+<p><img alt="i2s-bus-spec" src="../imgs/i2s-bus-spec.png" /></p>
+<p><em>Figure. I2S Bus Timing from <a href="https://www.sparkfun.com/datasheets/BreakoutBoards/I2SBUS.pdf">I2S standard</a> by Philips Seminconductors</em></p>
+<p>The bus consists of at least three lines:</p>
+<ul>
+<li>Bit clock line: Officially "continuous serial clock (SCK)".[1] Typically written "bit clock (BCLK)".[2]</li>
+<li>Word clock line: Officially "word select (WS)".[1] Typically called "left-right clock (LRCLK)"[2] or "frame sync (FS)".<ul>
+<li>0 = Left channel</li>
+<li>1 = Right channel</li>
+</ul>
+</li>
+<li>At least one multiplexed data line<br />
+        Officially "serial data (SD)",[1] but can be called SDATA, SDIN, SDOUT, DACDAT, ADCDAT, etc.[2]</li>
+</ul>
+<p><strong>What kind of data is transfered in I2S?</strong></p>
+<p>Digital Audio Data e.g. <a href="https://en.wikipedia.org/wiki/Pulse-code_modulation">PCM</a></p>
+<h3 id="sai-synchronous-audio-interface">SAI - Synchronous Audio Interface</h3>
+<p><strong>Synchronous Audio Interface</strong> or <strong>Serial Audio Interface</strong>? It is quite hard to find definition for SAI in Internet. So, it will be defined by using an example from NPX IMX SoC.</p>
+<p>In IMX8M, NXP integrates an audio module called SAI/I2S. This module which is platform device (has its own address in CPU memory map) will receive audio data from external CODEC and transfer these data to CPU. It supports I2S bus standard.</p>
+<p><img alt="imx-sai" src="../imgs/sai-imx.png" /></p>
+<h3 id="dai-digital-audio-interfaces">DAI - Digital Audio Interfaces</h3>
+<p>ASoC currently supports the three main <strong>Digital Audio Interfaces (DAI)</strong> found on SoC controllers and portable audio CODECs today, namely AC97, I2S and PCM (PCM means a kind of bus, not a type of digital audio data).</p>
                 
                   
                 
