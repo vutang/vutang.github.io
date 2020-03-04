@@ -798,6 +798,26 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#alsa-application" title="ALSA Application" class="md-nav__link">
+    ALSA Application
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arecord-aplay" title="arecord &amp; aplay" class="md-nav__link">
+    arecord &amp; aplay
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#dapm-dynamic-audio-power-management" title="DAPM - Dynamic Audio Power Management" class="md-nav__link">
     DAPM - Dynamic Audio Power Management
   </a>
@@ -1140,6 +1160,26 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#alsa-application" title="ALSA Application" class="md-nav__link">
+    ALSA Application
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arecord-aplay" title="arecord &amp; aplay" class="md-nav__link">
+    arecord &amp; aplay
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#dapm-dynamic-audio-power-management" title="DAPM - Dynamic Audio Power Management" class="md-nav__link">
     DAPM - Dynamic Audio Power Management
   </a>
@@ -1257,6 +1297,39 @@ definition and codec IO functions.</p>
 </li>
 </ul>
 <p><code>imx-wm8960.c</code> is <em>ASoC Platform Driver</em>.</p>
+<h2 id="alsa-application">ALSA Application</h2>
+<h3 id="arecord-aplay">arecord &amp; aplay</h3>
+<blockquote>
+<p>arecord -t raw -f S16_LE -c 1 output.raw</p>
+</blockquote>
+<p><code>output.raw</code> can be played by using <code>aplay</code></p>
+<blockquote>
+<p>aplay -f S16_LE output.raw</p>
+</blockquote>
+<p>or extracted by a simple C program.</p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;sys/types.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;fcntl.h&gt;
+#include &lt;unistd.h&gt;
+
+int main()
+{
+    int16_t buf;
+    int fd = open(&quot;./input&quot;, O_RDWR);
+    if (fd &lt; 0) {
+        printf(&quot;open file fail\n&quot;);
+        return 1;
+    }
+    while (read(fd, &amp;buf, 2) &gt; 0)
+        printf(&quot;%d\n&quot;, buf);
+    close(fd);
+    return 0;
+}
+</code></pre>
+
+<p>Raw data </p>
+<p><img alt="raw-data" src="../imgs/raw-audio-extract.png" /></p>
 <h2 id="dapm-dynamic-audio-power-management">DAPM - Dynamic Audio Power Management</h2>
 <p>Modern sound cards consist of many independent discrete components and each component has functional units that can be powered independently.</p>
 <p><img alt="view-of-sound-card" src="../imgs/dapm-view-of-modern-sound-card.png" /></p>
