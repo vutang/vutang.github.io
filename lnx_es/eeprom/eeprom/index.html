@@ -11,7 +11,7 @@
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
       
-        <link rel="canonical" href="https://www.vutang.github.io/projects/pcie/pcie/">
+        <link rel="canonical" href="https://www.vutang.github.io/lnx_es/eeprom/eeprom/">
       
       
       
@@ -38,7 +38,7 @@
     
     
       
-        <title>PCIe - Vu Tang's Docs</title>
+        <title>EEPROM - Vu Tang's Docs</title>
       
     
     
@@ -74,6 +74,10 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
+      <a href="#electrically-erasable-and-programmable-read-only-memory" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -96,7 +100,7 @@
                 Vu Tang's Docs
               </span>
               <span class="md-header-nav__topic">
-                PCIe
+                EEPROM
               </span>
             
           
@@ -513,10 +517,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
     
     <label class="md-nav__link" for="nav-6">
       Linux ES Development
@@ -534,7 +540,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../lnx_es/es/" title="Overview" class="md-nav__link">
+    <a href="../../es/" title="Overview" class="md-nav__link">
       Overview
     </a>
   </li>
@@ -546,7 +552,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../lnx_es/hw_platform/" title="HW Platforms" class="md-nav__link">
+    <a href="../../hw_platform/" title="HW Platforms" class="md-nav__link">
       HW Platforms
     </a>
   </li>
@@ -558,7 +564,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../lnx_es/cmn_tool/" title="Common Tools" class="md-nav__link">
+    <a href="../../cmn_tool/" title="Common Tools" class="md-nav__link">
       Common Tools
     </a>
   </li>
@@ -570,7 +576,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../lnx_es/version_control/git/" title="Git" class="md-nav__link">
+    <a href="../../version_control/git/" title="Git" class="md-nav__link">
       Git
     </a>
   </li>
@@ -582,7 +588,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../lnx_es/ptlnx/" title="Xilinx Petalinux" class="md-nav__link">
+    <a href="../../ptlnx/" title="Xilinx Petalinux" class="md-nav__link">
       Xilinx Petalinux
     </a>
   </li>
@@ -594,7 +600,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../lnx_es/yocto/" title="Yocto" class="md-nav__link">
+    <a href="../../yocto/" title="Yocto" class="md-nav__link">
       Yocto
     </a>
   </li>
@@ -604,9 +610,106 @@
           
           
 
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        EEPROM
+      </label>
+    
+    <a href="./" title="EEPROM" class="md-nav__link md-nav__link--active">
+      EEPROM
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" title="Introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-eeprom" title="What is EEPROM?" class="md-nav__link">
+    What is EEPROM?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#serial-eeprom" title="Serial EEPROM" class="md-nav__link">
+    Serial EEPROM
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#byte-writeread" title="Byte Write/Read" class="md-nav__link">
+    Byte Write/Read
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#br24g64-3a" title="BR24G64-3A" class="md-nav__link">
+    BR24G64-3A
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#at32c08a" title="AT32C08A" class="md-nav__link">
+    AT32C08A
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
 
   <li class="md-nav__item">
-    <a href="../../../lnx_es/tips/tips/" title="Tips" class="md-nav__link">
+    <a href="../../tips/tips/" title="Tips" class="md-nav__link">
       Tips
     </a>
   </li>
@@ -744,6 +847,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../lnx_ldd/pcie/pcie/" title="PCIe" class="md-nav__link">
+      PCIe
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -849,12 +964,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
     
     <label class="md-nav__link" for="nav-10">
       Projects
@@ -870,28 +983,9 @@
           
           
 
-  
-
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-    <a href="./" title="PCIe" class="md-nav__link md-nav__link--active">
-      PCIe
-    </a>
-    
-  </li>
-
-        
-          
-          
-          
-
 
   <li class="md-nav__item">
-    <a href="../../zynq/zynq/" title="Zynq" class="md-nav__link">
+    <a href="../../../projects/zynq/zynq/" title="Zynq" class="md-nav__link">
       Zynq
     </a>
   </li>
@@ -903,7 +997,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../imx8/imx8/" title="IMX8" class="md-nav__link">
+    <a href="../../../projects/imx8/imx8/" title="IMX8" class="md-nav__link">
       IMX8
     </a>
   </li>
@@ -915,7 +1009,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../pi3b/" title="Raspberrypi 3B" class="md-nav__link">
+    <a href="../../../projects/pi3b/" title="Raspberrypi 3B" class="md-nav__link">
       Raspberrypi 3B
     </a>
   </li>
@@ -969,15 +1063,124 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" title="Introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-eeprom" title="What is EEPROM?" class="md-nav__link">
+    What is EEPROM?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#serial-eeprom" title="Serial EEPROM" class="md-nav__link">
+    Serial EEPROM
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#byte-writeread" title="Byte Write/Read" class="md-nav__link">
+    Byte Write/Read
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#br24g64-3a" title="BR24G64-3A" class="md-nav__link">
+    BR24G64-3A
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#at32c08a" title="AT32C08A" class="md-nav__link">
+    AT32C08A
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
                 
                 
-                  <h1>PCIe</h1>
-                
-                <p>Just PCIe</p>
+                <h1 id="electrically-erasable-and-programmable-read-only-memory">Electrically Erasable and Programmable Read-Only Memory</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Serial EEPROM devices are by far the most popular vehicle utilized in today’s modern electronic equipment to <strong>store personal preference and configuration data</strong>. </p>
+<p>Applications span a wide spectrum of consumer, automotive, telecommunication, medical, industrial, and computing applications. This popularity stems from a unique combination of capabilities that cannot be found in any other memory solution. These features include:</p>
+<ul>
+<li>byte-write alterability</li>
+<li>nonvolatile data storage</li>
+<li>1 million cycles of write endurance</li>
+<li>very low power supply voltage operation</li>
+<li>100 year data retention</li>
+<li>low pin-count packages, low cost of ownership, and extremely low active and standby currents.</li>
+</ul>
+<h2 id="what-is-eeprom">What is EEPROM?</h2>
+<h2 id="serial-eeprom">Serial EEPROM</h2>
+<p>Serial EEPROM uses serial interfaces likes: I2C or SPI. For I2C EEPROM, Read/Write operation populary has two mode: Byte Write and Page Write.</p>
+<p>Normaly, EEPROM data is 8 bit word. Each word is addressed by word address that its width depends on EEPROM size. For example, BR24G64-3A ROHM Semiconductor EEPROM with 64 Kb has to have 13 bit for addressing. Or AT24C08A Atmel EEPROM with 2 Kb uses 10 bit word address. </p>
+<p>Now we will take a look at how EEPROM device manages word address.</p>
+<h3 id="byte-writeread">Byte Write/Read</h3>
+<h4 id="br24g64-3a">BR24G64-3A</h4>
+<p>With BR24G64-3A, it has 13 bit word address so timing for Byte Write Cycle will look like figure below.</p>
+<p><img alt="BR24G64-3A" src="../imgs/BR24G64-3A-wr-byte-cycle.png" /></p>
+<p>In this case, I2C master need to use 4 bytes for writing: 1 device address byte, 2 byte for word address (15th to 13th bit are ignored) and 1 byte for data word. In Linux, we can using i2ctransfer (a program in i2c-tools) for write a byte to EEPROM. For example:</p>
+<p><code>&gt; i2ctransfer -y 1 w3@0x57 0x00 0x0a 0x55</code> (1)</p>
+<p>Command (1) is used to write to device 0x57 in I2C bus 1. Data 0x55 will be writen to address: 0x000a.</p>
+<p>Reading operation also has to use 2 bytes for word address. The difference here is using two I2C messages instead of using one I2C message in writing case. </p>
+<p><img alt="BR24G64-3A" src="../imgs/BR24G64-3A-rd-byte-cycle.png" /></p>
+<p>i2ctransfer command for reading case. </p>
+<p><code>&gt; i2ctransfer -y 1 w2@0x57 0x00 0x00 r1</code></p>
+<h4 id="at32c08a">AT32C08A</h4>
+<p>AT32C08A uses 10 bit for word address. Although using more than 8 bit for word address, AT32C08A has different way in write/read with BR24G64-3A.</p>
+<p>AT32C08A has to use 3 bytes for writing a byte: 1 device address byte, 1 byte for word address and 1 byte for data. To get 10 bit word address, AT32C08A borrows 2 LSB bit (P0 P1 in figure below) in device address byte. </p>
+<p><img alt="AT32C08A" src="../imgs/AT32C08A-dev-addr.png" /></p>
+<p>So, I2C transfer will look like:</p>
+<p><img alt="AT32C08A" src="../imgs/AT32C08A-wr-byte-cycle.png" /></p>
                 
                   
                 
@@ -998,7 +1201,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../../fpga/x_ipcore/xipcore/" title="Xilinx IPCore" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../yocto/" title="Yocto" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1007,19 +1210,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Xilinx IPCore
+                Yocto
               </span>
             </div>
           </a>
         
         
-          <a href="../../zynq/zynq/" title="Zynq" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../tips/tips/" title="Tips" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Zynq
+                Tips
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
