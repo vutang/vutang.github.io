@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://www.vutang.github.io/projects/zynq/picozed/">
+        <link rel="canonical" href="https://www.vutang.github.io/lnx_ldd/i2c/i2c/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
-        <title>Picozed - Vu Tang's Docs</title>
+        <title>I2C Subsystem - Vu Tang's Docs</title>
       
     
     
@@ -67,6 +67,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#i2c-platform" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -96,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Picozed
+              I2C Subsystem
             
           </span>
         </div>
@@ -813,12 +818,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
       
       
       
@@ -841,7 +848,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_ldd/overview/" class="md-nav__link">
+      <a href="../../overview/" class="md-nav__link">
         Overview
       </a>
     </li>
@@ -855,7 +862,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_ldd/kernel_module/" class="md-nav__link">
+      <a href="../../kernel_module/" class="md-nav__link">
         Kernel Module
       </a>
     </li>
@@ -869,7 +876,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_ldd/platform_dev/platform_device/" class="md-nav__link">
+      <a href="../../platform_dev/platform_device/" class="md-nav__link">
         Platform Device
       </a>
     </li>
@@ -881,11 +888,174 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../../lnx_ldd/i2c/i2c/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          I2C Subsystem
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         I2C Subsystem
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i2c-platform_1" class="md-nav__link">
+    I2C Platform
+  </a>
+  
+    <nav class="md-nav" aria-label="I2C Platform">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cac-thanh-phan-co-ban-cua-i2c-platform" class="md-nav__link">
+    Các thành phần cơ bản của i2c platform
+  </a>
+  
+    <nav class="md-nav" aria-label="Các thành phần cơ bản của i2c platform">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cac-cau-truc-du-lieu-quan-trong" class="md-nav__link">
+    Các cấu trúc dữ liệu quan trọng
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#struct-i2c_client" class="md-nav__link">
+    Struct i2c_client
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#struct-i2c_adapter-va-i2c_algorithm" class="md-nav__link">
+    Struct i2c_adapter và i2c_algorithm
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qua-trinh-driver-probing-mot-thiet-bi" class="md-nav__link">
+    Quá trình driver probing một thiết bị
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#qua-trinh-truy-nhap-mot-thiet-bi-tren-bus-i2c-tu-user-space" class="md-nav__link">
+    Quá trình truy nhập một thiết bị trên bus i2c từ User Space
+  </a>
+  
+    <nav class="md-nav" aria-label="Quá trình truy nhập một thiết bị trên bus i2c từ User Space">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lay-i2c_adapter" class="md-nav__link">
+    Lấy i2c_adapter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#khoi-tao-mot-i2c_client-ao" class="md-nav__link">
+    Khởi tạo một i2c_client ảo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qua-trinh-truy-nhap-thong-qua-phuong-thuc-ioctl-cua-devi2c-d" class="md-nav__link">
+    Quá trình truy nhập thông qua phương thức IOCTL của /dev/i2c-%d
+  </a>
+  
+    <nav class="md-nav" aria-label="Quá trình truy nhập thông qua phương thức IOCTL của /dev/i2c-%d">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-slave-addr" class="md-nav__link">
+    Set Slave Addr
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#truy-nhap-en-device" class="md-nav__link">
+    Truy nhập đến device
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i2c-mux" class="md-nav__link">
+    I2C MUX
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#refereneces" class="md-nav__link">
+    Refereneces
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -897,7 +1067,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_ldd/spi_dev/spi_dev/" class="md-nav__link">
+      <a href="../../spi_dev/spi_dev/" class="md-nav__link">
         SPI Device
       </a>
     </li>
@@ -911,7 +1081,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_ldd/spi_dev/spi_advance/" class="md-nav__link">
+      <a href="../../spi_dev/spi_advance/" class="md-nav__link">
         SPI Device Advance
       </a>
     </li>
@@ -925,7 +1095,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_ldd/gpio/gpio/" class="md-nav__link">
+      <a href="../../gpio/gpio/" class="md-nav__link">
         GPIO
       </a>
     </li>
@@ -939,7 +1109,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_ldd/uart/uart/" class="md-nav__link">
+      <a href="../../uart/uart/" class="md-nav__link">
         UART
       </a>
     </li>
@@ -953,7 +1123,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_ldd/jesd/jesd/" class="md-nav__link">
+      <a href="../../jesd/jesd/" class="md-nav__link">
         JESD
       </a>
     </li>
@@ -967,7 +1137,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_ldd/audio/linux_audio/" class="md-nav__link">
+      <a href="../../audio/linux_audio/" class="md-nav__link">
         Audio
       </a>
     </li>
@@ -981,7 +1151,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_ldd/pcie/pcie/" class="md-nav__link">
+      <a href="../../pcie/pcie/" class="md-nav__link">
         PCIe
       </a>
     </li>
@@ -1153,7 +1323,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../zynq/" class="md-nav__link">
+      <a href="../../../projects/zynq/zynq/" class="md-nav__link">
         Zynq
       </a>
     </li>
@@ -1167,7 +1337,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../imx8/imx8/" class="md-nav__link">
+      <a href="../../../projects/imx8/imx8/" class="md-nav__link">
         IMX8
       </a>
     </li>
@@ -1181,7 +1351,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pi3b/" class="md-nav__link">
+      <a href="../../../projects/pi3b/" class="md-nav__link">
         Raspberrypi 3B
       </a>
     </li>
@@ -1257,6 +1427,145 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i2c-platform_1" class="md-nav__link">
+    I2C Platform
+  </a>
+  
+    <nav class="md-nav" aria-label="I2C Platform">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cac-thanh-phan-co-ban-cua-i2c-platform" class="md-nav__link">
+    Các thành phần cơ bản của i2c platform
+  </a>
+  
+    <nav class="md-nav" aria-label="Các thành phần cơ bản của i2c platform">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cac-cau-truc-du-lieu-quan-trong" class="md-nav__link">
+    Các cấu trúc dữ liệu quan trọng
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#struct-i2c_client" class="md-nav__link">
+    Struct i2c_client
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#struct-i2c_adapter-va-i2c_algorithm" class="md-nav__link">
+    Struct i2c_adapter và i2c_algorithm
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qua-trinh-driver-probing-mot-thiet-bi" class="md-nav__link">
+    Quá trình driver probing một thiết bị
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#qua-trinh-truy-nhap-mot-thiet-bi-tren-bus-i2c-tu-user-space" class="md-nav__link">
+    Quá trình truy nhập một thiết bị trên bus i2c từ User Space
+  </a>
+  
+    <nav class="md-nav" aria-label="Quá trình truy nhập một thiết bị trên bus i2c từ User Space">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lay-i2c_adapter" class="md-nav__link">
+    Lấy i2c_adapter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#khoi-tao-mot-i2c_client-ao" class="md-nav__link">
+    Khởi tạo một i2c_client ảo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qua-trinh-truy-nhap-thong-qua-phuong-thuc-ioctl-cua-devi2c-d" class="md-nav__link">
+    Quá trình truy nhập thông qua phương thức IOCTL của /dev/i2c-%d
+  </a>
+  
+    <nav class="md-nav" aria-label="Quá trình truy nhập thông qua phương thức IOCTL của /dev/i2c-%d">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-slave-addr" class="md-nav__link">
+    Set Slave Addr
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#truy-nhap-en-device" class="md-nav__link">
+    Truy nhập đến device
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i2c-mux" class="md-nav__link">
+    I2C MUX
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#refereneces" class="md-nav__link">
+    Refereneces
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -1271,11 +1580,201 @@
                   
 
 
-  <h1>Picozed</h1>
+<h1 id="i2c-platform"><strong><span style="color:red">I2C Platform</span></strong></h1>
+<p><em>Tăng Thiên Vũ, Trung tâm nghiên cứu công nghệ mạng Viettel, Hà Nội, 2/2018</em></p>
+<h2 id="introduction">Introduction</h2>
+<p>Tài liệu mô tả các kiến thức tìm hiểu được về I2C Platform trên Linux được thực hiện thực tế trên phần cứng ZC706 và FMCJESDADC1. Tài liệu là kết quả của quá trình mở rộng tìm hiểu dựa trên yêu cầu ban đầu của “Bài tập 6: Viết ứng dụng đọc/ghi chip EEPROM thông qua bus I2C trên KIT hoặc RRU” trong chương trình Linux Training của phòng Firmware – VTBR-VTTEK.</p>
+<p>I2C là một bus rất phổ biến được sử dụng cho giao tiếp giữa master (một hoặc nhiều) và các thiết bị slave. <a href="#i2c-bus">Hình dưới</a> mô tả một topo cơ bản kết nối các thiết bị ngoại vi với Microprocessor thông qua bus I2C.</p>
+<p><img alt="i2c-bus" src="../img/bus-i2c.png" /><br />
+<em><span style="color:blue">Figure. I2C Bus</span></em></p>
+<p>ZC706 board triển khai hai cổng I2C (<a href="#zc706_i2c">Hình</a>) [2]:</p>
+<ul>
+<li>PL-Side: cổng IIC_SCL/SDA_MAIN trên Bank 10.</li>
+<li>PS-Side: cổng IIC_SDA/SCL_MAIN trên Bank 501.</li>
+</ul>
+<p><img alt="zc706_i2c" src="../img/zc706-i2c.png" /><br />
+<em><span style="color:blue">Figure. I2C Bus in ZC706 KIT</span></em></p>
+<p>Hiện tại, trên project phần cứng ZC706 và FMCJESDADC1 (kết nối với nhau qua bus FMC-HPC), hệ thống bus I2C được minh họa trong sơ đồ <a href="#">Hình dưới</a>. FPGA Project cung cấp bởi ADI sử dụng Xilinx AXI I2C Controller (implement trên FPGA) cho mục đích giao tiếp với các thiết bị I2C trên mạch thông qua bus trên PL Bank 10.</p>
+<p><img alt="zc706_i2c_devs" src="../img/zc706-i2c-devs.png" /><br />
+<em><span style="color:blue">Figure. Bus I2C trên phần cứng ZC706/FMCJESDDAC1</span></em></p>
+<h2 id="i2c-platform_1">I2C Platform</h2>
+<h3 id="cac-thanh-phan-co-ban-cua-i2c-platform">Các thành phần cơ bản của i2c platform</h3>
+<p>Hình 2.1 mô tả các thành phần cơ bản của một i2c platform trên Linux. Ứng dụng <code>i2ctool</code> trên tầng User Space tương tác với các file <code>/dev/i2c-n</code> tương ứng với các bus i2c. Thông qua các module <code>i2c-dev</code>, <code>i2c-core</code> và <code>i2c-driver</code>, ứng dụng <code>i2ctool</code> có thể truy nhập đến các thiết bị i2c trên phần cứng tương ứng với bus i2c được đại diện bằng file <code>/dev/i2c-n</code>.</p>
+<p><img alt="spi_bus_signals" src="../img/linux-i2c-platform.png" /><br />
+<em><span style="color:blue">Figure. Các thành phần trong I2C Platform</span></em></p>
+<p>Trong phần tiếp theo sẽ tìm hiểu rõ hơn các thành phần trong hệ thống trên, cũng như cách hệ thống hoạt động.</p>
+<h4 id="cac-cau-truc-du-lieu-quan-trong">Các cấu trúc dữ liệu quan trọng</h4>
+<p>Để có thể quản lí và truy cập đến các thiết bị i2c, i2c platform sử dụng các cấu trúc dữ liệu như: <code>i2c_client</code>, <code>i2c_adapter</code> và <code>i2c_algorithm</code>. Trong đó: </p>
+<ul>
+<li><code>i2c_client</code> đại diện cho các thiết bị trên một bus i2c; </li>
+<li><code>i2c_adapter</code> và i2c algorithm cung cấp các phương thức (các hàm <code>master_xfer()</code>, <code>smbus_xfer()</code>) để có thể truy nhập đến các thiết bị i2c. </li>
+</ul>
+<p>Mối quan hệ giữa các struct này thể hiện trong Hình 2.2.</p>
+<p><img alt="spi_bus_signals" src="../img/i2c-data-struct.png" /><br />
+<em><span style="color:blue">Figure.  Các cấu trúc dữ liệu quan trọng liên quan đến i2c platform</span></em></p>
+<h4 id="struct-i2c_client">Struct i2c_client</h4>
+<p>Trên một bus i2c có thể có một hoặc nhiều thiết bị, mỗi thiết bị trên bus sẽ được driver đăng kí với hệ điều hành thông qua một <code>struct i2c_client</code> (Hình 2.3). Đặc trưng nhất của <code>struct i2c_client</code> này là trường addr nơi chứa địa chỉ của thiết bị trên bus i2c để phân biệt với các thiết bị khác.</p>
+<pre><code>struct i2c_client {
+    unsigned short flags;   /* div., see below */
+    unsigned short addr;    /* chip address - NOTE: 7bit */
+                            /* addresses are stored in the */
+                            /* _LOWER_ 7 bits */
+    char name[I2C_NAME_SIZE];
+    struct i2c_adapter *adapter;    /* the adapter we sit on */
+    struct device dev;              /* the device structure */
+    int irq;                        /* irq issued by device */
+    struct list_head detected;
+#if IS_ENABLED(CONFIG_I2C_SLAVE)
+    i2c_slave_cb_t slave_cb;        /* callback for slave mode */
+#endif
+};
+</code></pre>
+<p><code>i2c_client</code> chứa con trỏ để trỏ đến adapter của driver tương ứng với bus i2c.</p>
+<h4 id="struct-i2c_adapter-va-i2c_algorithm">Struct i2c_adapter và i2c_algorithm</h4>
+<p>Driver quản lí các thiết bị thông qua <code>struct i2c_client</code> và cung cấp phương pháp để truy cập đến các thiết bị này thông qua <code>struct i2c_adapter</code>.</p>
+<pre><code>struct i2c_adapter {
+    struct module *owner;
+    unsigned int class; /* classes to allow probing for */
+    const struct i2c_algorithm *algo; /* the algo to access the bus*/
+    void *algo_data;
 
-<p><a href="https://1drv.ms/w/s!Ai73O1i3QXDegSxNrffgNfkZD2Qk">Original article</a></p>
-<p>Theo [1],  KIT Picozed SDR chứa 2 giao diện Ethernet trong đó Ethernet 0 được nối vào PS thông qua giao diện MIO và Ethernet 1 nối vào phần PL của Zynq thông qua EMIO. Cả hai giao diện Ethernet đều được nối đến chip PHY Marvell 88E1510. </p>
-<p>Chip PHY Marvell trên Picozed sử dụng giao diện RGMII trong khi Zyng Eth1 sử dụng giao diện GMII. Do đó, cần phải sử dụng một cơ chế chuyển đổi giữa GMII &lt;-&gt; RGMII. </p>
+    /* data fields that are valid for all devices */
+    const struct i2c_lock_operations *lock_ops;
+    struct rt_mutex bus_lock;
+    struct rt_mutex mux_lock;
+    int timeout; /* in jiffies */
+    int retries;
+    struct device dev; /* the adapter device */
+    int nr;
+    char name[48];
+     …
+};
+</code></pre>
+<p>I2c_adapter chứa các thông tin cơ bản của bus như <code>name</code>, <code>nr</code> (number) để định danh bus i2c mà driver đang quản lí. Ngoài ra, <code>i2c_adapter</code> chứa <code>i2c_algorithm</code> chứa các con trỏ để trỏ đến hàm truy nhập.</p>
+<pre><code>struct i2c_algorithm {
+    /* If an adapter algorithm can't do I2C-level access, set master_xfer
+     to NULL. If an adapter algorithm can do SMBus access, set
+     smbus_xfer. If set to NULL, the SMBus protocol is simulated
+     using common I2C messages */
+    /* master_xfer should return the number of messages successfully
+     processed, or a negative value on error */
+    int (*master_xfer)(struct i2c_adapter *adap, struct i2c_msg *msgs, int num);
+    int (*smbus_xfer) (struct i2c_adapter *adap, u16 addr,
+     unsigned short flags, char read_write,
+     u8 command, int size, union i2c_smbus_data *data);
+    /* To determine what the adapter supports */
+    u32 (*functionality) (struct i2c_adapter *);
+#if IS_ENABLED(CONFIG_I2C_SLAVE)
+    int (*reg_slave)(struct i2c_client *client);
+    int (*unreg_slave)(struct i2c_client *client);
+#endif
+};
+</code></pre>
+<h3 id="qua-trinh-driver-probing-mot-thiet-bi">Quá trình driver probing một thiết bị</h3>
+<p><img alt="spi_bus_signals" src="../img/i2c-call-flow.png" /> </p>
+<p>Mỗi I2C Bus Driver đều chứa struct i2c_algorithm quản lí các hàm truy nhập đến thiết bị i2c. Ví dụ như <strong>Xilinx I2C Controller Driver</strong>:</p>
+<pre><code>static const struct i2c_algorithm xiic_algorithm = {
+    .master_xfer = xiic_xfer,
+    .functionality = xiic_func,
+};
+</code></pre>
+<p>Hoặc như <strong>Cadence I2C Controller Drivers</strong>:</p>
+<pre><code>static const struct i2c_algorithm cdns_i2c_algo = {
+    .master_xfer = cdns_i2c_master_xfer,
+    .functionality = cdns_i2c_func,
+};
+</code></pre>
+<p>Quá trình probing một thiết bị về bản chất là quá trình khởi tạo <code>i2c_adapter</code> (Hình 2.6-1) và các <code>i2c_client</code> (Hình 2.6-2). Ví dụ đối với Xilinx I2C Controller driver, <code>i2c_adapter</code> được khởi tạo như sau:</p>
+<pre><code>static struct i2c_adapter xiic_adapter = {
+    .owner = THIS_MODULE,
+    .name = DRIVER_NAME,
+    .class = I2C_CLASS_DEPRECATED,
+    .algo = &amp;xiic_algorithm,
+};
+</code></pre>
+<p>Hàm probe của driver sẽ gọi đến <code>i2c_add_adapter</code> và <code>i2c_new_divice()</code> để đăng kí <code>i2c_adapter</code> và <code>i2c_client</code> vào hệ thống. Như vậy, sau quá trình driver probing, với mỗi thiết bị trên bus i2c đã được đăng kí và cấp phát một <code>i2c_client</code> tương ứng, các <code>i2c_client</code> này sử dụng <code>i2c_adapter</code> để truy nhập vào thiết bị trên phần cứng.</p>
+<h2 id="qua-trinh-truy-nhap-mot-thiet-bi-tren-bus-i2c-tu-user-space">Quá trình truy nhập một thiết bị trên bus i2c từ User Space</h2>
+<h3 id="lay-i2c_adapter">Lấy i2c_adapter</h3>
+<p>Sau khi i2c driver thực hiện probing thiết bị, một <code>i2c_adapter</code> đã được cấp phát và khởi tạo. Để tiến hành truy nhập được thiết bị thông qua các phương thức cung cấp bởi adapter, <code>i2c_tool</code> cần lấy được <code>i2c_adapter</code> này. Quá trình này được thực hiện trong khi thực hiện hàm <code>open()</code> trên user space.</p>
+<pre><code>sprintf(filename, &quot;/dev/i2c-%d&quot;, i2cbus);
+file = open(filename, O_RDWR);
+</code></pre>
+<p>Hàm open() trên User Space sẽ gọi đến phương thức open()trong Kernel Space của file <code>/dev/i2c-%d</code>. Trong phương thức <code>open</code>, hàm <code>i2c_get_adapter</code> được gọi để tìm kiếm <code>i2c_adapter</code>.</p>
+<pre><code>i2c_dev = i2c_dev_get_by_minor(minor);
+if (!i2c_dev)
+    return -ENODEV;
+adap = i2c_get_adapter(i2c_dev-&gt;adap-&gt;nr);
+if (!adap)
+    return -ENODEV;
+</code></pre>
+<p>Quá trình này được mô tả trong Hình 2.6-4.</p>
+<h3 id="khoi-tao-mot-i2c_client-ao">Khởi tạo một <code>i2c_client</code> ảo</h3>
+<p>Bản chất mỗi thiết bị trên bus i2c được quản lí bởi i2c-core thông qua các cấu trúc <code>i2c_client</code>. Nhưng trong quá trình truy nhập đến thiết bị, i2c-dev không sử dụng các <code>i2c_client</code> này mà cấp phát một <code>i2c_client</code> mới để trỏ đến <code>i2c_adapter</code> vừa được tìm thấy ở quá trình được nhắc đến ở mục 2.3.1. Quá trình khởi tạo <code>i2c_client</code> này được mô tả trong Hình 2.6-5.</p>
+<pre><code>client = kzalloc(sizeof(*client), GFP_KERNEL);
+if (!client) {
+    i2c_put_adapter(adap);
+    return -ENOMEM;
+}
+snprintf(client-&gt;name, I2C_NAME_SIZE, &quot;i2c-dev %d&quot;, adap-&gt;nr);
+client-&gt;adapter = adap;
+file-&gt;private_data = client;
+</code></pre>
+<p>Như vậy, sau quá trình <code>open()</code> file, i2c-dev đã có một struct <code>i2c_client</code> (trỏ đến i2c_adapter được khởi tạo lúc driver probe). I2c-dev sẽ sử dụng <code>i2c_client</code> này để tương tác với thiết bị.</p>
+<h3 id="qua-trinh-truy-nhap-thong-qua-phuong-thuc-ioctl-cua-devi2c-d">Quá trình truy nhập thông qua phương thức IOCTL của /dev/i2c-%d</h3>
+<h4 id="set-slave-addr">Set Slave Addr</h4>
+<p>Trước khi tiến hành truy nhập vào một device trên bus i2c, quá trình đầu tiên phải tiến hành setup địa chỉ mà device cần truy cập đến. Trong phương thức IOCTL của i2c file cung cấp command <code>I2C_SLAVE_FORCE</code> để gán địa chỉ của device cho i2c_client struct được khởi tạo từ quá trình open file.</p>
+<pre><code>case I2C_SLAVE_FORCE:
+    if ((arg &gt; 0x3ff) ||
+        (((client-&gt;flags &amp; I2C_M_TEN) == 0) &amp;&amp; arg &gt; 0x7f))
+        return -EINVAL;
+    if (cmd == I2C_SLAVE &amp;&amp; i2cdev_check_addr(client-&gt;adapter, arg))
+        return -EBUSY;
+    /* REVISIT: address could become busy later */
+    client-&gt;addr = arg;
+    return 0;
+</code></pre>
+<p>Biến “client” là i2c_client ảo đã được cấp phát trong phương thức open().</p>
+<h4 id="truy-nhap-en-device">Truy nhập đến device</h4>
+<p>Phương thức IOCTL của i2c file cung cấp command <code>I2C_SMBUS</code> và gọi đến hàm <code>i2cdev_ioctl_smbus()</code> để truy nhập đến thiết bị. Bản chất của hàm <code>i2cdev_ioctl_smbus()</code> là gọi đến hàm xfer của adapter.</p>
+<p>Trên User Space gọi đến phương thức ioctl của <code>/dev/i2c-%d</code>. </p>
+<pre><code>static inline __s32 i2c_smbus_access(int file, char read_write, __u8 command, int size, union i2c_smbus_data *data)
+{
+    struct i2c_smbus_ioctl_data args;
+    args.read_write = read_write;
+    args.command = command;
+    args.size = size;
+    args.data = data;
+    return ioctl(file,I2C_SMBUS,&amp;args);
+}
+</code></pre>
+<p>Quá trình này sẽ gọi đến hàm i2cdev_ioctl_smbus( ) trong i2c-dev trong Kernel Space mà bản chất là gọi đến hàm smbus_xfer() của i2c_adapter:</p>
+<pre><code>res = adapter-&gt;algo-&gt;smbus_xfer(adapter, addr, flags, read_write, command, protocol, data);
+</code></pre>
+<h2 id="i2c-mux">I2C MUX</h2>
+<p><img alt="spi_bus_signals" src="../img/i2c-mux.png" /> </p>
+<p>I2C MUX được sử dụng để mở rộng bus I2C để có thể hỗ trợ kết nối đến nhiều thiết bị hơn. Board ZC706 sử dụng IC I2C MUX PCA 9548 (Hình 1.2). Quá trình thực hiện probing các thiết bị trên các kênh của PCA 9548 Driver được mô tả trong Hình 2.7. Bản chất của quá trình này là khởi tạo các i2c_adapter tương ứng với các kênh bằng hàm i2c_add_mux_adapter() trong i2c-mux module.</p>
+<p>Các i2c_adapter của các kênh tương ứng bản chất sẽ sử dụng các hàm smbus_xfer và master_xfer của “parent adapter” (chính là adapter đã được khởi tạo trọng Xilinx I2C Driver Controller). i2c-mux module sử dụng struct i2c_mux_priv để quản lí chung các channel.</p>
+<pre><code>/* multiplexer per channel data */
+struct i2c_mux_priv {
+    struct i2c_adapter adap;
+    struct i2c_algorithm algo;
+    struct i2c_adapter *parent;
+    struct device *mux_dev;
+    void *mux_priv;
+    u32 chan_id;
+    int (*select)(struct i2c_adapter *, void *mux_priv, u32 chan_id);
+    int (*deselect)(struct i2c_adapter *, void *mux_priv, u32 chan_id);
+};
+</code></pre>
+<p>Ngoài ra, PCA 9548 cung cấp thêm hàm select và deselect để chọn kênh trước khi tiến hành truy nhập thiết bị.</p>
+<pre><code>static int pca954x_select_chan(struct i2c_adapter *adap, void *client,
+u32 chan);
+static int pca954x_deselect_mux(struct i2c_adapter *adap, void *client,
+u32 chan);
+</code></pre>
+<h2 id="refereneces">Refereneces</h2>
+<p>[1] TI SL VA704 – Application Report – Understanding the I2C Bus.</p>
+<p>[2] Xilinx UG954 - ZC706 Evaluation Board for the Zynq-7000 XC7Z045 All Programmable SoC User Guide.</p>
 
 
 
@@ -1291,6 +1790,42 @@
       </main>
       
         <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../../platform_dev/platform_device/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Platform Device" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Platform Device
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../spi_dev/spi_dev/" class="md-footer__link md-footer__link--next" aria-label="Next: SPI Device" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              SPI Device
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
