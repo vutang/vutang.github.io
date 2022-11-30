@@ -121,27 +121,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://www.vutang.github.io/lnx_es/ptlnx/</loc>
-         <lastmod>2022-11-30</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://www.vutang.github.io/lnx_es/ptlnx_20174/</loc>
-         <lastmod>2022-11-30</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://www.vutang.github.io/lnx_es/ptlnx_bin_output/</loc>
-         <lastmod>2022-11-30</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://www.vutang.github.io/lnx_es/u-boot/</loc>
-         <lastmod>2022-11-30</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://www.vutang.github.io/lnx_es/yocto/</loc>
          <lastmod>2022-11-30</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -176,7 +156,32 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://www.vutang.github.io/lnx_es/nbd/nbd/</loc>
+         <lastmod>2022-11-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://www.vutang.github.io/lnx_es/tips/tips/</loc>
+         <lastmod>2022-11-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.vutang.github.io/lnx_es/tool_chain/petalinux/ptlnx/</loc>
+         <lastmod>2022-11-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.vutang.github.io/lnx_es/tool_chain/petalinux/ptlnx_20174/</loc>
+         <lastmod>2022-11-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.vutang.github.io/lnx_es/tool_chain/petalinux/ptlnx_bin_output/</loc>
+         <lastmod>2022-11-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.vutang.github.io/lnx_es/tool_chain/yocto/yocto/</loc>
          <lastmod>2022-11-30</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -317,6 +322,31 @@
     </url>
     <url>
          <loc>https://www.vutang.github.io/projects/imx8/imx8/</loc>
+         <lastmod>2022-11-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.vutang.github.io/projects/imx8/ip-docs/</loc>
+         <lastmod>2022-11-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.vutang.github.io/projects/imx8/ip-docs/Build-Guideline/</loc>
+         <lastmod>2022-11-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.vutang.github.io/projects/imx8/ip-docs/Giai-phap-secured-boot-ipphone/</loc>
+         <lastmod>2022-11-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.vutang.github.io/projects/imx8/ip-docs/Guideline_Install_OS/</loc>
+         <lastmod>2022-11-30</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://www.vutang.github.io/projects/imx8/ip-docs/Guideline_Update_OS/</loc>
          <lastmod>2022-11-30</lastmod>
          <changefreq>daily</changefreq>
     </url>
