@@ -1,0 +1,1987 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://www.vutang.github.io/lnx_kernel/ftrace/ftrace/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>FTrace - Vu Tang's Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#546d78">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue-grey" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ftrace" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Vu Tang&#39;s Docs" class="md-header__button md-logo" aria-label="Vu Tang's Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Vu Tang's Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              FTrace
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Vu Tang&#39;s Docs" class="md-nav__button md-logo" aria-label="Vu Tang's Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Vu Tang's Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Preface
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          General Technote
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="General Technote" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          General Technote
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../technote/mkdocs/mkdocs-notes/" class="md-nav__link">
+        Mkdocs Tool
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../technote/markdown/markdown/" class="md-nav__link">
+        Markdown Language
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../technote/shellscript/shellscript/" class="md-nav__link">
+        Shell Script
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../technote/python/python/" class="md-nav__link">
+        Python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../technote/virtual_machine/virtual_box/" class="md-nav__link">
+        Virtual Machine
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Book & Materials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Book & Materials" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Book & Materials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../books/c_books/" class="md-nav__link">
+        C Programing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../books/linux/" class="md-nav__link">
+        Linux Programing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../books/device_driver/" class="md-nav__link">
+        Linux Device Driver
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../books/linux_kernel/" class="md-nav__link">
+        Linux Kernel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../books/es_linux/" class="md-nav__link">
+        Linux Embedded
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../books/dsa/dsa_toc/" class="md-nav__link">
+        Data Structure & Algorithms
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../books/others/" class="md-nav__link">
+        Others
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Programming
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Programming" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Programming
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/C/cprogramming/" class="md-nav__link">
+        C
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/dsa/dsa/" class="md-nav__link">
+        DSA
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/sql/mysql/" class="md-nav__link">
+        SQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/lnx/lpi/" class="md-nav__link">
+        Linux Programming Interfaces
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/dsg_patterns/" class="md-nav__link">
+        Design Patterns
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/multi-threaded-programming/" class="md-nav__link">
+        Multi-threads
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/perf/perf/" class="md-nav__link">
+        Perf
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Linux General
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Linux General" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Linux General
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx/linux/" class="md-nav__link">
+        Unsorted
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx/cmds/" class="md-nav__link">
+        Commands
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Linux ES Development
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Linux ES Development" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Linux ES Development
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_es/es/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_es/hw_platform/" class="md-nav__link">
+        HW Platforms
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_es/cmn_tool/" class="md-nav__link">
+        Common Tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_es/version_control/git/" class="md-nav__link">
+        Git
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_es/ptlnx/" class="md-nav__link">
+        Xilinx Petalinux
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_es/yocto/" class="md-nav__link">
+        Yocto
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_es/eeprom/eeprom/" class="md-nav__link">
+        EEPROM
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_es/docker/docker/" class="md-nav__link">
+        Docker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_es/linuxptp/linuxptp/" class="md-nav__link">
+        Linux PTP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_es/dpdk/dpdk/" class="md-nav__link">
+        DPDK
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_es/tips/tips/" class="md-nav__link">
+        Tips
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Linux Device Driver
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Linux Device Driver" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Linux Device Driver
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_ldd/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_ldd/kernel_module/" class="md-nav__link">
+        Kernel Module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_ldd/platform_dev/platform_device/" class="md-nav__link">
+        Platform Device
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_ldd/i2c/i2c/" class="md-nav__link">
+        I2C Subsystem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_ldd/spi_dev/spi_dev/" class="md-nav__link">
+        SPI Device
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_ldd/spi_dev/spi_advance/" class="md-nav__link">
+        SPI Device Advance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_ldd/gpio/gpio/" class="md-nav__link">
+        GPIO
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_ldd/uart/uart/" class="md-nav__link">
+        UART
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_ldd/jesd/jesd/" class="md-nav__link">
+        JESD
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_ldd/audio/linux_audio/" class="md-nav__link">
+        Audio
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_ldd/pcie/pcie/" class="md-nav__link">
+        PCIe
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          Linux Kernel Development
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Linux Kernel Development" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Linux Kernel Development
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kernel_data_structure/" class="md-nav__link">
+        Kernel Data Structure
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kernel_user_space/" class="md-nav__link">
+        Kernel Space, User Space Interfaces
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          FTrace
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        FTrace
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#khai-niem-tracing-va-ftrace" class="md-nav__link">
+    Khái niệm tracing và ftrace
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nguyen-ly-hoat-ong-cua-tracing-va-ftrace" class="md-nav__link">
+    Nguyên lý hoạt động của tracing và ftrace?
+  </a>
+  
+    <nav class="md-nav" aria-label="Nguyên lý hoạt động của tracing và ftrace?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#static-tracing" class="md-nav__link">
+    Static tracing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-tracing" class="md-nav__link">
+    Dynamic tracing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kien-truc-cua-ftrace" class="md-nav__link">
+    Kiến trúc của ftrace
+  </a>
+  
+    <nav class="md-nav" aria-label="Kiến trúc của ftrace">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tracers" class="md-nav__link">
+    Tracers
+  </a>
+  
+    <nav class="md-nav" aria-label="Tracers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-tracer" class="md-nav__link">
+    Function tracer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-tracer-examples" class="md-nav__link">
+    Function tracer examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Function tracer examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-1-dung-function-tracer-e-tracing-mot-so-ham-cu-the" class="md-nav__link">
+    Ví dụ 1. Dùng function tracer để tracing một số hàm cụ thể.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-2-dung-function-tracer-e-debug-loi-nhay-ong-bo-10000s" class="md-nav__link">
+    Ví dụ 2. Dùng function tracer để debug lỗi nháy đồng bộ 10000s
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-3-dung-function_graph-tracer-e-tracing-mot-so-ham-cu-the" class="md-nav__link">
+    Ví dụ 3. Dùng function_graph tracer để tracing một số hàm cụ thể.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-4-tracing-kernel-call-cua-mot-tien-trinh-cu-the" class="md-nav__link">
+    Ví dụ 4. Tracing kernel call của một tiến trình cụ thể.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-5-tracing-function-cua-mot-kernel-module" class="md-nav__link">
+    Ví dụ 5. Tracing function của một kernel module
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-6-function-nay-uoc-goi-tu-function-nao" class="md-nav__link">
+    Ví dụ 6. Function này được gọi từ function nào?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-7-function-nay-se-tiep-tuc-call-en-function-nao" class="md-nav__link">
+    Ví dụ 7. Function này sẽ tiếp tục call đến function nào?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-8-liet-ke-cac-kernel-function-co-thoi-gian-chay-lon-hon-nguong-10ms" class="md-nav__link">
+    Ví dụ 8. Liệt kê các kernel function có thời gian chạy lớn hơn ngưỡng 10ms.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-next-for-tracers" class="md-nav__link">
+    What is next for tracers?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profilers" class="md-nav__link">
+    Profilers
+  </a>
+  
+    <nav class="md-nav" aria-label="Profilers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-profiler" class="md-nav__link">
+    Function profiler
+  </a>
+  
+    <nav class="md-nav" aria-label="Function profiler">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-9-thong-ke-mot-so-kernel-function-cu-the" class="md-nav__link">
+    Ví dụ 9. Thống kê một số kernel function cụ thể.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kprobe-profiler" class="md-nav__link">
+    Kprobe profiler
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frontend-cua-ftrace" class="md-nav__link">
+    Frontend của ftrace
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          FPGA
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="FPGA" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          FPGA
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fpga/timing_analysis/timing_analysis/" class="md-nav__link">
+        Static Timing Analysis
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fpga/x_ipcore/xipcore/" class="md-nav__link">
+        Xilinx IPCore
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          Projects
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Projects" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Projects
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../projects/zynq/zynq/" class="md-nav__link">
+        Zynq
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../projects/imx8/imx8/" class="md-nav__link">
+        IMX8
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../projects/pi3b/" class="md-nav__link">
+        Raspberrypi 3B
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bookmarks/bookmarks/" class="md-nav__link">
+        Bookmarks
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../whatnext/" class="md-nav__link">
+        What's next
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/about/" class="md-nav__link">
+        About me
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#khai-niem-tracing-va-ftrace" class="md-nav__link">
+    Khái niệm tracing và ftrace
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nguyen-ly-hoat-ong-cua-tracing-va-ftrace" class="md-nav__link">
+    Nguyên lý hoạt động của tracing và ftrace?
+  </a>
+  
+    <nav class="md-nav" aria-label="Nguyên lý hoạt động của tracing và ftrace?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#static-tracing" class="md-nav__link">
+    Static tracing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-tracing" class="md-nav__link">
+    Dynamic tracing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kien-truc-cua-ftrace" class="md-nav__link">
+    Kiến trúc của ftrace
+  </a>
+  
+    <nav class="md-nav" aria-label="Kiến trúc của ftrace">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tracers" class="md-nav__link">
+    Tracers
+  </a>
+  
+    <nav class="md-nav" aria-label="Tracers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-tracer" class="md-nav__link">
+    Function tracer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-tracer-examples" class="md-nav__link">
+    Function tracer examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Function tracer examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-1-dung-function-tracer-e-tracing-mot-so-ham-cu-the" class="md-nav__link">
+    Ví dụ 1. Dùng function tracer để tracing một số hàm cụ thể.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-2-dung-function-tracer-e-debug-loi-nhay-ong-bo-10000s" class="md-nav__link">
+    Ví dụ 2. Dùng function tracer để debug lỗi nháy đồng bộ 10000s
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-3-dung-function_graph-tracer-e-tracing-mot-so-ham-cu-the" class="md-nav__link">
+    Ví dụ 3. Dùng function_graph tracer để tracing một số hàm cụ thể.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-4-tracing-kernel-call-cua-mot-tien-trinh-cu-the" class="md-nav__link">
+    Ví dụ 4. Tracing kernel call của một tiến trình cụ thể.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-5-tracing-function-cua-mot-kernel-module" class="md-nav__link">
+    Ví dụ 5. Tracing function của một kernel module
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-6-function-nay-uoc-goi-tu-function-nao" class="md-nav__link">
+    Ví dụ 6. Function này được gọi từ function nào?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-7-function-nay-se-tiep-tuc-call-en-function-nao" class="md-nav__link">
+    Ví dụ 7. Function này sẽ tiếp tục call đến function nào?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-8-liet-ke-cac-kernel-function-co-thoi-gian-chay-lon-hon-nguong-10ms" class="md-nav__link">
+    Ví dụ 8. Liệt kê các kernel function có thời gian chạy lớn hơn ngưỡng 10ms.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-next-for-tracers" class="md-nav__link">
+    What is next for tracers?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profilers" class="md-nav__link">
+    Profilers
+  </a>
+  
+    <nav class="md-nav" aria-label="Profilers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-profiler" class="md-nav__link">
+    Function profiler
+  </a>
+  
+    <nav class="md-nav" aria-label="Function profiler">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-9-thong-ke-mot-so-kernel-function-cu-the" class="md-nav__link">
+    Ví dụ 9. Thống kê một số kernel function cụ thể.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kprobe-profiler" class="md-nav__link">
+    Kprobe profiler
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frontend-cua-ftrace" class="md-nav__link">
+    Frontend của ftrace
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="ftrace"><strong><span style="color:red">FTrace</span></strong></h1>
+<p><em>QuanDH21, Trung tâm nghiên cứu công nghệ mạng Viettel, Hà Nội, 2/2018</em></p>
+<p>Hí anh em, đợt vừa rồi mình có debug ra một cái lỗi liên quan đến đồng bộ trong ORAN, công
+lớn là nhờ ftrace. Mặc dù cái bug kia ko phải là cao siêu và có thể có cách giải quyết đơn giản hơn nhưng
+mình vẫn viết cái technote nho nhỏ này để chia sẻ những gì mình biết về ftrace, để cho anh em nào chưa
+biết thì biết, mà biết thì biết. Thực ra chỉ một phần kiến thức ở bài viết này là mình biết về ftrace trong
+lúc debug cái lỗi đồng bộ kia, phần còn lại là mình tìm hiểu sau khi debug thành công bởi vì mình thấy
+công cụ này hay mà mình có vẻ chỉ biết một ít về nó. Tuy vậy, bài technote nhỏ này cũng không thể nói
+hết được về ftrace, do đó các anh em cao thủ nếu biết thêm gì thì hãy giúp mình bổ sung để bài technote
+này đầy đủ và hay ho hơn nhé.
+Bài viết này sẽ có 2 nội dung chính, thứ nhất là kiến thức về ftrace (bao gồm khái niệm, cách hoạt
+động, các tính năng,...) và thứ hai chính là các ví dụ cụ thể được áp dụng ftrace để giải quyết. Các ví dụ
+hay case study có thể nằm rải rác xuyên suốt mục nội dung. Cả mục lục nội dung lẫn mục lục ví dụ sẽ
+được cung cấp để anh em có thể chọn đọc theo ý thích. Đ** dài dòng nữa, vào thôi.</p>
+<h2 id="khai-niem-tracing-va-ftrace">Khái niệm tracing và ftrace</h2>
+<p>Theo định nghĩa từ wiki, trong lĩnh vực software thì tracing là “specialized use of logging to record
+information about a program’s flow of execution”, ngoài ra các điểm đặt log kia còn được gọi là điểm
+probe. Việc này không có gì xa lạ, ví dụ như khi chúng ta đặt log printf (hoặc printk) trong code của
+chúng ta để thực hiện debug, đấy chính là chúng ta đang tracing. Tuy nhiên cách đặt log debug này có
+vẻ khá tốn công sức và khó scale, mỗi lần muốn trace một phần code nào đó thể phải tự tay đặt thêm log.
+Do đó, sự ra đời của các công cụ tracing là điều cần thiết (mặc dù trong nhiều trường hợp thì việc tự đặt
+log vẫn là lựa chọn số 1).</p>
+<p>Ftrace (function tracer) là một công cụ (hoặc cũng có thể coi là một tracing framework) được sinh ra
+để giúp các linux developer có thể biết được những gì đang xảy ra bên trong kernel. Một số tính năng
+mà ftrace có thể thực hiện như là:</p>
+<ul>
+<li>Một kernel function được gọi bao nhiêu lần, thời điểm function được gọi?</li>
+<li>Ai gọi tới function này?</li>
+<li>Function này gọi tiếp function nào?</li>
+<li>Latency cao nhất gây ra bởi function?</li>
+</ul>
+<p>Công cụ này do đó có thể được sử dụng trong việc debugging, phân tích các vấn đề về latency &amp;
+performace của kernel.</p>
+<p>Kiến trúc của một tracing tool (kể cả ftrace) thường sẽ gồm 3 phần: Tracing Implementation, Tracing
+Framework, Frontend. Tracing Implementation của ftrace sẽ được mô tả ở mục 2, Tracing Framework
+sẽ được mô tả ở mục 3, Frontend sẽ được mô tả ở mục 4.</p>
+<p><img alt="i2c-bus" src="../imgs/ftrace_sys.png" /><br />
+<em><span style="color:blue">Figure. Kiến trúc tổng quan tracing tool</span></em></p>
+<h2 id="nguyen-ly-hoat-ong-cua-tracing-va-ftrace">Nguyên lý hoạt động của tracing và ftrace?</h2>
+<p>Có 2 kiểu tracing là: “static tracing” và “dynamic tracing”. Nguyên lý của hai kiểu tracing này giống
+nhau ở chỗ, chúng đều sẽ đặt thêm các điểm probe vào trong các hàm thực thi, nhưng khác nhau ở thời
+điểm đặt probe.</p>
+<p>Static tracing, là phương thức tracing bằng cách đặt trực tiếp các điểm probe tĩnh (static probe) trong
+source code. Cách đặt probe này thì tải xử lý thấp nhưng phải được đặt các điểm probe này ở build time.
+Dynamic tracing là phương thức đưa các điểm probe động (dynamic probe) vào trong code, cho phép
+định nghĩa các điểm probe ở runtime. Tải xử lý của “dynamic probe” sẽ cao hơn nhưng cách tracing này
+lại linh hoạt hơn.</p>
+<p>Ftrace là framework hỗ trợ cả static probes (function tracing, event tracing, ..) và cả dynamic probes
+(kprobes, uprobes,..).</p>
+<p>Tại các điểm probe sẽ là các hàm của ftrace đặt vào, giúp ftrace có thể tracing, logging, measuring,...
+các function cần thiết. Sau đó, các thông tin về tracing, logging, measuring,... sẽ được ftrace đẩy lên cho
+người dùng thông qua sysfs (sẽ được đề cập đến ở phần kiến trúc ftrace).</p>
+<h3 id="static-tracing">Static tracing</h3>
+<p>Đối với static probes, để có thể tracing function thì kernel phải được build gcc với option –pg. Khi
+được build với –pg, gcc sẽ đưa thêm một đoạn mã code vào điểm probe là phần mở đầu của các kernel
+function, đoạn mã này có thể được kích hoạt để chuyển hướng thực thi sang phần “plugin” của ftrace
+(hàm mcount) trước khi quay lại thực thi hàm chính. Như vậy, cũng cần phải để ý là nếu ta kích hoạt
+function tracing (khiến plugin kia được thực thi) thì hiệu năng của hệ thống cũng sẽ ảnh hưởng, do đó
+khi hệ thống chạy như thông thường thì ftrace sẽ được disable.</p>
+<p><img alt="" src="../imgs/ftrace_static_trace.png" /><br />
+<em><span style="color:blue">Figure. Cơ chế static probe</span></em></p>
+<h3 id="dynamic-tracing">Dynamic tracing</h3>
+<p>Cơ chế điển hình nhất về dynamic tracing trong kernel chính là kprobes. Đây là cơ chế cho phép
+ta có thể thay đổi assembly code của Linux kernel ở runtime (thêm vào một lệnh assembly khác) để
+có thể trace khi nào lệnh này được gọi. Ta có thể đặt một breakpoint tại bất kì địa chỉ code của kernel
+và cung cấp một handler routine để gọi khi con trỏ lệnh chạm tới breakpoint.</p>
+<p>Khi CPU chạy tới breakpoint có địa chỉ là x, một quy trình gọi là “trap” sẽ xảy ra: các thanh ghi
+CPU được lưu lại, kprobes thực hiện “pre_handler”, thực hiện lệnh tại địa chỉ x, kprobes thực hiện
+“post_handler”, các thanh ghi CPU được khôi phục và quay trở thực hiện lệnh ở sau điểm breakpoint.</p>
+<p><img alt="" src="../imgs/ftrace_dynamic_probe.png" /><br />
+<em><span style="color:blue">Figure. Cơ chế dynamic probe</span></em></p>
+<p>Để sử dụng kprobe thì phải làm như thế nào? Thông thường thì ta sẽ phải viết một kernel module
+và insert module này vào kernel. Kernel module này sẽ cần 3 thành phần: địa chỉ breakpoint,
+pre_handler() và post_handler().</p>
+<p><img alt="" src="../imgs/ftrace_register_probe.png" /><br />
+<em><span style="color:blue">Figure. Đăng ký kprobe qua kernel module</span></em></p>
+<p>Để tránh việc phải viết kernel module và insert nó, ftrace cho phép ta implement các pre_handler(),
+post_handler() một cách đơn giản hơn chỉ thông qua sysfs. Phần sau sẽ nêu rõ cách để thực hiện
+kprobes với ftrace.</p>
+<h2 id="kien-truc-cua-ftrace">Kiến trúc của ftrace</h2>
+<p>Ftrace bao gồm các 2 công cụ (cũng có thể coi là tính năng) chính là profilers và tracers. Trong
+đó, profilers tập trung vào việc thống kê các thông số, historgram,.. của function. Còn tracers lại tập
+trung vào mô tả chi tiết về function đó hơn. Cái này đến phần mô tả chi tiết và ví dụ về profiler và
+tracer sẽ hiểu rõ hơn.</p>
+<p>Các Ftrace profilers và tracers sẽ export các thông tin tracing ra tracefs, thông thường tracefs sẽ
+được mount tại /sys/kernel/debug/tracing.</p>
+<p><img alt="" src="../imgs/ftrace_arch.png" /><br />
+<em><span style="color:blue">Figure. Kiến trúc chi tiết ftrace</span></em></p>
+<p>Tracefs bao gồm các thư mục sau:</p>
+<p><img alt="" src="../imgs/ftrace_tracefs.png" />  </p>
+<p>Trong đó, một số file quan trọng nhất bao gồm:</p>
+<p><img alt="" src="../imgs/ftrace_tracefs_files.png" /></p>
+<h3 id="tracers">Tracers</h3>
+<p>Ta có thể liệt kê các tracer hiện có trong system qua file available_tracers:</p>
+<p><img alt="" src="../imgs/ftrace_tracers.png" /></p>
+<p>Mỗi tracer được có một nhiệm vụ riêng, được mô tả dưới đây:</p>
+<p><img alt="" src="../imgs/ftrace_tracers_desc.png" /></p>
+<p>Ở một thời điểm, ta chỉ có thể sử dụng một tracer, tracer hiện tại được thể hiện qua file
+current_tracer.</p>
+<p><img alt="" src="../imgs/ftrace_tracers_cur.png" /></p>
+<h4 id="function-tracer">Function tracer</h4>
+<p>Function tracing sẽ là câu trả lời của ftrace cho các câu hỏi: function được gọi như thế nào?
+(Cụ thể là gọi bởi function nào? gọi lúc nào?....). Để bật tính năng function tracing thì
+current_tracer phải được set là “function”.</p>
+<p>Hình dưới đây mô tả các file trong tracefs phục vụ cho function tracing. Trong đó các input
+là set_filter_functions (các hàm nào sẽ được tracing), tracing_on (bắt đầu tracing), trace_options
+(các option bổ sung cho việc tracing). Output sẽ là trace (file chưa log tracing in ra), trace_pipe
+(cũng là file chưa log tracing nhưng ở dạng stream).</p>
+<p><img alt="" src="../imgs/ftrace_tracers_func.png" /></p>
+<h4 id="function-tracer-examples">Function tracer examples</h4>
+<h5 id="vi-du-1-dung-function-tracer-e-tracing-mot-so-ham-cu-the">Ví dụ 1. Dùng function tracer để tracing một số hàm cụ thể.</h5>
+<p><img alt="" src="../imgs/ftrace_tracers_func_1.png" /></p>
+<p>Tiến hành tracing các hàm có tiền tố tcp*. Có thể thấy output của trace cung cấp cho ta một số thông
+tin:</p>
+<ul>
+<li>Hàm được gọi: tcp_poll(), tcp_sendmsg(),...</li>
+<li>Process gọi tới hàm đó: sshd</li>
+<li>PID: 18470</li>
+<li>CPU thực hiện call trace tới hàm: CPU 0</li>
+<li>Timestamp (CLOCK_MONOTONIC) tại thời điểm hàm được gọi.</li>
+<li>Hàm parent gọi tới hàm này. Sock_poll() gọi tới tcp_poll(), inet_sendmsg() gọi tới
+tcp_sendmsg().</li>
+</ul>
+<h5 id="vi-du-2-dung-function-tracer-e-debug-loi-nhay-ong-bo-10000s">Ví dụ 2. Dùng function tracer để debug lỗi nháy đồng bộ 10000s</h5>
+<h5 id="vi-du-3-dung-function_graph-tracer-e-tracing-mot-so-ham-cu-the">Ví dụ 3. Dùng function_graph tracer để tracing một số hàm cụ thể.</h5>
+<p>Ví dụ này giống như Ví dụ 1 nhưng thay function tracer bằng function_graph.</p>
+<p><img alt="" src="../imgs/ftrace_tracers_func_3.png" /></p>
+<p>Có thể thấy, function_graph cung cấp cho ta một cái nhìn “dễ nhìn hơn” về call trace, ngoài ra nó còn
+cung cấp thời gian function được gọi (DURATION).</p>
+<h5 id="vi-du-4-tracing-kernel-call-cua-mot-tien-trinh-cu-the">Ví dụ 4. Tracing kernel call của một tiến trình cụ thể.</h5>
+<p>Ở một số tình huống, ví dụ như phân tích một tiến trình cụ thể, ta chỉ muốn khảo sát các kernel
+function được call bởi một tiến trình đó. Ta có thể thực hiện điều này thông qua file set_ftrace_pid. Ví
+dụ dưới đây thực hiện tracing các kernel function được gọi từ tiến trình phc2sys.</p>
+<p><img alt="" src="../imgs/ftrace_tracers_func_4.png" /></p>
+<h5 id="vi-du-5-tracing-function-cua-mot-kernel-module">Ví dụ 5. Tracing function của một kernel module</h5>
+<p>Như ở Ví dụ 1, ta đã tracing được các hàm có tiền tố tcp* bằng cách echo ‘tcp*’ &gt; set_ftrace_filter.
+Bây giờ muốn tracing function của một kernel module cụ thể thì làm thế nào? Đơn giản thôi, ví dụ muốn
+tracing function của driver i40e:</p>
+<p><img alt="" src="../imgs/ftrace_tracers_func_5.png" /></p>
+<h5 id="vi-du-6-function-nay-uoc-goi-tu-function-nao">Ví dụ 6. Function này được gọi từ function nào?</h5>
+<p>Ở Ví dụ 3, nếu dùng function_graph không thể cho ta thấy được function được gọi như thế nào
+thì có thể dùng options/func_stack_trace của function tracer. Ở ví dụ này, ta thực hiện tracing hàm
+do_adjtimex thì có thể thấy nó lần lượt được call từ posix_clock_realtime_adj, hàm này lại được gọi từ
+system call SYSC_clock_adjtime.</p>
+<p><img alt="" src="../imgs/ftrace_tracers_func_6.png" /></p>
+<h5 id="vi-du-7-function-nay-se-tiep-tuc-call-en-function-nao">Ví dụ 7. Function này sẽ tiếp tục call đến function nào?</h5>
+<p>Ở Ví dụ 6, ta đã “trace ngược” một function được gọi như thế nào, vậy còn “trace xuôi” một
+function gọi đến functio nào tiếp theo thì như thế nào? Ví dụ dưới dây tracing hàm
+posix_clock_realtime_adj lần lượt gọi tới do_adjtimex(), ntp_validate_timex(),... Có thể thấy hai chức
+năng “trace xuôi” và “trace ngược” code này rất tiện cho việc đọc source code kernel.</p>
+<p><img alt="" src="../imgs/ftrace_tracers_func_7.png" /></p>
+<h5 id="vi-du-8-liet-ke-cac-kernel-function-co-thoi-gian-chay-lon-hon-nguong-10ms">Ví dụ 8. Liệt kê các kernel function có thời gian chạy lớn hơn ngưỡng 10ms.</h5>
+<p>Khi dùng tracer là function_graph, ftrace sẽ so sánh DURATION của function với giá trị của
+‘tracing_thresh’, nếu DURATION lớn hơn thì ftrace sẽ liệt kê function đó ra. Đơn vị của tracing_thresh
+là micro giây. Ví dụ nếu ta muốn liệt kê các hàm cụ thể có thời gian thực hiện lớn hơn 10ms:</p>
+<p><img alt="" src="../imgs/ftrace_tracers_func_8.png" /></p>
+<h4 id="what-is-next-for-tracers">What is next for tracers?</h4>
+<ul>
+<li>Wakeup và wakeup_rt tracer</li>
+<li>Irqsoff tracer</li>
+<li>Hwlat tracer</li>
+<li>Kprobe tracer</li>
+</ul>
+<h3 id="profilers">Profilers</h3>
+<p>Ftrace sử dụng một số các profilers sau:</p>
+<p><img alt="" src="../imgs/ftrace_profilers.png" /></p>
+<h4 id="function-profiler">Function profiler</h4>
+<p>Function profiler cung cấp các chỉ số thống kê của các kernel function, do đó nó phù hợp nếu ta muốn
+khám phá xem function nào đang được sử dụng nhiều, function nào chiếm nhiều thời gian.</p>
+<h5 id="vi-du-9-thong-ke-mot-so-kernel-function-cu-the">Ví dụ 9. Thống kê một số kernel function cụ thể.</h5>
+<p>Ví dụ ta muốn thống kê các function liên quan tới tcp protocol đang chạy trong kernel:</p>
+<p><img alt="" src="../imgs/ftrace_profilers_prf_1.png" /></p>
+<p>Ở ví dụ trên, kết quả của function profiler cung cấp cho ta các thông tin về các function tcp* được
+thực hiện dưới kernel trong khoảng thời gian sleep 10s:</p>
+<ul>
+<li>Các function tcp_* được thống kê ở 2 CPU: CPU0 (function0), CPU1 (function1)</li>
+<li>Cột Hit là số lần hàm được gọi.</li>
+<li>Cột Time là tổng số thời gian hàm đó thực hiện.</li>
+<li>Cột Average là thời gian trung bình một hàm đó thực hiện.</li>
+<li>Cột s^2 là độ lệch chuẩn của thời gian hàm đó thực hiện (độ lệch chuẩn phản ánh giao động của
+giá trị), độ lệch chuẩn càng lớn chứng tỏ trong phân bố, giá trị thời gian thực hiện giao động là
+lớn.</li>
+</ul>
+<h4 id="kprobe-profiler">Kprobe profiler</h4>
+<p>(NA)</p>
+<h2 id="frontend-cua-ftrace">Frontend của ftrace</h2>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../kernel_user_space/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Kernel Space, User Space Interfaces" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Kernel Space, User Space Interfaces
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../../fpga/timing_analysis/timing_analysis/" class="md-footer__link md-footer__link--next" aria-label="Next: Static Timing Analysis" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Static Timing Analysis
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2018 Vu Tang.
+          </div>
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.fcfe8b6d.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+    
+  </body>
+</html>
