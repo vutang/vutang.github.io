@@ -1850,19 +1850,31 @@
 <p>Network Block Device là một kỹ thuật lưu trữ dữ liệu từ xa được sử dụng trên các hệ thống máy tính Linux và Unix, cho phép một thiết bị Client truy cập vào kho dữ liệu trên một Server từ xa. Khi thiết bị Client đã thiết lập NBD, nó sẽ hoạt động như thể có một ổ đĩa thực sự trên phía Client chứ không phải ở một Server nào đó trên mạng.</p>
 <p>NBD ở phía Server có thể là một đĩa cứng thực tế hoặc là một loại tệp đặc biệt có thể được truy cập như thể nó là một đĩa. Mặc dù chậm hơn đĩa cứng cục bộ, nhưng phương pháp này hữu ích cho một số trường hợp, chẳng hạn như backup dữ liệu hoặc cung cấp khả năng lưu trữ cho một thiết bị không có hoặc có bộ nhớ lưu trữ nhỏ.</p>
 <p>Server chạy một phần mềm nhỏ, được gọi là daemon, cho phép Client truy cập vào mount tới thiết bị lưu trữ.</p>
-<p><img alt="" src="../imgs/nbd_topo.png" /></p>
-<p><em>Figure. Mô hình sử dụng NBD giữa client và server.</em></p>
+<figure>
+<p><img alt="" src="../imgs/nbd_topo.png" width="700" />
+  </p>
+<figcaption>Mô hình sử dụng NBD giữa client và server</figcaption>
+</figure>
 <p>NBD có thể được triển khai cùng với công nghệ RAID để thiết lập một số kiểu sao chép/backup bộ nhớ giữa clietn và server. Với RAID0, có thể chia dữ liệu lên các bộ nhớ để có thể đạt được hiệu năng đọc/ghi và dung lượng lưu trữ lớn hơn. Còn với RAID1, dữ liệu trên một bộ nhớ được sao chép đồng thời trên bất kỳ bộ nhớ nào khác, cung cấp một bản sao lưu có thể truy cập tức thì nếu bất kỳ đĩa nào bị lỗi. </p>
-<p><img alt="" src="../imgs/nbd_topo_raid.png" /></p>
-<p><em>Figure. NBD được triển khai cùng công nghệ RAID.</em></p>
+<figure>
+<p><img alt="" src="../imgs/nbd_topo_raid.png" width="700" />
+  </p>
+<figcaption>NBD được triển khai cùng công nghệ RAID</figcaption>
+</figure>
 <h2 id="so-sanh-nbd-va-nfs">So sánh NBD và NFS</h2>
 <p>Network Block Device (NBD) có những đặc điểm tương tự với kỹ thuật Network File System (NFS). Một thí nghiệm được thực hiện vào năm 1999 và sử dụng phiên bản NBD driver ban đầu của Pavel chỉ ra rằng việc mount một file Linux EXT2 bằng NBD cho tốc độ nhanh hơn sử dụng NFS (Network File System) trên cùng một thiết bị.</p>
 <p>Thông qua thí nghiệm việc mount file bằng NBD trong các điều kiện mặc định giống với NFS với độ lớn bộ đệm xấp xỉ 1.5KB, gấp 1,5 lần kích thước bộ đệm mặc định NFS là 1KB. Thêm vào đó NFS sử dụng giao thức UDP còn NBD sử dụng giao thức TCP. UDP là phương pháp “truyền và quên”, nên đôi khi dữ liệu truyền có thể bị mất. Ngược lại, TCP thiết lập một kết nối dự trên tiến trình bắt tay 3 bước, do đó đảm bảo dữ liệu NBD được đọc và ghi chính xác. </p>
-<p><img alt="" src="../imgs/nbd_vs_nfs.png" />
-<em>So sánh tốc độ mount giữa NFS và NBD</em></p>
+<figure>
+<p><img alt="" src="../imgs/nbd_vs_nfs.png" width="700" />
+  </p>
+<figcaption>So sánh tốc độ mount giữa NFS và NBD</figcaption>
+</figure>
 <p>Cả NFS và NBD đều có cấu trúc liên kết dạng hình sao. Tuy nhiên, NFS có server được đặt ở vị trí trung tâm và kết nối với nhiều client, trong khi đó NBD với công nghệ RAID cung cấp cấu trúc ngược lại - một client kết nối tới nhiều server. Điều năng cho phép client tăng khả năng lưu trữ cũng như backup và truy cập lại dữ liệu ngày khi một bộ nhớ trên một server bất kỳ bị hỏng.</p>
-<p><img alt="" src="../imgs/nbd_vs_nfs_2.png" />
-<em>Mô hình liên kết của NFS và NBD</em></p>
+<figure>
+<p><img alt="" src="../imgs/nbd_vs_nfs_2.png" width="600" />
+  </p>
+<figcaption>Mô hình liên kết của NFS và NBD</figcaption>
+</figure>
 <h2 id="thiet-lap-network-block-device-dua-tren-filesystem">Thiết lập Network Block Device dựa trên filesystem</h2>
 <h3 id="cau-hinh-ndb-o-phia-server">Cấu hình NDB ở phía Server.</h3>
 <p>Các bước thực hiện cấu hình phía Server:</p>
