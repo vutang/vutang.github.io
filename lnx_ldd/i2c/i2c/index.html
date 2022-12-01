@@ -1753,23 +1753,32 @@
 <h2 id="introduction">Introduction</h2>
 <p>Tài liệu mô tả các kiến thức tìm hiểu được về I2C Platform trên Linux được thực hiện thực tế trên phần cứng ZC706 và FMCJESDADC1. Tài liệu là kết quả của quá trình mở rộng tìm hiểu dựa trên yêu cầu ban đầu của “Bài tập 6: Viết ứng dụng đọc/ghi chip EEPROM thông qua bus I2C trên KIT hoặc RRU” trong chương trình Linux Training của phòng Firmware – VTBR-VTTEK.</p>
 <p>I2C là một bus rất phổ biến được sử dụng cho giao tiếp giữa master (một hoặc nhiều) và các thiết bị slave. <a href="#i2c-bus">Hình dưới</a> mô tả một topo cơ bản kết nối các thiết bị ngoại vi với Microprocessor thông qua bus I2C.</p>
+<figure>
 <p><img alt="i2c-bus" src="../img/bus-i2c.png" /><br />
-<em><span style="color:blue">Figure. I2C Bus</span></em></p>
+<em><figcaption style="color:blue">Figure. I2C Bus</figcaption></em></p>
+</figure>
 <p>ZC706 board triển khai hai cổng I2C (<a href="#zc706_i2c">Hình</a>) [2]:</p>
 <ul>
 <li>PL-Side: cổng IIC_SCL/SDA_MAIN trên Bank 10.</li>
 <li>PS-Side: cổng IIC_SDA/SCL_MAIN trên Bank 501.</li>
 </ul>
+<figure>
 <p><img alt="zc706_i2c" src="../img/zc706-i2c.png" /><br />
-<em><span style="color:blue">Figure. I2C Bus in ZC706 KIT</span></em></p>
+<em><figcaption style="color:blue">Figure. I2C Bus in ZC706 KIT</figcaption></em></p>
+</figure>
 <p>Hiện tại, trên project phần cứng ZC706 và FMCJESDADC1 (kết nối với nhau qua bus FMC-HPC), hệ thống bus I2C được minh họa trong sơ đồ <a href="#">Hình dưới</a>. FPGA Project cung cấp bởi ADI sử dụng Xilinx AXI I2C Controller (implement trên FPGA) cho mục đích giao tiếp với các thiết bị I2C trên mạch thông qua bus trên PL Bank 10.</p>
-<p><img alt="zc706_i2c_devs" src="../img/zc706-i2c-devs.png" /><br />
-<em><span style="color:blue">Figure. Bus I2C trên phần cứng ZC706/FMCJESDDAC1</span></em></p>
+<figure>
+<p><img alt="zc706_i2c_devs" src="../img/zc706-i2c-devs.png" width="600" /> 
+  <em><figcaption style="color:blue">Figure. Bus I2C trên phần cứng ZC706/FMCJESDDAC1</figcaption></em></p>
+</figure>
 <h2 id="i2c-platform_1">I2C Platform</h2>
 <h3 id="cac-thanh-phan-co-ban-cua-i2c-platform">Các thành phần cơ bản của i2c platform</h3>
 <p>Hình 2.1 mô tả các thành phần cơ bản của một i2c platform trên Linux. Ứng dụng <code>i2ctool</code> trên tầng User Space tương tác với các file <code>/dev/i2c-n</code> tương ứng với các bus i2c. Thông qua các module <code>i2c-dev</code>, <code>i2c-core</code> và <code>i2c-driver</code>, ứng dụng <code>i2ctool</code> có thể truy nhập đến các thiết bị i2c trên phần cứng tương ứng với bus i2c được đại diện bằng file <code>/dev/i2c-n</code>.</p>
-<p><img alt="spi_bus_signals" src="../img/linux-i2c-platform.png" /><br />
-<em><span style="color:blue">Figure. Các thành phần trong I2C Platform</span></em></p>
+<figure>
+<p><img alt="i2cbus_system" src="../img/linux-i2c-platform.png" width="600" /><br />
+</p>
+<figcaption>I2C Subsystem</figcaption>
+</figure>
 <p>Trong phần tiếp theo sẽ tìm hiểu rõ hơn các thành phần trong hệ thống trên, cũng như cách hệ thống hoạt động.</p>
 <h4 id="cac-cau-truc-du-lieu-quan-trong">Các cấu trúc dữ liệu quan trọng</h4>
 <p>Để có thể quản lí và truy cập đến các thiết bị i2c, i2c platform sử dụng các cấu trúc dữ liệu như: <code>i2c_client</code>, <code>i2c_adapter</code> và <code>i2c_algorithm</code>. Trong đó: </p>
@@ -1778,8 +1787,10 @@
 <li><code>i2c_adapter</code> và i2c algorithm cung cấp các phương thức (các hàm <code>master_xfer()</code>, <code>smbus_xfer()</code>) để có thể truy nhập đến các thiết bị i2c. </li>
 </ul>
 <p>Mối quan hệ giữa các struct này thể hiện trong Hình 2.2.</p>
-<p><img alt="spi_bus_signals" src="../img/i2c-data-struct.png" /><br />
-<em><span style="color:blue">Figure.  Các cấu trúc dữ liệu quan trọng liên quan đến i2c platform</span></em></p>
+<figure>
+<p><img alt="spi_bus_signals" src="../img/i2c-data-struct.png" width="600" /><br />
+<em><figcaption style="color:blue">Figure.  Các cấu trúc dữ liệu quan trọng liên quan đến i2c platform</figcaption></em></p>
+</figure>
 <h4 id="struct-i2c_client">Struct i2c_client</h4>
 <p>Trên một bus i2c có thể có một hoặc nhiều thiết bị, mỗi thiết bị trên bus sẽ được driver đăng kí với hệ điều hành thông qua một <code>struct i2c_client</code> (Hình 2.3). Đặc trưng nhất của <code>struct i2c_client</code> này là trường addr nơi chứa địa chỉ của thiết bị trên bus i2c để phân biệt với các thiết bị khác.</p>
 <pre><code>struct i2c_client {
