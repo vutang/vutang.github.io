@@ -2036,7 +2036,9 @@
 <h4 id="clock-signal">Clock Signal</h4>
 <p><strong>Clock</strong> là một tín hiệu có chu kì có các thuộc tính sau: Period (Chu
 kì), Duty Cycle, Jitter, Phase...</p>
-<p><img alt="" src="../imgs/fpga_timing_1.png" /></p>
+<figure>
+<p><img alt="" src="../imgs/fpga_timing_1.png" width="400" /></p>
+</figure>
 <p>Một số đặc tính đáng chú ý của clock xuất hiện trong hệ thống thực tế:  </p>
 <ul>
 <li>
@@ -2078,10 +2080,14 @@ kì), Duty Cycle, Jitter, Phase...</p>
 <ul>
 <li><strong>Setup/Hold Time:</strong></li>
 </ul>
-<p>Xét một Flip Flop có chân clock CLK, data in D, data out Q.<br />
-<img alt="" src="../imgs/fpga_timing_ff.png" /></p>
+<p>Xét một Flip Flop có chân clock CLK, data in D, data out Q.  </p>
+<figure>
+<p><img alt="" src="../imgs/fpga_timing_ff.png" /></p>
+</figure>
 <p>Định nghĩa về Setup/Hold Time được biểu diễn trong hình vẽ sau:</p>
+<figure>
 <p><img alt="" src="../imgs/fpga_timing_setup_hold_time.png" /></p>
+</figure>
 <p>Về cơ bản, để một Flip Flop hoạt động đúng chức năng, dữ liệu đưa
 vào đầu vào D phải thỏa mãn điều kiện Setup Time và Hold Time. Trong
 đó, Setup Time là khoảng thời gian nhỏ nhất mà Data in phải giữ ổn
@@ -2090,7 +2096,9 @@ nhỏ nhất mà Data in phải giữ ổn định sau thời điểm sườn l�
 <ul>
 <li><strong>Setup/Hold Time Violation:</strong> Khi đầu vào D vi phạm điều kiện Setup/Hold Time, kết quả đầu ra Q có thể xảy ra một trong các trường hợp ở hình sau:</li>
 </ul>
+<figure>
 <p><img alt="" src="../imgs/fpga_timing_setup_hold_time_2.png" /></p>
+</figure>
 <ul>
 <li><strong>Metastability</strong></li>
 </ul>
@@ -2107,7 +2115,10 @@ nhỏ nhất mà Data in phải giữ ổn định sau thời điểm sườn l�
 </ul>
 <h4 id="setup-checkhold-check">Setup check/Hold check</h4>
 <p>Basic definitions is used in Setup check/Hold check.</p>
-<p><img alt="" src="../imgs/fpga_timing_setupcheck_definition.png" /></p>
+<figure>
+![](imgs/fpga_timing_setupcheck_definition.png)
+</figure>
+
 <p><strong>Launch edge:</strong></p>
 <p><strong>Capture edge:</strong></p>
 <p><strong>Hold relationship:</strong></p>
@@ -2115,12 +2126,16 @@ nhỏ nhất mà Data in phải giữ ổn định sau thời điểm sườn l�
 <p><strong>Setup check:</strong></p>
 <p>Checks that a change in a clocked element has time to propagate to other
 clocked elements before the next clock event.</p>
+<figure>
 <p><img alt="" src="../imgs/fpga_timing_setupcheck.png" /></p>
+</figure>
 <!-- =========================================== -->
 
 <h2 id="sta-with-vivado">STA with Vivado</h2>
 <h3 id="xilinx-performance-baselining">Xilinx performance baselining</h3>
+<figure>
 <p><img alt="" src="../imgs/fpga_timing_xilinxbaseline_dev.png" /></p>
+</figure>
 <p>Để có thể phân tích một design hiệu quả, kĩ sư có thể dựa vào baselining
 mà Xilinx giới thiệu. Chi tiết về các bước thực hiện phân tích theo
 Xilinx được thể hiện trong các hình vẽ sau. Trong đó có ba bước chính:</p>
@@ -2139,7 +2154,9 @@ Xilinx được thể hiện trong các hình vẽ sau. Trong đó có ba bướ
 </ul>
 <p>Trong báo cáo này sẽ tập trung vào mục Optimize Internal Path. Quá trình
 này được thể hiện trên côt dọc thứ nhất của sơ đồ.</p>
+<figure>
 <p><img alt="" src="../imgs/xilinx_performance_baseline.png" /></p>
+</figure>
 <h3 id="xilinx-timing-analysis-tool">Xilinx timing analysis tool</h3>
 <h4 id="vivado-timing-analysis-report">Vivado timing analysis report</h4>
 <p>Một số khái niệm cơ bản trong Xilinx Timing Report.</p>
@@ -2152,24 +2169,32 @@ violation hay không. Định nghĩa của các tham số này như sau:</p>
 </li>
 <li>
 <p><strong>TNS: Total Negative Slack</strong>. Tổng giá trị của tất cả các Negative
-Slack<br />
-<img alt="" src="../imgs/timing_report.png" /></p>
+Slack  </p>
 </li>
-<li>
-<p><strong>WHS: Worst Hold Slack</strong>. Kết quả của quá trình Hold Check.</p>
-</li>
-<li><strong>THS: Total Hold Slack</strong>. Tổng giá trị của tất cả các Hold Slack.<br />
-<img alt="" src="../imgs/timing_report_2.png" /></li>
 </ul>
+<figure>
+<p><img alt="" src="../imgs/timing_report.png" /></p>
+</figure>
+<ul>
+<li><strong>WHS: Worst Hold Slack</strong>. Kết quả của quá trình Hold Check.</li>
+<li><strong>THS: Total Hold Slack</strong>. Tổng giá trị của tất cả các Hold Slack.  </li>
+</ul>
+<figure>
+<p><img alt="" src="../imgs/timing_report_2.png" /></p>
+</figure>
 <p><strong>How does Vivado calculate Hold Time Slack?</strong></p>
 <p>Hold Time Check được xét trên cùng một sườn clock của Source Clock và
 Destination Clock.</p>
 <p>Xét một Static Timing Path cụ thể có sơ đồ như hình dưới đây.</p>
+<figure>
 <p><img alt="" src="../imgs/hold_time_slack_calc.png" /></p>
+</figure>
 <p>Timing path được tính giữa F1 và F2 (2 Clocked Elements), F1/F2 sử dụng
 chung clocks được lấy từ CLKOUT1 của MMCM2_ADV. Chi tiết về path này
 được ghi rõ trong report sau:</p>
+<figure>
 <p><img alt="" src="../imgs/hold_time_slack_calc_1.png" /></p>
+</figure>
 <p>Ở mục Summary của Path Report có các thông tin sau:</p>
 <ul>
 <li>
@@ -2214,7 +2239,9 @@ startpoint and capturing endpoint.</li>
 </ul>
 </li>
 </ul>
+<figure>
 <p><img alt="" src="../imgs/hold_time_slack_calc_2.png" /></p>
+</figure>
 <p>Ở mục Source Clock Path, report sẽ mô tả chi tiết đường đi của Source
 Clock. Theo như report ở hình trên, để đến được F1, Source Clock sẽ phải
 đi qua: IBUFDS &amp; BUFG, PLL2_ADV &amp; BUFGCTL, MMCM2_ADV &amp; BUFG như ở hình
@@ -2231,10 +2258,14 @@ vẽ đầu tiên.</p>
     thể âm hoặc dương).</p>
 </li>
 </ul>
+<figure>
 <p><img alt="" src="../imgs/hold_time_slack_calc_3.png" /></p>
+</figure>
 <p>Phần Data Path sẽ mô tả chi tiết hơn về delay giữa F1/F2, cái mà đã được
 nhắc đến ở mục Sumary.</p>
+<figure>
 <p><img alt="" src="../imgs/hold_time_slack_calc_4.png" /></p>
+</figure>
 <p>Phần Destination Clock Path có chức năng tương tự như phần Source Clock
 Path, sẽ mô tả chi tiết đường đi của Destination Clock Path.</p>
 <p>Với Report như trên, ta có thể vẽ được Timing Diagram cho Path này như
@@ -2309,7 +2340,9 @@ Time Slack như được thực hiện trên hai sườn clock khác nhau.</p>
 </li>
 </ul>
 <h4 id="xilinx-design-constraint-xdc">Xilinx Design Constraint (XDC)</h4>
+<figure>
 <p><img alt="" src="../imgs/xcontraints.png" /></p>
+</figure>
 <h4 id="design-with-the-7-series">Design with the 7 series</h4>
 <p>Clocking Resources in 7 series.</p>
 <p>Clock regions: Mỗi die FPGA được chia thành các clock regions. Chiều cao
