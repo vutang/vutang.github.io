@@ -1,0 +1,36 @@
+<svg role='img' viewBox="-10 -10 360 148" xmlns="http://www.w3.org/2000/svg"
+           font-family="DejaVu Sans, sans-serif"><rect x="-10" y="-10" width="360" height="148" rx="6" fill="#ffffff"/>
+        <defs>
+          <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto">
+            <path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker>
+        </defs>
+        <g font-size="8.3" font-weight="700">
+          <rect x="2" y="4" width="78" height="22" rx="5" fill="#dcebfb" stroke="#3b7dd8"/>
+          <text x="41" y="18.5" text-anchor="middle" fill="#1d4f91">printk CPU0</text>
+          <rect x="2" y="34" width="78" height="22" rx="5" fill="#dcebfb" stroke="#3b7dd8"/>
+          <text x="41" y="48.5" text-anchor="middle" fill="#1d4f91">printk CPU1</text>
+          <rect x="2" y="64" width="78" height="22" rx="5" fill="#dcebfb" stroke="#3b7dd8"/>
+          <text x="41" y="78.5" text-anchor="middle" fill="#1d4f91">VT / fbcon</text>
+        </g>
+        <rect x="118" y="20" width="82" height="50" rx="7" fill="#f6d5d4" stroke="#b8312f" stroke-width="1.4"/>
+        <text x="159" y="41" font-size="9" text-anchor="middle" font-weight="700" fill="#7a1d1d">console_lock</text>
+        <text x="159" y="55" font-size="7.8" text-anchor="middle" fill="#7a1d1d">(toàn cục)</text>
+        <g stroke="#555" stroke-width="1.1" fill="none">
+          <path d="M80,15 L116,34" marker-end="url(#a2)"/>
+          <path d="M80,45 L116,45" marker-end="url(#a2)"/>
+          <path d="M80,75 L116,58" marker-end="url(#a2)"/>
+        </g>
+        <g font-size="8.1">
+          <rect x="240" y="2" width="98" height="24" rx="5" fill="#e4e4e4" stroke="#666"/>
+          <text x="289" y="12" text-anchor="middle" font-weight="700">ttyS0</text>
+          <text x="289" y="22" text-anchor="middle" fill="#b8312f">rất chậm</text>
+          <rect x="240" y="33" width="98" height="24" rx="5" fill="#e4e4e4" stroke="#666"/>
+          <text x="289" y="48.5" text-anchor="middle" font-weight="700">netconsole</text>
+          <rect x="240" y="64" width="98" height="24" rx="5" fill="#e4e4e4" stroke="#666"/>
+          <text x="289" y="79.5" text-anchor="middle" font-weight="700">fbcon</text>
+        </g>
+        <path d="M200,45 L220,45 L220,14 L238,14 M220,45 L238,45 M220,45 L220,76 L238,76"
+              fill="none" stroke="#b8312f" stroke-width="1.3"/>
+        <text x="170" y="106" font-size="8.2" text-anchor="middle" fill="#444">in lần lượt từng console, giữ khóa suốt quá trình</text>
+        <text x="170" y="119" font-size="8.2" text-anchor="middle" fill="#b8312f" font-weight="700">→ tổng thời gian = Σ thời gian các console</text>
+      </svg>

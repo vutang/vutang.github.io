@@ -3448,12 +3448,12 @@
 
 <h2 id="phan-1-khi-loi-nhan-cua-kernel-tro-thanh-nut-that-sau-gioi-han-cua-co-che-console-cu">Phần 1. Khi lời nhắn của kernel trở thành nút thắt: sáu giới hạn của cơ chế console cũ<a class="headerlink" href="#phan-1-khi-loi-nhan-cua-kernel-tro-thanh-nut-that-sau-gioi-han-cua-co-che-console-cu" title="Permanent link">&para;</a></h2>
 <p><em>Suốt hơn hai thập kỷ, <code>printk()</code> là công cụ chẩn đoán quen thuộc nhất của kernel. Nhưng chính cách nó đưa log ra console lại gây trễ hệ thống, mất log khi sự cố xảy ra và chặn PREEMPT_RT vào mainline trong nhiều năm. Phần này phân tích các giới hạn đó và lý do cộng đồng phải thiết kế lại thành NBCON.</em></p>
-<p><img alt="Hình 1. Dòng thời gian của một lần printk() với console kiểu cũ" src="../../../../img/nbcon-legacy-timeline.png" /></p>
+<p><img alt="Hình 1. Dòng thời gian của một lần printk() với console kiểu cũ" src="../../../../img/nbcon-legacy-timeline.svg" /></p>
 <p><strong>Hình 1.</strong> Dòng thời gian của một lần <code>printk()</code> với console kiểu cũ. CPU giành được <code>console_lock</code> phải tự in log của mình lẫn log của CPU khác, trong khi ngắt bị tắt. Các số ②③⑤ tương ứng với các mục bên dưới.</p>
 <p>Về nguyên tắc, <code>printk()</code> chỉ làm hai việc: ghi message vào ringbuffer của kernel, rồi đưa nó ra các console như cổng serial, netconsole hay màn hình framebuffer. Vấn đề nằm ở bước thứ hai. Trong thiết kế cũ, mọi console dùng chung một khóa toàn cục là <code>console_lock</code>, và CPU nào giành được khóa này sẽ chịu trách nhiệm in toàn bộ log đang chờ, ngay trong ngữ cảnh của nó.</p>
 <h3 id="1-mot-khoa-cho-tat-ca">① Một khóa cho tất cả<a class="headerlink" href="#1-mot-khoa-cho-tat-ca" title="Permanent link">&para;</a></h3>
 <p>Vì mọi console bị tuần tự hóa sau cùng một khóa, console chậm nhất, thường là UART ở 115200 baud, quyết định tốc độ của cả hệ thống log. Khóa này còn được VT và fbcon dùng cho những việc không liên quan đến in log, nên <code>printk()</code> phải tranh chấp với cả các thao tác đó.</p>
-<p><img alt="Hình 2. Mọi nguồn log cùng đi qua một khóa duy nhất" src="../../../../img/nbcon-global-console-lock.png" /></p>
+<p><img alt="Hình 2. Mọi nguồn log cùng đi qua một khóa duy nhất" src="../../../../img/nbcon-global-console-lock.svg" width="440" /></p>
 <p><strong>Hình 2.</strong> Mọi nguồn log cùng đi qua một khóa duy nhất trước khi tới console.</p>
 <h3 id="2-nguoi-goi-phai-in-va-in-ho-nguoi-khac">② Người gọi phải in, và in hộ người khác<a class="headerlink" href="#2-nguoi-goi-phai-in-va-in-ho-nguoi-khac" title="Permanent link">&para;</a></h3>
 <p>Khi CPU khác gọi <code>printk()</code> mà không lấy được khóa, message của nó được dồn cho CPU đang giữ khóa in hộ. Cơ chế chuyển giao <code>console_owner</code> (từ 4.16) giúp san sẻ gánh nặng, nhưng không đặt được giới hạn trên. Trên máy nhiều nhân với log dồn dập, một CPU có thể bị kẹt in đủ lâu để gây soft lockup hay RCU stall, tức chính <code>printk()</code> sinh ra sự cố.</p>
@@ -3499,7 +3499,7 @@
 <hr />
 <h2 id="phan-2-ben-trong-nbcon-khi-printk-khong-con-chan-ai">Phần 2. Bên trong NBCON: khi printk() không còn chặn ai<a class="headerlink" href="#phan-2-ben-trong-nbcon-khi-printk-khong-con-chan-ai" title="Permanent link">&para;</a></h2>
 <p><em>Thay vì một khóa toàn cục, NBCON trao cho mỗi console một “chìa khóa” riêng có gắn mức ưu tiên. Việc in thường ngày được giao cho kthread, còn những lúc nguy cấp, kernel vẫn in được ngay lập tức, kể cả trong NMI và panic. Đây là mảnh ghép cuối cùng đưa PREEMPT_RT vào mainline.</em></p>
-<p><img alt="Hình 3. Hai đường in của NBCON" src="../../../../img/nbcon-architecture.png" /></p>
+<p><img alt="Hình 3. Hai đường in của NBCON" src="../../../../img/nbcon-architecture.svg" /></p>
 <p><strong>Hình 3.</strong> Hai đường in của NBCON. Đường thường ngày (tím) chạy trong kthread riêng của từng console; đường khẩn cấp (cam) in đồng bộ bằng <code>write_atomic()</code>. Cả hai cùng xin quyền qua <code>nbcon_state</code> của console đó.</p>
 <p>Ý tưởng cốt lõi của NBCON (non-BKL console) là tách hai việc mà cơ chế cũ gộp làm một: <em>lưu</em> message và <em>in</em> message. <code>printk()</code> giờ chỉ ghi vào ringbuffer lockless rồi trả về. Việc in được giao cho một kthread riêng của từng console, chạy với nice −20, nên console chậm không còn kéo chậm console khác, càng không kéo chậm người gọi.</p>
 <h3 id="quyen-so-huu-co-uu-tien">Quyền sở hữu có ưu tiên<a class="headerlink" href="#quyen-so-huu-co-uu-tien" title="Permanent link">&para;</a></h3>
@@ -3509,7 +3509,7 @@
 <li>yêu cầu <em>handover</em> để chủ hiện tại nhường ở điểm an toàn kế tiếp;</li>
 <li>chỉ khi panic, <em>hostile takeover</em> giành quyền bất chấp.</li>
 </ul>
-<p><img alt="Hình 4. Trình tự handover" src="../../../../img/nbcon-handover.png" /></p>
+<p><img alt="Hình 4. Trình tự handover" src="../../../../img/nbcon-handover.svg" width="440" /></p>
 <p><strong>Hình 4.</strong> Handover: chủ cũ không bị cắt ngang giữa lúc đang ghi thanh ghi (vùng đỏ) mà nhường quyền ở điểm an toàn kế tiếp.</p>
 <h3 id="vung-unsafe-va-iem-an-toan">Vùng “unsafe” và điểm an toàn<a class="headerlink" href="#vung-unsafe-va-iem-an-toan" title="Permanent link">&para;</a></h3>
 <p>Driver tự đánh dấu những đoạn không được phép bị cắt ngang, chẳng hạn khi đang đổi thanh ghi IER của UART, bằng cặp <code>nbcon_enter_unsafe()</code> / <code>nbcon_exit_unsafe()</code>. Ra khỏi vùng unsafe là một điểm an toàn: nếu có yêu cầu handover, quyền được nhường tại đây. Khi panic và chủ cũ không phản hồi kịp, CPU panic có thể takeover và đánh dấu <code>unsafe_takeover</code>, chấp nhận rủi ro output lỗi để vẫn có log.</p>

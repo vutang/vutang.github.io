@@ -1,0 +1,78 @@
+<svg role='img' viewBox="-10 -10 742 218" xmlns="http://www.w3.org/2000/svg"
+         font-family="DejaVu Sans, sans-serif"><rect x="-10" y="-10" width="742" height="218" rx="6" fill="#ffffff"/>
+      <defs>
+        <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <rect width="6" height="6" fill="#f6d5d4"/>
+          <line x1="0" y1="0" x2="0" y2="6" stroke="#e3a3a1" stroke-width="2"/>
+        </pattern>
+        <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
+        </marker>
+        <marker id="arR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M0,0 L10,5 L0,10 z" fill="#b8312f"/>
+        </marker>
+        <marker id="arP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M0,0 L10,5 L0,10 z" fill="#7c4dbf"/>
+        </marker>
+      </defs>
+
+      <!-- row labels -->
+      <g font-size="10" font-weight="700" fill="#1b1b1b">
+        <text x="0" y="52">CPU0</text>
+        <text x="0" y="106">CPU1</text>
+        <text x="0" y="154">CPU2</text>
+      </g>
+      <g stroke="#ccc" stroke-width="0.8">
+        <line x1="44" y1="48" x2="716" y2="48"/>
+        <line x1="44" y1="102" x2="716" y2="102"/>
+        <line x1="44" y1="150" x2="716" y2="150"/>
+      </g>
+
+      <!-- caller blocked bracket -->
+      <text x="346" y="11" font-size="8.3" text-anchor="middle" fill="#b8312f" font-weight="700">② task A bị chặn suốt thời gian đẩy ký tự ra UART (≈7 ms/dòng @115200)</text>
+      <path d="M120,24 L120,17 L572,17 L572,24" fill="none" stroke="#b8312f" stroke-width="1.2"/>
+
+      <!-- IRQ marker -->
+      <line x1="200" y1="23" x2="200" y2="36" stroke="#e08a00" stroke-width="1.6" marker-end="url(#ar)"/>
+      <text x="205" y="32" font-size="8" font-weight="700" fill="#a86200">IRQ đến</text>
+
+      <!-- CPU0 -->
+      <rect x="46" y="38" width="72" height="20" rx="4" fill="#dcebfb" stroke="#3b7dd8"/>
+      <text x="82" y="52" font-size="9" text-anchor="middle" fill="#1d4f91">task A</text>
+      <rect x="120" y="38" width="300" height="20" rx="4" fill="url(#hatch)" stroke="#b8312f" stroke-width="1.2"/>
+      <text x="270" y="51.5" font-size="8.8" text-anchor="middle" fill="#7a1d1d" font-weight="700">printk(): giữ console_lock + port lock, IRQ tắt</text>
+      <rect x="422" y="38" width="150" height="20" rx="4" fill="#eaddf7" stroke="#7c4dbf"/>
+      <text x="497" y="51.5" font-size="8.8" text-anchor="middle" fill="#4a2b80" font-weight="700">in hộ log của CPU1</text>
+      <rect x="574" y="38" width="68" height="20" rx="4" fill="#dcebfb" stroke="#3b7dd8"/>
+      <text x="608" y="52" font-size="9" text-anchor="middle" fill="#1d4f91">task A</text>
+      <rect x="644" y="38" width="40" height="20" rx="4" fill="#ffe9cc" stroke="#e08a00"/>
+      <text x="664" y="52" font-size="8.5" text-anchor="middle" fill="#7a4a00">ISR</text>
+
+      <!-- IRQ deferred bracket -->
+      <path d="M200,62 L200,68 L644,68 L644,62" fill="none" stroke="#e08a00" stroke-width="1.2"/>
+      <text x="580" y="80" font-size="8.3" text-anchor="middle" fill="#a86200">③ IRQ bị hoãn đến khi in xong → interrupt latency tăng</text>
+
+      <!-- CPU1 -->
+      <rect x="46" y="92" width="210" height="20" rx="4" fill="#dcebfb" stroke="#3b7dd8"/>
+      <text x="151" y="106" font-size="9" text-anchor="middle" fill="#1d4f91">task B</text>
+      <rect x="258" y="92" width="34" height="20" rx="4" fill="#eaddf7" stroke="#7c4dbf"/>
+      <text x="275" y="105.5" font-size="7.6" text-anchor="middle" fill="#4a2b80">printk</text>
+      <rect x="294" y="92" width="420" height="20" rx="4" fill="#dcebfb" stroke="#3b7dd8"/>
+      <text x="504" y="106" font-size="9" text-anchor="middle" fill="#1d4f91">task B tiếp tục</text>
+      <path d="M275,91 C290,80 400,84 440,60" fill="none" stroke="#7c4dbf" stroke-width="1.3"
+            stroke-dasharray="3,2" marker-end="url(#arP)"/>
+      <text x="300" y="126" font-size="8.3" fill="#4a2b80">trylock thất bại → trả về; log của B dồn sang cho CPU0 in hộ</text>
+
+      <!-- CPU2 -->
+      <rect x="46" y="140" width="250" height="20" rx="4" fill="#dcebfb" stroke="#3b7dd8"/>
+      <text x="171" y="154" font-size="9" text-anchor="middle" fill="#1d4f91">task C</text>
+      <rect x="298" y="140" width="82" height="20" rx="4" fill="#ffe9cc" stroke="#e08a00"/>
+      <text x="339" y="153.5" font-size="8.4" text-anchor="middle" fill="#7a4a00" font-weight="700">NMI printk</text>
+      <rect x="382" y="140" width="332" height="20" rx="4" fill="#dcebfb" stroke="#3b7dd8"/>
+      <text x="548" y="154" font-size="9" text-anchor="middle" fill="#1d4f91">task C</text>
+      <text x="300" y="174" font-size="8.3" fill="#a86200">⑤ NMI không được lấy lock → chỉ đệm log, dễ mất nếu hệ thống chết ngay sau đó</text>
+
+      <!-- time axis -->
+      <line x1="46" y1="184" x2="714" y2="184" stroke="#555" stroke-width="1" marker-end="url(#ar)"/>
+      <text x="714" y="196" font-size="8.3" text-anchor="end" fill="#555">thời gian</text>
+    </svg>

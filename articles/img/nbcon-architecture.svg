@@ -1,0 +1,63 @@
+<svg role='img' viewBox="-10 -10 742 216" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif"><rect x="-10" y="-10" width="742" height="216" rx="6" fill="#ffffff"/>
+      <defs>
+        <marker id="m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker>
+        <marker id="mg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2e7d4f"/></marker>
+        <marker id="mp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7c4dbf"/></marker>
+        <marker id="mo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#e08a00"/></marker>
+      </defs>
+      <!-- lane labels -->
+      <text x="0" y="12" font-size="8.6" font-weight="700" fill="#3b7dd8">NGƯỜI GỌI</text>
+      <text x="196" y="12" font-size="8.6" font-weight="700" fill="#2e7d4f">LƯU TRỮ</text>
+      <text x="356" y="12" font-size="8.6" font-weight="700" fill="#7c4dbf">IN THƯỜNG NGÀY (NORMAL)</text>
+      <text x="600" y="12" font-size="8.6" font-weight="700" fill="#555">PHẦN CỨNG</text>
+
+      <!-- callers -->
+      <rect x="0" y="22" width="150" height="34" rx="6" fill="#dcebfb" stroke="#3b7dd8"/>
+      <text x="75" y="36" font-size="9" text-anchor="middle" font-weight="700" fill="#1d4f91">task / IRQ</text>
+      <text x="75" y="49" font-size="8.4" text-anchor="middle" fill="#1d4f91">printk()</text>
+      <rect x="0" y="118" width="150" height="46" rx="6" fill="#ffe9cc" stroke="#e08a00"/>
+      <text x="75" y="133" font-size="9" text-anchor="middle" font-weight="700" fill="#7a4a00">WARN, RCU stall</text>
+      <text x="75" y="145" font-size="8.4" text-anchor="middle" fill="#7a4a00">→ EMERGENCY</text>
+      <text x="75" y="157" font-size="8.4" text-anchor="middle" fill="#7a4a00">panic → PANIC</text>
+
+      <!-- ringbuffer -->
+      <rect x="190" y="22" width="130" height="34" rx="6" fill="#ddf3e4" stroke="#2e9b57" stroke-width="1.3"/>
+      <text x="255" y="36" font-size="9" text-anchor="middle" font-weight="700" fill="#185c33">ringbuffer</text>
+      <text x="255" y="49" font-size="8.4" text-anchor="middle" fill="#185c33">lockless</text>
+      <line x1="151" y1="39" x2="188" y2="39" stroke="#3b7dd8" stroke-width="1.5" marker-end="url(#m)"/>
+      <path d="M60,57 L60,80" stroke="#2e7d4f" stroke-width="1.5" marker-end="url(#mg)" fill="none"/>
+      <text x="66" y="74" font-size="8.4" fill="#2e7d4f" font-weight="700">trả về ngay (µs)</text>
+
+      <!-- kthreads -->
+      <rect x="356" y="22" width="170" height="34" rx="6" fill="#eaddf7" stroke="#7c4dbf"/>
+      <text x="441" y="36" font-size="9" text-anchor="middle" font-weight="700" fill="#4a2b80">kthread pr/ttyS0</text>
+      <text x="441" y="49" font-size="8.2" text-anchor="middle" fill="#4a2b80">write_thread()</text>
+      <rect x="356" y="64" width="170" height="34" rx="6" fill="#eaddf7" stroke="#7c4dbf"/>
+      <text x="441" y="78" font-size="9" text-anchor="middle" font-weight="700" fill="#4a2b80">kthread pr/netcon0</text>
+      <text x="441" y="91" font-size="8.2" text-anchor="middle" fill="#4a2b80">write_thread()</text>
+      <path d="M321,39 L354,39" stroke="#7c4dbf" stroke-width="1.4" marker-end="url(#mp)" fill="none"/>
+      <path d="M321,46 C338,46 338,81 354,81" stroke="#7c4dbf" stroke-width="1.4" marker-end="url(#mp)" fill="none"/>
+      <text x="338" y="31" font-size="8" fill="#4a2b80" text-anchor="middle">wake</text>
+
+      <!-- atomic -->
+      <rect x="190" y="118" width="130" height="46" rx="6" fill="#ffe9cc" stroke="#e08a00"/>
+      <text x="255" y="135" font-size="9" text-anchor="middle" font-weight="700" fill="#7a4a00">write_atomic()</text>
+      <text x="255" y="148" font-size="8.2" text-anchor="middle" fill="#7a4a00">in ngay trên CPU</text>
+      <text x="255" y="159" font-size="8.2" text-anchor="middle" fill="#7a4a00">đang gặp sự cố</text>
+      <line x1="151" y1="141" x2="188" y2="141" stroke="#e08a00" stroke-width="1.5" marker-end="url(#mo)"/>
+
+      <!-- hardware -->
+      <rect x="600" y="22" width="120" height="34" rx="6" fill="#e4e4e4" stroke="#666"/>
+      <text x="660" y="43" font-size="9" text-anchor="middle" font-weight="700">UART ttyS0</text>
+      <rect x="600" y="64" width="120" height="34" rx="6" fill="#e4e4e4" stroke="#666"/>
+      <text x="660" y="85" font-size="9" text-anchor="middle" font-weight="700">netconsole</text>
+      <line x1="527" y1="39" x2="598" y2="39" stroke="#555" stroke-width="1.4" marker-end="url(#m)"/>
+      <line x1="527" y1="81" x2="598" y2="81" stroke="#555" stroke-width="1.4" marker-end="url(#m)"/>
+      <path d="M321,141 L580,141 L580,48 L598,48" stroke="#e08a00" stroke-width="1.5" fill="none" marker-end="url(#mo)"/>
+      <text x="452" y="135" font-size="8.2" fill="#a86200" text-anchor="middle">handover / takeover, rồi ghi thẳng ra UART</text>
+
+      <!-- nbcon_state bar -->
+      <rect x="190" y="174" width="530" height="20" rx="5" fill="#f2f2f2" stroke="#999"/>
+      <text x="455" y="187.5" font-size="8.4" text-anchor="middle" fill="#333"><tspan font-weight="700">nbcon_state</tspan> (atomic, riêng mỗi console) quyết định ai đang được ghi: owner CPU · prio · req_prio · unsafe</text>
+            <path d="M255,165 L255,172" stroke="#999" stroke-width="1" stroke-dasharray="3,2"/>
+    </svg>
