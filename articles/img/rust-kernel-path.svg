@@ -1,0 +1,29 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='-10 -10 350 292' role='img' aria-label='Sơ đồ đường đi của driver Rust qua kernel crate và bindings xuống lõi nhân C, cạnh đường gọi thẳng của driver C' font-family='system-ui,sans-serif'>
+<defs><marker id='ar' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='6' markerHeight='6' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#5d5a53'/></marker></defs>
+<rect x='-10' y='-10' width='350' height='292' rx='6' fill='#ffffff'/>
+<text x='95' y='13' text-anchor='middle' font-size='9' font-weight='800' fill='#b7410e' letter-spacing='1'>ĐƯỜNG CỦA RUST</text>
+<rect x='10' y='22' width='170' height='44' rx='7' fill='#f6dccd' stroke='#b7410e' stroke-width='1.2'/>
+<text x='95' y='40' text-anchor='middle' font-size='10.5' font-weight='800' fill='#7a2a08'>Driver Rust</text>
+<text x='95' y='55' text-anchor='middle' font-size='8.5' fill='#7a2a08'>Nova · Tyr · ashmem — safe Rust</text>
+<line x1='95' y1='66' x2='95' y2='84' stroke='#5d5a53' stroke-width='1.2' marker-end='url(#ar)'/>
+<text x='101' y='79' font-size='7.5' fill='#5d5a53'>gọi API an toàn</text>
+<rect x='10' y='86' width='170' height='52' rx='7' fill='#ffffff' stroke='#b7410e' stroke-width='1.2' stroke-dasharray='4 2'/>
+<text x='95' y='104' text-anchor='middle' font-size='10.5' font-weight='800' fill='#1d1b18'>kernel crate</text>
+<text x='95' y='118' text-anchor='middle' font-size='8.5' fill='#5d5a53'>abstraction an toàn</text>
+<text x='95' y='130' text-anchor='middle' font-size='8.5'><tspan fill='#b7410e' font-weight='700'>unsafe</tspan><tspan fill='#5d5a53'> được khoanh vùng ở đây</tspan></text>
+<line x1='95' y1='138' x2='95' y2='156' stroke='#5d5a53' stroke-width='1.2' marker-end='url(#ar)'/>
+<rect x='10' y='158' width='170' height='40' rx='7' fill='#eceae4' stroke='#8a857a'/>
+<text x='95' y='175' text-anchor='middle' font-size='10' font-weight='800' fill='#1d1b18'>bindings</text>
+<text x='95' y='189' text-anchor='middle' font-size='8.5' fill='#5d5a53'>sinh tự động từ header C (bindgen)</text>
+<line x1='95' y1='198' x2='95' y2='216' stroke='#5d5a53' stroke-width='1.2' marker-end='url(#ar)'/>
+<text x='262' y='13' text-anchor='middle' font-size='9' font-weight='800' fill='#3f5a7a' letter-spacing='1'>ĐƯỜNG CỦA C</text>
+<rect x='200' y='22' width='122' height='44' rx='7' fill='#dbe4ef' stroke='#3f5a7a' stroke-width='1.2'/>
+<text x='261' y='40' text-anchor='middle' font-size='10.5' font-weight='800' fill='#24364d'>Driver C</text>
+<text x='261' y='55' text-anchor='middle' font-size='8.5' fill='#24364d'>đa số driver hiện nay</text>
+<line x1='261' y1='66' x2='261' y2='216' stroke='#5d5a53' stroke-width='1.2' marker-end='url(#ar)'/>
+<text x='267' y='140' font-size='7.5' fill='#5d5a53'>gọi thẳng</text>
+<text x='267' y='150' font-size='7.5' fill='#5d5a53'>API C</text>
+<rect x='10' y='218' width='312' height='44' rx='7' fill='#24364d'/>
+<text x='166' y='236' text-anchor='middle' font-size='10.5' font-weight='800' fill='#ffffff'>Lõi nhân Linux (C)</text>
+<text x='166' y='251' text-anchor='middle' font-size='8.5' fill='#ffffff' opacity='.8'>DMA mapping · driver core · DRM · block · net · …</text>
+</svg>
