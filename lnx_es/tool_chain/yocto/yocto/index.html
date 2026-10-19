@@ -3353,7 +3353,7 @@
 
   <h1>Overview</h1>
 
-<h2 id="terms-and-definitions-in-yocto">Terms and definitions in Yocto</h2>
+<h2 id="terms-and-definitions-in-yocto">Terms and definitions in Yocto<a class="headerlink" href="#terms-and-definitions-in-yocto" title="Permanent link">&para;</a></h2>
 <p>Các khái niệm này được mô tả tại <a href="https://www.yoctoproject.org/docs/latest/ref-manual/ref-manual.html">Yocto Reference Manual</a>.</p>
 <p><strong>Build Directory</strong></p>
 <p>Là khu vực Yocto sử dụng để build hệ thống. Trong trường hợp của Petalinux 2017.4, Build Dir là <project>/build. TOPDIR được sử dụng để lưu trữ đường dẫn đến Build Dir.</p>
@@ -3366,8 +3366,8 @@
 <li>PR: revision of recipe</li>
 </ul>
 <p><em>Các khái niệm này rất hữu ích trong quá trình đọc các recipe files</em></p>
-<h2 id="bitbake">Bitbake</h2>
-<h3 id="references">References</h3>
+<h2 id="bitbake">Bitbake<a class="headerlink" href="#bitbake" title="Permanent link">&para;</a></h2>
+<h3 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
 <p>[1] <a href="https://www.yoctoproject.org/docs/1.6/bitbake-user-manual/bitbake-user-manual.html">Bitbake User Manual</a> - yoctoproject.org</p>
@@ -3376,11 +3376,11 @@
 <p>[2] <a href="https://www.yoctoproject.org/docs/2.5/overview-manual/overview-manual.html">Yocto Project Overview and Concepts Mannual</a> - yoctoproject.org</p>
 </li>
 </ul>
-<h3 id="concept">Concept</h3>
+<h3 id="concept">Concept<a class="headerlink" href="#concept" title="Permanent link">&para;</a></h3>
 <p>Yocto xem các packages (khái niệm packages trong Yocto rất rộng, nó có thể là SDK, Linux Kernel, bootloader, gói ứng dụng, thư viên, ...) như là các món ăn, trong đó <code>Bitbake</code> là đầu bếp.</p>
 <p><em>*Bitbake được viết từ Python</em></p>
 <p>Đầu bếp <code>Bitbake</code> nấu các món ăn dưới các công thức được viết sẵn bởi người yêu cầu gọi là <code>recipe</code> (/ˈresəpi/). <code>recipe</code> bản chất là một file có phần mở rộng là <code>.bb</code>. Yocto có một bộ cú pháp dành riêng cho viết <code>recipe</code>.</p>
-<h3 id="working-flow">Working flow</h3>
+<h3 id="working-flow">Working flow<a class="headerlink" href="#working-flow" title="Permanent link">&para;</a></h3>
 <p>Refer in <a href="https://www.yoctoproject.org/docs/2.5/overview-manual/overview-manual.html#bitbake-dev-environment">4.3.5</a> tại [2].</p>
 <p>Trong Yocto, để thuận tiện cho việc "nấu ăn" được chuyên nghiệp, quá trình "bake" của <code>Bitbake</code> được chia ra các quá trình nhỏ. Tất cả các món ăn đều phải được kiểm tra và thực hiện qua các bước này. Các bước này được định nghĩa tại một class: <code>base.bbclass</code>. Và tất nhiên, người dùng có thể không sử dụng công thức nấu mặc định mà thay đổi các bước này bằng các định nghĩa trong <code>recipe</code> của họ. Các bước đó là</p>
 <p><strong>Source Fetching, Patching</strong></p>
@@ -3420,15 +3420,15 @@
 <p>Tiến hành đóng gói rootfs dưới định dạng ext3. Bản chất của hàm này sẽ gọi đến <code>oe_mkext234fs</code> được định nghĩa trong <code>layers/core/meta/classes/image_types.bbclass</code>.</p>
 <p>Hàm <code>oe_mkext234fs</code> gọi đến <code>mkfs.ext3/4</code> (là một bộ công cụ đóng gói một bộ tập tin dưới dạng file có thể được sử dụng cho các định dạng ext3/ext4) để tiến hành đóng gói rootfs.</p>
 <p><strong>SDK Generation</strong></p>
-<h3 id="recipe-syntax">Recipe syntax</h3>
+<h3 id="recipe-syntax">Recipe syntax<a class="headerlink" href="#recipe-syntax" title="Permanent link">&para;</a></h3>
 <p><strong><a href="https://www.yoctoproject.org/docs/1.6/bitbake-user-manual/bitbake-user-manual.html#sharing-functionality">Sharing Functionality</a></strong></p>
 <p>BitBake allows for metadata sharing through include files (.inc) and class files (.bbclass).</p>
 <p><em>inherit</em>: là directive. Ví dụ <code>inherit autotools</code> được sử dụng để kế thừa toàn bộ hàm của class autotools.bbclass. Người dùng có thể "override" các hàm của class được kế thừa bằng cách phát triển các hàm hoặc biến đó sau directive <code>inherit</code>.</p>
-<h2 id="terms-and-definitions-in-bitbake">Terms and definitions in Bitbake</h2>
+<h2 id="terms-and-definitions-in-bitbake">Terms and definitions in Bitbake<a class="headerlink" href="#terms-and-definitions-in-bitbake" title="Permanent link">&para;</a></h2>
 <p><strong><a href="https://www.yoctoproject.org/docs/2.7/bitbake-user-manual/bitbake-user-manual.html#idm45270752297552">File Download Support</a></strong></p>
 <p>Bitbake cung cấp cơ chế download/unpack/patching source code. Fetcher (Downloader) tiến hành download source code từ local/remote repository.</p>
 <p>Quá trình unpack thực hiện giải nén source code ngay sau quá trình download source code. Unpacker hỗ trợ decompress/extract các file có phần mở rộng như sau: ".Z", ".z", ".gz", ".xz", ".zip", ".jar", ".ipk", ".rpm". ".srpm", ".deb" and ".bz2".</p>
-<h2 id="bitbake-variables">Bitbake variables</h2>
+<h2 id="bitbake-variables">Bitbake variables<a class="headerlink" href="#bitbake-variables" title="Permanent link">&para;</a></h2>
 <p><strong><a href="https://www.yoctoproject.org/docs/latest/ref-manual/ref-manual.html#var-SRC_URI">${SRC_URI}</a></strong></p>
 <p>The list of source files - local or remote.</p>
 <p>Được sử dụng trong recipe file để thông báo cho Yocto source code nào của package sẽ được sử dụng để build. Yocto Fetcher (Downloader) tiến hành download và bổ sung các bản vá vào source code trước khi tiến hành các bước tiếp theo.</p>
@@ -3497,7 +3497,7 @@ The list of packages the recipe creates.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.top"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.top", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../../assets/javascripts/bundle.d7400e89.min.js"></script>

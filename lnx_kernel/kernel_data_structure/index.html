@@ -3315,101 +3315,101 @@
 
 
 
-<h1 id="kernel-data-structure">Kernel Data Structure</h1>
-<h2 id="references">References</h2>
+<h1 id="kernel-data-structure">Kernel Data Structure<a class="headerlink" href="#kernel-data-structure" title="Permanent link">&para;</a></h1>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <p>[1] <a href="https://drive.google.com/open?id=1WMBs5SCG3Qr4Rw645AEBkJm5dR8tiDas">Linux Kernel Development, 3nd</a></p>
-<h2 id="linked-list"><strong><span style="color:red">Linked List</span></strong></h2>
+<h2 id="linked-list"><strong><span style="color:red">Linked List</span></strong><a class="headerlink" href="#linked-list" title="Permanent link">&para;</a></h2>
 <p><a name="linkedlist"></a></p>
 <p><a href="https://elixir.bootlin.com/linux/latest/source/scripts/kconfig/list.h#L24">list_head: include/list.h#L24</a></p>
-<h3 id="the-linked-list-structure">The Linked List Structure</h3>
+<h3 id="the-linked-list-structure">The Linked List Structure<a class="headerlink" href="#the-linked-list-structure" title="Permanent link">&para;</a></h3>
 <p>Linked list is popular data structure that is used in programming. The Linux Kernel approach is different. Instead of turning the structure into a linked list, the Linux approach is to <em>embed a linked list noed in the structure!</em></p>
 <p>The linked-list code is declared in the header file &lt;linux/list.h&gt; and the data structure is simple:</p>
-<pre><code>struct list_head {
-    struct list_head *next
-    struct list_head *prev;
-};
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>struct list_head {
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    struct list_head *next
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    struct list_head *prev;
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>};
+</code></pre></div>
 <p>embed in a structure:</p>
-<pre><code>struct fox {
-    unsigned long tail_length; /* length in centimeters of tail */
-    unsigned long weight; /* weight in kilograms */
-    bool is_fantastic; /* is this fox fantastic? */
-
-    struct list_head list; /* list of all fox structures */
-};
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>struct fox {
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    unsigned long tail_length; /* length in centimeters of tail */
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    unsigned long weight; /* weight in kilograms */
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    bool is_fantastic; /* is this fox fantastic? */
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    struct list_head list; /* list of all fox structures */
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>};
+</code></pre></div>
 <p>From a pointer that points to the <code>struct list_head</code> in a structure, we can get pointer to this structure by using macro <code>list_entry</code> (see <code>container_of()</code>):</p>
-<pre><code>#define list_entry(ptr, type, member) \
-    container_of(ptr, type, member)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>#define list_entry(ptr, type, member) \
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    container_of(ptr, type, member)
+</code></pre></div>
 <p>Example:</p>
-<pre><code>    struct fox red_fox, *fox_ptr;                       // fox_ptr is pointing to nothing
-
-    struct list_head *list_ptr = &amp;red_fox.list;         // make list_ptr point to struct list inside red_fox
-    fox_ptr = list_entry(list_ptr, struct fox, list);   // fox_ptr now is pointing to red_fox
-</code></pre>
-<h3 id="defining-a-linked-list">Defining a Linked List</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>    struct fox red_fox, *fox_ptr;                       // fox_ptr is pointing to nothing
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    struct list_head *list_ptr = &amp;red_fox.list;         // make list_ptr point to struct list inside red_fox
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    fox_ptr = list_entry(list_ptr, struct fox, list);   // fox_ptr now is pointing to red_fox
+</code></pre></div>
+<h3 id="defining-a-linked-list">Defining a Linked List<a class="headerlink" href="#defining-a-linked-list" title="Permanent link">&para;</a></h3>
 <p>There are two ways to define a linked-list:</p>
 <ul>
 <li>Defining listed-list with the first entry:  </li>
 </ul>
-<p>Dynamic Allocation,  </p>
-<pre><code>struct fox *red_fox;
-red_fox = kmalloc(sizeof(*red_fox), GFP_KERNEL);
-red_fox-&gt;tail_length = 40;
-red_fox-&gt;weight = 6;
-red_fox-&gt;is_fantastic = false;
-INIT_LIST_HEAD(&amp;red_fox-&gt;list);
-</code></pre>
+<p>Dynamic Allocation,<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>struct fox *red_fox;
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>red_fox = kmalloc(sizeof(*red_fox), GFP_KERNEL);
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>red_fox-&gt;tail_length = 40;
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>red_fox-&gt;weight = 6;
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>red_fox-&gt;is_fantastic = false;
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>INIT_LIST_HEAD(&amp;red_fox-&gt;list);
+</code></pre></div></p>
 <p>And static alocation,</p>
-<pre><code>struct fox red_fox = {
-    .tail_length = 40,
-    .weight = 6,
-    .list = LIST_HEAD_INIT(red_fox.list),
-};
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>struct fox red_fox = {
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    .tail_length = 40,
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    .weight = 6,
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    .list = LIST_HEAD_INIT(red_fox.list),
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>};
+</code></pre></div>
 <ul>
 <li>Defining a empty linked-list:</li>
 </ul>
 <p><code>static LIST_HEAD(fox_list);</code></p>
 <p>The second approach is used popularly in Linux Kernel (see spi.c).</p>
-<h3 id="traversing-linked-lists">Traversing Linked Lists</h3>
+<h3 id="traversing-linked-lists">Traversing Linked Lists<a class="headerlink" href="#traversing-linked-lists" title="Permanent link">&para;</a></h3>
 <p>The kernel (thank goodness) provides a nice set of interfaces for traversing linked lists and referencing the data structures that include them.  </p>
 <p><strong>The Basic Approach</strong></p>
-<pre><code>struct list_head *p;
-struct fox *f;
-
-list_for_each(p, fox_list) {
-    /* p points to an entry (struct list_head) in the list */
-
-    f = list_entry(p, struct fox, list); // We need to use list_entry to get the &quot;fox&quot; structure
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>struct list_head *p;
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>struct fox *f;
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>list_for_each(p, fox_list) {
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    /* p points to an entry (struct list_head) in the list */
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    f = list_entry(p, struct fox, list); // We need to use list_entry to get the "fox" structure
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>}
+</code></pre></div>
 <p><strong>The Usable Approach</strong></p>
-<pre><code>struct fox *f;
-
-list_for_each_entry(f, &amp;fox_list, list) {
-    /* on each iteration, ‘f’ points to the next fox structure ... */
-}
-</code></pre>
-<h3 id="container_of"><strong>container_of()</strong></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>struct fox *f;
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>list_for_each_entry(f, &amp;fox_list, list) {
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    /* on each iteration, ‘f’ points to the next fox structure ... */
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>}
+</code></pre></div>
+<h3 id="container_of"><strong>container_of()</strong><a class="headerlink" href="#container_of" title="Permanent link">&para;</a></h3>
 <p><a href="https://elixir.bootlin.com/linux/latest/source/tools/virtio/linux/kernel.h#L108">container_of: include/linux/kerne.h#108</a></p>
-<pre><code>#define container_of(ptr, type, member) ({          \
-    const typeof( ((type *)0)-&gt;member ) *__mptr = (ptr);    \
-    (type *)( (char *)__mptr - offsetof(type,member) );})
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>#define container_of(ptr, type, member) ({          \
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    const typeof( ((type *)0)-&gt;member ) *__mptr = (ptr);    \
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    (type *)( (char *)__mptr - offsetof(type,member) );})
+</code></pre></div>
 <p>Assume that we have a structure:</p>
-<pre><code>struct data {
-    int data1;
-    int data2;
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>struct data {
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    int data1;
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    int data2;
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>}
+</code></pre></div>
 <p>And a pointer <code>int *child_ptr</code> point to data2 which is a member of <code>struct data</code>. </p>
-<pre><code>int *child_ptr = &amp;data2;
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>int *child_ptr = &amp;data2;
+</code></pre></div>
 <p>We can user <code>container_of()</code> to get a pointer pointing to <code>struct data</code>.</p>
-<pre><code>struct data *data_ptr = container_of(child_ptr, struct container, data2);
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>struct data *data_ptr = container_of(child_ptr, struct container, data2);
+</code></pre></div>
 <p><span style="color:red">Can we implement "container_of" in c for user space application?</span></p>
 
 
@@ -3472,7 +3472,7 @@ list_for_each_entry(f, &amp;fox_list, list) {
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>

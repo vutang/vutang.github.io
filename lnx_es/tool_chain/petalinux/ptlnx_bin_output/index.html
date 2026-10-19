@@ -3235,8 +3235,8 @@
 
 
 
-<h1 id="list-of-petalinux-images">List of Petalinux Images</h1>
-<h2 id="image-definition">Image Definition</h2>
+<h1 id="list-of-petalinux-images">List of Petalinux Images<a class="headerlink" href="#list-of-petalinux-images" title="Permanent link">&para;</a></h1>
+<h2 id="image-definition">Image Definition<a class="headerlink" href="#image-definition" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -3323,12 +3323,12 @@
 </tr>
 </tbody>
 </table>
-<h2 id="imageub-uimage">image.ub – uImage</h2>
+<h2 id="imageub-uimage">image.ub – uImage<a class="headerlink" href="#imageub-uimage" title="Permanent link">&para;</a></h2>
 <p>Petalinux uses “mkimage” to create from “Image”.</p>
 <p><code>mkimage -A arm64 -O linux -T kernel -C none -a $${kernel_loadaddr} -e $${kernel_loadaddr} -d "$(PROOT)/build/$(LINUX_KERNEL)/boot/Image" $(IMAGEROOT)/uImage</code></p>
 <p>As Linux man page, the <code>mkimage</code> command is used to create images for use with the U-Boot boot loader.</p>
 <p>As Xilinx Wiki, the <strong>Image</strong> file is the uncompressed kernel image and the <strong>zImage</strong> file is a compressed kernel image which will uncompress itself when it starts. If the <code>mkimage</code> utility is available in the build environment, linux-xlnx/arch/arm/boot/uImage will be created by wrapping zImage with a U-Boot header.</p>
-<h2 id="bin-vs-elf">.bin vs .elf</h2>
+<h2 id="bin-vs-elf">.bin vs .elf<a class="headerlink" href="#bin-vs-elf" title="Permanent link">&para;</a></h2>
 <p>From StackOverflow: What is the difference between ELF files and bin files?</p>
 <p>https://stackoverflow.com/questions/2427011/what-is-the-difference-between-elf-files-and-bin-files/2427229 </p>
 <p>Bin file is raw data</p>
@@ -3394,7 +3394,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.top"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.top", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../../assets/javascripts/bundle.d7400e89.min.js"></script>

@@ -3164,14 +3164,14 @@
 
 
 
-<h1 id="the-linux-programming-interaface">The Linux Programming Interaface</h1>
-<h2 id="c20-signal-fundametal-concepts">C20: Signal - fundametal concepts</h2>
+<h1 id="the-linux-programming-interaface">The Linux Programming Interaface<a class="headerlink" href="#the-linux-programming-interaface" title="Permanent link">&para;</a></h1>
+<h2 id="c20-signal-fundametal-concepts">C20: Signal - fundametal concepts<a class="headerlink" href="#c20-signal-fundametal-concepts" title="Permanent link">&para;</a></h2>
 <p><strong>Định nghĩa</strong></p>
 <p>Signal là tín hiệu Kernel sử dụng để gửi đến cho một process, hoặc cũng có thể là một tín hiệu được gửi từ một process sang process khác. Trong một số trường hợp, process có thể gửi "signal" đến chính nó. Quá trình "send" một signal được "response" bởi process bằng một loạt các hành động, gọi là "signal reactions".</p>
 <p>Signal được đánh dấu bằng các số nguyên trong signal.h. Một số các signal được định nghĩa mặc định các "reaction". Các reaction này có thể định nghĩa lại bằng các "user signal handler" bởi programmer -&gt; hoạt động này gọi là "disposition".</p>
 <p><strong>Gửi signal bằng "kill" system call</strong></p>
 <p>Cơ bản, kill() có thể gửi một tín hiệu bất kì đến một hoặc một nhóm process. Nhưng tại sao lại được đặt tên là kill()?</p>
-<h2 id="c24-process-creation">C24: Process Creation</h2>
+<h2 id="c24-process-creation">C24: Process Creation<a class="headerlink" href="#c24-process-creation" title="Permanent link">&para;</a></h2>
 <p>The <strong><span style="color:red">fork()</span></strong> creates a new process, the <em>child</em>, which is an almost exact duplicate of the calling process, the <em>parent</em>.</p>
 <p>Conceptually, we can consider fork() as creating copies of the parent’s text, data, heap, and stack segments -&gt; Trong một số trường hợp, quá trình copy toàn bộ dữ liệu này sẽ <strong>wasteful</strong>. Đặc biệt khi <code>child</code> process gọi đến các hàm <code>exec()</code>, <code>exec()</code> tiến hành thay thế toàn bộ các vùng nhớ của <code>parrent</code> process bằng vùng nhớ mới -&gt; xuất hiện kỹ thuật <strong>copy-and-write</strong> trong quá trình copy dữ liệu.</p>
 <p>Ngoài ra, để tránh lãng phí trong quá trình copy dữ liệu, system call <strong><span style="color:red">vfork()</span></strong> mới được phát triển, đặc biệt sử dụng trong các trường hợp <code>child</code> process gọi đến <code>exec()</code>. Two features distinguish the vfork() system call from fork() and make it more efficient:</p>
@@ -3179,7 +3179,7 @@
 <li>No duplication of virtual memory pages or page tables is done for the child process. Instead, the child shares the parent’s memory until it either performs a successful exec() or calls _exit() to terminate.</li>
 <li>Execution of the parent process is suspended until the child has performed an exec() or _exit().</li>
 </ul>
-<h2 id="c25-process-termination">C25: Process Termination</h2>
+<h2 id="c25-process-termination">C25: Process Termination<a class="headerlink" href="#c25-process-termination" title="Permanent link">&para;</a></h2>
 <p><strong><em>There are two ways to terminate a process</em></strong></p>
 <ul>
 <li><em>Abnormal</em>: a termination signal is sent to process.</li>
@@ -3192,21 +3192,19 @@
 <p>Trong một số chương trình bình thường, <code>_exit()</code> không được gọi trực tiếp mà được gọi thông quan <code>exit()</code>. Về cơ bản, <code>exit()</code> thực hiện một số tác vụ trước khi gọi <code>_exit()</code> ví dụ như: flush out stdio buffer.</p>
 <p><strong><em><code>exit()</code> vs <code>return n</code></em></strong></p>
 <p>Việc gọi đến hàm <code>return n</code> trong hàm <code>main()</code> tương đương với quá trình gọi đến <code>exit()</code>.</p>
-<h2 id="c26-monitoring-child-processes">C26: Monitoring Child Processes</h2>
+<h2 id="c26-monitoring-child-processes">C26: Monitoring Child Processes<a class="headerlink" href="#c26-monitoring-child-processes" title="Permanent link">&para;</a></h2>
 <p><strong><em>Wait for child process(es)</em></strong></p>
 <p>The system call <strong><span style="color:red">wait()</span></strong> waits for one of the children of the calling process to terminate and returns the termination status of that child in the buffer pointed to by status.</p>
 <p><code>wait()</code> được sử dụng để chờ tất cả các <code>child</code> process terminate. Trường hợp thành công <code>wait()</code> trả về giá trị PID của <code>child</code> process vừa mới terminate vaf trả về -1 trong trường hợp lỗi, bao gồm các trường hợp lỗi sau:</p>
 <ul>
 <li>Không còn một <code>child</code> process nào đang tồn tại. Khi đó <code>ECHILD</code> được thiết lập cho <code>errno</code> -&gt; đặc điểm này được sử dụng để monitor tất cả các <code>child</code> process bằng đoạn mã dưới đây:</li>
 </ul>
-<pre><code>while ((childPid = wait(NULL)) != -1)
-    continue;
-if (errno != ECHILD) /* An unexpected error... */
-    errExit(&quot;wait&quot;);
-</code></pre>
-<ul>
-<li>Unexpected Error</li>
-</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>while ((childPid = wait(NULL)) != -1)
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    continue;
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>if (errno != ECHILD) /* An unexpected error... */
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    errExit("wait");
+</code></pre></div>
+- Unexpected Error</p>
 <p>Trong trường hợp các <code>child</code> processes cùng terminate một thời điểm, thứ tự trả về của <code>wait()</code> là không xác định.</p>
 <p><strong><em>Wait for specific child process</em></strong></p>
 <p><code>wait()</code> có một số giới hạn, trong đó không thể chờ một <code>child</code> process xác định. <strong><span style="color:red">waitpid()</span></strong> được thiết kế để thực hiện được điều đó.</p>
@@ -3217,7 +3215,7 @@ if (errno != ECHILD) /* An unexpected error... */
 <p><strong><span style="color:red">Zombie</span></strong> là trạng thái của một <code>child</code> process trong trường hợp process đó terminate nhưng <code>parrent</code> process chưa kịp gọi đến <code>wait()</code>. Sau khi terminate, các tài nguyên của <code>child</code> đã được giải phóng nhưng thông tin về process đó vẫn tồn tại trong <em>Kernel's process table</em> cho đến khi <code>parrent</code> gọi đến <code>wait()</code>.</p>
 <p>Khi có quá nhiều "zombie process" trong hệ thông sẽ làm đầy <em>Kernel's process table</em> và có thể cản trở quá trình tạo mới một process. Do "zombie process" không thể bị kill bởi các signal nên quá trình loại bỏ các process này phải chờ đến khi <code>parrent</code> process exit. Khi đó, <code>init</code> process tiếp nhận các zombie này như các "orphaned process" và tiến hành terminate (*).</p>
 <p><em>*But how <code>init</code> kill zombies?</em></p>
-<h2 id="c29-threads-introduction">C29: Threads - Introduction</h2>
+<h2 id="c29-threads-introduction">C29: Threads - Introduction<a class="headerlink" href="#c29-threads-introduction" title="Permanent link">&para;</a></h2>
 
 
 
@@ -3279,7 +3277,7 @@ if (errno != ECHILD) /* An unexpected error... */
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>

@@ -3549,9 +3549,9 @@
 
 
 
-<h1 id="i2c-platform"><strong><span style="color:red">I2C Platform</span></strong></h1>
+<h1 id="i2c-platform"><strong><span style="color:red">I2C Platform</span></strong><a class="headerlink" href="#i2c-platform" title="Permanent link">&para;</a></h1>
 <p><em>Tăng Thiên Vũ, Trung tâm nghiên cứu công nghệ mạng Viettel, Hà Nội, 2/2018</em></p>
-<h2 id="introduction">Introduction</h2>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
 <p>Tài liệu mô tả các kiến thức tìm hiểu được về I2C Platform trên Linux được thực hiện thực tế trên phần cứng ZC706 và FMCJESDADC1. Tài liệu là kết quả của quá trình mở rộng tìm hiểu dựa trên yêu cầu ban đầu của “Bài tập 6: Viết ứng dụng đọc/ghi chip EEPROM thông qua bus I2C trên KIT hoặc RRU” trong chương trình Linux Training của phòng Firmware – VTBR-VTTEK.</p>
 <p>I2C là một bus rất phổ biến được sử dụng cho giao tiếp giữa master (một hoặc nhiều) và các thiết bị slave. <a href="#i2c-bus">Hình dưới</a> mô tả một topo cơ bản kết nối các thiết bị ngoại vi với Microprocessor thông qua bus I2C.</p>
 <figure>
@@ -3572,8 +3572,8 @@
 <p><img alt="zc706_i2c_devs" src="../img/zc706-i2c-devs.png" width="600" /> 
   <em><figcaption style="color:blue">Figure. Bus I2C trên phần cứng ZC706/FMCJESDDAC1</figcaption></em></p>
 </figure>
-<h2 id="i2c-platform_1">I2C Platform</h2>
-<h3 id="cac-thanh-phan-co-ban-cua-i2c-platform">Các thành phần cơ bản của i2c platform</h3>
+<h2 id="i2c-platform_1">I2C Platform<a class="headerlink" href="#i2c-platform_1" title="Permanent link">&para;</a></h2>
+<h3 id="cac-thanh-phan-co-ban-cua-i2c-platform">Các thành phần cơ bản của i2c platform<a class="headerlink" href="#cac-thanh-phan-co-ban-cua-i2c-platform" title="Permanent link">&para;</a></h3>
 <p>Hình 2.1 mô tả các thành phần cơ bản của một i2c platform trên Linux. Ứng dụng <code>i2ctool</code> trên tầng User Space tương tác với các file <code>/dev/i2c-n</code> tương ứng với các bus i2c. Thông qua các module <code>i2c-dev</code>, <code>i2c-core</code> và <code>i2c-driver</code>, ứng dụng <code>i2ctool</code> có thể truy nhập đến các thiết bị i2c trên phần cứng tương ứng với bus i2c được đại diện bằng file <code>/dev/i2c-n</code>.</p>
 <figure>
 <p><img alt="i2cbus_system" src="../img/linux-i2c-platform.png" width="600" /><br />
@@ -3581,7 +3581,7 @@
 <figcaption>I2C Subsystem</figcaption>
 </figure>
 <p>Trong phần tiếp theo sẽ tìm hiểu rõ hơn các thành phần trong hệ thống trên, cũng như cách hệ thống hoạt động.</p>
-<h4 id="cac-cau-truc-du-lieu-quan-trong">Các cấu trúc dữ liệu quan trọng</h4>
+<h4 id="cac-cau-truc-du-lieu-quan-trong">Các cấu trúc dữ liệu quan trọng<a class="headerlink" href="#cac-cau-truc-du-lieu-quan-trong" title="Permanent link">&para;</a></h4>
 <p>Để có thể quản lí và truy cập đến các thiết bị i2c, i2c platform sử dụng các cấu trúc dữ liệu như: <code>i2c_client</code>, <code>i2c_adapter</code> và <code>i2c_algorithm</code>. Trong đó: </p>
 <ul>
 <li><code>i2c_client</code> đại diện cho các thiết bị trên một bus i2c; </li>
@@ -3592,167 +3592,167 @@
 <p><img alt="spi_bus_signals" src="../img/i2c-data-struct.png" width="600" /><br />
 <em><figcaption style="color:blue">Figure.  Các cấu trúc dữ liệu quan trọng liên quan đến i2c platform</figcaption></em></p>
 </figure>
-<h4 id="struct-i2c_client">Struct i2c_client</h4>
+<h4 id="struct-i2c_client">Struct i2c_client<a class="headerlink" href="#struct-i2c_client" title="Permanent link">&para;</a></h4>
 <p>Trên một bus i2c có thể có một hoặc nhiều thiết bị, mỗi thiết bị trên bus sẽ được driver đăng kí với hệ điều hành thông qua một <code>struct i2c_client</code> (Hình 2.3). Đặc trưng nhất của <code>struct i2c_client</code> này là trường addr nơi chứa địa chỉ của thiết bị trên bus i2c để phân biệt với các thiết bị khác.</p>
-<pre><code>struct i2c_client {
-    unsigned short flags;   /* div., see below */
-    unsigned short addr;    /* chip address - NOTE: 7bit */
-                            /* addresses are stored in the */
-                            /* _LOWER_ 7 bits */
-    char name[I2C_NAME_SIZE];
-    struct i2c_adapter *adapter;    /* the adapter we sit on */
-    struct device dev;              /* the device structure */
-    int irq;                        /* irq issued by device */
-    struct list_head detected;
-#if IS_ENABLED(CONFIG_I2C_SLAVE)
-    i2c_slave_cb_t slave_cb;        /* callback for slave mode */
-#endif
-};
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>struct i2c_client {
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    unsigned short flags;   /* div., see below */
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    unsigned short addr;    /* chip address - NOTE: 7bit */
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>                            /* addresses are stored in the */
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>                            /* _LOWER_ 7 bits */
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    char name[I2C_NAME_SIZE];
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    struct i2c_adapter *adapter;    /* the adapter we sit on */
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    struct device dev;              /* the device structure */
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    int irq;                        /* irq issued by device */
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    struct list_head detected;
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>#if IS_ENABLED(CONFIG_I2C_SLAVE)
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    i2c_slave_cb_t slave_cb;        /* callback for slave mode */
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>#endif
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>};
+</code></pre></div>
 <p><code>i2c_client</code> chứa con trỏ để trỏ đến adapter của driver tương ứng với bus i2c.</p>
-<h4 id="struct-i2c_adapter-va-i2c_algorithm">Struct i2c_adapter và i2c_algorithm</h4>
-<p>Driver quản lí các thiết bị thông qua <code>struct i2c_client</code> và cung cấp phương pháp để truy cập đến các thiết bị này thông qua <code>struct i2c_adapter</code>.</p>
-<pre><code>struct i2c_adapter {
-    struct module *owner;
-    unsigned int class; /* classes to allow probing for */
-    const struct i2c_algorithm *algo; /* the algo to access the bus*/
-    void *algo_data;
-
-    /* data fields that are valid for all devices */
-    const struct i2c_lock_operations *lock_ops;
-    struct rt_mutex bus_lock;
-    struct rt_mutex mux_lock;
-    int timeout; /* in jiffies */
-    int retries;
-    struct device dev; /* the adapter device */
-    int nr;
-    char name[48];
-     …
-};
-</code></pre>
+<h4 id="struct-i2c_adapter-va-i2c_algorithm">Struct i2c_adapter và i2c_algorithm<a class="headerlink" href="#struct-i2c_adapter-va-i2c_algorithm" title="Permanent link">&para;</a></h4>
+<p>Driver quản lí các thiết bị thông qua <code>struct i2c_client</code> và cung cấp phương pháp để truy cập đến các thiết bị này thông qua <code>struct i2c_adapter</code>.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>struct i2c_adapter {
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    struct module *owner;
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    unsigned int class; /* classes to allow probing for */
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    const struct i2c_algorithm *algo; /* the algo to access the bus*/
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    void *algo_data;
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    /* data fields that are valid for all devices */
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    const struct i2c_lock_operations *lock_ops;
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    struct rt_mutex bus_lock;
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    struct rt_mutex mux_lock;
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    int timeout; /* in jiffies */
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    int retries;
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>    struct device dev; /* the adapter device */
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>    int nr;
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>    char name[48];
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>     …
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>};
+</code></pre></div></p>
 <p>I2c_adapter chứa các thông tin cơ bản của bus như <code>name</code>, <code>nr</code> (number) để định danh bus i2c mà driver đang quản lí. Ngoài ra, <code>i2c_adapter</code> chứa <code>i2c_algorithm</code> chứa các con trỏ để trỏ đến hàm truy nhập.</p>
-<pre><code>struct i2c_algorithm {
-    /* If an adapter algorithm can't do I2C-level access, set master_xfer
-     to NULL. If an adapter algorithm can do SMBus access, set
-     smbus_xfer. If set to NULL, the SMBus protocol is simulated
-     using common I2C messages */
-    /* master_xfer should return the number of messages successfully
-     processed, or a negative value on error */
-    int (*master_xfer)(struct i2c_adapter *adap, struct i2c_msg *msgs, int num);
-    int (*smbus_xfer) (struct i2c_adapter *adap, u16 addr,
-     unsigned short flags, char read_write,
-     u8 command, int size, union i2c_smbus_data *data);
-    /* To determine what the adapter supports */
-    u32 (*functionality) (struct i2c_adapter *);
-#if IS_ENABLED(CONFIG_I2C_SLAVE)
-    int (*reg_slave)(struct i2c_client *client);
-    int (*unreg_slave)(struct i2c_client *client);
-#endif
-};
-</code></pre>
-<h3 id="qua-trinh-driver-probing-mot-thiet-bi">Quá trình driver probing một thiết bị</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>struct i2c_algorithm {
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    /* If an adapter algorithm can't do I2C-level access, set master_xfer
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>     to NULL. If an adapter algorithm can do SMBus access, set
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>     smbus_xfer. If set to NULL, the SMBus protocol is simulated
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>     using common I2C messages */
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    /* master_xfer should return the number of messages successfully
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>     processed, or a negative value on error */
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    int (*master_xfer)(struct i2c_adapter *adap, struct i2c_msg *msgs, int num);
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    int (*smbus_xfer) (struct i2c_adapter *adap, u16 addr,
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>     unsigned short flags, char read_write,
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>     u8 command, int size, union i2c_smbus_data *data);
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    /* To determine what the adapter supports */
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    u32 (*functionality) (struct i2c_adapter *);
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>#if IS_ENABLED(CONFIG_I2C_SLAVE)
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>    int (*reg_slave)(struct i2c_client *client);
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>    int (*unreg_slave)(struct i2c_client *client);
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>#endif
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>};
+</code></pre></div>
+<h3 id="qua-trinh-driver-probing-mot-thiet-bi">Quá trình driver probing một thiết bị<a class="headerlink" href="#qua-trinh-driver-probing-mot-thiet-bi" title="Permanent link">&para;</a></h3>
 <p><img alt="spi_bus_signals" src="../img/i2c-call-flow.png" /> </p>
 <p>Mỗi I2C Bus Driver đều chứa struct i2c_algorithm quản lí các hàm truy nhập đến thiết bị i2c. Ví dụ như <strong>Xilinx I2C Controller Driver</strong>:</p>
-<pre><code>static const struct i2c_algorithm xiic_algorithm = {
-    .master_xfer = xiic_xfer,
-    .functionality = xiic_func,
-};
-</code></pre>
-<p>Hoặc như <strong>Cadence I2C Controller Drivers</strong>:</p>
-<pre><code>static const struct i2c_algorithm cdns_i2c_algo = {
-    .master_xfer = cdns_i2c_master_xfer,
-    .functionality = cdns_i2c_func,
-};
-</code></pre>
-<p>Quá trình probing một thiết bị về bản chất là quá trình khởi tạo <code>i2c_adapter</code> (Hình 2.6-1) và các <code>i2c_client</code> (Hình 2.6-2). Ví dụ đối với Xilinx I2C Controller driver, <code>i2c_adapter</code> được khởi tạo như sau:</p>
-<pre><code>static struct i2c_adapter xiic_adapter = {
-    .owner = THIS_MODULE,
-    .name = DRIVER_NAME,
-    .class = I2C_CLASS_DEPRECATED,
-    .algo = &amp;xiic_algorithm,
-};
-</code></pre>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>static const struct i2c_algorithm xiic_algorithm = {
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    .master_xfer = xiic_xfer,
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    .functionality = xiic_func,
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>};
+</code></pre></div>
+Hoặc như <strong>Cadence I2C Controller Drivers</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>static const struct i2c_algorithm cdns_i2c_algo = {
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    .master_xfer = cdns_i2c_master_xfer,
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    .functionality = cdns_i2c_func,
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>};
+</code></pre></div>
+Quá trình probing một thiết bị về bản chất là quá trình khởi tạo <code>i2c_adapter</code> (Hình 2.6-1) và các <code>i2c_client</code> (Hình 2.6-2). Ví dụ đối với Xilinx I2C Controller driver, <code>i2c_adapter</code> được khởi tạo như sau:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>static struct i2c_adapter xiic_adapter = {
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    .owner = THIS_MODULE,
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    .name = DRIVER_NAME,
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    .class = I2C_CLASS_DEPRECATED,
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    .algo = &amp;xiic_algorithm,
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>};
+</code></pre></div>
 <p>Hàm probe của driver sẽ gọi đến <code>i2c_add_adapter</code> và <code>i2c_new_divice()</code> để đăng kí <code>i2c_adapter</code> và <code>i2c_client</code> vào hệ thống. Như vậy, sau quá trình driver probing, với mỗi thiết bị trên bus i2c đã được đăng kí và cấp phát một <code>i2c_client</code> tương ứng, các <code>i2c_client</code> này sử dụng <code>i2c_adapter</code> để truy nhập vào thiết bị trên phần cứng.</p>
-<h2 id="qua-trinh-truy-nhap-mot-thiet-bi-tren-bus-i2c-tu-user-space">Quá trình truy nhập một thiết bị trên bus i2c từ User Space</h2>
-<h3 id="lay-i2c_adapter">Lấy i2c_adapter</h3>
-<p>Sau khi i2c driver thực hiện probing thiết bị, một <code>i2c_adapter</code> đã được cấp phát và khởi tạo. Để tiến hành truy nhập được thiết bị thông qua các phương thức cung cấp bởi adapter, <code>i2c_tool</code> cần lấy được <code>i2c_adapter</code> này. Quá trình này được thực hiện trong khi thực hiện hàm <code>open()</code> trên user space.</p>
-<pre><code>sprintf(filename, &quot;/dev/i2c-%d&quot;, i2cbus);
-file = open(filename, O_RDWR);
-</code></pre>
+<h2 id="qua-trinh-truy-nhap-mot-thiet-bi-tren-bus-i2c-tu-user-space">Quá trình truy nhập một thiết bị trên bus i2c từ User Space<a class="headerlink" href="#qua-trinh-truy-nhap-mot-thiet-bi-tren-bus-i2c-tu-user-space" title="Permanent link">&para;</a></h2>
+<h3 id="lay-i2c_adapter">Lấy i2c_adapter<a class="headerlink" href="#lay-i2c_adapter" title="Permanent link">&para;</a></h3>
+<p>Sau khi i2c driver thực hiện probing thiết bị, một <code>i2c_adapter</code> đã được cấp phát và khởi tạo. Để tiến hành truy nhập được thiết bị thông qua các phương thức cung cấp bởi adapter, <code>i2c_tool</code> cần lấy được <code>i2c_adapter</code> này. Quá trình này được thực hiện trong khi thực hiện hàm <code>open()</code> trên user space.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sprintf(filename, "/dev/i2c-%d", i2cbus);
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>file = open(filename, O_RDWR);
+</code></pre></div></p>
 <p>Hàm open() trên User Space sẽ gọi đến phương thức open()trong Kernel Space của file <code>/dev/i2c-%d</code>. Trong phương thức <code>open</code>, hàm <code>i2c_get_adapter</code> được gọi để tìm kiếm <code>i2c_adapter</code>.</p>
-<pre><code>i2c_dev = i2c_dev_get_by_minor(minor);
-if (!i2c_dev)
-    return -ENODEV;
-adap = i2c_get_adapter(i2c_dev-&gt;adap-&gt;nr);
-if (!adap)
-    return -ENODEV;
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>i2c_dev = i2c_dev_get_by_minor(minor);
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>if (!i2c_dev)
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    return -ENODEV;
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>adap = i2c_get_adapter(i2c_dev-&gt;adap-&gt;nr);
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>if (!adap)
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>    return -ENODEV;
+</code></pre></div>
 <p>Quá trình này được mô tả trong Hình 2.6-4.</p>
-<h3 id="khoi-tao-mot-i2c_client-ao">Khởi tạo một <code>i2c_client</code> ảo</h3>
+<h3 id="khoi-tao-mot-i2c_client-ao">Khởi tạo một <code>i2c_client</code> ảo<a class="headerlink" href="#khoi-tao-mot-i2c_client-ao" title="Permanent link">&para;</a></h3>
 <p>Bản chất mỗi thiết bị trên bus i2c được quản lí bởi i2c-core thông qua các cấu trúc <code>i2c_client</code>. Nhưng trong quá trình truy nhập đến thiết bị, i2c-dev không sử dụng các <code>i2c_client</code> này mà cấp phát một <code>i2c_client</code> mới để trỏ đến <code>i2c_adapter</code> vừa được tìm thấy ở quá trình được nhắc đến ở mục 2.3.1. Quá trình khởi tạo <code>i2c_client</code> này được mô tả trong Hình 2.6-5.</p>
-<pre><code>client = kzalloc(sizeof(*client), GFP_KERNEL);
-if (!client) {
-    i2c_put_adapter(adap);
-    return -ENOMEM;
-}
-snprintf(client-&gt;name, I2C_NAME_SIZE, &quot;i2c-dev %d&quot;, adap-&gt;nr);
-client-&gt;adapter = adap;
-file-&gt;private_data = client;
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>client = kzalloc(sizeof(*client), GFP_KERNEL);
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>if (!client) {
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    i2c_put_adapter(adap);
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    return -ENOMEM;
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>}
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>snprintf(client-&gt;name, I2C_NAME_SIZE, "i2c-dev %d", adap-&gt;nr);
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>client-&gt;adapter = adap;
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>file-&gt;private_data = client;
+</code></pre></div>
 <p>Như vậy, sau quá trình <code>open()</code> file, i2c-dev đã có một struct <code>i2c_client</code> (trỏ đến i2c_adapter được khởi tạo lúc driver probe). I2c-dev sẽ sử dụng <code>i2c_client</code> này để tương tác với thiết bị.</p>
-<h3 id="qua-trinh-truy-nhap-thong-qua-phuong-thuc-ioctl-cua-devi2c-d">Quá trình truy nhập thông qua phương thức IOCTL của /dev/i2c-%d</h3>
-<h4 id="set-slave-addr">Set Slave Addr</h4>
+<h3 id="qua-trinh-truy-nhap-thong-qua-phuong-thuc-ioctl-cua-devi2c-d">Quá trình truy nhập thông qua phương thức IOCTL của /dev/i2c-%d<a class="headerlink" href="#qua-trinh-truy-nhap-thong-qua-phuong-thuc-ioctl-cua-devi2c-d" title="Permanent link">&para;</a></h3>
+<h4 id="set-slave-addr">Set Slave Addr<a class="headerlink" href="#set-slave-addr" title="Permanent link">&para;</a></h4>
 <p>Trước khi tiến hành truy nhập vào một device trên bus i2c, quá trình đầu tiên phải tiến hành setup địa chỉ mà device cần truy cập đến. Trong phương thức IOCTL của i2c file cung cấp command <code>I2C_SLAVE_FORCE</code> để gán địa chỉ của device cho i2c_client struct được khởi tạo từ quá trình open file.</p>
-<pre><code>case I2C_SLAVE_FORCE:
-    if ((arg &gt; 0x3ff) ||
-        (((client-&gt;flags &amp; I2C_M_TEN) == 0) &amp;&amp; arg &gt; 0x7f))
-        return -EINVAL;
-    if (cmd == I2C_SLAVE &amp;&amp; i2cdev_check_addr(client-&gt;adapter, arg))
-        return -EBUSY;
-    /* REVISIT: address could become busy later */
-    client-&gt;addr = arg;
-    return 0;
-</code></pre>
-<p>Biến “client” là i2c_client ảo đã được cấp phát trong phương thức open().</p>
-<h4 id="truy-nhap-en-device">Truy nhập đến device</h4>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>case I2C_SLAVE_FORCE:
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    if ((arg &gt; 0x3ff) ||
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>        (((client-&gt;flags &amp; I2C_M_TEN) == 0) &amp;&amp; arg &gt; 0x7f))
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>        return -EINVAL;
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>    if (cmd == I2C_SLAVE &amp;&amp; i2cdev_check_addr(client-&gt;adapter, arg))
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>        return -EBUSY;
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>    /* REVISIT: address could become busy later */
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>    client-&gt;addr = arg;
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>    return 0;
+</code></pre></div>
+Biến “client” là i2c_client ảo đã được cấp phát trong phương thức open().</p>
+<h4 id="truy-nhap-en-device">Truy nhập đến device<a class="headerlink" href="#truy-nhap-en-device" title="Permanent link">&para;</a></h4>
 <p>Phương thức IOCTL của i2c file cung cấp command <code>I2C_SMBUS</code> và gọi đến hàm <code>i2cdev_ioctl_smbus()</code> để truy nhập đến thiết bị. Bản chất của hàm <code>i2cdev_ioctl_smbus()</code> là gọi đến hàm xfer của adapter.</p>
 <p>Trên User Space gọi đến phương thức ioctl của <code>/dev/i2c-%d</code>. </p>
-<pre><code>static inline __s32 i2c_smbus_access(int file, char read_write, __u8 command, int size, union i2c_smbus_data *data)
-{
-    struct i2c_smbus_ioctl_data args;
-    args.read_write = read_write;
-    args.command = command;
-    args.size = size;
-    args.data = data;
-    return ioctl(file,I2C_SMBUS,&amp;args);
-}
-</code></pre>
-<p>Quá trình này sẽ gọi đến hàm i2cdev_ioctl_smbus( ) trong i2c-dev trong Kernel Space mà bản chất là gọi đến hàm smbus_xfer() của i2c_adapter:</p>
-<pre><code>res = adapter-&gt;algo-&gt;smbus_xfer(adapter, addr, flags, read_write, command, protocol, data);
-</code></pre>
-<h2 id="i2c-mux">I2C MUX</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>static inline __s32 i2c_smbus_access(int file, char read_write, __u8 command, int size, union i2c_smbus_data *data)
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>{
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    struct i2c_smbus_ioctl_data args;
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>    args.read_write = read_write;
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>    args.command = command;
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>    args.size = size;
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>    args.data = data;
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>    return ioctl(file,I2C_SMBUS,&amp;args);
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>}
+</code></pre></div>
+<p>Quá trình này sẽ gọi đến hàm i2cdev_ioctl_smbus( ) trong i2c-dev trong Kernel Space mà bản chất là gọi đến hàm smbus_xfer() của i2c_adapter:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>res = adapter-&gt;algo-&gt;smbus_xfer(adapter, addr, flags, read_write, command, protocol, data);
+</code></pre></div></p>
+<h2 id="i2c-mux">I2C MUX<a class="headerlink" href="#i2c-mux" title="Permanent link">&para;</a></h2>
 <p><img alt="spi_bus_signals" src="../img/i2c-mux.png" /> </p>
 <p>I2C MUX được sử dụng để mở rộng bus I2C để có thể hỗ trợ kết nối đến nhiều thiết bị hơn. Board ZC706 sử dụng IC I2C MUX PCA 9548 (Hình 1.2). Quá trình thực hiện probing các thiết bị trên các kênh của PCA 9548 Driver được mô tả trong Hình 2.7. Bản chất của quá trình này là khởi tạo các i2c_adapter tương ứng với các kênh bằng hàm i2c_add_mux_adapter() trong i2c-mux module.</p>
 <p>Các i2c_adapter của các kênh tương ứng bản chất sẽ sử dụng các hàm smbus_xfer và master_xfer của “parent adapter” (chính là adapter đã được khởi tạo trọng Xilinx I2C Driver Controller). i2c-mux module sử dụng struct i2c_mux_priv để quản lí chung các channel.</p>
-<pre><code>/* multiplexer per channel data */
-struct i2c_mux_priv {
-    struct i2c_adapter adap;
-    struct i2c_algorithm algo;
-    struct i2c_adapter *parent;
-    struct device *mux_dev;
-    void *mux_priv;
-    u32 chan_id;
-    int (*select)(struct i2c_adapter *, void *mux_priv, u32 chan_id);
-    int (*deselect)(struct i2c_adapter *, void *mux_priv, u32 chan_id);
-};
-</code></pre>
-<p>Ngoài ra, PCA 9548 cung cấp thêm hàm select và deselect để chọn kênh trước khi tiến hành truy nhập thiết bị.</p>
-<pre><code>static int pca954x_select_chan(struct i2c_adapter *adap, void *client,
-u32 chan);
-static int pca954x_deselect_mux(struct i2c_adapter *adap, void *client,
-u32 chan);
-</code></pre>
-<h2 id="refereneces">Refereneces</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>/* multiplexer per channel data */
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>struct i2c_mux_priv {
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    struct i2c_adapter adap;
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>    struct i2c_algorithm algo;
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>    struct i2c_adapter *parent;
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>    struct device *mux_dev;
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>    void *mux_priv;
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>    u32 chan_id;
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>    int (*select)(struct i2c_adapter *, void *mux_priv, u32 chan_id);
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>    int (*deselect)(struct i2c_adapter *, void *mux_priv, u32 chan_id);
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>};
+</code></pre></div>
+<p>Ngoài ra, PCA 9548 cung cấp thêm hàm select và deselect để chọn kênh trước khi tiến hành truy nhập thiết bị.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>static int pca954x_select_chan(struct i2c_adapter *adap, void *client,
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>u32 chan);
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>static int pca954x_deselect_mux(struct i2c_adapter *adap, void *client,
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>u32 chan);
+</code></pre></div></p>
+<h2 id="refereneces">Refereneces<a class="headerlink" href="#refereneces" title="Permanent link">&para;</a></h2>
 <p>[1] TI SL VA704 – Application Report – Understanding the I2C Bus.</p>
 <p>[2] Xilinx UG954 - ZC706 Evaluation Board for the Zynq-7000 XC7Z045 All Programmable SoC User Guide.</p>
 
@@ -3816,7 +3816,7 @@ u32 chan);
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>

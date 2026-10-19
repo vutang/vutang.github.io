@@ -3289,11 +3289,11 @@
 
 
 
-<h1 id="perf">PERF</h1>
+<h1 id="perf">PERF<a class="headerlink" href="#perf" title="Permanent link">&para;</a></h1>
 <p>Visit <a href="https://perf.wiki.kernel.org/index.php/Main_Page">PERF Main Page</a> for more information about this tool.</p>
-<h2 id="perf-top">Perf Top</h2>
+<h2 id="perf-top">Perf Top<a class="headerlink" href="#perf-top" title="Permanent link">&para;</a></h2>
 <p><code>perf top -a</code> to monitor process (both in userspace and kernel)</p>
-<h2 id="perf-record">Perf Record</h2>
+<h2 id="perf-record">Perf Record<a class="headerlink" href="#perf-record" title="Permanent link">&para;</a></h2>
 <p><code>perf record [-e &lt;EVENT&gt; | --event=EVENT] [-a] — &lt;command&gt; [&lt;options&gt;]</code></p>
 <p>To tracking an event, just using perf trace, e.g. <code>perf record -e block:block_rq_issue -ag</code> will trace event <code>block_rq_issue</code> with flag <code>-a</code> for all cpus and <code>-g</code> for enable call-graph. After ending recording, recorded data is stored at <code>perf.data</code>.</p>
 <p>To list all pre-defined events, just call <code>perf list</code>. The important events are:</p>
@@ -3301,27 +3301,26 @@
 <li><code>block_rq_issue</code> is fired when when a block device I/O request is issued (disk I/O).</li>
 </ul>
 <p>To investigate <code>perf.data</code> file, using <code>perf report</code>.</p>
-<h2 id="perf-trace">Perf Trace</h2>
+<h2 id="perf-trace">Perf Trace<a class="headerlink" href="#perf-trace" title="Permanent link">&para;</a></h2>
 <p><a href="https://pingcap.com/blog/how-to-trace-linux-system-calls-in-production-with-minimal-impact-on-performance">https://pingcap.com/blog/how-to-trace-linux-system-calls-in-production-with-minimal-impact-on-performance</a></p>
-<h3 id="tracking-a-process-with-pid">Tracking a process with PID</h3>
+<h3 id="tracking-a-process-with-pid">Tracking a process with PID<a class="headerlink" href="#tracking-a-process-with-pid" title="Permanent link">&para;</a></h3>
 <p>To track all systemcalls of a process (with PID), using <code>perf trace -p &lt;PID&gt; -s</code>, the result will look like:</p>
-<pre><code>root@vubuntu:/home/vux# perf trace -p 17529 -s
-
- Summary of events:
-
- ping (17529), 103 events, 98.1%
-
-   syscall            calls  errors  total       min       avg       max       stddev
-                                     (msec)    (msec)    (msec)    (msec)        (%)
-   --------------- --------  ------ -------- --------- --------- ---------     ------
-   recvmsg               23     23 21683.350     0.000   942.754  1024.033      5.97%
-   sendto                22      0     2.288     0.056     0.104     0.127      4.46%
-   write                  4      0     0.060     0.009     0.015     0.021     17.11%
-   close                  2      0     0.004     0.002     0.002     0.002      4.20%
-
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>root@vubuntu:/home/vux# perf trace -p 17529 -s
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a> Summary of events:
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a> ping (17529), 103 events, 98.1%
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>   syscall            calls  errors  total       min       avg       max       stddev
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>                                     (msec)    (msec)    (msec)    (msec)        (%)
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>   --------------- --------  ------ -------- --------- --------- ---------     ------
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>   recvmsg               23     23 21683.350     0.000   942.754  1024.033      5.97%
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>   sendto                22      0     2.288     0.056     0.104     0.127      4.46%
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>   write                  4      0     0.060     0.009     0.015     0.021     17.11%
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>   close                  2      0     0.004     0.002     0.002     0.002      4.20%
+</code></pre></div>
 <p>To recording the result, using <code>perf trace record --call-graph dwarf -p $PID</code>.</p>
-<h2 id="references">References</h2>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
 <p>[1] Brendan Gregg's Homepage - <a href="https://www.brendangregg.com/index.html">https://www.brendangregg.com/index.html</a></p>
@@ -3394,7 +3393,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>

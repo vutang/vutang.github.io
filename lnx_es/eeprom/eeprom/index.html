@@ -3325,8 +3325,8 @@
 
 
 
-<h1 id="electrically-erasable-and-programmable-read-only-memory">Electrically Erasable and Programmable Read-Only Memory</h1>
-<h2 id="introduction">Introduction</h2>
+<h1 id="electrically-erasable-and-programmable-read-only-memory">Electrically Erasable and Programmable Read-Only Memory<a class="headerlink" href="#electrically-erasable-and-programmable-read-only-memory" title="Permanent link">&para;</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
 <p>Serial EEPROM devices are by far the most popular vehicle utilized in today’s modern electronic equipment to <strong>store personal preference and configuration data</strong>. </p>
 <p>Applications span a wide spectrum of consumer, automotive, telecommunication, medical, industrial, and computing applications. This popularity stems from a unique combination of capabilities that cannot be found in any other memory solution. These features include:</p>
 <ul>
@@ -3337,13 +3337,13 @@
 <li>100 year data retention</li>
 <li>low pin-count packages, low cost of ownership, and extremely low active and standby currents.</li>
 </ul>
-<h2 id="what-is-eeprom">What is EEPROM?</h2>
-<h2 id="serial-eeprom">Serial EEPROM</h2>
+<h2 id="what-is-eeprom">What is EEPROM?<a class="headerlink" href="#what-is-eeprom" title="Permanent link">&para;</a></h2>
+<h2 id="serial-eeprom">Serial EEPROM<a class="headerlink" href="#serial-eeprom" title="Permanent link">&para;</a></h2>
 <p>Serial EEPROM uses serial interfaces likes: I2C or SPI. For I2C EEPROM, Read/Write operation populary has two mode: Byte Write and Page Write.</p>
 <p>Normaly, EEPROM data is 8 bit word. Each word is addressed by word address that its width depends on EEPROM size. For example, BR24G64-3A ROHM Semiconductor EEPROM with 64 Kb has to have 13 bit for addressing. Or AT24C08A Atmel EEPROM with 2 Kb uses 10 bit word address. </p>
 <p>Now we will take a look at how EEPROM device manages word address.</p>
-<h3 id="byte-writeread">Byte Write/Read</h3>
-<h4 id="br24g64-3a">BR24G64-3A</h4>
+<h3 id="byte-writeread">Byte Write/Read<a class="headerlink" href="#byte-writeread" title="Permanent link">&para;</a></h3>
+<h4 id="br24g64-3a">BR24G64-3A<a class="headerlink" href="#br24g64-3a" title="Permanent link">&para;</a></h4>
 <p>With BR24G64-3A, it has 13 bit word address so timing for Byte Write Cycle will look like figure below.</p>
 <p><img alt="BR24G64-3A" src="../imgs/BR24G64-3A-wr-byte-cycle.png" /></p>
 <p>In this case, I2C master need to use 4 bytes for writing: 1 device address byte, 2 byte for word address (15th to 13th bit are ignored) and 1 byte for data word. In Linux, we can using i2ctransfer (a program in i2c-tools) for write a byte to EEPROM. For example:</p>
@@ -3353,7 +3353,7 @@
 <p><img alt="BR24G64-3A" src="../imgs/BR24G64-3A-rd-byte-cycle.png" /></p>
 <p>i2ctransfer command for reading case. </p>
 <p><code>&gt; i2ctransfer -y 1 w2@0x57 0x00 0x00 r1</code></p>
-<h4 id="at32c08a">AT32C08A</h4>
+<h4 id="at32c08a">AT32C08A<a class="headerlink" href="#at32c08a" title="Permanent link">&para;</a></h4>
 <p>AT32C08A uses 10 bit for word address. Although using more than 8 bit for word address, AT32C08A has different way in write/read with BR24G64-3A.</p>
 <p>AT32C08A has to use 3 bytes for writing a byte: 1 device address byte, 1 byte for word address and 1 byte for data. To get 10 bit word address, AT32C08A borrows 2 LSB bit (P0 P1 in figure below) in device address byte. </p>
 <p><img alt="AT32C08A" src="../imgs/AT32C08A-dev-addr.png" /></p>
@@ -3420,7 +3420,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>

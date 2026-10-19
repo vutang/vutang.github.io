@@ -3257,20 +3257,20 @@
 
 
 
-<h1 id="git">Git</h1>
-<h2 id="merge-two-git-repositories">Merge two Git repositories</h2>
+<h1 id="git">Git<a class="headerlink" href="#git" title="Permanent link">&para;</a></h1>
+<h2 id="merge-two-git-repositories">Merge two Git repositories<a class="headerlink" href="#merge-two-git-repositories" title="Permanent link">&para;</a></h2>
 <p><a href="https://stackoverflow.com/questions/1425892/how-do-you-merge-two-git-repositories">https://stackoverflow.com/questions/1425892/how-do-you-merge-two-git-repositories</a></p>
-<h2 id="link-local-repo-to-remote">Link local repo to remote</h2>
+<h2 id="link-local-repo-to-remote">Link local repo to remote<a class="headerlink" href="#link-local-repo-to-remote" title="Permanent link">&para;</a></h2>
 <p><code>git remote add origin &lt;link_to_remote_repo&gt;</code></p>
 <p>For example,</p>
 <p><code>git remote add origin git@github.com:vutang/test_git_repo.git</code></p>
 <p>All remote repo can be listed by using:</p>
 <p><code>git remote -v</code></p>
 <p>The results look like:</p>
-<pre><code>origin  git@github.com:vutang/test_git_repo.git (fetch)
-origin  git@github.com:vutang/test_git_repo.git (push)
-</code></pre>
-<h2 id="branches">Branches</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>origin  git@github.com:vutang/test_git_repo.git (fetch)
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>origin  git@github.com:vutang/test_git_repo.git (push)
+</code></pre></div>
+<h2 id="branches">Branches<a class="headerlink" href="#branches" title="Permanent link">&para;</a></h2>
 <p>When a first commit is commited by <code>git commit -m "mesage"</code>. A master branch is created.</p>
 <p><code>git push origin master</code> will push your local branch to remote.</p>
 <ul>
@@ -3280,25 +3280,25 @@ origin  git@github.com:vutang/test_git_repo.git (push)
 <li>Pull a remote branch to local: <code>git checkout &lt;branch-name&gt;</code></li>
 </ul>
 <p>Before,</p>
-<pre><code>* master
+<div class="highlight"><pre><span></span><code>* master
   remotes/origin/HEAD -&gt; origin/master
   remotes/origin/branch1
   remotes/origin/master
-</code></pre>
+</code></pre></div>
 <p>After, </p>
-<pre><code>* branch1
+<div class="highlight"><pre><span></span><code>* branch1
   master
   remotes/origin/HEAD -&gt; origin/master
   remotes/origin/branch1
   remotes/origin/master
-</code></pre>
+</code></pre></div>
 <ul>
 <li>
 <p>merge branches </p>
 <p><code>git merge &lt;source&gt; &lt;dest&gt;</code></p>
 </li>
 </ul>
-<h2 id="commit">Commit</h2>
+<h2 id="commit">Commit<a class="headerlink" href="#commit" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Revert a commit in a branch:</li>
 </ul>
@@ -3364,7 +3364,7 @@ origin  git@github.com:vutang/test_git_repo.git (push)
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>

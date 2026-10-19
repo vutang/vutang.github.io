@@ -3277,26 +3277,26 @@
 
 
 
-<h1 id="embedded-linux-system-development"><strong>Embedded Linux System Development</strong></h1>
+<h1 id="embedded-linux-system-development"><strong>Embedded Linux System Development</strong><a class="headerlink" href="#embedded-linux-system-development" title="Permanent link">&para;</a></h1>
 <p><em>Vu Tang - 2/2019</em></p>
 <figure>
 <p><img alt="header" src="../img/header.jpg" /></p>
 </figure>
-<h2 id="embedded-linux-system-development-what-i-have-to-do">Embedded Linux System Development - What I have to do?</h2>
+<h2 id="embedded-linux-system-development-what-i-have-to-do">Embedded Linux System Development - What I have to do?<a class="headerlink" href="#embedded-linux-system-development-what-i-have-to-do" title="Permanent link">&para;</a></h2>
 <p>Khái niệm phát triển một hệ nhúng Linux rất rộng. Nhiệm vụ chính của một "Embedded System Engineer" sẽ là:</p>
 <ul>
 <li>Porting Linux OS cho một custom board</li>
 <li>Tích hợp hoặc phát triển các User-space application cho một hệ nhúng</li>
 <li>Phát triển Linux Device Driver cho các ngoại vi</li>
 </ul>
-<h2 id="porting-linux">Porting Linux</h2>
+<h2 id="porting-linux">Porting Linux<a class="headerlink" href="#porting-linux" title="Permanent link">&para;</a></h2>
 <p>Porting Linux, ở một khía cạnh khái quát, là quá trình làm cho một bo mạch mới khởi động với hệ điều hành Linux. Để hoàn thành được nhiệm vụ này cần tổ hợp rất nhiều kiến thức khác nhau. Trong đó có một số mục cần lưu ý sau:</p>
 <ul>
 <li>Kiến trúc máy tính (Computer system architecture). Kiến trúc chung của một hệ máy tính, các thành phần cấu thành. Quá trình hoạt động của một CPU.</li>
 <li>Trình biên dịch và quá trình biên dịch một chương trình. Quá trình hoạt động của compiler, các khái niệm liên quan đến <strong>make system</strong> (Makefile). Ngoài ra trong mục này cũng có thể mở rộng đến các công cụ sử dụng cho porting linux như: <strong>Xilinx Petalinux</strong>, <strong>Yocto Bitbake</strong>...</li>
 <li>Linux booting sequence. Các khái niệm liên quan đến <strong>bootloader</strong> cũng nhưng quá trình khởi động của <strong>Linux kernel</strong>. Quá trình mounting <strong>root file system</strong>.</li>
 </ul>
-<h2 id="embedded-application-development">Embedded application development</h2>
+<h2 id="embedded-application-development">Embedded application development<a class="headerlink" href="#embedded-application-development" title="Permanent link">&para;</a></h2>
 <p>Một cách minh họa, máy tính cá nhân sau khi cài đặt xong hệ điều hành, người dùng tiến hành cài đặt các ứng dụng (ví dụ như Office...) để thực hiện các nhiệm vụ (ví dụ như soạn thảo văn bản...). Một hệ nhúng cũng tương tự vậy. Quá trình poring Linux giúp board khởi động thành công với hệ điều hành, kỹ sư cần phát triển thêm các ứng dụng nhúng tùy theo yêu cầu của từng hệ thống. Tích hợp và phát triển ứng dụng có thể chia làm hai loại:</p>
 <ul>
 <li>
@@ -3311,7 +3311,7 @@
 </li>
 </ul>
 <p>Quy trình phát triển một ứng dụng trên hệ nhúng Linux không quá khác biệt so với phát triển một ứng dụng trên Linux Destop.</p>
-<h2 id="linux-device-driver">Linux Device Driver</h2>
+<h2 id="linux-device-driver">Linux Device Driver<a class="headerlink" href="#linux-device-driver" title="Permanent link">&para;</a></h2>
 <p>Quá trình porting giúp board có thể khởi động với hệ điều hành (Linux) nhưng không đảm bảo được tất cả các tài nguyên phần cứng trên board đã có các <strong>driver</strong> (*) tương ứng. Nhiệm vụ của kỹ sư trong trường hợp này sẽ là:</p>
 <ul>
 <li>
@@ -3322,7 +3322,7 @@
 </li>
 </ul>
 <p><em>(*) Khái niệm driver sẽ được thảo luận thêm ở các tài liệu chuyên sâu khác.</em></p>
-<h2 id="references">References</h2>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <p>[1] - <a href="https://bootlin.com/doc/training/embedded-linux/embedded-linux-slides.pdf">Embedded Linux system development</a> - bootlin.com</p>
 
 
@@ -3385,7 +3385,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>

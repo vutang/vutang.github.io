@@ -3189,18 +3189,18 @@
 
 
 
-<h1 id="xilinx-ipcore">Xilinx IPCore</h1>
+<h1 id="xilinx-ipcore">Xilinx IPCore<a class="headerlink" href="#xilinx-ipcore" title="Permanent link">&para;</a></h1>
 <p>This note for Xilinx Core implementation.</p>
-<h2 id="clocking-wizard">Clocking Wizard</h2>
+<h2 id="clocking-wizard">Clocking Wizard<a class="headerlink" href="#clocking-wizard" title="Permanent link">&para;</a></h2>
 <p>Configure Clock Wizard using Dynamic Reconfiguration through AXI4-Lite interface.</p>
 <p>Dòng chip Series 7 của Xilinx cung cấp các tài nguyên liên quan đến clock như MMCM và PLL (clock synthesizer). Ngoài ra, trong môi trường Vivado, Xilinx cung cấp thêm IPCore Clocking Wizard nhằm tạo giao diện làm việc đơn giản cho người dùng khi sử dụng các tài nguyên clock trên chip FPGA.</p>
 <p>Trong quá trình chạy (run-time), các clock synthesizer có thể cấu hình lại để có thể thay đổi được giá trị tần số đầu ra. </p>
 <p><strong>Configuration</strong></p>
 <p>Giá trị tần số của một đầu ra của khối clock wizard được tính như sau:</p>
-<pre><code>VCO = CLKin * CLKFBOUT_MULT/DIVCLK_DIVICE
-
-CLKOUT0 = VCO / CLKOUT0_DIVIDE
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>VCO = CLKin * CLKFBOUT_MULT/DIVCLK_DIVICE
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>CLKOUT0 = VCO / CLKOUT0_DIVIDE
+</code></pre></div>
 <p>Trong quá trình chạy, khi thay đổi các giá trị <code>CLKFBOUT_MULT</code> (Reg-offset: 0x200) hoặc giá trị <code>CLOCKOUT0_DEVICE</code> (Reg-offset: 0x208) thì giá trị <code>CLKOUT0</code> sẽ thay đổi. Tham khảo thêm Register Space trong tài liệu PG065.</p>
 <p><strong><em>Quy trình cấu hình lai clock</em></strong></p>
 <p>Trong PG065 mô tả quy trình cấu hình lại clock tại "Dynamic Reconfiguration through AXI4-Lite"</p>
@@ -3273,7 +3273,7 @@ CLKOUT0 = VCO / CLKOUT0_DIVIDE
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>

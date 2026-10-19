@@ -3679,9 +3679,9 @@
 
 
 
-<h1 id="network-block-device">Network Block Device</h1>
+<h1 id="network-block-device">Network Block Device<a class="headerlink" href="#network-block-device" title="Permanent link">&para;</a></h1>
 <p><em>Ngô Minh Khánh - Phòng PMHT - TTVTBR - 11/2022</em></p>
-<h2 id="gioi-thieu-ve-network-block-device-nbd">Giới thiệu về Network Block Device (NBD)</h2>
+<h2 id="gioi-thieu-ve-network-block-device-nbd">Giới thiệu về Network Block Device (NBD)<a class="headerlink" href="#gioi-thieu-ve-network-block-device-nbd" title="Permanent link">&para;</a></h2>
 <p>Network Block Device (NDB) được viết đầu tiên bởi Pavel Machek vào tháng 4 năm 1997 trên Linux kernel phiên bản 2.1.55. Sau đó NDB tiếp tục được phát triển thêm các phiên bản phù hợp với các kernel 57, 101, 111 và 132 (tính đến năm 2000).</p>
 <p>Network Block Device là một kỹ thuật lưu trữ dữ liệu từ xa được sử dụng trên các hệ thống máy tính Linux và Unix, cho phép một thiết bị Client truy cập vào kho dữ liệu trên một Server từ xa. Khi thiết bị Client đã thiết lập NBD, nó sẽ hoạt động như thể có một ổ đĩa thực sự trên phía Client chứ không phải ở một Server nào đó trên mạng.</p>
 <p>NBD ở phía Server có thể là một đĩa cứng thực tế hoặc là một loại tệp đặc biệt có thể được truy cập như thể nó là một đĩa. Mặc dù chậm hơn đĩa cứng cục bộ, nhưng phương pháp này hữu ích cho một số trường hợp, chẳng hạn như backup dữ liệu hoặc cung cấp khả năng lưu trữ cho một thiết bị không có hoặc có bộ nhớ lưu trữ nhỏ.</p>
@@ -3697,7 +3697,7 @@
   </p>
 <figcaption>NBD được triển khai cùng công nghệ RAID</figcaption>
 </figure>
-<h2 id="so-sanh-nbd-va-nfs">So sánh NBD và NFS</h2>
+<h2 id="so-sanh-nbd-va-nfs">So sánh NBD và NFS<a class="headerlink" href="#so-sanh-nbd-va-nfs" title="Permanent link">&para;</a></h2>
 <p>Network Block Device (NBD) có những đặc điểm tương tự với kỹ thuật Network File System (NFS). Một thí nghiệm được thực hiện vào năm 1999 và sử dụng phiên bản NBD driver ban đầu của Pavel chỉ ra rằng việc mount một file Linux EXT2 bằng NBD cho tốc độ nhanh hơn sử dụng NFS (Network File System) trên cùng một thiết bị.</p>
 <p>Thông qua thí nghiệm việc mount file bằng NBD trong các điều kiện mặc định giống với NFS với độ lớn bộ đệm xấp xỉ 1.5KB, gấp 1,5 lần kích thước bộ đệm mặc định NFS là 1KB. Thêm vào đó NFS sử dụng giao thức UDP còn NBD sử dụng giao thức TCP. UDP là phương pháp “truyền và quên”, nên đôi khi dữ liệu truyền có thể bị mất. Ngược lại, TCP thiết lập một kết nối dự trên tiến trình bắt tay 3 bước, do đó đảm bảo dữ liệu NBD được đọc và ghi chính xác. </p>
 <figure>
@@ -3711,54 +3711,54 @@
   </p>
 <figcaption>Mô hình liên kết của NFS và NBD</figcaption>
 </figure>
-<h2 id="thiet-lap-network-block-device-dua-tren-filesystem">Thiết lập Network Block Device dựa trên filesystem</h2>
-<h3 id="cau-hinh-ndb-o-phia-server">Cấu hình NDB ở phía Server.</h3>
+<h2 id="thiet-lap-network-block-device-dua-tren-filesystem">Thiết lập Network Block Device dựa trên filesystem<a class="headerlink" href="#thiet-lap-network-block-device-dua-tren-filesystem" title="Permanent link">&para;</a></h2>
+<h3 id="cau-hinh-ndb-o-phia-server">Cấu hình NDB ở phía Server.<a class="headerlink" href="#cau-hinh-ndb-o-phia-server" title="Permanent link">&para;</a></h3>
 <p>Các bước thực hiện cấu hình phía Server:</p>
-<h4 id="cai-at-ndb-server">Cài đặt NDB Server.</h4>
+<h4 id="cai-at-ndb-server">Cài đặt NDB Server.<a class="headerlink" href="#cai-at-ndb-server" title="Permanent link">&para;</a></h4>
 <p><code>apt-get install nbd-server</code></p>
-<h4 id="tao-noi-dung-tep">Tạo nội dung tệp.</h4>
-<pre><code>dd if=/dev/zero of=/mnt/nbd1 bs=1024 count=36000
-mke2fs /mnt/nbd1
-</code></pre>
-<h4 id="chay-ndb-server-daemon">Chạy NDB Server daemon.</h4>
-<pre><code>(Syntax: nbd-server port-number filename/filesystem)
- nbd-server 1043 /mnt/nbd1
-</code></pre>
-<h3 id="cau-hinh-ndb-o-phia-client">Cấu hình NDB ở phía Client</h3>
+<h4 id="tao-noi-dung-tep">Tạo nội dung tệp.<a class="headerlink" href="#tao-noi-dung-tep" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>dd if=/dev/zero of=/mnt/nbd1 bs=1024 count=36000
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>mke2fs /mnt/nbd1
+</code></pre></div>
+<h4 id="chay-ndb-server-daemon">Chạy NDB Server daemon.<a class="headerlink" href="#chay-ndb-server-daemon" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>(Syntax: nbd-server port-number filename/filesystem)
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a> nbd-server 1043 /mnt/nbd1
+</code></pre></div>
+<h3 id="cau-hinh-ndb-o-phia-client">Cấu hình NDB ở phía Client<a class="headerlink" href="#cau-hinh-ndb-o-phia-client" title="Permanent link">&para;</a></h3>
 <p>Các bước thực hiện cấu hình phía Client:</p>
-<h4 id="cai-at-nbd-client">Cài đặt NBD Client.</h4>
+<h4 id="cai-at-nbd-client">Cài đặt NBD Client.<a class="headerlink" href="#cai-at-nbd-client" title="Permanent link">&para;</a></h4>
 <p><code>apt-get install nbd-client</code></p>
-<h4 id="tao-filesytem-tren-thiet-bi-client">Tạo filesytem trên thiết bị Client.</h4>
+<h4 id="tao-filesytem-tren-thiet-bi-client">Tạo filesytem trên thiết bị Client.<a class="headerlink" href="#tao-filesytem-tren-thiet-bi-client" title="Permanent link">&para;</a></h4>
 <p>(Syntax: nbd-client server-ip server-port filename/filesystem)</p>
 <p><code>nbd-client 192.168.1.11 1043 /mnt/nbd1</code></p>
-<pre><code>Starting NBD client process: Connecting...Negotiation: ..size = 36000KB bs=1024, sz=36000
-connected /mnt/nbd
-Activating...
-fsck 1.39-WIP (31-Dec-2005)
-/mnt/nbd: Superblock last write time is in the future. FIXED. /mnt/nbd has gone 49716 days without being checked, check forced. 
-/mnt/nbd1: |===============================| 56.0%
-/mnt/nbd1: |===============================| 100.0%
-</code></pre>
-<h4 id="mount-file-phia-client">Mount file phía Client</h4>
-<pre><code>mkdir /rem_space 
-mount /mnt/nbd1 /rem_space
-</code></pre>
-<h4 id="lay-nhung-thay-oi-phia-client-tren-server">Lấy những thay đổi phía Client trên Server</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Starting NBD client process: Connecting...Negotiation: ..size = 36000KB bs=1024, sz=36000
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>connected /mnt/nbd
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>Activating...
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>fsck 1.39-WIP (31-Dec-2005)
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>/mnt/nbd: Superblock last write time is in the future. FIXED. /mnt/nbd has gone 49716 days without being checked, check forced. 
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>/mnt/nbd1: |===============================| 56.0%
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>/mnt/nbd1: |===============================| 100.0%
+</code></pre></div>
+<h4 id="mount-file-phia-client">Mount file phía Client<a class="headerlink" href="#mount-file-phia-client" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>mkdir /rem_space 
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>mount /mnt/nbd1 /rem_space
+</code></pre></div>
+<h4 id="lay-nhung-thay-oi-phia-client-tren-server">Lấy những thay đổi phía Client trên Server<a class="headerlink" href="#lay-nhung-thay-oi-phia-client-tren-server" title="Permanent link">&para;</a></h4>
 <p><code>mount -o loop /mnt/nbd1 /client_changes</code></p>
-<h2 id="truy-cap-bo-nho-tu-xa-nhu-la-bo-nho-swap">Truy cập bộ nhớ từ xa như là bộ nhớ SWAP</h2>
-<h3 id="cau-hinh-phia-server">Cấu hình phía Server.</h3>
-<h4 id="tao-file">Tạo file .</h4>
-<pre><code>dd if=/dev/zero of=/mnt/nbd2 bs=1624 count=16000
-mkswap /mnt/nbd2
-</code></pre>
-<h4 id="chay-server-daemon">Chạy Server daemon.</h4>
+<h2 id="truy-cap-bo-nho-tu-xa-nhu-la-bo-nho-swap">Truy cập bộ nhớ từ xa như là bộ nhớ SWAP<a class="headerlink" href="#truy-cap-bo-nho-tu-xa-nhu-la-bo-nho-swap" title="Permanent link">&para;</a></h2>
+<h3 id="cau-hinh-phia-server">Cấu hình phía Server.<a class="headerlink" href="#cau-hinh-phia-server" title="Permanent link">&para;</a></h3>
+<h4 id="tao-file">Tạo file .<a class="headerlink" href="#tao-file" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dd if=/dev/zero of=/mnt/nbd2 bs=1624 count=16000
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>mkswap /mnt/nbd2
+</code></pre></div>
+<h4 id="chay-server-daemon">Chạy Server daemon.<a class="headerlink" href="#chay-server-daemon" title="Permanent link">&para;</a></h4>
 <p><code>nbd-server 1043 /mnt/nbd2</code></p>
-<h3 id="cau-hinh-phia-client">Cấu hình phía Client.</h3>
-<h4 id="lay-filesystem-nhu-la-vung-swap">Lấy filesystem như là vùng swap.</h4>
+<h3 id="cau-hinh-phia-client">Cấu hình phía Client.<a class="headerlink" href="#cau-hinh-phia-client" title="Permanent link">&para;</a></h3>
+<h4 id="lay-filesystem-nhu-la-vung-swap">Lấy filesystem như là vùng swap.<a class="headerlink" href="#lay-filesystem-nhu-la-vung-swap" title="Permanent link">&para;</a></h4>
 <p><code>nbd-client 192.168.1.11 1043 -swap /mnt/nbd2</code></p>
-<h4 id="kiem-tra-lai-bang-lenh">Kiểm tra lại bằng lệnh</h4>
+<h4 id="kiem-tra-lai-bang-lenh">Kiểm tra lại bằng lệnh<a class="headerlink" href="#kiem-tra-lai-bang-lenh" title="Permanent link">&para;</a></h4>
 <p><code>cat /proc/swaps</code></p>
-<h2 id="tong-ket">Tổng kết.</h2>
+<h2 id="tong-ket">Tổng kết.<a class="headerlink" href="#tong-ket" title="Permanent link">&para;</a></h2>
 <p>Network Block Device (NBD) là một công nghệ giúp một thiết bị Client kết nối đến với một Server chứa một thiết bị lưu trữ dạng khối (block device) thực từ xa. NBD cung cấp cho một thiết bị không có hoặc có bộ nhớ nhỏ có thể lưu trữ dữ liệu, đồng thời tăng dung lượng hoặc backup hiệu quả.</p>
 
 
@@ -3821,7 +3821,7 @@ mkswap /mnt/nbd2
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>

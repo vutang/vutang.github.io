@@ -3423,17 +3423,17 @@
 
 
 
-<h1 id="petalinux-20174-technical-note">Petalinux 2017.4 technical note</h1>
+<h1 id="petalinux-20174-technical-note">Petalinux 2017.4 technical note<a class="headerlink" href="#petalinux-20174-technical-note" title="Permanent link">&para;</a></h1>
 <p><em>Vu Tang - 2/2019</em></p>
-<h2 id="introdutions">Introdutions</h2>
+<h2 id="introdutions">Introdutions<a class="headerlink" href="#introdutions" title="Permanent link">&para;</a></h2>
 <p>Tài liệu này là tổng hợp các điểm lưu ý trong quá trình làm việc với Petalinux 2017.4. Version 2017.4 này của Xilinx là một thể hiện rõ ràng của việc ứng dụng <a href="https://www.yoctoproject.org/">YOCTO PROJECT</a> trong quá trình phát triển một hệ nhúng Linux. Để hiểu rõ hơn quá trình làm việc của petalinux 2017.4, cần tìm hiểu thêm về nguyên tắc hoạt động của Yocto. </p>
-<h2 id="tips">Tips</h2>
+<h2 id="tips">Tips<a class="headerlink" href="#tips" title="Permanent link">&para;</a></h2>
 <p><strong>Speed up sstate checking</strong></p>
 <p><a href="https://forums.xilinx.com/t5/Embedded-Linux/Checking-sstate-mirror-taking-forever/td-p/775404">https://forums.xilinx.com/t5/Embedded-Linux/Checking-sstate-mirror-taking-forever/td-p/775404</a></p>
 <ul>
 <li>Diable sstate online in Yocto</li>
 </ul>
-<h2 id="worknote">Worknote</h2>
+<h2 id="worknote">Worknote<a class="headerlink" href="#worknote" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
 <p>build target when use <code>petalinux build</code> is petalinux-user-image.bb. Bitbake file dir: [project dir]/project-spec/meta-plnx-generated/recipes-core/images/petalinux-user-image.bb</p>
@@ -3453,24 +3453,24 @@
 <p>$WORKDIR: build/tmp/work/plnx_arm-xilinx-linux-gnueabi/libsample-tar/1.0-r0</p>
 </li>
 </ul>
-<h2 id="experiences">Experiences</h2>
-<h3 id="create-and-initialize-a-project">Create and initialize a project</h3>
+<h2 id="experiences">Experiences<a class="headerlink" href="#experiences" title="Permanent link">&para;</a></h2>
+<h3 id="create-and-initialize-a-project">Create and initialize a project<a class="headerlink" href="#create-and-initialize-a-project" title="Permanent link">&para;</a></h3>
 <p>Quá trình khởi tạo project (1) và import hdf (2) tiến hành tương tự với petalinux 2015.4 (xem thêm ug1144 để biết về các cmd tương ứng cho từng quá trình). </p>
-<pre><code>├── config.project
-└── project-spec
-    ├── attributes
-    ├── configs
-    │   ├── config
-    │   └── rootfs_config
-    ├── hw-description
-    │   └── metadata
-    └── meta-user
-        ├── conf
-        ├── COPYING.MIT
-        ├── README
-        ├── recipes-apps
-        └── recipes-bsp
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>├── config.project
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>└── project-spec
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    ├── attributes
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    ├── configs
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    │   ├── config
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    │   └── rootfs_config
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    ├── hw-description
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    │   └── metadata
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    └── meta-user
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>        ├── conf
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>        ├── COPYING.MIT
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>        ├── README
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>        ├── recipes-apps
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>        └── recipes-bsp
+</code></pre></div>
 <p>Kết thúc quá trình (1), project được tạo với thư mục “project-spec”. Trong đó:</p>
 <ul>
 <li>Thư mục con “configs” chứa các cấu hình của project (các cấu hình này được thay đổi bằng họ câu lệnh “petalinux-config”).</li>
@@ -3478,24 +3478,23 @@
 <li>Thư mục con “meta-user” chứa các recipes liên quan đến user-apps và bsp. Ngoai ra thư mục này còn chứa trong ./conf các cấu hình liên quan đến Yocto cho Layer meta-user.</li>
 </ul>
 <p>Kết thúc quá trình (2), cấu trúc thư mục của project biến đổi như hình vẽ dưới đây.</p>
-<pre><code>├── build
-│   ├── cache
-│   ├── conf
-│   ├── config.log
-│   ├── misc
-│   └── tmp
-├── components
-│   └── plnx_workspace
-├── config.project
-└── project-spec
-    ├── attributes
-    ├── configs
-    ├── hw-description
-    ├── meta-plnx-generated
-    ├── meta-user
-    └── yocto-layer.log
-
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>├── build
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>│   ├── cache
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>│   ├── conf
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│   ├── config.log
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│   ├── misc
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>│   └── tmp
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>├── components
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>│   └── plnx_workspace
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>├── config.project
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>└── project-spec
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    ├── attributes
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    ├── configs
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>    ├── hw-description
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>    ├── meta-plnx-generated
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>    ├── meta-user
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>    └── yocto-layer.log
+</code></pre></div>
 <p>Trong đó, xuất hiện thêm một số thư mục quan trọng sau:</p>
 <ul>
 <li>Thư mục “build” là thư mục được sử dụng đế tiến hành các giai đoạn trong quá trình build project. Trong đó kết quả trung gian trong các quá trình build được lưu trữ tại “tmp”. Ngoài ra, trong các quá trình tiếp theo trong “build” sẽ xuất hiện thêm thư mục “downloads” thực hiện chức năng lưu trữ các package được thực hiện trong quá trình “do_fetch”.</li>
@@ -3503,7 +3502,7 @@
 <li>Xuất hiện thêm Yocto layer “meta-plnx-generated” trong thư mục “project-spec”, chứa các Yocto recipes liên quan đến kernel, core, bsp.</li>
 </ul>
 <p>Xem thêm Apendix A trong tài liệu ug1144 để biết thêm thông tin về Petalinux project structure.</p>
-<h3 id="build-a-new-project-without-internet">Build a new project without Internet</h3>
+<h3 id="build-a-new-project-without-internet">Build a new project without Internet<a class="headerlink" href="#build-a-new-project-without-internet" title="Permanent link">&para;</a></h3>
 <p>Để thực hiện build, chạy lệnh “petalinux-build”. </p>
 <p><strong>Pre-build configuration</strong></p>
 <ul>
@@ -3542,56 +3541,56 @@ Như vậy, bản cài đặt mặc định của petalinux không chứa đủ 
 </ul>
 <p><strong>Linaro - what is this?</strong></p>
 <p><strong>External kernel - How to?</strong></p>
-<h3 id="boot-from-sd-card">Boot from SD card</h3>
+<h3 id="boot-from-sd-card">Boot from SD card<a class="headerlink" href="#boot-from-sd-card" title="Permanent link">&para;</a></h3>
 <p>Về cơ bản, boot từ SD Card được thực hiện giống với hướng dẫn trong mục <a href="../../../../projects/zynq/zedboard/zedboard/#bootext4rootfs">Zedboard</a>. Tệp rootfs.cpio được chứa trong thư mục <project>/image/linux/ sẵn sàng cho quá trình đưa lên thẻ nhớ.</p>
-<h3 id="mounting-sd-card-in-booting-time">Mounting SD card in booting-time</h3>
+<h3 id="mounting-sd-card-in-booting-time">Mounting SD card in booting-time<a class="headerlink" href="#mounting-sd-card-in-booting-time" title="Permanent link">&para;</a></h3>
 <p>Refer <a href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842475/PetaLinux+Yocto+Tips">PetaLinux Yocto Tips</a> (xilinx-wiki.atlassian.net) for step-by-step instructions.</p>
-<h2 id="add-user-custom-package">Add user custom package</h2>
+<h2 id="add-user-custom-package">Add user custom package<a class="headerlink" href="#add-user-custom-package" title="Permanent link">&para;</a></h2>
 <p>Bản chất quản lý gói phần mềm trong petalinux là Yocto project. Mã nguồn của các gói phần mềm có thể được download từ các online repository hoặc lưu trữ trực tiếp trên máy local. Trong mục này sẽ lấy ví dụ về một gói phần mềm phổ biến, hay được sử dụng trong quá trình đánh giá chất lượng mạng: IPERF.</p>
 <p>Petalinux sẽ thực hiện tải source code của iperf từ Github sau đó tiến hành cấu hình, build và tích hợp vào hệ thống.</p>
 <p>Khi khởi tạo một ứng dụng (apps) mới, một package được tạo tại <code>project-spec/meta-user/recipes-apps</code>. Cấu trúc của một recipes như sau:</p>
-<pre><code>vux-iperf/
-├── files
-│   ├── 0002-Remove-pg-from-profile_CFLAGS.patch
-│   └── automake-foreign.patch
-├── README
-└── vux-iperf.bb
-</code></pre>
-<p>Trong ví dụ là cấu hình để build bản phần mềm iperf3. Bitbake file cho recipes này được tải tại <a href="https://layers.openembedded.org/layerindex/recipe/32243/">iperf3 3.6</a> (layers.openembedded.org). Nội dung file iperf3_3.6.bb như sau:</p>
-<pre><code>SUMMARY = &quot;Network benchmark tool&quot;
-HOMEPAGE = &quot;http://software.es.net/iperf/&quot;
-SECTION = &quot;console/network&quot;
-BUGTRACKER = &quot;https://github.com/esnet/iperf/issues&quot;
-AUTHOR = &quot;ESNET &lt;info@es.net&gt;, Lawrence Berkeley National Laboratory &lt;websupport@lbl.gov&gt;&quot;
-LICENSE = &quot;BSD&quot;
-LIC_FILES_CHKSUM = &quot;file://LICENSE;md5=a9a036136b748453e839c0eb8906ef2e&quot;
-
-DEPENDS = &quot;openssl&quot;
-
-SRC_URI = &quot;git://github.com/esnet/iperf.git \
-           file://automake-foreign.patch \
-           file://0002-Remove-pg-from-profile_CFLAGS.patch \
-           &quot;
-SRCREV = &quot;88f3ad87f38762081a6d7127890ff5c3a052b06a&quot;
-
-S = &quot;${WORKDIR}/git&quot;
-
-inherit autotools
-
-PACKAGECONFIG[lksctp] = &quot;ac_cv_header_netinet_sctp_h=yes,ac_cv_header_netinet_sctp_h=no,lksctp-tools&quot;
-
-CFLAGS += &quot;-D_GNU_SOURCE&quot;
-EXTRA_OECONF = &quot;--with-openssl=${RECIPE_SYSROOT}${prefix}&quot;
-BBCLASSEXTEND = &quot;native&quot;
-</code></pre>
-<p><em><a href="http://cgit.openembedded.org/meta-openembedded/tree/meta-oe/recipes-benchmark/iperf3/iperf3_3.6.bb?h=master">http://cgit.openembedded.org/meta-openembedded/tree/meta-oe/recipes-benchmark/iperf3/iperf3_3.6.bb?h=master</a></em></p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>vux-iperf/
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>├── files
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>│   ├── 0002-Remove-pg-from-profile_CFLAGS.patch
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>│   └── automake-foreign.patch
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>├── README
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>└── vux-iperf.bb
+</code></pre></div>
+Trong ví dụ là cấu hình để build bản phần mềm iperf3. Bitbake file cho recipes này được tải tại <a href="https://layers.openembedded.org/layerindex/recipe/32243/">iperf3 3.6</a> (layers.openembedded.org). Nội dung file iperf3_3.6.bb như sau:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>SUMMARY = "Network benchmark tool"
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>HOMEPAGE = "http://software.es.net/iperf/"
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>SECTION = "console/network"
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>BUGTRACKER = "https://github.com/esnet/iperf/issues"
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>AUTHOR = "ESNET &lt;info@es.net&gt;, Lawrence Berkeley National Laboratory &lt;websupport@lbl.gov&gt;"
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>LICENSE = "BSD"
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>LIC_FILES_CHKSUM = "file://LICENSE;md5=a9a036136b748453e839c0eb8906ef2e"
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>DEPENDS = "openssl"
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>SRC_URI = "git://github.com/esnet/iperf.git \
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>           file://automake-foreign.patch \
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>           file://0002-Remove-pg-from-profile_CFLAGS.patch \
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>           "
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>SRCREV = "88f3ad87f38762081a6d7127890ff5c3a052b06a"
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>S = "${WORKDIR}/git"
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>inherit autotools
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>PACKAGECONFIG[lksctp] = "ac_cv_header_netinet_sctp_h=yes,ac_cv_header_netinet_sctp_h=no,lksctp-tools"
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>CFLAGS += "-D_GNU_SOURCE"
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>EXTRA_OECONF = "--with-openssl=${RECIPE_SYSROOT}${prefix}"
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>BBCLASSEXTEND = "native"
+</code></pre></div>
+<em><a href="http://cgit.openembedded.org/meta-openembedded/tree/meta-oe/recipes-benchmark/iperf3/iperf3_3.6.bb?h=master">http://cgit.openembedded.org/meta-openembedded/tree/meta-oe/recipes-benchmark/iperf3/iperf3_3.6.bb?h=master</a></em></p>
 <p>Trong file vux-iperf.bb có một số khái niệm và thông tin cần lưu ý như sau.</p>
 <p><strong>Đường dẫn đến source code của package</strong></p>
-<p>Tham số SRC_URI chứa đường dẫn đến source code của pakcage. Thông qua thông tin chứa trong đường dẫn này, bitbake thực hiện nhiệm vụ do_fetch. </p>
-<pre><code>SRC_URI = &quot;git://github.com/esnet/iperf.git \
-           file://automake-foreign.patch \
-</code></pre>
-<p>Trong ví dụ này, SRC_URI chỉ đến một git repository của esnet. Người dùng có thể truy cập trực tiếp vào repo này để xem source code. Ngoài ra SRC_URI chỉ đến một file được lưu trữ local chứa bản patch. Bản patch này có thể được tìm thấy trên openembedded.org.</p>
+<p>Tham số SRC_URI chứa đường dẫn đến source code của pakcage. Thông qua thông tin chứa trong đường dẫn này, bitbake thực hiện nhiệm vụ do_fetch. 
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>SRC_URI = "git://github.com/esnet/iperf.git \
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>           file://automake-foreign.patch \
+</code></pre></div>
+Trong ví dụ này, SRC_URI chỉ đến một git repository của esnet. Người dùng có thể truy cập trực tiếp vào repo này để xem source code. Ngoài ra SRC_URI chỉ đến một file được lưu trữ local chứa bản patch. Bản patch này có thể được tìm thấy trên openembedded.org.</p>
 <p><strong>Revision của source code</strong></p>
 <p>Tham số SRCREV chỉ cho bitbake biết được revision nào của source code cần được sử dụng để build package.</p>
 <p><code>SRCREV = "88d907f7fb58bfab5d086c5da60c922e1c582c92"</code></p>
@@ -3603,38 +3602,38 @@ BBCLASSEXTEND = &quot;native&quot;
 <p>Tương ứng với mỗi revision chứa một file LICENSE đi kèm với MD5SUM.</p>
 <p><code>LIC_FILES_CHKSUM = "file://LICENSE;md5=d098223e44bdd19585315ee75cd9d2d7"</code></p>
 <p>Lưu ý rằng LIC_FILES có thể là LICENSE hoặc bất cứ tên khác. </p>
-<h2 id="petalinux-imagebbappend">petalinux-image.bbappend</h2>
+<h2 id="petalinux-imagebbappend">petalinux-image.bbappend<a class="headerlink" href="#petalinux-imagebbappend" title="Permanent link">&para;</a></h2>
 <p>Lưu trữ tại project-spec/meta-user/recipes-core/images/petalinux-image.bbappend chứa các package có thể được install vào hệ thống. Khi xóa các package trong file này sẽ ảnh hưởng đến petalinux-config -c rootfs.</p>
-<h2 id="application-auto-run-at-startup">Application Auto Run at Startup</h2>
+<h2 id="application-auto-run-at-startup">Application Auto Run at Startup<a class="headerlink" href="#application-auto-run-at-startup" title="Permanent link">&para;</a></h2>
 <p>Thuật ngữ: <code>update-rc.d</code>, <code>System V</code></p>
 <p>Các ứng dụng được cài đặt trên Rootfs dưới dạng các binary và thông thường chỉ được khởi động khi có yêu cầu của người dùng. Trong một số trường hợp ứng dụng cần khởi động trong quá trình booting cùng hệ thống.</p>
 <p>Ý tưởng cho phương pháp này là sử dụng Yocto class <code>update-rc.d.bbclass</code> để cài đặt <code>init script</code> dạng <code>System V</code> vào hệ thống. <code>update-rc.d.bbclass</code> sử dụng update-rc.d (a Debian utility) đề "safety install" init script vào hệ thống.</p>
 <p>Dưới đây là recipe file của một package yêu cầu Yocto tiến hành cài đặt một <code>init script</code> vào hệ thống. </p>
-<pre><code>SUMMARY = &quot;Simple iiod-init application&quot;
-SECTION = &quot;PETALINUX/apps&quot;
-LICENSE = &quot;MIT&quot;
-LIC_FILES_CHKSUM = &quot;file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302&quot;
-
-SRC_URI = &quot;file://iiod-init \
-    &quot;
-
-S = &quot;${WORKDIR}&quot;
-
-FILESEXTRAPATHS_prepend := &quot;${THISDIR}/files:&quot;
-
-inherit update-rc.d
-
-INITSCRIPT_NAME = &quot;iiod-init&quot;
-INITSCRIPT_PARAMS = &quot;start 99 S .&quot;
-
-do_install() {
-    install -d ${D}${sysconfdir}/init.d
-    install -m 0755 ${S}/iiod-init ${D}${sysconfdir}/init.d/iiod-init
-}
-
-FILES_${PN} += &quot;${sysconfdir}/*&quot;
-</code></pre>
-<p>Một số điểm lưu ý trong recipe:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>SUMMARY = "Simple iiod-init application"
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>SECTION = "PETALINUX/apps"
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>LICENSE = "MIT"
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>SRC_URI = "file://iiod-init \
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    "
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>S = "${WORKDIR}"
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>inherit update-rc.d
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>INITSCRIPT_NAME = "iiod-init"
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>INITSCRIPT_PARAMS = "start 99 S ."
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>do_install() {
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>    install -d ${D}${sysconfdir}/init.d
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>    install -m 0755 ${S}/iiod-init ${D}${sysconfdir}/init.d/iiod-init
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>}
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>FILES_${PN} += "${sysconfdir}/*"
+</code></pre></div>
+Một số điểm lưu ý trong recipe:</p>
 <ul>
 <li><code>inherit update-rc.d</code>: gọi đến class <code>update-rc.d</code>.</li>
 <li><code>INITSCRIPT_NAME</code> &amp; <code>INITSCRIPT_PARAMS</code>: là các biến số cho class <code>update-rc.d</code>. Tham khảo thêm tại <a href="https://www.yoctoproject.org/docs/2.1/ref-manual/ref-manual.html#ref-classes-update-rc.d">update-rc.d.bbclass</a> của Yocto ref-manual.</li>
@@ -3702,7 +3701,7 @@ FILES_${PN} += &quot;${sysconfdir}/*&quot;
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.top"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.top", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../../assets/javascripts/bundle.d7400e89.min.js"></script>

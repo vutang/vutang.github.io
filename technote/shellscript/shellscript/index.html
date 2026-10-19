@@ -3377,83 +3377,83 @@
 
 
 
-<h1 id="shell-script">Shell Script</h1>
-<h2 id="references">References</h2>
+<h1 id="shell-script">Shell Script<a class="headerlink" href="#shell-script" title="Permanent link">&para;</a></h1>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <p><a href="https://www.shellscript.sh/">Shell Scripting Tutorial</a></p>
-<h2 id="syntax">Syntax</h2>
-<h3 id="array">Array</h3>
-<p>Handling array in shell script.</p>
-<pre><code>    rxPwr=(7 7 7) # declaring an array
-    for i in 0 1 2 3
-    do
-        rxPwr[$i]=$i # access element in array
-        echo ${rxPwr[$i]}
-    done
-</code></pre>
-<h3 id="variable-handle">Variable handle</h3>
-<pre><code>    dpd_chan=$1 #Parsing value to variable from argument
-    pa_chan=$((dpd_chan+1)) #Adding 1
-</code></pre>
-<h3 id="loop">Loop</h3>
-<p><strong>For</strong></p>
-<pre><code>    for i in 0 1 2 3
-    do
-        rxPwr[$i]=`dpdctl check $i | grep &quot;rx&quot; | awk {'print $4'}`
-        printf &quot;%0.2f, &quot; ${rxPwr[$i]} &gt;&gt; $logdir
-    done
-</code></pre>
-<p><strong>While</strong></p>
-<pre><code>    while true; do
-        # Do something here
-    done
-</code></pre>
+<h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
+<h3 id="array">Array<a class="headerlink" href="#array" title="Permanent link">&para;</a></h3>
+<p>Handling array in shell script.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>    rxPwr=(7 7 7) # declaring an array
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    for i in 0 1 2 3
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    do
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        rxPwr[$i]=$i # access element in array
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        echo ${rxPwr[$i]}
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    done
+</code></pre></div></p>
+<h3 id="variable-handle">Variable handle<a class="headerlink" href="#variable-handle" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>    dpd_chan=$1 #Parsing value to variable from argument
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    pa_chan=$((dpd_chan+1)) #Adding 1
+</code></pre></div>
+<h3 id="loop">Loop<a class="headerlink" href="#loop" title="Permanent link">&para;</a></h3>
+<p><strong>For</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>    for i in 0 1 2 3
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    do
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>        rxPwr[$i]=`dpdctl check $i | grep "rx" | awk {'print $4'}`
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>        printf "%0.2f, " ${rxPwr[$i]} &gt;&gt; $logdir
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    done
+</code></pre></div></p>
+<p><strong>While</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>    while true; do
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>        # Do something here
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    done
+</code></pre></div></p>
 <p>Example:</p>
-<pre><code>    ADDR=0x43c40000
-
-    while [ $(($ADDR)) -lt $((0x43c00010)) ]; do
-        VALUE=`peek $ADDR`
-        printf &quot;0x%08x\t0x%08x\n&quot; $ADDR $VALUE &gt;&gt; regdump.txt
-        ADDR=$(($ADDR + 4))
-    done
-</code></pre>
-<h3 id="condition-state">Condition state</h3>
-<pre><code>    if [ &quot;$1&quot; = &quot;all&quot; ]; then
-        # Add code here
-    fi
-</code></pre>
-<p>Check if a file exist or not</p>
-<pre><code>    if [ -f $LOG_MON_FILE ]; then
-        # Contents
-    fi
-</code></pre>
-<h3 id="print-a-string-to-output">Print a string to output</h3>
-<p><strong>printf</strong>: print a string with format</p>
-<pre><code>    printf &quot;%0.2f, &quot; ${txCpl[$i]} &gt;&gt; $logdir
-    printf &quot;0x%08x&quot; $ADDR
-</code></pre>
-<h3 id="passing-argurments">Passing Argurments</h3>
-<pre><code>    $#: number of arguments
-    $i: the i-th argument
-</code></pre>
-<h3 id="operations">Operations</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>    ADDR=0x43c40000
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    while [ $(($ADDR)) -lt $((0x43c00010)) ]; do
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>        VALUE=`peek $ADDR`
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>        printf "0x%08x\t0x%08x\n" $ADDR $VALUE &gt;&gt; regdump.txt
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>        ADDR=$(($ADDR + 4))
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    done
+</code></pre></div>
+<h3 id="condition-state">Condition state<a class="headerlink" href="#condition-state" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>    if [ "$1" = "all" ]; then
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>        # Add code here
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    fi
+</code></pre></div>
+<p>Check if a file exist or not
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>    if [ -f $LOG_MON_FILE ]; then
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>        # Contents
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    fi
+</code></pre></div></p>
+<h3 id="print-a-string-to-output">Print a string to output<a class="headerlink" href="#print-a-string-to-output" title="Permanent link">&para;</a></h3>
+<p><strong>printf</strong>: print a string with format
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>    printf "%0.2f, " ${txCpl[$i]} &gt;&gt; $logdir
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    printf "0x%08x" $ADDR
+</code></pre></div></p>
+<h3 id="passing-argurments">Passing Argurments<a class="headerlink" href="#passing-argurments" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>    $#: number of arguments
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    $i: the i-th argument
+</code></pre></div>
+<h3 id="operations">Operations<a class="headerlink" href="#operations" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Bitwise</strong>: <code>&amp;, |, ~</code></li>
+<li>
+<p><strong>Bitwise</strong>: <code>&amp;, |, ~</code>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>    a=0x1
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    b=0x2
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    c=$(($a | $b)) # or (two operands)
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>    c=$((($a | $b) &amp; $b)) # more than two operands
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>    c=$((~$a)) # not (only one operands)
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Shift</strong>:</p>
+</li>
 </ul>
-<pre><code>    a=0x1
-    b=0x2
-    c=$(($a | $b)) # or (two operands)
-    c=$((($a | $b) &amp; $b)) # more than two operands
-    c=$((~$a)) # not (only one operands)
-</code></pre>
-<ul>
-<li><strong>Shift</strong>:</li>
-</ul>
-<pre><code>    a=0x1
-    c=$(($a &lt;&lt; 2)) # shift left a 2 postition and then assign result to c
-</code></pre>
-<ul>
-<li>Relational operators</li>
-</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>    a=0x1
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    c=$(($a &lt;&lt; 2)) # shift left a 2 postition and then assign result to c
+</code></pre></div>
+* Relational operators</p>
 
 
 
@@ -3515,7 +3515,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>

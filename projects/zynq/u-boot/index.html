@@ -3242,70 +3242,68 @@
 
 
 
-<h1 id="porting-linux-for-zynq">Porting Linux for Zynq</h1>
-<h2 id="u-boot-on-zynq">U-Boot on Zynq</h2>
-<h3 id="references">References</h3>
+<h1 id="porting-linux-for-zynq">Porting Linux for Zynq<a class="headerlink" href="#porting-linux-for-zynq" title="Permanent link">&para;</a></h1>
+<h2 id="u-boot-on-zynq">U-Boot on Zynq<a class="headerlink" href="#u-boot-on-zynq" title="Permanent link">&para;</a></h2>
+<h3 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h3>
 <p>[1] - <a href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841973/Build+U-Boot">Build U-Boot</a> - xilinx-wiki.atlassian.net</p>
-<h3 id="build-u-boot-for-zedboard">Build U-Boot for Zedboard</h3>
+<h3 id="build-u-boot-for-zedboard">Build U-Boot for Zedboard<a class="headerlink" href="#build-u-boot-for-zedboard" title="Permanent link">&para;</a></h3>
 <p>Tiến hành build u-boot cho chip Zynq7000 trên Zedboard theo hướng dẫn từ xilinx-wiki.atlassian.net - <a href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841973/Build+U-Boot">Build U-Boot</a>.</p>
 <p>Quá trình build U-Boot cho một thiết bị Zynq7000 có thể tiến hành bằng cách sử dụng bộ công cụ Petalinux của Xilinx. Thử nghiệm này sẽ trực tiếp build U-Boot từ mã nguồn cung cấp bởi Xilinx từ Github bằng compiler cung cấp bởi Xilinx SDK.</p>
 <p><strong><code>make</code> U-Boot</strong></p>
 <p>Tiến hành theo các bước hướng dẫn trong [1], tiến hành fetch source code, cấu hình và make U-Boot.</p>
-<pre><code>&gt; git clone https://github.com/Xilinx/u-boot-xlnx.git
-&gt; cd u-boot-xlnx
-&gt; export CROSS_COMPILE=arm-linux-gnueabihf-
-&gt; export ARCH=arm
-&gt; source &lt;SDK setting.sh file&gt; // khai báo arm-linux-gnueabihf compiler
-&gt; make distclean
-&gt; make zynq_zed_defconfig
-&gt; make
-</code></pre>
-<p>Kết quả build là file <code>u-boot.elf</code>. File này có thể tiến hành chạy thử nghiệm bằng phương pháp sử dụng XSCT được mô tả ở phần <code>Zedboard</code>.</p>
-<h3 id="nhan-xet">Nhận xét</h3>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>&gt; git clone https://github.com/Xilinx/u-boot-xlnx.git
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>&gt; cd u-boot-xlnx
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>&gt; export CROSS_COMPILE=arm-linux-gnueabihf-
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>&gt; export ARCH=arm
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>&gt; source &lt;SDK setting.sh file&gt; // khai báo arm-linux-gnueabihf compiler
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>&gt; make distclean
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>&gt; make zynq_zed_defconfig
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>&gt; make
+</code></pre></div>
+Kết quả build là file <code>u-boot.elf</code>. File này có thể tiến hành chạy thử nghiệm bằng phương pháp sử dụng XSCT được mô tả ở phần <code>Zedboard</code>.</p>
+<h3 id="nhan-xet">Nhận xét<a class="headerlink" href="#nhan-xet" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Compiler sử dụng cho build U-Boot là họ chương trình: arm-linux-gnueabihf-*. Ví dụ gcc được định nghĩa tại [SDX Installation Dir]/SDK/2018.2/gnu/aarch32/lin/gcc-arm-linux-gnueabi/bin/arm-linux-gnueabihf-gcc.</li>
 <li><code>zynq_zed_defconfig</code> là bộ cấu hình dành riêng cho board zed. Các phần cứng khác sẽ có bộ cấu hình tương tự, ví dụ <code>zynq_zc706_defconfig</code> cho ZC706.</li>
 </ul>
-<h2 id="linux-kernel">Linux Kernel</h2>
+<h2 id="linux-kernel">Linux Kernel<a class="headerlink" href="#linux-kernel" title="Permanent link">&para;</a></h2>
 <p>Quá trình thực hiện được tham khảo từ hướng dẫn chi tiết <a href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842481/Build+kernel">Build kernel</a> của Xilinx.</p>
 <p>Xilinx duy trì một <a href="https://github.com/Xilinx/linux-xlnx.git">github repository</a> chứa source code Linux kernel. Quá trình build Linux kernel từ mã nguồn này tương đối đơn giản. Cần lưu ý một số điểm quan trọng như sau:</p>
 <ul>
 <li>Quá trình build kernel sử dụng họ compiler arm-linux-gnueabihf, do đó cần cấu hình <code>export CROSS_COMPILE=arm-linux-gnueabihf-</code></li>
-<li>Tại source code của Linux kernel thực hiện những bước sau:</li>
+<li>Tại source code của Linux kernel thực hiện những bước sau:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>&gt; make ARCH=arm xilinx_zynq_defconfig
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>&gt; make ARCH=arm menuconfig
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>&gt; make ARCH=arm UIMAGE_LOADADDR=0x8000 uImage
+</code></pre></div></li>
+<li>Kết quả build kernel được lưu tại: [Linux source]/arch/arm/boot/ bao gồm các nội dung như dưới đây. Trong đó quan trọng nhất là Image, uImage, zImage.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>drwxrwxr-x 2 vutt6 vutt6     4096 Feb 15 00:53 bootp
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>drwxrwxr-x 2 vutt6 vutt6     4096 Mar  4 15:21 compressed
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>-rwxr-xr-x 1 vutt6 vutt6     1805 Feb 15 00:53 deflate_xip_data.sh
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>drwxrwxr-x 2 vutt6 vutt6    73728 Feb 15 00:53 dts
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>-rwxrwxr-x 1 vutt6 vutt6 10662592 Mar  4 15:21 Image
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>-rw-rw-r-- 1 vutt6 vutt6     1648 Feb 15 00:53 install.sh
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>-rw-rw-r-- 1 vutt6 vutt6     3128 Feb 15 00:53 Makefile
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>-rw-rw-r-- 1 vutt6 vutt6  4160040 Mar  4 15:21 uImage
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>-rwxrwxr-x 1 vutt6 vutt6  4159976 Mar  4 15:21 zImage
+</code></pre></div></li>
 </ul>
-<pre><code>&gt; make ARCH=arm xilinx_zynq_defconfig
-&gt; make ARCH=arm menuconfig
-
-&gt; make ARCH=arm UIMAGE_LOADADDR=0x8000 uImage
-</code></pre>
-<ul>
-<li>Kết quả build kernel được lưu tại: [Linux source]/arch/arm/boot/ bao gồm các nội dung như dưới đây. Trong đó quan trọng nhất là Image, uImage, zImage.</li>
-</ul>
-<pre><code>drwxrwxr-x 2 vutt6 vutt6     4096 Feb 15 00:53 bootp
-drwxrwxr-x 2 vutt6 vutt6     4096 Mar  4 15:21 compressed
--rwxr-xr-x 1 vutt6 vutt6     1805 Feb 15 00:53 deflate_xip_data.sh
-drwxrwxr-x 2 vutt6 vutt6    73728 Feb 15 00:53 dts
--rwxrwxr-x 1 vutt6 vutt6 10662592 Mar  4 15:21 Image
--rw-rw-r-- 1 vutt6 vutt6     1648 Feb 15 00:53 install.sh
--rw-rw-r-- 1 vutt6 vutt6     3128 Feb 15 00:53 Makefile
--rw-rw-r-- 1 vutt6 vutt6  4160040 Mar  4 15:21 uImage
--rwxrwxr-x 1 vutt6 vutt6  4159976 Mar  4 15:21 zImage
-</code></pre>
 <p><strong>uImage</strong> sẽ được sử dụng cho quá trình đóng gói boot.bin.</p>
-<h2 id="device-tree">Device Tree</h2>
+<h2 id="device-tree">Device Tree<a class="headerlink" href="#device-tree" title="Permanent link">&para;</a></h2>
 <p><a href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842279/Build+Device+Tree+Blob">Build Device Tree Blob</a> - Xilinx.</p>
 <p>Trong hướng dẫn của Xilinx hướng dẫn nhiều cách để build device tree cho một thiết bị Zynq.</p>
-<h3 id="generate-device-tree-bang-hsmhsi">Generate Device Tree bằng HSM/HSI</h3>
+<h3 id="generate-device-tree-bang-hsmhsi">Generate Device Tree bằng HSM/HSI<a class="headerlink" href="#generate-device-tree-bang-hsmhsi" title="Permanent link">&para;</a></h3>
 <p>Khởi động HSM bằng command <code>hsm</code>, trong đó HSM là một công cụ tích hợp trong SDK của Xilinx. Quá trình generate bằng HSM được thực hiện tuần tự trong hướng dẫn của Xilinx (<a href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842279/Build+Device+Tree+Blob#BuildDeviceTreeBlob-GenerateaDeviceTreeSource(.dts/.dtsi)filesoncommandlineusingHSM/HSI">tại đây</a>).</p>
-<h3 id="tong-hop-dtb-bang-cong-cu-dtc">Tổng hợp DTB bằng công cụ <code>dtc</code></h3>
+<h3 id="tong-hop-dtb-bang-cong-cu-dtc">Tổng hợp DTB bằng công cụ <code>dtc</code><a class="headerlink" href="#tong-hop-dtb-bang-cong-cu-dtc" title="Permanent link">&para;</a></h3>
 <p>Device tree được generate dưới dạng các file dts/dtsi. Công cụ <code>dtc</code> (Device tree compiler) hỗ trợ compiling từ dạng dtsi/dts sang dtb. Cú pháp compile như sau:</p>
 <p><code>dtc -I dts -O dts -o system.dtb system.dts</code></p>
 <p>Lưu ý rằng <code>dtc</code> cũng hỗ trợ quá trình dịch ngược từ dtb -&gt; dts.</p>
-<h2 id="build-rootfs">Build rootfs</h2>
+<h2 id="build-rootfs">Build rootfs<a class="headerlink" href="#build-rootfs" title="Permanent link">&para;</a></h2>
 <p>http://xilinx.wikidot.com/zynq-rootfs</p>
-<h2 id="create-boot-image">Create boot image</h2>
+<h2 id="create-boot-image">Create boot image<a class="headerlink" href="#create-boot-image" title="Permanent link">&para;</a></h2>
 <p>Sử dụng công cụ bootgen tích hợp trong Xilinx SDK.</p>
-<h2 id="tool-for-package-images">Tool for package images</h2>
+<h2 id="tool-for-package-images">Tool for package images<a class="headerlink" href="#tool-for-package-images" title="Permanent link">&para;</a></h2>
 <p><strong>mkimage</strong> - Generate image for U-Boot  </p>
 <p>The mkimage command is used to create images for use with the U-Boot boot loader. Thes eimages can contain the linux kernel, device tree blob, root file system image, firmware images etc., either separate or combined.</p>
 <p>mkimage is used in Petalinux 2017.4 at do_xilinx_fitimage:</p>
@@ -3374,7 +3372,7 @@ drwxrwxr-x 2 vutt6 vutt6    73728 Feb 15 00:53 dts
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>

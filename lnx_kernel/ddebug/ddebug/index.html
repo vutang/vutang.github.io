@@ -3447,9 +3447,9 @@
 
 
 
-<h1 id="dynamic-debug">Dynamic debug</h1>
+<h1 id="dynamic-debug">Dynamic debug<a class="headerlink" href="#dynamic-debug" title="Permanent link">&para;</a></h1>
 <p><a href="https://www.kernel.org/doc/html/v4.15/admin-guide/dynamic-debug-howto.html">https://www.kernel.org/doc/html/v4.15/admin-guide/dynamic-debug-howto.html</a></p>
-<h2 id="introduction">Introduction</h2>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
 <p>This document describes how to use the dynamic debug (dyndbg) feature.</p>
 <p>Dynamic debug is designed to allow you to dynamically enable/disable
 kernel code to obtain additional kernel information.  Currently, if
@@ -3480,119 +3480,119 @@ which can be read to display the complete list of known debug
 statements, to help guide you</p>
 </li>
 </ul>
-<h2 id="controlling-dynamic-debug-behaviour">Controlling dynamic debug Behaviour</h2>
+<h2 id="controlling-dynamic-debug-behaviour">Controlling dynamic debug Behaviour<a class="headerlink" href="#controlling-dynamic-debug-behaviour" title="Permanent link">&para;</a></h2>
 <p>The behaviour of <code>pr_debug()</code>/<code>dev_dbg()</code> are controlled via writing to a
 control file in the 'debugfs' filesystem. Thus, you must first mount
 the debugfs filesystem, in order to make use of this feature.
 Subsequently, we refer to the control file as:
 <code>&lt;debugfs&gt;/dynamic_debug/control</code>. For example, if you want to enable
-printing from source file <code>svcsock.c</code>, line 1603 you simply do::</p>
-<pre><code>nullarbor:~ # echo 'file svcsock.c line 1603 +p' &gt; 
-        &lt;debugfs&gt;/dynamic_debug/control
-</code></pre>
-<p>If you make a mistake with the syntax, the write will fail thus::</p>
-<pre><code>nullarbor:~ # echo 'file svcsock.c wtf 1 +p' &gt;
-            &lt;debugfs&gt;/dynamic_debug/control
--bash: echo: write error: Invalid argument
-</code></pre>
-<h2 id="viewing-dynamic-debug-behaviour">Viewing Dynamic Debug Behaviour</h2>
+printing from source file <code>svcsock.c</code>, line 1603 you simply do::
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>nullarbor:~ # echo 'file svcsock.c line 1603 +p' &gt; 
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>        &lt;debugfs&gt;/dynamic_debug/control
+</code></pre></div>
+If you make a mistake with the syntax, the write will fail thus::
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>nullarbor:~ # echo 'file svcsock.c wtf 1 +p' &gt;
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>            &lt;debugfs&gt;/dynamic_debug/control
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>-bash: echo: write error: Invalid argument
+</code></pre></div></p>
+<h2 id="viewing-dynamic-debug-behaviour">Viewing Dynamic Debug Behaviour<a class="headerlink" href="#viewing-dynamic-debug-behaviour" title="Permanent link">&para;</a></h2>
 <p>You can view the currently configured behaviour of all the debug
-statements via::</p>
-<pre><code>nullarbor:~ # cat &lt;debugfs&gt;/dynamic_debug/control
-# filename:lineno [module]function flags format
-/usr/src/packages/BUILD/sgi-enhancednfs-1.4/default/net/sunrpc/svc_rdma.c:323 [svcxprt_rdma]svc_rdma_cleanup =_ &quot;SVCRDMA Module Removed, deregister RPC RDMA transport\012&quot;
-/usr/src/packages/BUILD/sgi-enhancednfs-1.4/default/net/sunrpc/svc_rdma.c:341 [svcxprt_rdma]svc_rdma_init =_ &quot;\011max_inline       : %d\012&quot;
-/usr/src/packages/BUILD/sgi-enhancednfs-1.4/default/net/sunrpc/svc_rdma.c:340 [svcxprt_rdma]svc_rdma_init =_ &quot;\011sq_depth         : %d\012&quot;
-/usr/src/packages/BUILD/sgi-enhancednfs-1.4/default/net/sunrpc/svc_rdma.c:338 [svcxprt_rdma]svc_rdma_init =_ &quot;\011max_requests     : %d\012&quot;
-...
-</code></pre>
+statements via::
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>nullarbor:~ # cat &lt;debugfs&gt;/dynamic_debug/control
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a># filename:lineno [module]function flags format
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>/usr/src/packages/BUILD/sgi-enhancednfs-1.4/default/net/sunrpc/svc_rdma.c:323 [svcxprt_rdma]svc_rdma_cleanup =_ "SVCRDMA Module Removed, deregister RPC RDMA transport\012"
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>/usr/src/packages/BUILD/sgi-enhancednfs-1.4/default/net/sunrpc/svc_rdma.c:341 [svcxprt_rdma]svc_rdma_init =_ "\011max_inline       : %d\012"
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>/usr/src/packages/BUILD/sgi-enhancednfs-1.4/default/net/sunrpc/svc_rdma.c:340 [svcxprt_rdma]svc_rdma_init =_ "\011sq_depth         : %d\012"
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>/usr/src/packages/BUILD/sgi-enhancednfs-1.4/default/net/sunrpc/svc_rdma.c:338 [svcxprt_rdma]svc_rdma_init =_ "\011max_requests     : %d\012"
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>...
+</code></pre></div></p>
 <p>You can also apply standard Unix text manipulation filters to this
 data, e.g.::</p>
-<pre><code>nullarbor:~ # grep -i rdma &lt;debugfs&gt;/dynamic_debug/control  | wc -l
-62
-
-nullarbor:~ # grep -i tcp &lt;debugfs&gt;/dynamic_debug/control | wc -l
-42
-</code></pre>
-<p>The third column shows the currently enabled flags for each debug
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>nullarbor:~ # grep -i rdma &lt;debugfs&gt;/dynamic_debug/control  | wc -l
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>62
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>nullarbor:~ # grep -i tcp &lt;debugfs&gt;/dynamic_debug/control | wc -l
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>42
+</code></pre></div>
+The third column shows the currently enabled flags for each debug
 statement callsite (see below for definitions of the flags).  The
 default value, with no flags enabled, is <code>=_</code>.  So you can view all
 the debug statement callsites with any non-default flags::</p>
-<pre><code>nullarbor:~ # awk '$3 != &quot;=_&quot;' &lt;debugfs&gt;/dynamic_debug/control
-# filename:lineno [module]function flags format
-/usr/src/packages/BUILD/sgi-enhancednfs-1.4/default/net/sunrpc/svcsock.c:1603 [sunrpc]svc_send p &quot;svc_process: st_sendto returned %d\012&quot;
-</code></pre>
-<h2 id="command-language-reference">Command Language Reference</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>nullarbor:~ # awk '$3 != "=_"' &lt;debugfs&gt;/dynamic_debug/control
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a># filename:lineno [module]function flags format
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>/usr/src/packages/BUILD/sgi-enhancednfs-1.4/default/net/sunrpc/svcsock.c:1603 [sunrpc]svc_send p "svc_process: st_sendto returned %d\012"
+</code></pre></div>
+<h2 id="command-language-reference">Command Language Reference<a class="headerlink" href="#command-language-reference" title="Permanent link">&para;</a></h2>
 <p>At the lexical level, a command comprises a sequence of words separated
 by spaces or tabs.  So these are all equivalent::</p>
-<pre><code>nullarbor:~ # echo -n 'file svcsock.c line 1603 +p' &gt;
-            &lt;debugfs&gt;/dynamic_debug/control
-nullarbor:~ # echo -n '  file   svcsock.c     line  1603 +p  ' &gt;
-            &lt;debugfs&gt;/dynamic_debug/control
-nullarbor:~ # echo -n 'file svcsock.c line 1603 +p' &gt;
-            &lt;debugfs&gt;/dynamic_debug/control
-</code></pre>
-<p>Command submissions are bounded by a write() system call.
-Multiple commands can be written together, separated by <code>;</code> or <code>\n</code>::</p>
-<pre><code>~# echo &quot;func pnpacpi_get_resources +p; func pnp_assign_mem +p&quot; \
-    &gt; &lt;debugfs&gt;/dynamic_debug/control
-</code></pre>
-<p>If your query set is big, you can batch them too::</p>
-<pre><code>~# cat query-batch-file &gt; &lt;debugfs&gt;/dynamic_debug/control
-</code></pre>
-<p>A another way is to use wildcard. The match rule support <code>*</code> (matches
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>nullarbor:~ # echo -n 'file svcsock.c line 1603 +p' &gt;
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>            &lt;debugfs&gt;/dynamic_debug/control
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>nullarbor:~ # echo -n '  file   svcsock.c     line  1603 +p  ' &gt;
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>            &lt;debugfs&gt;/dynamic_debug/control
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>nullarbor:~ # echo -n 'file svcsock.c line 1603 +p' &gt;
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>            &lt;debugfs&gt;/dynamic_debug/control
+</code></pre></div>
+Command submissions are bounded by a write() system call.
+Multiple commands can be written together, separated by <code>;</code> or <code>\n</code>::
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>~# echo "func pnpacpi_get_resources +p; func pnp_assign_mem +p" \
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    &gt; &lt;debugfs&gt;/dynamic_debug/control
+</code></pre></div>
+If your query set is big, you can batch them too::
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>~# cat query-batch-file &gt; &lt;debugfs&gt;/dynamic_debug/control
+</code></pre></div>
+A another way is to use wildcard. The match rule support <code>*</code> (matches
 zero or more characters) and <code>?</code> (matches exactly one character).For
-example, you can match all usb drivers::</p>
-<pre><code>~# echo &quot;file drivers/usb/* +p&quot; &gt; &lt;debugfs&gt;/dynamic_debug/control
-</code></pre>
-<p>At the syntactical level, a command comprises a sequence of match
-specifications, followed by a flags change specification::</p>
-<pre><code>command ::= match-spec* flags-spec
-</code></pre>
-<p>The match-spec's are used to choose a subset of the known pr_debug()
+example, you can match all usb drivers::
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>~# echo "file drivers/usb/* +p" &gt; &lt;debugfs&gt;/dynamic_debug/control
+</code></pre></div>
+At the syntactical level, a command comprises a sequence of match
+specifications, followed by a flags change specification::
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>command ::= match-spec* flags-spec
+</code></pre></div>
+The match-spec's are used to choose a subset of the known pr_debug()
 callsites to which to apply the flags-spec.  Think of them as a query
 with implicit ANDs between each pair.  Note that an empty list of
 match-specs will select all debug statement callsites.</p>
 <p>A match specification comprises a keyword, which controls the
 attribute of the callsite to be compared, and a value to compare
-against.  Possible keywords are:::</p>
-<pre><code>  match-spec ::= 'func' string |
-         'file' string |
-         'module' string |
-         'format' string |
-         'line' line-range
-
-  line-range ::= lineno |
-         '-'lineno |
-         lineno'-' |
-         lineno'-'lineno
-
-  lineno ::= unsigned-int
-</code></pre>
+against.  Possible keywords are:::
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>  match-spec ::= 'func' string |
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>         'file' string |
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>         'module' string |
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>         'format' string |
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>         'line' line-range
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>  line-range ::= lineno |
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>         '-'lineno |
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>         lineno'-' |
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>         lineno'-'lineno
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>  lineno ::= unsigned-int
+</code></pre></div></p>
 <blockquote>
 <p><code>line-range</code> cannot contain space, e.g.
  "1-30" is valid range but "1 - 30" is not.</p>
 </blockquote>
 <p>The meanings of each keyword are:</p>
-<h3 id="func">func</h3>
+<h3 id="func">func<a class="headerlink" href="#func" title="Permanent link">&para;</a></h3>
 <p>The given string is compared against the function name of each callsite.  Example::</p>
-<pre><code>func svc_tcp_accept
-</code></pre>
-<h3 id="file">file</h3>
+<div class="highlight"><pre><span></span><code>func svc_tcp_accept
+</code></pre></div>
+<h3 id="file">file<a class="headerlink" href="#file" title="Permanent link">&para;</a></h3>
 <p>The given string is compared against either the full pathname, the src-root relative pathname, or the basename of the source file of each callsite.  Examples:</p>
-<pre><code>file svcsock.c
+<div class="highlight"><pre><span></span><code>file svcsock.c
 file kernel/freezer.c
 file /usr/src/packages/BUILD/sgi-enhancednfs-1.4/default/net/sunrpc/svcsock.c
-</code></pre>
-<h3 id="module">module</h3>
+</code></pre></div>
+<h3 id="module">module<a class="headerlink" href="#module" title="Permanent link">&para;</a></h3>
 <p>The given string is compared against the module name
 of each callsite.  The module name is the string as
 seen in <code>lsmod</code>, i.e. without the directory or the <code>.ko</code>
 suffix and with <code>-</code> changed to <code>_</code>.  Examples:</p>
-<pre><code>module sunrpc
+<div class="highlight"><pre><span></span><code>module sunrpc
 module nfsd
-</code></pre>
-<h3 id="format">format</h3>
+</code></pre></div>
+<h3 id="format">format<a class="headerlink" href="#format" title="Permanent link">&para;</a></h3>
 <p>The given string is searched for in the dynamic debug format
 string.  Note that the string does not need to match the
 entire format, only some part.  Whitespace and other
@@ -3601,13 +3601,13 @@ escape <code>\ooo</code> notation, e.g. the space character is <code>\040</code>
 Alternatively, the string can be enclosed in double quote
 characters (<code>"</code>) or single quote characters (<code>'</code>).
 Examples:</p>
-<pre><code>format svcrdma:         // many of the NFS/RDMA server pr_debugs
+<div class="highlight"><pre><span></span><code>format svcrdma:         // many of the NFS/RDMA server pr_debugs
 format readahead        // some pr_debugs in the readahead cache
 format nfsd:\040SETATTR // one way to match a format with whitespace
 format "nfsd: SETATTR"  // a neater way to match a format with whitespace
 format 'nfsd: SETATTR'  // yet another way to match a format with whitespace
-</code></pre>
-<h3 id="line">line</h3>
+</code></pre></div>
+<h3 id="line">line<a class="headerlink" href="#line" title="Permanent link">&para;</a></h3>
 <p>The given line number or range of line numbers is compared
 against the line number of each <code>pr_debug()</code> callsite.  A single
 line number matches the callsite line number exactly.  A
@@ -3615,11 +3615,11 @@ range of line numbers matches any callsite between the first
 and last line number inclusive.  An empty first number means
 the first line in the file, an empty last line number means the
 last line number in the file.  Examples:</p>
-<pre><code>line 1603           // exactly line 1603
+<div class="highlight"><pre><span></span><code>line 1603           // exactly line 1603
 line 1600-1605      // the six lines from line 1600 to line 1605
 line -1605          // the 1605 lines from line 1 to line 1605
 line 1600-          // all lines from line 1600 to the end of the file
-</code></pre>
+</code></pre></div>
 <p>The flags specification comprises a change operation followed
 by one or more flag characters.  The change operation is one
 of the characters::</p>
@@ -3641,7 +3641,7 @@ have meaning, other flags ignored.</p>
 (mnemonic: what the flags are currently equal to).</p>
 <p>Note the regexp <code>^[-+=][flmpt_]+$</code> matches a flags specification.
 To clear all flags at once, use <code>=_</code> or <code>-flmpt</code>.</p>
-<h2 id="debug-messages-during-boot-process">Debug messages during Boot Process</h2>
+<h2 id="debug-messages-during-boot-process">Debug messages during Boot Process<a class="headerlink" href="#debug-messages-during-boot-process" title="Permanent link">&para;</a></h2>
 <p>To activate debug messages for core code and built-in modules during
 the boot process, even before userspace and debugfs exists, use
 <code>dyndbg="QUERY"</code>, <code>module.dyndbg="QUERY"</code>, or <code>ddebug_query="QUERY"</code>
@@ -3652,10 +3652,10 @@ bootloader may impose lower limits.</p>
 processed, as part of the arch_initcall.  Thus you can enable debug
 messages in all code run after this arch_initcall via this boot
 parameter.</p>
-<p>On an x86 system for example ACPI enablement is a subsys_initcall and::</p>
-<pre><code>   dyndbg=&quot;file ec.c +p&quot;
-</code></pre>
-<p>will show early Embedded Controller transactions during ACPI setup if
+<p>On an x86 system for example ACPI enablement is a subsys_initcall and::
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>   dyndbg="file ec.c +p"
+</code></pre></div>
+will show early Embedded Controller transactions during ACPI setup if
 your machine (typically a laptop) has an Embedded Controller.
 PCI (or other devices) initialization also is a hot candidate for using
 this boot parameter for debugging purposes.</p>
@@ -3663,28 +3663,24 @@ this boot parameter for debugging purposes.</p>
 boot time, without effect, but will be reprocessed when module is
 loaded later. <code>dyndbg_query=</code> and bare <code>dyndbg=</code> are only processed at
 boot.</p>
-<h2 id="debug-messages-at-module-initialization-time">Debug Messages at Module Initialization Time</h2>
+<h2 id="debug-messages-at-module-initialization-time">Debug Messages at Module Initialization Time<a class="headerlink" href="#debug-messages-at-module-initialization-time" title="Permanent link">&para;</a></h2>
 <p>When <code>modprobe foo</code> is called, modprobe scans <code>/proc/cmdline</code> for
 <code>foo.params</code>, strips <code>foo.</code>, and passes them to the kernel along with
 params given in modprobe args or <code>/etc/modprob.d/*.conf</code> files,
 in the following order:</p>
 <ul>
-<li>parameters given via <code>/etc/modprobe.d/*.conf</code>:</li>
-</ul>
-<pre><code>    options foo dyndbg=+pt
-    options foo dyndbg # defaults to +p
-</code></pre>
-<ul>
+<li>parameters given via <code>/etc/modprobe.d/*.conf</code>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>    options foo dyndbg=+pt
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    options foo dyndbg # defaults to +p
+</code></pre></div></li>
 <li><code>foo.dyndbg</code> as given in boot args, <code>foo.</code> is stripped and passed:</li>
 </ul>
-<pre><code>    foo.dyndbg=&quot; func bar +p; func buz +mp&quot;
-</code></pre>
-<ul>
-<li>args to modprobe:</li>
-</ul>
-<pre><code>    modprobe foo dyndbg==pmf # override previous settings
-</code></pre>
-<p>These <code>dyndbg</code> queries are applied in order, with last having final say.
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>    foo.dyndbg=" func bar +p; func buz +mp"
+</code></pre></div>
+* args to modprobe:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>    modprobe foo dyndbg==pmf # override previous settings
+</code></pre></div>
+These <code>dyndbg</code> queries are applied in order, with last having final say.
 This allows boot args to override or modify those from <code>/etc/modprobe.d</code>
 (sensible, since 1 is system wide, 2 is kernel or boot specific), and
 modprobe args to override both.</p>
@@ -3702,50 +3698,50 @@ modprobe args to override both.</p>
 enabled by <code>-DDEBUG</code> flag during compilation) can be disabled later via
 the sysfs interface if the debug messages are no longer needed::</p>
 <p>echo "module module_name -p" &gt; <debugfs>/dynamic_debug/control</p>
-<h2 id="examples">Examples</h2>
-<pre><code>// enable the message at line 1603 of file svcsock.c
-nullarbor:~ # echo -n 'file svcsock.c line 1603 +p' &gt;
-            &lt;debugfs&gt;/dynamic_debug/control
-
-// enable all the messages in file svcsock.c
-nullarbor:~ # echo -n 'file svcsock.c +p' &gt;
-            &lt;debugfs&gt;/dynamic_debug/control
-
-// enable all the messages in the NFS server module
-nullarbor:~ # echo -n 'module nfsd +p' &gt;
-            &lt;debugfs&gt;/dynamic_debug/control
-
-// enable all 12 messages in the function svc_process()
-nullarbor:~ # echo -n 'func svc_process +p' &gt;
-            &lt;debugfs&gt;/dynamic_debug/control
-
-// disable all 12 messages in the function svc_process()
-nullarbor:~ # echo -n 'func svc_process -p' &gt;
-            &lt;debugfs&gt;/dynamic_debug/control
-
-// enable messages for NFS calls READ, READLINK, READDIR and READDIR+.
-nullarbor:~ # echo -n 'format &quot;nfsd: READ&quot; +p' &gt;
-            &lt;debugfs&gt;/dynamic_debug/control
-
-// enable messages in files of which the paths include string &quot;usb&quot;
-nullarbor:~ # echo -n '*usb* +p' &gt; &lt;debugfs&gt;/dynamic_debug/control
-
-// enable all messages
-nullarbor:~ # echo -n '+p' &gt; &lt;debugfs&gt;/dynamic_debug/control
-
-// add module, function to all enabled messages
-nullarbor:~ # echo -n '+mf' &gt; &lt;debugfs&gt;/dynamic_debug/control
-
-// boot-args example, with newlines and comments for readability
-</code></pre>
-<p>Kernel command line: ...</p>
-<pre><code>// see whats going on in dyndbg=value processing
-dynamic_debug.verbose=1
-// enable pr_debugs in 2 builtins, #cmt is stripped
-dyndbg=&quot;module params +p #cmt ; module sys +p&quot;
-// enable pr_debugs in 2 functions in a module loaded later
-pc87360.dyndbg=&quot;func pc87360_init_device +p; func pc87360_find +p&quot;
-</code></pre>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>// enable the message at line 1603 of file svcsock.c
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>nullarbor:~ # echo -n 'file svcsock.c line 1603 +p' &gt;
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>            &lt;debugfs&gt;/dynamic_debug/control
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>// enable all the messages in file svcsock.c
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>nullarbor:~ # echo -n 'file svcsock.c +p' &gt;
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>            &lt;debugfs&gt;/dynamic_debug/control
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>// enable all the messages in the NFS server module
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>nullarbor:~ # echo -n 'module nfsd +p' &gt;
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>            &lt;debugfs&gt;/dynamic_debug/control
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>// enable all 12 messages in the function svc_process()
+<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>nullarbor:~ # echo -n 'func svc_process +p' &gt;
+<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>            &lt;debugfs&gt;/dynamic_debug/control
+<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a>
+<a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a>// disable all 12 messages in the function svc_process()
+<a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a>nullarbor:~ # echo -n 'func svc_process -p' &gt;
+<a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a>            &lt;debugfs&gt;/dynamic_debug/control
+<a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a>
+<a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a>// enable messages for NFS calls READ, READLINK, READDIR and READDIR+.
+<a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a>nullarbor:~ # echo -n 'format "nfsd: READ" +p' &gt;
+<a id="__codelineno-15-23" name="__codelineno-15-23" href="#__codelineno-15-23"></a>            &lt;debugfs&gt;/dynamic_debug/control
+<a id="__codelineno-15-24" name="__codelineno-15-24" href="#__codelineno-15-24"></a>
+<a id="__codelineno-15-25" name="__codelineno-15-25" href="#__codelineno-15-25"></a>// enable messages in files of which the paths include string "usb"
+<a id="__codelineno-15-26" name="__codelineno-15-26" href="#__codelineno-15-26"></a>nullarbor:~ # echo -n '*usb* +p' &gt; &lt;debugfs&gt;/dynamic_debug/control
+<a id="__codelineno-15-27" name="__codelineno-15-27" href="#__codelineno-15-27"></a>
+<a id="__codelineno-15-28" name="__codelineno-15-28" href="#__codelineno-15-28"></a>// enable all messages
+<a id="__codelineno-15-29" name="__codelineno-15-29" href="#__codelineno-15-29"></a>nullarbor:~ # echo -n '+p' &gt; &lt;debugfs&gt;/dynamic_debug/control
+<a id="__codelineno-15-30" name="__codelineno-15-30" href="#__codelineno-15-30"></a>
+<a id="__codelineno-15-31" name="__codelineno-15-31" href="#__codelineno-15-31"></a>// add module, function to all enabled messages
+<a id="__codelineno-15-32" name="__codelineno-15-32" href="#__codelineno-15-32"></a>nullarbor:~ # echo -n '+mf' &gt; &lt;debugfs&gt;/dynamic_debug/control
+<a id="__codelineno-15-33" name="__codelineno-15-33" href="#__codelineno-15-33"></a>
+<a id="__codelineno-15-34" name="__codelineno-15-34" href="#__codelineno-15-34"></a>// boot-args example, with newlines and comments for readability
+</code></pre></div>
+Kernel command line: ...
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>// see whats going on in dyndbg=value processing
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>dynamic_debug.verbose=1
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>// enable pr_debugs in 2 builtins, #cmt is stripped
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>dyndbg="module params +p #cmt ; module sys +p"
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>// enable pr_debugs in 2 functions in a module loaded later
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>pc87360.dyndbg="func pc87360_init_device +p; func pc87360_find +p"
+</code></pre></div></p>
 
 
 
@@ -3807,7 +3803,7 @@ pc87360.dyndbg=&quot;func pc87360_init_device +p; func pc87360_find +p&quot;
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>

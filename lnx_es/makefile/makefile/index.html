@@ -3325,41 +3325,41 @@
 
 
 
-<h1 id="make-system-in-linux">Make system in Linux</h1>
+<h1 id="make-system-in-linux">Make system in Linux<a class="headerlink" href="#make-system-in-linux" title="Permanent link">&para;</a></h1>
 <p><a href="https://drive.google.com/file/d/1cEFI4f18T4-iQ3K5axx81D0zwpLkryAk/view?usp=sharing">Original Note</a></p>
 <p>Tài liệu này mô tả chung về Makefile, trong đó nhắc đến các khái niệm quan trọng để có thể đọc được các Makefile phức tạp.</p>
-<h2 id="make">make</h2>
-<h3 id="khai-niem">Khái niệm</h3>
+<h2 id="make">make<a class="headerlink" href="#make" title="Permanent link">&para;</a></h2>
+<h3 id="khai-niem">Khái niệm<a class="headerlink" href="#khai-niem" title="Permanent link">&para;</a></h3>
 <p>"make" là một "build tool" được sử dụng để gọi đến các thành phần trong một toolchain (như compiler, linker) để build ra executable programs từ source code.</p>
 <p>"make" tự động phát hiện được phần nào của source code được sửa đổi để tiến hành build lại cục bộ từng bộ phận đó. Tránh được trường hợp phải build lại toàn bộ hệ thống khi chỉ một phần được thay đổi.</p>
 <p>"make" cần một file đặc biệt để mô tả các bước để build ra image, được gọi là: Makefile. Thông thường khi được gọi đến, "make" sẽ tìm kiếm trong thư mục hiện tại các tên file như sau: makefile, Makefile hoặc GNUmakefile. Trong trường hợp makefile không được đặt theo chuẩn trên, khai báo makefile với "make" bằng chỉ dẫn –f &lt;filename&gt; hoặc –file=&lt;name&gt;.</p>
-<h2 id="makefile">Makefile</h2>
+<h2 id="makefile">Makefile<a class="headerlink" href="#makefile" title="Permanent link">&para;</a></h2>
 <p>Makefile là tập hợp các đoạn lệnh mô tả cho "make" biết phải làm gì để build chương trình. Các đoạn lệnh mô tả này được gọi là Rules.</p>
-<h3 id="rules">Rules</h3>
-<p>Một Rules có dạng như sau</p>
-<pre><code>target … : prerequisites …        
-    recipe        
-    …        
-    … 
-</code></pre>
+<h3 id="rules">Rules<a class="headerlink" href="#rules" title="Permanent link">&para;</a></h3>
+<p>Một Rules có dạng như sau
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>target … : prerequisites …        
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    recipe        
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    …        
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    … 
+</code></pre></div></p>
 <p>Target: thông thường là đầu ra (executable hoặc object file) của make. Ngoài ra trong make định nghĩa thêm một loại target đặc biệt: Phony Targets.</p>
 <p>Một target được định nghĩa out-of-date khi:</p>
 <ul>
 <li>Target đó không tồn tại.</li>
 <li>Các prerequisites bị thay đổi.</li>
 </ul>
-<h3 id="implicit-rules">Implicit Rules</h3>
+<h3 id="implicit-rules">Implicit Rules<a class="headerlink" href="#implicit-rules" title="Permanent link">&para;</a></h3>
 <p>Để thuận tiện cho người dùng cũng như làm đơn giản Makefile, "make" định nghĩa các <a href="https://www.gnu.org/software/make/manual/make.html##Implicit-Rules">Implicit Rules</a>. Trong một số Rules, nếu recipe không được định nghĩa, "make" sẽ thực hiện build theo một số luật ngầm đã được định nghĩa trước.</p>
 <p>Ví dụ như khi rule có dạng</p>
-<pre><code>main: main.c
-</code></pre>
-<p>Hoặc đơn giản hơn nữa</p>
-<pre><code>main:
-</code></pre>
-<p>Trong rule trên không mô tả recipe để "make" có thể tiến hành build, do đó "make" sử dụng implicit rule khi build với C source và sẽ gọi đến:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>main: main.c
+</code></pre></div>
+<p>Hoặc đơn giản hơn nữa
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>main:
+</code></pre></div>
+Trong rule trên không mô tả recipe để "make" có thể tiến hành build, do đó "make" sử dụng implicit rule khi build với C source và sẽ gọi đến:</p>
 <p><code>cc main.c –o main</code></p>
 <p>Trong đó cc là system compiler.</p>
-<h3 id="variables">Variables</h3>
+<h3 id="variables">Variables<a class="headerlink" href="#variables" title="Permanent link">&para;</a></h3>
 <p>Biến (hoặc cũng có thể gọi là macro) được định nghĩa trong Makefile để đại diện cho một chuỗi ký tự.</p>
 <p>Trong Makefile có thể sử dụng các <a href="https://www.gnu.org/software/make/manual/make.html##Automatic-Variables">Automatic Variables</a>.</p>
 <ul>
@@ -3428,7 +3428,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>

@@ -3273,7 +3273,7 @@
 
   <h1>Tips</h1>
 
-<h2 id="ssh-for-remote-control">SSH for remote control</h2>
+<h2 id="ssh-for-remote-control">SSH for remote control<a class="headerlink" href="#ssh-for-remote-control" title="Permanent link">&para;</a></h2>
 <p>Secure Shell (SSH) is a <strong>cryptographic network protocol</strong> for operating network services securely over an unsecured network. Typical applications include <strong>remote command-line login</strong> and <strong>remote command execution</strong>, but any network service can be secured with SSH.</p>
 <p><strong>Advanced options</strong></p>
 <ul>
@@ -3282,29 +3282,29 @@
 <code>ssh -o UserKnownHostsFile=/dev/null</code></li>
 <li>Execute scripts in remote machine:</li>
 </ul>
-<pre><code>    ssh user@host &lt;&lt;'ENDSSH'  
-        #commands to run on remote host  
-    ENDSSH
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>    ssh user@host &lt;&lt;'ENDSSH'  
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>        #commands to run on remote host  
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    ENDSSH
+</code></pre></div>
 <blockquote>
 <p>Example <code>ssh root@10.61.61.195 "echo 1 &gt; ~/test"</code>. 
 This command will remote to <code>root@10.61.61.195</code> machine and then execute <code>"echo 1 &gt; ~/test"</code></p>
 </blockquote>
 <ul>
-<li>Auto-generate password for ssh</li>
+<li>Auto-generate password for ssh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>    echo "#!/bin/sh" &gt;&gt; /tmp/genpass.sh
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    echo "echo $pass" &gt;&gt; /tmp/genpass.sh
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    export SSH_ASKPASS="/tmp/genpass.sh" &amp;&amp; export DISPLAY=
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    setsid ssh root@10.61.61.195
+</code></pre></div></li>
 </ul>
-<pre><code>    echo &quot;#!/bin/sh&quot; &gt;&gt; /tmp/genpass.sh
-    echo &quot;echo $pass&quot; &gt;&gt; /tmp/genpass.sh
-    export SSH_ASKPASS=&quot;/tmp/genpass.sh&quot; &amp;&amp; export DISPLAY=
-    setsid ssh root@10.61.61.195
-</code></pre>
 <p>? setsid: what is this?</p>
 <p>See more at <a href="https://www.exratione.com/2014/08/bash-script-ssh-automation-without-a-password-prompt/">Bash Script SSH Automation Without a Password Prompt</a>.</p>
 <p><strong>Example commands</strong></p>
 <p><code>timeout 20 setsid ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null</code></p>
 <p><strong>References</strong></p>
 <p>More information about SSH config can be found at <a href="https://linux.die.net/man/5/ssh_config">https://linux.die.net/man/5/ssh_config</a></p>
-<h2 id="tftp-server">TFTP Server</h2>
+<h2 id="tftp-server">TFTP Server<a class="headerlink" href="#tftp-server" title="Permanent link">&para;</a></h2>
 <p>Trivial File Transfer Protocol (TFTP) is a simple lockstep File Transfer Protocol which allows a client to get a file from or put a file onto a remote host (<a href="https://en.wikipedia.org/wiki/Trivial_File_Transfer_Protocol">Wiki</a>).</p>
 <p>TFTP uses UDP as its transport protocol.</p>
 <p><strong>Install TFTP server</strong></p>
@@ -3314,24 +3314,24 @@ This command will remote to <code>root@10.61.61.195</code> machine and then exec
 <em>How to build?</em></p>
 <p><strong>Configure TFTP server</strong></p>
 <p>Create /etc/xinetd.d/tftp and put this entry</p>
-<pre><code>service tftp
-{
-protocol        = udp
-port            = 69
-socket_type     = dgram
-wait            = yes
-user            = nobody
-server          = /usr/sbin/in.tftpd
-server_args     = /tftpboot
-disable         = no
-}
-</code></pre>
-<p>Create a folder /tftpboot this should match whatever you gave in server_args. mostly it will be tftpboot</p>
-<pre><code>sudo mkdir /tftpboot
-sudo chmod -R 777 /tftpboot
-sudo chown -R nobody /tftpboot
-</code></pre>
-<p>Restart the xinetd service.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>service tftp
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>{
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>protocol        = udp
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>port            = 69
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>socket_type     = dgram
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>wait            = yes
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>user            = nobody
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>server          = /usr/sbin/in.tftpd
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>server_args     = /tftpboot
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>disable         = no
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>}
+</code></pre></div>
+<p>Create a folder /tftpboot this should match whatever you gave in server_args. mostly it will be tftpboot
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo mkdir /tftpboot
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>sudo chmod -R 777 /tftpboot
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>sudo chown -R nobody /tftpboot
+</code></pre></div>
+Restart the xinetd service.</p>
 <ul>
 <li>newer systems:</li>
 </ul>
@@ -3342,17 +3342,17 @@ sudo chown -R nobody /tftpboot
 <p><code>sudo /etc/init.d/xinetd restart</code></p>
 <p><strong>Testing tftp server</strong></p>
 <p>Create a file named test with some content in /tftpboot path of the tftp server. Obtain the ip address of the tftp server using ifconfig command.</p>
-<p>Now in some other system (client - which want to get file) follow the following steps.</p>
-<pre><code>tftp 192.168.1.2 # tftp server ip
-tftp&gt; get test
-Sent 159 bytes in 0.0 seconds
-
-tftp&gt; quit
-
-cat test
-</code></pre>
-<h2 id="busybox">BusyBox</h2>
-<h2 id="removable-disk">Removable Disk</h2>
+<p>Now in some other system (client - which want to get file) follow the following steps.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>tftp 192.168.1.2 # tftp server ip
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>tftp&gt; get test
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>Sent 159 bytes in 0.0 seconds
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>tftp&gt; quit
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>cat test
+</code></pre></div></p>
+<h2 id="busybox">BusyBox<a class="headerlink" href="#busybox" title="Permanent link">&para;</a></h2>
+<h2 id="removable-disk">Removable Disk<a class="headerlink" href="#removable-disk" title="Permanent link">&para;</a></h2>
 <p><strong>Remount SD Card for clear Read-only Flag</strong></p>
 <p>Sometimes, your SD card in someways is mounted in Read-only mode. In this case, you can not modify anything stored in these memory. To solve this problem, just re-mount its.</p>
 <ul>
@@ -3367,7 +3367,7 @@ cat test
 <p>Restore</p>
 <p><code>cat backup.img.gz | gunzip | dd of=/dev/sdb</code></p>
 <p>Method 2: <code>Disks</code> utility in Ubuntu</p>
-<h2 id="using-google-drive-in-ubuntu">Using Google Drive in Ubuntu</h2>
+<h2 id="using-google-drive-in-ubuntu">Using Google Drive in Ubuntu<a class="headerlink" href="#using-google-drive-in-ubuntu" title="Permanent link">&para;</a></h2>
 <p>https://linuxconfig.org/google-drive-on-ubuntu-18-04-bionic-beaver-linux</p>
 
 
@@ -3430,7 +3430,7 @@ cat test
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>

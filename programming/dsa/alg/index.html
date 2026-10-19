@@ -3243,11 +3243,11 @@
 
 
 
-<h1 id="algorithm">Algorithm</h1>
-<h2 id="sorting">Sorting</h2>
+<h1 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">&para;</a></h1>
+<h2 id="sorting">Sorting<a class="headerlink" href="#sorting" title="Permanent link">&para;</a></h2>
 <p><a href="https://www.geeksforgeeks.org/sorting-algorithms/">https://www.geeksforgeeks.org/sorting-algorithms/</a></p>
-<h3 id="find-and-replace"><strong><span style="color:red">Find and Replace</span></strong></h3>
-<h4 id="bubble-sort">Bubble sort</h4>
+<h3 id="find-and-replace"><strong><span style="color:red">Find and Replace</span></strong><a class="headerlink" href="#find-and-replace" title="Permanent link">&para;</a></h3>
+<h4 id="bubble-sort">Bubble sort<a class="headerlink" href="#bubble-sort" title="Permanent link">&para;</a></h4>
 <p><strong>Worst and Average Case Time Complexity</strong>: O(n*n). Worst case occurs when array is reverse sorted.<br />
 <strong>Best Case Time Complexity</strong>: O(n). Best case occurs when array is already sorted.<br />
 <strong>Auxiliary Space</strong>: O(1)</p>
@@ -3256,78 +3256,78 @@
 <li>Sau vòng sắp xếp thứ i thì phần tử lớn thứ i sẽ nằm tại vị trí N - i (bubble).</li>
 <li>Phần tử lớn nhất trong mỗi vòng sắp xếp i sẽ nổi dần lên trong dãy.</li>
 </ul>
-<pre><code>i = 0: 100 82 9 11 79 
-    0: 82 100 9 11 79 
-    1: 82 9 100 11 79 
-    2: 82 9 11 100 79 
-    3: 82 9 11 79 100 // 100 is risen up
-i = 1: 82 9 11 79 100 
-    0: 9 82 11 79 100 
-    1: 9 11 82 79 100 
-    2: 9 11 79 82 100 // 82 is risen up and so on
-i = 2: 9 11 79 82 100 
-    0: 9 11 79 82 100 
-    1: 9 11 79 82 100 
-i = 3: 9 11 79 82 100 
-    0: 9 11 79 82 100
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>i = 0: 100 82 9 11 79 
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    0: 82 100 9 11 79 
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    1: 82 9 100 11 79 
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    2: 82 9 11 100 79 
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    3: 82 9 11 79 100 // 100 is risen up
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>i = 1: 82 9 11 79 100 
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    0: 9 82 11 79 100 
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    1: 9 11 82 79 100 
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    2: 9 11 79 82 100 // 82 is risen up and so on
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>i = 2: 9 11 79 82 100 
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    0: 9 11 79 82 100 
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    1: 9 11 79 82 100 
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>i = 3: 9 11 79 82 100 
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    0: 9 11 79 82 100
+</code></pre></div>
 <p>Mã nguồn của giải thuật đơn giản như dưới đây</p>
-<pre><code>    for (i = 0; i &lt; n-1; i++) { /*Round i*/
-        for (j = 0; j &lt; n-i-1; j++) {
-            if (arr[j] &gt; arr[j+1]) 
-                swap(&amp;arr[j], &amp;arr[j+1]); 
-        }
-    }
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>    for (i = 0; i &lt; n-1; i++) { /*Round i*/
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>        for (j = 0; j &lt; n-i-1; j++) {
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>            if (arr[j] &gt; arr[j+1]) 
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>                swap(&amp;arr[j], &amp;arr[j+1]); 
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>        }
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    }
+</code></pre></div>
 <p><strong>Recursion</strong></p>
-<p>Xét đoạn mã</p>
-<pre><code>for (int i=0; i&lt;n-1; i++) 
-    if (arr[i] &gt; arr[i+1]) 
-        swap(&amp;arr[i], &amp;arr[i+1]);
-</code></pre>
-<p>Sau khi thực hiện đoạn mã này thì phần tử lớn nhất của mảng sẽ được "nổi lên" tại vị trí sau cùng. Lợi dụng tính chất này ta có thể áp dụng phương pháp đệ quy vào "Buble sort".</p>
+<p>Xét đoạn mã
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>for (int i=0; i&lt;n-1; i++) 
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    if (arr[i] &gt; arr[i+1]) 
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>        swap(&amp;arr[i], &amp;arr[i+1]);
+</code></pre></div>
+Sau khi thực hiện đoạn mã này thì phần tử lớn nhất của mảng sẽ được "nổi lên" tại vị trí sau cùng. Lợi dụng tính chất này ta có thể áp dụng phương pháp đệ quy vào "Buble sort".</p>
 <ul>
 <li>Đệ quy dừng lại khi độ dài của mảng bằng 1.</li>
 <li>Tiến hành đưa phần tử lớn nhất của mảng ra vị trí sau cùng.</li>
 <li>Tiến hành "bubble sort" cho mảng con (loại bỏ phần tử cuối, cũng là phần tử lớn nhất) sau khi phần tử lớn nhất đã nằm ở cuối mảng.</li>
 </ul>
 <p>Diễn biến của một mảng khi sử dụng phương pháp đệ quy trong "Buble sort"</p>
-<pre><code>---34 3 94 2 3 
---&gt;3 34 2 3 94 
----3 34 2 3 
---&gt;3 2 3 34 
----3 2 3 
---&gt;2 3 3 
----2 3 
---&gt;2 3 
-</code></pre>
-<h4 id="selection-sort">Selection sort</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>---34 3 94 2 3 
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>--&gt;3 34 2 3 94 
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>---3 34 2 3 
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>--&gt;3 2 3 34 
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>---3 2 3 
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>--&gt;2 3 3 
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>---2 3 
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>--&gt;2 3 
+</code></pre></div>
+<h4 id="selection-sort">Selection sort<a class="headerlink" href="#selection-sort" title="Permanent link">&para;</a></h4>
 <p><img alt="selection_sort" src="../img/selection_sort.PNG" /></p>
 <p>Ý tưởng của "selection sort" là tìm phần tử bé nhất của mảng (select) và đổi chỗ cho phần tử đầu tiên. Tiến hành tuần tự như vậy cho mảng con (là kết quả của mảng cha loại bỏ đi phần tử có chỉ số bé nhất -&gt; chính là phần tử nhỏ nhất vừa được đổi chỗ)</p>
-<pre><code>Round 0
-84 66 98 55 70 
-55 66 98 84 70 // 55 is the smallest
-Round 1
-55 66 98 84 70 
-55 66 98 84 70 // 66 is the smallest and already in the first place
-Round 2
-55 66 98 84 70 
-55 66 70 84 98 // 70 is the smallest 
-Round 3
-55 66 70 84 98 
-55 66 70 84 98 // 84 is the smallest
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Round 0
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>84 66 98 55 70 
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>55 66 98 84 70 // 55 is the smallest
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>Round 1
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>55 66 98 84 70 
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>55 66 98 84 70 // 66 is the smallest and already in the first place
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>Round 2
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>55 66 98 84 70 
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>55 66 70 84 98 // 70 is the smallest 
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>Round 3
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>55 66 70 84 98 
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>55 66 70 84 98 // 84 is the smallest
+</code></pre></div>
 <p>Vấn đề của selection gặp phải đó là tính ổn định "stable". Giả sử có hai phần tử trong mảng A và B có giá trị key bằng nhau, nhưng kết quả của "selection sort" có thể dẫn đến B đứng trước A trong sorted array.</p>
 <p>Giải thuật "selection sort" có thể được cải tiến để thỏa mãn tính chất "stable" này. Thay vì giá trị nhỏ nhất trong một dãy được đổi chỗ với vị trí hiện tại thì toàn bộ mảng sẽ được dịch phải một đơn vị để tạo khoảng trống cho số bé nhất. Giải thuật này có một số điểm tương tự với insertion sort.</p>
-<h4 id="insertion-sort">Insertion sort</h4>
+<h4 id="insertion-sort">Insertion sort<a class="headerlink" href="#insertion-sort" title="Permanent link">&para;</a></h4>
 <p>Ý tưởng của "insertion sort" là tìm phần tử bé nhất trong mảng và đưa về đầu mảng. Ý tưởng này có phần nào giống với selection sort nhưng khác ở cách phần tử bé nhât được đưa về đầu mảng.</p>
 <p>Ở "selection sort" phần tử bé nhất được đổi chỗ cho phần tử đầu mảng, trong khi ở "insertion sort" phần tử bé nhất được chèn vào đầu mảng. Điều này có nghĩa là các phần tử tính từ đầu mảng đến trước phần tử bé nhất</p>
 <p><img alt="insert_tion_img" src="../img/insertion_sort.PNG" /></p>
-<h3 id="devide-and-conquer"><strong><span style="color:red">Devide and Conquer</span></strong></h3>
-<h4 id="merge-sort">Merge Sort</h4>
-<h4 id="quick-sort">Quick Sort</h4>
-<h3 id="distribution-sort"><strong><span style="color:red">Distribution Sort</span></strong></h3>
-<h4 id="counting-sort">Counting sort</h4>
+<h3 id="devide-and-conquer"><strong><span style="color:red">Devide and Conquer</span></strong><a class="headerlink" href="#devide-and-conquer" title="Permanent link">&para;</a></h3>
+<h4 id="merge-sort">Merge Sort<a class="headerlink" href="#merge-sort" title="Permanent link">&para;</a></h4>
+<h4 id="quick-sort">Quick Sort<a class="headerlink" href="#quick-sort" title="Permanent link">&para;</a></h4>
+<h3 id="distribution-sort"><strong><span style="color:red">Distribution Sort</span></strong><a class="headerlink" href="#distribution-sort" title="Permanent link">&para;</a></h3>
+<h4 id="counting-sort">Counting sort<a class="headerlink" href="#counting-sort" title="Permanent link">&para;</a></h4>
 
 
 
@@ -3389,7 +3389,7 @@ Round 3
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>

@@ -3527,15 +3527,15 @@
 
 
 
-<h1 id="audio-in-linux">Audio in Linux</h1>
-<h2 id="alsa">ALSA</h2>
+<h1 id="audio-in-linux">Audio in Linux<a class="headerlink" href="#audio-in-linux" title="Permanent link">&para;</a></h1>
+<h2 id="alsa">ALSA<a class="headerlink" href="#alsa" title="Permanent link">&para;</a></h2>
 <p><a href="https://alsa-project.org/wiki/Main_Page">Advanced Linux Sound Architecture (ALSA)</a> is a software framework and part of the Linux kernel that provides an application programming interface (API) for sound card device drivers. </p>
 <p>The project to develop ALSA was led by Jaroslav Kysela, and it started in 1998 and was developed separately from the Linux kernel until it was introduced in the 2.5 development series in 2002. In the 2.6 version, ALSA replaced the previous system, <strong>Open Sound System (OSS)</strong>, by default (although a backwards-compatibility layer does exist).</p>
 <p><img alt="asla-lnx-blockdiagram" src="../imgs/alsa-linux-bd.png" /></p>
 <p><em>Figure. A block diagram for ALSA in Linux</em></p>
-<h3 id="alsa-concept">ALSA concept</h3>
+<h3 id="alsa-concept">ALSA concept<a class="headerlink" href="#alsa-concept" title="Permanent link">&para;</a></h3>
 <p><em>*TBD</em></p>
-<h3 id="asoc">ASoC</h3>
+<h3 id="asoc">ASoC<a class="headerlink" href="#asoc" title="Permanent link">&para;</a></h3>
 <p>The ASoC (ALSA System on Chip) layer aims to provide better support for ALSA on embedded systems that use a system-on-chip (SoC) design.</p>
 <p>The codec class driver is platform independent and contains audio controls, audio interface capabilities, codec DAPM
 definition and codec IO functions.</p>
@@ -3553,8 +3553,8 @@ definition and codec IO functions.</p>
 </li>
 </ul>
 <p><code>imx-wm8960.c</code> is <em>ASoC Platform Driver</em>.</p>
-<h2 id="alsa-application">ALSA Application</h2>
-<h3 id="arecord-aplay">arecord &amp; aplay</h3>
+<h2 id="alsa-application">ALSA Application<a class="headerlink" href="#alsa-application" title="Permanent link">&para;</a></h2>
+<h3 id="arecord-aplay">arecord &amp; aplay<a class="headerlink" href="#arecord-aplay" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>arecord -t raw -f S16_LE -c 1 output.raw</p>
 </blockquote>
@@ -3563,37 +3563,37 @@ definition and codec IO functions.</p>
 <p>aplay -f S16_LE output.raw</p>
 </blockquote>
 <p>or extracted by a simple C program.</p>
-<pre><code>#include &lt;stdio.h&gt;
-#include &lt;sys/types.h&gt;
-#include &lt;sys/stat.h&gt;
-#include &lt;fcntl.h&gt;
-#include &lt;unistd.h&gt;
-
-int main()
-{
-    int16_t buf;
-    int fd = open(&quot;./input&quot;, O_RDWR);
-    if (fd &lt; 0) {
-        printf(&quot;open file fail\n&quot;);
-        return 1;
-    }
-    while (read(fd, &amp;buf, 2) &gt; 0)
-        printf(&quot;%d\n&quot;, buf);
-    close(fd);
-    return 0;
-}
-</code></pre>
-<p>Raw data </p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>#include &lt;stdio.h&gt;
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>#include &lt;sys/types.h&gt;
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>#include &lt;sys/stat.h&gt;
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>#include &lt;fcntl.h&gt;
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>#include &lt;unistd.h&gt;
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>int main()
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>{
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    int16_t buf;
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    int fd = open("./input", O_RDWR);
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    if (fd &lt; 0) {
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>        printf("open file fail\n");
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>        return 1;
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    }
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    while (read(fd, &amp;buf, 2) &gt; 0)
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>        printf("%d\n", buf);
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>    close(fd);
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    return 0;
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>}
+</code></pre></div>
+Raw data </p>
 <p><img alt="raw-data" src="../imgs/raw-audio-extract.png" /></p>
-<h2 id="dapm-dynamic-audio-power-management">DAPM - Dynamic Audio Power Management</h2>
+<h2 id="dapm-dynamic-audio-power-management">DAPM - Dynamic Audio Power Management<a class="headerlink" href="#dapm-dynamic-audio-power-management" title="Permanent link">&para;</a></h2>
 <p>Modern sound cards consist of many independent discrete components and each component has functional units that can be powered independently.</p>
 <p><img alt="view-of-sound-card" src="../imgs/dapm-view-of-modern-sound-card.png" /></p>
 <p><em>Figure. Anatomy of a modern sound card (Lars-Peter Clausen – Analog Devices)</em></p>
-<h3 id="what-is-dapm">What is DAPM?</h3>
+<h3 id="what-is-dapm">What is DAPM?<a class="headerlink" href="#what-is-dapm" title="Permanent link">&para;</a></h3>
 <p>DAPM is model data flow and power dependencies in a directed graph. Each <strong>node</strong> in graph represents a functional unit (called <strong>widget</strong>). <strong>Route</strong> or <strong>Path</strong> represent connections between functional units.</p>
 <p><img alt="dapm-simple-path" src="../imgs/dapm-simple-graph.png" /></p>
 <p>Eache widget (node) has a type and this type defines how the widget behaves in the graph. E.g. Speaker, Microphone, Amplifier, DAC, ADC, internal supply, external supply, headphone output, line-in input, line-out output, audio interface, audio interface link, mixer, mux, input pin, output pin ...</p>
-<h3 id="how-dapm-works">How DAPM works?</h3>
+<h3 id="how-dapm-works">How DAPM works?<a class="headerlink" href="#how-dapm-works" title="Permanent link">&para;</a></h3>
 <p>DAPM operation has two phases: </p>
 <ul>
 <li>Phase 1: Determine target power state</li>
@@ -3609,40 +3609,42 @@ int main()
 <li>Perform routing changes (if any)</li>
 <li>Power-up all newly enabled widgets</li>
 </ul>
-<h3 id="case-study-wm8960">Case Study - WM8960</h3>
+<h3 id="case-study-wm8960">Case Study - WM8960<a class="headerlink" href="#case-study-wm8960" title="Permanent link">&para;</a></h3>
 <p>Macro for defining widgets can be found at <code>/include/sound/soc-dapm.h</code>.</p>
 <p>DAPM widgets in <code>wm8960.c</code> fall into a number of types:</p>
 <ul>
 <li>
 <p>Stream Domain Widgets: ADCs (analog to digital converters), DACs (digital to analog converters). </p>
-<p><code>SND_SOC_DAPM_ADC("Left ADC", "Capture", WM8960_POWER1, 3, 0),
-SND_SOC_DAPM_ADC("Right ADC", "Capture", WM8960_POWER1, 2, 0),
-SND_SOC_DAPM_DAC("Left DAC", "Playback", WM8960_POWER2, 8, 0),
-SND_SOC_DAPM_DAC("Right DAC", "Playback", WM8960_POWER2, 7, 0),</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>SND_SOC_DAPM_ADC("Left ADC", "Capture", WM8960_POWER1, 3, 0),
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>SND_SOC_DAPM_ADC("Right ADC", "Capture", WM8960_POWER1, 2, 0),
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>SND_SOC_DAPM_DAC("Left DAC", "Playback", WM8960_POWER2, 8, 0),
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>SND_SOC_DAPM_DAC("Right DAC", "Playback", WM8960_POWER2, 7, 0),
+</code></pre></div>
 </li>
 <li>
 <p>Path Domain Widgets: Path domain widgets have a ability to control or affect the audio signal or audio paths within the audio subsystem</p>
-<p><code>SOC_DAPM_SINGLE("Left Switch", WM8960_MONOMIX1, 7, 1, 0),
-SOC_DAPM_SINGLE("Right Switch", WM8960_MONOMIX2, 7, 1, 0),</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>SOC_DAPM_SINGLE("Left Switch", WM8960_MONOMIX1, 7, 1, 0),
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>SOC_DAPM_SINGLE("Right Switch", WM8960_MONOMIX2, 7, 1, 0),
+</code></pre></div>
 </li>
 </ul>
 <p>Machine Widgets appears in <code>imx-wm8960.c</code>. A machine widget is assigned to each machine audio component (non codec or DSP) that can be independently powered. e.g Microphone Bias, Jack Connectors. In iMX8-MQ, machine widget and codec widget interconnections are defined in device tree:</p>
-<pre><code>        audio-routing =
-            &quot;Headphone Jack&quot;, &quot;HP_L&quot;,
-            &quot;Headphone Jack&quot;, &quot;HP_R&quot;,
-            &quot;Ext Spk&quot;, &quot;SPK_LP&quot;,
-            &quot;Ext Spk&quot;, &quot;SPK_LN&quot;,
-            &quot;LINPUT1&quot;, &quot;Main MIC&quot;,
-            &quot;LINPUT2&quot;, &quot;Main MIC&quot;,
-            &quot;RINPUT1&quot;, &quot;Mic Jack&quot;,
-            &quot;Mic Jack&quot;, &quot;MICB&quot;,
-            &quot;Main MIC&quot;, &quot;MICB&quot;,
-            &quot;Playback&quot;, &quot;CPU-Playback&quot;,
-            &quot;CPU-Capture&quot;, &quot;Capture&quot;;
-</code></pre>
-<p>Headphone Jack, Ext Spk, Main MIC, Mic Jack are machine widgets.</p>
-<h2 id="physical-interface-definitions">Physical interface definitions</h2>
-<h3 id="i2s-inter-ic-sound">I2S - Inter IC Sound</h3>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>        audio-routing =
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>            "Headphone Jack", "HP_L",
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>            "Headphone Jack", "HP_R",
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>            "Ext Spk", "SPK_LP",
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>            "Ext Spk", "SPK_LN",
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>            "LINPUT1", "Main MIC",
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>            "LINPUT2", "Main MIC",
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>            "RINPUT1", "Mic Jack",
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>            "Mic Jack", "MICB",
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>            "Main MIC", "MICB",
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>            "Playback", "CPU-Playback",
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>            "CPU-Capture", "Capture";
+</code></pre></div>
+Headphone Jack, Ext Spk, Main MIC, Mic Jack are machine widgets.</p>
+<h2 id="physical-interface-definitions">Physical interface definitions<a class="headerlink" href="#physical-interface-definitions" title="Permanent link">&para;</a></h2>
+<h3 id="i2s-inter-ic-sound">I2S - Inter IC Sound<a class="headerlink" href="#i2s-inter-ic-sound" title="Permanent link">&para;</a></h3>
 <p><strong>What is I2S? and What is I2S used for?</strong></p>
 <p>I2S - Inter IC Sound is an electrical serial bus interface standard used for connecting digital audio devices together. This standard was introduced in 1986 by <strong>Philips Semiconductor</strong> (now <strong>NXP Semiconductors</strong>) and was last revised on June 5, 1996.</p>
 <p><img alt="i2s-bus-in-system" src="../imgs/i2s-bus-in-a-system.png" /></p>
@@ -3662,13 +3664,13 @@ SOC_DAPM_SINGLE("Right Switch", WM8960_MONOMIX2, 7, 1, 0),</code></p>
 </ul>
 <p><strong>What kind of data is transfered in I2S?</strong></p>
 <p>Digital Audio Data e.g. <a href="https://en.wikipedia.org/wiki/Pulse-code_modulation">PCM</a></p>
-<h3 id="sai-synchronous-audio-interface">SAI - Synchronous Audio Interface</h3>
+<h3 id="sai-synchronous-audio-interface">SAI - Synchronous Audio Interface<a class="headerlink" href="#sai-synchronous-audio-interface" title="Permanent link">&para;</a></h3>
 <p><strong>Synchronous Audio Interface</strong> or <strong>Serial Audio Interface</strong>? It is quite hard to find definition for SAI in Internet. So, it will be defined by using an example from NPX IMX SoC.</p>
 <p>In IMX8M, NXP integrates an audio module called SAI/I2S. This module which is platform device (has its own address in CPU memory map) will receive audio data from external CODEC and transfer these data to CPU. It supports I2S bus standard.</p>
 <p><img alt="imx-sai" src="../imgs/sai-imx.png" /></p>
-<h3 id="dai-digital-audio-interfaces">DAI - Digital Audio Interfaces</h3>
+<h3 id="dai-digital-audio-interfaces">DAI - Digital Audio Interfaces<a class="headerlink" href="#dai-digital-audio-interfaces" title="Permanent link">&para;</a></h3>
 <p>ASoC currently supports the three main <strong>Digital Audio Interfaces (DAI)</strong> found on SoC controllers and portable audio CODECs today, namely AC97, I2S and PCM (PCM means a kind of bus, not a type of digital audio data).</p>
-<h2 id="references">References</h2>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <p>[1] DAPM - Analog Device - Lars-Petter Clausen.</p>
 
 
@@ -3731,7 +3733,7 @@ SOC_DAPM_SINGLE("Right Switch", WM8960_MONOMIX2, 7, 1, 0),</code></p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
