@@ -137,3 +137,106 @@
     grid-template-columns: 5.5rem 1fr 3.5rem;
   }
 }
+
+/* Line charts (SVG) */
+.stats-linecharts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 1rem;
+}
+
+.stats-line {
+  width: 100%;
+  height: auto;
+}
+
+.stats-line .stats-grid {
+  stroke: var(--md-default-fg-color--lightest);
+  stroke-width: 1;
+}
+
+.stats-line .stats-axis,
+.stats-line .stats-value {
+  font-size: 11px;
+  fill: var(--md-default-fg-color--light);
+}
+
+.stats-line .stats-value {
+  fill: var(--md-default-fg-color);
+}
+
+.stats-line .stats-path {
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.stats-line .stats-area {
+  opacity: 0.12;
+}
+
+.stats-line.stats-pages .stats-path,
+.stats-line.stats-pages .stats-dot {
+  stroke: var(--md-primary-fg-color);
+}
+
+.stats-line.stats-pages .stats-dot,
+.stats-line.stats-pages .stats-area {
+  fill: var(--md-primary-fg-color);
+}
+
+.stats-line.stats-lines .stats-path,
+.stats-line.stats-lines .stats-dot {
+  stroke: var(--md-accent-fg-color);
+}
+
+.stats-line.stats-lines .stats-dot,
+.stats-line.stats-lines .stats-area {
+  fill: var(--md-accent-fg-color);
+}
+
+/* Let wide line charts scroll instead of shrinking the text */
+.stats-linebox {
+  overflow-x: auto;
+}
+
+/* Commit activity calendar (a column per year, a row per month) */
+.stats-heat {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.stats-heat .stats-axis {
+  font-size: 10px;
+  fill: var(--md-default-fg-color--light);
+}
+
+.stats-heat .stats-day.l0 {
+  fill: var(--md-default-fg-color--lightest);
+}
+
+.stats-heat .stats-day.l1,
+.stats-heat .stats-day.l2,
+.stats-heat .stats-day.l3,
+.stats-heat .stats-day.l4 {
+  fill: var(--md-primary-fg-color);
+}
+
+.stats-heat .stats-day.l1 { fill-opacity: 0.3; }
+.stats-heat .stats-day.l2 { fill-opacity: 0.55; }
+.stats-heat .stats-day.l3 { fill-opacity: 0.8; }
+.stats-heat .stats-day.l4 { fill-opacity: 1; }
+
+.stats-heat .stats-count {
+  font-size: 10px;
+  pointer-events: none;
+  fill: var(--md-default-fg-color);
+}
+
+.stats-heat .stats-count.l3,
+.stats-heat .stats-count.l4 {
+  fill: #fff;
+}
