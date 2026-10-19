@@ -240,3 +240,88 @@
 .stats-heat .stats-count.l4 {
   fill: #fff;
 }
+
+/* Index page layout: use the full width on wide screens (marked by .home-top) */
+body:has(.home-top) .md-grid {
+  max-width: 84rem;
+}
+
+.home-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.home-top .hero {
+  padding: 0;
+}
+
+.home-latest {
+  /* The hero sets the row height; extra articles scroll inside the card. */
+  height: 0;
+  min-height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 0.2rem 1.2rem 0;
+  border-radius: 0.6rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.home-latest h2 {
+  margin-top: 0.8rem;
+}
+
+.home-tree {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
+  gap: 0 1.2rem;
+  align-items: start;
+}
+
+@media (max-width: 60em) {
+  .home-top {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.home-article {
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.home-article a {
+  font-weight: 600;
+}
+
+.home-article small {
+  display: block;
+  color: var(--md-default-fg-color--light);
+}
+
+.home-article p {
+  margin: 0.3rem 0 0;
+  font-size: 0.8rem;
+  color: var(--md-default-fg-color--light);
+}
+
+.home-latest > p:last-child {
+  position: sticky;
+  bottom: 0;
+  margin: auto 0 0;
+  padding: 0.6rem 0;
+  background: var(--md-default-bg-color);
+}
+
+/* Narrow screens: one column, so the articles card needs no inner scroll */
+@media (max-width: 60em) {
+  .home-latest {
+    height: auto;
+    overflow-y: visible;
+  }
+
+  .home-latest > p:last-child {
+    position: static;
+  }
+}
