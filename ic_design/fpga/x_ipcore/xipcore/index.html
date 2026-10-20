@@ -8,31 +8,31 @@
       
       
       
-        <link rel="canonical" href="https://vutang.github.io/fpga/timing_analysis/timing_analysis/">
+        <link rel="canonical" href="https://vutang.github.io/ic_design/fpga/x_ipcore/xipcore/">
       
       
-        <link rel="prev" href="../../../programming/perf/perf/">
+        <link rel="prev" href="../../../../programming/perf/perf/">
       
       
-        <link rel="next" href="../../x_ipcore/xipcore/">
+        <link rel="next" href="../../../timing_analysis/timing_analysis/">
       
       
         
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>Static Timing Analysis - Vu Tang's Docs</title>
+        <title>Xilinx IPCore - Vu Tang's Docs</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -51,9 +51,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#static-timing-analysis-sta" class="md-skip">
+        <a href="#xilinx-ipcore" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="Vu Tang&#39;s Docs" class="md-header__button md-logo" aria-label="Vu Tang's Docs" data-md-component="logo">
+    <a href="../../../.." title="Vu Tang&#39;s Docs" class="md-header__button md-logo" aria-label="Vu Tang's Docs" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -122,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Static Timing Analysis
+              Xilinx IPCore
             
           </span>
         </div>
@@ -223,7 +223,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../.." class="md-tabs__link">
+      <a href="../../../.." class="md-tabs__link">
         
   
   
@@ -244,7 +244,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../bookmarks/bookmarks/" class="md-tabs__link">
+        <a href="../../../../bookmarks/bookmarks/" class="md-tabs__link">
           
   
   
@@ -262,7 +262,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../articles/" class="md-tabs__link">
+      <a href="../../../../articles/" class="md-tabs__link">
         
   
   
@@ -283,7 +283,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../books/c_books/" class="md-tabs__link">
+        <a href="../../../../books/c_books/" class="md-tabs__link">
           
   
   
@@ -303,7 +303,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../lnx_es/es/" class="md-tabs__link">
+        <a href="../../../../lnx_es/es/" class="md-tabs__link">
           
   
   
@@ -330,7 +330,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../lnx_ldd/overview/" class="md-tabs__link">
+        <a href="../../../../lnx_ldd/overview/" class="md-tabs__link">
           
   
   
@@ -360,7 +360,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../embedded_security/insightvm/insightvm/" class="md-tabs__link">
+        <a href="../../../../embedded_security/insightvm/insightvm/" class="md-tabs__link">
           
   
   
@@ -383,7 +383,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../programming/C/cprogramming/" class="md-tabs__link">
+        <a href="../../../../programming/C/cprogramming/" class="md-tabs__link">
           
   
   
@@ -404,12 +404,44 @@
   
     
     
+      
+  
+  
+  
+    
+  
+  
+    
+    
       <li class="md-tabs__item md-tabs__item--active">
         <a href="./" class="md-tabs__link">
           
   
   
-  FPGA
+  IC Design
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../computer_arch/isa/isa/" class="md-tabs__link">
+          
+  
+  
+  Computer Architecture
 
         </a>
       </li>
@@ -423,7 +455,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../about/about/" class="md-tabs__link">
+      <a href="../../../../about/about/" class="md-tabs__link">
         
   
   
@@ -458,7 +490,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Vu Tang&#39;s Docs" class="md-nav__button md-logo" aria-label="Vu Tang's Docs" data-md-component="logo">
+    <a href="../../../.." title="Vu Tang&#39;s Docs" class="md-nav__button md-logo" aria-label="Vu Tang's Docs" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -476,7 +508,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../../../.." class="md-nav__link">
         
   
   
@@ -555,7 +587,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../bookmarks/bookmarks/" class="md-nav__link">
+      <a href="../../../../bookmarks/bookmarks/" class="md-nav__link">
         
   
   
@@ -583,7 +615,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../technote/mkdocs/mkdocs-notes/" class="md-nav__link">
+      <a href="../../../../technote/mkdocs/mkdocs-notes/" class="md-nav__link">
         
   
   
@@ -611,7 +643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../technote/markdown/markdown/" class="md-nav__link">
+      <a href="../../../../technote/markdown/markdown/" class="md-nav__link">
         
   
   
@@ -639,7 +671,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../technote/shellscript/shellscript/" class="md-nav__link">
+      <a href="../../../../technote/shellscript/shellscript/" class="md-nav__link">
         
   
   
@@ -667,7 +699,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../technote/python/python/" class="md-nav__link">
+      <a href="../../../../technote/python/python/" class="md-nav__link">
         
   
   
@@ -695,7 +727,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../technote/virtual_machine/virtual_box/" class="md-nav__link">
+      <a href="../../../../technote/virtual_machine/virtual_box/" class="md-nav__link">
         
   
   
@@ -723,7 +755,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../whatnext/" class="md-nav__link">
+      <a href="../../../../whatnext/" class="md-nav__link">
         
   
   
@@ -760,7 +792,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../articles/" class="md-nav__link">
+      <a href="../../../../articles/" class="md-nav__link">
         
   
   
@@ -839,7 +871,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../books/c_books/" class="md-nav__link">
+      <a href="../../../../books/c_books/" class="md-nav__link">
         
   
   
@@ -867,7 +899,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../books/linux/" class="md-nav__link">
+      <a href="../../../../books/linux/" class="md-nav__link">
         
   
   
@@ -895,7 +927,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../books/device_driver/" class="md-nav__link">
+      <a href="../../../../books/device_driver/" class="md-nav__link">
         
   
   
@@ -923,7 +955,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../books/linux_kernel/" class="md-nav__link">
+      <a href="../../../../books/linux_kernel/" class="md-nav__link">
         
   
   
@@ -951,7 +983,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../books/es_linux/" class="md-nav__link">
+      <a href="../../../../books/es_linux/" class="md-nav__link">
         
   
   
@@ -979,7 +1011,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../books/dsa/dsa_toc/" class="md-nav__link">
+      <a href="../../../../books/dsa/dsa_toc/" class="md-nav__link">
         
   
   
@@ -1007,7 +1039,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../books/others/" class="md-nav__link">
+      <a href="../../../../books/others/" class="md-nav__link">
         
   
   
@@ -1094,7 +1126,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_es/es/" class="md-nav__link">
+      <a href="../../../../lnx_es/es/" class="md-nav__link">
         
   
   
@@ -1122,7 +1154,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_es/hw_platform/" class="md-nav__link">
+      <a href="../../../../lnx_es/hw_platform/" class="md-nav__link">
         
   
   
@@ -1202,7 +1234,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_es/makefile/makefile/" class="md-nav__link">
+      <a href="../../../../lnx_es/makefile/makefile/" class="md-nav__link">
         
   
   
@@ -1230,7 +1262,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_es/version_control/verctl/" class="md-nav__link">
+      <a href="../../../../lnx_es/version_control/verctl/" class="md-nav__link">
         
   
   
@@ -1258,7 +1290,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_es/version_control/git/" class="md-nav__link">
+      <a href="../../../../lnx_es/version_control/git/" class="md-nav__link">
         
   
   
@@ -1346,7 +1378,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_es/tool_chain/petalinux/ptlnx/" class="md-nav__link">
+      <a href="../../../../lnx_es/tool_chain/petalinux/ptlnx/" class="md-nav__link">
         
   
   
@@ -1374,7 +1406,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_es/tool_chain/petalinux/ptlnx_20174/" class="md-nav__link">
+      <a href="../../../../lnx_es/tool_chain/petalinux/ptlnx_20174/" class="md-nav__link">
         
   
   
@@ -1402,7 +1434,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_es/tool_chain/petalinux/ptlnx_bin_output/" class="md-nav__link">
+      <a href="../../../../lnx_es/tool_chain/petalinux/ptlnx_bin_output/" class="md-nav__link">
         
   
   
@@ -1490,7 +1522,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_es/tool_chain/yocto/yocto/" class="md-nav__link">
+      <a href="../../../../lnx_es/tool_chain/yocto/yocto/" class="md-nav__link">
         
   
   
@@ -1578,7 +1610,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_es/u-boot/" class="md-nav__link">
+      <a href="../../../../lnx_es/u-boot/" class="md-nav__link">
         
   
   
@@ -1666,7 +1698,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_es/eeprom/eeprom/" class="md-nav__link">
+      <a href="../../../../lnx_es/eeprom/eeprom/" class="md-nav__link">
         
   
   
@@ -1702,7 +1734,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_es/docker/docker/" class="md-nav__link">
+      <a href="../../../../lnx_es/docker/docker/" class="md-nav__link">
         
   
   
@@ -1730,7 +1762,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_es/linuxptp/linuxptp/" class="md-nav__link">
+      <a href="../../../../lnx_es/linuxptp/linuxptp/" class="md-nav__link">
         
   
   
@@ -1758,7 +1790,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_es/dpdk/dpdk/" class="md-nav__link">
+      <a href="../../../../lnx_es/dpdk/dpdk/" class="md-nav__link">
         
   
   
@@ -1786,7 +1818,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_es/nbd/nbd/" class="md-nav__link">
+      <a href="../../../../lnx_es/nbd/nbd/" class="md-nav__link">
         
   
   
@@ -1814,7 +1846,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_es/tips/tips/" class="md-nav__link">
+      <a href="../../../../lnx_es/tips/tips/" class="md-nav__link">
         
   
   
@@ -1894,7 +1926,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../projects/zynq/zynq/" class="md-nav__link">
+      <a href="../../../../projects/zynq/zynq/" class="md-nav__link">
         
   
   
@@ -1922,7 +1954,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../projects/imx8/imx8/" class="md-nav__link">
+      <a href="../../../../projects/imx8/imx8/" class="md-nav__link">
         
   
   
@@ -1950,7 +1982,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../projects/pi3b/" class="md-nav__link">
+      <a href="../../../../projects/pi3b/" class="md-nav__link">
         
   
   
@@ -2038,7 +2070,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx/linux/" class="md-nav__link">
+      <a href="../../../../lnx/linux/" class="md-nav__link">
         
   
   
@@ -2066,7 +2098,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx/cmds/" class="md-nav__link">
+      <a href="../../../../lnx/cmds/" class="md-nav__link">
         
   
   
@@ -2213,7 +2245,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_ldd/overview/" class="md-nav__link">
+      <a href="../../../../lnx_ldd/overview/" class="md-nav__link">
         
   
   
@@ -2241,7 +2273,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_ldd/kernel_module/" class="md-nav__link">
+      <a href="../../../../lnx_ldd/kernel_module/" class="md-nav__link">
         
   
   
@@ -2269,7 +2301,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_ldd/platform_dev/platform_device/" class="md-nav__link">
+      <a href="../../../../lnx_ldd/platform_dev/platform_device/" class="md-nav__link">
         
   
   
@@ -2297,7 +2329,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_ldd/i2c/i2c/" class="md-nav__link">
+      <a href="../../../../lnx_ldd/i2c/i2c/" class="md-nav__link">
         
   
   
@@ -2325,7 +2357,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_ldd/spi_dev/spi_dev/" class="md-nav__link">
+      <a href="../../../../lnx_ldd/spi_dev/spi_dev/" class="md-nav__link">
         
   
   
@@ -2353,7 +2385,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_ldd/spi_dev/spi_advance/" class="md-nav__link">
+      <a href="../../../../lnx_ldd/spi_dev/spi_advance/" class="md-nav__link">
         
   
   
@@ -2381,7 +2413,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_ldd/gpio/gpio/" class="md-nav__link">
+      <a href="../../../../lnx_ldd/gpio/gpio/" class="md-nav__link">
         
   
   
@@ -2409,7 +2441,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_ldd/uart/uart/" class="md-nav__link">
+      <a href="../../../../lnx_ldd/uart/uart/" class="md-nav__link">
         
   
   
@@ -2437,7 +2469,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_ldd/jesd/jesd/" class="md-nav__link">
+      <a href="../../../../lnx_ldd/jesd/jesd/" class="md-nav__link">
         
   
   
@@ -2465,7 +2497,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_ldd/audio/linux_audio/" class="md-nav__link">
+      <a href="../../../../lnx_ldd/audio/linux_audio/" class="md-nav__link">
         
   
   
@@ -2493,7 +2525,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_ldd/pcie/pcie/" class="md-nav__link">
+      <a href="../../../../lnx_ldd/pcie/pcie/" class="md-nav__link">
         
   
   
@@ -2581,7 +2613,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_kernel/kernel_data_structure/" class="md-nav__link">
+      <a href="../../../../lnx_kernel/kernel_data_structure/" class="md-nav__link">
         
   
   
@@ -2609,7 +2641,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_kernel/kernel_user_space/" class="md-nav__link">
+      <a href="../../../../lnx_kernel/kernel_user_space/" class="md-nav__link">
         
   
   
@@ -2637,7 +2669,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_kernel/ftrace/ftrace/" class="md-nav__link">
+      <a href="../../../../lnx_kernel/ftrace/ftrace/" class="md-nav__link">
         
   
   
@@ -2665,7 +2697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lnx_kernel/ddebug/ddebug/" class="md-nav__link">
+      <a href="../../../../lnx_kernel/ddebug/ddebug/" class="md-nav__link">
         
   
   
@@ -2812,7 +2844,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../embedded_security/insightvm/insightvm/" class="md-nav__link">
+      <a href="../../../../embedded_security/insightvm/insightvm/" class="md-nav__link">
         
   
   
@@ -2907,7 +2939,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../programming/C/cprogramming/" class="md-nav__link">
+      <a href="../../../../programming/C/cprogramming/" class="md-nav__link">
         
   
   
@@ -2987,7 +3019,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../programming/dsa/dsa/" class="md-nav__link">
+      <a href="../../../../programming/dsa/dsa/" class="md-nav__link">
         
   
   
@@ -3015,7 +3047,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../programming/dsa/linked_list/" class="md-nav__link">
+      <a href="../../../../programming/dsa/linked_list/" class="md-nav__link">
         
   
   
@@ -3043,7 +3075,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../programming/dsa/queue/" class="md-nav__link">
+      <a href="../../../../programming/dsa/queue/" class="md-nav__link">
         
   
   
@@ -3079,7 +3111,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../programming/sql/mysql/" class="md-nav__link">
+      <a href="../../../../programming/sql/mysql/" class="md-nav__link">
         
   
   
@@ -3107,7 +3139,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../programming/lnx/lpi/" class="md-nav__link">
+      <a href="../../../../programming/lnx/lpi/" class="md-nav__link">
         
   
   
@@ -3135,7 +3167,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../programming/dsg_patterns/" class="md-nav__link">
+      <a href="../../../../programming/dsg_patterns/" class="md-nav__link">
         
   
   
@@ -3163,7 +3195,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../programming/multi-threaded-programming/" class="md-nav__link">
+      <a href="../../../../programming/multi-threaded-programming/" class="md-nav__link">
         
   
   
@@ -3191,7 +3223,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../programming/perf/perf/" class="md-nav__link">
+      <a href="../../../../programming/perf/perf/" class="md-nav__link">
         
   
   
@@ -3254,7 +3286,7 @@
   <span class="md-ellipsis">
     
   
-    FPGA
+    IC Design
   
 
     
@@ -3267,6 +3299,63 @@
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    IC Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9_1" id="__nav_9_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FPGA
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9_1">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -3299,7 +3388,7 @@
   <span class="md-ellipsis">
     
   
-    Static Timing Analysis
+    Xilinx IPCore
   
 
     
@@ -3317,7 +3406,7 @@
   <span class="md-ellipsis">
     
   
-    Static Timing Analysis
+    Xilinx IPCore
   
 
     
@@ -3343,153 +3432,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#basic-knowledge" class="md-nav__link">
+  <a href="#clocking-wizard" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Basic knowledge
+        Clocking Wizard
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Basic knowledge">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#definitions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Definitions
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Definitions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#clock-signal" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Clock Signal
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#setuphold-time" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Setup/Hold Time
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#setup-checkhold-check" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Setup check/Hold check
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sta-with-vivado" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        STA with Vivado
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="STA with Vivado">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#xilinx-performance-baselining" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Xilinx performance baselining
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#xilinx-timing-analysis-tool" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Xilinx timing analysis tool
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Xilinx timing analysis tool">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vivado-timing-analysis-report" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Vivado timing analysis report
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#xilinx-design-constraint-xdc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Xilinx Design Constraint (XDC)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#design-with-the-7-series" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Design with the 7 series
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
     </ul>
   
 </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -3503,14 +3466,101 @@
   
   
     <li class="md-nav__item">
-      <a href="../../x_ipcore/xipcore/" class="md-nav__link">
+      <a href="../../../timing_analysis/timing_analysis/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Xilinx IPCore
+    Static Timing Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Computer Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Computer Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../computer_arch/isa/isa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ISA
   
 
     
@@ -3538,7 +3588,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../about/about/" class="md-nav__link">
+      <a href="../../../../about/about/" class="md-nav__link">
         
   
   
@@ -3585,147 +3635,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#basic-knowledge" class="md-nav__link">
+  <a href="#clocking-wizard" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Basic knowledge
+        Clocking Wizard
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Basic knowledge">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#definitions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Definitions
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Definitions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#clock-signal" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Clock Signal
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#setuphold-time" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Setup/Hold Time
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#setup-checkhold-check" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Setup check/Hold check
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sta-with-vivado" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        STA with Vivado
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="STA with Vivado">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#xilinx-performance-baselining" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Xilinx performance baselining
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#xilinx-timing-analysis-tool" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Xilinx timing analysis tool
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Xilinx timing analysis tool">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vivado-timing-analysis-report" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Vivado timing analysis report
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#xilinx-design-constraint-xdc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Xilinx Design Constraint (XDC)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#design-with-the-7-series" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Design with the 7 series
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -3746,683 +3662,29 @@
 
 
 
-<h1 id="static-timing-analysis-sta">STATIC TIMING ANALYSIS (STA)<a class="headerlink" href="#static-timing-analysis-sta" title="Permanent link">&para;</a></h1>
-<p><em>Hanoi Friday, September 22, 2016 -- by <a href="../../../about/about/">VuTang</a></em></p>
-<p>Static timing analysis (STA) is a simulation method of computing the expected timing of a digital circuit without requiring a simulation of the full circuit (<a href="https://en.wikipedia.org/wiki/Static_timing_analysis">Wiki</a>).</p>
-<p>More information about STA in Vietnamese at <a href="http://semiconvn.com/home/hoc-thiet-ke-vi-mach/bai-hc-vi-mch/9135-tim-hieu-ve-static-timing-analysis.html">Tìm hiểu về Static Timing Analysis</a>.</p>
-<!-- =========================================== -->
-<h2 id="basic-knowledge">Basic knowledge<a class="headerlink" href="#basic-knowledge" title="Permanent link">&para;</a></h2>
-<h3 id="definitions">Definitions<a class="headerlink" href="#definitions" title="Permanent link">&para;</a></h3>
-<h4 id="clock-signal">Clock Signal<a class="headerlink" href="#clock-signal" title="Permanent link">&para;</a></h4>
-<p><strong>Clock</strong> là một tín hiệu có chu kì có các thuộc tính sau: Period (Chu
-kì), Duty Cycle, Jitter, Phase...</p>
-<figure>
-<p><img alt="" src="../imgs/fpga_timing_1.png" width="400" /></p>
-</figure>
-<p>Một số đặc tính đáng chú ý của clock xuất hiện trong hệ thống thực tế:  </p>
-<ul>
-<li>
-<p><strong>Clock Skew:</strong> là hiện tượng mà trong một mạch đồng bộ
-    (asynchronous circuit) với cùng một nguồn clock đầu vào nhưng đến
-    các phần tử Flip Flop (Clocked Element) khác nhau trong những thời
-    điểm khác nhau.</p>
-</li>
-<li>
-<p><strong>Clock Jitter:</strong> là độ lệch của sườn clock thực tế so với sườn
-    clock lí tưởng. Có nhiều loại Jitter khác nhau như: Cycle-to-Cycle
-    (độ chênh lệch giữa hai chu kì liên tiếp), Period (sự thay đổi lớn
-    nhất của chu kì clock trong vòng 100 chu kì - cycles)</p>
-</li>
-<li>
-<p><strong>Clock Latency:</strong> Là khoảng thời gian trễ từ nguồn clock (clk port,
-    MMCM output pin, ...) để phần tử dùng clock đó (clocked element).</p>
-</li>
-<li>
-<p><strong>Synchronous/Asynchronous Clock:</strong></p>
-<ul>
-<li>
-<p>Nếu 2 clocks được tạo ra bởi 2 nguồn khác nhau thì được mặc định
-    là không đồng bộ (asynchronous) kể cả trong trường hợp là cùng
-    tần số. Nguyên nhân: hai nguồn clocks khác nhau sử dụng các bộ
-    oscillator khác nhau, các bộ oscillator này có độ sai lệch theo
-    thời gian khác nhau nên dẫn đến quan hệ phase và period giữa hai
-    clock không được cố định (sai lệch của bộ oscillator được đo
-    bằng <em>ppm -- parts per million</em> hoặc <em>ppb -- parts per billion</em>)</p>
-</li>
-<li>
-<p>Nếu 2 clocks được tạo ra từ một nguồn, mặc dù có thể phase và
-    frequency khác nhau nhưng vẫn được xét là đồng bộ.</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="setuphold-time">Setup/Hold Time<a class="headerlink" href="#setuphold-time" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>Setup/Hold Time:</strong></li>
-</ul>
-<p>Xét một Flip Flop có chân clock CLK, data in D, data out Q.  </p>
-<figure>
-<p><img alt="" src="../imgs/fpga_timing_ff.png" /></p>
-</figure>
-<p>Định nghĩa về Setup/Hold Time được biểu diễn trong hình vẽ sau:</p>
-<figure>
-<p><img alt="" src="../imgs/fpga_timing_setup_hold_time.png" /></p>
-</figure>
-<p>Về cơ bản, để một Flip Flop hoạt động đúng chức năng, dữ liệu đưa
-vào đầu vào D phải thỏa mãn điều kiện Setup Time và Hold Time. Trong
-đó, Setup Time là khoảng thời gian nhỏ nhất mà Data in phải giữ ổn
-định trước thời điểm sườn lên clock; Hold Time là khoảng thời gian
-nhỏ nhất mà Data in phải giữ ổn định sau thời điểm sườn lên clock.</p>
-<ul>
-<li><strong>Setup/Hold Time Violation:</strong> Khi đầu vào D vi phạm điều kiện Setup/Hold Time, kết quả đầu ra Q có thể xảy ra một trong các trường hợp ở hình sau:</li>
-</ul>
-<figure>
-<p><img alt="" src="../imgs/fpga_timing_setup_hold_time_2.png" /></p>
-</figure>
-<ul>
-<li><strong>Metastability</strong></li>
-</ul>
-<p><a href="https://en.wikipedia.org/wiki/Metastability_(electronics)">Definition in Wiki</a></p>
-<ul>
-<li>
-<p><strong>Static Timing Path</strong> là một path mà:</p>
-<ul>
-<li>Bắt đầu từ một Clocked Element</li>
-<li>Truyền lan qua các phần tử logic cũng như dây nối</li>
-<li>Kết thúc tại một Clocked Element</li>
-</ul>
-</li>
-</ul>
-<h4 id="setup-checkhold-check">Setup check/Hold check<a class="headerlink" href="#setup-checkhold-check" title="Permanent link">&para;</a></h4>
-<p>Basic definitions is used in Setup check/Hold check.</p>
-<figure>
-![](imgs/fpga_timing_setupcheck_definition.png)
-</figure>
-
-<p><strong>Launch edge:</strong></p>
-<p><strong>Capture edge:</strong></p>
-<p><strong>Hold relationship:</strong></p>
-<p><strong>Setup relationship:</strong></p>
-<p><strong>Setup check:</strong></p>
-<p>Checks that a change in a clocked element has time to propagate to other
-clocked elements before the next clock event.</p>
-<figure>
-<p><img alt="" src="../imgs/fpga_timing_setupcheck.png" /></p>
-</figure>
-<!-- =========================================== -->
-
-<h2 id="sta-with-vivado">STA with Vivado<a class="headerlink" href="#sta-with-vivado" title="Permanent link">&para;</a></h2>
-<h3 id="xilinx-performance-baselining">Xilinx performance baselining<a class="headerlink" href="#xilinx-performance-baselining" title="Permanent link">&para;</a></h3>
-<figure>
-<p><img alt="" src="../imgs/fpga_timing_xilinxbaseline_dev.png" /></p>
-</figure>
-<p>Để có thể phân tích một design hiệu quả, kĩ sư có thể dựa vào baselining
-mà Xilinx giới thiệu. Chi tiết về các bước thực hiện phân tích theo
-Xilinx được thể hiện trong các hình vẽ sau. Trong đó có ba bước chính:</p>
-<ul>
-<li>
-<p>Optimize Internal Paths: Tiến hành phân tích, tối ưu nội bộ FPGA.</p>
-</li>
-<li>
-<p>Optimize Entire Chip: Tiến hành phân tích toàn bộ FPGA trong đó bao
-    gồm cả kết nối nội bộ cũng như các kết nối với chip bên ngoài</p>
-</li>
-<li>
-<p>Fine-tune: Bổ sung thêm các constraint liên quan đến exception path,
-    floor planning</p>
-</li>
-</ul>
-<p>Trong báo cáo này sẽ tập trung vào mục Optimize Internal Path. Quá trình
-này được thể hiện trên côt dọc thứ nhất của sơ đồ.</p>
-<figure>
-<p><img alt="" src="../imgs/xilinx_performance_baseline.png" /></p>
-</figure>
-<h3 id="xilinx-timing-analysis-tool">Xilinx timing analysis tool<a class="headerlink" href="#xilinx-timing-analysis-tool" title="Permanent link">&para;</a></h3>
-<h4 id="vivado-timing-analysis-report">Vivado timing analysis report<a class="headerlink" href="#vivado-timing-analysis-report" title="Permanent link">&para;</a></h4>
-<p>Một số khái niệm cơ bản trong Xilinx Timing Report.</p>
-<p>Trong các timing report, thường xuất hiện các khái niệm như WNS/TNS,
-WHS/THS. Các tham số này được sử dụng để đánh giá một design có timing
-violation hay không. Định nghĩa của các tham số này như sau:</p>
-<ul>
-<li>
-<p><strong>WNS: Worst Negative Slack</strong>. Kết quả của quá trình Setup Check</p>
-</li>
-<li>
-<p><strong>TNS: Total Negative Slack</strong>. Tổng giá trị của tất cả các Negative
-Slack  </p>
-</li>
-</ul>
-<figure>
-<p><img alt="" src="../imgs/timing_report.png" /></p>
-</figure>
-<ul>
-<li><strong>WHS: Worst Hold Slack</strong>. Kết quả của quá trình Hold Check.</li>
-<li><strong>THS: Total Hold Slack</strong>. Tổng giá trị của tất cả các Hold Slack.  </li>
-</ul>
-<figure>
-<p><img alt="" src="../imgs/timing_report_2.png" /></p>
-</figure>
-<p><strong>How does Vivado calculate Hold Time Slack?</strong></p>
-<p>Hold Time Check được xét trên cùng một sườn clock của Source Clock và
-Destination Clock.</p>
-<p>Xét một Static Timing Path cụ thể có sơ đồ như hình dưới đây.</p>
-<figure>
-<p><img alt="" src="../imgs/hold_time_slack_calc.png" /></p>
-</figure>
-<p>Timing path được tính giữa F1 và F2 (2 Clocked Elements), F1/F2 sử dụng
-chung clocks được lấy từ CLKOUT1 của MMCM2_ADV. Chi tiết về path này
-được ghi rõ trong report sau:</p>
-<figure>
-<p><img alt="" src="../imgs/hold_time_slack_calc_1.png" /></p>
-</figure>
-<p>Ở mục Summary của Path Report có các thông tin sau:</p>
-<ul>
-<li>
-<p>Name: Tên của path trong design</p>
-</li>
-<li>
-<p>Slack (Hold): Negative Hold Slack</p>
-</li>
-<li>
-<p>Source: Pin Clock in của F1</p>
-</li>
-<li>
-<p>Destination: Pin Data in của F2</p>
-</li>
-<li>
-<p>Path Group: group clock của path đang được xét, ở đây là generated
-    clock ad9122_tx1_serdes_clkout1</p>
-</li>
-<li>
-<p>Path Type: Loại path đang được xét, Hold hoặc Setup (???)</p>
-</li>
-<li>
-<p>Requirement: (???)</p>
-</li>
-<li>
-<p>Data Path Delay: Delay giữa F1/F2. Trong trường hợp này, không có
-    bất kì phần tử logic nào nằm trên path này, do đó Data Path Delay
-    được tính bằng tổng của: FlipFlop Delay (thời gian từ khi có input
-    đến khi có output của FF) và Net Delay (trễ trên dây nối).</p>
-</li>
-<li>
-<p>Logic Level: (Xem lại định nghĩa của logic level)</p>
-</li>
-<li>
-<p>Clock Path Skew: được tính bằng DCD-SCD-CPR trong đó: DCD là
-    Destination Clock Delay, SCD Source Clock Delay và CPR là Clock
-    Pessimism Removal.</p>
-<ul>
-<li>Clock Pessimism Removal (CPR) is the removal of artificially
-induced pessimism from the common clock path between launching
-startpoint and capturing endpoint.</li>
-</ul>
-</li>
-</ul>
-<figure>
-<p><img alt="" src="../imgs/hold_time_slack_calc_2.png" /></p>
-</figure>
-<p>Ở mục Source Clock Path, report sẽ mô tả chi tiết đường đi của Source
-Clock. Theo như report ở hình trên, để đến được F1, Source Clock sẽ phải
-đi qua: IBUFDS &amp; BUFG, PLL2_ADV &amp; BUFGCTL, MMCM2_ADV &amp; BUFG như ở hình
-vẽ đầu tiên.</p>
-<p>Qua report ta rút ra được một số nhận xét như sau:</p>
-<ul>
-<li>
-<p>Sau khi đi qua các phần tử như BUFG, IBUFDS, BUFGCTL ..., clock bị
-    trễ đi một khoảng thời gian</p>
-</li>
-<li>
-<p>Sau khi đi qua các phần tử tạo clock như MMCM2_ADV, PLL2_ADV...,
-    tùy theo cấu hình mà clock có thể giảm hoặc tăng độ trễ (giá trị có
-    thể âm hoặc dương).</p>
-</li>
-</ul>
-<figure>
-<p><img alt="" src="../imgs/hold_time_slack_calc_3.png" /></p>
-</figure>
-<p>Phần Data Path sẽ mô tả chi tiết hơn về delay giữa F1/F2, cái mà đã được
-nhắc đến ở mục Sumary.</p>
-<figure>
-<p><img alt="" src="../imgs/hold_time_slack_calc_4.png" /></p>
-</figure>
-<p>Phần Destination Clock Path có chức năng tương tự như phần Source Clock
-Path, sẽ mô tả chi tiết đường đi của Destination Clock Path.</p>
-<p>Với Report như trên, ta có thể vẽ được Timing Diagram cho Path này như
-sau:</p>
-<p>Trong đó:</p>
-<ul>
-<li>
-<p>Source Clock Path Delay bằng 0.975 ns được tính từ tổng các delay
-    trên các phần tử mà clocks đi qua, giá trị này có thể đọc được ở
-    dòng cuối cùng của Source Clock Report.</p>
-</li>
-<li>
-<p>Data Path Delay bằng 0.424 ns là giá trị của delay giữa F1/F2, giá
-    trị này có thể đọc được từ dòng cuối cùng của Data Path report. Lưu
-    ý rằng giá trị đọc được đã được cộng thêm Source Clock Path Delay.</p>
-</li>
-<li>
-<p>Destination Clock Path Delay bằng 1.559 ns được tính giống như với
-    Source Clock Path Delay.</p>
-</li>
-</ul>
-<p>Giá trị Negative Hold Time Slack sẽ được tính bằng:</p>
-<blockquote>
-<p>Source Clock Path Delay + Data Path Delay -- Destination Clock Path
-Delay = 0.975 ns + 0.424 ns -- 1.559 ns = - 0.220 ns**</p>
-</blockquote>
-<p>Kết quả này giống với Report của Xilinx Vivado.</p>
-<p><strong>How does Vivado calculate Setup Time Slack?</strong></p>
-<p>Quá trình tính toán Setup Time Slack được thực hiện tương tự như Hold
-Time Slack như được thực hiện trên hai sườn clock khác nhau.</p>
-<p>Timing Analysis TCL Command</p>
-<p><code>get_clocks</code></p>
-<ul>
-<li>
-<p>Description: Được dùng để list ra các clocks trong thiết kế hiện
-    tại.</p>
-</li>
-<li>
-<p>Syntax: <code>get_clocks [-regexp] [-nocase] [-filter &lt;arg&gt;] [-of_objects &lt;args&gt;] [-match_style &lt;arg&gt;] [-include_generated_clocks] [-quiet] verbose] [&lt;patterns&gt;]</code></p>
-</li>
-<li>
-<p>Examples:</p>
-<ul>
-<li><code>get_clocks</code> //getting all clocks in current design</li>
-<li><code>get_clock adc*</code> // getting all clocks that has pattern "adc" in
-    its name</li>
-<li><code>get_clock {adc* clk_out1*}</code> // getting all clocks that has
-    any pattern listed in {} in its name</li>
-<li><code>get_clocks -include_generated_clocks adc_clk_fwd</code> // getting
-    adc_clk_fwd and all of its generated clocks</li>
-</ul>
-</li>
-</ul>
-<p><code>report_clocks</code></p>
-<ul>
-<li>
-<p>Description: reporting about a clocks or a list of clocks</p>
-</li>
-<li>
-<p>Syntax: <code>report_clocks [-file &lt;arg&gt;] [-append] [-return_string] [-quiet] [-verbose] [&lt;clocks&gt;]</code></p>
-</li>
-<li>
-<p>Examples:</p>
-<ul>
-<li>report_clocks // reporting all clocks in current design</li>
-<li>report_clocks --file report_clock_evt2a.txt // reporting and
-    then outputting this content to an output file. Create output
-    file if it is not existed.</li>
-<li>report_clocks [get_clocks adc_clk_fwd] // reporting about
-    particular clock that is gotten by using get_clocks command.</li>
-</ul>
-</li>
-</ul>
-<h4 id="xilinx-design-constraint-xdc">Xilinx Design Constraint (XDC)<a class="headerlink" href="#xilinx-design-constraint-xdc" title="Permanent link">&para;</a></h4>
-<figure>
-<p><img alt="" src="../imgs/xcontraints.png" /></p>
-</figure>
-<h4 id="design-with-the-7-series">Design with the 7 series<a class="headerlink" href="#design-with-the-7-series" title="Permanent link">&para;</a></h4>
-<p>Clocking Resources in 7 series.</p>
-<p>Clock regions: Mỗi die FPGA được chia thành các clock regions. Chiều cao
-(high) của mỗi clock regions là 50 CLBs (50 CLBs rows), bề rộng chiếm
-một nửa die.</p>
-<p>Clock Management Tile (CMT): Mỗi clock region chứa một CMT. Trong mỗi
-CMT chứa: 01 Mixed-Mode Clock Managers (MMCMs), 01 Phase Locked Loop
-(PLL).</p>
-<ul>
-<li><strong>Clock-Capable Inputs (CCIO)</strong>: bất kì một thiết kế FPGA đồng bộ
-    nào (synchronous design) đều cần phải cung cấp ít nhất một đường
-    clock reference từ bên ngoài chip. Đường clock này sẽ được đưa vào
-    chip FPGA bằng các port đặc biệt (clock-capable) được thiết kế riêng
-    cho clock. Đối với 7 series FPGA sẽ có 4 ports clock-capable. Trong
-    đó: 2 port là Multi-Region Clock Capable (MRCC), 2 ports còn lại là
-    Single Region Clock Capable (SRCC). IBUFG, IBUFGS có thể được sử
-    dụng để map tín hiệu clock đến các chân clock-capable.</li>
-</ul>
-<!--    ![](media/image19.png){width="6.5in" height="3.88125in"} -->
-
-<ul>
-<li>
-<p><strong>Global Clocking:</strong> Global clock networks cho pheps phân phối
-    clocks đến các clocked element trên chip die. Global clocks are
-    driven by BUFGCTRL located in the middle of the die.</p>
-</li>
-<li>
-<p><strong>Global Clocking Buffer (BUFGCTRL):</strong></p>
-<ul>
-<li>
-<p>For Clock Multiplexing - BUFGMUX</p>
-</li>
-<li>
-<p>For Gated Clock -- BUFGCE</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Horizontal Spine Clock Buffer (BUFH):</strong></p>
-</li>
-</ul>
-<!-- ## STATIC TIMING ANALYSIS IN A REAL PRODUCT
-
-Static timing analysis được thực hiện trên từng design cụ thể, trong các
-lần build khác nhau sẽ xuất hiện các report timing khác nhau và phụ
-thuộc vào quá trình synthesis, implementation (optimization, placing,
-routing). Do đó, kết quả phân tích ở mục này có thể khác so với các
-phương án design khác.
-
-### Clock Definition
-
-Như đã trình bày ở mục 1, Xilinx cung cấp một baseline cho người thiết
-kế thực hiện phân tích và optimize hệ thống. Trong mục Optimize Internal
-Path ở baseline này, để có thể phân tích được thì việc trước tiên phải
-cung cấp cho phần mềm biết được các thông số liên quan đến clock.
-
-### Primary clock
-
-Theo định nghĩa của Xilinx (UG 903), primary clock là clock của bo mạch
-được đưa vào design qua các đường: input port (port FPGA được nối với
-một đường clock ngoài), gigabit transceiver output pin (ví dụ như
-recovered clock).
-
-**adc_clk_rx0**
-
--   Constraints:
-
-`create_clock -period 5.425 -name adc_clk_rx0 -waveform {0.000 2.713} [get_ports adc_clk_in_p]`
-
-![](imgs/fpga_example_primary_clock.png)
-
--   Frequency: 184.32 MHz
-
--   Source: port adc_clk_in_p
-
--   Description: Là clock DCO (Data Clock Out) của IC AD9643
-
--   Usage: Nguồn clock cho đường Uplink của hệ thống FPGA
-
-**adc_clk_rx1**
-
--   Constraint:
-
-    `create_clock -period 5.425 -name adc_clk_rx1 -waveform {0.000 2.713} [get_ports adc_clk_in_p_2]`
-
--   Frequency: 184.32 MHz
--   Source: port adc_clk_in_p_2
-
--   Description: Là clock lấy từ chân DCO+/- của chip AD9643
-
--   Usage: Sử dụng cho IP Core AD9643 Controller rx1. Lưu ý rằng, phương
-    án hiện tại của project đang xét sử dụng adc_clk_rx0 cho toàn bộ
-    uplink, bao gồm cả rx0 và rx1.
-
-**adc_clk_fwd**
-
--   Constraint:
-
-  `create_clock -period 8.138 -name adc_clk_fwd -waveform {0.000 4.069} [get_ports adc_clk_in_p_1]`
-
--   Frequency: 122.88 MHz
--   Source: port adc_clk_in_p_1
--   Description: Sử dụng ở đường FWD truyền dữ liệu feedback từ PA về
-    cho DPD IPCore.
--   Usage:
--   Sử dụng cho IPCore AD9643 FWD ở đường forward.
--   Sử dụng cho các IPCore đường downlink (DUC/CFR/DPD/Gain) nhằm đảm
-    bảo đồng bộ giữ liệu giữa giao diện TX và FWD của DPD
-
-**cpri_refclk**
-
--   Constraint:
-
-  **create_clock -period 8.138 -name cpri_refclk [get_ports GTX_CLK_REF_P]**
-
-
--   Frequency: 122.88 MHz
-
--   Source: port GTX_CLK_REF_P
-
--   Description: Là clock reference cho CPRI IPCore được lấy về từ cụm
-    IC Clocks AD9523/AD9548 (được lấy trực tiếp từ AD9523) được sử dụng
-    cho GTX. Trong trường hợp CPRI chưa đồng bộ, cpri_refclk sẽ được
-    đồng bộ với local clock trên RRH, còn trong trường hợp CPRI đã được
-    đồng bộ với BBC thì cpri_refclk sẽ được đồng bộ với clock trên BBC.
-
-**fpga_sys_clk**
-
--   Constraint:
-
-`create_clock -period 5.000 -name fpga_sys_clk [get_ports FPGA_SYSCLK_P]`
-
--   Frequency: 200 MHz.
--   Source: port FPGA_SYSCLK_P
--   Description: Trên board RRH có oscillator 200 MHz cung cấp
-    fpga_sys_clk cho hệ thống FPGA trên RRH. Fpga_sys_clk sẽ được sử
-    dụng cho các giao diện bên trong khối CPRI như Ethernet, auxinary
-    clock...
-
-**clk_fpga_0**
--   Constraints: Clock được khởi tạo mặc định cho khối PS7 và thường
-    được lưu trữ ở
-    <project_name>.srcssources_1bdsystemipsystem_sys_ps7_0
-
-  `create_clock -name clk_fpga_0 -period "10" [get_pins "PS7_i/FCLKCLK[0]"]`
-
--   Frequency: 100 MHz
--   Source: pin
-    *i_system_wrapper/system_i/sys_ps7/inst/PS7_i/FCLKCLK[0]*
--   Description: Primary clock. Được sinh ra từ bộ Clock Generation bên
-    trong PS7, nguồn cho bộ Clock Generation này từ bộ oscillator 33.333
-    MHz trên bo mạch EVT (Hình 1).
-
-![C:UsersFPGATEAMDesktopCapture.PNG](media/image21.png){width="5.078261154855643in"
-height="1.6830424321959756in"}
-
-Hình 1. Bộ Oscillator 33.333 MHz trên bo mạch
-
--   Usage:
-    -   Sử dụng cho các đường AXI: Interconnect, AXI Interface của các
-    IPCore, AXI APB Bridge...
-    -   Sử dụng cho khối Generater reset cho control interface
-
-
-### Generated clocks
-
-Theo Xilinx, Generated clocks are driven inside the design by special
-cells called Clock Modifying Blocks (for example, an MMCM), or by some
-user logic.
-
-Generated clocks are associated with a master clock. The master clock
-can be a primary clock ỏ another generated clock.
-
-Theo như định nghĩa trên của Xilinx, trong design hiện tại sẽ có rất
-nhiều generated clock. Vivado mặc định định nghĩa và đặt tên các
-generated clocks đó. Để tường minh cho việc tính toán timing, ta sẽ tiến
-hành đặt lại tên có ý nghĩa cho các clock này.
-
-Clock Network
-
-Sau khi đã thực hiện định nghĩa các clock của hệ thống (primary clock,
-generated clock), bước tiếp theo là xem xét quan hệ giữa các clocks này.
-
-### Report clock network
-
-Từ các primary clocks, qua các bộ MMCM, PLL ta nhận được các generated
-clocks. Các clocks này tạo thành một mạng clock trong thiết kế. Có thể
-kiểm tra clock network trong report timing summary:
-
-  report_timing_summary
-
-![C:UsersFPGATEAMDesktopclk_net.PNG](media/image23.png){width="6.501751968503937in"
-height="1.5581386701662292in"}
-
-Nhóm clock adc_clk_fwd hiện tại được sử dụng chính cho đường Downlink,
-tín hiệu adc_clk_fwd được đưa về khối Reset Generator (chứa bộ khóa
-pha PLL để lock tín hiệu clock). Sauk hi đi qua bộ Clock Wizard (chứa
-core PLL), adc_clk_fwd được chia ra làm ba đường:
-rst_dl_clk_wiz_0_clkbout/clkout0/clkout1 trong đó clkout1 được dùng
-cho DUC/GAIN_CFR/CFR/GAIN_DPD/DPD.
-
-![C:UsersFPGATEAMDesktopclk_net_2..PNG](media/image24.png){width="6.5in"
-height="1.0208136482939631in"}
-
-Nhóm adc_clk_rx0 được sử dụng cho đường UL (như đã nhắc đến ở phần
-định nghĩa primary clocks).
-
-![C:UsersFPGATEAMDesktopclk_net_3.PNG](media/image25.png){width="6.5in"
-height="0.43521325459317584in"}
-
-Clocks adc_clk_rx1 hiện tại đang chỉ được sử dụng cho khối AD9643 của
-đường rx1. Ngoài ra không được sử dụng cho bất kì khối nào khác ở đường
-UL.
-
-![](media/image26.png){width="6.5in" height="0.5116272965879265in"}
-
-![](media/image27.png){width="6.488194444444445in"
-height="0.8486111111111111in"}
-
-![](media/image28.png){width="6.488194444444445in" height="0.5in"}
-
-![](media/image29.png){width="6.488194444444445in"
-height="1.3722222222222222in"}
-
-![](media/image30.png){width="6.5in" height="0.8604166666666667in"}
-
-![](media/image31.png){width="6.489583333333333in"
-height="1.2083333333333333in"}
-
-### Setting clock group
-
-Nhận xét:
-
--   clk_fpga_0/clk_fpga_1 được trích ra từ chân FCLK[0]/FCLK[1]
-    của module PS7 nhưng bản chất được lấy từ nguồn oscillator 33.333
-    MHz trên board.
-
--   adc_clk_rx0/rx1/fwd được lấy từ nguồn là DCO+/- của các IC ADC
-    tương ứng. Để xác định quan hệ giữa các clocks này là đồng bộ hay
-    không đồng bộ cần xét thêm nguồn clock cho các IC ADC và tác động
-    của các IC lên đường clock DCO+/-. Hiện tại, ta tạm xem 3 clock này
-    cùng một group.
-
--   fpga_clk_sys được lấy trực tiếp từ nguồn oscillator 200 MHz trên
-    board. Cho nên, dễ dàng nhận thấy clock này và các generated clocks
-    được tạo ra từ chính nó sẽ ở cùng một group.
-
--   gtx_txoutclk/gtx_rxoutclk được tạo ra bởi bộ GTX dùng cho CPRI, do
-    đó nó sẽ cùng ở chung một group.
-
-Dựa vào nhận xét trên và các kiến thức đã có, có thể xác định được 4
-group clocks mà chúng không đồng bộ với nhau. Thực hiện
-set_clock_groups
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>set_clock_groups -asynchronous 
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>-group [get_clocks -include_generated_clocks clk_fpga_*] 
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>-group [get_clocks -include_generated_clocks adc_clk_*] 
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>-group [get_clocks -include_generated_clocks {gtx_txoutclk gtx_rxoutclk}] 
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>-group [get_clocks -include_generated_clocks fpga_clk_sys] 
+<h1 id="xilinx-ipcore">Xilinx IPCore<a class="headerlink" href="#xilinx-ipcore" title="Permanent link">&para;</a></h1>
+<p>This note for Xilinx Core implementation.</p>
+<h2 id="clocking-wizard">Clocking Wizard<a class="headerlink" href="#clocking-wizard" title="Permanent link">&para;</a></h2>
+<p>Configure Clock Wizard using Dynamic Reconfiguration through AXI4-Lite interface.</p>
+<p>Dòng chip Series 7 của Xilinx cung cấp các tài nguyên liên quan đến clock như MMCM và PLL (clock synthesizer). Ngoài ra, trong môi trường Vivado, Xilinx cung cấp thêm IPCore Clocking Wizard nhằm tạo giao diện làm việc đơn giản cho người dùng khi sử dụng các tài nguyên clock trên chip FPGA.</p>
+<p>Trong quá trình chạy (run-time), các clock synthesizer có thể cấu hình lại để có thể thay đổi được giá trị tần số đầu ra. </p>
+<p><strong>Configuration</strong></p>
+<p>Giá trị tần số của một đầu ra của khối clock wizard được tính như sau:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>VCO = CLKin * CLKFBOUT_MULT/DIVCLK_DIVICE
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>CLKOUT0 = VCO / CLKOUT0_DIVIDE
 </code></pre></div>
-Inter-Clock Paths
------------------
-
-
-`report_clock_interaction -delay_type min_max -significant_digits 3 -name timing_1`
-
-Report timing interaction sẽ cho ra báo cáo về mối quan hệ giữa các
-clocks trong hệ thống (bao gồm cả primary clock và generated clock).
-Việc xuất hiện timing violation sẽ được báo cáo trực quan bằng hình vẽ.
-Hình vẽ có hình dạng như sau.
-
-![](media/image32.png){width="6.5in" height="2.3375in"}
-
-`report_timing_summary --name timing_1`
-
-![](media/image33.png){width="6.5in" height="5.029166666666667in"}
-
-Báo cáo Timing của Vivado thấy rõ được timing violation ở path:
-cpri_sys_clk to cpri_12288_gen. Tiếp tục tiến hành report timing về
-hai clock này bằng câu lệnh này:
-
-`report_timing -from [get_clocks -of_objects [get_pins cpri_clk_sys] -to [get_clocks cpri_12288_gen] -delay_type min_max -max_paths 100 -sort_by group -input_pins -name timing_2`
-
-![C:UsersFPGATEAMDesktopCapture.PNG](media/image34.png){width="6.5in"
-height="2.9284361329833772in"}
-
-Dựa vào báo cáo của Xilinx, phát hiện ra timing violation ở bên trong
-khối Adapter.
-
--   Trường hợp vi phạm 1: vi phạm giữa tín hiệu capture và shift.
-
-Phương án giải quyết:
-
--   Phương án 1: Sử dụng chung clock cpri_sys_clk cho việc capture và
-    shift. Phương án sử dụng chung này là đơn giản nhất và giải quyết
-    được vấn đề clock domain crossing.
-
--   Phương án 2: Sử dụng FIFO ở giữa khối Capture và Shift. Khi đó khối
-    Capture và Shift sẽ sử dụng clocks tách biệt. Phương án 2 sẽ phức
-    tạp hơn phương án 1 nhưng bù lại sẽ hỗ trợ cho việc phát triển chức
-    năng Multi-linerate sau này.
-
--   Trường hợp vi phạm 2: vi phạm tín hiệu shift_counter_ena
-
-    Trường hợp vi phạm này không ảnh hưởng đến tính đúng đắn của hệ
-    thống, tín hiệu shift_counter_ena sẽ được đưa lên mức cao trong
-    suốt quá trình chạy. Nếu khối shift reg miss ở sườn clock trước thì
-    vẫn có thể capture được ở sườn clock sau. Sai lệch một sườn clock
-    không ảnh hưởng đến kết quả của khối Shift.
-
-    Ngoài ra, để xử lí trường hợp crossing clock domain đối với một tín
-    hiệu điều khiển như trong trường hợp này, kĩ sư có thể sử dụng kĩ
-    thuật double-flipflop được Xilinx recomend như sau như sau:
-
-    ![](media/image37.png){width="6.010416666666667in"
-    height="2.1145833333333335in"}
-
-    Tiến hành triển khai các phương án sửa timing violation. Đối với
-    trường hợp vi phạm 1, như đã phân tích sẽ có hai phương án có thể
-    triển khai. Để thuận tiện cho các phương án thiết kế nâng cao sau
-    này, phương án thứ 2 sẽ được chọn. Chi tiết triển khai phương án thứ
-    2 được thể hiện trong hình vẽ sau.
-
-    Kết quả sau khi triển khai phương án trên thể hiện trong report sau
-
-    ![](media/image39.png){width="6.5in" height="5.418055555555555in"}
-
-    ![](media/image40.png){width="6.5in" height="1.7486111111111111in"}
-
-    ![](media/image41.png){width="6.5in" height="4.0472222222222225in"}
-
-    Timing Violation đã giảm đi rõ rệt và chỉ xuất hiện trên đường tín
-    hiệu shift_counter_ena như đã phân tích ở phương án vi phạm thứ 2.
-    Về cơ bản, vi phạm timing ở path này không ảnh hưởng đến độ chính
-    xác của hệ thống. Nhưng ta vẫn có thể sử dụng kĩ thuật
-    double-flipflop để xử lí.
-
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>always @(posedge cpri_clk_122_88) begin            
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    if (rst) begin                                       
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>        reading_counter_ena_reg1 &lt;= 1'b0;                       
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>        reading_counter_ena_reg2 &lt;= 1'b0;                       
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    end                                                      
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    else begin                                                
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>        reading_counter_ena_reg1 &lt;= reading_counter_ena;       
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>        reading_counter_ena_reg2 &lt;= reading_counter_ena_reg1; 
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    end                                                      
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>end                                                      
-</code></pre></div>
-
-Intra-Clock Paths
-
-Cũng trong report_timing_summary, hiện tại các tín hiệu liên quan đến
-Intra-clock path chưa phát hiện timing violation.
-
-![C:UsersFPGATEAMDesktopCapture.PNG](media/image42.png){width="6.5in"
-height="6.323362860892389in"}
-
-False Path 
-
-    set_false_path -to [get_cells -hier -filter {name =~ *i_ila_tx/U0/* && IS_SEQUENTIAL}]
- -->
+<p>Trong quá trình chạy, khi thay đổi các giá trị <code>CLKFBOUT_MULT</code> (Reg-offset: 0x200) hoặc giá trị <code>CLOCKOUT0_DEVICE</code> (Reg-offset: 0x208) thì giá trị <code>CLKOUT0</code> sẽ thay đổi. Tham khảo thêm Register Space trong tài liệu PG065.</p>
+<p><strong><em>Quy trình cấu hình lai clock</em></strong></p>
+<p>Trong PG065 mô tả quy trình cấu hình lại clock tại "Dynamic Reconfiguration through AXI4-Lite"</p>
+<p>Lưu ý quá trình cấu hình:</p>
+<ul>
+<li>Nhập mới giá trị thanh ghi</li>
+<li>Ghi giá trị 0x7 vào thanh ghi 0x25c</li>
+<li>Ghi giá trị 0x3 vào thanh ghi 0x25c</li>
+</ul>
+<p>This configuration sequence is referenced from Clocking Wizard example design.</p>
+<p><strong>References</strong></p>
 
 
 
@@ -4445,7 +3707,7 @@ False Path
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 6, 2022 08:09:20 UTC">December 6, 2022</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 14, 2019 10:33:46 UTC">February 14, 2019</span>
   </span>
 
     
@@ -4455,7 +3717,7 @@ False Path
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="January 10, 2019 04:42:38 UTC">January 10, 2019</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 14, 2019 10:33:46 UTC">February 14, 2019</span>
   </span>
 
     
@@ -4494,7 +3756,7 @@ False Path
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../../programming/perf/perf/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Perf">
+          <a href="../../../../programming/perf/perf/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Perf">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -4511,13 +3773,13 @@ False Path
         
         
           
-          <a href="../../x_ipcore/xipcore/" class="md-footer__link md-footer__link--next" aria-label="Next: Xilinx IPCore">
+          <a href="../../../timing_analysis/timing_analysis/" class="md-footer__link md-footer__link--next" aria-label="Next: Static Timing Analysis">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Xilinx IPCore
+                Static Timing Analysis
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -4558,10 +3820,10 @@ False Path
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.instant", "navigation.tracking", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.instant", "navigation.tracking", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.tabs.link"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>
