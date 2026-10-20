@@ -37,6 +37,10 @@
          <lastmod>2026-10-20</lastmod>
     </url>
     <url>
+         <loc>https://vutang.github.io/articles/2026/10/13/pviommu-hyper-v-%C4%91%C6%B0a-dma-protection-v%C3%A0o-linux-guest/</loc>
+         <lastmod>2026-10-20</lastmod>
+    </url>
+    <url>
          <loc>https://vutang.github.io/articles/2026/10/18/ran-silicon-rethink-khi-chip-chuy%C3%AAn-d%E1%BB%A5ng-ph%E1%BA%A3i-nh%C6%B0%E1%BB%9Dng-ch%E1%BB%97-cho-cpu-v%C3%A0-gpu-%C4%91a-d%E1%BB%A5ng/</loc>
          <lastmod>2026-10-20</lastmod>
     </url>
@@ -146,10 +150,6 @@
     </url>
     <url>
          <loc>https://vutang.github.io/lnx_es/zynq7000/</loc>
-         <lastmod>2026-10-20</lastmod>
-    </url>
-    <url>
-         <loc>https://vutang.github.io/lnx_es/docker/docker/</loc>
          <lastmod>2026-10-20</lastmod>
     </url>
     <url>
@@ -350,6 +350,14 @@
     </url>
     <url>
          <loc>https://vutang.github.io/technote/virtual_machine/virtual_box/</loc>
+         <lastmod>2026-10-20</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/virtualization/docker/docker/</loc>
+         <lastmod>2026-10-20</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/virtualization/hypervisor/hypervisor/</loc>
          <lastmod>2026-10-20</lastmod>
     </url>
     <url>
