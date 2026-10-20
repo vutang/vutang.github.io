@@ -1,0 +1,29 @@
+<svg role="img" viewBox="0 0 640 315" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+  <title>Watchdog qua heartbeat: task giám sát chỉ kick khi mọi task còn sống</title>
+  <rect x="0" y="0" width="640" height="315" rx="8" fill="#ffffff"/>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker><marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b42318"/></marker></defs>
+  <rect x="30" y="16" width="170" height="38" rx="6" fill="#d3e3f7" stroke="#2f5d9e" stroke-width="1.2"/>
+  <text x="115.0" y="38.1" font-size="10.5" text-anchor="middle" font-weight="700" fill="#111">Task cảm biến</text>
+  <line x1="115" y1="54" x2="320" y2="108" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+  <rect x="235" y="16" width="170" height="38" rx="6" fill="#d3e3f7" stroke="#2f5d9e" stroke-width="1.2"/>
+  <text x="320.0" y="38.1" font-size="10.5" text-anchor="middle" font-weight="700" fill="#111">Task truyền thông</text>
+  <line x1="320" y1="54" x2="320" y2="108" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+  <rect x="440" y="16" width="170" height="38" rx="6" fill="#d3e3f7" stroke="#2f5d9e" stroke-width="1.2"/>
+  <text x="525.0" y="38.1" font-size="10.5" text-anchor="middle" font-weight="700" fill="#111">Task điều khiển</text>
+  <line x1="525" y1="54" x2="320" y2="108" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+  <rect x="170" y="110" width="300" height="60" rx="6" fill="#fde68a" stroke="#b45309" stroke-width="1.6"/>
+  <text x="320.0" y="130.3" font-size="11" text-anchor="middle" font-weight="700" fill="#111">Task giám sát</text>
+  <text x="320.0" y="143.8" font-size="9.5" text-anchor="middle" fill="#111">mỗi task ghi heartbeat[i] = tick</text>
+  <text x="320.0" y="156.8" font-size="9.5" text-anchor="middle" fill="#111">kiểm tra mọi heartbeat còn mới không</text>
+  <line x1="250" y1="170" x2="150" y2="214" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="170" y="192" font-size="9" text-anchor="end" fill="#333">tất cả OK</text>
+  <rect x="60" y="216" width="180" height="40" rx="6" fill="#d4ecdc" stroke="#2e7d4f" stroke-width="1.2"/>
+  <text x="150.0" y="239.3" font-size="11" text-anchor="middle" font-weight="700" fill="#111">wdt_kick()</text>
+  <line x1="390" y1="170" x2="490" y2="210" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="455" y="184" font-size="9" text-anchor="start" fill="#333">một task im lặng quá lâu</text>
+  <rect x="400" y="212" width="180" height="36" rx="6" fill="#fde2e1" stroke="#b42318" stroke-width="1.2"/>
+  <text x="490.0" y="233.3" font-size="11" text-anchor="middle" font-weight="700" fill="#111">Không kick</text>
+  <line x1="490" y1="248" x2="490" y2="268" stroke="#b42318" stroke-width="1.5" marker-end="url(#r)"/>
+  <rect x="360" y="270" width="260" height="34" rx="6" fill="#fde2e1" stroke="#b42318" stroke-width="1.2"/>
+  <text x="490.0" y="290.1" font-size="10.5" text-anchor="middle" font-weight="700" fill="#111">Watchdog HW hết hạn → reset</text>
+</svg>

@@ -1,0 +1,32 @@
+<svg role="img" viewBox="0 0 640 320" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+  <title>Interrupt: ISR làm phần tối thiểu rồi giao việc cho task</title>
+  <rect x="0" y="0" width="640" height="320" rx="8" fill="#ffffff"/>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker><marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b42318"/></marker></defs>
+  <rect x="28" y="14" width="124" height="32" rx="6" fill="#ececec" stroke="#777777" stroke-width="1.2"/>
+  <text x="90.0" y="33.1" font-size="10.5" text-anchor="middle" font-weight="700" fill="#111">Thiết bị UART</text>
+  <line x1="90" y1="46" x2="90" y2="300" stroke="#999" stroke-dasharray="4,3"/>
+  <rect x="188" y="14" width="124" height="32" rx="6" fill="#fde68a" stroke="#b45309" stroke-width="1.2"/>
+  <text x="250.0" y="33.1" font-size="10.5" text-anchor="middle" font-weight="700" fill="#111">CPU / ISR</text>
+  <line x1="250" y1="46" x2="250" y2="300" stroke="#999" stroke-dasharray="4,3"/>
+  <rect x="348" y="14" width="124" height="32" rx="6" fill="#ececec" stroke="#777777" stroke-width="1.2"/>
+  <text x="410.0" y="33.1" font-size="10.5" text-anchor="middle" font-weight="700" fill="#111">Hàng đợi</text>
+  <line x1="410" y1="46" x2="410" y2="300" stroke="#999" stroke-dasharray="4,3"/>
+  <rect x="498" y="14" width="124" height="32" rx="6" fill="#ececec" stroke="#777777" stroke-width="1.2"/>
+  <text x="560.0" y="33.1" font-size="10.5" text-anchor="middle" font-weight="700" fill="#111">Task xử lý</text>
+  <line x1="560" y1="46" x2="560" y2="300" stroke="#999" stroke-dasharray="4,3"/>
+  <rect x="190" y="58" width="430" height="22" rx="4" fill="#fff7e0" stroke="#d9b45a"/>
+  <text x="405" y="73" font-size="9.5" text-anchor="middle" fill="#111">Lúc rảnh: CPU ngủ (WFI), task bị block</text>
+  <rect x="244" y="100" width="12" height="82" fill="#fde68a" stroke="#b45309"/>
+  <line x1="90" y1="106" x2="242" y2="106" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="166.0" y="101" font-size="9" text-anchor="middle" fill="#333">có byte → IRQ</text>
+  <path d="M256,128 h30 v14 h-28" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="292" y="138" font-size="9.5" text-anchor="start" fill="#111">đọc DR, xoá cờ ngắt</text>
+  <line x1="256" y1="172" x2="408" y2="172" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="332.0" y="167" font-size="9" text-anchor="middle" fill="#333">đẩy event (vài µs)</text>
+  <line x1="410" y1="208" x2="558" y2="208" stroke="#555" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#a)"/>
+  <text x="484.0" y="203" font-size="9" text-anchor="middle" fill="#333">đánh thức task</text>
+  <rect x="554" y="214" width="12" height="40" fill="#d3e3f7" stroke="#2f5d9e"/>
+  <text x="546" y="238" font-size="9.5" text-anchor="end" fill="#111">xử lý đầy đủ: parse, log</text>
+  <rect x="30" y="268" width="590" height="22" rx="4" fill="#fff7e0" stroke="#d9b45a"/>
+  <text x="325" y="283" font-size="9.5" text-anchor="middle" fill="#111">Phản ứng ngay khi có sự kiện, không tốn CPU lúc rảnh</text>
+</svg>

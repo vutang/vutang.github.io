@@ -1,0 +1,35 @@
+<svg role="img" viewBox="0 0 640 315" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+  <title>Kiến trúc phân lớp: ứng dụng, middleware, driver, HAL/BSP, phần cứng</title>
+  <rect x="0" y="0" width="640" height="315" rx="8" fill="#ffffff"/>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker><marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b42318"/></marker></defs>
+  <rect x="30" y="14" width="400" height="44" rx="6" fill="#d3e3f7" stroke="#2f5d9e" stroke-width="1.2"/>
+  <text x="230.0" y="32.8" font-size="11" text-anchor="middle" font-weight="700" fill="#111">Ứng dụng / logic nghiệp vụ</text>
+  <text x="230.0" y="46.2" font-size="9.5" text-anchor="middle" fill="#111">sync_service.c, alarm.c</text>
+  <line x1="230" y1="58" x2="230" y2="70" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+  <rect x="30" y="72" width="400" height="44" rx="6" fill="#d4ecdc" stroke="#2e7d4f" stroke-width="1.2"/>
+  <text x="230.0" y="90.8" font-size="11" text-anchor="middle" font-weight="700" fill="#111">Middleware &amp; dịch vụ</text>
+  <text x="230.0" y="104.2" font-size="9.5" text-anchor="middle" fill="#111">parser NMEA, protocol stack, RTOS service</text>
+  <line x1="230" y1="116" x2="230" y2="128" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+  <rect x="30" y="130" width="400" height="44" rx="6" fill="#ffffff" stroke="#999999" stroke-width="1.2"/>
+  <text x="230.0" y="148.8" font-size="11" text-anchor="middle" font-weight="700" fill="#111">Driver thiết bị</text>
+  <text x="230.0" y="162.2" font-size="9.5" text-anchor="middle" fill="#111">gnss_ublox.c, eeprom_at24.c</text>
+  <line x1="230" y1="174" x2="230" y2="186" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+  <rect x="30" y="188" width="400" height="44" rx="6" fill="#fde68a" stroke="#b45309" stroke-width="1.6"/>
+  <text x="230.0" y="206.8" font-size="11" text-anchor="middle" font-weight="700" fill="#111">HAL / BSP</text>
+  <text x="230.0" y="220.2" font-size="9.5" text-anchor="middle" fill="#111">thanh ghi, clock, pin mux, startup</text>
+  <line x1="230" y1="232" x2="230" y2="244" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+  <rect x="30" y="246" width="400" height="44" rx="6" fill="#ececec" stroke="#777777" stroke-width="1.2"/>
+  <text x="230.0" y="264.8" font-size="11" text-anchor="middle" font-weight="700" fill="#111">Phần cứng</text>
+  <text x="230.0" y="278.2" font-size="9.5" text-anchor="middle" fill="#111">MCU / SoC, UART, I²C, SPI</text>
+  <rect x="456" y="18" width="170" height="46" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.2"/>
+  <text x="541" y="34" font-size="9.5" text-anchor="middle" fill="#111">Mỗi tầng chỉ gọi tầng</text>
+  <text x="541" y="48" font-size="9.5" text-anchor="middle" fill="#111">ngay dưới, qua API</text>
+  <rect x="456" y="130" width="170" height="60" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.2"/>
+  <text x="541" y="146" font-size="9.5" text-anchor="middle" fill="#111">Tầng dưới báo lên bằng</text>
+  <text x="541" y="160" font-size="9.5" text-anchor="middle" fill="#111">callback, không include</text>
+  <text x="541" y="174" font-size="9.5" text-anchor="middle" fill="#111">header tầng trên</text>
+  <rect x="456" y="206" width="170" height="60" rx="4" fill="#ffffff" stroke="#999999" stroke-width="1.2"/>
+  <text x="541" y="222" font-size="9.5" text-anchor="middle" fill="#111">Đổi board: viết lại</text>
+  <text x="541" y="236" font-size="9.5" text-anchor="middle" fill="#111">HAL/BSP; thay HAL bằng</text>
+  <text x="541" y="250" font-size="9.5" text-anchor="middle" fill="#111">fake để test trên PC</text>
+</svg>
