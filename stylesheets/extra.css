@@ -30,6 +30,12 @@
   max-width: 100%;
 }
 
+/* Icon-only buttons (About me, LinkedIn): narrow so all three hero buttons fit on a phone */
+.md-typeset .md-button--icon {
+  padding-left: 0.9em;
+  padding-right: 0.9em;
+}
+
 .hero p:last-child {
   color: var(--md-default-fg-color--light);
 }
@@ -275,7 +281,7 @@ body:has(.home-top) .md-grid {
 
 .home-tree {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr));
   gap: 0 1.2rem;
   align-items: start;
 }
@@ -325,3 +331,38 @@ body:has(.home-top) .md-grid {
     position: static;
   }
 }
+
+/* Bubble chart: lines by topic */
+.stats-bubbles {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto 1rem;
+}
+
+.stats-bubble circle {
+  fill-opacity: 0.8;
+  stroke-width: 1.5;
+}
+
+.stats-bubble:hover circle {
+  fill-opacity: 1;
+}
+
+.stats-bubble text {
+  font-size: 11px;
+  fill: #fff;
+  pointer-events: none;
+}
+
+.stats-bubble .stats-bubble-num {
+  font-size: 10px;
+  opacity: 0.85;
+}
+
+.stats-bubble.c0 circle { fill: var(--md-primary-fg-color); stroke: var(--md-primary-fg-color); }
+.stats-bubble.c1 circle { fill: var(--md-accent-fg-color); stroke: var(--md-accent-fg-color); }
+.stats-bubble.c2 circle { fill: #26a69a; stroke: #26a69a; }
+.stats-bubble.c3 circle { fill: #ef6c00; stroke: #ef6c00; }
+.stats-bubble.c4 circle { fill: #8e24aa; stroke: #8e24aa; }
+.stats-bubble.c5 circle { fill: #43a047; stroke: #43a047; }
