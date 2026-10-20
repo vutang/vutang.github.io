@@ -29,6 +29,18 @@
          <lastmod>2026-10-20</lastmod>
     </url>
     <url>
+         <loc>https://vutang.github.io/articles/2026/10/21/design-pattern-kinh-%C4%91i%E1%BB%83n-trong-linux-kernel-13-oop-v%C3%A0-v%C3%B2ng-%C4%91%E1%BB%9Di-object/</loc>
+         <lastmod>2026-10-20</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/articles/2026/10/21/design-pattern-kinh-%C4%91i%E1%BB%83n-trong-linux-kernel-23-d%E1%BB%AF-li%E1%BB%87u-intrusive-v%C3%A0-concurrency/</loc>
+         <lastmod>2026-10-20</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/articles/2026/10/21/design-pattern-kinh-%C4%91i%E1%BB%83n-trong-linux-kernel-33-ki%E1%BA%BFn-tr%C3%BAc-v%C3%A0-checklist-review/</loc>
+         <lastmod>2026-10-20</lastmod>
+    </url>
+    <url>
          <loc>https://vutang.github.io/articles/2026/09/28/hi%E1%BB%87n-tr%E1%BA%A1ng-c%C3%A1c-d%C3%B2ng-linux-kernel-t%E1%BB%AB-3x-%C4%91%E1%BA%BFn-70/</loc>
          <lastmod>2026-10-20</lastmod>
     </url>
@@ -382,6 +394,10 @@
     </url>
     <url>
          <loc>https://vutang.github.io/articles/archive/2026/page/2/</loc>
+         <lastmod>2026-10-20</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/articles/category/linux-kernel/page/2/</loc>
          <lastmod>2026-10-20</lastmod>
     </url>
 </urlset>
