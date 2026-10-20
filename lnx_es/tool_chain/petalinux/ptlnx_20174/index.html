@@ -1,11 +1,12 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
+      
+      
+        <meta name="author" content="Vu Tang">
       
       
         <link rel="canonical" href="https://vutang.github.io/lnx_es/tool_chain/petalinux/ptlnx_20174/">
@@ -45,8 +46,8 @@
       
         
         
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -69,7 +70,17 @@
 
     
     
-  </head>
+  <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -102,15 +113,15 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../.." title="Vu Tang&#39;s Docs" class="md-header__button md-logo" aria-label="Vu Tang's Docs" data-md-component="logo">
+    <a href="../../../.." title="Vu Tang's Docs" class="md-header__button md-logo" aria-label="Vu Tang's Docs" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -135,20 +146,20 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
     
-      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
       </label>
     
   
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
     
-      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
       </label>
     
   
@@ -164,24 +175,24 @@
       
         <label class="md-header__button md-icon" for="__search">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         </label>
         <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -189,7 +200,7 @@
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Initializing search
@@ -202,6 +213,18 @@
 </div>
       
     
+    
+      <div class="md-header__source">
+        <a href="https://github.com/vutang/mkdocs-vux-note" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
     
   </nav>
   
@@ -287,7 +310,7 @@
           
   
   
-  Book & Materials
+  Book &amp; Materials
 
         </a>
       </li>
@@ -487,7 +510,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -498,16 +521,28 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="Vu Tang&#39;s Docs" class="md-nav__button md-logo" aria-label="Vu Tang's Docs" data-md-component="logo">
+    <a href="../../../.." title="Vu Tang's Docs" class="md-nav__button md-logo" aria-label="Vu Tang's Docs" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 
     </a>
     Vu Tang's Docs
   </label>
   
-  <ul class="md-nav__list" data-md-scrollfix>
+    <div class="md-nav__source">
+      <a href="https://github.com/vutang/mkdocs-vux-note" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
     
       
       
@@ -556,7 +591,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -586,7 +621,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -840,7 +875,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -850,7 +885,7 @@
   <span class="md-ellipsis">
     
   
-    Book & Materials
+    Book &amp; Materials
   
 
     
@@ -866,11 +901,11 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Book & Materials
+    Book &amp; Materials
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -886,7 +921,7 @@
   <span class="md-ellipsis">
     
   
-    C Programing
+    C Programming
   
 
     
@@ -914,7 +949,7 @@
   <span class="md-ellipsis">
     
   
-    Linux Programing
+    Linux Programming
   
 
     
@@ -1026,7 +1061,7 @@
   <span class="md-ellipsis">
     
   
-    Data Structure & Algorithms
+    Data Structure &amp; Algorithms
   
 
     
@@ -1100,7 +1135,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked="">
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
@@ -1130,7 +1165,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -1211,7 +1246,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3">
         
           
           <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="">
@@ -1241,7 +1276,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -1360,7 +1395,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" checked="">
         
           
           <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="">
@@ -1390,7 +1425,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -1484,7 +1519,7 @@
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
   <a href="#introdutions" class="md-nav__link">
@@ -1681,7 +1716,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5">
         
           
           <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="">
@@ -1711,7 +1746,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -1772,7 +1807,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6">
         
           
           <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="">
@@ -1802,7 +1837,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -1863,7 +1898,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7">
         
           
           <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="">
@@ -1893,7 +1928,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2094,7 +2129,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_13" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_13">
         
           
           <label class="md-nav__link" for="__nav_5_13" id="__nav_5_13_label" tabindex="">
@@ -2124,7 +2159,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2196,7 +2231,7 @@
   <span class="md-ellipsis">
     
   
-    Raspberrypi 3B
+    Raspberry Pi 3B
   
 
     
@@ -2241,7 +2276,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_14" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_14">
         
           
           <label class="md-nav__link" for="__nav_5_14" id="__nav_5_14_label" tabindex="">
@@ -2271,7 +2306,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2364,7 +2399,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -2394,7 +2429,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2416,7 +2451,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1">
         
           
           <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
@@ -2446,7 +2481,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2784,7 +2819,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2">
         
           
           <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
@@ -2814,7 +2849,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2963,7 +2998,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -2993,7 +3028,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -3015,7 +3050,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1">
         
           
           <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
@@ -3045,7 +3080,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -3110,7 +3145,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8">
         
           
           <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
@@ -3140,7 +3175,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -3190,7 +3225,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2">
         
           
           <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
@@ -3220,7 +3255,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -3481,7 +3516,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9">
         
           
           <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
@@ -3511,7 +3546,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -3533,7 +3568,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_1">
         
           
           <label class="md-nav__link" for="__nav_9_1" id="__nav_9_1_label" tabindex="0">
@@ -3563,7 +3598,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -3656,7 +3691,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10">
         
           
           <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
@@ -3686,7 +3721,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -3708,7 +3743,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_1">
         
           
           <label class="md-nav__link" for="__nav_10_1" id="__nav_10_1_label" tabindex="0">
@@ -3738,7 +3773,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -3846,7 +3881,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -3862,7 +3897,7 @@
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
   <a href="#introdutions" class="md-nav__link">
@@ -4006,7 +4041,7 @@
                 
                   
 
-  <nav class="md-tags" >
+  <nav class="md-tags">
     
       
       
@@ -4039,18 +4074,21 @@
   </nav>
 
 
+  
+  
 
-<h1 id="petalinux-20174-technical-note">Petalinux 2017.4 technical note<a class="headerlink" href="#petalinux-20174-technical-note" title="Permanent link">&para;</a></h1>
+
+<h1 id="petalinux-20174-technical-note">Petalinux 2017.4 technical note<a class="headerlink" href="#petalinux-20174-technical-note" title="Permanent link">¶</a></h1>
 <p><em>Vu Tang - 2/2019</em></p>
-<h2 id="introdutions">Introdutions<a class="headerlink" href="#introdutions" title="Permanent link">&para;</a></h2>
+<h2 id="introdutions">Introdutions<a class="headerlink" href="#introdutions" title="Permanent link">¶</a></h2>
 <p>Tài liệu này là tổng hợp các điểm lưu ý trong quá trình làm việc với Petalinux 2017.4. Version 2017.4 này của Xilinx là một thể hiện rõ ràng của việc ứng dụng <a href="https://www.yoctoproject.org/">YOCTO PROJECT</a> trong quá trình phát triển một hệ nhúng Linux. Để hiểu rõ hơn quá trình làm việc của petalinux 2017.4, cần tìm hiểu thêm về nguyên tắc hoạt động của Yocto. </p>
-<h2 id="tips">Tips<a class="headerlink" href="#tips" title="Permanent link">&para;</a></h2>
+<h2 id="tips">Tips<a class="headerlink" href="#tips" title="Permanent link">¶</a></h2>
 <p><strong>Speed up sstate checking</strong></p>
 <p><a href="https://forums.xilinx.com/t5/Embedded-Linux/Checking-sstate-mirror-taking-forever/td-p/775404">https://forums.xilinx.com/t5/Embedded-Linux/Checking-sstate-mirror-taking-forever/td-p/775404</a></p>
 <ul>
 <li>Diable sstate online in Yocto</li>
 </ul>
-<h2 id="worknote">Worknote<a class="headerlink" href="#worknote" title="Permanent link">&para;</a></h2>
+<h2 id="worknote">Worknote<a class="headerlink" href="#worknote" title="Permanent link">¶</a></h2>
 <ul>
 <li>
 <p>build target when use <code>petalinux build</code> is petalinux-user-image.bb. Bitbake file dir: [project dir]/project-spec/meta-plnx-generated/recipes-core/images/petalinux-user-image.bb</p>
@@ -4070,17 +4108,17 @@
 <p>$WORKDIR: build/tmp/work/plnx_arm-xilinx-linux-gnueabi/libsample-tar/1.0-r0</p>
 </li>
 </ul>
-<h2 id="experiences">Experiences<a class="headerlink" href="#experiences" title="Permanent link">&para;</a></h2>
-<h3 id="create-and-initialize-a-project">Create and initialize a project<a class="headerlink" href="#create-and-initialize-a-project" title="Permanent link">&para;</a></h3>
+<h2 id="experiences">Experiences<a class="headerlink" href="#experiences" title="Permanent link">¶</a></h2>
+<h3 id="create-and-initialize-a-project">Create and initialize a project<a class="headerlink" href="#create-and-initialize-a-project" title="Permanent link">¶</a></h3>
 <p>Quá trình khởi tạo project (1) và import hdf (2) tiến hành tương tự với petalinux 2015.4 (xem thêm ug1144 để biết về các cmd tương ứng cho từng quá trình). </p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>├── config.project
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>└── project-spec
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    ├── attributes
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    ├── configs
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    │   ├── config
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    │   └── rootfs_config
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    │&nbsp;&nbsp; ├── config
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    │&nbsp;&nbsp; └── rootfs_config
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    ├── hw-description
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    │   └── metadata
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    │&nbsp;&nbsp; └── metadata
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    └── meta-user
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>        ├── conf
 <a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>        ├── COPYING.MIT
@@ -4096,13 +4134,13 @@
 </ul>
 <p>Kết thúc quá trình (2), cấu trúc thư mục của project biến đổi như hình vẽ dưới đây.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>├── build
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>│   ├── cache
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>│   ├── conf
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│   ├── config.log
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│   ├── misc
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>│   └── tmp
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>│&nbsp;&nbsp; ├── cache
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>│&nbsp;&nbsp; ├── conf
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│&nbsp;&nbsp; ├── config.log
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│&nbsp;&nbsp; ├── misc
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>│&nbsp;&nbsp; └── tmp
 <a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>├── components
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>│   └── plnx_workspace
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>│&nbsp;&nbsp; └── plnx_workspace
 <a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>├── config.project
 <a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>└── project-spec
 <a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    ├── attributes
@@ -4119,7 +4157,7 @@
 <li>Xuất hiện thêm Yocto layer “meta-plnx-generated” trong thư mục “project-spec”, chứa các Yocto recipes liên quan đến kernel, core, bsp.</li>
 </ul>
 <p>Xem thêm Apendix A trong tài liệu ug1144 để biết thêm thông tin về Petalinux project structure.</p>
-<h3 id="build-a-new-project-without-internet">Build a new project without Internet<a class="headerlink" href="#build-a-new-project-without-internet" title="Permanent link">&para;</a></h3>
+<h3 id="build-a-new-project-without-internet">Build a new project without Internet<a class="headerlink" href="#build-a-new-project-without-internet" title="Permanent link">¶</a></h3>
 <p>Để thực hiện build, chạy lệnh “petalinux-build”. </p>
 <p><strong>Pre-build configuration</strong></p>
 <ul>
@@ -4132,7 +4170,7 @@
 <li>
 <p>Xuất hiện lỗi liên quan đến bitbake nếu dừng quá trình build đột ngột (ví dụ dừng bằng tổ hợp phím Ctl+C). Solution here:</p>
 <ul>
-<li>Re-init environment:<br />
+<li>Re-init environment:<br>
 /home/user/Xilinx/Petalinux/settings.sh
 /home/user/Xilinx/Petalinux/components/yocto/source/aarch64/environment-setup-aarch64-xilinx-linux</li>
 <li>Remove ./build/bitbake.lock.</li>
@@ -4158,23 +4196,23 @@ Như vậy, bản cài đặt mặc định của petalinux không chứa đủ 
 </ul>
 <p><strong>Linaro - what is this?</strong></p>
 <p><strong>External kernel - How to?</strong></p>
-<h3 id="boot-from-sd-card">Boot from SD card<a class="headerlink" href="#boot-from-sd-card" title="Permanent link">&para;</a></h3>
-<p>Về cơ bản, boot từ SD Card được thực hiện giống với hướng dẫn trong mục <a href="../../../../projects/zynq/zedboard/zedboard/#bootext4rootfs">Zedboard</a>. Tệp rootfs.cpio được chứa trong thư mục <project>/image/linux/ sẵn sàng cho quá trình đưa lên thẻ nhớ.</p>
-<h3 id="mounting-sd-card-in-booting-time">Mounting SD card in booting-time<a class="headerlink" href="#mounting-sd-card-in-booting-time" title="Permanent link">&para;</a></h3>
+<h3 id="boot-from-sd-card">Boot from SD card<a class="headerlink" href="#boot-from-sd-card" title="Permanent link">¶</a></h3>
+<p>Về cơ bản, boot từ SD Card được thực hiện giống với hướng dẫn trong mục <a href="../../../../projects/zynq/zedboard/zedboard/#bootext4rootfs">Zedboard</a>. Tệp rootfs.cpio được chứa trong thư mục <project>/image/linux/ sẵn sàng cho quá trình đưa lên thẻ nhớ.</project></p>
+<h3 id="mounting-sd-card-in-booting-time">Mounting SD card in booting-time<a class="headerlink" href="#mounting-sd-card-in-booting-time" title="Permanent link">¶</a></h3>
 <p>Refer <a href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842475/PetaLinux+Yocto+Tips">PetaLinux Yocto Tips</a> (xilinx-wiki.atlassian.net) for step-by-step instructions.</p>
-<h2 id="add-user-custom-package">Add user custom package<a class="headerlink" href="#add-user-custom-package" title="Permanent link">&para;</a></h2>
+<h2 id="add-user-custom-package">Add user custom package<a class="headerlink" href="#add-user-custom-package" title="Permanent link">¶</a></h2>
 <p>Bản chất quản lý gói phần mềm trong petalinux là Yocto project. Mã nguồn của các gói phần mềm có thể được download từ các online repository hoặc lưu trữ trực tiếp trên máy local. Trong mục này sẽ lấy ví dụ về một gói phần mềm phổ biến, hay được sử dụng trong quá trình đánh giá chất lượng mạng: IPERF.</p>
 <p>Petalinux sẽ thực hiện tải source code của iperf từ Github sau đó tiến hành cấu hình, build và tích hợp vào hệ thống.</p>
 <p>Khi khởi tạo một ứng dụng (apps) mới, một package được tạo tại <code>project-spec/meta-user/recipes-apps</code>. Cấu trúc của một recipes như sau:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>vux-iperf/
+<p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>vux-iperf/
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>├── files
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>│   ├── 0002-Remove-pg-from-profile_CFLAGS.patch
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>│   └── automake-foreign.patch
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>│&nbsp;&nbsp; ├── 0002-Remove-pg-from-profile_CFLAGS.patch
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>│&nbsp;&nbsp; └── automake-foreign.patch
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>├── README
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>└── vux-iperf.bb
 </code></pre></div>
-Trong ví dụ là cấu hình để build bản phần mềm iperf3. Bitbake file cho recipes này được tải tại <a href="https://layers.openembedded.org/layerindex/recipe/32243/">iperf3 3.6</a> (layers.openembedded.org). Nội dung file iperf3_3.6.bb như sau:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>SUMMARY = "Network benchmark tool"
+Trong ví dụ là cấu hình để build bản phần mềm iperf3. Bitbake file cho recipes này được tải tại <a href="https://layers.openembedded.org/layerindex/recipe/32243/">iperf3 3.6</a> (layers.openembedded.org). Nội dung file iperf3_3.6.bb như sau:<p></p>
+<p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>SUMMARY = "Network benchmark tool"
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>HOMEPAGE = "http://software.es.net/iperf/"
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>SECTION = "console/network"
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>BUGTRACKER = "https://github.com/esnet/iperf/issues"
@@ -4200,14 +4238,14 @@ Trong ví dụ là cấu hình để build bản phần mềm iperf3. Bitbake fi
 <a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>EXTRA_OECONF = "--with-openssl=${RECIPE_SYSROOT}${prefix}"
 <a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>BBCLASSEXTEND = "native"
 </code></pre></div>
-<em><a href="http://cgit.openembedded.org/meta-openembedded/tree/meta-oe/recipes-benchmark/iperf3/iperf3_3.6.bb?h=master">http://cgit.openembedded.org/meta-openembedded/tree/meta-oe/recipes-benchmark/iperf3/iperf3_3.6.bb?h=master</a></em></p>
+<em><a href="http://cgit.openembedded.org/meta-openembedded/tree/meta-oe/recipes-benchmark/iperf3/iperf3_3.6.bb?h=master">http://cgit.openembedded.org/meta-openembedded/tree/meta-oe/recipes-benchmark/iperf3/iperf3_3.6.bb?h=master</a></em><p></p>
 <p>Trong file vux-iperf.bb có một số khái niệm và thông tin cần lưu ý như sau.</p>
 <p><strong>Đường dẫn đến source code của package</strong></p>
 <p>Tham số SRC_URI chứa đường dẫn đến source code của pakcage. Thông qua thông tin chứa trong đường dẫn này, bitbake thực hiện nhiệm vụ do_fetch. 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>SRC_URI = "git://github.com/esnet/iperf.git \
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>SRC_URI = "git://github.com/esnet/iperf.git \
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>           file://automake-foreign.patch \
 </code></pre></div>
-Trong ví dụ này, SRC_URI chỉ đến một git repository của esnet. Người dùng có thể truy cập trực tiếp vào repo này để xem source code. Ngoài ra SRC_URI chỉ đến một file được lưu trữ local chứa bản patch. Bản patch này có thể được tìm thấy trên openembedded.org.</p>
+Trong ví dụ này, SRC_URI chỉ đến một git repository của esnet. Người dùng có thể truy cập trực tiếp vào repo này để xem source code. Ngoài ra SRC_URI chỉ đến một file được lưu trữ local chứa bản patch. Bản patch này có thể được tìm thấy trên openembedded.org.<p></p>
 <p><strong>Revision của source code</strong></p>
 <p>Tham số SRCREV chỉ cho bitbake biết được revision nào của source code cần được sử dụng để build package.</p>
 <p><code>SRCREV = "88d907f7fb58bfab5d086c5da60c922e1c582c92"</code></p>
@@ -4219,14 +4257,14 @@ Trong ví dụ này, SRC_URI chỉ đến một git repository của esnet. Ngư
 <p>Tương ứng với mỗi revision chứa một file LICENSE đi kèm với MD5SUM.</p>
 <p><code>LIC_FILES_CHKSUM = "file://LICENSE;md5=d098223e44bdd19585315ee75cd9d2d7"</code></p>
 <p>Lưu ý rằng LIC_FILES có thể là LICENSE hoặc bất cứ tên khác. </p>
-<h2 id="petalinux-imagebbappend">petalinux-image.bbappend<a class="headerlink" href="#petalinux-imagebbappend" title="Permanent link">&para;</a></h2>
+<h2 id="petalinux-imagebbappend">petalinux-image.bbappend<a class="headerlink" href="#petalinux-imagebbappend" title="Permanent link">¶</a></h2>
 <p>Lưu trữ tại project-spec/meta-user/recipes-core/images/petalinux-image.bbappend chứa các package có thể được install vào hệ thống. Khi xóa các package trong file này sẽ ảnh hưởng đến petalinux-config -c rootfs.</p>
-<h2 id="application-auto-run-at-startup">Application Auto Run at Startup<a class="headerlink" href="#application-auto-run-at-startup" title="Permanent link">&para;</a></h2>
+<h2 id="application-auto-run-at-startup">Application Auto Run at Startup<a class="headerlink" href="#application-auto-run-at-startup" title="Permanent link">¶</a></h2>
 <p>Thuật ngữ: <code>update-rc.d</code>, <code>System V</code></p>
 <p>Các ứng dụng được cài đặt trên Rootfs dưới dạng các binary và thông thường chỉ được khởi động khi có yêu cầu của người dùng. Trong một số trường hợp ứng dụng cần khởi động trong quá trình booting cùng hệ thống.</p>
 <p>Ý tưởng cho phương pháp này là sử dụng Yocto class <code>update-rc.d.bbclass</code> để cài đặt <code>init script</code> dạng <code>System V</code> vào hệ thống. <code>update-rc.d.bbclass</code> sử dụng update-rc.d (a Debian utility) đề "safety install" init script vào hệ thống.</p>
 <p>Dưới đây là recipe file của một package yêu cầu Yocto tiến hành cài đặt một <code>init script</code> vào hệ thống. </p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>SUMMARY = "Simple iiod-init application"
+<p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>SUMMARY = "Simple iiod-init application"
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>SECTION = "PETALINUX/apps"
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>LICENSE = "MIT"
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
@@ -4250,7 +4288,7 @@ Trong ví dụ này, SRC_URI chỉ đến một git repository của esnet. Ngư
 <a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>
 <a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>FILES_${PN} += "${sysconfdir}/*"
 </code></pre></div>
-Một số điểm lưu ý trong recipe:</p>
+Một số điểm lưu ý trong recipe:<p></p>
 <ul>
 <li><code>inherit update-rc.d</code>: gọi đến class <code>update-rc.d</code>.</li>
 <li><code>INITSCRIPT_NAME</code> &amp; <code>INITSCRIPT_PARAMS</code>: là các biến số cho class <code>update-rc.d</code>. Tham khảo thêm tại <a href="https://www.yoctoproject.org/docs/2.1/ref-manual/ref-manual.html#ref-classes-update-rc.d">update-rc.d.bbclass</a> của Yocto ref-manual.</li>
@@ -4277,7 +4315,7 @@ Một số điểm lưu ý trong recipe:</p>
       
   <span class="md-source-file__fact">
     <span class="md-icon" title="Last update">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
     <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 20, 2026 09:37:50 UTC">October 20, 2026</span>
   </span>
@@ -4287,7 +4325,7 @@ Một số điểm lưu ý trong recipe:</p>
       
   <span class="md-source-file__fact">
     <span class="md-icon" title="Created">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
     </span>
     <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="March 1, 2019 15:12:29 UTC">March 1, 2019</span>
   </span>
@@ -4313,9 +4351,9 @@ Một số điểm lưu ý trong recipe:</p>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
-          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Back to top
 </button>
         
@@ -4325,13 +4363,13 @@ Một số điểm lưu ý trong recipe:</p>
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
           <a href="../ptlnx/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
@@ -4356,7 +4394,7 @@ Một số điểm lưu ý trong recipe:</p>
             </div>
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
             </div>
           </a>
         
@@ -4368,7 +4406,7 @@ Một số điểm lưu ý trong recipe:</p>
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2018 Vu Tang.
+      Copyright © 2018 Vu Tang.
     </div>
   
   
@@ -4398,5 +4436,7 @@ Một số điểm lưu ý trong recipe:</p>
       <script src="../../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

@@ -1,11 +1,12 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
+      
+      
+        <meta name="author" content="Vu Tang">
       
       
         <link rel="canonical" href="https://vutang.github.io/lnx_es/nbd/nbd/">
@@ -45,8 +46,8 @@
       
         
         
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -69,7 +70,17 @@
 
     
     
-  </head>
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -102,15 +113,15 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="Vu Tang&#39;s Docs" class="md-header__button md-logo" aria-label="Vu Tang's Docs" data-md-component="logo">
+    <a href="../../.." title="Vu Tang's Docs" class="md-header__button md-logo" aria-label="Vu Tang's Docs" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -135,20 +146,20 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
     
-      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
       </label>
     
   
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
     
-      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
       </label>
     
   
@@ -164,24 +175,24 @@
       
         <label class="md-header__button md-icon" for="__search">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         </label>
         <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -189,7 +200,7 @@
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Initializing search
@@ -202,6 +213,18 @@
 </div>
       
     
+    
+      <div class="md-header__source">
+        <a href="https://github.com/vutang/mkdocs-vux-note" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
     
   </nav>
   
@@ -287,7 +310,7 @@
           
   
   
-  Book & Materials
+  Book &amp; Materials
 
         </a>
       </li>
@@ -487,7 +510,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -498,16 +521,28 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Vu Tang&#39;s Docs" class="md-nav__button md-logo" aria-label="Vu Tang's Docs" data-md-component="logo">
+    <a href="../../.." title="Vu Tang's Docs" class="md-nav__button md-logo" aria-label="Vu Tang's Docs" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 
     </a>
     Vu Tang's Docs
   </label>
   
-  <ul class="md-nav__list" data-md-scrollfix>
+    <div class="md-nav__source">
+      <a href="https://github.com/vutang/mkdocs-vux-note" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
     
       
       
@@ -556,7 +591,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -586,7 +621,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -840,7 +875,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -850,7 +885,7 @@
   <span class="md-ellipsis">
     
   
-    Book & Materials
+    Book &amp; Materials
   
 
     
@@ -866,11 +901,11 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Book & Materials
+    Book &amp; Materials
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -886,7 +921,7 @@
   <span class="md-ellipsis">
     
   
-    C Programing
+    C Programming
   
 
     
@@ -914,7 +949,7 @@
   <span class="md-ellipsis">
     
   
-    Linux Programing
+    Linux Programming
   
 
     
@@ -1026,7 +1061,7 @@
   <span class="md-ellipsis">
     
   
-    Data Structure & Algorithms
+    Data Structure &amp; Algorithms
   
 
     
@@ -1100,7 +1135,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked="">
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
@@ -1130,7 +1165,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -1211,7 +1246,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3">
         
           
           <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="">
@@ -1241,7 +1276,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -1358,7 +1393,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4">
         
           
           <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="">
@@ -1388,7 +1423,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -1505,7 +1540,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5">
         
           
           <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="">
@@ -1535,7 +1570,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -1596,7 +1631,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6">
         
           
           <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="">
@@ -1626,7 +1661,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -1687,7 +1722,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7">
         
           
           <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="">
@@ -1717,7 +1752,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -1903,7 +1938,7 @@
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
   <a href="#gioi-thieu-ve-network-block-device-nbd" class="md-nav__link">
@@ -2221,7 +2256,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_13" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_13">
         
           
           <label class="md-nav__link" for="__nav_5_13" id="__nav_5_13_label" tabindex="">
@@ -2251,7 +2286,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2323,7 +2358,7 @@
   <span class="md-ellipsis">
     
   
-    Raspberrypi 3B
+    Raspberry Pi 3B
   
 
     
@@ -2368,7 +2403,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_14" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_14">
         
           
           <label class="md-nav__link" for="__nav_5_14" id="__nav_5_14_label" tabindex="">
@@ -2398,7 +2433,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2491,7 +2526,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -2521,7 +2556,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2543,7 +2578,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1">
         
           
           <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
@@ -2573,7 +2608,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2911,7 +2946,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2">
         
           
           <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
@@ -2941,7 +2976,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -3090,7 +3125,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -3120,7 +3155,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -3142,7 +3177,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1">
         
           
           <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
@@ -3172,7 +3207,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -3237,7 +3272,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8">
         
           
           <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
@@ -3267,7 +3302,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -3317,7 +3352,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2">
         
           
           <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
@@ -3347,7 +3382,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -3608,7 +3643,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9">
         
           
           <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
@@ -3638,7 +3673,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -3660,7 +3695,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_1">
         
           
           <label class="md-nav__link" for="__nav_9_1" id="__nav_9_1_label" tabindex="0">
@@ -3690,7 +3725,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -3783,7 +3818,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10">
         
           
           <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
@@ -3813,7 +3848,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -3835,7 +3870,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_1">
         
           
           <label class="md-nav__link" for="__nav_10_1" id="__nav_10_1_label" tabindex="0">
@@ -3865,7 +3900,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -3973,7 +4008,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -3989,7 +4024,7 @@
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
   <a href="#gioi-thieu-ve-network-block-device-nbd" class="md-nav__link">
@@ -4262,7 +4297,7 @@
                 
                   
 
-  <nav class="md-tags" >
+  <nav class="md-tags">
     
       
       
@@ -4288,57 +4323,60 @@
   </nav>
 
 
+  
+  
 
-<h1 id="network-block-device">Network Block Device<a class="headerlink" href="#network-block-device" title="Permanent link">&para;</a></h1>
+
+<h1 id="network-block-device">Network Block Device<a class="headerlink" href="#network-block-device" title="Permanent link">¶</a></h1>
 <p><em>Ngô Minh Khánh - Phòng PMHT - TTVTBR - 11/2022</em></p>
-<h2 id="gioi-thieu-ve-network-block-device-nbd">Giới thiệu về Network Block Device (NBD)<a class="headerlink" href="#gioi-thieu-ve-network-block-device-nbd" title="Permanent link">&para;</a></h2>
+<h2 id="gioi-thieu-ve-network-block-device-nbd">Giới thiệu về Network Block Device (NBD)<a class="headerlink" href="#gioi-thieu-ve-network-block-device-nbd" title="Permanent link">¶</a></h2>
 <p>Network Block Device (NDB) được viết đầu tiên bởi Pavel Machek vào tháng 4 năm 1997 trên Linux kernel phiên bản 2.1.55. Sau đó NDB tiếp tục được phát triển thêm các phiên bản phù hợp với các kernel 57, 101, 111 và 132 (tính đến năm 2000).</p>
 <p>Network Block Device là một kỹ thuật lưu trữ dữ liệu từ xa được sử dụng trên các hệ thống máy tính Linux và Unix, cho phép một thiết bị Client truy cập vào kho dữ liệu trên một Server từ xa. Khi thiết bị Client đã thiết lập NBD, nó sẽ hoạt động như thể có một ổ đĩa thực sự trên phía Client chứ không phải ở một Server nào đó trên mạng.</p>
 <p>NBD ở phía Server có thể là một đĩa cứng thực tế hoặc là một loại tệp đặc biệt có thể được truy cập như thể nó là một đĩa. Mặc dù chậm hơn đĩa cứng cục bộ, nhưng phương pháp này hữu ích cho một số trường hợp, chẳng hạn như backup dữ liệu hoặc cung cấp khả năng lưu trữ cho một thiết bị không có hoặc có bộ nhớ lưu trữ nhỏ.</p>
 <p>Server chạy một phần mềm nhỏ, được gọi là daemon, cho phép Client truy cập vào mount tới thiết bị lưu trữ.</p>
 <figure>
-<p><img alt="" src="../imgs/nbd_topo.png" width="700" />
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../imgs/nbd_topo.png" data-desc-position="bottom"><img alt="" src="../imgs/nbd_topo.png" width="700"></a>
   </p>
 <figcaption>Mô hình sử dụng NBD giữa client và server</figcaption>
 </figure>
 <p>NBD có thể được triển khai cùng với công nghệ RAID để thiết lập một số kiểu sao chép/backup bộ nhớ giữa clietn và server. Với RAID0, có thể chia dữ liệu lên các bộ nhớ để có thể đạt được hiệu năng đọc/ghi và dung lượng lưu trữ lớn hơn. Còn với RAID1, dữ liệu trên một bộ nhớ được sao chép đồng thời trên bất kỳ bộ nhớ nào khác, cung cấp một bản sao lưu có thể truy cập tức thì nếu bất kỳ đĩa nào bị lỗi. </p>
 <figure>
-<p><img alt="" src="../imgs/nbd_topo_raid.png" width="700" />
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../imgs/nbd_topo_raid.png" data-desc-position="bottom"><img alt="" src="../imgs/nbd_topo_raid.png" width="700"></a>
   </p>
 <figcaption>NBD được triển khai cùng công nghệ RAID</figcaption>
 </figure>
-<h2 id="so-sanh-nbd-va-nfs">So sánh NBD và NFS<a class="headerlink" href="#so-sanh-nbd-va-nfs" title="Permanent link">&para;</a></h2>
+<h2 id="so-sanh-nbd-va-nfs">So sánh NBD và NFS<a class="headerlink" href="#so-sanh-nbd-va-nfs" title="Permanent link">¶</a></h2>
 <p>Network Block Device (NBD) có những đặc điểm tương tự với kỹ thuật Network File System (NFS). Một thí nghiệm được thực hiện vào năm 1999 và sử dụng phiên bản NBD driver ban đầu của Pavel chỉ ra rằng việc mount một file Linux EXT2 bằng NBD cho tốc độ nhanh hơn sử dụng NFS (Network File System) trên cùng một thiết bị.</p>
 <p>Thông qua thí nghiệm việc mount file bằng NBD trong các điều kiện mặc định giống với NFS với độ lớn bộ đệm xấp xỉ 1.5KB, gấp 1,5 lần kích thước bộ đệm mặc định NFS là 1KB. Thêm vào đó NFS sử dụng giao thức UDP còn NBD sử dụng giao thức TCP. UDP là phương pháp “truyền và quên”, nên đôi khi dữ liệu truyền có thể bị mất. Ngược lại, TCP thiết lập một kết nối dự trên tiến trình bắt tay 3 bước, do đó đảm bảo dữ liệu NBD được đọc và ghi chính xác. </p>
 <figure>
-<p><img alt="" src="../imgs/nbd_vs_nfs.png" width="700" />
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../imgs/nbd_vs_nfs.png" data-desc-position="bottom"><img alt="" src="../imgs/nbd_vs_nfs.png" width="700"></a>
   </p>
 <figcaption>So sánh tốc độ mount giữa NFS và NBD</figcaption>
 </figure>
 <p>Cả NFS và NBD đều có cấu trúc liên kết dạng hình sao. Tuy nhiên, NFS có server được đặt ở vị trí trung tâm và kết nối với nhiều client, trong khi đó NBD với công nghệ RAID cung cấp cấu trúc ngược lại - một client kết nối tới nhiều server. Điều năng cho phép client tăng khả năng lưu trữ cũng như backup và truy cập lại dữ liệu ngày khi một bộ nhớ trên một server bất kỳ bị hỏng.</p>
 <figure>
-<p><img alt="" src="../imgs/nbd_vs_nfs_2.png" width="600" />
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../imgs/nbd_vs_nfs_2.png" data-desc-position="bottom"><img alt="" src="../imgs/nbd_vs_nfs_2.png" width="600"></a>
   </p>
 <figcaption>Mô hình liên kết của NFS và NBD</figcaption>
 </figure>
-<h2 id="thiet-lap-network-block-device-dua-tren-filesystem">Thiết lập Network Block Device dựa trên filesystem<a class="headerlink" href="#thiet-lap-network-block-device-dua-tren-filesystem" title="Permanent link">&para;</a></h2>
-<h3 id="cau-hinh-ndb-o-phia-server">Cấu hình NDB ở phía Server.<a class="headerlink" href="#cau-hinh-ndb-o-phia-server" title="Permanent link">&para;</a></h3>
+<h2 id="thiet-lap-network-block-device-dua-tren-filesystem">Thiết lập Network Block Device dựa trên filesystem<a class="headerlink" href="#thiet-lap-network-block-device-dua-tren-filesystem" title="Permanent link">¶</a></h2>
+<h3 id="cau-hinh-ndb-o-phia-server">Cấu hình NDB ở phía Server.<a class="headerlink" href="#cau-hinh-ndb-o-phia-server" title="Permanent link">¶</a></h3>
 <p>Các bước thực hiện cấu hình phía Server:</p>
-<h4 id="cai-at-ndb-server">Cài đặt NDB Server.<a class="headerlink" href="#cai-at-ndb-server" title="Permanent link">&para;</a></h4>
+<h4 id="cai-at-ndb-server">Cài đặt NDB Server.<a class="headerlink" href="#cai-at-ndb-server" title="Permanent link">¶</a></h4>
 <p><code>apt-get install nbd-server</code></p>
-<h4 id="tao-noi-dung-tep">Tạo nội dung tệp.<a class="headerlink" href="#tao-noi-dung-tep" title="Permanent link">&para;</a></h4>
+<h4 id="tao-noi-dung-tep">Tạo nội dung tệp.<a class="headerlink" href="#tao-noi-dung-tep" title="Permanent link">¶</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>dd if=/dev/zero of=/mnt/nbd1 bs=1024 count=36000
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>mke2fs /mnt/nbd1
 </code></pre></div>
-<h4 id="chay-ndb-server-daemon">Chạy NDB Server daemon.<a class="headerlink" href="#chay-ndb-server-daemon" title="Permanent link">&para;</a></h4>
+<h4 id="chay-ndb-server-daemon">Chạy NDB Server daemon.<a class="headerlink" href="#chay-ndb-server-daemon" title="Permanent link">¶</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>(Syntax: nbd-server port-number filename/filesystem)
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a> nbd-server 1043 /mnt/nbd1
 </code></pre></div>
-<h3 id="cau-hinh-ndb-o-phia-client">Cấu hình NDB ở phía Client<a class="headerlink" href="#cau-hinh-ndb-o-phia-client" title="Permanent link">&para;</a></h3>
+<h3 id="cau-hinh-ndb-o-phia-client">Cấu hình NDB ở phía Client<a class="headerlink" href="#cau-hinh-ndb-o-phia-client" title="Permanent link">¶</a></h3>
 <p>Các bước thực hiện cấu hình phía Client:</p>
-<h4 id="cai-at-nbd-client">Cài đặt NBD Client.<a class="headerlink" href="#cai-at-nbd-client" title="Permanent link">&para;</a></h4>
+<h4 id="cai-at-nbd-client">Cài đặt NBD Client.<a class="headerlink" href="#cai-at-nbd-client" title="Permanent link">¶</a></h4>
 <p><code>apt-get install nbd-client</code></p>
-<h4 id="tao-filesytem-tren-thiet-bi-client">Tạo filesytem trên thiết bị Client.<a class="headerlink" href="#tao-filesytem-tren-thiet-bi-client" title="Permanent link">&para;</a></h4>
+<h4 id="tao-filesytem-tren-thiet-bi-client">Tạo filesytem trên thiết bị Client.<a class="headerlink" href="#tao-filesytem-tren-thiet-bi-client" title="Permanent link">¶</a></h4>
 <p>(Syntax: nbd-client server-ip server-port filename/filesystem)</p>
 <p><code>nbd-client 192.168.1.11 1043 /mnt/nbd1</code></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Starting NBD client process: Connecting...Negotiation: ..size = 36000KB bs=1024, sz=36000
@@ -4349,26 +4387,26 @@
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>/mnt/nbd1: |===============================| 56.0%
 <a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>/mnt/nbd1: |===============================| 100.0%
 </code></pre></div>
-<h4 id="mount-file-phia-client">Mount file phía Client<a class="headerlink" href="#mount-file-phia-client" title="Permanent link">&para;</a></h4>
+<h4 id="mount-file-phia-client">Mount file phía Client<a class="headerlink" href="#mount-file-phia-client" title="Permanent link">¶</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>mkdir /rem_space 
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>mount /mnt/nbd1 /rem_space
 </code></pre></div>
-<h4 id="lay-nhung-thay-oi-phia-client-tren-server">Lấy những thay đổi phía Client trên Server<a class="headerlink" href="#lay-nhung-thay-oi-phia-client-tren-server" title="Permanent link">&para;</a></h4>
+<h4 id="lay-nhung-thay-oi-phia-client-tren-server">Lấy những thay đổi phía Client trên Server<a class="headerlink" href="#lay-nhung-thay-oi-phia-client-tren-server" title="Permanent link">¶</a></h4>
 <p><code>mount -o loop /mnt/nbd1 /client_changes</code></p>
-<h2 id="truy-cap-bo-nho-tu-xa-nhu-la-bo-nho-swap">Truy cập bộ nhớ từ xa như là bộ nhớ SWAP<a class="headerlink" href="#truy-cap-bo-nho-tu-xa-nhu-la-bo-nho-swap" title="Permanent link">&para;</a></h2>
-<h3 id="cau-hinh-phia-server">Cấu hình phía Server.<a class="headerlink" href="#cau-hinh-phia-server" title="Permanent link">&para;</a></h3>
-<h4 id="tao-file">Tạo file .<a class="headerlink" href="#tao-file" title="Permanent link">&para;</a></h4>
+<h2 id="truy-cap-bo-nho-tu-xa-nhu-la-bo-nho-swap">Truy cập bộ nhớ từ xa như là bộ nhớ SWAP<a class="headerlink" href="#truy-cap-bo-nho-tu-xa-nhu-la-bo-nho-swap" title="Permanent link">¶</a></h2>
+<h3 id="cau-hinh-phia-server">Cấu hình phía Server.<a class="headerlink" href="#cau-hinh-phia-server" title="Permanent link">¶</a></h3>
+<h4 id="tao-file">Tạo file .<a class="headerlink" href="#tao-file" title="Permanent link">¶</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>dd if=/dev/zero of=/mnt/nbd2 bs=1624 count=16000
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>mkswap /mnt/nbd2
 </code></pre></div>
-<h4 id="chay-server-daemon">Chạy Server daemon.<a class="headerlink" href="#chay-server-daemon" title="Permanent link">&para;</a></h4>
+<h4 id="chay-server-daemon">Chạy Server daemon.<a class="headerlink" href="#chay-server-daemon" title="Permanent link">¶</a></h4>
 <p><code>nbd-server 1043 /mnt/nbd2</code></p>
-<h3 id="cau-hinh-phia-client">Cấu hình phía Client.<a class="headerlink" href="#cau-hinh-phia-client" title="Permanent link">&para;</a></h3>
-<h4 id="lay-filesystem-nhu-la-vung-swap">Lấy filesystem như là vùng swap.<a class="headerlink" href="#lay-filesystem-nhu-la-vung-swap" title="Permanent link">&para;</a></h4>
+<h3 id="cau-hinh-phia-client">Cấu hình phía Client.<a class="headerlink" href="#cau-hinh-phia-client" title="Permanent link">¶</a></h3>
+<h4 id="lay-filesystem-nhu-la-vung-swap">Lấy filesystem như là vùng swap.<a class="headerlink" href="#lay-filesystem-nhu-la-vung-swap" title="Permanent link">¶</a></h4>
 <p><code>nbd-client 192.168.1.11 1043 -swap /mnt/nbd2</code></p>
-<h4 id="kiem-tra-lai-bang-lenh">Kiểm tra lại bằng lệnh<a class="headerlink" href="#kiem-tra-lai-bang-lenh" title="Permanent link">&para;</a></h4>
+<h4 id="kiem-tra-lai-bang-lenh">Kiểm tra lại bằng lệnh<a class="headerlink" href="#kiem-tra-lai-bang-lenh" title="Permanent link">¶</a></h4>
 <p><code>cat /proc/swaps</code></p>
-<h2 id="tong-ket">Tổng kết.<a class="headerlink" href="#tong-ket" title="Permanent link">&para;</a></h2>
+<h2 id="tong-ket">Tổng kết.<a class="headerlink" href="#tong-ket" title="Permanent link">¶</a></h2>
 <p>Network Block Device (NBD) là một công nghệ giúp một thiết bị Client kết nối đến với một Server chứa một thiết bị lưu trữ dạng khối (block device) thực từ xa. NBD cung cấp cho một thiết bị không có hoặc có bộ nhớ nhỏ có thể lưu trữ dữ liệu, đồng thời tăng dung lượng hoặc backup hiệu quả.</p>
 
 
@@ -4390,7 +4428,7 @@
       
   <span class="md-source-file__fact">
     <span class="md-icon" title="Last update">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
     <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 20, 2026 09:37:50 UTC">October 20, 2026</span>
   </span>
@@ -4400,7 +4438,7 @@
       
   <span class="md-source-file__fact">
     <span class="md-icon" title="Created">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
     </span>
     <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 30, 2022 15:56:39 UTC">November 30, 2022</span>
   </span>
@@ -4426,9 +4464,9 @@
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
-          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Back to top
 </button>
         
@@ -4438,13 +4476,13 @@
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
           <a href="../../dpdk/dpdk/" class="md-footer__link md-footer__link--prev" aria-label="Previous: DPDK">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
@@ -4469,7 +4507,7 @@
             </div>
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
             </div>
           </a>
         
@@ -4481,7 +4519,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2018 Vu Tang.
+      Copyright © 2018 Vu Tang.
     </div>
   
   
@@ -4511,5 +4549,7 @@
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
