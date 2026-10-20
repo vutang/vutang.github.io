@@ -1371,6 +1371,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#quan-ly-va-ong-bo-nhanh-master-dev" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quản lý và đồng bộ nhánh (master &amp; dev)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quản lý và đồng bộ nhánh (master &amp; dev)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#keo-code-moi-nhat-tu-master-ve-dev" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kéo code mới nhất từ master về dev
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xu-ly-commit-loi-a-ay-len-remote" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Xử lý commit lỗi đã đẩy lên remote
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ong-bo-tuyet-oi-ep-dev-giong-het-master-100" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Đồng bộ tuyệt đối: ép dev giống hệt master (100%)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3550,6 +3600,56 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#quan-ly-va-ong-bo-nhanh-master-dev" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quản lý và đồng bộ nhánh (master &amp; dev)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quản lý và đồng bộ nhánh (master &amp; dev)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#keo-code-moi-nhat-tu-master-ve-dev" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kéo code mới nhất từ master về dev
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xu-ly-commit-loi-a-ay-len-remote" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Xử lý commit lỗi đã đẩy lên remote
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ong-bo-tuyet-oi-ep-dev-giong-het-master-100" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Đồng bộ tuyệt đối: ép dev giống hệt master (100%)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3613,6 +3713,64 @@
 <li>Revert a commit in a branch:</li>
 </ul>
 <p><code>git reset --hard &lt;commit-hash-value&gt;</code></p>
+<h2 id="quan-ly-va-ong-bo-nhanh-master-dev">Quản lý và đồng bộ nhánh (master &amp; dev)<a class="headerlink" href="#quan-ly-va-ong-bo-nhanh-master-dev" title="Permanent link">&para;</a></h2>
+<h3 id="keo-code-moi-nhat-tu-master-ve-dev">Kéo code mới nhất từ <code>master</code> về <code>dev</code><a class="headerlink" href="#keo-code-moi-nhat-tu-master-ve-dev" title="Permanent link">&para;</a></h3>
+<p>Sử dụng khi nhánh <code>master</code> có cập nhật mới và bạn muốn lấy các thay đổi đó về <code>dev</code> để tiếp tục làm việc.</p>
+<ul>
+<li><strong>Sử dụng Merge (an toàn, khuyên dùng):</strong> giữ nguyên lịch sử thực tế, tạo thêm 1 merge commit.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>git<span class="w"> </span>checkout<span class="w"> </span>dev
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>git<span class="w"> </span>fetch<span class="w"> </span>origin
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>git<span class="w"> </span>merge<span class="w"> </span>origin/master
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>dev
+</code></pre></div>
+<ul>
+<li><strong>Sử dụng Rebase (lịch sử thẳng hàng):</strong> bốc các commit riêng của <code>dev</code> đặt lên trên cùng của <code>master</code>.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>git<span class="w"> </span>checkout<span class="w"> </span>dev
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>git<span class="w"> </span>fetch<span class="w"> </span>origin
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>git<span class="w"> </span>rebase<span class="w"> </span>origin/master
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>dev<span class="w"> </span>--force-with-lease
+</code></pre></div>
+<h3 id="xu-ly-commit-loi-a-ay-len-remote">Xử lý commit lỗi đã đẩy lên remote<a class="headerlink" href="#xu-ly-commit-loi-a-ay-len-remote" title="Permanent link">&para;</a></h3>
+<p>Khi nhánh <code>dev</code> đang chứa một commit bị lỗi và bạn muốn hoàn tác nó.</p>
+<ul>
+<li><strong>Cách an toàn (dùng Revert):</strong> tạo một commit mới mang nội dung đảo ngược, không làm hỏng lịch sử chung của team.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git<span class="w"> </span>log<span class="w"> </span>--oneline<span class="w"> </span>-n<span class="w"> </span><span class="m">5</span><span class="w">       </span><span class="c1"># Lấy mã hash của commit lỗi (VD: a1b2c3d)</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>git<span class="w"> </span>revert<span class="w"> </span>&lt;mã_commit&gt;<span class="w">       </span><span class="c1"># Tạo commit đảo ngược</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>dev<span class="w">          </span><span class="c1"># Đẩy lên remote bình thường</span>
+</code></pre></div>
+<ul>
+<li><strong>Cách xóa vĩnh viễn (dùng Reset):</strong> xóa không để lại dấu vết (cần cẩn thận nếu team dùng chung nhánh).</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> </span>HEAD~1<span class="w">      </span><span class="c1"># Quay lùi lại 1 commit để bỏ commit mới nhất</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>dev<span class="w"> </span>--force-with-lease
+</code></pre></div>
+<h3 id="ong-bo-tuyet-oi-ep-dev-giong-het-master-100">Đồng bộ tuyệt đối: ép <code>dev</code> giống hệt <code>master</code> (100%)<a class="headerlink" href="#ong-bo-tuyet-oi-ep-dev-giong-het-master-100" title="Permanent link">&para;</a></h3>
+<p>Sử dụng khi nhánh <code>dev</code> (cả local lẫn remote) bị rác lịch sử quá nhiều và bạn muốn nó trở thành bản sao hoàn hảo của <code>master</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Thao tác này sẽ <strong>xoá vĩnh viễn</strong> các commit riêng trên <code>dev</code>.</p>
+</div>
+<ul>
+<li><strong>Cách A: ghi đè bằng Reset (nhanh chóng)</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>git<span class="w"> </span>checkout<span class="w"> </span>dev
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>git<span class="w"> </span>fetch<span class="w"> </span>origin
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> </span>origin/master<span class="w">          </span><span class="c1"># Ép nhánh local giống hoàn toàn master</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>dev<span class="w"> </span>--force-with-lease<span class="w">  </span><span class="c1"># Ghi đè nhánh remote trên server</span>
+</code></pre></div>
+<ul>
+<li><strong>Cách B: xóa hẳn và tạo lại (triệt để nhất)</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>git<span class="w"> </span>checkout<span class="w"> </span>master
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>master
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>git<span class="w"> </span>branch<span class="w"> </span>-D<span class="w"> </span>dev<span class="w">                 </span><span class="c1"># Xóa nhánh dev ở local</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>--delete<span class="w"> </span>dev<span class="w">      </span><span class="c1"># Xóa nhánh dev trên server</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>dev<span class="w">               </span><span class="c1"># Tạo nhánh dev mới cứng từ master</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>dev<span class="w">            </span><span class="c1"># Đẩy nhánh mới lên server</span>
+</code></pre></div>
 
 
 
@@ -3635,7 +3793,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 29, 2020 07:33:30 UTC">February 29, 2020</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 20, 2026 07:07:37 UTC">October 20, 2026</span>
   </span>
 
     
