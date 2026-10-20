@@ -15,7 +15,7 @@
         <link rel="prev" href="../../imx8/imx8/">
       
       
-        <link rel="next" href="../yocto-build/">
+        <link rel="next" href="../../pi3b/">
       
       
         
@@ -26,7 +26,7 @@
     
     
       
-        <title>Overview - Vu Tang's Docs</title>
+        <title>i.MX6 (DART-MX6) - Vu Tang's Docs</title>
       
     
     
@@ -133,7 +133,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Overview
+              i.MX6 (DART-MX6)
             
           </span>
         </div>
@@ -2051,60 +2051,6 @@
   
   
   
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_13_3" checked="">
-        
-          
-          <label class="md-nav__link" for="__nav_5_13_3" id="__nav_5_13_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    i.MX6 (DART-MX6)
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_13_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5_13_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    i.MX6 (DART-MX6)
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-    
-  
-  
-  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
@@ -2120,7 +2066,7 @@
   <span class="md-ellipsis">
     
   
-    Overview
+    i.MX6 (DART-MX6)
   
 
     
@@ -2138,7 +2084,7 @@
   <span class="md-ellipsis">
     
   
-    Overview
+    i.MX6 (DART-MX6)
   
 
     
@@ -2162,17 +2108,6 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-      
-        <li class="md-nav__item">
-  <a href="#noi-dung" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Nội dung
-      
-    </span>
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#thong-tin-phan-cung" class="md-nav__link">
@@ -2208,16 +2143,261 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#tai-nguyen-tu-variscite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài nguyên từ Variscite
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#tai-nguyen-tu-variscite" class="md-nav__link">
+  <a href="#build-yocto" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Tài nguyên từ Variscite
+        Build Yocto
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Build Yocto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#moi-truong-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Môi trường build
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tai-source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tải source code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Build image
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Build image">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ket-qua-build-fsl-image-gui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kết quả build fsl-image-gui
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tai-lieu-lien-quan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài liệu liên quan
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#boot-tu-sd-card" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boot từ SD Card
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Boot từ SD Card">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ghi-image-sdcard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ghi image .sdcard
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extended-sd-card" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extended SD Card
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#boot-tu-emmc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boot từ eMMC
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Boot từ eMMC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cach-1-script-cua-variscite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cách 1: Script của Variscite
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cach-2-recovery-sd-scp-yocto-dartsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cách 2: Recovery SD + scp + yocto-dart.sh
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phat-trien-tren-imx6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phát triển trên i.MX6
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phát triển trên i.MX6">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#them-ung-dung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thêm ứng dụng
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-u-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Build U-Boot
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Build U-Boot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#customizing-u-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Customizing U-Boot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-u-boot-bang-toolchain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Build U-Boot bằng Toolchain
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-kernel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Build Kernel
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
       
     </span>
   </a>
@@ -2238,126 +2418,6 @@
     </ul>
   
 </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../yocto-build/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Yocto Build
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../boot-sdcard/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Boot SD Card
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../boot-emmc/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Boot eMMC
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../develop/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Development
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -4047,17 +4107,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#noi-dung" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Nội dung
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#thong-tin-phan-cung" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4091,16 +4140,261 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#tai-nguyen-tu-variscite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài nguyên từ Variscite
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#tai-nguyen-tu-variscite" class="md-nav__link">
+  <a href="#build-yocto" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Tài nguyên từ Variscite
+        Build Yocto
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Build Yocto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#moi-truong-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Môi trường build
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tai-source-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tải source code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Build image
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Build image">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ket-qua-build-fsl-image-gui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kết quả build fsl-image-gui
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tai-lieu-lien-quan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài liệu liên quan
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#boot-tu-sd-card" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boot từ SD Card
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Boot từ SD Card">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ghi-image-sdcard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ghi image .sdcard
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extended-sd-card" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extended SD Card
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#boot-tu-emmc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boot từ eMMC
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Boot từ eMMC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cach-1-script-cua-variscite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cách 1: Script của Variscite
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cach-2-recovery-sd-scp-yocto-dartsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cách 2: Recovery SD + scp + yocto-dart.sh
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phat-trien-tren-imx6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phát triển trên i.MX6
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phát triển trên i.MX6">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#them-ung-dung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thêm ứng dụng
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-u-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Build U-Boot
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Build U-Boot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#customizing-u-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Customizing U-Boot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-u-boot-bang-toolchain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Build U-Boot bằng Toolchain
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-kernel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Build Kernel
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
       
     </span>
   </a>
@@ -4172,50 +4466,15 @@
 
 <h1 id="imx6-dart-mx6-kit">i.MX6 - DART-MX6 KIT<a class="headerlink" href="#imx6-dart-mx6-kit" title="Permanent link">¶</a></h1>
 <p>Tài liệu này là kết quả của quá trình tìm hiểu Yocto Project thông qua việc build một hệ thống nhúng cho KIT i.MX6. Các khái niệm cơ bản của Yocto được bắt nguồn từ các hướng dẫn step-by-step để build Yocto image cho KIT, và từ các bước trong hướng dẫn đó dẫn đến việc phải tìm hiểu các khái niệm liên quan (xem <a href="../../../lnx_es/tool_chain/yocto/yocto/">Yocto</a>).</p>
-<h2 id="noi-dung">Nội dung<a class="headerlink" href="#noi-dung" title="Permanent link">¶</a></h2>
-<table>
-<thead>
-<tr>
-<th>Trang</th>
-<th>Nội dung</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../yocto-build/">Yocto Build</a></td>
-<td>Thiết lập môi trường, tải source, build <code>fsl-image-gui</code>, ý nghĩa các image</td>
-</tr>
-<tr>
-<td><a href="../boot-sdcard/">Boot SD Card</a></td>
-<td>Ghi image lên SD card, tạo extended SD card</td>
-</tr>
-<tr>
-<td><a href="../boot-emmc/">Boot eMMC</a></td>
-<td>Cài đặt image lên eMMC</td>
-</tr>
-<tr>
-<td><a href="../develop/">Development</a></td>
-<td>Thêm ứng dụng, build U-Boot, build kernel</td>
-</tr>
-</tbody>
-</table>
 <h2 id="thong-tin-phan-cung">Thông tin phần cứng<a class="headerlink" href="#thong-tin-phan-cung" title="Permanent link">¶</a></h2>
 <h3 id="dart-mx6-kit"><a href="https://www.variscite.com/products/system-on-module-som/cortex-a9/dart-mx6-cpu-freescale-imx6/">DART-MX6</a> - KIT<a class="headerlink" href="#dart-mx6-kit" title="Permanent link">¶</a></h3>
 <p>KIT được phát triển và thương mại hóa bởi hãng <a href="https://www.variscite.com/">Variscite</a>. Hãng chuyên thiết kế và sản xuất các System on Module, tích hợp chip của các hãng lớn như NXP/Freescale, Qualcomm, TI và Marvell.</p>
 <p>Chip sử dụng trên KIT là <strong>i.MX6 Quad PoP</strong> thuộc dòng <a href="https://www.nxp.com/products/processors-and-microcontrollers/applications-processors/i.mx-applications-processors/i.mx-6-processors:IMX6X_SERIES">i.MX 6 Applications Processors</a> của NXP. Thông tin chi tiết xem [1] và [2].</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/dart-mx6.png" data-desc-position="bottom"><img alt="DART-MX6" src="../img/dart-mx6.png"></a></p>
-<div class="admonition todo">
-<p class="admonition-title">Todo</p>
-<p>Ảnh <code>img/dart-mx6.png</code> chưa được thêm (lấy từ Notion).</p>
-</div>
 <h3 id="var-dvk-dt6-carrier-board"><a href="https://www.variscite.com/products/evaluation-kits/dart-mx6-kits/">VAR-DVK-DT6</a> - Carrier Board<a class="headerlink" href="#var-dvk-dt6-carrier-board" title="Permanent link">¶</a></h3>
 <p>KIT được gắn trên carrier board VAR-DVK-DT6, đi kèm LCD 7". Chi tiết xem [3].</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/var-dvk-dt6.png" data-desc-position="bottom"><img alt="VAR-DVK-DT6" src="../img/var-dvk-dt6.png"></a></p>
-<div class="admonition todo">
-<p class="admonition-title">Todo</p>
-<p>Ảnh <code>img/var-dvk-dt6.png</code> chưa được thêm (lấy từ Notion).</p>
-</div>
-<h2 id="tai-nguyen-tu-variscite">Tài nguyên từ Variscite<a class="headerlink" href="#tai-nguyen-tu-variscite" title="Permanent link">¶</a></h2>
+<h3 id="tai-nguyen-tu-variscite">Tài nguyên từ Variscite<a class="headerlink" href="#tai-nguyen-tu-variscite" title="Permanent link">¶</a></h3>
 <ul>
 <li>Trang sản phẩm (Quick start guide, Datasheet, Wiki): <a href="https://www.variscite.com/products/evaluation-kits/dart-mx6-kits/">https://www.variscite.com/products/evaluation-kits/dart-mx6-kits/</a></li>
 <li><a href="http://variwiki.com/index.php?title=DART-MX6">DART-MX6 Wiki</a>: hướng dẫn dựng OS cho KIT: Yocto, Android, Debian, Boot2QT.</li>
@@ -4225,6 +4484,229 @@
 <p class="admonition-title">Todo</p>
 <p>So sánh ARM core trong i.MX6 và Zynq-7000.</p>
 </div>
+<h2 id="build-yocto">Build Yocto<a class="headerlink" href="#build-yocto" title="Permanent link">¶</a></h2>
+<p>Hướng dẫn từng bước của Variscite rất rõ ràng: <a href="http://variwiki.com/index.php?title=Yocto_Build_Release&amp;release=RELEASE_ROCKO_V1.2_VAR-SOM-MX6">Yocto Build Release (Rocko)</a>.</p>
+<h3 id="moi-truong-build">Môi trường build<a class="headerlink" href="#moi-truong-build" title="Permanent link">¶</a></h3>
+<p>Cần lưu ý:</p>
+<ul>
+<li>Yêu cầu cấu hình máy Build Host.</li>
+<li>Yêu cầu hệ điều hành của Build Host.</li>
+<li>Cài đặt các gói phần mềm cần thiết để Yocto chạy được.</li>
+</ul>
+<p>Tham khảo:</p>
+<ul>
+<li>Yêu cầu của Yocto với host Linux: <a href="https://www.yoctoproject.org/docs/latest/brief-yoctoprojectqs/brief-yoctoprojectqs.html">Yocto Project Quick Build</a></li>
+<li>Yêu cầu của Variscite: <a href="http://variwiki.com/index.php?title=Yocto_Development_Environment">Yocto Development Environment</a></li>
+</ul>
+<h3 id="tai-source-code">Tải source code<a class="headerlink" href="#tai-source-code" title="Permanent link">¶</a></h3>
+<p>Source được tải bằng công cụ <code>repo</code> (công cụ quản lý repository của Google, chạy trên Git) từ repo <a href="https://github.com/varigit/variscite-bsp-platform.git">varigit/variscite-bsp-platform</a>, branch <code>rocko</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>repo<span class="w"> </span>init<span class="w"> </span>-u<span class="w"> </span>https://github.com/varigit/variscite-bsp-platform.git<span class="w"> </span>-b<span class="w"> </span>rocko
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>repo<span class="w"> </span>sync<span class="w"> </span>-j4
+</code></pre></div>
+<div class="admonition todo">
+<p class="admonition-title">Todo</p>
+<p>Viết tài liệu tìm hiểu về công cụ <code>repo</code>.</p>
+</div>
+<p>Variscite cung cấp script <code>setup-environment</code> để khởi tạo các biến môi trường build cho Yocto.</p>
+<h3 id="build-image">Build image<a class="headerlink" href="#build-image" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>bitbake<span class="w"> </span>fsl-image-gui
+</code></pre></div>
+<p>Build toàn bộ image cần thiết cho i.MX6 (với các gói đã định nghĩa sẵn trong Rocko release, chưa có can thiệp của user). Recipe của target nằm tại:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>./sources/meta-variscite-fslc/recipes-fsl/images/fsl-image-gui.bb
+</code></pre></div>
+<h4 id="ket-qua-build-fsl-image-gui">Kết quả build <code>fsl-image-gui</code><a class="headerlink" href="#ket-qua-build-fsl-image-gui" title="Permanent link">¶</a></h4>
+<p>Các file nằm trong <code>tmp/deploy/images/var-som-mx6/</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Image</th>
+<th>Mô tả</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fsl-image-gui-var-som-mx6.sdcard</code></td>
+<td>Image boot từ SD card, ghi trực tiếp lên SD card. Xem <a href="#boot-tu-sd-card">Boot từ SD Card</a>.</td>
+</tr>
+<tr>
+<td><code>fsl-image-gui-var-som-mx6.tar.gz</code></td>
+<td>Tarball rootfs. Dùng tạo NFS root filesystem trên host (<a href="http://variwiki.com/index.php?title=Yocto_Setup_TFTP/NFS&amp;release=RELEASE_ROCKO_V1.2_VAR-SOM-MX6">Yocto Setup TFTP/NFS</a>) và tạo extended SD card.</td>
+</tr>
+<tr>
+<td><code>fsl-image-gui-var-som-mx6_128kbpeb.ubi</code></td>
+<td>UBI image chứa UBIFS volume, ghi vào NAND flash có PEB 128KiB.</td>
+</tr>
+<tr>
+<td><code>fsl-image-gui-var-som-mx6_256kbpeb.ubi</code></td>
+<td>Tương tự, cho NAND flash có PEB 256KiB.</td>
+</tr>
+<tr>
+<td><code>uImage</code></td>
+<td>Linux kernel image, dùng chung cho SD card và NAND flash.</td>
+</tr>
+<tr>
+<td><code>u-boot.img-nand</code></td>
+<td>U-Boot cho NAND flash.</td>
+</tr>
+<tr>
+<td><code>u-boot.img-sd</code></td>
+<td>U-Boot cho boot SD card hoặc eMMC.</td>
+</tr>
+<tr>
+<td><code>SPL-sd</code></td>
+<td>SPL (Secondary Program Loader) cho boot SD card hoặc eMMC.</td>
+</tr>
+<tr>
+<td><code>SPL-nand</code></td>
+<td>SPL cho NAND flash.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tai-lieu-lien-quan">Tài liệu liên quan<a class="headerlink" href="#tai-lieu-lien-quan" title="Permanent link">¶</a></h3>
+<ul>
+<li><a href="https://www.yoctoproject.org/docs/1.6/bitbake-user-manual/bitbake-user-manual.html">Bitbake User Manual</a></li>
+<li><a href="https://community.nxp.com/docs/DOC-94953">Các lệnh Bitbake hữu ích (NXP)</a></li>
+</ul>
+<h2 id="boot-tu-sd-card">Boot từ SD Card<a class="headerlink" href="#boot-tu-sd-card" title="Permanent link">¶</a></h2>
+<h3 id="ghi-image-sdcard">Ghi image <code>.sdcard</code><a class="headerlink" href="#ghi-image-sdcard" title="Permanent link">¶</a></h3>
+<p>Các file build ra nằm trong <code>tmp/deploy/images/&lt;machine&gt;/</code>. Image <code>*.sdcard</code> dùng để boot từ SD card, đã tích hợp sẵn u-boot, kernel và rootfs. Ghi trực tiếp bằng <code>dd</code> (<code>sdX</code> là tên SD card trong <code>/dev/</code>):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>tmp/deploy/images/var-som-mx6/fsl-image-gui-var-som-mx6.sdcard<span class="w"> </span><span class="nv">of</span><span class="o">=</span>/dev/sdX<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>1M<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sync
+</code></pre></div>
+<p>Phân vùng SD card:</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/sdcard-partitions.png" data-desc-position="bottom"><img alt="SD card partitions" src="../img/sdcard-partitions.png"></a></p>
+<ul>
+<li>Phân vùng 1: kernel và các device tree.</li>
+<li>Phân vùng 2: root filesystem.</li>
+</ul>
+<p>Sau đó chuyển boot mode (SW6 trên VAR-DT6Custom board sang SD), cấp nguồn và chờ board khởi động.</p>
+<div class="admonition warning">
+<p class="admonition-title">Hạn chế</p>
+<p>Image <code>.sdcard</code> được đóng sẵn cho SD card 4GB. Với SD card lớn hơn, vùng nhớ ngoài 4GB sẽ không được sử dụng. Xem <a href="#extended-sd-card">Extended SD Card</a>.</p>
+</div>
+<h3 id="extended-sd-card">Extended SD Card<a class="headerlink" href="#extended-sd-card" title="Permanent link">¶</a></h3>
+<p>Variscite cung cấp script để cài từng phân vùng lên SD card, tận dụng toàn bộ dung lượng:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sources/meta-variscite-fslc/scripts/var_mk_yocto_sdcard/var-create-yocto-sdcard.sh
+</code></pre></div>
+<p>Script ghi bootloader, kernel, device-tree và rootfs lên các phân vùng tương ứng. Các bước script thực hiện:</p>
+<ol>
+<li><strong>Check devices</strong> - kiểm tra thiết bị SD card.</li>
+<li><strong>Delete devices</strong> - dùng <code>dd</code> ghi <code>/dev/zero</code> vào từng phân vùng. <code>/dev/zero</code> là file đặc biệt chứa ký tự null (ASCII NUL, 0x00), thường dùng để khởi tạo (xóa) vùng lưu trữ (<a href="https://en.wikipedia.org/wiki//dev/zero">Wikipedia</a>).</li>
+<li><strong>create_parts</strong> - tạo các phân vùng mới cho SD card.</li>
+<li><strong>Format partition</strong> - dùng <code>mkfs.vfat</code> và <code>mkfs.ext4</code> format hai partition vừa tạo.</li>
+<li><strong>Cài đặt bootloader</strong><ul>
+<li><code>SPL-sd</code> là SPL cho SD card:
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span><span class="si">${</span><span class="nv">YOCTO_IMGS_PATH</span><span class="si">}</span>/SPL-sd<span class="w"> </span><span class="nv">of</span><span class="o">=</span><span class="si">${</span><span class="nv">node</span><span class="si">}</span><span class="w"> </span><span class="nv">bs</span><span class="o">=</span>1K<span class="w"> </span><span class="nv">seek</span><span class="o">=</span><span class="m">1</span><span class="p">;</span><span class="w"> </span>sync
+</code></pre></div></li>
+<li><code>u-boot.img-sd</code> là U-Boot cho SD card:
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span><span class="si">${</span><span class="nv">YOCTO_IMGS_PATH</span><span class="si">}</span>/u-boot.img-sd<span class="w"> </span><span class="nv">of</span><span class="o">=</span><span class="si">${</span><span class="nv">node</span><span class="si">}</span><span class="w"> </span><span class="nv">bs</span><span class="o">=</span>1K<span class="w"> </span><span class="nv">seek</span><span class="o">=</span><span class="m">69</span><span class="p">;</span><span class="w"> </span>sync
+</code></pre></div></li>
+</ul>
+</li>
+<li><strong>Cài đặt Yocto</strong><ul>
+<li>Copy dtb.</li>
+<li>Copy <code>uImage</code> (script dùng lệnh <code>pv</code>).</li>
+<li>Giải nén <code>fsl-image-gui-var-som-mx6.tar.gz</code> vào phân vùng rootfs (cũng dùng <code>pv</code>).</li>
+</ul>
+</li>
+</ol>
+<div class="admonition todo">
+<p class="admonition-title">Todo</p>
+<p>Thêm ảnh minh họa bước <code>create_parts</code>. Làm rõ vai trò của lệnh <code>pv</code> trong script.</p>
+</div>
+<h2 id="boot-tu-emmc">Boot từ eMMC<a class="headerlink" href="#boot-tu-emmc" title="Permanent link">¶</a></h2>
+<p>DART-MX6 có hai vùng nhớ dùng để khởi động: SD card và eMMC (và NAND flash trên một số phiên bản). Quy trình chung: boot từ SD card trước, sau đó từ Linux chạy trên SD card cài image lên eMMC.</p>
+<h3 id="cach-1-script-cua-variscite">Cách 1: Script của Variscite<a class="headerlink" href="#cach-1-script-cua-variscite" title="Permanent link">¶</a></h3>
+<p>Variscite cung cấp các script <code>yocto_install.sh</code> (NAND) và <code>yocto_install_emmc.sh</code> (eMMC) để cài Yocto image sau khi đã boot từ SD card. Quy trình đơn giản là chạy script có sẵn, hướng dẫn chi tiết tại <a href="http://variwiki.com/index.php?title=Yocto_NAND_Flash_Burning&amp;release=RELEASE_ROCKO_V1.2_VAR-SOM-MX6">Yocto NAND Flash Burning</a>.</p>
+<h3 id="cach-2-recovery-sd-scp-yocto-dartsh">Cách 2: Recovery SD + <code>scp</code> + <code>yocto-dart.sh</code><a class="headerlink" href="#cach-2-recovery-sd-scp-yocto-dartsh" title="Permanent link">¶</a></h3>
+<p>Cách này dùng release cũ hơn (machine <code>varsomimx6</code>, image <code>core-image-minimal</code>).</p>
+<ol>
+<li>Ghi file <code>mx6-som-nand-recovery-sd.v41.img.gz</code> vào SD card (xem <a href="#boot-tu-sd-card">Boot từ SD Card</a>) và khởi động từ SD card trên target board.</li>
+<li>
+<p>Copy các file cần thiết từ host vào <code>/opt/images/Yocto</code> trên target:</p>
+<table>
+<thead>
+<tr>
+<th>File trên target</th>
+<th>Nguồn (<code>tmp/deploy/images/varsomimx6/</code>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>uImage</code></td>
+<td><code>uImage</code></td>
+</tr>
+<tr>
+<td><code>uImage-imx6q-var-dart.dtb</code></td>
+<td><code>uImage-imx6q-var-dart.dtb</code></td>
+</tr>
+<tr>
+<td><code>u-boot.img.mmc</code></td>
+<td><code>u-boot.img</code></td>
+</tr>
+<tr>
+<td><code>SPL.mmc</code></td>
+<td><code>SPL</code></td>
+</tr>
+<tr>
+<td><code>rootfs.tar.bz2</code></td>
+<td><code>core-image-minimal-varsomimx6.tar.bz2</code></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>scp<span class="w"> </span>tmp/deploy/images/varsomimx6/uImage<span class="w"> </span>root@10.61.61.144:/opt/images/Yocto
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>scp<span class="w"> </span>tmp/deploy/images/varsomimx6/uImage-imx6q-var-dart.dtb<span class="w"> </span>root@10.61.61.144:/opt/images/Yocto/
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>scp<span class="w"> </span>tmp/deploy/images/varsomimx6/u-boot.img<span class="w"> </span>root@10.61.61.144:/opt/images/Yocto/u-boot.img.mmc
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>scp<span class="w"> </span>tmp/deploy/images/varsomimx6/SPL<span class="w"> </span>root@10.61.61.144:/opt/images/Yocto/SPL.mmc
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>scp<span class="w"> </span>tmp/deploy/images/varsomimx6/core-image-minimal-varsomimx6.tar.bz2<span class="w"> </span>root@10.61.61.144:/opt/images/Yocto/rootfs.tar.bz2
+</code></pre></div>
+</li>
+<li>
+<p>Chạy script trên target:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>yocto-dart.sh
+</code></pre></div>
+</li>
+</ol>
+<h2 id="phat-trien-tren-imx6">Phát triển trên i.MX6<a class="headerlink" href="#phat-trien-tren-imx6" title="Permanent link">¶</a></h2>
+<h3 id="them-ung-dung">Thêm ứng dụng<a class="headerlink" href="#them-ung-dung" title="Permanent link">¶</a></h3>
+<p>Từ project Yocto đã build, Variwiki hướng dẫn thêm một custom application theo hai cách:</p>
+<ol>
+<li><strong>Dùng trực tiếp Yocto Project</strong>: thêm vào Yocto directory một <em>recipe</em> mới của ứng dụng. Khai báo recipe vào một <em>layer</em> giúp Bitbake biết cách build và đóng gói ứng dụng.</li>
+<li><strong>Dùng Toolchain</strong>: tương tự dùng GCC để compile ứng dụng chạy trên PC, nhưng dùng toolchain cross-compile cho i.MX6.</li>
+</ol>
+<p>Toolchain cho i.MX6 do chính Yocto Project build ra, hướng dẫn tại <a href="http://variwiki.com/index.php?title=Yocto_Toolchain_installation&amp;release=RELEASE_ROCKO_V1.2_VAR-SOM-MX6">Yocto Toolchain installation</a>. Kết quả là toolchain được cài vào Build Host; sau vài bước thiết lập môi trường là build được executable từ source code.</p>
+<div class="admonition todo">
+<p class="admonition-title">Todo</p>
+<p>Viết tài liệu về recipe, layer, bitbake và toolchain (một phần đã có trong <a href="../../../lnx_es/tool_chain/yocto/yocto/">Yocto</a>).</p>
+</div>
+<h3 id="build-u-boot">Build U-Boot<a class="headerlink" href="#build-u-boot" title="Permanent link">¶</a></h3>
+<p>Build U-Boot (lấy trực tiếp từ Varigit) bằng Yocto:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>bitbake<span class="w"> </span>virtual/bootloader
+</code></pre></div>
+<p>Clean kết quả build:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>bitbake<span class="w"> </span>virtual/bootloader<span class="w"> </span>-c<span class="w"> </span>cleanall
+</code></pre></div>
+<p>Recipe của U-Boot:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>var-fslc-yocto/sources/meta-variscite-fslc/recipes-bsp/u-boot
+</code></pre></div>
+<p>Trong <code>u-boot-common.inc</code> có đường dẫn đến git repo chứa source U-Boot: <code>git://github.com/varigit/uboot-imx.git</code>.</p>
+<h4 id="customizing-u-boot"><a href="http://variwiki.com/index.php?title=Yocto_Customizing_U-Boot&amp;release=RELEASE_ROCKO_V1.2_VAR-SOM-MX6">Customizing U-Boot</a><a class="headerlink" href="#customizing-u-boot" title="Permanent link">¶</a></h4>
+<p>Có 3 phương án customize U-Boot trên máy local rồi build lại:</p>
+<ul>
+<li>Dùng bản customize như một patch cho U-Boot lấy từ Varigit.</li>
+<li>Dùng local git repository.</li>
+<li>Dùng remote repo riêng của user trên GitHub.</li>
+</ul>
+<h4 id="build-u-boot-bang-toolchain">Build U-Boot bằng Toolchain<a class="headerlink" href="#build-u-boot-bang-toolchain" title="Permanent link">¶</a></h4>
+<p>Toolchain build từ Yocto cũng dùng được để build U-Boot, ngoài khuôn khổ Yocto Project: <a href="http://variwiki.com/index.php?title=Yocto_Build_U-Boot&amp;release=RELEASE_ROCKO_V1.2_VAR-SOM-MX6">Yocto Build U-Boot</a>. Phương án này phù hợp khi phát triển thêm trong U-Boot.</p>
+<h3 id="build-kernel">Build Kernel<a class="headerlink" href="#build-kernel" title="Permanent link">¶</a></h3>
+<p>Dùng toolchain build kernel từ source trên Git repo, độc lập với Yocto Project: <a href="http://variwiki.com/index.php?title=Yocto_Build_Linux&amp;release=RELEASE_ROCKO_V1.2_VAR-SOM-MX6">Yocto Build Linux</a>.</p>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">¶</a></h2>
+<p><strong>No space left on device</strong></p>
+<p>Ổ đĩa của Build Host hết dung lượng (Yocto build cần rất nhiều dung lượng). Tham khảo: <a href="https://forum.proxmox.com/threads/error-no-space-left-on-device.27809/">https://forum.proxmox.com/threads/error-no-space-left-on-device.27809/</a></p>
+<p><strong>Error, TMPDIR has changed location</strong></p>
+<p>Xảy ra khi di chuyển thư mục Yocto Project sang vị trí khác. Kiểm tra <code>saved_tmpdir</code> trong <code>TMPDIR</code>. Để tìm <code>TMPDIR</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>bitbake<span class="w"> </span>-e<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>^TMPDIR
+</code></pre></div>
 <h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
 <ul>
 <li>[1] <a href="https://www.variscite.com/wp-content/uploads/2017/11/DART-MX6_Product_Brief.pdf">DART-MX6 Product Brief</a></li>
@@ -4253,7 +4735,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 20, 2026 10:14:08 UTC">October 20, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 20, 2026 10:35:45 UTC">October 20, 2026</span>
   </span>
 
     
@@ -4319,13 +4801,13 @@
         
         
           
-          <a href="../yocto-build/" class="md-footer__link md-footer__link--next" aria-label="Next: Yocto Build">
+          <a href="../../pi3b/" class="md-footer__link md-footer__link--next" aria-label="Next: Raspberry Pi 3B">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Yocto Build
+                Raspberry Pi 3B
               </div>
             </div>
             <div class="md-footer__button md-icon">
