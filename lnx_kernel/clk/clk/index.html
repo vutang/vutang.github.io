@@ -1,0 +1,5276 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
+      
+      
+        <meta name="author" content="Vu Tang">
+      
+      
+        <link rel="canonical" href="https://vutang.github.io/lnx_kernel/clk/clk/">
+      
+      
+        <link rel="prev" href="../../ddebug/ddebug/">
+      
+      
+        <link rel="next" href="../../../virtualization/hypervisor/hypervisor/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Common Clock Framework - Vu Tang's Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-JCXSS6MHYH"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-JCXSS6MHYH",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-JCXSS6MHYH",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#common-clock-framework-ccf-trong-linux-kernel" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Vu Tang's Docs" class="md-header__button md-logo" aria-label="Vu Tang's Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Vu Tang's Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Common Clock Framework
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/vutang/mkdocs-vux-note" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Preface
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../bookmarks/bookmarks/" class="md-tabs__link">
+          
+  
+  
+  Notes
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../articles/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Articles
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../books/c_books/" class="md-tabs__link">
+          
+  
+  
+  Book &amp; Materials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../lnx_es/es/" class="md-tabs__link">
+          
+  
+  
+  Linux Embedded
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../lnx_ldd/overview/" class="md-tabs__link">
+          
+  
+  
+  Linux Kernel
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../virtualization/hypervisor/hypervisor/" class="md-tabs__link">
+          
+  
+  
+  Virtualization
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../embedded_security/insightvm/insightvm/" class="md-tabs__link">
+          
+  
+  
+  Embedded Security
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../programming/C/cprogramming/" class="md-tabs__link">
+          
+  
+  
+  Programming
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../ic_design/fpga/x_ipcore/xipcore/" class="md-tabs__link">
+          
+  
+  
+  IC Design
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../computer_arch/isa/isa/" class="md-tabs__link">
+          
+  
+  
+  Computer Architecture
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../about/about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  About me
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Vu Tang's Docs" class="md-nav__button md-logo" aria-label="Vu Tang's Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    Vu Tang's Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/vutang/mkdocs-vux-note" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Preface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Notes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bookmarks/bookmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bookmarks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../technote/mkdocs/mkdocs-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mkdocs Tool
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../technote/markdown/markdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Markdown Language
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../technote/shellscript/shellscript/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shell Script
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../technote/python/python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../technote/virtual_machine/virtual_box/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Virtual Machine
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../whatnext/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What's next
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../articles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Articles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Book &amp; Materials
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Book &amp; Materials
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../books/c_books/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C Programming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../books/linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux Programming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../books/device_driver/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux Device Driver
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../books/linux_kernel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux Kernel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../books/es_linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux Embedded
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../books/dsa/dsa_toc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Structure &amp; Algorithms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../books/others/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Others
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5">
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux Embedded
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Linux Embedded
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_es/es/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_es/hw_platform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW Platforms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3">
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Common Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Common Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_es/makefile/makefile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Makefile
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_es/version_control/verctl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Version control Concept
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_es/version_control/git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4">
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Xilinx Petalinux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Xilinx Petalinux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_es/tool_chain/petalinux/ptlnx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_es/tool_chain/petalinux/ptlnx_20174/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Petalinux 2017
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_es/tool_chain/petalinux/ptlnx_bin_output/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    List of Petalinux Images
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5">
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Yocto
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Yocto
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_es/tool_chain/yocto/yocto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6">
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bootloader
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Bootloader
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_es/u-boot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    U-Boot on Zynq
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7">
+        
+          
+          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ES Devices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ES Devices
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_es/eeprom/eeprom/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EEPROM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_es/linuxptp/linuxptp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux PTP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_es/dpdk/dpdk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DPDK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_es/nbd/nbd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Block Device
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_es/tips/tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tips
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_12">
+        
+          
+          <label class="md-nav__link" for="__nav_5_12" id="__nav_5_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projects
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../projects/zynq/zynq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Zynq
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../projects/imx8/imx8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IMX8
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../projects/imx6/imx6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    i.MX6 (DART-MX6)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../projects/pi3b/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raspberry Pi 3B
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_13">
+        
+          
+          <label class="md-nav__link" for="__nav_5_13" id="__nav_5_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux General
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Linux General
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx/linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unsorted
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx/cmds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Commands
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux Kernel
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Linux Kernel
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1">
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux Device Driver
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Linux Device Driver
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_ldd/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_ldd/kernel_module/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kernel Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_ldd/platform_dev/platform_device/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform Device
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_ldd/i2c/i2c/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I2C Subsystem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_ldd/spi_dev/spi_dev/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SPI Device
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_ldd/spi_dev/spi_advance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SPI Device Advance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_ldd/gpio/gpio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPIO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_ldd/uart/uart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UART
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_ldd/jesd/jesd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JESD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_ldd/audio/linux_audio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_ldd/pcie/pcie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PCIe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux Kernel General
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Linux Kernel General
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kernel_data_structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kernel Data Structure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kernel_user_space/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kernel Space, User Space Interfaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ftrace/ftrace/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FTrace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ddebug/ddebug/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dynamic Debug
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Common Clock Framework
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Common Clock Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-kien-truc-tong-the" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Kiến trúc tổng thể
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-cau-truc-du-lieu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Cấu trúc dữ liệu
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Cấu trúc dữ liệu">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#struct-clk_ops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        struct clk_ops
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#core-flags-quan-trong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core flags quan trọng
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-consumer-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Consumer API
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-provider-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Provider API
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Provider API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-clock-rieng-divider" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ví dụ clock riêng: divider
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#determine_rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .determine_rate
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-device-tree-binding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Device Tree binding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-locking-clk_set_rate-va-preempt_rt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Locking, clk_set_rate và PREEMPT_RT
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Locking, clk_set_rate và PREEMPT_RT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#luong-clk_set_rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Luồng clk_set_rate()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#he-qua-tren-preempt_rt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hệ quả trên PREEMPT_RT
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-debug-va-quan-sat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Debug và quan sát
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-phat-trien-gan-ay-20252026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Phát triển gần đây (2025–2026)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Phát triển gần đây (2025–2026)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xoa-round_rate-khoi-clk_ops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Xóa .round_rate khỏi clk_ops
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spread-spectrum-ssc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spread spectrum (SSC)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rust" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rust
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-vi-du-tren-nen-tang-cua-team" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Ví dụ trên nền tảng của team
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Ví dụ trên nền tảng của team">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xilinx-zynqmp-clock-qua-firmware-driversclkzynqmp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Xilinx ZynqMP: clock qua firmware (drivers/clk/zynqmp/)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nxp-lx2160a-qoriq-clockgen-driversclkclk-qoriqc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NXP LX2160A: QorIQ clockgen (drivers/clk/clk-qoriq.c)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clock-generator-ngoai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clock generator ngoài
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-discussion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Discussion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Virtualization
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Virtualization
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../virtualization/hypervisor/hypervisor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hypervisor &amp; Hyper-V
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../virtualization/docker/docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8">
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Embedded Security
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Embedded Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1">
+        
+          
+          <label class="md-nav__link" for="__nav_8_1" id="__nav_8_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vulnerability Management
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Vulnerability Management
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../embedded_security/insightvm/insightvm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    InsightVM (Rapid7)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9">
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programming
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Programming
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/C/cprogramming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2">
+        
+          
+          <label class="md-nav__link" for="__nav_9_2" id="__nav_9_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSA
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DSA
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/dsa/dsa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/dsa/linked_list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linked List
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/dsa/queue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Queue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/sql/mysql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/lnx/lpi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux Programming Interfaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/dsg_patterns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design Patterns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/multi-threaded-programming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multi-threads
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/perf/perf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Perf
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10">
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IC Design
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    IC Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_1">
+        
+          
+          <label class="md-nav__link" for="__nav_10_1" id="__nav_10_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FPGA
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    FPGA
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ic_design/fpga/x_ipcore/xipcore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Xilinx IPCore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ic_design/timing_analysis/timing_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Static Timing Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11">
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Computer Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Computer Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_1">
+        
+          
+          <label class="md-nav__link" for="__nav_11_1" id="__nav_11_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ISA
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ISA
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computer_arch/isa/isa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computer_arch/isa/riscv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RISC-V
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About me
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-kien-truc-tong-the" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Kiến trúc tổng thể
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-cau-truc-du-lieu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Cấu trúc dữ liệu
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Cấu trúc dữ liệu">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#struct-clk_ops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        struct clk_ops
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#core-flags-quan-trong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core flags quan trọng
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-consumer-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Consumer API
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-provider-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Provider API
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Provider API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-clock-rieng-divider" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ví dụ clock riêng: divider
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#determine_rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .determine_rate
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-device-tree-binding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Device Tree binding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-locking-clk_set_rate-va-preempt_rt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Locking, clk_set_rate và PREEMPT_RT
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Locking, clk_set_rate và PREEMPT_RT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#luong-clk_set_rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Luồng clk_set_rate()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#he-qua-tren-preempt_rt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hệ quả trên PREEMPT_RT
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-debug-va-quan-sat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Debug và quan sát
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-phat-trien-gan-ay-20252026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Phát triển gần đây (2025–2026)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Phát triển gần đây (2025–2026)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xoa-round_rate-khoi-clk_ops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Xóa .round_rate khỏi clk_ops
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spread-spectrum-ssc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spread spectrum (SSC)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rust" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rust
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-vi-du-tren-nen-tang-cua-team" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Ví dụ trên nền tảng của team
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Ví dụ trên nền tảng của team">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xilinx-zynqmp-clock-qua-firmware-driversclkzynqmp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Xilinx ZynqMP: clock qua firmware (drivers/clk/zynqmp/)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nxp-lx2160a-qoriq-clockgen-driversclkclk-qoriqc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NXP LX2160A: QorIQ clockgen (drivers/clk/clk-qoriq.c)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clock-generator-ngoai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clock generator ngoài
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-discussion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Discussion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <nav class="md-tags">
+    
+      
+      
+      
+      
+        <a href="../../../articles/tags/#tag:ccf" class="md-tag">ccf</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../articles/tags/#tag:clk" class="md-tag">clk</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../articles/tags/#tag:driver" class="md-tag">driver</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../articles/tags/#tag:linux-kernel" class="md-tag">linux-kernel</a>
+      
+    
+  </nav>
+
+
+  
+  
+
+
+<h1 id="common-clock-framework-ccf-trong-linux-kernel">Common Clock Framework (CCF) trong Linux kernel<a class="headerlink" href="#common-clock-framework-ccf-trong-linux-kernel" title="Permanent link">¶</a></h1>
+<p>CCF (<code>CONFIG_COMMON_CLK</code>) tách consumer (<code>&lt;linux/clk.h&gt;</code>) khỏi provider (<code>&lt;linux/clk-provider.h&gt;</code>) và giữ cây clock, refcount, rate cache và locking ở core <code>drivers/clk/clk.c</code>. Bản nháp v0.1, tham chiếu kernel docs v7.3.</p>
+<h2 id="1-introduction">1. Introduction<a class="headerlink" href="#1-introduction" title="Permanent link">¶</a></h2>
+<p>CCF được Mike Turquette (Linaro/TI) đưa vào mainline ở v3.4 (2012), thay cho các <code>struct clk</code> riêng của từng kiến trúc ARM (OMAP, i.MX, Tegra…) vốn khiến không thể build kernel đa nền tảng.</p>
+<p>Ý tưởng cốt lõi: một <code>struct clk</code> chung, một implementation chung cho API <code>clk.h</code>; phần cứng chỉ cung cấp callback qua <code>struct clk_ops</code> và nhúng một <code>struct clk_hw</code>. Công việc dựa trên nền của Jeremy Kerr và Ben Herrenschmidt.</p>
+<table>
+<thead>
+<tr>
+<th>CCF có quản lý</th>
+<th>CCF không quản lý</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clock nội bộ SoC: PLL, divider, gate, mux cho peripheral, bus, CPU</td>
+<td>Nguồn thời gian hệ thống (clocksource/clockevent, <code>kernel/time/</code>)</td>
+</tr>
+<tr>
+<td>Clock generator ngoài qua I²C/SPI (Si5341, Si570, CDCE9xx…)</td>
+<td>PTP Hardware Clock (<code>/dev/ptpN</code>, <code>drivers/ptp/</code>)</td>
+</tr>
+<tr>
+<td>Phase, duty cycle, accuracy (ppb), spread spectrum</td>
+<td>DPLL cho SyncE/PTP (<code>drivers/dpll/</code>, netlink)</td>
+</tr>
+</tbody>
+</table>
+<p>Ranh giới này quan trọng với hệ thống gNodeB, xem mục 11.</p>
+<h2 id="2-kien-truc-tong-the">2. Kiến trúc tổng thể<a class="headerlink" href="#2-kien-truc-tong-the" title="Permanent link">¶</a></h2>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/ccf-architecture.png" data-desc-position="bottom"><img alt="Kiến trúc phân lớp của CCF" src="../img/ccf-architecture.png"></a></p>
+<p>CCF có ba lớp, nối với nhau bởi <code>struct clk_hw</code>:</p>
+<ol>
+<li><strong>Consumer API</strong> (<code>include/linux/clk.h</code>): driver thiết bị chỉ thấy <code>struct clk *</code> dạng opaque.</li>
+<li><strong>Core</strong> (<code>drivers/clk/clk.c</code>): duy trì cây <code>clk_core</code>, refcount, cache rate, notifier, locking, debugfs.</li>
+<li><strong>Provider</strong> (<code>include/linux/clk-provider.h</code>): driver phần cứng định nghĩa <code>struct clk_foo { struct clk_hw hw; ... }</code> và một <code>const struct clk_ops</code>.</li>
+</ol>
+<p>Giữa consumer và core có lớp lookup: Device Tree (<code>clocks</code>/<code>clock-names</code>), clkdev cho board không có DT, hoặc ACPI.</p>
+<h2 id="3-cau-truc-du-lieu">3. Cấu trúc dữ liệu<a class="headerlink" href="#3-cau-truc-du-lieu" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Struct</th>
+<th>Ai sở hữu</th>
+<th>Vai trò</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>struct clk</code></td>
+<td>core, cấp cho từng consumer</td>
+<td>Handle per-consumer: mỗi lần <code>clk_get()</code> tạo một <code>struct clk</code> mới, chứa <code>min_rate</code>/<code>max_rate</code> riêng. Nhiều <code>struct clk</code> → 1 <code>clk_core</code>.</td>
+</tr>
+<tr>
+<td><code>struct clk_core</code></td>
+<td>core (private trong <code>clk.c</code>)</td>
+<td>Node trong cây: <code>parent</code>, <code>children</code>, <code>parents[]</code>, <code>rate</code>, <code>req_rate</code>, <code>enable_count</code>, <code>prepare_count</code>, <code>protect_count</code>, <code>flags</code>, <code>orphan</code>, <code>accuracy</code>, <code>phase</code>, <code>duty</code>, notifier.</td>
+</tr>
+<tr>
+<td><code>struct clk_hw</code></td>
+<td>provider (nhúng trong struct phần cứng)</td>
+<td>Cầu nối: provider dùng <code>container_of()</code> để lấy lại struct riêng; chứa <code>hw-&gt;init</code> (chỉ dùng lúc đăng ký).</td>
+</tr>
+</tbody>
+</table>
+<p>Provider mô tả clock lúc đăng ký bằng <code>struct clk_init_data</code>. Nên dùng <code>parent_data</code> (<code>.fw_name</code> khớp <code>clock-names</code> của chính provider node, hoặc <code>.index</code>) hoặc <code>parent_hws</code> thay vì <code>parent_names</code>, vì tra cứu theo chuỗi toàn cục dễ vỡ và phụ thuộc thứ tự probe.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">struct</span><span class="w"> </span><span class="nc">clk_init_data</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w">      </span><span class="o">*</span><span class="n">name</span><span class="p">;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_ops</span><span class="w">    </span><span class="o">*</span><span class="n">ops</span><span class="p">;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="cm">/* Chỉ dùng MỘT trong ba cách mô tả parent: */</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w">      </span><span class="o">*</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">parent_names</span><span class="p">;</span><span class="w">  </span><span class="cm">/* legacy */</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_parent_data</span><span class="w">    </span><span class="o">*</span><span class="n">parent_data</span><span class="p">;</span><span class="w">   </span><span class="cm">/* khuyến nghị */</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_hw</span><span class="w"> </span><span class="o">**</span><span class="n">parent_hws</span><span class="p">;</span><span class="w">       </span><span class="cm">/* parent cùng driver */</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="n">u8</span><span class="w">          </span><span class="n">num_parents</span><span class="p">;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w">       </span><span class="n">flags</span><span class="p">;</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">};</span>
+</code></pre></div>
+<h3 id="struct-clk_ops"><code>struct clk_ops</code><a class="headerlink" href="#struct-clk_ops" title="Permanent link">¶</a></h3>
+<p><code>.enable</code>/<code>.disable</code>/<code>.is_enabled</code> chạy dưới <code>enable_lock</code> (spinlock) và không được ngủ. Mọi callback còn lại chạy dưới <code>prepare_lock</code> (mutex) và được ngủ. <code>.round_rate</code> không còn tồn tại, xem mục 9.1.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">struct</span><span class="w"> </span><span class="nc">clk_ops</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="cm">/* sleepable, dưới prepare_lock */</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="kt">int</span><span class="w">  </span><span class="p">(</span><span class="o">*</span><span class="n">prepare</span><span class="p">)(</span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_hw</span><span class="w"> </span><span class="o">*</span><span class="n">hw</span><span class="p">);</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">unprepare</span><span class="p">)(</span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_hw</span><span class="w"> </span><span class="o">*</span><span class="n">hw</span><span class="p">);</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="kt">int</span><span class="w">  </span><span class="p">(</span><span class="o">*</span><span class="n">is_prepared</span><span class="p">)(</span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_hw</span><span class="w"> </span><span class="o">*</span><span class="n">hw</span><span class="p">);</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">unprepare_unused</span><span class="p">)(</span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_hw</span><span class="w"> </span><span class="o">*</span><span class="n">hw</span><span class="p">);</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="cm">/* atomic, dưới enable_lock, KHÔNG được ngủ */</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="kt">int</span><span class="w">  </span><span class="p">(</span><span class="o">*</span><span class="n">enable</span><span class="p">)(</span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_hw</span><span class="w"> </span><span class="o">*</span><span class="n">hw</span><span class="p">);</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">disable</span><span class="p">)(</span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_hw</span><span class="w"> </span><span class="o">*</span><span class="n">hw</span><span class="p">);</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="kt">int</span><span class="w">  </span><span class="p">(</span><span class="o">*</span><span class="n">is_enabled</span><span class="p">)(</span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_hw</span><span class="w"> </span><span class="o">*</span><span class="n">hw</span><span class="p">);</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">disable_unused</span><span class="p">)(</span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_hw</span><span class="w"> </span><span class="o">*</span><span class="n">hw</span><span class="p">);</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span><span class="cm">/* rate / parent, sleepable */</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="nf">long</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">recalc_rate</span><span class="p">)(</span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_hw</span><span class="w"> </span><span class="o">*</span><span class="n">hw</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">parent_rate</span><span class="p">);</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span><span class="kt">int</span><span class="w">  </span><span class="p">(</span><span class="o">*</span><span class="n">determine_rate</span><span class="p">)(</span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_hw</span><span class="w"> </span><span class="o">*</span><span class="n">hw</span><span class="p">,</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_rate_request</span><span class="w"> </span><span class="o">*</span><span class="n">req</span><span class="p">);</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">    </span><span class="kt">int</span><span class="w">  </span><span class="p">(</span><span class="o">*</span><span class="n">set_rate</span><span class="p">)(</span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_hw</span><span class="w"> </span><span class="o">*</span><span class="n">hw</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">rate</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">parent_rate</span><span class="p">);</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">    </span><span class="kt">int</span><span class="w">  </span><span class="p">(</span><span class="o">*</span><span class="n">set_parent</span><span class="p">)(</span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_hw</span><span class="w"> </span><span class="o">*</span><span class="n">hw</span><span class="p">,</span><span class="w"> </span><span class="n">u8</span><span class="w"> </span><span class="n">index</span><span class="p">);</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">    </span><span class="n">u8</span><span class="w">   </span><span class="p">(</span><span class="o">*</span><span class="n">get_parent</span><span class="p">)(</span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_hw</span><span class="w"> </span><span class="o">*</span><span class="n">hw</span><span class="p">);</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">    </span><span class="kt">int</span><span class="w">  </span><span class="p">(</span><span class="o">*</span><span class="n">set_rate_and_parent</span><span class="p">)(</span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_hw</span><span class="w"> </span><span class="o">*</span><span class="n">hw</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">rate</span><span class="p">,</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">                    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">parent_rate</span><span class="p">,</span><span class="w"> </span><span class="n">u8</span><span class="w"> </span><span class="n">index</span><span class="p">);</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">    </span><span class="cm">/* thuộc tính tín hiệu */</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="nf">long</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">recalc_accuracy</span><span class="p">)(</span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_hw</span><span class="w"> </span><span class="o">*</span><span class="n">hw</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">parent_accuracy</span><span class="p">);</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">    </span><span class="kt">int</span><span class="w">  </span><span class="p">(</span><span class="o">*</span><span class="n">get_phase</span><span class="p">)(</span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_hw</span><span class="w"> </span><span class="o">*</span><span class="n">hw</span><span class="p">);</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">    </span><span class="kt">int</span><span class="w">  </span><span class="p">(</span><span class="o">*</span><span class="n">set_phase</span><span class="p">)(</span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_hw</span><span class="w"> </span><span class="o">*</span><span class="n">hw</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">degrees</span><span class="p">);</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">    </span><span class="kt">int</span><span class="w">  </span><span class="p">(</span><span class="o">*</span><span class="n">get_duty_cycle</span><span class="p">)(</span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_hw</span><span class="w"> </span><span class="o">*</span><span class="n">hw</span><span class="p">,</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_duty</span><span class="w"> </span><span class="o">*</span><span class="n">duty</span><span class="p">);</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">    </span><span class="kt">int</span><span class="w">  </span><span class="p">(</span><span class="o">*</span><span class="n">set_duty_cycle</span><span class="p">)(</span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_hw</span><span class="w"> </span><span class="o">*</span><span class="n">hw</span><span class="p">,</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_duty</span><span class="w"> </span><span class="o">*</span><span class="n">duty</span><span class="p">);</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">    </span><span class="kt">int</span><span class="w">  </span><span class="p">(</span><span class="o">*</span><span class="n">set_spread_spectrum</span><span class="p">)(</span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_hw</span><span class="w"> </span><span class="o">*</span><span class="n">hw</span><span class="p">,</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_spread_spectrum</span><span class="w"> </span><span class="o">*</span><span class="n">ss_conf</span><span class="p">);</span><span class="w"> </span><span class="cm">/* mới */</span>
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">    </span><span class="cm">/* vòng đời / PM / debug */</span>
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="w">    </span><span class="kt">int</span><span class="w">  </span><span class="p">(</span><span class="o">*</span><span class="n">save_context</span><span class="p">)(</span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_hw</span><span class="w"> </span><span class="o">*</span><span class="n">hw</span><span class="p">);</span>
+<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">restore_context</span><span class="p">)(</span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_hw</span><span class="w"> </span><span class="o">*</span><span class="n">hw</span><span class="p">);</span>
+<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="w">    </span><span class="kt">int</span><span class="w">  </span><span class="p">(</span><span class="o">*</span><span class="n">init</span><span class="p">)(</span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_hw</span><span class="w"> </span><span class="o">*</span><span class="n">hw</span><span class="p">);</span>
+<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">terminate</span><span class="p">)(</span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_hw</span><span class="w"> </span><span class="o">*</span><span class="n">hw</span><span class="p">);</span>
+<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">debug_init</span><span class="p">)(</span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_hw</span><span class="w"> </span><span class="o">*</span><span class="n">hw</span><span class="p">,</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">dentry</span><span class="w"> </span><span class="o">*</span><span class="n">dentry</span><span class="p">);</span>
+<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="p">};</span>
+</code></pre></div>
+<p>Callback bắt buộc theo loại phần cứng (theo kernel docs):</p>
+<table>
+<thead>
+<tr>
+<th>Callback</th>
+<th>gate</th>
+<th>đổi rate</th>
+<th>single parent</th>
+<th>mux</th>
+<th>root</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.enable</code> / <code>.disable</code> / <code>.is_enabled</code></td>
+<td><strong>y</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>.recalc_rate</code> / <code>.determine_rate</code> / <code>.set_rate</code></td>
+<td></td>
+<td><strong>y</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>.set_parent</code> / <code>.get_parent</code></td>
+<td></td>
+<td></td>
+<td>n</td>
+<td><strong>y</strong></td>
+<td>n</td>
+</tr>
+</tbody>
+</table>
+<h3 id="core-flags-quan-trong">Core flags quan trọng<a class="headerlink" href="#core-flags-quan-trong" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Ý nghĩa</th>
+<th>Khi nào dùng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CLK_SET_RATE_PARENT</code></td>
+<td>Đẩy yêu cầu đổi rate lên parent</td>
+<td>Gate/divider con muốn PLL cha đổi theo</td>
+</tr>
+<tr>
+<td><code>CLK_SET_RATE_GATE</code> / <code>CLK_SET_PARENT_GATE</code></td>
+<td>Phải tắt clock khi đổi rate/parent</td>
+<td>PLL không glitch-free</td>
+</tr>
+<tr>
+<td><code>CLK_SET_RATE_UNGATE</code></td>
+<td>Clock phải đang chạy mới đổi rate được</td>
+<td>Một số PLL cần lock</td>
+</tr>
+<tr>
+<td><code>CLK_SET_RATE_NO_REPARENT</code></td>
+<td>Không tự đổi parent khi set_rate</td>
+<td>Mux có parent cố định chủ ý</td>
+</tr>
+<tr>
+<td><code>CLK_IS_CRITICAL</code></td>
+<td>Không bao giờ gate</td>
+<td>DDR, interconnect, CPU clock</td>
+</tr>
+<tr>
+<td><code>CLK_IGNORE_UNUSED</code></td>
+<td>Không tắt trong <code>clk_disable_unused()</code></td>
+<td>Clock dùng ngoài tầm nhìn kernel (FPGA PL, co-processor)</td>
+</tr>
+<tr>
+<td><code>CLK_GET_RATE_NOCACHE</code></td>
+<td>Luôn đọc lại rate từ HW</td>
+<td>Clock bị firmware/HW khác thay đổi</td>
+</tr>
+<tr>
+<td><code>CLK_OPS_PARENT_ENABLE</code></td>
+<td>Parent phải bật khi gate/ungate/set_rate/reparent</td>
+<td>Thanh ghi clock nằm trong domain của parent</td>
+</tr>
+<tr>
+<td><code>CLK_RECALC_NEW_RATES</code></td>
+<td>Recalc sau notifier</td>
+<td>Notifier có thể sửa HW</td>
+</tr>
+<tr>
+<td><code>CLK_DUTY_CYCLE_PARENT</code></td>
+<td>Chuyển tiếp duty cycle lên parent</td>
+<td>Gate trong suốt với duty</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-consumer-api">4. Consumer API<a class="headerlink" href="#4-consumer-api" title="Permanent link">¶</a></h2>
+<p>CCF tách bật clock thành hai pha. <code>clk_prepare()</code> có thể ngủ (khóa PLL, gọi I²C tới clock generator ngoài, gọi firmware) và gọi khi thiết bị <em>có thể sẽ cần</em> clock. <code>clk_enable()</code> là atomic, gọi được từ IRQ handler và bắt buộc phải prepare trước. Refcount lên cây: enable một leaf sẽ enable toàn bộ ancestor.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">foo_probe</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">platform_device</span><span class="w"> </span><span class="o">*</span><span class="n">pdev</span><span class="p">)</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="p">{</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">device</span><span class="w"> </span><span class="o">*</span><span class="n">dev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">pdev</span><span class="o">-&gt;</span><span class="n">dev</span><span class="p">;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">clk</span><span class="w"> </span><span class="o">*</span><span class="n">apb</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">ref</span><span class="p">;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="cm">/* get + prepare + enable, tự dọn khi unbind (v6.3+) */</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="n">apb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">devm_clk_get_enabled</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="s">"apb"</span><span class="p">);</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">IS_ERR</span><span class="p">(</span><span class="n">apb</span><span class="p">))</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">dev_err_probe</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="n">PTR_ERR</span><span class="p">(</span><span class="n">apb</span><span class="p">),</span><span class="w"> </span><span class="s">"no apb clock</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="cm">/* clock tuỳ chọn: trả NULL (không lỗi) nếu DT không khai báo */</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="n">ref</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">devm_clk_get_optional</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="s">"ref"</span><span class="p">);</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">IS_ERR</span><span class="p">(</span><span class="n">ref</span><span class="p">))</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">PTR_ERR</span><span class="p">(</span><span class="n">ref</span><span class="p">);</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">    </span><span class="cm">/* hỏi trước rate thực tế đạt được, rồi mới set */</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clk_round_rate</span><span class="p">(</span><span class="n">ref</span><span class="p">,</span><span class="w"> </span><span class="mi">122880000</span><span class="p">);</span><span class="w">    </span><span class="cm">/* 122.88 MHz */</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clk_set_rate</span><span class="p">(</span><span class="n">ref</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">);</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">    </span><span class="cm">/* khoá rate để consumer khác không đổi dưới chân mình */</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">devm_clk_rate_exclusive_get</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="n">ref</span><span class="p">);</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">    </span><span class="p">...</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="p">}</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Nhóm</th>
+<th>API</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lấy handle</td>
+<td><code>devm_clk_get[_optional][_enabled\|_prepared]()</code>, <code>devm_clk_bulk_get_all_enabled()</code>, <code>of_clk_get_by_name()</code></td>
+</tr>
+<tr>
+<td>Bật/tắt</td>
+<td><code>clk_prepare_enable()</code>, <code>clk_disable_unprepare()</code>, <code>clk_bulk_*()</code></td>
+</tr>
+<tr>
+<td>Rate</td>
+<td><code>clk_get_rate()</code>, <code>clk_round_rate()</code>, <code>clk_set_rate()</code>, <code>clk_set_rate_range()</code>, <code>clk_set_min_rate()</code></td>
+</tr>
+<tr>
+<td>Bảo vệ rate</td>
+<td><code>clk_rate_exclusive_get()/put()</code>, <code>clk_set_rate_exclusive()</code></td>
+</tr>
+<tr>
+<td>Parent</td>
+<td><code>clk_set_parent()</code>, <code>clk_get_parent()</code>, <code>clk_has_parent()</code></td>
+</tr>
+<tr>
+<td>Tín hiệu</td>
+<td><code>clk_set_phase()</code>, <code>clk_set_duty_cycle()</code>, <code>clk_get_accuracy()</code></td>
+</tr>
+<tr>
+<td>Theo dõi</td>
+<td><code>clk_notifier_register()</code>: nhận <code>PRE/POST/ABORT_RATE_CHANGE</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>clk_round_rate()</code> phía consumer vẫn còn; chỉ callback <code>.round_rate</code> của provider bị xóa. Core giờ hiện thực nó bằng <code>.determine_rate</code>.</p>
+<h2 id="5-provider-api">5. Provider API<a class="headerlink" href="#5-provider-api" title="Permanent link">¶</a></h2>
+<p>Phần lớn cây clock của SoC được ghép từ các khối dựng sẵn trong <code>drivers/clk/clk-*.c</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Đặc điểm</th>
+<th>Helper đăng ký</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fixed-rate</td>
+<td>Luôn chạy, rate cố định</td>
+<td><code>clk_hw_register_fixed_rate()</code></td>
+</tr>
+<tr>
+<td>fixed-factor</td>
+<td>Nhân/chia rate parent bằng hằng số, không gate</td>
+<td><code>devm_clk_hw_register_fixed_factor()</code></td>
+</tr>
+<tr>
+<td>gate</td>
+<td>Cùng rate với parent, chỉ bật/tắt</td>
+<td><code>devm_clk_hw_register_gate()</code></td>
+</tr>
+<tr>
+<td>divider</td>
+<td>Chia rate parent, hệ số chọn từ bảng khi đăng ký</td>
+<td><code>devm_clk_hw_register_divider[_table]()</code></td>
+</tr>
+<tr>
+<td>mux</td>
+<td>Chọn một trong nhiều parent, không gate</td>
+<td><code>devm_clk_hw_register_mux()</code></td>
+</tr>
+<tr>
+<td>fractional divider</td>
+<td>Chia theo tỉ số m/n</td>
+<td><code>clk_hw_register_fractional_divider()</code></td>
+</tr>
+<tr>
+<td>composite</td>
+<td>Ghép mux + divider + gate</td>
+<td><code>clk_hw_register_composite()</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="vi-du-clock-rieng-divider">Ví dụ clock riêng: divider<a class="headerlink" href="#vi-du-clock-rieng-divider" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;linux/clk-provider.h&gt;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">struct</span><span class="w"> </span><span class="nc">foo_div</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_hw</span><span class="w">   </span><span class="n">hw</span><span class="p">;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">__iomem</span><span class="w">    </span><span class="o">*</span><span class="n">reg</span><span class="p">;</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="n">spinlock_t</span><span class="w">  </span><span class="o">*</span><span class="n">lock</span><span class="p">;</span><span class="w">      </span><span class="cm">/* chia sẻ thanh ghi với gate khác */</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="p">};</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="cp">#define to_foo_div(_hw) container_of(_hw, struct foo_div, hw)</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="k">static</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="nf">foo_div_recalc_rate</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_hw</span><span class="w"> </span><span class="o">*</span><span class="n">hw</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">prate</span><span class="p">)</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="p">{</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="n">u32</span><span class="w"> </span><span class="n">div</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">readl</span><span class="p">(</span><span class="n">to_foo_div</span><span class="p">(</span><span class="n">hw</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">reg</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xff</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">DIV_ROUND_UP_ULL</span><span class="p">(</span><span class="n">prate</span><span class="p">,</span><span class="w"> </span><span class="n">div</span><span class="p">);</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="p">}</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">foo_div_determine_rate</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_hw</span><span class="w"> </span><span class="o">*</span><span class="n">hw</span><span class="p">,</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_rate_request</span><span class="w"> </span><span class="o">*</span><span class="n">req</span><span class="p">)</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="p">{</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">div</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DIV_ROUND_CLOSEST</span><span class="p">(</span><span class="n">req</span><span class="o">-&gt;</span><span class="n">best_parent_rate</span><span class="p">,</span><span class="w"> </span><span class="n">req</span><span class="o">-&gt;</span><span class="n">rate</span><span class="p">);</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">    </span><span class="n">div</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clamp</span><span class="p">(</span><span class="n">div</span><span class="p">,</span><span class="w"> </span><span class="mi">1U</span><span class="p">,</span><span class="w"> </span><span class="mi">256U</span><span class="p">);</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">    </span><span class="n">req</span><span class="o">-&gt;</span><span class="n">rate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">req</span><span class="o">-&gt;</span><span class="n">best_parent_rate</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">div</span><span class="p">;</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="p">}</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">foo_div_set_rate</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_hw</span><span class="w"> </span><span class="o">*</span><span class="n">hw</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">rate</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">prate</span><span class="p">)</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="p">{</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">foo_div</span><span class="w"> </span><span class="o">*</span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">to_foo_div</span><span class="p">(</span><span class="n">hw</span><span class="p">);</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">flags</span><span class="p">;</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="w">    </span><span class="n">u32</span><span class="w"> </span><span class="n">val</span><span class="p">;</span>
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>
+<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="w">    </span><span class="n">spin_lock_irqsave</span><span class="p">(</span><span class="n">d</span><span class="o">-&gt;</span><span class="n">lock</span><span class="p">,</span><span class="w"> </span><span class="n">flags</span><span class="p">);</span>
+<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="w">    </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">readl</span><span class="p">(</span><span class="n">d</span><span class="o">-&gt;</span><span class="n">reg</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="o">~</span><span class="mh">0xff</span><span class="p">;</span>
+<a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a><span class="w">    </span><span class="n">writel</span><span class="p">(</span><span class="n">val</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="n">DIV_ROUND_CLOSEST</span><span class="p">(</span><span class="n">prate</span><span class="p">,</span><span class="w"> </span><span class="n">rate</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">d</span><span class="o">-&gt;</span><span class="n">reg</span><span class="p">);</span>
+<a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="w">    </span><span class="n">spin_unlock_irqrestore</span><span class="p">(</span><span class="n">d</span><span class="o">-&gt;</span><span class="n">lock</span><span class="p">,</span><span class="w"> </span><span class="n">flags</span><span class="p">);</span>
+<a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a><span class="p">}</span>
+<a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a>
+<a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_ops</span><span class="w"> </span><span class="n">foo_div_ops</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a><span class="w">    </span><span class="p">.</span><span class="n">recalc_rate</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">foo_div_recalc_rate</span><span class="p">,</span>
+<a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a><span class="w">    </span><span class="p">.</span><span class="n">determine_rate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">foo_div_determine_rate</span><span class="p">,</span>
+<a id="__codelineno-3-41" name="__codelineno-3-41" href="#__codelineno-3-41"></a><span class="w">    </span><span class="p">.</span><span class="n">set_rate</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">foo_div_set_rate</span><span class="p">,</span>
+<a id="__codelineno-3-42" name="__codelineno-3-42" href="#__codelineno-3-42"></a><span class="p">};</span>
+</code></pre></div>
+<p>Đăng ký và expose ra DT bằng <code>clk_hw_onecell_data</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_hw_onecell_data</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="p">;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">devm_kzalloc</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="n">struct_size</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">hws</span><span class="p">,</span><span class="w"> </span><span class="n">NR_CLKS</span><span class="p">),</span><span class="w"> </span><span class="n">GFP_KERNEL</span><span class="p">);</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="n">data</span><span class="o">-&gt;</span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NR_CLKS</span><span class="p">;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="n">init</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"foo_div"</span><span class="p">;</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="n">init</span><span class="p">.</span><span class="n">ops</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">foo_div_ops</span><span class="p">;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="n">init</span><span class="p">.</span><span class="n">parent_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_parent_data</span><span class="p">){</span><span class="w"> </span><span class="p">.</span><span class="n">fw_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"ref"</span><span class="w"> </span><span class="p">};</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="n">init</span><span class="p">.</span><span class="n">num_parents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="n">div</span><span class="o">-&gt;</span><span class="n">hw</span><span class="p">.</span><span class="n">init</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">init</span><span class="p">;</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">devm_clk_hw_register</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">div</span><span class="o">-&gt;</span><span class="n">hw</span><span class="p">);</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">    </span><span class="n">data</span><span class="o">-&gt;</span><span class="n">hws</span><span class="p">[</span><span class="n">FOO_CLK_DIV</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">div</span><span class="o">-&gt;</span><span class="n">hw</span><span class="p">;</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">devm_of_clk_add_hw_provider</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="n">of_clk_hw_onecell_get</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">);</span>
+</code></pre></div>
+<p><code>spinlock_t *lock</code> riêng của driver là bắt buộc khi một thanh ghi chứa bit của cả nhóm atomic (enable) lẫn nhóm sleepable (set_rate): CCF không tự bảo vệ chéo giữa hai nhóm (mục 7).</p>
+<h3 id="determine_rate"><code>.determine_rate</code><a class="headerlink" href="#determine_rate" title="Permanent link">¶</a></h3>
+<p><code>struct clk_rate_request</code> gồm <code>rate</code> (mục tiêu), <code>min_rate</code>/<code>max_rate</code> (gộp ràng buộc từ mọi consumer), <code>best_parent_rate</code>, <code>best_parent_hw</code>. Provider sửa <code>req-&gt;rate</code> thành rate thực sự đạt được và, với mux hoặc <code>CLK_SET_RATE_PARENT</code>, đề xuất parent. Helper có sẵn: <code>clk_hw_determine_rate_no_reparent()</code>, <code>__clk_mux_determine_rate[_closest]()</code>, <code>divider_determine_rate()</code>, <code>clk_hw_forward_rate_request()</code>.</p>
+<h2 id="6-device-tree-binding">6. Device Tree binding<a class="headerlink" href="#6-device-tree-binding" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="cm">/* provider */</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nl">clkc</span><span class="p">:</span><span class="w"> </span><span class="nf">clock-controller</span><span class="o">@</span><span class="mi">ff5e0000</span><span class="cm"> </span><span class="p">{</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="kr">compatible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"vendor,foo-clkc"</span><span class="p">;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="kr">reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mh">0xff5e0000</span><span class="w"> </span><span class="mh">0x1000</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="o">#</span><span class="n">clock-cells</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span><span class="w">         </span><span class="cm">/* 1 cell = clock ID */</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="n">clocks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;&amp;</span><span class="na">osc_33m</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="o">&lt;&amp;</span><span class="na">pl_ref</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="n">clock-names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"ref"</span><span class="p">,</span><span class="w"> </span><span class="s">"pl_ref"</span><span class="p">;</span><span class="w">      </span><span class="cm">/* khớp parent_data.fw_name */</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="p">};</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="cm">/* consumer */</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="nl">uart0</span><span class="p">:</span><span class="w"> </span><span class="nf">serial</span><span class="o">@</span><span class="mi">ff000000</span><span class="cm"> </span><span class="p">{</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">    </span><span class="n">clocks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;&amp;</span><span class="na">clkc</span><span class="w"> </span><span class="mi">56</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="o">&lt;&amp;</span><span class="na">clkc</span><span class="w"> </span><span class="mi">31</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">    </span><span class="n">clock-names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"uart_clk"</span><span class="p">,</span><span class="w"> </span><span class="s">"pclk"</span><span class="p">;</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">    </span><span class="cm">/* core tự áp dụng lúc probe, qua of_clk_set_defaults() */</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">    </span><span class="n">assigned-clocks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;&amp;</span><span class="na">clkc</span><span class="w"> </span><span class="mi">56</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">    </span><span class="n">assigned-clock-rates</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">100000000</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">    </span><span class="n">assigned-clock-parents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;&amp;</span><span class="na">clkc</span><span class="w"> </span><span class="mi">3</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">    </span><span class="cm">/* đang được đề xuất: assigned-clock-sscs = &lt;modfreq_hz spread_bp method&gt;; */</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="p">};</span>
+</code></pre></div>
+<ul>
+<li><code>#clock-cells = &lt;0&gt;</code> cho provider một clock; <code>&lt;1&gt;</code> cho clock-controller (ID trong <code>include/dt-bindings/clock/*.h</code>); một số SoC dùng <code>&lt;2&gt;</code> (ví dụ QorIQ: type + index).</li>
+<li>Nếu parent chưa đăng ký, clock con thành orphan và tự được nhận khi parent xuất hiện; <code>clk_get()</code> trên orphan thường nhận <code>-EPROBE_DEFER</code>.</li>
+</ul>
+<h2 id="7-locking-clk_set_rate-va-preempt_rt">7. Locking, clk_set_rate và PREEMPT_RT<a class="headerlink" href="#7-locking-clk_set_rate-va-preempt_rt" title="Permanent link">¶</a></h2>
+<p>CCF dùng hai lock toàn cục, cả hai reentrant cho cùng task:</p>
+<table>
+<thead>
+<tr>
+<th>Lock</th>
+<th>Kiểu</th>
+<th>Bảo vệ</th>
+<th>Ngữ cảnh gọi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>prepare_lock</code></td>
+<td><code>mutex</code></td>
+<td>prepare/unprepare, mọi thao tác rate, parent, phase, duty, đăng ký clock</td>
+<td>Chỉ process context</td>
+</tr>
+<tr>
+<td><code>enable_lock</code></td>
+<td><code>spinlock_t</code></td>
+<td>enable/disable</td>
+<td>Được phép atomic</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Driver không cần tự khóa tài nguyên chia sẻ trong cùng một nhóm, nhưng phải tự khóa tài nguyên chia sẻ giữa hai nhóm (ví dụ một thanh ghi chứa cả bit gate lẫn trường divider).</li>
+<li>Core reentrant: <code>.set_rate</code> của clock A được phép gọi <code>clk_set_rate()</code> trên clock B.</li>
+<li><code>prepare_lock</code> là toàn cục, nên một <code>clk_set_rate()</code> chậm (PLL relock, I²C tới clock generator ngoài, round-trip firmware) chặn mọi thao tác prepare/rate của toàn hệ thống.</li>
+</ul>
+<h3 id="luong-clk_set_rate">Luồng <code>clk_set_rate()</code><a class="headerlink" href="#luong-clk_set_rate" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/ccf-set-rate-phases.png" data-desc-position="bottom"><img alt="5 pha của clk_set_rate" src="../img/ccf-set-rate-phases.png"></a></p>
+<ol>
+<li><strong>Kiểm tra:</strong> clamp vào <code>[min, max]</code> gộp từ mọi <code>struct clk</code> của clock; nếu rate bị consumer khác khóa bằng <code>clk_rate_exclusive_get()</code> thì trả <code>-EBUSY</code>.</li>
+<li><strong><code>clk_calc_new_rates()</code> (bottom-up):</strong> gọi <code>.determine_rate</code> ở node đích; với <code>CLK_SET_RATE_PARENT</code>, đệ quy lên parent với <code>best_parent_rate</code> đề xuất. Mux có thể chọn parent mới.</li>
+<li><strong><code>PRE_RATE_CHANGE</code>:</strong> notifier được gọi cho cả subtree; nếu một notifier trả <code>NOTIFY_BAD</code>, core gửi <code>ABORT_RATE_CHANGE</code> và dừng.</li>
+<li><strong><code>clk_change_rate()</code> (top-down):</strong> gọi <code>.set_parent</code>/<code>.set_rate</code> (hoặc <code>.set_rate_and_parent</code>), tôn trọng <code>CLK_SET_RATE_GATE</code>, <code>CLK_OPS_PARENT_ENABLE</code>.</li>
+<li><strong>Recalc + <code>POST_RATE_CHANGE</code>:</strong> <code>.recalc_rate</code> cập nhật cache cho subtree; nhả <code>prepare_lock</code>.</li>
+</ol>
+<p>Notifier thường dùng để cpufreq chuyển điện áp, DDR controller chuyển timing, UART tính lại baud divisor.</p>
+<h3 id="he-qua-tren-preempt_rt">Hệ quả trên PREEMPT_RT<a class="headerlink" href="#he-qua-tren-preempt_rt" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong><code>enable_lock</code> trở thành sleeping lock</strong> (rt_mutex). <code>clk_enable()</code> từ IRQ handler threaded vẫn ổn, nhưng gọi từ ngữ cảnh thực sự atomic (hard-IRQ <code>IRQF_NO_THREAD</code>, đang giữ <code>raw_spinlock_t</code>, <code>preempt_disable()</code>) là lỗi, sẽ có cảnh báo "sleeping function called from invalid context" khi bật <code>CONFIG_DEBUG_ATOMIC_SLEEP</code>.</li>
+<li><strong><code>prepare_lock</code> toàn cục là nguồn priority inversion tiềm ẩn.</strong> Task RT ưu tiên cao (ví dụ thread điều khiển fronthaul) gọi <code>clk_set_rate()</code> trong khi một kworker priority thấp đang giữ lock để relock PLL hay chờ firmware sẽ bị chặn. Priority inheritance tránh được inversion không giới hạn, nhưng độ trễ vẫn bằng thời gian critical section kia. Nguyên tắc: không thao tác clock trong đường nóng RT; cấu hình rate một lần lúc init (hoặc qua <code>assigned-clock-rates</code>).</li>
+<li><strong>clk_disable_unused()</strong> chạy ở <code>late_initcall_sync</code> và có thể tắt clock của khối FPGA PL hay IP mà kernel không biết đang dùng, gây treo hoặc mất dữ liệu ngay sau boot. Xử lý đúng: khai báo clock cho driver consumer, hoặc <code>CLK_IGNORE_UNUSED</code>/<code>CLK_IS_CRITICAL</code> trong provider. <code>clk_ignore_unused</code> trên boot args chỉ nên dùng khi debug.</li>
+</ol>
+<h2 id="8-debug-va-quan-sat">8. Debug và quan sát<a class="headerlink" href="#8-debug-va-quan-sat" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>mount<span class="w"> </span>-t<span class="w"> </span>debugfs<span class="w"> </span>none<span class="w"> </span>/sys/kernel/debug<span class="w"> </span><span class="m">2</span>&gt;/dev/null
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="c1"># Toàn bộ cây: enable/prepare/protect count, rate, accuracy, phase, duty, consumer</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>cat<span class="w"> </span>/sys/kernel/debug/clk/clk_summary
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="c1"># Dạng JSON, tiện cho script</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>cat<span class="w"> </span>/sys/kernel/debug/clk/clk_dump
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="c1"># Clock chưa có parent (thường do thiếu provider hoặc sai parent_data)</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>cat<span class="w"> </span>/sys/kernel/debug/clk/clk_orphan_summary
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="c1"># Thuộc tính từng clock</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>ls<span class="w"> </span>/sys/kernel/debug/clk/&lt;clk_name&gt;/
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="c1">#   clk_rate  clk_enable_count  clk_prepare_count  clk_flags</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="c1">#   clk_parent  clk_possible_parents  clk_phase  clk_duty_cycle ...</span>
+</code></pre></div>
+<p>Ghi vào <code>clk_rate</code>, <code>clk_parent</code>… chỉ khả dụng khi build với <code>#define CLOCK_ALLOW_WRITE_DEBUGFS</code> trong <code>clk.c</code> (chủ ý không có Kconfig, chỉ dành cho bring-up).</p>
+<p>Tracepoint:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Theo dõi mọi thao tác clock lúc boot</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>...<span class="w"> </span>tp_printk<span class="w"> </span><span class="nv">trace_event</span><span class="o">=</span>clk:*
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># Hoặc runtime</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nb">echo</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/kernel/tracing/events/clk/enable
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>cat<span class="w"> </span>/sys/kernel/tracing/trace_pipe
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c1"># events: clk_enable, clk_disable, clk_prepare, clk_set_rate[_complete],</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="c1">#         clk_set_parent, clk_set_phase, clk_set_duty_cycle ...</span>
+</code></pre></div>
+<p>Để biết <code>clk_disable_unused()</code> đã tắt những gì: boot với <code>tp_printk trace_event=clk:clk_disable</code>. Core CCF còn có bộ test KUnit (<code>drivers/clk/clk_test.c</code>, <code>clk-gate_test.c</code>…):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>./tools/testing/kunit/kunit.py<span class="w"> </span>run<span class="w"> </span>--kunitconfig<span class="o">=</span>drivers/clk
+</code></pre></div>
+<h2 id="9-phat-trien-gan-ay-20252026">9. Phát triển gần đây (2025–2026)<a class="headerlink" href="#9-phat-trien-gan-ay-20252026" title="Permanent link">¶</a></h2>
+<h3 id="xoa-round_rate-khoi-clk_ops">Xóa <code>.round_rate</code> khỏi <code>clk_ops</code><a class="headerlink" href="#xoa-round_rate-khoi-clk_ops" title="Permanent link">¶</a></h3>
+<p>Trong 2025, Brian Masney (Red Hat) gửi loạt hơn 100 patch chuyển toàn bộ driver trong tree sang <code>.determine_rate</code> bằng Coccinelle; khi một driver định nghĩa cả hai, core vốn chỉ dùng <code>.determine_rate</code>. Commit cuối xóa hẳn callback này vào đầu 2026, và tài liệu kernel v7.3 không còn <code>.round_rate</code> trong <code>struct clk_ops</code>.</p>
+<p>Hệ quả với driver out-of-tree (BSP vendor, driver nội bộ): clock driver nào còn <code>.round_rate</code> sẽ không biên dịch được trên kernel mới. Chuyển đổi gần như cơ học:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="cm">/* trước */</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="k">static</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="nf">foo_round_rate</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_hw</span><span class="w"> </span><span class="o">*</span><span class="n">hw</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">rate</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="o">*</span><span class="n">prate</span><span class="p">)</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">calc</span><span class="p">(</span><span class="n">rate</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">prate</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="cm">/* sau */</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">foo_determine_rate</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_hw</span><span class="w"> </span><span class="o">*</span><span class="n">hw</span><span class="p">,</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">clk_rate_request</span><span class="w"> </span><span class="o">*</span><span class="n">req</span><span class="p">)</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="p">{</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">    </span><span class="n">req</span><span class="o">-&gt;</span><span class="n">rate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calc</span><span class="p">(</span><span class="n">req</span><span class="o">-&gt;</span><span class="n">rate</span><span class="p">,</span><span class="w"> </span><span class="n">req</span><span class="o">-&gt;</span><span class="n">best_parent_rate</span><span class="p">);</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="spread-spectrum-ssc">Spread spectrum (SSC)<a class="headerlink" href="#spread-spectrum-ssc" title="Permanent link">¶</a></h3>
+<p>Peng Fan (NXP) đề xuất API từ đầu 2025, v9 vào 3/2026. Callback mới <code>.set_spread_spectrum</code> nhận tần số điều chế (Hz), độ trải (basis point) và phương pháp; thuộc tính DT <code>assigned-clock-sscs</code> được core áp dụng lúc probe, nhằm giảm EMI. Người dùng đầu tiên là <code>clk-scmi</code> trên i.MX95 (firmware SCMI thực hiện SSC); TI cũng có patch tương tự cho <code>clk-sci</code> trên K3.</p>
+<h3 id="rust">Rust<a class="headerlink" href="#rust" title="Permanent link">¶</a></h3>
+<p>Viresh Kumar (Linaro) đưa abstraction Rust tối thiểu cho phía consumer vào <code>rust/kernel/clk.rs</code> (cùng loạt cpufreq/OPP): <code>Clk</code>, <code>OptionalClk</code>, <code>prepare_enable()</code>, <code>rate()</code>, <code>set_rate()</code>, kiểu <code>Hertz</code>. Chưa có abstraction phía provider.</p>
+<h2 id="10-vi-du-tren-nen-tang-cua-team">10. Ví dụ trên nền tảng của team<a class="headerlink" href="#10-vi-du-tren-nen-tang-cua-team" title="Permanent link">¶</a></h2>
+<h3 id="xilinx-zynqmp-clock-qua-firmware-driversclkzynqmp">Xilinx ZynqMP: clock qua firmware (<code>drivers/clk/zynqmp/</code>)<a class="headerlink" href="#xilinx-zynqmp-clock-qua-firmware-driversclkzynqmp" title="Permanent link">¶</a></h3>
+<p>Linux ở EL1 không ghi trực tiếp thanh ghi CRL_APB/CRF_APB. Mọi thao tác clock đi qua EEMI → ATF (EL3) → PMU firmware:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>clk_set_rate()  →  zynqmp_clk_divider_set_rate()
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>                →  zynqmp_pm_clock_setdivider()      /* drivers/firmware/xilinx/zynqmp.c */
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>                →  SMC → ATF → IPI → PMU FW  →  ghi thanh ghi CRL/CRF
+</code></pre></div>
+<ul>
+<li>Topology không hard-code trong kernel: <code>clkc.c</code> hỏi PMU firmware (<code>PM_QUERY_DATA</code>: tên, topology, parent, attribute) lúc probe rồi dựng cây bằng các type riêng <code>zynqmp_clk_register_{pll,divider,mux,gate}</code>.</li>
+<li>Mỗi thao tác clock là một round-trip SMC + IPI và giữ <code>prepare_lock</code> suốt thời gian đó, thêm một lý do không đổi clock lúc runtime trên hệ RT.</li>
+<li>Clock cho PL (fabric): <code>pl0_ref</code>…<code>pl3_ref</code> (FCLK0–3) do PS cấp. Nếu IP trong PL không có consumer khai báo trong DT, <code>clk_disable_unused()</code> có thể tắt chúng. Giải pháp chuẩn: khai báo <code>clocks = &lt;&amp;zynqmp_clk 71&gt;</code> (PL0_REF) cho node IP, hoặc dùng <code>assigned-clock-rates</code>.</li>
+<li>Kiểm tra: <code>cat /sys/kernel/debug/clk/clk_summary | grep -E "pl[0-3]_ref|dpll|vpll|iopll|rpll|apll"</code>.</li>
+</ul>
+<h3 id="nxp-lx2160a-qoriq-clockgen-driversclkclk-qoriqc">NXP LX2160A: QorIQ clockgen (<code>drivers/clk/clk-qoriq.c</code>)<a class="headerlink" href="#nxp-lx2160a-qoriq-clockgen-driversclkclk-qoriqc" title="Permanent link">¶</a></h3>
+<ul>
+<li>Một driver chung cho họ QorIQ/Layerscape; compatible <code>fsl,lx2160a-clockgen</code>.</li>
+<li><code>#clock-cells = &lt;2&gt;</code>: cell đầu là loại clock (sysclk, cmux, hwaccel, fman, platform PLL), cell sau là index (<code>include/dt-bindings/clock/fsl,qoriq-clockgen.h</code>).</li>
+<li>Cluster PLL + CMUX cấp clock cho cụm Cortex-A72; <code>qoriq-cpufreq</code> dùng <code>clk_set_parent()</code> trên CMUX để chuyển giữa các đầu ra PLL/divider, ví dụ điển hình của mux-based DVFS.</li>
+<li>Peripheral (DPAA2, I²C, eSDHC…) phần lớn lấy clock từ platform PLL qua hệ số chia cố định.</li>
+</ul>
+<h3 id="clock-generator-ngoai">Clock generator ngoài<a class="headerlink" href="#clock-generator-ngoai" title="Permanent link">¶</a></h3>
+<p>Si5341 (<code>clk-si5341.c</code>), Si570 (<code>clk-si570.c</code>), có trên board ZCU102, được mô hình hóa như provider CCF qua I²C/regmap. Vì I²C có thể ngủ, thao tác thực sự nằm ở <code>.prepare</code>/<code>.set_rate</code>, không ở <code>.enable</code>.</p>
+<h2 id="11-discussion">11. Discussion<a class="headerlink" href="#11-discussion" title="Permanent link">¶</a></h2>
+<p><strong>CCF là "cây chia tần", không phải "hệ đồng bộ".</strong> CCF tối ưu cho mô hình nguồn cố định → PLL → các nhánh chia/gate, rate là số nguyên Hz và trạng thái bật/tắt. Nó không mô hình hóa khóa pha theo nguồn ngoài, holdover hay trạng thái lock của DPLL. Với chuỗi đồng bộ của gNodeB (GNSS 1PPS → DPLL/jitter cleaner → clock cho RF/JESD204/eCPRI), quản lý trạng thái đồng bộ thuộc subsystem DPLL (<code>drivers/dpll/</code>, netlink) và PTP (<code>drivers/ptp/</code>); CCF chỉ hợp lý cho phần chọn tần số đầu ra của clock generator.</p>
+<p><strong>Độ chính xác của rate.</strong> Rate là <code>unsigned long</code> Hz, đủ lớn trên ARM64, nhưng các tần số kiểu 122.88 MHz hay 245.76 MHz qua nhiều tầng divider/fractional có thể bị làm tròn. Luôn đọc lại <code>clk_get_rate()</code> sau khi set và kiểm tra <code>accuracy</code> (ppb) nếu provider có cung cấp.</p>
+<p><strong>Lock toàn cục là điểm yếu đã biết.</strong> Thay <code>prepare_lock</code> bằng lock chi tiết hơn (theo clock hay subtree) đã được đề xuất nhiều lần, nhưng độ phức tạp (reparent đổi ranh giới subtree, tính reentrant) khiến mainline vẫn giữ thiết kế hai lock toàn cục.</p>
+<p>Hướng đi tiếp theo:</p>
+<ul>
+<li>Đọc kỹ <code>drivers/clk/clk.c</code>: <code>clk_core_set_rate_nolock()</code>, <code>clk_calc_new_rates()</code>, <code>clk_propagate_rate_change()</code>, <code>__clk_init_parent()</code> và cơ chế orphan reparent.</li>
+<li>So sánh mô hình CCF với SCMI clock protocol (firmware-managed clock, giống hướng ZynqMP EEMI).</li>
+<li>Khảo sát <code>drivers/dpll/</code> và quan hệ với CCF cho chip timing dùng trong gNodeB.</li>
+<li>Kiểm thử trên ZCU102: dump <code>clk_summary</code>, đo thời gian một <code>clk_set_rate()</code> qua EEMI bằng ftrace.</li>
+</ul>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">¶</a></h2>
+<ol>
+<li><a href="https://docs.kernel.org/driver-api/clk.html">The Common Clk Framework, Linux kernel documentation (v7.3)</a></li>
+<li><code>include/linux/clk.h</code>, <code>include/linux/clk-provider.h</code>, <code>drivers/clk/clk.c</code>: mã nguồn kernel.</li>
+<li><a href="https://lkml.iu.edu/hypermail/linux/kernel/1203.1/01342.html">M. Turquette, PATCH v6 0/3 common clk framework, LKML, 03/2012</a></li>
+<li>B. Masney, <em>clk: remove round_rate() clk ops</em> (commit dc652a33cf08), 2026.</li>
+<li><a href="https://lists.infradead.org/pipermail/linux-rockchip/2025-August/063671.html">B. Masney, clk: divider: remove round_rate() in favor of determine_rate(), 08/2025</a></li>
+<li><a href="https://lkml.iu.edu/hypermail/linux/kernel/2603.1/08466.html">P. Fan, PATCH v9 2/6 clk: Introduce clk_hw_set_spread_spectrum, 03/2026</a></li>
+<li><a href="https://lwn.net/Articles/1006295">P. Fan, clk: Support spread spectrum and use it in clk-scmi, LWN, 01/2025</a></li>
+<li><a href="https://lwn.net/Articles/1021756/">V. Kumar, Rust abstractions for clk, cpumask, cpufreq, OPP, LWN</a></li>
+<li><code>drivers/clk/zynqmp/</code> (clkc.c, pll.c, divider.c), <code>drivers/firmware/xilinx/zynqmp.c</code>: Xilinx ZynqMP.</li>
+<li><code>drivers/clk/clk-qoriq.c</code>, <code>Documentation/devicetree/bindings/clock/fsl,qoriq-clock.yaml</code>: NXP QorIQ/Layerscape.</li>
+</ol>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 20, 2026 13:27:37 UTC">October 20, 2026</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 20, 2026 13:27:37 UTC">October 20, 2026</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../../ddebug/ddebug/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Dynamic Debug">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Dynamic Debug
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../../virtualization/hypervisor/hypervisor/" class="md-footer__link md-footer__link--next" aria-label="Next: Hypervisor &amp; Hyper-V">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Hypervisor &amp; Hyper-V
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2018 Vu Tang.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.instant", "navigation.tracking", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
