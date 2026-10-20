@@ -1,0 +1,28 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 40 730 125' role='img' aria-label='Bản đồ lựa chọn silicon: Ericsson gần ASIC, Samsung ở CPU đa dụng, Nokia hướng tới GPU' font-family='system-ui,sans-serif'>
+<defs>
+<linearGradient id='g' x1='0' x2='1'><stop offset='0' stop-color='#c2412d'/><stop offset='.5' stop-color='#d98a1f'/><stop offset='1' stop-color='#2e8b57'/></linearGradient>
+<marker id='a2' markerWidth='7' markerHeight='7' refX='6' refY='3.5' orient='auto'><path d='M0 0 L7 3.5 L0 7 z' fill='#1b2430'/></marker>
+</defs>
+<rect x='0' y='40' width='730' height='125' rx='6' fill='#ffffff'/>
+<rect x='20' y='62' width='690' height='14' rx='7' fill='url(#g)'/>
+<text x='20' y='54' font-size='10' font-weight='700' fill='#c2412d'>ASIC / silicon tùy biến</text>
+<text x='365' y='54' text-anchor='middle' font-size='10' font-weight='700' fill='#b06f10'>CPU đa dụng (x86 / Arm)</text>
+<text x='710' y='54' text-anchor='end' font-size='10' font-weight='700' fill='#2e8b57'>GPU đa dụng</text>
+<text x='20' y='92' font-size='8' fill='#5b6675'>Gắn chặt phần cứng–phần mềm</text>
+<text x='710' y='92' text-anchor='end' font-size='8' fill='#5b6675'>Phần mềm chạy được trên nhiều nền tảng</text>
+<rect x='20' y='108' width='205' height='52' rx='9' fill='#fdecea' stroke='#c2412d'/>
+<text x='30' y='124' font-size='10.5' font-weight='700' fill='#c2412d'>Ericsson</text>
+<text x='30' y='137' font-size='8.2' fill='#1b2430'>Giữ ASIC L1 (~5,7 tỷ USD R&amp;D năm ngoái)</text>
+<text x='30' y='149' font-size='8.2' fill='#1b2430'>vRAN trên Intel, tìm cách chạy được AMD/Arm</text>
+<path d='M200 107 L200 80' stroke='#1b2430' stroke-width='1.5' marker-end='url(#a2)'/>
+<rect x='262' y='108' width='205' height='52' rx='9' fill='#fff4e2' stroke='#d98a1f'/>
+<text x='272' y='124' font-size='10.5' font-weight='700' fill='#b06f10'>Samsung</text>
+<text x='272' y='137' font-size='8.2' fill='#1b2430'>vRAN là sản phẩm chủ lực (~53.000 site)</text>
+<text x='272' y='149' font-size='8.2' fill='#1b2430'>Intel là chính; thử AMD, Arm; GPU có chọn lọc</text>
+<path d='M365 107 L365 80' stroke='#1b2430' stroke-width='1.5' marker-end='url(#a2)'/>
+<rect x='505' y='108' width='205' height='52' rx='9' fill='#e6f5ec' stroke='#2e8b57'/>
+<text x='515' y='124' font-size='10.5' font-weight='700' fill='#2e8b57'>Nokia</text>
+<text x='515' y='137' font-size='8.2' fill='#1b2430'>NVIDIA đầu tư 1 tỷ USD, làm L1 tương thích GPU</text>
+<text x='515' y='149' font-size='8.2' fill='#1b2430'>Marvell vẫn là đối tác L1 chính hiện tại</text>
+<path d='M515 107 L515 80' stroke='#1b2430' stroke-width='1.5' marker-end='url(#a2)'/>
+</svg>

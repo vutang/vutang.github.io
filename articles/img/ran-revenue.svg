@@ -1,0 +1,14 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='-8 -8 216 166' role='img' aria-label='Doanh thu thiết bị và phần mềm RAN giảm từ khoảng 45 tỷ USD năm 2022 xuống khoảng 35 tỷ USD năm 2024, giảm 22%' font-family='system-ui,sans-serif'>
+<defs><marker id='ah' markerWidth='6' markerHeight='6' refX='5' refY='3' orient='auto'><path d='M0 0 L6 3 L0 6 z' fill='#5b6675'/></marker></defs>
+<rect x='-8' y='-8' width='216' height='166' rx='6' fill='#ffffff'/>
+<line x1='14' y1='122' x2='190' y2='122' stroke='#9aa5b3' stroke-width='1'/>
+<rect x='42' y='30' width='48' height='92' rx='4' fill='#1f5fbf'/>
+<rect x='116' y='47' width='48' height='75' rx='4' fill='#c2412d'/>
+<text x='66' y='23' text-anchor='middle' font-size='12' font-weight='700' fill='#1b2430'>~45</text>
+<text x='140' y='40' text-anchor='middle' font-size='12' font-weight='700' fill='#1b2430'>~35</text>
+<text x='66' y='136' text-anchor='middle' font-size='9' fill='#5b6675'>2022</text>
+<text x='140' y='136' text-anchor='middle' font-size='9' fill='#5b6675'>2024</text>
+<path d='M94 48 L112 62' stroke='#5b6675' stroke-width='1.4' fill='none' marker-end='url(#ah)'/>
+<rect x='92' y='78' width='40' height='16' rx='8' fill='#fff' stroke='#c2412d'/>
+<text x='112' y='89.5' text-anchor='middle' font-size='9.5' font-weight='700' fill='#c2412d'>−22%</text>
+</svg>
