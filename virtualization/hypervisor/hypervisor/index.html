@@ -70,7 +70,20 @@
 
     
     
-  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+  
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hypervisor &amp; Hyper-V - Vu Tang's Docs">
+<meta property="og:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
+<meta property="og:image" content="https://vutang.github.io/assets/images/social/virtualization/hypervisor/hypervisor.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://vutang.github.io/virtualization/hypervisor/hypervisor/">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:title" content="Hypervisor &amp; Hyper-V - Vu Tang's Docs">
+<meta property="twitter:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
+<meta property="twitter:image" content="https://vutang.github.io/assets/images/social/virtualization/hypervisor/hypervisor.png">
+<link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
@@ -4160,7 +4173,7 @@
 
 <h1 id="hypervisor-hyper-v">Hypervisor &amp; Hyper-V<a class="headerlink" href="#hypervisor-hyper-v" title="Permanent link">¶</a></h1>
 <p>Tổng hợp từ cuộc trao đổi ngày 13/10/2026: kiến trúc Hyper-V, Linux làm root partition (mshv) và trình tự boot.</p>
-<p>Bối cảnh: Microsoft đóng góp driver pvIOMMU cho Linux guest trên Hyper-V, xem bài <a href="../../../articles/2026/10/13/pviommu-hyper-v-%C4%91%C6%B0a-dma-protection-v%C3%A0o-linux-guest/">pvIOMMU: Hyper-V đưa DMA protection vào Linux guest</a>.</p>
+<p>Bối cảnh: Microsoft đóng góp driver pvIOMMU cho Linux guest trên Hyper-V, xem bài <a href="../../../articles/2026/10/13/pviommu-hyperv-linux-guest/">pvIOMMU: Hyper-V đưa DMA protection vào Linux guest</a>.</p>
 <h2 id="hyper-v-la-gi-dung-o-au">Hyper-V là gì, dùng ở đâu<a class="headerlink" href="#hyper-v-la-gi-dung-o-au" title="Permanent link">¶</a></h2>
 <p>Hyper-V là hypervisor loại 1 (bare-metal) của Microsoft, chạy trực tiếp trên phần cứng và dùng ảo hóa phần cứng (Intel VT-x, AMD-V) để cô lập các VM.</p>
 <ul>
@@ -4205,7 +4218,7 @@
 <li><strong>Root partition:</strong> OS host (Windows hoặc Linux), giữ driver phần cứng thật và các service quản lý VM (VMMS, VM Worker Process). Các VSP xử lý I/O storage và network cho guest.</li>
 <li><strong>Child partition:</strong> các VM guest, dùng VSC (<code>hv_netvsc</code>, <code>hv_storvsc</code>) và các enlightenment thay vì driver phần cứng thật.</li>
 <li><strong>VMBus:</strong> kênh giao tiếp VSC ↔ VSP dựa trên ring buffer trong bộ nhớ chia sẻ.</li>
-<li><strong>Hệ quả:</strong> hypervisor nhỏ nên bề mặt tấn công nhỏ; đổi lại I/O của guest phụ thuộc root partition, nên có các hướng như passthrough thiết bị (DDA/VFIO) và <a href="../../../articles/2026/10/13/pviommu-hyper-v-%C4%91%C6%B0a-dma-protection-v%C3%A0o-linux-guest/">pvIOMMU</a>.</li>
+<li><strong>Hệ quả:</strong> hypervisor nhỏ nên bề mặt tấn công nhỏ; đổi lại I/O của guest phụ thuộc root partition, nên có các hướng như passthrough thiết bị (DDA/VFIO) và <a href="../../../articles/2026/10/13/pviommu-hyperv-linux-guest/">pvIOMMU</a>.</li>
 </ul>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/hyperv-architecture.svg" data-desc-position="bottom"><img alt="Kiến trúc Hyper-V" src="../img/hyperv-architecture.svg"></a></p>
 <h2 id="hyper-v-va-linux">Hyper-V và Linux<a class="headerlink" href="#hyper-v-va-linux" title="Permanent link">¶</a></h2>

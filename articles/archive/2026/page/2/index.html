@@ -66,7 +66,20 @@
 
     
     
-  <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+  
+<meta property="og:type" content="website">
+<meta property="og:title" content="2026 - Vu Tang's Docs">
+<meta property="og:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
+<meta property="og:image" content="https://vutang.github.io/assets/images/social/articles/archive/2026/page/2.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://vutang.github.io/articles/archive/2026/page/2/">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:title" content="2026 - Vu Tang's Docs">
+<meta property="twitter:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
+<meta property="twitter:image" content="https://vutang.github.io/assets/images/social/articles/archive/2026/page/2.png">
+<link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
@@ -3866,6 +3879,69 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#rust-trong-nhan-linux-ngon-ngu-moi-luat-choi-cu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rust trong nhân Linux: ngôn ngữ mới, luật chơi cũ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nbcon-console-khong-chan-trong-linux-printk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NBCON: console không chặn trong Linux printk
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ran-silicon-rethink-khi-chip-chuyen-dung-phai-nhuong-cho-cho-cpu-va-gpu-a-dung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RAN Silicon Rethink: khi chip chuyên dụng phải nhường chỗ cho CPU và GPU đa dụng
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xu-huong-6g-va-hien-trang-chuan-hoa-102026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Xu hướng 6G và hiện trạng chuẩn hóa (10/2026)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pviommu-hyper-v-ua-dma-protection-vao-linux-guest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pvIOMMU: Hyper-V đưa DMA protection vào Linux guest
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -3882,10 +3958,19 @@
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
     
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://github.com/vutang.png?size=128" alt="Vu Tang">
+          </span>
+        
+      </nav>
+    
     <div class="md-post__meta md-meta">
       <ul class="md-meta__list">
         <li class="md-meta__item">
           <time datetime="2026-10-19 00:00:00+00:00">Oct 19, 2026</time></li>
+        
         
           <li class="md-meta__item">
             in
@@ -3906,12 +3991,13 @@
     </div>
   </header>
   <div class="md-post__content md-typeset">
-    <h2 id="rust-trong-nhan-linux-ngon-ngu-moi-luat-choi-cu"><a class="toclink" href="../../../../2026/10/19/rust-trong-nh%C3%A2n-linux-ng%C3%B4n-ng%E1%BB%AF-m%E1%BB%9Bi-lu%E1%BA%ADt-ch%C6%A1i-c%C5%A9/">Rust trong nhân Linux: ngôn ngữ mới, luật chơi cũ</a></h2>
+    <h2 id="rust-trong-nhan-linux-ngon-ngu-moi-luat-choi-cu"><a class="toclink" href="../../../../2026/10/19/rust-in-linux-kernel/">Rust trong nhân Linux: ngôn ngữ mới, luật chơi cũ</a></h2>
+<p><img alt="Rust" class="article-cover" src="../../../../img/cover-rust-in-linux-kernel.svg"></p>
 <p>Sau ba năm "thử nghiệm", cuối 2025 Rust chính thức thành ngôn ngữ thứ hai của nhân Linux. Rust là gì, nó vào kernel bằng con đường nào, và vì sao hành trình ấy khiến vài maintainer kỳ cựu rời ghế?</p>
 
     
       <nav class="md-post__action">
-        <a href="../../../../2026/10/19/rust-trong-nh%C3%A2n-linux-ng%C3%B4n-ng%E1%BB%AF-m%E1%BB%9Bi-lu%E1%BA%ADt-ch%C6%A1i-c%C5%A9/">
+        <a href="../../../../2026/10/19/rust-in-linux-kernel/">
           Continue reading
         </a>
       </nav>
@@ -3923,10 +4009,19 @@
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
     
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://github.com/vutang.png?size=128" alt="Vu Tang">
+          </span>
+        
+      </nav>
+    
     <div class="md-post__meta md-meta">
       <ul class="md-meta__list">
         <li class="md-meta__item">
           <time datetime="2026-10-18 00:00:00+00:00">Oct 18, 2026</time></li>
+        
         
           <li class="md-meta__item">
             in
@@ -3947,12 +4042,13 @@
     </div>
   </header>
   <div class="md-post__content md-typeset">
-    <h2 id="nbcon-console-khong-chan-trong-linux-printk"><a class="toclink" href="../../../../2026/10/18/nbcon-console-kh%C3%B4ng-ch%E1%BA%B7n-trong-linux-printk/">NBCON: console không chặn trong Linux printk</a></h2>
+    <h2 id="nbcon-console-khong-chan-trong-linux-printk"><a class="toclink" href="../../../../2026/10/18/nbcon-linux-printk/">NBCON: console không chặn trong Linux printk</a></h2>
+<p><img alt="NBCON" class="article-cover" src="../../../../img/cover-nbcon-linux-printk.svg"></p>
 <p>Cơ chế console cũ của <code>printk()</code> gây trễ hệ thống, mất log khi sự cố và từng chặn PREEMPT_RT vào mainline. Bài này phân tích sáu giới hạn đó và cách NBCON giải quyết.</p>
 
     
       <nav class="md-post__action">
-        <a href="../../../../2026/10/18/nbcon-console-kh%C3%B4ng-ch%E1%BA%B7n-trong-linux-printk/">
+        <a href="../../../../2026/10/18/nbcon-linux-printk/">
           Continue reading
         </a>
       </nav>
@@ -3964,10 +4060,24 @@
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
     
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://github.com/vutang.png?size=128" alt="Vu Tang">
+          </span>
+        
+      </nav>
+    
     <div class="md-post__meta md-meta">
       <ul class="md-meta__list">
         <li class="md-meta__item">
           <time datetime="2026-10-18 00:00:00+00:00">Oct 18, 2026</time></li>
+        
+          <li class="md-meta__item">
+            Updated
+            <time datetime="2026-10-20 00:00:00+00:00">Oct 20, 2026</time>
+          </li>
+        
         
           <li class="md-meta__item">
             in
@@ -3988,12 +4098,13 @@
     </div>
   </header>
   <div class="md-post__content md-typeset">
-    <h2 id="ran-silicon-rethink-khi-chip-chuyen-dung-phai-nhuong-cho-cho-cpu-va-gpu-a-dung"><a class="toclink" href="../../../../2026/10/18/ran-silicon-rethink-khi-chip-chuy%C3%AAn-d%E1%BB%A5ng-ph%E1%BA%A3i-nh%C6%B0%E1%BB%9Dng-ch%E1%BB%97-cho-cpu-v%C3%A0-gpu-%C4%91a-d%E1%BB%A5ng/">RAN Silicon Rethink: khi chip chuyên dụng phải nhường chỗ cho CPU và GPU đa dụng</a></h2>
+    <h2 id="ran-silicon-rethink-khi-chip-chuyen-dung-phai-nhuong-cho-cho-cpu-va-gpu-a-dung"><a class="toclink" href="../../../../2026/10/18/ran-silicon-rethink/">RAN Silicon Rethink: khi chip chuyên dụng phải nhường chỗ cho CPU và GPU đa dụng</a></h2>
+<p><img alt="RAN Silicon" class="article-cover" src="../../../../img/cover-ran-silicon-rethink.svg"></p>
 <p>Thị trường RAN co lại, vRAN trưởng thành, GPU xuất hiện. Samsung, Ericsson và Nokia mỗi hãng chọn một lối đi riêng cho thế hệ baseband kế tiếp, và điểm nghẽn kỹ thuật nằm ở một khối nhỏ: FEC.</p>
 
     
       <nav class="md-post__action">
-        <a href="../../../../2026/10/18/ran-silicon-rethink-khi-chip-chuy%C3%AAn-d%E1%BB%A5ng-ph%E1%BA%A3i-nh%C6%B0%E1%BB%9Dng-ch%E1%BB%97-cho-cpu-v%C3%A0-gpu-%C4%91a-d%E1%BB%A5ng/">
+        <a href="../../../../2026/10/18/ran-silicon-rethink/">
           Continue reading
         </a>
       </nav>
@@ -4005,10 +4116,19 @@
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
     
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://github.com/vutang.png?size=128" alt="Vu Tang">
+          </span>
+        
+      </nav>
+    
     <div class="md-post__meta md-meta">
       <ul class="md-meta__list">
         <li class="md-meta__item">
           <time datetime="2026-10-17 00:00:00+00:00">Oct 17, 2026</time></li>
+        
         
           <li class="md-meta__item">
             in
@@ -4019,7 +4139,7 @@
           
           <li class="md-meta__item">
             
-              11 min read
+              12 min read
             
           </li>
         
@@ -4029,12 +4149,13 @@
     </div>
   </header>
   <div class="md-post__content md-typeset">
-    <h2 id="xu-huong-6g-va-hien-trang-chuan-hoa-102026"><a class="toclink" href="../../../../2026/10/17/xu-h%C6%B0%E1%BB%9Bng-6g-v%C3%A0-hi%E1%BB%87n-tr%E1%BA%A1ng-chu%E1%BA%A9n-h%C3%B3a-102026/">Xu hướng 6G và hiện trạng chuẩn hóa (10/2026)</a></h2>
+    <h2 id="xu-huong-6g-va-hien-trang-chuan-hoa-102026"><a class="toclink" href="../../../../2026/10/17/6g-trends-standardization-2026/">Xu hướng 6G và hiện trạng chuẩn hóa (10/2026)</a></h2>
+<p><img alt="6G" class="article-cover" src="../../../../img/cover-6g-trends-standardization-2026.svg"></p>
 <p>6G đã chuyển từ tầm nhìn sang kỹ thuật: 3GPP sẽ hoàn tất release 6G đầu tiên (Rel-21) vào 3/2029, ITU-R mở nhận đề xuất IMT-2030 từ 2/2027, và mạng thương mại sớm dự kiến khoảng 2029–2030.</p>
 
     
       <nav class="md-post__action">
-        <a href="../../../../2026/10/17/xu-h%C6%B0%E1%BB%9Bng-6g-v%C3%A0-hi%E1%BB%87n-tr%E1%BA%A1ng-chu%E1%BA%A9n-h%C3%B3a-102026/">
+        <a href="../../../../2026/10/17/6g-trends-standardization-2026/">
           Continue reading
         </a>
       </nav>
@@ -4046,10 +4167,19 @@
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
     
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://github.com/vutang.png?size=128" alt="Vu Tang">
+          </span>
+        
+      </nav>
+    
     <div class="md-post__meta md-meta">
       <ul class="md-meta__list">
         <li class="md-meta__item">
           <time datetime="2026-10-13 00:00:00+00:00">Oct 13, 2026</time></li>
+        
         
           <li class="md-meta__item">
             in
@@ -4070,12 +4200,13 @@
     </div>
   </header>
   <div class="md-post__content md-typeset">
-    <h2 id="pviommu-hyper-v-ua-dma-protection-vao-linux-guest"><a class="toclink" href="../../../../2026/10/13/pviommu-hyper-v-%C4%91%C6%B0a-dma-protection-v%C3%A0o-linux-guest/">pvIOMMU: Hyper-V đưa DMA protection vào Linux guest</a></h2>
+    <h2 id="pviommu-hyper-v-ua-dma-protection-vao-linux-guest"><a class="toclink" href="../../../../2026/10/13/pviommu-hyperv-linux-guest/">pvIOMMU: Hyper-V đưa DMA protection vào Linux guest</a></h2>
+<p><img alt="pvIOMMU" class="article-cover" src="../../../../img/cover-pviommu-hyperv-linux-guest.svg"></p>
 <p>Microsoft vừa đưa driver IOMMU para-virtualized cho Linux guest trên Hyper-V vào nhánh <code>-next</code>, nhắm tới Linux 7.4. Driver này giải quyết vấn đề gì, thiết kế ra sao và còn những điểm nào cần chú ý?</p>
 
     
       <nav class="md-post__action">
-        <a href="../../../../2026/10/13/pviommu-hyper-v-%C4%91%C6%B0a-dma-protection-v%C3%A0o-linux-guest/">
+        <a href="../../../../2026/10/13/pviommu-hyperv-linux-guest/">
           Continue reading
         </a>
       </nav>

@@ -21,47 +21,47 @@
          <lastmod>2026-10-21</lastmod>
     </url>
     <url>
-         <loc>https://vutang.github.io/articles/2026/10/17/xu-h%C6%B0%E1%BB%9Bng-6g-v%C3%A0-hi%E1%BB%87n-tr%E1%BA%A1ng-chu%E1%BA%A9n-h%C3%B3a-102026/</loc>
+         <loc>https://vutang.github.io/articles/2026/10/17/6g-trends-standardization-2026/</loc>
          <lastmod>2026-10-21</lastmod>
     </url>
     <url>
-         <loc>https://vutang.github.io/articles/2026/10/20/cpufreq-v%C3%A0-pstate-driver-t%E1%BB%AB-%C4%91i%E1%BB%81u-khi%E1%BB%83n-t%E1%BA%A7n-s%E1%BB%91-tr%E1%BB%B1c-ti%E1%BA%BFp-%C4%91%E1%BA%BFn-h%E1%BB%A3p-%C4%91%E1%BB%93ng-hi%E1%BB%87u-n%C4%83ng-v%E1%BB%9Bi-ph%E1%BA%A7n-c%E1%BB%A9ng/</loc>
+         <loc>https://vutang.github.io/articles/2026/10/20/cpufreq-pstate-driver/</loc>
          <lastmod>2026-10-21</lastmod>
     </url>
     <url>
-         <loc>https://vutang.github.io/articles/2026/10/21/design-pattern-kinh-%C4%91i%E1%BB%83n-trong-linux-kernel-13-oop-v%C3%A0-v%C3%B2ng-%C4%91%E1%BB%9Di-object/</loc>
+         <loc>https://vutang.github.io/articles/2026/10/21/linux-kernel-design-patterns-1/</loc>
          <lastmod>2026-10-21</lastmod>
     </url>
     <url>
-         <loc>https://vutang.github.io/articles/2026/10/21/design-pattern-kinh-%C4%91i%E1%BB%83n-trong-linux-kernel-23-d%E1%BB%AF-li%E1%BB%87u-intrusive-v%C3%A0-concurrency/</loc>
+         <loc>https://vutang.github.io/articles/2026/10/21/linux-kernel-design-patterns-2/</loc>
          <lastmod>2026-10-21</lastmod>
     </url>
     <url>
-         <loc>https://vutang.github.io/articles/2026/10/21/design-pattern-kinh-%C4%91i%E1%BB%83n-trong-linux-kernel-33-ki%E1%BA%BFn-tr%C3%BAc-v%C3%A0-checklist-review/</loc>
+         <loc>https://vutang.github.io/articles/2026/10/21/linux-kernel-design-patterns-3/</loc>
          <lastmod>2026-10-21</lastmod>
     </url>
     <url>
-         <loc>https://vutang.github.io/articles/2026/09/28/hi%E1%BB%87n-tr%E1%BA%A1ng-c%C3%A1c-d%C3%B2ng-linux-kernel-t%E1%BB%AB-3x-%C4%91%E1%BA%BFn-70/</loc>
+         <loc>https://vutang.github.io/articles/2026/09/28/linux-kernel-release-status/</loc>
          <lastmod>2026-10-21</lastmod>
     </url>
     <url>
-         <loc>https://vutang.github.io/articles/2026/10/18/nbcon-console-kh%C3%B4ng-ch%E1%BA%B7n-trong-linux-printk/</loc>
+         <loc>https://vutang.github.io/articles/2026/10/18/nbcon-linux-printk/</loc>
          <lastmod>2026-10-21</lastmod>
     </url>
     <url>
-         <loc>https://vutang.github.io/articles/2026/10/13/pviommu-hyper-v-%C4%91%C6%B0a-dma-protection-v%C3%A0o-linux-guest/</loc>
+         <loc>https://vutang.github.io/articles/2026/10/13/pviommu-hyperv-linux-guest/</loc>
          <lastmod>2026-10-21</lastmod>
     </url>
     <url>
-         <loc>https://vutang.github.io/articles/2026/10/18/ran-silicon-rethink-khi-chip-chuy%C3%AAn-d%E1%BB%A5ng-ph%E1%BA%A3i-nh%C6%B0%E1%BB%9Dng-ch%E1%BB%97-cho-cpu-v%C3%A0-gpu-%C4%91a-d%E1%BB%A5ng/</loc>
+         <loc>https://vutang.github.io/articles/2026/10/18/ran-silicon-rethink/</loc>
          <lastmod>2026-10-21</lastmod>
     </url>
     <url>
-         <loc>https://vutang.github.io/articles/2026/10/19/rust-trong-nh%C3%A2n-linux-ng%C3%B4n-ng%E1%BB%AF-m%E1%BB%9Bi-lu%E1%BA%ADt-ch%C6%A1i-c%C5%A9/</loc>
+         <loc>https://vutang.github.io/articles/2026/10/19/rust-in-linux-kernel/</loc>
          <lastmod>2026-10-21</lastmod>
     </url>
     <url>
-         <loc>https://vutang.github.io/articles/2026/10/21/yocto-project-hi%E1%BB%87n-tr%E1%BA%A1ng-release-v%C3%A0-15-n%C4%83m-ph%C3%A1t-tri%E1%BB%83n/</loc>
+         <loc>https://vutang.github.io/articles/2026/10/21/yocto-release-status/</loc>
          <lastmod>2026-10-21</lastmod>
     </url>
     <url>
@@ -401,6 +401,10 @@
          <lastmod>2026-10-21</lastmod>
     </url>
     <url>
+         <loc>https://vutang.github.io/articles/author/vu/</loc>
+         <lastmod>2026-10-21</lastmod>
+    </url>
+    <url>
          <loc>https://vutang.github.io/articles/page/2/</loc>
          <lastmod>2026-10-21</lastmod>
     </url>
@@ -418,6 +422,14 @@
     </url>
     <url>
          <loc>https://vutang.github.io/articles/category/linux-kernel/page/2/</loc>
+         <lastmod>2026-10-21</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/articles/author/vu/page/2/</loc>
+         <lastmod>2026-10-21</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/articles/author/vu/page/3/</loc>
          <lastmod>2026-10-21</lastmod>
     </url>
 </urlset>

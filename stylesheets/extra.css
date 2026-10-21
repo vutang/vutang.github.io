@@ -380,3 +380,11 @@ body:has(.home-top) .md-grid {
     background: color-mix(in srgb, var(--md-primary-fg-color) 10%, var(--md-default-bg-color));
   }
 }
+
+/* Cover banner at the top of an article; also shown in the article list */
+.article-cover {
+  display: block;
+  width: 100%;
+  border-radius: .4rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .18);
+}

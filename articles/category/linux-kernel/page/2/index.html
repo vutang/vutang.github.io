@@ -66,7 +66,20 @@
 
     
     
-  <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+  
+<meta property="og:type" content="website">
+<meta property="og:title" content="Linux Kernel - Vu Tang's Docs">
+<meta property="og:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
+<meta property="og:image" content="https://vutang.github.io/assets/images/social/articles/category/linux-kernel/page/2.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://vutang.github.io/articles/category/linux-kernel/page/2/">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:title" content="Linux Kernel - Vu Tang's Docs">
+<meta property="twitter:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
+<meta property="twitter:image" content="https://vutang.github.io/assets/images/social/articles/category/linux-kernel/page/2.png">
+<link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
@@ -3866,6 +3879,47 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#nbcon-console-khong-chan-trong-linux-printk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NBCON: console không chặn trong Linux printk
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pviommu-hyper-v-ua-dma-protection-vao-linux-guest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pvIOMMU: Hyper-V đưa DMA protection vào Linux guest
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hien-trang-cac-dong-linux-kernel-tu-3x-en-70" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hiện trạng các dòng Linux kernel: từ 3.x đến 7.0
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -3882,10 +3936,19 @@
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
     
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://github.com/vutang.png?size=128" alt="Vu Tang">
+          </span>
+        
+      </nav>
+    
     <div class="md-post__meta md-meta">
       <ul class="md-meta__list">
         <li class="md-meta__item">
           <time datetime="2026-10-18 00:00:00+00:00">Oct 18, 2026</time></li>
+        
         
           <li class="md-meta__item">
             in
@@ -3906,12 +3969,13 @@
     </div>
   </header>
   <div class="md-post__content md-typeset">
-    <h2 id="nbcon-console-khong-chan-trong-linux-printk"><a class="toclink" href="../../../../2026/10/18/nbcon-console-kh%C3%B4ng-ch%E1%BA%B7n-trong-linux-printk/">NBCON: console không chặn trong Linux printk</a></h2>
+    <h2 id="nbcon-console-khong-chan-trong-linux-printk"><a class="toclink" href="../../../../2026/10/18/nbcon-linux-printk/">NBCON: console không chặn trong Linux printk</a></h2>
+<p><img alt="NBCON" class="article-cover" src="../../../../img/cover-nbcon-linux-printk.svg"></p>
 <p>Cơ chế console cũ của <code>printk()</code> gây trễ hệ thống, mất log khi sự cố và từng chặn PREEMPT_RT vào mainline. Bài này phân tích sáu giới hạn đó và cách NBCON giải quyết.</p>
 
     
       <nav class="md-post__action">
-        <a href="../../../../2026/10/18/nbcon-console-kh%C3%B4ng-ch%E1%BA%B7n-trong-linux-printk/">
+        <a href="../../../../2026/10/18/nbcon-linux-printk/">
           Continue reading
         </a>
       </nav>
@@ -3923,10 +3987,19 @@
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
     
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://github.com/vutang.png?size=128" alt="Vu Tang">
+          </span>
+        
+      </nav>
+    
     <div class="md-post__meta md-meta">
       <ul class="md-meta__list">
         <li class="md-meta__item">
           <time datetime="2026-10-13 00:00:00+00:00">Oct 13, 2026</time></li>
+        
         
           <li class="md-meta__item">
             in
@@ -3947,12 +4020,13 @@
     </div>
   </header>
   <div class="md-post__content md-typeset">
-    <h2 id="pviommu-hyper-v-ua-dma-protection-vao-linux-guest"><a class="toclink" href="../../../../2026/10/13/pviommu-hyper-v-%C4%91%C6%B0a-dma-protection-v%C3%A0o-linux-guest/">pvIOMMU: Hyper-V đưa DMA protection vào Linux guest</a></h2>
+    <h2 id="pviommu-hyper-v-ua-dma-protection-vao-linux-guest"><a class="toclink" href="../../../../2026/10/13/pviommu-hyperv-linux-guest/">pvIOMMU: Hyper-V đưa DMA protection vào Linux guest</a></h2>
+<p><img alt="pvIOMMU" class="article-cover" src="../../../../img/cover-pviommu-hyperv-linux-guest.svg"></p>
 <p>Microsoft vừa đưa driver IOMMU para-virtualized cho Linux guest trên Hyper-V vào nhánh <code>-next</code>, nhắm tới Linux 7.4. Driver này giải quyết vấn đề gì, thiết kế ra sao và còn những điểm nào cần chú ý?</p>
 
     
       <nav class="md-post__action">
-        <a href="../../../../2026/10/13/pviommu-hyper-v-%C4%91%C6%B0a-dma-protection-v%C3%A0o-linux-guest/">
+        <a href="../../../../2026/10/13/pviommu-hyperv-linux-guest/">
           Continue reading
         </a>
       </nav>
@@ -3964,10 +4038,19 @@
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
     
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://github.com/vutang.png?size=128" alt="Vu Tang">
+          </span>
+        
+      </nav>
+    
     <div class="md-post__meta md-meta">
       <ul class="md-meta__list">
         <li class="md-meta__item">
           <time datetime="2026-09-28 00:00:00+00:00">Sep 28, 2026</time></li>
+        
         
           <li class="md-meta__item">
             in
@@ -3988,12 +4071,13 @@
     </div>
   </header>
   <div class="md-post__content md-typeset">
-    <h2 id="hien-trang-cac-dong-linux-kernel-tu-3x-en-70"><a class="toclink" href="../../../../2026/09/28/hi%E1%BB%87n-tr%E1%BA%A1ng-c%C3%A1c-d%C3%B2ng-linux-kernel-t%E1%BB%AB-3x-%C4%91%E1%BA%BFn-70/">Hiện trạng các dòng Linux kernel: từ 3.x đến 7.0</a></h2>
+    <h2 id="hien-trang-cac-dong-linux-kernel-tu-3x-en-70"><a class="toclink" href="../../../../2026/09/28/linux-kernel-release-status/">Hiện trạng các dòng Linux kernel: từ 3.x đến 7.0</a></h2>
+<p><img alt="Kernel 3.x → 7.0" class="article-cover" src="../../../../img/cover-linux-kernel-release-status.svg"></p>
 <p>Số major của kernel chỉ là quy ước đặt tên, không phản ánh breaking change. Khác biệt thực sự nằm ở các tính năng tích lũy qua từng bản nhỏ. Bài này điểm lại các mốc chính từ 3.x đến 7.0 (đối chiếu ngày 28/09/2026) và những lưu ý cho công việc embedded.</p>
 
     
       <nav class="md-post__action">
-        <a href="../../../../2026/09/28/hi%E1%BB%87n-tr%E1%BA%A1ng-c%C3%A1c-d%C3%B2ng-linux-kernel-t%E1%BB%AB-3x-%C4%91%E1%BA%BFn-70/">
+        <a href="../../../../2026/09/28/linux-kernel-release-status/">
           Continue reading
         </a>
       </nav>
