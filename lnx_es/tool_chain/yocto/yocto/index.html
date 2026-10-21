@@ -99,7 +99,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#yocto-project-la-gi" class="md-skip">
+        <a href="#yocto-project-tong-quan" class="md-skip">
           Skip to content
         </a>
       
@@ -1352,6 +1352,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -1394,6 +1396,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1413,10 +1417,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#prerequisite-concepts" class="md-nav__link">
+  <a href="#khai-niem-nen-tang" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Prerequisite concepts
+        Khái niệm nền tảng
       
     </span>
   </a>
@@ -1424,10 +1428,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#terms-and-definitions-in-yocto" class="md-nav__link">
+  <a href="#thuat-ngu-trong-yocto" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Terms and definitions in Yocto
+        Thuật ngữ trong Yocto
       
     </span>
   </a>
@@ -1438,37 +1442,14 @@
   <a href="#bitbake" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Bitbake
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Bitbake">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        References
+        BitBake
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#concept" class="md-nav__link">
-    <span class="md-ellipsis">
       
-        Concept
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
+        <li class="md-nav__item">
   <a href="#working-flow" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1477,13 +1458,80 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Working flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-lay-source-va-va" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ① Lấy source và vá
+      
+    </span>
+  </a>
+  
 </li>
         
           <li class="md-nav__item">
-  <a href="#recipe-syntax" class="md-nav__link">
+  <a href="#2-cau-hinh-va-build" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Recipe syntax
+        ② Cấu hình và build
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-ong-goi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ③ Đóng gói
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-staging-do_populate_sysroot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ④ Staging: do_populate_sysroot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-tao-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⑤ Tạo image
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-tao-sdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⑥ Tạo SDK
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cac-task-khac-can-biet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các task khác cần biết
       
     </span>
   </a>
@@ -1496,10 +1544,71 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#terms-and-definitions-in-bitbake" class="md-nav__link">
+  <a href="#recipe-syntax" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Terms and definitions in Bitbake
+        Recipe syntax
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recipe syntax">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chia-se-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chia sẻ metadata
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#toan-tu-gan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Toán tử gán
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#override-syntax" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Override syntax
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-recipe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ví dụ recipe
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thuat-ngu-trong-bitbake" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thuật ngữ trong BitBake
       
     </span>
   </a>
@@ -1507,10 +1616,43 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#bitbake-variables" class="md-nav__link">
+  <a href="#bien-bitbake-quan-trong" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Bitbake variables
+        Biến BitBake quan trọng
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thuc-hanh-lenh-hay-dung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thực hành: lệnh hay dùng
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phu-luc-xilinx-petalinux-20174" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phụ lục: Xilinx Petalinux 2017.4
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài liệu tham khảo
       
     </span>
   </a>
@@ -4010,6 +4152,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -4029,10 +4173,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#prerequisite-concepts" class="md-nav__link">
+  <a href="#khai-niem-nen-tang" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Prerequisite concepts
+        Khái niệm nền tảng
       
     </span>
   </a>
@@ -4040,10 +4184,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#terms-and-definitions-in-yocto" class="md-nav__link">
+  <a href="#thuat-ngu-trong-yocto" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Terms and definitions in Yocto
+        Thuật ngữ trong Yocto
       
     </span>
   </a>
@@ -4054,37 +4198,14 @@
   <a href="#bitbake" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Bitbake
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Bitbake">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        References
+        BitBake
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#concept" class="md-nav__link">
-    <span class="md-ellipsis">
       
-        Concept
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
+        <li class="md-nav__item">
   <a href="#working-flow" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4093,13 +4214,80 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Working flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-lay-source-va-va" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ① Lấy source và vá
+      
+    </span>
+  </a>
+  
 </li>
         
           <li class="md-nav__item">
-  <a href="#recipe-syntax" class="md-nav__link">
+  <a href="#2-cau-hinh-va-build" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Recipe syntax
+        ② Cấu hình và build
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-ong-goi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ③ Đóng gói
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-staging-do_populate_sysroot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ④ Staging: do_populate_sysroot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-tao-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⑤ Tạo image
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-tao-sdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⑥ Tạo SDK
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cac-task-khac-can-biet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các task khác cần biết
       
     </span>
   </a>
@@ -4112,10 +4300,71 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#terms-and-definitions-in-bitbake" class="md-nav__link">
+  <a href="#recipe-syntax" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Terms and definitions in Bitbake
+        Recipe syntax
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recipe syntax">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chia-se-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chia sẻ metadata
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#toan-tu-gan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Toán tử gán
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#override-syntax" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Override syntax
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-recipe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ví dụ recipe
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thuat-ngu-trong-bitbake" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thuật ngữ trong BitBake
       
     </span>
   </a>
@@ -4123,10 +4372,43 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#bitbake-variables" class="md-nav__link">
+  <a href="#bien-bitbake-quan-trong" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Bitbake variables
+        Biến BitBake quan trọng
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thuc-hanh-lenh-hay-dung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thực hành: lệnh hay dùng
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phu-luc-xilinx-petalinux-20174" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phụ lục: Xilinx Petalinux 2017.4
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài liệu tham khảo
       
     </span>
   </a>
@@ -4178,117 +4460,420 @@
   
 
 
-  <h1>Overview</h1>
-
+<h1 id="yocto-project-tong-quan">Yocto Project – Tổng quan<a class="headerlink" href="#yocto-project-tong-quan" title="Permanent link">¶</a></h1>
 <h2 id="yocto-project-la-gi">Yocto Project là gì?<a class="headerlink" href="#yocto-project-la-gi" title="Permanent link">¶</a></h2>
-<p>Theo <a href="https://www.yoctoproject.org/">website chính thức</a>: <em>"The Yocto Project is an open source collaboration project that provides templates, tools and methods to help you create custom Linux-based systems for embedded and IOT products, regardless of the hardware architecture"</em>.</p>
-<p>Bài giới thiệu bằng tiếng Việt: <a href="https://www.cppdeveloper.com/best-practices/yocto-project-va-ung-dung-trong-viec-phat-trien-cac-he-thong-nhung/">Yocto Project và ứng dụng trong việc phát triển các hệ thống nhúng</a> - cppdeveloper.com.</p>
-<p>Ví dụ áp dụng: <a href="../../../../projects/imx6/imx6/">i.MX6 (DART-MX6)</a>.</p>
-<h2 id="prerequisite-concepts">Prerequisite concepts<a class="headerlink" href="#prerequisite-concepts" title="Permanent link">¶</a></h2>
-<p><strong>Linux Distribution (Distro)</strong></p>
-<p>Theo Wikipedia, là hệ điều hành được cấu thành từ tập hợp nhiều phần mềm xây dựng trên Linux kernel và hệ thống Package Management System. Có rất nhiều distro, được giới thiệu trên <a href="https://distrowatch.com/">DistroWatch</a>.</p>
-<div class="admonition todo">
-<p class="admonition-title">Todo</p>
-<p>Package Management System (PMS); Compiled vs Interpreted; Software Development Kit.</p>
-</div>
-<p><strong>Embedded System (ES)</strong></p>
-<p>Theo Wikipedia, là hệ thống máy tính được thiết kế để thực hiện một tác vụ nhất định (specific purpose), khác với PC hay server có thể chạy nhiều chương trình với nhiều nhiệm vụ khác nhau.</p>
-<p><strong>Toolchain</strong></p>
-<p>Toolchain là tập hợp các công cụ lập trình dùng để thực hiện một tác vụ phát triển phần mềm phức tạp hoặc tạo ra một sản phẩm phần mềm. Toolchain phổ biến là GNU Toolchain, gồm:</p>
+<p>Yocto Project là dự án mã nguồn mở cung cấp template, công cụ và phương pháp để tạo ra bản Linux tùy biến cho thiết bị nhúng và IoT, không phụ thuộc kiến trúc phần cứng (xem <a href="https://www.yoctoproject.org/">website chính thức</a>). Yocto <strong>không phải một distro có sẵn</strong>: nó là bộ công cụ để <em>tự build ra</em> distro của riêng bạn từ mã nguồn.</p>
+<p>Bức tranh tổng thể gồm năm thành phần:</p>
 <ul>
-<li>GNU make: công cụ tự động hóa compilation và build.</li>
+<li><strong>BitBake</strong>: engine đọc metadata, lập lịch và chạy các task.</li>
+<li><strong>OpenEmbedded-Core (OE-Core)</strong>: layer metadata lõi (<code>meta/</code>) chứa recipe và class dùng chung.</li>
+<li><strong>Poky</strong>: bản distro tham chiếu, gồm BitBake + OE-Core + <code>meta-poky</code> + <code>meta-yocto-bsp</code>. Đây là điểm xuất phát thường dùng.</li>
+<li><strong>Layer</strong>: thư mục <code>meta-*</code> gom metadata theo chủ đề (BSP phần cứng, distro, ứng dụng). Nhiều layer chồng lên nhau, khai báo trong <code>bblayers.conf</code>.</li>
+<li><strong>Metadata</strong>: recipe (<code>.bb</code>), append (<code>.bbappend</code>), class (<code>.bbclass</code>), include (<code>.inc</code>) và file cấu hình (<code>.conf</code>).</li>
+</ul>
+<p>Đầu vào là mã nguồn và metadata. Đầu ra là package, image (rootfs + kernel + bootloader) và SDK/toolchain.</p>
+<p>Bài giới thiệu tiếng Việt: <a href="https://www.cppdeveloper.com/best-practices/yocto-project-va-ung-dung-trong-viec-phat-trien-cac-he-thong-nhung/">Yocto Project và ứng dụng trong việc phát triển các hệ thống nhúng</a> (cppdeveloper.com). Ví dụ áp dụng: <a href="../../../../projects/imx6/imx6/">i.MX6 (DART-MX6)</a>.</p>
+<h2 id="khai-niem-nen-tang">Khái niệm nền tảng<a class="headerlink" href="#khai-niem-nen-tang" title="Permanent link">¶</a></h2>
+<p><strong>Linux Distribution (distro).</strong> Hệ điều hành gồm Linux kernel cùng một tập phần mềm và hệ thống quản lý gói. Danh sách distro có trên <a href="https://distrowatch.com/">DistroWatch</a>.</p>
+<p><strong>Embedded System (ES).</strong> Hệ thống máy tính thiết kế cho một tác vụ cụ thể, khác với PC hay server chạy nhiều chương trình đa mục đích.</p>
+<p><strong>Package Management System (PMS).</strong> Công cụ cài, gỡ, nâng cấp gói và xử lý dependency (rpm/dnf, dpkg/apt, opkg). Yocto có thể tạo gói theo ba định dạng rpm, deb hoặc ipk, chọn bằng biến <code>PACKAGE_CLASSES</code>.</p>
+<p><strong>Compiled vs Interpreted.</strong> Ngôn ngữ compiled (C/C++) được dịch ra mã máy của kiến trúc đích, nên build cho board ARM cần cross-compile. Ngôn ngữ interpreted (Python, shell) chạy qua interpreter trên target, nên image phải chứa interpreter đó.</p>
+<p><strong>Toolchain.</strong> Tập công cụ lập trình dùng để tạo ra một sản phẩm phần mềm. Toolchain phổ biến là GNU Toolchain:</p>
+<ul>
+<li>GNU make: tự động hóa compilation và build.</li>
 <li>GNU Compiler Collection (GCC): tổ hợp compiler cho nhiều ngôn ngữ.</li>
-<li>GNU C Library (glibc): core C library gồm headers, libraries và dynamic loader.</li>
-<li>GNU Binutils: linker, assembler, ...</li>
-<li>GNU Bison: parser generator, thường dùng với Flex.</li>
+<li>GNU C Library (glibc): core C library gồm header, library và dynamic loader.</li>
+<li>GNU Binutils: linker, assembler, v.v.</li>
+<li>GNU Bison: parser generator, thường dùng cùng Flex.</li>
 <li>GNU m4.</li>
 <li>GNU Debugger (GDB).</li>
 <li>GNU build system (autotools): Autoconf, Automake, Libtool.</li>
 </ul>
-<h2 id="terms-and-definitions-in-yocto">Terms and definitions in Yocto<a class="headerlink" href="#terms-and-definitions-in-yocto" title="Permanent link">¶</a></h2>
-<p>Các khái niệm này được mô tả tại <a href="https://www.yoctoproject.org/docs/latest/ref-manual/ref-manual.html">Yocto Reference Manual</a>.</p>
-<p><strong>Build Directory</strong></p>
-<p>Là khu vực Yocto sử dụng để build hệ thống. Trong trường hợp của Petalinux 2017.4, Build Dir là <project>/build. TOPDIR được sử dụng để lưu trữ đường dẫn đến Build Dir.</project></p>
-<p>Thư mục <code>./conf/</code> trong Build Directory chứa cấu hình của người dùng, ví dụ <code>local.conf</code> chứa <code>MACHINE ??= 'var-som-mx6'</code> (chọn Target Machine).</p>
-<p><strong>Package</strong></p>
-<p>Đối tượng tác động đến trong Yocto là Package. Trong đó một application, library, bootloader hay kernel đều được định nghĩa và coi là Package trong phạm vi của Yocto project. Người dùng cần cung cấp các thông tin để Yocto có thể "bake" được từng package, thông tin này được lưu trữ dưới dạng các <strong>Recipes file</strong> (with .bb extention).</p>
-<p>Một package được đặt tên theo dạng: ${PN}-${EXTENDPE}${PV}-${PR}. Trong đó:</p>
+<p><strong>Software Development Kit (SDK).</strong> Toolchain cộng sysroot của target (header, library) và script thiết lập môi trường, dùng để phát triển ứng dụng ngoài cây Yocto. Yocto tạo SDK bằng <code>bitbake -c populate_sdk &lt;image&gt;</code>.</p>
+<h2 id="thuat-ngu-trong-yocto">Thuật ngữ trong Yocto<a class="headerlink" href="#thuat-ngu-trong-yocto" title="Permanent link">¶</a></h2>
+<p>Các khái niệm dưới đây được mô tả trong <a href="https://docs.yoctoproject.org/ref-manual/terms.html">Yocto Project Reference Manual</a>.</p>
+<p><strong>Build Directory (<code>TOPDIR</code>).</strong> Khu vực Yocto dùng để build. Các thư mục chính:</p>
+<table>
+<thead>
+<tr>
+<th>Thư mục</th>
+<th>Nội dung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>conf/local.conf</code></td>
+<td>Cấu hình người dùng, ví dụ <code>MACHINE ??= "var-som-mx6"</code> để chọn target machine</td>
+</tr>
+<tr>
+<td><code>conf/bblayers.conf</code></td>
+<td>Danh sách layer tham gia build</td>
+</tr>
+<tr>
+<td><code>downloads/</code></td>
+<td>Mã nguồn đã tải về</td>
+</tr>
+<tr>
+<td><code>sstate-cache/</code></td>
+<td>Shared state cache, cho phép tái dùng kết quả task đã build</td>
+</tr>
+<tr>
+<td><code>tmp/work/</code></td>
+<td>Thư mục làm việc từng recipe</td>
+</tr>
+<tr>
+<td><code>tmp/deploy/</code></td>
+<td>Kết quả cuối: <code>images/</code>, <code>rpm/</code> (hoặc <code>deb/</code>, <code>ipk/</code>), <code>sdk/</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Layer.</strong> Thư mục <code>meta-*</code> gom metadata theo chủ đề: BSP phần cứng (<code>meta-xilinx</code>, <code>meta-freescale</code>), distro, hoặc ứng dụng. Layer chồng lên nhau và được khai báo trong <code>bblayers.conf</code>. Layer sau có thể sửa recipe của layer trước bằng file <code>.bbappend</code> mà không cần chép lại recipe.</p>
+<p><strong>MACHINE, DISTRO, Image.</strong></p>
 <ul>
-<li>PN: package name, đồng thời là recipe name của package đó.</li>
-<li>PV: version of recipe</li>
-<li>PR: revision of recipe</li>
+<li><code>MACHINE</code>: phần cứng đích, định nghĩa trong <code>conf/machine/&lt;tên&gt;.conf</code> của BSP layer.</li>
+<li><code>DISTRO</code>: chính sách của hệ thống (init system, định dạng package, feature), định nghĩa trong <code>conf/distro/</code>.</li>
+<li>Image recipe: danh sách package đưa vào rootfs, ví dụ <code>core-image-minimal</code>.</li>
 </ul>
-<p><em>Các khái niệm này rất hữu ích trong quá trình đọc các recipe files</em></p>
-<h2 id="bitbake">Bitbake<a class="headerlink" href="#bitbake" title="Permanent link">¶</a></h2>
-<h3 id="references">References<a class="headerlink" href="#references" title="Permanent link">¶</a></h3>
+<p><strong>Recipe và Package.</strong> Recipe (<code>.bb</code>) là <strong>đơn vị build</strong>: file chỉ cho BitBake cách lấy nguồn, build và cài một phần mềm. Application, library, bootloader hay kernel đều được mô tả bằng recipe. Một recipe có thể sinh ra <strong>một hoặc nhiều package</strong>, khai trong biến <code>PACKAGES</code>. Ví dụ recipe <code>libiio</code> sinh ra <code>libiio</code>, <code>libiio-test</code> (chứa <code>iio_info</code>) và <code>libiio-iiod</code> (chứa IIO daemon).</p>
+<p><strong>Các biến thường gặp khi đọc recipe:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Biến</th>
+<th>Ý nghĩa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PN</code></td>
+<td>Tên recipe, ví dụ <code>libiio</code></td>
+</tr>
+<tr>
+<td><code>PV</code></td>
+<td>Version của <strong>phần mềm upstream</strong> được đóng gói, ví dụ <code>0.15+gitAUTOINC+6ecff5d46e</code></td>
+</tr>
+<tr>
+<td><code>PR</code></td>
+<td>Revision của <strong>recipe</strong>, tăng khi recipe đổi mà <code>PV</code> không đổi; quy ước reset về <code>r0</code> khi <code>PV</code> tăng</td>
+</tr>
+<tr>
+<td><code>WORKDIR</code></td>
+<td><code>${TMPDIR}/work/${MULTIMACH_TARGET_SYS}/${PN}/${EXTENDPE}${PV}-${PR}</code></td>
+</tr>
+<tr>
+<td><code>S</code></td>
+<td>Thư mục chứa source đã unpack, mặc định <code>${WORKDIR}/${BPN}-${PV}</code></td>
+</tr>
+<tr>
+<td><code>B</code></td>
+<td>Thư mục build; thường trùng <code>S</code>, tách riêng khi build out-of-tree (ví dụ CMake)</td>
+</tr>
+<tr>
+<td><code>D</code></td>
+<td>Thư mục đích của <code>do_install</code>, tức <code>${WORKDIR}/image</code></td>
+</tr>
+</tbody>
+</table>
+<p>Lưu ý: chuỗi <code>${PN}-${EXTENDPE}${PV}-${PR}</code> là tên thư mục trong <code>WORKDIR</code>, không phải tên package nhị phân. Ví dụ thực tế: <code>build/tmp/work/cortexa9hf-neon-xilinx-linux-gnueabi/libiio/0.15+gitAUTOINC+6ecff5d46e-r0</code>.</p>
+<h2 id="bitbake">BitBake<a class="headerlink" href="#bitbake" title="Permanent link">¶</a></h2>
+<p>Yocto xem mỗi phần mềm (SDK, Linux kernel, bootloader, ứng dụng, thư viện, ...) như một <strong>món ăn</strong>, và <code>BitBake</code> là <strong>đầu bếp</strong>. Đầu bếp nấu theo <strong>công thức</strong> (<code>recipe</code>, file <code>.bb</code>) do người yêu cầu viết sẵn, và Yocto có một bộ cú pháp riêng để viết công thức này.</p>
+<p>Về kỹ thuật, BitBake là chương trình viết bằng Python, đóng vai trò task executor: đọc metadata, tính dependency giữa các task rồi chạy chúng, song song khi có thể. BitBake là công cụ độc lập; Yocto là BitBake cộng với metadata của OpenEmbedded-Core.</p>
+<p>Cách chạy cơ bản:</p>
 <ul>
-<li>
-<p>[1] <a href="https://www.yoctoproject.org/docs/1.6/bitbake-user-manual/bitbake-user-manual.html">Bitbake User Manual</a> - yoctoproject.org</p>
-</li>
-<li>
-<p>[2] <a href="https://www.yoctoproject.org/docs/2.5/overview-manual/overview-manual.html">Yocto Project Overview and Concepts Mannual</a> - yoctoproject.org</p>
-</li>
+<li><code>bitbake &lt;recipe&gt;</code>: chạy mọi task cần thiết của recipe (đến <code>do_build</code>).</li>
+<li><code>bitbake -c &lt;task&gt; &lt;recipe&gt;</code>: chạy riêng một task.</li>
+<li><code>bitbake &lt;image&gt;</code>: build toàn bộ image.</li>
 </ul>
-<h3 id="concept">Concept<a class="headerlink" href="#concept" title="Permanent link">¶</a></h3>
-<p>Yocto xem các packages (khái niệm packages trong Yocto rất rộng, nó có thể là SDK, Linux Kernel, bootloader, gói ứng dụng, thư viên, ...) như là các món ăn, trong đó <code>Bitbake</code> là đầu bếp.</p>
-<p><em>*Bitbake được viết từ Python</em></p>
-<p>Đầu bếp <code>Bitbake</code> nấu các món ăn dưới các công thức được viết sẵn bởi người yêu cầu gọi là <code>recipe</code> (/ˈresəpi/). <code>recipe</code> bản chất là một file có phần mở rộng là <code>.bb</code>. Yocto có một bộ cú pháp dành riêng cho viết <code>recipe</code>.</p>
-<h3 id="working-flow">Working flow<a class="headerlink" href="#working-flow" title="Permanent link">¶</a></h3>
-<p>Refer in <a href="https://www.yoctoproject.org/docs/2.5/overview-manual/overview-manual.html#bitbake-dev-environment">4.3.5</a> tại [2].</p>
-<p>Trong Yocto, để thuận tiện cho việc "nấu ăn" được chuyên nghiệp, quá trình "bake" của <code>Bitbake</code> được chia ra các quá trình nhỏ. Tất cả các món ăn đều phải được kiểm tra và thực hiện qua các bước này. Các bước này được định nghĩa tại một class: <code>base.bbclass</code>. Và tất nhiên, người dùng có thể không sử dụng công thức nấu mặc định mà thay đổi các bước này bằng các định nghĩa trong <code>recipe</code> của họ. Các bước đó là</p>
-<p><strong>Source Fetching, Patching</strong></p>
-<p><code>do\_fetch -&gt; do_unpack -&gt; do_patch</code></p>
-<p><strong>Configuration, Compilation, and Staging</strong></p>
-<p><code>do_configure -&gt; do_compile -&gt; do_install</code></p>
-<p><em>do_configure</em> tiến hành các tác vụ cấu hình trước khi build một gói phần mềm. Có thể hình dung quá trình này giống như chạy ./configure trước khi make một chương trình.</p>
-<p><em>do_compile</em> đa phần sẽ tiến hành gọi <code>make</code> đến <code>Makefile</code> của mã nguồn gói phần mềm. Kết quả của quá trình được lưu trữ ngay cùng mới mã nguồn vừa được build. Gọi là directory S/B.</p>
-<p><em>do_install</em></p>
-<p>Copy binarry file from S/B (kết quả của task do_compile) dir to D (image - destination dir). Binary lưu trữ tại thư mục D sẽ được sử dụng cho quá các quá trình <code>do_package</code>, <code>do_packagedata</code> và <code>do_populate_sysroot</code></p>
-<p><strong>Package Splitting</strong></p>
-<p><code>do_package, do_packagedata</code></p>
-<p>Một bộ mã nguồn có thể compile một lúc ra rất nhiều ứng dụng, các ứng dụng này có thể được nhóm lại với nhau thành các packages. Ví dụ với mã nguồn libiio có thể build ra được các gói như: libiio, libiio-test (chứa iio_infor), libiio-iiod (chứa IIO Deamon)... Tác dụng của <code>do_package</code> là phân tác các binary (cũng như dữ liệu đi kèm nếu có) thành các gói phần mềm khác nhau.</p>
-<p><code>do_populate_sysroot</code></p>
-<p>Được định nghĩa trong <code>layers/core/meta/classes/staging.bbclass</code> sử dụng để staging kết quả build tail build directory temporary đến <code>build/tmp/work/cortexa9hf-neon-xilinx-linux-gnueabi/libiio/0.15+gitAUTOINC+6ecff5d46e-r0/sysroot-destdir/</code>.</p>
-<p>Quá trình <code>-c do_populate_sysroot</code> sẽ tiến hành thêm <code>do_qa_staging</code> và <code>sstate_task_postfunc</code> (được định nghĩa trong <code>sstate.bbclass</code>).</p>
-<p>Hàm <code>sstate_task_postfunc</code> sẽ tiến hành stagging file từ <code>sysroot-destdir</code> đến <code>build/tmp/sysroots/plnx_arm</code>. Hiện tại vẫn chưa tìm hiểu được tác dụng của thư mục này cũng như tác dụng của <code>do_populate_sysroot</code>.</p>
-<p><strong>RPM Package Generation</strong></p>
-<p><code>do_package_write_rpm</code></p>
-<p>Được định nghĩa trong <code>layers/core/meta/classes/package_rpm.bbclass</code> có nhiệm vu creates RPM packages (i.e. *.rpm files) and places them in the <code>${DEPLOY_DIR_RPM}</code> directory in the package feeds area. Trong Petalinux 2017.4 (một thực thể ứng dụng Yocto) thì <code>${DEPLOY_DIR_RPM}</code> được định nghĩa là <code>build/tmp/deploy/rpm</code>. Các gói phần mềm đã được đóng gói dưới định dạng RPM sẽ được đưa đến thư mục này. Ví dụ như các gói trong libiio: (liệt kê các gói tại đây).</p>
-<p>Bản chất hàm <code>do_package_rpm</code> trong <code>package_rpm.bbclass</code> sẽ gọi đến công cụ <a href="https://linux.die.net/man/8/rpmbuild">rpmbuild</a> - linux.die.net (một công cụ được sử dụng để build RPM package). Quá trình chạy <code>rpmbuild</code> cần đến SPEC File. Tham khảo thêm về SPEC file <a href="https://rpm-packaging-guide.github.io/">tại đây</a>. Quá trình thực hiện rpmbuild được thực hiện tại khu vực build của từng package. Ví dụ trong trường hợp package là libiio:</p>
-<p><code>build/tmp/work/cortexa9hf-neon-xilinx-linux-gnueabi/libiio/0.15+gitAUTOINC+6ecff5d46e-r0</code></p>
-<p><em>For checking an un-installed RPM pkg, use <code>rpm -qip &lt;name&gt;.rpm</code>. Read more at: <a href="https://www.tecmint.com/20-practical-examples-of-rpm-commands-in-linux/">https://www.tecmint.com/20-practical-examples-of-rpm-commands-in-linux/</a></em></p>
-<p>Như vậy, từ các binary được build bởi các tác vụ <code>do_configure/do_compile/do_install</code>, <code>do_package_write_rpm</code> sẽ đóng gói thành các rpm package sẵn sàng cho cài đặt.</p>
-<p><strong>Rootfs Generation</strong></p>
-<p><code>do_rootfs</code></p>
-<p>Tiến hành theo package <code>petalinux-user-image</code>.</p>
-<p><code>do_rootfs</code> được định nghĩa tại <code>layers/core/meta/classes/image.bbclass</code> thực hiện tìm một danh sách các <strong>package (.rpm, .deb)</strong> (thông tin về các packages này được chứa trong biến môi trường <code>PACKAGE_INSTALL</code>) để tiến hành copy đến <code>IMAGE_ROOTFS</code>. Theo định nghĩa của Yocto, <code>IMAGE_ROOTFS</code> là "The location of the root filesystem while it is under construction". Trong một trường hợp thực tế, <code>IMAGE_ROOTFS</code> là:</p>
-<p><code>build/tmp/work/plnx_arm-xilinx-linux-gnueabi/petalinux-user-image/1.0-r0/rootfs</code></p>
+<p>Các lệnh chi tiết hơn nằm ở phần <em>Thực hành</em>.</p>
+<h2 id="working-flow">Working flow<a class="headerlink" href="#working-flow" title="Permanent link">¶</a></h2>
+<p>Để "nấu ăn" có quy trình, BitBake chia việc build mỗi recipe thành các task nhỏ. Các task mặc định được định nghĩa trong <code>base.bbclass</code> và các class khác (<code>autotools</code>, <code>package</code>, <code>image</code>, ...). Recipe có thể thay đổi bước nào cần thiết bằng cách định nghĩa lại task. Danh sách task đầy đủ có trong <a href="https://docs.yoctoproject.org/ref-manual/tasks.html">Reference Manual - Tasks</a>.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/yocto-working-flow.png" data-desc-position="bottom"><img alt="Yocto working flow" src="../img/yocto-working-flow.png"></a></p>
+<p>Sơ đồ cho thấy hai điểm hay bị hiểu sai: <code>do_populate_sysroot</code> rẽ nhánh song song từ <code>do_install</code> chứ không nằm sau <code>do_package</code>, và image chỉ được tạo từ package đã đóng gói (feed <code>.rpm</code>), không phải từ thư mục build.</p>
+<h3 id="1-lay-source-va-va">① Lấy source và vá<a class="headerlink" href="#1-lay-source-va-va" title="Permanent link">¶</a></h3>
+<p><code>do_fetch → do_unpack → do_patch</code></p>
+<p>Fetcher tải source theo <code>SRC_URI</code> vào <code>${DL_DIR}</code>, unpack vào <code>${WORKDIR}</code> rồi áp các patch lên <code>${S}</code>.</p>
+<h3 id="2-cau-hinh-va-build">② Cấu hình và build<a class="headerlink" href="#2-cau-hinh-va-build" title="Permanent link">¶</a></h3>
+<p><code>do_configure → do_compile → do_install</code></p>
 <ul>
-<li>What is relation ship between <code>PACKAGE_INSTALL</code> and <code>IMAGE_INSTALL</code>?</li>
-<li>how Yocto creates these .rpm, .deb packages?</li>
+<li><code>do_configure</code>: cấu hình trước khi build, giống chạy <code>./configure</code> trước <code>make</code>.</li>
+<li><code>do_compile</code>: thường gọi <code>make</code> vào <code>Makefile</code> của source; kết quả nằm trong <code>${B}</code>.</li>
+<li><code>do_install</code>: chép file thành phẩm từ <code>${B}</code> vào <code>${D}</code> (<code>${WORKDIR}/image</code>). Nội dung <code>${D}</code> là đầu vào của <code>do_package</code> và <code>do_populate_sysroot</code>.</li>
 </ul>
-<p><code>IMAGE_ROOTFS</code> là nơi chứa rootfs, kết quả build của hệ thống. Từ rootfs có thể được đóng gói thành các định dạng khác nhau như: cpio, ext4, ext3, jffs2, ...</p>
-<p><code>do_image_ext3/4</code></p>
-<p>Đóng gói rootfs trong <code>IMAGE_ROOTFS</code> thành các định dạng filesystem ext3/ext4.</p>
-<p>Tiến hành đóng gói rootfs dưới định dạng ext3. Bản chất của hàm này sẽ gọi đến <code>oe_mkext234fs</code> được định nghĩa trong <code>layers/core/meta/classes/image_types.bbclass</code>.</p>
-<p>Hàm <code>oe_mkext234fs</code> gọi đến <code>mkfs.ext3/4</code> (là một bộ công cụ đóng gói một bộ tập tin dưới dạng file có thể được sử dụng cho các định dạng ext3/ext4) để tiến hành đóng gói rootfs.</p>
-<p><strong>SDK Generation</strong></p>
-<h3 id="recipe-syntax">Recipe syntax<a class="headerlink" href="#recipe-syntax" title="Permanent link">¶</a></h3>
-<p><strong><a href="https://www.yoctoproject.org/docs/1.6/bitbake-user-manual/bitbake-user-manual.html#sharing-functionality">Sharing Functionality</a></strong></p>
-<p>BitBake allows for metadata sharing through include files (.inc) and class files (.bbclass).</p>
-<p><em>inherit</em>: là directive. Ví dụ <code>inherit autotools</code> được sử dụng để kế thừa toàn bộ hàm của class autotools.bbclass. Người dùng có thể "override" các hàm của class được kế thừa bằng cách phát triển các hàm hoặc biến đó sau directive <code>inherit</code>.</p>
-<h2 id="terms-and-definitions-in-bitbake">Terms and definitions in Bitbake<a class="headerlink" href="#terms-and-definitions-in-bitbake" title="Permanent link">¶</a></h2>
-<p><strong><a href="https://www.yoctoproject.org/docs/2.7/bitbake-user-manual/bitbake-user-manual.html#idm45270752297552">File Download Support</a></strong></p>
-<p>Bitbake cung cấp cơ chế download/unpack/patching source code. Fetcher (Downloader) tiến hành download source code từ local/remote repository.</p>
-<p>Quá trình unpack thực hiện giải nén source code ngay sau quá trình download source code. Unpacker hỗ trợ decompress/extract các file có phần mở rộng như sau: ".Z", ".z", ".gz", ".xz", ".zip", ".jar", ".ipk", ".rpm". ".srpm", ".deb" and ".bz2".</p>
-<h2 id="bitbake-variables">Bitbake variables<a class="headerlink" href="#bitbake-variables" title="Permanent link">¶</a></h2>
-<p><strong><a href="https://www.yoctoproject.org/docs/latest/ref-manual/ref-manual.html#var-SRC_URI">${SRC_URI}</a></strong></p>
-<p>The list of source files - local or remote.</p>
-<p>Được sử dụng trong recipe file để thông báo cho Yocto source code nào của package sẽ được sử dụng để build. Yocto Fetcher (Downloader) tiến hành download và bổ sung các bản vá vào source code trước khi tiến hành các bước tiếp theo.</p>
-<p><strong>${IMAGE_INSTALL}</strong><br>
-Used by recipes to specify the packages to install into an image through the image class</p>
-<p><strong>${PACKAGES}</strong><br>
-The list of packages the recipe creates.</p>
+<h3 id="3-ong-goi">③ Đóng gói<a class="headerlink" href="#3-ong-goi" title="Permanent link">¶</a></h3>
+<p><code>do_package → do_packagedata → do_package_write_rpm</code></p>
+<p><code>do_package</code> tách nội dung <code>${D}</code> thành các package theo biến <code>PACKAGES</code>. Ví dụ source <code>libiio</code> sinh ra <code>libiio</code>, <code>libiio-test</code> (chứa <code>iio_info</code>), <code>libiio-iiod</code> (chứa IIO daemon).</p>
+<p><code>do_package_write_rpm</code> (định nghĩa trong <code>package_rpm.bbclass</code>) tạo các file <code>.rpm</code> và đặt vào <code>${DEPLOY_DIR_RPM}</code>, tức <code>build/tmp/deploy/rpm</code> trong Petalinux 2017.4. Bên dưới, hàm này gọi công cụ <a href="https://linux.die.net/man/8/rpmbuild">rpmbuild</a> với SPEC file sinh tự động, chạy ngay trong thư mục làm việc của recipe, ví dụ <code>build/tmp/work/cortexa9hf-neon-xilinx-linux-gnueabi/libiio/0.15+gitAUTOINC+6ecff5d46e-r0</code>. Tham khảo thêm <a href="https://rpm-packaging-guide.github.io/">RPM Packaging Guide</a>.</p>
+<p>Định dạng gói chọn bằng <code>PACKAGE_CLASSES</code>: <code>package_rpm</code>, <code>package_deb</code> hoặc <code>package_ipk</code>, tương ứng task <code>do_package_write_rpm</code>, <code>do_package_write_deb</code>, <code>do_package_write_ipk</code>.</p>
+<p>Kiểm tra file <code>.rpm</code> chưa cài: <code>rpm -qip &lt;tên&gt;.rpm</code> (<a href="https://www.tecmint.com/20-practical-examples-of-rpm-commands-in-linux/">ví dụ lệnh rpm</a>).</p>
+<h3 id="4-staging-do_populate_sysroot">④ Staging: <code>do_populate_sysroot</code><a class="headerlink" href="#4-staging-do_populate_sysroot" title="Permanent link">¶</a></h3>
+<p>Task này định nghĩa trong <code>staging.bbclass</code>. Nó chép một <strong>tập con</strong> file mà <code>do_install</code> đã cài (mặc định là header, library; thư mục không cần khi build như <code>/etc</code> bị bỏ qua, điều chỉnh bằng <code>SYSROOT_DIRS</code>) vào <code>sysroot-destdir</code> của recipe, ví dụ <code>build/tmp/work/cortexa9hf-neon-xilinx-linux-gnueabi/libiio/0.15+gitAUTOINC+6ecff5d46e-r0/sysroot-destdir/</code>. Sau đó hàm <code>sstate_task_postfunc</code> (trong <code>sstate.bbclass</code>) lưu kết quả vào shared state.</p>
+<p>Mục đích: cho các recipe <strong>khác</strong> dùng file này lúc build. Khi recipe A khai <code>DEPENDS = "libiio"</code>, BitBake chạy <code>libiio:do_populate_sysroot</code> trước, rồi <code>A:do_prepare_recipe_sysroot</code> dựng sysroot riêng của A từ các dependency, và <code>do_configure</code>/<code>do_compile</code> của A tìm header, lib trong đó. Task này <strong>không</strong> ảnh hưởng trực tiếp đến rootfs.</p>
+<p>Vị trí sysroot khác nhau theo phiên bản: bản cũ dùng sysroot chung <code>build/tmp/sysroots/&lt;machine&gt;</code>, bản mới dùng <code>recipe-sysroot</code> trong <code>${WORKDIR}</code> và kho <code>build/tmp/sysroots-components</code>.</p>
+<h3 id="5-tao-image">⑤ Tạo image<a class="headerlink" href="#5-tao-image" title="Permanent link">¶</a></h3>
+<p><code>do_rootfs → do_image_&lt;định dạng&gt; → do_image_complete</code></p>
+<p><code>do_rootfs</code> (định nghĩa trong <code>image.bbclass</code>) là task của <strong>image recipe</strong>, ví dụ <code>petalinux-user-image</code>. Danh sách package khai báo bằng <code>IMAGE_INSTALL</code>; từ đó build system gom thành <code>PACKAGE_INSTALL</code>, là danh sách cuối cùng chuyển cho package manager. Package manager (dnf cho rpm, opkg cho ipk, apt cho deb) cài các gói từ <strong>package feed</strong> vào <code>${IMAGE_ROOTFS}</code>, thư mục chứa rootfs đang được dựng. Ví dụ thực tế: <code>build/tmp/work/plnx_arm-xilinx-linux-gnueabi/petalinux-user-image/1.0-r0/rootfs</code>.</p>
+<p>Từ <code>${IMAGE_ROOTFS}</code>, các task <code>do_image_&lt;định dạng&gt;</code> đóng gói rootfs thành ext3/ext4, cpio, jffs2, ... Với ext3/ext4, bản cũ gọi hàm <code>oe_mkext234fs</code> trong <code>image_types.bbclass</code>, hàm này chạy <code>mkfs.ext3/4</code>. Cuối cùng <code>do_image_complete</code> đưa kết quả ra <code>build/tmp/deploy/images/</code>.</p>
+<h3 id="6-tao-sdk">⑥ Tạo SDK<a class="headerlink" href="#6-tao-sdk" title="Permanent link">¶</a></h3>
+<p><code>bitbake -c populate_sdk &lt;image&gt;</code> đóng toolchain cộng sysroot của target thành file cài đặt <code>.sh</code> trong <code>build/tmp/deploy/sdk/</code>. Biến thể <code>populate_sdk_ext</code> tạo extensible SDK.</p>
+<h3 id="cac-task-khac-can-biet">Các task khác cần biết<a class="headerlink" href="#cac-task-khac-can-biet" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>do_populate_lic</code>: thu thập license của recipe.</li>
+<li><code>do_prepare_recipe_sysroot</code>: dựng sysroot riêng của recipe từ các <code>DEPENDS</code>, chạy trước <code>do_configure</code>.</li>
+<li><code>do_build</code>: task mặc định, phụ thuộc vào các task chính của recipe.</li>
+</ul>
+<h2 id="recipe-syntax">Recipe syntax<a class="headerlink" href="#recipe-syntax" title="Permanent link">¶</a></h2>
+<p>Recipe là file text gồm biến, hàm shell/Python và directive. Tên file thường có dạng <code>&lt;tên&gt;_&lt;version&gt;.bb</code>, ví dụ <code>libiio_0.15.bb</code>; <code>PN</code> và <code>PV</code> được suy ra từ tên file.</p>
+<h3 id="chia-se-metadata">Chia sẻ metadata<a class="headerlink" href="#chia-se-metadata" title="Permanent link">¶</a></h3>
+<p>BitBake cho phép dùng chung metadata qua file include (<code>.inc</code>) và class (<code>.bbclass</code>). Xem thêm mục <a href="https://www.yoctoproject.org/docs/1.6/bitbake-user-manual/bitbake-user-manual.html#sharing-functionality">Sharing Functionality</a> trong BitBake manual.</p>
+<ul>
+<li><code>include</code> / <code>require &lt;file&gt;.inc</code>: chèn nội dung file vào recipe; <code>require</code> báo lỗi nếu thiếu file.</li>
+<li><code>inherit &lt;class&gt;</code>: kế thừa toàn bộ hàm và biến của class. Ví dụ <code>inherit autotools</code> kế thừa các <code>do_configure</code>, <code>do_compile</code>, <code>do_install</code> chuẩn của <code>autotools.bbclass</code>. Người dùng "override" bằng cách định nghĩa lại hàm hoặc biến đó <strong>sau</strong> dòng <code>inherit</code>.</li>
+<li><code>.bbappend</code>: bổ sung hoặc sửa recipe của layer khác mà không chép lại recipe. Tên phải khớp recipe gốc, <code>%</code> thay cho phần version (<code>libiio_%.bbappend</code>).</li>
+</ul>
+<h3 id="toan-tu-gan">Toán tử gán<a class="headerlink" href="#toan-tu-gan" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Toán tử</th>
+<th>Ý nghĩa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>=</code></td>
+<td>Gán; giá trị được expand khi biến được dùng</td>
+</tr>
+<tr>
+<td><code>?=</code></td>
+<td>Gán nếu biến chưa có giá trị (mặc định yếu)</td>
+</tr>
+<tr>
+<td><code>??=</code></td>
+<td>Mặc định yếu nhất, bị <code>?=</code> ghi đè</td>
+</tr>
+<tr>
+<td><code>:=</code></td>
+<td>Gán và expand ngay lúc gán</td>
+</tr>
+<tr>
+<td><code>+=</code> , <code>=+</code></td>
+<td>Nối có dấu cách vào cuối, vào đầu</td>
+</tr>
+<tr>
+<td><code>.=</code> , <code>=.</code></td>
+<td>Nối không thêm dấu cách vào cuối, vào đầu</td>
+</tr>
+<tr>
+<td><code>:append</code>, <code>:prepend</code>, <code>:remove</code></td>
+<td>Xử lý cuối quá trình parse, không tự thêm dấu cách</td>
+</tr>
+</tbody>
+</table>
+<h3 id="override-syntax">Override syntax<a class="headerlink" href="#override-syntax" title="Permanent link">¶</a></h3>
+<p>Từ Yocto 3.4 (honister), dấu <code>:</code> thay cho <code>_</code> khi viết override (<a href="https://docs.yoctoproject.org/migration-guides/release-3.4.html">migration guide 3.4</a>):</p>
+<table>
+<thead>
+<tr>
+<th>Cũ (trước 3.4)</th>
+<th>Mới (từ 3.4)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SRC_URI_append_qemux86</code></td>
+<td><code>SRC_URI:append:qemux86</code></td>
+</tr>
+<tr>
+<td><code>FILES_${PN}-ptest</code></td>
+<td><code>FILES:${PN}-ptest</code></td>
+</tr>
+<tr>
+<td><code>RDEPENDS_${PN}</code></td>
+<td><code>RDEPENDS:${PN}</code></td>
+</tr>
+</tbody>
+</table>
+<p>Tài liệu và layer viết theo cú pháp cũ (như Petalinux 2017.4) phải chuyển đổi khi nâng lên bản Yocto mới.</p>
+<h3 id="vi-du-recipe">Ví dụ recipe<a class="headerlink" href="#vi-du-recipe" title="Permanent link">¶</a></h3>
+<p>Ví dụ minh họa dưới đây chưa được build thử; cú pháp theo các bản kirkstone đến scarthgap. Từ các bản mới hơn, cần kiểm tra thay đổi về <code>S</code> và thư mục unpack.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">SUMMARY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Ví dụ: ứng dụng hello"</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nv">LICENSE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"MIT"</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nv">LIC_FILES_CHKSUM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"file://</span><span class="si">${</span><span class="nv">COMMON_LICENSE_DIR</span><span class="si">}</span><span class="s2">/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nv">SRC_URI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"file://hello.c </span><span class="se">\</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="s2">           file://Makefile"</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nv">S</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">WORKDIR</span><span class="si">}</span><span class="s2">"</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nf">do_compile</span>() <span class="p">{</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span>oe_runmake
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="p">}</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="nf">do_install</span>() <span class="p">{</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span>install<span class="w"> </span>-d<span class="w"> </span><span class="si">${</span><span class="nv">D</span><span class="si">}${</span><span class="nv">bindir</span><span class="si">}</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span>install<span class="w"> </span>-m<span class="w"> </span><span class="m">0755</span><span class="w"> </span>hello<span class="w"> </span><span class="si">${</span><span class="nv">D</span><span class="si">}${</span><span class="nv">bindir</span><span class="si">}</span>/hello
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="p">}</span>
+</code></pre></div>
+<p>Tách package và thêm patch bằng <code>.bbappend</code> ở layer của bạn:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># libiio_%.bbappend</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nv">FILESEXTRAPATHS</span><span class="nd">:prepend</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">THISDIR</span><span class="si">}</span><span class="s2">/files:"</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nv">SRC_URI</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s2">"file://0001-fix-build.patch"</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nv">PACKAGES</span><span class="w"> </span><span class="o">=+</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">PN</span><span class="si">}</span><span class="s2">-test"</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nv">FILES</span><span class="nd">:${PN}-test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">bindir</span><span class="si">}</span><span class="s2">/iio_info"</span>
+</code></pre></div>
+<h2 id="thuat-ngu-trong-bitbake">Thuật ngữ trong BitBake<a class="headerlink" href="#thuat-ngu-trong-bitbake" title="Permanent link">¶</a></h2>
+<p><strong>File download support.</strong> BitBake cung cấp cơ chế download, unpack và patch source (<a href="https://www.yoctoproject.org/docs/2.7/bitbake-user-manual/bitbake-user-manual.html#idm45270752297552">tài liệu</a>).</p>
+<ul>
+<li><strong>Fetcher</strong> (downloader): tải source từ repository cục bộ hoặc từ xa theo <code>SRC_URI</code>.</li>
+<li><strong>Unpacker</strong>: giải nén ngay sau khi tải. Hỗ trợ các đuôi <code>.Z</code>, <code>.z</code>, <code>.gz</code>, <code>.xz</code>, <code>.zip</code>, <code>.jar</code>, <code>.ipk</code>, <code>.rpm</code>, <code>.srpm</code>, <code>.deb</code>, <code>.bz2</code>.</li>
+<li><strong>Patching</strong>: các file <code>.patch</code> hoặc <code>.diff</code> khai trong <code>SRC_URI</code> được <code>do_patch</code> áp lên source.</li>
+</ul>
+<p><strong>Dependency.</strong> <code>DEPENDS</code> là phụ thuộc lúc <strong>build</strong> (recipe khác phải qua <code>do_populate_sysroot</code> trước). <code>RDEPENDS:${PN}</code> là phụ thuộc lúc <strong>chạy</strong>, khiến package khác được kéo vào image.</p>
+<p><strong>Shared state (sstate).</strong> BitBake tính signature (hash của input) cho từng task. Nếu signature không đổi, kết quả được lấy lại từ <code>sstate-cache/</code> thay vì chạy lại. Vì vậy build system không dùng số <code>PE</code>, <code>PV</code>, <code>PR</code> để quyết định có build lại hay không; các số này chủ yếu phục vụ việc đánh version cho package nhị phân.</p>
+<h2 id="bien-bitbake-quan-trong">Biến BitBake quan trọng<a class="headerlink" href="#bien-bitbake-quan-trong" title="Permanent link">¶</a></h2>
+<p>Xem danh sách đầy đủ tại <a href="https://docs.yoctoproject.org/ref-manual/variables.html">Variables Glossary</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Biến</th>
+<th>Ý nghĩa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SRC_URI</code></td>
+<td>Danh sách source (cục bộ hoặc từ xa) dùng để build. Fetcher tải về và áp patch trước các bước tiếp theo</td>
+</tr>
+<tr>
+<td><code>PACKAGES</code></td>
+<td>Danh sách package mà recipe tạo ra</td>
+</tr>
+<tr>
+<td><code>FILES:${PN}</code></td>
+<td>Các file thuộc về một package, dùng khi tách package</td>
+</tr>
+<tr>
+<td><code>DEPENDS</code></td>
+<td>Recipe cần có sẵn lúc build (header, lib trong sysroot)</td>
+</tr>
+<tr>
+<td><code>RDEPENDS:${PN}</code></td>
+<td>Package cần có lúc chạy</td>
+</tr>
+<tr>
+<td><code>IMAGE_INSTALL</code></td>
+<td>Package đưa vào image; khai trong image recipe hoặc <code>local.conf</code> (ví dụ <code>IMAGE_INSTALL:append = " libiio"</code>, nhớ dấu cách đầu)</td>
+</tr>
+<tr>
+<td><code>PACKAGE_INSTALL</code></td>
+<td>Danh sách cuối cùng chuyển cho package manager. Biến nội bộ của phần dựng image, không sửa trực tiếp mà dùng <code>IMAGE_INSTALL</code></td>
+</tr>
+<tr>
+<td><code>PACKAGE_CLASSES</code></td>
+<td>Định dạng package: <code>package_rpm</code>, <code>package_deb</code>, <code>package_ipk</code></td>
+</tr>
+<tr>
+<td><code>IMAGE_ROOTFS</code></td>
+<td>Vị trí rootfs trong lúc đang được dựng</td>
+</tr>
+<tr>
+<td><code>MACHINE</code>, <code>DISTRO</code></td>
+<td>Phần cứng đích và chính sách distro</td>
+</tr>
+<tr>
+<td><code>DL_DIR</code>, <code>SSTATE_DIR</code>, <code>TMPDIR</code></td>
+<td>Nơi lưu source tải về, shared state cache và kết quả build</td>
+</tr>
+<tr>
+<td><code>DEPLOY_DIR_RPM</code></td>
+<td>Nơi đặt các file <code>.rpm</code> đã tạo</td>
+</tr>
+</tbody>
+</table>
+<p>Các biến đường dẫn của recipe (<code>WORKDIR</code>, <code>S</code>, <code>B</code>, <code>D</code>) được mô tả ở mục <em>Thuật ngữ trong Yocto</em>.</p>
+<h2 id="thuc-hanh-lenh-hay-dung">Thực hành: lệnh hay dùng<a class="headerlink" href="#thuc-hanh-lenh-hay-dung" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Build</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>bitbake<span class="w"> </span>&lt;recipe&gt;<span class="w">                    </span><span class="c1"># build một recipe (đến do_build)</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>bitbake<span class="w"> </span>&lt;image&gt;<span class="w">                     </span><span class="c1"># build cả image</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>bitbake<span class="w"> </span>-c<span class="w"> </span>&lt;task&gt;<span class="w"> </span>&lt;recipe&gt;<span class="w">          </span><span class="c1"># chạy riêng một task, ví dụ -c compile</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>bitbake<span class="w"> </span>-k<span class="w"> </span>&lt;image&gt;<span class="w">                  </span><span class="c1"># tiếp tục build khi một recipe lỗi</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># Tìm hiểu recipe</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>bitbake<span class="w"> </span>-c<span class="w"> </span>listtasks<span class="w"> </span>&lt;recipe&gt;<span class="w">       </span><span class="c1"># liệt kê các task của recipe</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>bitbake<span class="w"> </span>-e<span class="w"> </span>&lt;recipe&gt;<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>^WORKDIR<span class="o">=</span><span class="w">   </span><span class="c1"># xem giá trị biến sau khi parse</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>bitbake<span class="w"> </span>-g<span class="w"> </span>&lt;recipe&gt;<span class="w">                 </span><span class="c1"># xuất đồ thị dependency (task-depends.dot)</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>bitbake-layers<span class="w"> </span>show-layers<span class="w">          </span><span class="c1"># các layer đang tham gia build</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>bitbake-layers<span class="w"> </span>show-appends<span class="w">         </span><span class="c1"># các .bbappend đang áp dụng</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="c1"># Dọn dẹp, build lại sạch</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>bitbake<span class="w"> </span>-c<span class="w"> </span>clean<span class="w"> </span>&lt;recipe&gt;<span class="w">           </span><span class="c1"># xóa thư mục làm việc của recipe</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>bitbake<span class="w"> </span>-c<span class="w"> </span>cleansstate<span class="w"> </span>&lt;recipe&gt;<span class="w">     </span><span class="c1"># xóa cả kết quả trong sstate-cache</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="c1"># Sửa source của một recipe có sẵn</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>devtool<span class="w"> </span>modify<span class="w"> </span>&lt;recipe&gt;<span class="w">             </span><span class="c1"># đưa source ra workspace để sửa</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>devtool<span class="w"> </span>build<span class="w"> </span>&lt;recipe&gt;
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>devtool<span class="w"> </span>finish<span class="w"> </span>&lt;recipe&gt;<span class="w"> </span>&lt;layer&gt;<span class="w">     </span><span class="c1"># xuất thay đổi thành patch trong layer</span>
+</code></pre></div>
+<p>Khi gặp lỗi, đọc log tại <code>${WORKDIR}/temp/log.do_&lt;task&gt;</code> của recipe lỗi; <code>bitbake -e</code> giúp kiểm tra biến có đúng giá trị như mong đợi không.</p>
+<h2 id="phu-luc-xilinx-petalinux-20174">Phụ lục: Xilinx Petalinux 2017.4<a class="headerlink" href="#phu-luc-xilinx-petalinux-20174" title="Permanent link">¶</a></h2>
+<p>Petalinux 2017.4 là một thực thể ứng dụng Yocto. Phần này gom các chi tiết riêng của Petalinux, tách khỏi nội dung Yocto chung ở trên. Xem thêm: <a href="../../petalinux/ptlnx/">Petalinux Overview</a>, <a href="../../petalinux/ptlnx_20174/">Petalinux 2017</a>, <a href="../../petalinux/ptlnx_bin_output/">List of Petalinux Images</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Khái niệm Yocto</th>
+<th>Trong Petalinux 2017.4 (theo ghi chú trước đây)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Build Directory</td>
+<td><code>build/</code></td>
+</tr>
+<tr>
+<td>Layer lõi</td>
+<td><code>layers/core/meta/</code> (chứa <code>classes/image.bbclass</code>, <code>package_rpm.bbclass</code>, <code>staging.bbclass</code>, <code>image_types.bbclass</code>)</td>
+</tr>
+<tr>
+<td><code>WORKDIR</code> của recipe</td>
+<td><code>build/tmp/work/cortexa9hf-neon-xilinx-linux-gnueabi/&lt;recipe&gt;/&lt;version&gt;-r0</code></td>
+</tr>
+<tr>
+<td><code>DEPLOY_DIR_RPM</code></td>
+<td><code>build/tmp/deploy/rpm</code></td>
+</tr>
+<tr>
+<td>Image recipe</td>
+<td><code>petalinux-user-image</code>, rootfs tại <code>build/tmp/work/plnx_arm-xilinx-linux-gnueabi/petalinux-user-image/1.0-r0/rootfs</code></td>
+</tr>
+<tr>
+<td>Sysroot dùng chung</td>
+<td><code>build/tmp/sysroots/plnx_arm</code></td>
+</tr>
+</tbody>
+</table>
+<p>Ghi chú trước đây "chưa tìm hiểu được tác dụng của <code>build/tmp/sysroots/plnx_arm</code> và <code>do_populate_sysroot</code>" đã được giải đáp ở mục <em>Working flow</em>, bước ④: đó là nơi chứa header và lib để recipe khác dùng khi build, không phải thành phần của rootfs.</p>
+<p>Metadata của Petalinux 2017.4 dùng override syntax cũ (dấu <code>_</code>). Khi chuyển sang layer Yocto mới hơn cần đổi sang dấu <code>:</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Cần kiểm chứng</p>
+<ul>
+<li>Ví dụ recipe <code>hello</code> và các lệnh ở mục <em>Thực hành</em> chưa được chạy thực tế, nên thử trên môi trường Yocto đang dùng.</li>
+<li>Thông tin về sysroot theo phiên bản (sysroot chung ở bản cũ, <code>recipe-sysroot</code> ở bản mới) đúng về nguyên tắc nhưng chưa xác định mốc phiên bản cụ thể.</li>
+<li>Hai link manual phiên bản cũ (BitBake 1.6, 2.7) được giữ lại ở mục Recipe syntax và Thuật ngữ trong BitBake vì anchor gốc nằm ở đó; nên thay bằng link hiện hành.</li>
+</ul>
+</div>
+<h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
+<p>Các điểm sửa về <code>PV</code>/<code>PR</code>, <code>PACKAGE_INSTALL</code>, task <code>do_populate_sysroot</code> và override syntax đã được đối chiếu với tài liệu Yocto chính thức ngày 2026-10-21 (qua kết quả tìm kiếm trên docs.yoctoproject.org).</p>
+<ul>
+<li><a href="https://docs.yoctoproject.org/">Yocto Project documentation</a>: Overview and Concepts Manual, BitBake manual, Reference Manual, Development Tasks Manual.</li>
+<li><a href="https://docs.yoctoproject.org/ref-manual/terms.html">Reference Manual - Terms</a></li>
+<li><a href="https://docs.yoctoproject.org/ref-manual/tasks.html">Reference Manual - Tasks</a></li>
+<li><a href="https://docs.yoctoproject.org/ref-manual/variables.html">Reference Manual - Variables Glossary</a></li>
+<li><a href="https://docs.yoctoproject.org/dev-manual/packages.html">Development Tasks Manual - Working with Packages</a> (về <code>PV</code>, <code>PR</code>)</li>
+<li><a href="https://docs.yoctoproject.org/migration-guides/release-3.4.html">Migration notes 3.4 (honister)</a> (override syntax)</li>
+<li>Giữ từ bản gốc: <a href="https://www.yoctoproject.org/docs/1.6/bitbake-user-manual/bitbake-user-manual.html">BitBake User Manual 1.6</a>, <a href="https://www.yoctoproject.org/docs/2.5/overview-manual/overview-manual.html">Overview and Concepts Manual 2.5</a></li>
+<li><a href="https://www.cppdeveloper.com/best-practices/yocto-project-va-ung-dung-trong-viec-phat-trien-cac-he-thong-nhung/">Yocto Project và ứng dụng trong việc phát triển các hệ thống nhúng</a> (cppdeveloper.com)</li>
+<li><a href="https://linux.die.net/man/8/rpmbuild">rpmbuild</a>, <a href="https://rpm-packaging-guide.github.io/">RPM Packaging Guide</a></li>
+</ul>
 
 
 
@@ -4311,7 +4896,7 @@ The list of packages the recipe creates.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 20, 2026 10:14:08 UTC">October 20, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 21, 2026 00:56:41 UTC">October 21, 2026</span>
   </span>
 
     
