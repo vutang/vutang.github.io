@@ -1,0 +1,34 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 760 340' role='img' aria-label='Từ 2020 đến 2030, luôn có ít nhất một bản LTS còn được hỗ trợ' font-family='system-ui,sans-serif' font-size='13'>
+<rect x='0' y='0' width='760' height='340' rx='6' fill='#ffffff'/>
+<text x='24' y='28' font-size='15' font-weight='600' fill='#1f2933'>Từ 2020 đến 2030, luôn có ít nhất một bản LTS còn được hỗ trợ</text>
+<text x='24' y='48' font-size='11.5' fill='#5b6675'>Thời gian hỗ trợ của từng bản LTS; Blacksail 6.1 đặt cạnh để so sánh</text>
+<line x1='160.0' x2='160.0' y1='80' y2='312' stroke='#d5dbe3'/><text x='160.0' y='72' text-anchor='middle' font-size='11.5' fill='#5b6675'>2020</text>
+<line x1='212.7' x2='212.7' y1='80' y2='312' stroke='#d5dbe3'/><text x='212.7' y='72' text-anchor='middle' font-size='11.5' fill='#5b6675'>2021</text>
+<line x1='265.2' x2='265.2' y1='80' y2='312' stroke='#d5dbe3'/><text x='265.2' y='72' text-anchor='middle' font-size='11.5' fill='#5b6675'>2022</text>
+<line x1='317.8' x2='317.8' y1='80' y2='312' stroke='#d5dbe3'/><text x='317.8' y='72' text-anchor='middle' font-size='11.5' fill='#5b6675'>2023</text>
+<line x1='370.3' x2='370.3' y1='80' y2='312' stroke='#d5dbe3'/><text x='370.3' y='72' text-anchor='middle' font-size='11.5' fill='#5b6675'>2024</text>
+<line x1='423.0' x2='423.0' y1='80' y2='312' stroke='#d5dbe3'/><text x='423.0' y='72' text-anchor='middle' font-size='11.5' fill='#5b6675'>2025</text>
+<line x1='475.6' x2='475.6' y1='80' y2='312' stroke='#d5dbe3'/><text x='475.6' y='72' text-anchor='middle' font-size='11.5' fill='#5b6675'>2026</text>
+<line x1='528.1' x2='528.1' y1='80' y2='312' stroke='#d5dbe3'/><text x='528.1' y='72' text-anchor='middle' font-size='11.5' fill='#5b6675'>2027</text>
+<line x1='580.7' x2='580.7' y1='80' y2='312' stroke='#d5dbe3'/><text x='580.7' y='72' text-anchor='middle' font-size='11.5' fill='#5b6675'>2028</text>
+<line x1='633.4' x2='633.4' y1='80' y2='312' stroke='#d5dbe3'/><text x='633.4' y='72' text-anchor='middle' font-size='11.5' fill='#5b6675'>2029</text>
+<line x1='685.9' x2='685.9' y1='80' y2='312' stroke='#d5dbe3'/><text x='685.9' y='72' text-anchor='middle' font-size='11.5' fill='#5b6675'>2030</text>
+<line x1='160' x2='712' y1='80' y2='80' stroke='#8896a4' stroke-width='1.25'/>
+<line x1='517.8' x2='517.8' y1='80' y2='312' stroke='#2f6fdb' stroke-width='1.25' stroke-dasharray='4 4'/><text x='517.8' y='330' text-anchor='middle' font-size='11.5' fill='#1f2933'>Hôm nay: 21/10/2026</text>
+<rect x='173.1' y='103' width='210.3' height='18' rx='9' fill='#8896a4' fill-opacity='0.18' stroke='#8896a4' stroke-width='1.25'/>
+<text x='24' y='124' font-size='11.5' fill='#5b6675'>4/2020 đến 4/2024</text>
+<text x='24' y='109' font-weight='400' fill='#1f2933'>Dunfell 3.1</text>
+<rect x='282.5' y='147' width='210.3' height='18' rx='9' fill='#8896a4' fill-opacity='0.18' stroke='#8896a4' stroke-width='1.25'/>
+<text x='24' y='168' font-size='11.5' fill='#5b6675'>5/2022 đến 5/2026</text>
+<text x='24' y='153' font-weight='400' fill='#1f2933'>Kirkstone 4.0</text>
+<rect x='383.4' y='191' width='210.3' height='18' rx='9' fill='#8896a4' fill-opacity='0.18' stroke='#8896a4' stroke-width='1.25'/>
+<text x='24' y='212' font-size='11.5' fill='#5b6675'>4/2024 đến 4/2028</text>
+<text x='24' y='197' font-weight='400' fill='#1f2933'>Scarthgap 5.0</text>
+<rect x='488.6' y='235' width='210.3' height='18' rx='9' fill='#2f6fdb' fill-opacity='0.18' stroke='#2f6fdb' stroke-width='2'/>
+<text x='24' y='256' font-size='11.5' fill='#5b6675'>4/2026 đến 4/2030</text>
+<text x='24' y='241' font-weight='600' fill='#1f2933'>Wrynose 6.0</text>
+<rect x='519.5' y='279' width='21.6' height='18' rx='9' fill='#8896a4' fill-opacity='0.18' stroke='#8896a4' stroke-width='1.25'/>
+<text x='24' y='300' font-size='11.5' fill='#5b6675'>11/2026 đến 4/2027</text>
+<text x='24' y='285' font-weight='400' fill='#1f2933'>Blacksail 6.1</text>
+<text x='551.1' y='292' font-size='11.5' fill='#5b6675'>không phải LTS</text>
+</svg>

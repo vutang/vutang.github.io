@@ -2,398 +2,414 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://vutang.github.io/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/whatnext/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/about/about/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/articles/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/articles/tags/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/articles/2026/10/17/xu-h%C6%B0%E1%BB%9Bng-6g-v%C3%A0-hi%E1%BB%87n-tr%E1%BA%A1ng-chu%E1%BA%A9n-h%C3%B3a-102026/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/articles/2026/10/20/cpufreq-v%C3%A0-pstate-driver-t%E1%BB%AB-%C4%91i%E1%BB%81u-khi%E1%BB%83n-t%E1%BA%A7n-s%E1%BB%91-tr%E1%BB%B1c-ti%E1%BA%BFp-%C4%91%E1%BA%BFn-h%E1%BB%A3p-%C4%91%E1%BB%93ng-hi%E1%BB%87u-n%C4%83ng-v%E1%BB%9Bi-ph%E1%BA%A7n-c%E1%BB%A9ng/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/articles/2026/10/21/design-pattern-kinh-%C4%91i%E1%BB%83n-trong-linux-kernel-13-oop-v%C3%A0-v%C3%B2ng-%C4%91%E1%BB%9Di-object/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/articles/2026/10/21/design-pattern-kinh-%C4%91i%E1%BB%83n-trong-linux-kernel-23-d%E1%BB%AF-li%E1%BB%87u-intrusive-v%C3%A0-concurrency/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/articles/2026/10/21/design-pattern-kinh-%C4%91i%E1%BB%83n-trong-linux-kernel-33-ki%E1%BA%BFn-tr%C3%BAc-v%C3%A0-checklist-review/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/articles/2026/09/28/hi%E1%BB%87n-tr%E1%BA%A1ng-c%C3%A1c-d%C3%B2ng-linux-kernel-t%E1%BB%AB-3x-%C4%91%E1%BA%BFn-70/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/articles/2026/10/18/nbcon-console-kh%C3%B4ng-ch%E1%BA%B7n-trong-linux-printk/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/articles/2026/10/13/pviommu-hyper-v-%C4%91%C6%B0a-dma-protection-v%C3%A0o-linux-guest/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/articles/2026/10/18/ran-silicon-rethink-khi-chip-chuy%C3%AAn-d%E1%BB%A5ng-ph%E1%BA%A3i-nh%C6%B0%E1%BB%9Dng-ch%E1%BB%97-cho-cpu-v%C3%A0-gpu-%C4%91a-d%E1%BB%A5ng/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/articles/2026/10/19/rust-trong-nh%C3%A2n-linux-ng%C3%B4n-ng%E1%BB%AF-m%E1%BB%9Bi-lu%E1%BA%ADt-ch%C6%A1i-c%C5%A9/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/articles/2026/10/21/yocto-project-hi%E1%BB%87n-tr%E1%BA%A1ng-release-v%C3%A0-15-n%C4%83m-ph%C3%A1t-tri%E1%BB%83n/</loc>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/bookmarks/bookmarks/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/books/c_books/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/books/device_driver/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/books/es_linux/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/books/ldd3/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/books/linux/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/books/linux_kernel/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/books/others/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/books/tlpi/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/books/utlk/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/books/cbooks/head_first_c/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/books/dsa/algorithm-in-c/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/books/dsa/algorithm4th/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/books/dsa/dsa_toc/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/computer_arch/isa/isa/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/computer_arch/isa/riscv/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/embedded_security/insightvm/insightvm/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/ic_design/fpga/x_ipcore/xipcore/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/ic_design/timing_analysis/timing_analysis/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/lnx/cmds/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/lnx/linux/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/lnx_es/cmn_tool/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/lnx_es/es/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/lnx_es/hw_platform/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/lnx_es/u-boot/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/lnx_es/zynq7000/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/lnx_es/dpdk/dpdk/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/lnx_es/eeprom/eeprom/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/lnx_es/linuxptp/linuxptp/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/lnx_es/makefile/makefile/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/lnx_es/nbd/nbd/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/lnx_es/tips/tips/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/lnx_es/tool_chain/petalinux/ptlnx/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/lnx_es/tool_chain/petalinux/ptlnx_20174/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/lnx_es/tool_chain/petalinux/ptlnx_bin_output/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/lnx_es/tool_chain/yocto/yocto/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/lnx_es/version_control/git/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/lnx_es/version_control/verctl/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/lnx_kernel/kernel_data_structure/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/lnx_kernel/kernel_user_space/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/lnx_kernel/clk/clk/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/lnx_kernel/ddebug/ddebug/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/lnx_kernel/ftrace/ftrace/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/lnx_ldd/kernel_module/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/lnx_ldd/overview/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/lnx_ldd/audio/linux_audio/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/lnx_ldd/gpio/gpio/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/lnx_ldd/i2c/i2c/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/lnx_ldd/jesd/jesd/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/lnx_ldd/pcie/pcie/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/lnx_ldd/platform_dev/platform_device/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/lnx_ldd/spi_dev/spi_advance/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/lnx_ldd/spi_dev/spi_dev/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/lnx_ldd/uart/uart/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/programming/dsg_patterns/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/programming/multi-threaded-programming/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/programming/C/cprogramming/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/programming/dsa/alg/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/programming/dsa/dsa/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/programming/dsa/linked_list/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/programming/dsa/queue/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/programming/lnx/lpi/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/programming/perf/perf/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/programming/sql/mysql/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/projects/pi3b/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/projects/imx6/imx6/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/projects/imx8/imx8/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/projects/zynq/picozed/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/projects/zynq/u-boot/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/projects/zynq/zynq/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/projects/zynq/zc706/zc706/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/projects/zynq/zedboard/zedboard/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/technote/markdown/markdown/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/technote/mkdocs/mkdocs-notes/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/technote/python/python/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/technote/shellscript/shellscript/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/virtualization/docker/docker/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/virtualization/hypervisor/hypervisor/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/articles/archive/2026/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/articles/category/linux-kernel/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/articles/category/embedded-linux/</loc>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/articles/category/networking/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/articles/page/2/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/articles/page/3/</loc>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/articles/archive/2026/page/2/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/articles/archive/2026/page/3/</loc>
+         <lastmod>2026-10-21</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/articles/category/linux-kernel/page/2/</loc>
-         <lastmod>2026-10-20</lastmod>
+         <lastmod>2026-10-21</lastmod>
     </url>
 </urlset>
