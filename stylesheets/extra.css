@@ -317,7 +317,7 @@ body:has(.home-top) .md-grid {
   bottom: 0;
   margin: auto 0 0;
   padding: 0.6rem 0;
-  background: var(--md-default-bg-color);
+  background: inherit;
 }
 
 /* Narrow screens: one column, so the articles card needs no inner scroll */
@@ -366,3 +366,17 @@ body:has(.home-top) .md-grid {
 .stats-bubble.c3 circle { fill: #ef6c00; stroke: #ef6c00; }
 .stats-bubble.c4 circle { fill: #8e24aa; stroke: #8e24aa; }
 .stats-bubble.c5 circle { fill: #43a047; stroke: #43a047; }
+
+/* Tinted cards on the index page: latest articles and the topic cards.
+   The code background is the fallback; the tint mixes in the theme's primary colour. */
+.home-latest,
+.home-top ~ .grid.cards > ul > li {
+  background: var(--md-code-bg-color);
+}
+
+@supports (background: color-mix(in srgb, red 10%, blue)) {
+  .home-latest,
+  .home-top ~ .grid.cards > ul > li {
+    background: color-mix(in srgb, var(--md-primary-fg-color) 10%, var(--md-default-bg-color));
+  }
+}
