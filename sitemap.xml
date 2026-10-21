@@ -173,6 +173,10 @@
          <lastmod>2026-10-21</lastmod>
     </url>
     <url>
+         <loc>https://vutang.github.io/lnx_es/cmake/cmake/</loc>
+         <lastmod>2026-10-21</lastmod>
+    </url>
+    <url>
          <loc>https://vutang.github.io/lnx_es/dpdk/dpdk/</loc>
          <lastmod>2026-10-21</lastmod>
     </url>
@@ -301,6 +305,10 @@
          <lastmod>2026-10-21</lastmod>
     </url>
     <url>
+         <loc>https://vutang.github.io/programming/C/compiling/</loc>
+         <lastmod>2026-10-21</lastmod>
+    </url>
+    <url>
          <loc>https://vutang.github.io/programming/C/cprogramming/</loc>
          <lastmod>2026-10-21</lastmod>
     </url>
@@ -326,6 +334,14 @@
     </url>
     <url>
          <loc>https://vutang.github.io/programming/perf/perf/</loc>
+         <lastmod>2026-10-21</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/programming/python/python/</loc>
+         <lastmod>2026-10-21</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/programming/shellscript/shellscript/</loc>
          <lastmod>2026-10-21</lastmod>
     </url>
     <url>
@@ -370,14 +386,6 @@
     </url>
     <url>
          <loc>https://vutang.github.io/technote/mkdocs/mkdocs-notes/</loc>
-         <lastmod>2026-10-21</lastmod>
-    </url>
-    <url>
-         <loc>https://vutang.github.io/technote/python/python/</loc>
-         <lastmod>2026-10-21</lastmod>
-    </url>
-    <url>
-         <loc>https://vutang.github.io/technote/shellscript/shellscript/</loc>
          <lastmod>2026-10-21</lastmod>
     </url>
     <url>

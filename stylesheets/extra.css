@@ -388,3 +388,21 @@ body:has(.home-top) .md-grid {
   border-radius: .4rem;
   box-shadow: 0 1px 4px rgba(0, 0, 0, .18);
 }
+
+/* Heatmap tables: cells get a level class from javascripts/heatmap.js */
+:root {
+  --heat-4: rgba(46, 160, 67, 0.55);
+  --heat-3: rgba(46, 160, 67, 0.32);
+  --heat-2: rgba(210, 153, 34, 0.35);
+  --heat-1: rgba(128, 128, 128, 0.14);
+}
+
+.md-typeset .heatmap td.heat {
+  text-align: center;
+}
+
+.md-typeset .heatmap td.lvl-4 { background-color: var(--heat-4); font-weight: 600; }
+.md-typeset .heatmap td.lvl-3 { background-color: var(--heat-3); }
+.md-typeset .heatmap td.lvl-2 { background-color: var(--heat-2); }
+.md-typeset .heatmap td.lvl-1 { background-color: var(--heat-1); }
+.md-typeset .heatmap td.lvl-0 { color: var(--md-default-fg-color--lighter); }
