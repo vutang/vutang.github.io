@@ -15,7 +15,7 @@
         <link rel="prev" href="../overview/">
       
       
-        <link rel="next" href="../platform_dev/platform_device/">
+        <link rel="next" href="../char_device/">
       
       
         
@@ -2161,16 +2161,77 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#print-log-in-kernel-module" class="md-nav__link">
+    <nav class="md-nav" aria-label="Kernel Module Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inh-nghia" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Print log in Kernel module
+        Định nghĩa
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module_init-module_exit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        module_init &amp; module_exit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in-log-trong-kernel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        In log trong kernel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cai-at-lkm-module-vao-he-thong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cài đặt LKM module vào hệ thống
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compile-a-kernel-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compile a kernel module
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-debug" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dynamic debug
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2178,6 +2239,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../char_device/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Character Device
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -3925,16 +4014,77 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#print-log-in-kernel-module" class="md-nav__link">
+    <nav class="md-nav" aria-label="Kernel Module Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inh-nghia" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Print log in Kernel module
+        Định nghĩa
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module_init-module_exit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        module_init &amp; module_exit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in-log-trong-kernel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        In log trong kernel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cai-at-lkm-module-vao-he-thong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cài đặt LKM module vào hệ thống
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compile-a-kernel-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compile a kernel module
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-debug" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dynamic debug
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3985,19 +4135,62 @@
 
 <h1 id="about-kernel-module">About Kernel Module<a class="headerlink" href="#about-kernel-module" title="Permanent link">¶</a></h1>
 <h2 id="kernel-module-information">Kernel Module Information<a class="headerlink" href="#kernel-module-information" title="Permanent link">¶</a></h2>
-<h2 id="print-log-in-kernel-module">Print log in Kernel module<a class="headerlink" href="#print-log-in-kernel-module" title="Permanent link">¶</a></h2>
+<h3 id="inh-nghia">Định nghĩa<a class="headerlink" href="#inh-nghia" title="Permanent link">¶</a></h3>
+<p>Kernel Module là một đoạn mã có thể được cài đặt hoặc gỡ cài đặt khỏi
+Kernel theo yêu cầu. Kernel module giúp mở rộng chức năng cho kernel mà
+không cần phải khởi động lại hệ thống. Device Driver là một loại kernel
+module. Trong trường hợp cần thêm một chức năng vào kernel trong khi
+không có kernel module, người phát triển sẽ cần phải build lại cả hệ
+thống.</p>
+<p>Một blog viết về Kernel Module tương đối hay và chi tiết có thể xem thêm
+<a href="http://derekmolloy.ie/writing-a-linux-kernel-module-part-1-introduction/">tại đây</a>. Blog được viết bởi Derek Molloy.</p>
+<p>Kernel Module cũng được định nghĩa tại một bài viết của ArchLinux (một
+Linux Distro) <a href="https://wiki.archlinux.org/index.php/Kernel_module">tại đây</a>. Ngoài ra, tai trang web tldp.org có
+một chuỗi các bài viết liên quan đến phát triển Kernel module (<a href="http://tldp.org/LDP/lkmpg/2.6/html/index.html">The
+Linux Kernel Module Programming Guide</a>).</p>
+<p>Có hai dạng Kernel module: build-in và loadable file. Trong đó built-in
+module được tích hợp vào Kernel Image và được cài đặt vào hệ thống trong
+quá trình khởi động kernel. Người lại, loadable module có thể được người
+dùng cài đặt vào hệ thống sau khi kernel đã khởi động thành công.</p>
+<p><strong>Loadable Kernel Module (LKM)</strong> được cài đặt vào hệ thống bằng các câu lệnh
+như modprobe hoặc insmod.</p>
+<h3 id="module_init-module_exit">module_init &amp; module_exit<a class="headerlink" href="#module_init-module_exit" title="Permanent link">¶</a></h3>
+<p>Kernel module có thể được hiểu là một chương trình chạy trong Kernel
+Space, nhưng không giống như chương trình bình thường, kernel module
+không bắt đầu bằng hàm "main".</p>
+<p>Macro <code>module_init()</code> và <code>module_exit()</code> được sử dụng để đăng ký các hàm
+khởi tạo và hàm hủy cho kernel module. Tùy thuộc vào kernel module là
+built-in hay LKM mà nội dụng của module_init/exit sẽ khác nhau.</p>
+<p>Trong trường hợp là built-in module, module_init sẽ gọi đến macro
+<code>_init_call</code> dùng để đăng ký với hệ thống là module sẽ được khởi tạo
+trọng quá trình init. Hai macro được định nghĩa trong linux/init.h.</p>
+<h3 id="in-log-trong-kernel">In log trong kernel<a class="headerlink" href="#in-log-trong-kernel" title="Permanent link">¶</a></h3>
+<p>Phương pháp debug cơ bản và phổ biến nhất khi đi phát triển một chương
+trình là in log chạy của chương trình đó ra màn hình hoặc file. Kernel
+module sử dụng lệnh prink thay vì printf như phát triển ứng dụng User
+space.</p>
+<p>Ngoài ra có thể sử dụng thêm các họ hàm dev_* và pr_* để in thêm
+thông tin trong kernel module.</p>
+<h3 id="cai-at-lkm-module-vao-he-thong">Cài đặt LKM module vào hệ thống<a class="headerlink" href="#cai-at-lkm-module-vao-he-thong" title="Permanent link">¶</a></h3>
+<p>Để cài đặt LKM vào hệ thống có thể sử dụng lệnh <code>insmod/rmmod/lsmod</code>. Ngoài ra có thể dùng thêm modprobe. Quá trình sử dụng modprobe phức tạp hơn insmod, có thể đọc thêm <a href="https://www.computerhope.com/unix/modprobe.htm">[tại đây]</a>. Trong quá trình cài đặt module vào hệ thống có thể thêm các paramtters cho module.</p>
+<p>Để liệt kê toàn bộ thông tin của các module đang được cài đặt trong hệ
+thống có thể sử dụng lsmod. Lsmod đọc thông tin từ /proc/modules, người
+dùng có thể đọc trực tiếp từ text file /proc/modules để biết thêm được
+thông tin của các module đang chạy trong hệ thống.</p>
+<p>Khi một module được cài đặt vào hệ thống, thông tin về module này có thể
+được tìm thấy trong sysfs virtual file system <code>/sys/module</code></p>
+<h3 id="compile-a-kernel-module">Compile a kernel module<a class="headerlink" href="#compile-a-kernel-module" title="Permanent link">¶</a></h3>
+<p>Để build một kernel module, Linux Kernel sử dụng một hệ thống gọi là
+kbuild. Có thể đọc thêm thông tin về hệ thống kbuild này trong Kernel
+Documentation (<code>kbuild/modules.txt</code>). Trong mục 2.2 của [1] có giới
+thiệu về build kernel module.</p>
+<h3 id="dynamic-debug">Dynamic debug<a class="headerlink" href="#dynamic-debug" title="Permanent link">¶</a></h3>
 <p>About dynamic debug: <a href="https://www.kernel.org/doc/html/v4.15/admin-guide/dynamic-debug-howto.html">https://www.kernel.org/doc/html/v4.15/admin-guide/dynamic-debug-howto.html</a></p>
+<p>Các hàm in log thường dùng trong kernel module:</p>
 <ul>
-<li>
-<p><strong>printk()</strong> function<br>
-printk's usage is familiar with printf() in c programing.</p>
-</li>
-<li>
-<p><strong>dev_*</strong> functions</p>
-</li>
-<li>
-<p><strong>pr_*</strong> functions</p>
-</li>
+<li><strong>printk()</strong>: cách dùng tương tự printf() trong C.</li>
+<li><strong>dev_*</strong>: họ hàm in log gắn với một <code>struct device</code>.</li>
+<li><strong>pr_*</strong>: họ hàm in log theo mức (<code>pr_info</code>, <code>pr_err</code>...).</li>
 </ul>
 
 
@@ -4021,7 +4214,7 @@ printk's usage is familiar with printf() in c programing.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 20, 2026 09:37:50 UTC">October 20, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 21, 2026 02:33:25 UTC">October 21, 2026</span>
   </span>
 
     
@@ -4087,13 +4280,13 @@ printk's usage is familiar with printf() in c programing.</p>
         
         
           
-          <a href="../platform_dev/platform_device/" class="md-footer__link md-footer__link--next" aria-label="Next: Platform Device">
+          <a href="../char_device/" class="md-footer__link md-footer__link--next" aria-label="Next: Character Device">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Platform Device
+                Character Device
               </div>
             </div>
             <div class="md-footer__button md-icon">
