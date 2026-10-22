@@ -137,15 +137,43 @@
          <lastmod>2026-10-22</lastmod>
     </url>
     <url>
+         <loc>https://vutang.github.io/computer_arch/</loc>
+         <lastmod>2026-10-22</lastmod>
+    </url>
+    <url>
          <loc>https://vutang.github.io/computer_arch/isa/isa/</loc>
          <lastmod>2026-10-22</lastmod>
     </url>
     <url>
-         <loc>https://vutang.github.io/computer_arch/isa/riscv-server-soc/</loc>
+         <loc>https://vutang.github.io/computer_arch/isa/riscv/</loc>
          <lastmod>2026-10-22</lastmod>
     </url>
     <url>
-         <loc>https://vutang.github.io/computer_arch/isa/riscv/</loc>
+         <loc>https://vutang.github.io/computer_arch/microarch/cache/</loc>
+         <lastmod>2026-10-22</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/computer_arch/microarch/memory/</loc>
+         <lastmod>2026-10-22</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/computer_arch/microarch/microarch/</loc>
+         <lastmod>2026-10-22</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/computer_arch/microarch/pipeline/</loc>
+         <lastmod>2026-10-22</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/computer_arch/soc/riscv-server-soc/</loc>
+         <lastmod>2026-10-22</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/computer_arch/soc/soc/</loc>
+         <lastmod>2026-10-22</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/embedded_security/</loc>
          <lastmod>2026-10-22</lastmod>
     </url>
     <url>
@@ -165,11 +193,27 @@
          <lastmod>2026-10-22</lastmod>
     </url>
     <url>
+         <loc>https://vutang.github.io/ic_design/</loc>
+         <lastmod>2026-10-22</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/ic_design/fpga/fpga/</loc>
+         <lastmod>2026-10-22</lastmod>
+    </url>
+    <url>
          <loc>https://vutang.github.io/ic_design/fpga/x_ipcore/xipcore/</loc>
          <lastmod>2026-10-22</lastmod>
     </url>
     <url>
+         <loc>https://vutang.github.io/ic_design/rtl/rtl/</loc>
+         <lastmod>2026-10-22</lastmod>
+    </url>
+    <url>
          <loc>https://vutang.github.io/ic_design/timing_analysis/timing_analysis/</loc>
+         <lastmod>2026-10-22</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/ic_design/verification/verification/</loc>
          <lastmod>2026-10-22</lastmod>
     </url>
     <url>
@@ -417,15 +461,55 @@
          <lastmod>2026-10-22</lastmod>
     </url>
     <url>
-         <loc>https://vutang.github.io/virtualization/overview/</loc>
+         <loc>https://vutang.github.io/virtualization/</loc>
          <lastmod>2026-10-22</lastmod>
     </url>
     <url>
-         <loc>https://vutang.github.io/virtualization/docker/docker/</loc>
+         <loc>https://vutang.github.io/virtualization/container/compose/</loc>
+         <lastmod>2026-10-22</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/virtualization/container/docker/</loc>
+         <lastmod>2026-10-22</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/virtualization/container/internals/</loc>
+         <lastmod>2026-10-22</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/virtualization/embedded/docker-build-env/</loc>
+         <lastmod>2026-10-22</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/virtualization/embedded/qemu-cross-arch/</loc>
+         <lastmod>2026-10-22</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/virtualization/foundations/cpu/</loc>
+         <lastmod>2026-10-22</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/virtualization/foundations/io/</loc>
+         <lastmod>2026-10-22</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/virtualization/foundations/memory/</loc>
          <lastmod>2026-10-22</lastmod>
     </url>
     <url>
          <loc>https://vutang.github.io/virtualization/hypervisor/hypervisor/</loc>
+         <lastmod>2026-10-22</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/virtualization/hypervisor/kvm-qemu/</loc>
+         <lastmod>2026-10-22</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/virtualization/hypervisor/partitioning/</loc>
+         <lastmod>2026-10-22</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/virtualization/sandbox/sandbox/</loc>
          <lastmod>2026-10-22</lastmod>
     </url>
     <url>
