@@ -3870,6 +3870,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../computer_arch/isa/riscv-server-soc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RISC-V Server SoC Spec
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -4636,19 +4664,19 @@
 </tbody>
 </table>
 <h3 id="checklist-khi-review-mot-driver">Checklist khi review một driver<a class="headerlink" href="#checklist-khi-review-mot-driver" title="Permanent link">¶</a></h3>
-<ul>
-<li>[ ] Bảng ops có khai báo <code>const</code> không?</li>
-<li>[ ] Mọi <code>container_of</code> có đảm bảo con trỏ thật sự nằm trong struct đó không?</li>
-<li>[ ] Object có kobject hoặc <code>struct device</code> có được giải phóng trong <code>release()</code> thay vì <code>kfree()</code> trực tiếp không?</li>
-<li>[ ] Mỗi chỗ cất con trỏ có <code>get</code> tương ứng, và mỗi nhánh thoát có <code>put</code> không?</li>
-<li>[ ] Goto ladder có giải phóng đúng thứ tự ngược, và <code>remove()</code> có khớp với <code>probe()</code> không?</li>
-<li>[ ] API trả về <code>NULL</code> hay <code>ERR_PTR</code>, và code có kiểm tra đúng loại không?</li>
-<li>[ ] Có vùng nhớ <code>devm_</code> nào còn được truy cập sau khi unbind không? ISR có thể chạy trong lúc <code>remove()</code> không?</li>
-<li>[ ] Có xóa phần tử trong lúc duyệt list mà không dùng bản <code>_safe</code> không?</li>
-<li>[ ] Có sleep trong <code>rcu_read_lock()</code> hay giữ con trỏ RCU sau <code>rcu_read_unlock()</code> không?</li>
-<li>[ ] Có việc nào sleep (mutex, <code>GFP_KERNEL</code>, I2C) đang chạy trong hard IRQ, softirq hay tasklet không?</li>
-<li>[ ] Driver có giữ state trong biến global thay vì struct private của từng device không?</li>
-<li>[ ] Mọi notifier và callback đã đăng ký có được hủy đăng ký khi unload không?</li>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> Bảng ops có khai báo <code>const</code> không?</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> Mọi <code>container_of</code> có đảm bảo con trỏ thật sự nằm trong struct đó không?</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> Object có kobject hoặc <code>struct device</code> có được giải phóng trong <code>release()</code> thay vì <code>kfree()</code> trực tiếp không?</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> Mỗi chỗ cất con trỏ có <code>get</code> tương ứng, và mỗi nhánh thoát có <code>put</code> không?</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> Goto ladder có giải phóng đúng thứ tự ngược, và <code>remove()</code> có khớp với <code>probe()</code> không?</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> API trả về <code>NULL</code> hay <code>ERR_PTR</code>, và code có kiểm tra đúng loại không?</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> Có vùng nhớ <code>devm_</code> nào còn được truy cập sau khi unbind không? ISR có thể chạy trong lúc <code>remove()</code> không?</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> Có xóa phần tử trong lúc duyệt list mà không dùng bản <code>_safe</code> không?</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> Có sleep trong <code>rcu_read_lock()</code> hay giữ con trỏ RCU sau <code>rcu_read_unlock()</code> không?</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> Có việc nào sleep (mutex, <code>GFP_KERNEL</code>, I2C) đang chạy trong hard IRQ, softirq hay tasklet không?</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> Driver có giữ state trong biến global thay vì struct private của từng device không?</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> Mọi notifier và callback đã đăng ký có được hủy đăng ký khi unload không?</li>
 </ul>
 <h2 id="7-bai-tap-va-tai-lieu-tham-khao">7. Bài tập và tài liệu tham khảo<a class="headerlink" href="#7-bai-tap-va-tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
 <h3 id="bai-tap-cho-team">Bài tập cho team<a class="headerlink" href="#bai-tap-cho-team" title="Permanent link">¶</a></h3>
