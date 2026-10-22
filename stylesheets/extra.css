@@ -381,6 +381,43 @@ body:has(.home-top) .md-grid {
   }
 }
 
+/* Topic cards on the index page: 4 columns for the 8 topics (no orphan card), 2 for the extras.
+   The title link is stretched over the whole card, so the card itself is the click target. */
+.home-topics,
+.home-more {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 60em) {
+  .home-topics {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 40em) {
+  .home-topics,
+  .home-more {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.md-typeset .home-topics > ul > li,
+.md-typeset .home-more > ul > li {
+  position: relative;
+}
+
+.md-typeset .home-topics > ul > li > p:first-child a,
+.md-typeset .home-more > ul > li > p:first-child a {
+  color: inherit;
+}
+
+.md-typeset .home-topics > ul > li > p:first-child a::after,
+.md-typeset .home-more > ul > li > p:first-child a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
 /* Cover banner at the top of an article; also shown in the article list */
 .article-cover {
   display: block;
