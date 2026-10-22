@@ -15,7 +15,7 @@
         <link rel="prev" href="../kernel_data_structure/">
       
       
-        <link rel="next" href="../ftrace/ftrace/">
+        <link rel="next" href="../../lnx_ldd/kernel_module/">
       
       
         
@@ -26,7 +26,7 @@
     
     
       
-        <title>Kernel Space, User Space Interfaces - Vu Tang's Docs</title>
+        <title>Kernel Space, User Space Interfaces (WIP) - Vu Tang's Docs</title>
       
     
     
@@ -72,7 +72,7 @@
     
   
 <meta property="og:type" content="website">
-<meta property="og:title" content="Kernel Space, User Space Interfaces - Vu Tang's Docs">
+<meta property="og:title" content="Kernel Space, User Space Interfaces (WIP) - Vu Tang's Docs">
 <meta property="og:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
 <meta property="og:image" content="https://vutang.github.io/assets/images/social/lnx_kernel/kernel_user_space.png">
 <meta property="og:image:type" content="image/png">
@@ -80,7 +80,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://vutang.github.io/lnx_kernel/kernel_user_space/">
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:title" content="Kernel Space, User Space Interfaces - Vu Tang's Docs">
+<meta property="twitter:title" content="Kernel Space, User Space Interfaces (WIP) - Vu Tang's Docs">
 <meta property="twitter:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
 <meta property="twitter:image" content="https://vutang.github.io/assets/images/social/lnx_kernel/kernel_user_space.png">
 <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
@@ -146,7 +146,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Kernel Space, User Space Interfaces
+              Kernel Space, User Space Interfaces (WIP)
             
           </span>
         </div>
@@ -2252,6 +2252,165 @@
                 
   
   
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core &amp; Internals
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Core &amp; Internals
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kernel_data_structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kernel Data Structure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kernel Space, User Space Interfaces (WIP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lnx_ldd/kernel_module/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kernel Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
   
   
     
@@ -2271,17 +2430,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3">
         
           
-          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="">
             
   
   
   <span class="md-ellipsis">
     
   
-    Linux Device Driver
+    Driver Model &amp; Device Tree
   
 
     
@@ -2292,12 +2451,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Linux Device Driver
+    Driver Model &amp; Device Tree
   
 
           </label>
@@ -2338,14 +2497,42 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lnx_ldd/kernel_module/" class="md-nav__link">
+      <a href="../devicetree/devicetree/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Kernel Module
+    Device Tree
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lnx_ldd/platform_dev/platform_device/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform Device
   
 
     
@@ -2387,21 +2574,48 @@
 
               
             
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
               
                 
   
   
   
   
-    <li class="md-nav__item">
-      <a href="../../lnx_ldd/platform_dev/platform_device/" class="md-nav__link">
+    
+    
+    
+    
+      
+      
         
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4">
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="">
+            
   
   
   <span class="md-ellipsis">
     
   
-    Platform Device
+    Bus Drivers
   
 
     
@@ -2409,11 +2623,19 @@
   
   
 
-      </a>
-    </li>
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Bus Drivers
   
 
-              
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2506,6 +2728,125 @@
   
   
     <li class="md-nav__item">
+      <a href="../../lnx_ldd/pcie/pcie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PCIe (WIP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lnx_ldd/jesd/jesd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JESD (WIP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5">
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware Frameworks
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hardware Frameworks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../lnx_ldd/gpio/gpio/" class="md-nav__link">
         
   
@@ -2514,6 +2855,34 @@
     
   
     GPIO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clk/clk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Common Clock Framework
   
 
     
@@ -2562,34 +2931,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lnx_ldd/jesd/jesd/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    JESD
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../lnx_ldd/audio/linux_audio/" class="md-nav__link">
         
   
@@ -2598,34 +2939,6 @@
     
   
     Audio
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../lnx_ldd/pcie/pcie/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    PCIe
   
 
     
@@ -2651,8 +2964,6 @@
                 
   
   
-    
-  
   
   
     
@@ -2668,21 +2979,21 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6">
         
           
-          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="">
             
   
   
   <span class="md-ellipsis">
     
   
-    Linux Kernel General
+    Tracing &amp; Debug
   
 
     
@@ -2693,82 +3004,16 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5_3">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Linux Kernel General
+    Tracing &amp; Debug
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../kernel_data_structure/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Kernel Data Structure
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Kernel Space, User Space Interfaces
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-    </li>
-  
-
-              
             
               
                 
@@ -2813,34 +3058,6 @@
     
   
     Dynamic Debug
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../clk/clk/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Common Clock Framework
   
 
     
@@ -4582,13 +4799,13 @@
         
         
           
-          <a href="../ftrace/ftrace/" class="md-footer__link md-footer__link--next" aria-label="Next: FTrace">
+          <a href="../../lnx_ldd/kernel_module/" class="md-footer__link md-footer__link--next" aria-label="Next: Kernel Module">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                FTrace
+                Kernel Module
               </div>
             </div>
             <div class="md-footer__button md-icon">
