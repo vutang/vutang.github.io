@@ -434,16 +434,10 @@ body:has(.home-top) .md-grid {
   }
 }
 
-/* Topic cards on the index page: all 10 cards the same size, 5 x 2 on wide screens.
+/* Topic cards on the index page: all 9 cards the same size, 3 x 3 (one column on phones).
    The title link is stretched over the whole card, so the card itself is the click target. */
 .md-typeset .grid.home-topics {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-@media (min-width: 80em) {
-  .md-typeset .grid.home-topics {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-  }
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 @media (max-width: 40em) {
