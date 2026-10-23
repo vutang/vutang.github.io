@@ -20,6 +20,13 @@
   border-radius: 0.6rem;
 }
 
+/* Index page: the "Start reading" button scrolls to the topics; animate it unless the user prefers less motion */
+@media (prefers-reduced-motion: no-preference) {
+  html:has(.home-top) {
+    scroll-behavior: smooth;
+  }
+}
+
 /* Hero section on the index page: kicker, title, lead, buttons, summary chips, quote */
 .hero {
   padding: 1rem 0 2rem;
@@ -40,11 +47,33 @@
   font-weight: 700;
   letter-spacing: -0.01em;
   color: var(--md-default-fg-color);
+  text-wrap: balance; /* split a wrapped title evenly instead of leaving one word on the last line */
 }
 
 .hero h1 + p {
   max-width: 36rem;
   font-size: 0.9rem;
+}
+
+/* Dark mode: the outlined (non-primary) buttons use the blue-grey primary colour, which is
+   too dark on the dark background; use the link colour instead. Hover/focus keep the theme's accent. */
+[data-md-color-scheme="slate"] .md-typeset .md-button:not(.md-button--primary):not(:hover):not(:focus) {
+  color: var(--md-typeset-a-color);
+  border-color: var(--md-typeset-a-color);
+}
+
+.hero-byline {
+  margin: -0.3rem 0 1rem;
+  font-size: 0.7rem;
+  color: var(--md-default-fg-color--light);
+}
+
+.hero-byline p {
+  margin: 0;
+}
+
+.hero-byline a {
+  font-weight: 700;
 }
 
 .hero img {
@@ -365,8 +394,28 @@ body:has(.home-top) .md-grid {
 }
 
 .home-article small {
-  display: block;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.2rem 0.5rem;
   color: var(--md-default-fg-color--light);
+}
+
+/* Category label on the latest articles: a small pill that links to the category page */
+.md-typeset .home-article a.home-pill {
+  padding: 0.05rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.6rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--md-typeset-a-color);
+  background: var(--md-code-bg-color);
+  background: color-mix(in srgb, var(--md-typeset-a-color) 16%, transparent);
+}
+
+.md-typeset .home-article a.home-pill:hover {
+  color: var(--md-accent-fg-color);
+  background: color-mix(in srgb, var(--md-accent-fg-color) 16%, transparent);
 }
 
 .home-article p {
@@ -486,9 +535,25 @@ body:has(.home-top) .md-grid {
 .md-typeset .heatmap td.lvl-1 { background-color: var(--heat-1); }
 .md-typeset .heatmap td.lvl-0 { color: var(--md-default-fg-color--lighter); }
 
-/* Header icon links (extra.header_links): sit next to the repository link on wide screens only */
+/* Header: the repository block and the icon links (extra.header_links) next to it.
+   Material gives the repository block a fixed 11.7rem (room for the stars/forks facts),
+   which leaves a wide gap before the next header button; let it shrink to its content. */
+.md-header__source {
+  width: auto;
+}
+
+/* ...and drop the percentage max-width on the repo name, which would otherwise be
+   resolved against the shrunken block and cut "GitHub" down to "G…". */
+.md-header__source .md-source__repository {
+  max-width: none;
+}
+
+/* Icon links are shown on wide screens only, like the repository block. */
 .md-header__link {
+  /* the repo link sits 1rem from the search box; keep the same 1rem (0.2rem header
+     padding + 0.8rem) between the icon button and the right edge of the header */
   margin-left: 0.2rem;
+  margin-right: 0.8rem;
 }
 
 @media screen and (max-width: 59.9844em) {
