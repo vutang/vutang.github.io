@@ -485,3 +485,14 @@ body:has(.home-top) .md-grid {
 .md-typeset .heatmap td.lvl-2 { background-color: var(--heat-2); }
 .md-typeset .heatmap td.lvl-1 { background-color: var(--heat-1); }
 .md-typeset .heatmap td.lvl-0 { color: var(--md-default-fg-color--lighter); }
+
+/* Header icon links (extra.header_links): sit next to the repository link on wide screens only */
+.md-header__link {
+  margin-left: 0.2rem;
+}
+
+@media screen and (max-width: 59.9844em) {
+  .md-header__link {
+    display: none;
+  }
+}
