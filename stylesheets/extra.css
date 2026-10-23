@@ -442,13 +442,29 @@ body:has(.home-top) .md-grid {
   margin: 0 auto 1rem;
 }
 
+/* Bubble colours: six hues of similar weight, each dark enough for white text (contrast >= 4.5:1,
+   checked against #fff). The first follows the theme's primary colour. Fills are solid, so the
+   contrast does not depend on the page background. */
+.stats-bubbles {
+  --bubble-0: var(--md-primary-fg-color); /* blue grey */
+  --bubble-1: #4a5bc7; /* indigo */
+  --bubble-2: #00796b; /* teal */
+  --bubble-3: #b45309; /* amber */
+  --bubble-4: #7b3fa0; /* purple */
+  --bubble-5: #2e7d32; /* green */
+}
+
 .stats-bubble circle {
-  fill-opacity: 0.8;
   stroke-width: 1.5;
 }
 
 .stats-bubble:hover circle {
-  fill-opacity: 1;
+  filter: brightness(1.15);
+}
+
+/* Dark mode: a light ring keeps the darker bubbles apart from the dark background */
+[data-md-color-scheme="slate"] .stats-bubbles .stats-bubble circle {
+  stroke: rgba(255, 255, 255, 0.4);
 }
 
 .stats-bubble text {
@@ -458,27 +474,29 @@ body:has(.home-top) .md-grid {
 }
 
 .stats-bubble .stats-bubble-num {
-  font-size: 10px;
-  opacity: 0.85;
+  font-size: 10px; /* full opacity: fading the white text would drop it below 4.5:1 */
 }
 
-.stats-bubble.c0 circle { fill: var(--md-primary-fg-color); stroke: var(--md-primary-fg-color); }
-.stats-bubble.c1 circle { fill: var(--md-accent-fg-color); stroke: var(--md-accent-fg-color); }
-.stats-bubble.c2 circle { fill: #26a69a; stroke: #26a69a; }
-.stats-bubble.c3 circle { fill: #ef6c00; stroke: #ef6c00; }
-.stats-bubble.c4 circle { fill: #8e24aa; stroke: #8e24aa; }
-.stats-bubble.c5 circle { fill: #43a047; stroke: #43a047; }
+.stats-bubble.c0 circle { fill: var(--bubble-0); stroke: var(--bubble-0); }
+.stats-bubble.c1 circle { fill: var(--bubble-1); stroke: var(--bubble-1); }
+.stats-bubble.c2 circle { fill: var(--bubble-2); stroke: var(--bubble-2); }
+.stats-bubble.c3 circle { fill: var(--bubble-3); stroke: var(--bubble-3); }
+.stats-bubble.c4 circle { fill: var(--bubble-4); stroke: var(--bubble-4); }
+.stats-bubble.c5 circle { fill: var(--bubble-5); stroke: var(--bubble-5); }
 
-/* Tinted cards on the index page: latest articles and the topic cards.
-   The code background is the fallback; the tint mixes in the theme's primary colour. */
+/* Tinted cards on the index page: latest articles and the topic cards (also the
+   category cards on the Articles index). The code background is the fallback; the
+   tint mixes in the theme's primary colour. */
 .home-latest,
-.home-top ~ .grid.cards > ul > li {
+.home-top ~ .grid.cards > ul > li,
+.home-topics > ul > li {
   background: var(--md-code-bg-color);
 }
 
 @supports (background: color-mix(in srgb, red 10%, blue)) {
   .home-latest,
-  .home-top ~ .grid.cards > ul > li {
+  .home-top ~ .grid.cards > ul > li,
+  .home-topics > ul > li {
     background: color-mix(in srgb, var(--md-primary-fg-color) 10%, var(--md-default-bg-color));
   }
 }
@@ -489,7 +507,13 @@ body:has(.home-top) .md-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+/* Articles index: 4 category cards in 2 x 2 */
+.md-typeset .grid.home-topics.topics-2col {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 @media (max-width: 40em) {
+  .md-typeset .grid.home-topics.topics-2col,
   .md-typeset .grid.home-topics {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -507,6 +531,43 @@ body:has(.home-top) .md-grid {
   content: "";
   position: absolute;
   inset: 0;
+}
+
+/* Topic icon: large, faded, top right; no divider line, and room reserved so text never runs under it */
+.md-typeset .home-topics > ul > li > hr {
+  display: none;
+}
+
+.md-typeset .home-topics > ul > li > p {
+  padding-right: 2.8rem;
+}
+
+.md-typeset .home-topics > ul > li > p:first-child .twemoji {
+  position: absolute;
+  top: 0.8rem;
+  right: 1rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  color: var(--md-typeset-a-color);
+  opacity: 0.3;
+  transition: opacity 0.2s;
+}
+
+.md-typeset .home-topics > ul > li > p:first-child .twemoji svg {
+  width: 100%;
+  height: 100%;
+  max-height: none;
+}
+
+.md-typeset .home-topics > ul > li:hover > p:first-child .twemoji {
+  opacity: 0.6;
+}
+
+@media (max-width: 40em) {
+  .md-typeset .home-topics > ul > li > p:first-child .twemoji {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
 }
 
 /* Cover banner at the top of an article; also shown in the article list */
