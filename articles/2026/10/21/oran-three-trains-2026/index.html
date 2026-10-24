@@ -6527,10 +6527,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#tldr" class="md-nav__link">
+  <a href="#tom-tat" class="md-nav__link">
     <span class="md-ellipsis">
       
-        TL;DR
+        Tóm tắt
       
     </span>
   </a>
@@ -6611,10 +6611,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#iem-can-nho" class="md-nav__link">
+  <a href="#iem-chinh" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Điểm cần nhớ
+        Điểm chính
       
     </span>
   </a>
@@ -6934,17 +6934,17 @@
 <p>Trong chưa đầy một năm, O-RAN Alliance công bố ba "train" tài liệu kỹ thuật liên tiếp (11/2025, 03/2026, 07/2026) và hoàn tất Specification Release 5 (R005) vào 08/06/2026. Từ góc nhìn người làm firmware và tích hợp, ba mạch đáng theo dõi nhất là Open Fronthaul, tiết kiệm năng lượng và bảo mật.</p>
 <!-- more -->
 
-<h2 id="tldr">TL;DR<a class="headerlink" href="#tldr" title="Permanent link">¶</a></h2>
+<h2 id="tom-tat">Tóm tắt<a class="headerlink" href="#tom-tat" title="Permanent link">¶</a></h2>
 <ul>
 <li><strong>Số liệu mới nhất:</strong> train tháng 7/2026, công bố ngày 11/10/2026, gồm 66 tài liệu mới hoặc cập nhật; tổng danh mục lên 162 titles, trong đó 5 title hoàn toàn mới.</li>
 <li><strong>Open Fronthaul (WG4):</strong> bộ CUS-Plane, M-Plane và YANG đi từ v20 lên v22 sau ba train. Beamforming (DMRS-BF, SRS-BF, null steering, CDBF) và các điều khiển công suất ở O-RU là phần thay đổi sâu nhất.</li>
-<li><strong>Tiết kiệm năng lượng:</strong> không còn là một tài liệu riêng. Nó xuyên suốt A1, E2, fronthaul, O1 và cả các test case, nên một tính năng ở O-RU phải khớp với bốn tầng còn lại mới chạy được end-to-end.</li>
+<li><strong>Tiết kiệm năng lượng:</strong> không còn là một tài liệu riêng. Nội dung này xuất hiện ở cả A1, E2, fronthaul, O1 và cả các test case, nên một tính năng ở O-RU phải khớp với bốn tầng còn lại mới chạy được end-to-end.</li>
 <li><strong>Bảo mật (WG11):</strong> TLS 1.3 bắt buộc cho M-Plane, PTP có Authentication TLV, SCAS cho O-RU và O-DU, cùng chương trình Security Badge. Đây là những yêu cầu nhà vận hành sẽ đưa vào RFP.</li>
 <li><strong>WG7 (phần cứng):</strong> rất ít thay đổi, chỉ có thiết kế tham chiếu Outdoor Micro Cell 7.2 lên v6.00.</li>
 </ul>
-<p>Nếu bạn viết firmware cho O-RU/O-DU hoặc làm tích hợp và kiểm thử, hãy đọc kỹ ba mục WG4, năng lượng và bảo mật.</p>
+<p>Với đội viết firmware O-RU/O-DU hoặc làm tích hợp và kiểm thử, ba mục WG4, năng lượng và bảo mật là phần cần đọc kỹ.</p>
 <h2 id="boi-canh-release-hay-train">Bối cảnh: release hay train?<a class="headerlink" href="#boi-canh-release-hay-train" title="Permanent link">¶</a></h2>
-<p>O-RAN không phát hành một "bản release" duy nhất như 3GPP; thứ bạn thấy hằng quý là các <strong>publication train</strong>. Mỗi năm có ba train (tháng 3, tháng 7, tháng 11). Tài liệu đi qua work group hoặc focus group, rồi TSC, sau đó 60 ngày IPR review, rồi Board phê duyệt. Vì vậy tài liệu thường được công bố trễ khoảng 3–4 tháng so với tên train (<a href="https://www.o-ran.org/blog/inside-o-ran-specification-development-publication-trains">giải thích của O-RAN</a>).</p>
+<p>O-RAN không phát hành một "bản release" duy nhất như 3GPP; các đợt công bố hằng quý là các <strong>publication train</strong>. Mỗi năm có ba train (tháng 3, tháng 7, tháng 11). Tài liệu đi qua work group hoặc focus group, rồi TSC, sau đó 60 ngày IPR review, rồi Board phê duyệt. Vì vậy tài liệu thường được công bố trễ khoảng 3–4 tháng so với tên train (<a href="https://www.o-ran.org/blog/inside-o-ran-specification-development-publication-trains">giải thích của O-RAN</a>).</p>
 <p>"Specification Release" là lớp gộp phía trên: R005 được Alliance thông báo hoàn tất ngày 08/06/2026, gồm công việc từ 07/2024 đến train tháng 11/2025 (<a href="https://www.o-ran.org/blog/o-ran-alliance-completed-its-specification-release-5-o-ran-r005">thông báo R005</a>). Ba train gần nhất:</p>
 <table>
 <thead>
@@ -6984,9 +6984,9 @@
 </tr>
 </tbody>
 </table>
-<p>Lưu ý tên train (ví dụ 07/2026) khác với ngày công bố (10/2026), nên khi so sánh với bài viết khác hãy đối chiếu cả hai.</p>
+<p>Lưu ý tên train (ví dụ 07/2026) khác với ngày công bố (10/2026), nên khi so sánh với bài viết khác cần đối chiếu cả hai.</p>
 <h2 id="wg4-open-fronthaul-sau-ba-train">WG4: Open Fronthaul sau ba train<a class="headerlink" href="#wg4-open-fronthaul-sau-ba-train" title="Permanent link">¶</a></h2>
-<p>WG4 là nhóm có nhiều thay đổi nhất với người viết firmware, vì cả bộ spec và bộ test đều nhích phiên bản liên tục. Tóm tắt các tài liệu chủ chốt:</p>
+<p>WG4 là nhóm có nhiều thay đổi nhất với người viết firmware, vì cả bộ spec và bộ test đều tăng phiên bản liên tục. Tóm tắt các tài liệu chủ chốt:</p>
 <table>
 <thead>
 <tr>
@@ -7026,12 +7026,12 @@
 <h3 id="beamforming-tu-weight-sang-inh-dang-chuyen-dung">Beamforming: từ weight sang định dạng chuyên dụng<a class="headerlink" href="#beamforming-tu-weight-sang-inh-dang-chuyen-dung" title="Permanent link">¶</a></h3>
 <p>Phần thay đổi lớn nhất của CUS-Plane là mở rộng beamforming. Danh sách gồm DMRS-BF, null steering, SRS-BF (gồm SRS-CE, BF-DL và BF-UL) và CDBF. Các thay đổi này kéo theo Section Type 12, 13, 14 và Section Extension 33, 34, 35. Với người viết firmware, điều quan trọng là các tính năng này làm thay đổi cách O-DU đóng gói C-Plane và cách O-RU phải báo khả năng hỗ trợ qua M-Plane.</p>
 <h3 id="m-plane-va-yang-nang-luc-uoc-khai-bao-ro-hon">M-Plane và YANG: năng lực được khai báo rõ hơn<a class="headerlink" href="#m-plane-va-yang-nang-luc-uoc-khai-bao-ro-hon" title="Permanent link">¶</a></h3>
-<p>Trên M-Plane có hai nhóm thay đổi. Nhóm thứ nhất là điều khiển công suất và chuyển mạch phần thu phát, gồm MAX_POWER_CONTROL và TRX_CONTROL_BIDIR (hai tính năng này còn quay lại trong phần tiết kiệm năng lượng). Nhóm thứ hai là phần thêm tính năng liên quan PIM (passive intermodulation) và việc YANG model nhập (import) model theo RFC 9911. Khi đổi phiên bản YANG, hãy kiểm tra lại NETCONF server và công cụ sinh code của bạn, vì thay đổi kiểu này thường làm hỏng pipeline build trước khi làm hỏng logic.</p>
+<p>Trên M-Plane có hai nhóm thay đổi. Nhóm thứ nhất là điều khiển công suất và chuyển mạch phần thu phát, gồm MAX_POWER_CONTROL và TRX_CONTROL_BIDIR (hai tính năng này còn quay lại trong phần tiết kiệm năng lượng). Nhóm thứ hai là phần thêm tính năng liên quan PIM (passive intermodulation) và việc YANG model nhập (import) model theo RFC 9911. Khi đổi phiên bản YANG, cần kiểm tra lại NETCONF server và công cụ sinh code, vì thay đổi kiểu này thường gây lỗi ở bước build trước khi lộ ra lỗi logic.</p>
 <h3 id="test-spec-va-bo-test-i-cung-nhau">Test: spec và bộ test đi cùng nhau<a class="headerlink" href="#test-spec-va-bo-test-i-cung-nhau" title="Permanent link">¶</a></h3>
-<p>Conformance Test và IOT đều lên v17, nên khi hợp đồng ghi "tuân thủ WG4" bạn cần nêu rõ phiên bản của cả ba: CUS/M-Plane, Conformance và IOT. Ba phiên bản không tự đồng bộ theo cùng một con số.</p>
+<p>Conformance Test và IOT đều lên v17, nên khi hợp đồng ghi "tuân thủ WG4" cần nêu rõ phiên bản của cả ba: CUS/M-Plane, Conformance và IOT. Ba phiên bản không tự đồng bộ theo cùng một con số.</p>
 <div class="admonition note">
 <p class="admonition-title">Lưu ý</p>
-<p>Bảng trên tóm tắt điểm xuất phát và điểm đến qua ba train; tác giả chưa gán từng tính năng vào đúng phiên bản nào. Khi triển khai, hãy đọc change history trong chính spec tại <a href="https://specifications.o-ran.org">specifications.o-ran.org</a>.</p>
+<p>Bảng trên tóm tắt điểm xuất phát và điểm đến qua ba train; tác giả chưa gán từng tính năng vào đúng phiên bản nào. Khi triển khai, nên đối chiếu change history trong chính spec tại <a href="https://specifications.o-ran.org">specifications.o-ran.org</a>.</p>
 </div>
 <h2 id="tiet-kiem-nang-luong-mot-tinh-nang-nam-tang-tai-lieu">Tiết kiệm năng lượng: một tính năng, năm tầng tài liệu<a class="headerlink" href="#tiet-kiem-nang-luong-mot-tinh-nang-nam-tang-tai-lieu" title="Permanent link">¶</a></h2>
 <p>Tiết kiệm năng lượng trong O-RAN không nằm trong một spec riêng. Nó bắt đầu ở use case của WG1, WG2, WG3, đi qua A1 và E2 xuống fronthaul, sang O1/OAM, rồi kết thúc ở test case. Muốn một kịch bản như "tắt các nhánh TRX khi tải thấp" chạy end-to-end, cả năm tầng phải cùng hỗ trợ.</p>
@@ -7071,17 +7071,17 @@
 </tr>
 </tbody>
 </table>
-<h3 id="iem-can-nho">Điểm cần nhớ<a class="headerlink" href="#iem-can-nho" title="Permanent link">¶</a></h3>
+<h3 id="iem-chinh">Điểm chính<a class="headerlink" href="#iem-chinh" title="Permanent link">¶</a></h3>
 <ul>
 <li><strong>E2SM-CCC đến v8</strong> thêm chế độ deep hibernate, một trạng thái ngủ sâu mà thiết bị có thể được đưa vào qua giao diện E2.</li>
 <li><strong>E2SM-RC v10</strong> đưa NES vào service model, để các kịch bản tiết kiệm năng lượng có thể đi qua đường E2.</li>
 <li><strong>A1 type definitions v12</strong> đề cập nguồn điện bên ngoài, phục vụ các chính sách dựa trên nguồn năng lượng.</li>
-<li><strong>M-Plane</strong> là nơi firmware O-RU phải thực sự tắt bật TRX và giới hạn công suất tối đa.</li>
+<li><strong>M-Plane</strong> là nơi firmware O-RU phải thực sự bật/tắt TRX và giới hạn công suất tối đa.</li>
 </ul>
 <h3 id="he-qua-cho-nguoi-trien-khai">Hệ quả cho người triển khai<a class="headerlink" href="#he-qua-cho-nguoi-trien-khai" title="Permanent link">¶</a></h3>
-<p>Bạn không thể chỉ làm phần O-RU. Nếu nhà vận hành đặt yêu cầu NES, cần hỏi rõ điều khiển đi qua đường nào (E2 hay O1), trạng thái ngủ nào được phép và test case nào dùng để nghiệm thu. Phiên bản của từng spec phải được chốt cùng lúc.</p>
+<p>Không thể chỉ làm phần O-RU. Nếu nhà vận hành đặt yêu cầu NES, cần làm rõ điều khiển đi qua đường nào (E2 hay O1), trạng thái ngủ nào được phép và test case nào dùng để nghiệm thu. Phiên bản của từng spec phải được chốt cùng lúc.</p>
 <h2 id="bao-mat-tu-yeu-cau-en-chung-nhan">Bảo mật: từ yêu cầu đến chứng nhận<a class="headerlink" href="#bao-mat-tu-yeu-cau-en-chung-nhan" title="Permanent link">¶</a></h2>
-<p>WG11 đi theo bốn lớp: tài liệu yêu cầu, giao thức trên từng interface, đánh giá bảo đảm (SCAS) và chương trình chứng nhận. Qua ba train, cả bốn lớp đều nhích lên.</p>
+<p>WG11 đi theo bốn lớp: tài liệu yêu cầu, giao thức trên từng interface, đánh giá bảo đảm (SCAS) và chương trình chứng nhận. Qua ba train, cả bốn lớp đều được cập nhật.</p>
 <table>
 <thead>
 <tr>
@@ -7122,7 +7122,7 @@
 <h3 id="nhin-xa-hon">Nhìn xa hơn<a class="headerlink" href="#nhin-xa-hon" title="Permanent link">¶</a></h3>
 <p>Ba chủ đề đang được mở rộng: Zero Trust Architecture (ZTA v6, dựa trên mức trưởng thành "Initial" của CISA), nghiên cứu post-quantum cryptography (PQC) và OSARP. Về PQC, tiêu đề tài liệu ghi v3.00 nhưng phần thân lại nêu "version 16.00"; vì nguồn tự mâu thuẫn nên bài không chốt số phiên bản ở đây. Hãy mở tài liệu gốc trước khi trích dẫn.</p>
 <h2 id="wg7-va-cac-mang-con-lai">WG7 và các mảng còn lại<a class="headerlink" href="#wg7-va-cac-mang-con-lai" title="Permanent link">¶</a></h2>
-<p><strong>WG7 (phần cứng) gần như đứng yên.</strong> Trong các train này chỉ có thiết kế tham chiếu Outdoor Micro Cell 7.2 đi từ v5.01 (dùng SDR SoC) lên v6.00, thêm mục 2.3.4 về thiết kế tham chiếu SDR SoC cho FR2. Train tháng 7/2026 không có tài liệu WG7 nào.</p>
+<p><strong>WG7 (phần cứng) ít thay đổi.</strong> Trong các train này chỉ có thiết kế tham chiếu Outdoor Micro Cell 7.2 đi từ v5.01 (dùng SDR SoC) lên v6.00, thêm mục 2.3.4 về thiết kế tham chiếu SDR SoC cho FR2. Train tháng 7/2026 không có tài liệu WG7 nào.</p>
 <p>Các nhóm khác đáng ghi nhớ:</p>
 <ul>
 <li><strong>WG9 (Xhaul, đồng bộ):</strong> Fronthaul over CPTN v2.00 (EVPN trên SR-MPLS, kèm yêu cầu đồng bộ); Xhaul Packet Switched Architecture v11.00 (khái niệm vTNE); Synchronization Architecture v8.00 (train tháng 3, Annex H nói về PRTC và GNSS).</li>
@@ -7133,7 +7133,7 @@
 </ul>
 <h2 id="nhin-truoc-va-loi-ket">Nhìn trước và lời kết<a class="headerlink" href="#nhin-truoc-va-loi-ket" title="Permanent link">¶</a></h2>
 <p>Theo nhịp ba train mỗi năm, train tiếp theo sẽ mang tên tháng 11/2026 và có thể được công bố vào khoảng đầu năm 2027. Đây là suy luận từ chu kỳ, chưa phải thông báo chính thức của O-RAN Alliance.</p>
-<p>Bức tranh chung sau ba train: Open Fronthaul vẫn là nơi thay đổi nhiều nhất với người viết firmware; tiết kiệm năng lượng đang trở thành bài toán liên tầng; và bảo mật chuyển từ "nên có" sang "cần chứng minh" nhờ SCAS và Security Badge. Với một đội firmware, cách thực tế nhất là chọn phiên bản mục tiêu cho từng spec, rồi bám theo ba mạch này thay vì cố đọc hết hơn 160 title.</p>
+<p>Bức tranh chung sau ba train: Open Fronthaul vẫn là nơi thay đổi nhiều nhất với người viết firmware; tiết kiệm năng lượng đang trở thành bài toán liên tầng; và bảo mật chuyển từ "nên có" sang "cần chứng minh" nhờ SCAS và Security Badge. Với một đội firmware, cách thực tế nhất là chọn phiên bản mục tiêu cho từng spec, rồi tập trung vào ba mạch này thay vì đọc toàn bộ hơn 160 title.</p>
 <h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="https://www.o-ran.org/blog/66-new-or-updated-o-ran-technical-documents-released-since-july-2026">66 tài liệu mới hoặc cập nhật kể từ 07/2026</a></li>
@@ -7167,7 +7167,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 23, 2026 09:06:08 UTC">October 23, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 24, 2026 04:36:14 UTC">October 24, 2026</span>
   </span>
 
     
