@@ -15,7 +15,7 @@
         <link rel="prev" href="../kernel_data_structure/">
       
       
-        <link rel="next" href="../../lnx_ldd/kernel_module/">
+        <link rel="next" href="syscall/">
       
       
         
@@ -26,7 +26,7 @@
     
     
       
-        <title>Kernel Space, User Space Interfaces (WIP) - Vu Tang's Docs</title>
+        <title>Overview - Vu Tang's Docs</title>
       
     
     
@@ -72,17 +72,17 @@
     
   
 <meta property="og:type" content="website">
-<meta property="og:title" content="Kernel Space, User Space Interfaces (WIP) - Vu Tang's Docs">
+<meta property="og:title" content="Overview - Vu Tang's Docs">
 <meta property="og:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
-<meta property="og:image" content="https://vutang.github.io/assets/images/social/lnx_kernel/kernel_user_space.png">
+<meta property="og:image" content="https://vutang.github.io/assets/images/social/lnx_kernel/kernel_user_space/index.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://vutang.github.io/lnx_kernel/kernel_user_space/">
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:title" content="Kernel Space, User Space Interfaces (WIP) - Vu Tang's Docs">
+<meta property="twitter:title" content="Overview - Vu Tang's Docs">
 <meta property="twitter:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
-<meta property="twitter:image" content="https://vutang.github.io/assets/images/social/lnx_kernel/kernel_user_space.png">
+<meta property="twitter:image" content="https://vutang.github.io/assets/images/social/lnx_kernel/kernel_user_space/index.png">
 <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
@@ -146,7 +146,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Kernel Space, User Space Interfaces (WIP)
+              Overview
             
           </span>
         </div>
@@ -2319,16 +2319,25 @@
   
   
   
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+    
+    
+    
+    
       
       
         
       
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
-      <a href="./" class="md-nav__link md-nav__link--active">
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_3" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_3" id="__nav_4_2_3_label" tabindex="0">
+            
   
   
   <span class="md-ellipsis">
@@ -2342,7 +2351,493 @@
   
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Kernel Space, User Space Interfaces (WIP)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#1-ranh-gioi-kernel-space-va-user-space" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Ranh giới kernel space và user space
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Ranh giới kernel space và user space">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-privilege-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Privilege level
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-chia-khong-gian-ia-chi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Chia không gian địa chỉ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-vi-sao-kernel-khong-uoc-dereference-truc-tiep-con-tro-tu-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Vì sao kernel không được dereference trực tiếp con trỏ từ user
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-truyen-du-lieu-qua-ranh-gioi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Truyền dữ liệu qua ranh giới
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Truyền dữ liệu qua ranh giới">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-cac-ham-uaccess" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Các hàm uaccess
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-mau-code-chuan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Mẫu code chuẩn
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-kiem-chung-kernel-xu-ly-con-tro-sai-nhu-the-nao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Kiểm chứng: kernel xử lý con trỏ sai như thế nào
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-bang-so-sanh-cac-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Bảng so sánh các interface
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-chon-interface-nao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Chọn interface nào?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-cac-trang-con" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Các trang con
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tham khảo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="syscall/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System Call
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="device_file/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Device File &amp; ioctl
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="pseudo_fs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pseudo Filesystem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="mmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    mmap, UIO, dma-buf
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="notification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Async Notification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="netlink/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Netlink
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="advanced/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Interfaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="abi_security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ABI &amp; Security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="lab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -6546,6 +7041,158 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#1-ranh-gioi-kernel-space-va-user-space" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Ranh giới kernel space và user space
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Ranh giới kernel space và user space">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-privilege-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Privilege level
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-chia-khong-gian-ia-chi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Chia không gian địa chỉ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-vi-sao-kernel-khong-uoc-dereference-truc-tiep-con-tro-tu-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Vì sao kernel không được dereference trực tiếp con trỏ từ user
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-truyen-du-lieu-qua-ranh-gioi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Truyền dữ liệu qua ranh giới
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Truyền dữ liệu qua ranh giới">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-cac-ham-uaccess" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Các hàm uaccess
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-mau-code-chuan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Mẫu code chuẩn
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-kiem-chung-kernel-xu-ly-con-tro-sai-nhu-the-nao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Kiểm chứng: kernel xử lý con trỏ sai như thế nào
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-bang-so-sanh-cac-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Bảng so sánh các interface
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-chon-interface-nao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Chọn interface nào?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-cac-trang-con" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Các trang con
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tham khảo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -6559,13 +7206,341 @@
                 
                   
 
+  <nav class="md-tags">
+    
+      
+      
+      
+      
+        <a href="../../articles/tags/#tag:linux-kernel" class="md-tag">linux-kernel</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../articles/tags/#tag:uapi" class="md-tag">uapi</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../articles/tags/#tag:user-space" class="md-tag">user-space</a>
+      
+    
+  </nav>
+
 
   
   
 
 
 <h1 id="kernel-space-user-space-interfaces">Kernel Space, User Space Interfaces<a class="headerlink" href="#kernel-space-user-space-interfaces" title="Permanent link">¶</a></h1>
-<p><a href="http://wiki.tldp.org/kernel_user_space_howto">http://wiki.tldp.org/kernel_user_space_howto</a></p>
+<p>Linux tách bộ nhớ và quyền thực thi thành hai không gian: <strong>kernel space</strong>, nơi kernel và driver chạy với toàn quyền trên phần cứng, và <strong>user space</strong>, nơi ứng dụng chạy với quyền hạn chế. Ứng dụng không thể gọi thẳng một hàm trong kernel hay đọc một biến của driver; mọi trao đổi phải đi qua một interface mà kernel định nghĩa sẵn.</p>
+<p>Trang này trình bày ranh giới giữa hai không gian, cách dữ liệu đi qua ranh giới đó, và so sánh các interface để chọn đúng công cụ cho từng bài toán. Chi tiết từng nhóm interface nằm ở các trang con.</p>
+<h2 id="1-ranh-gioi-kernel-space-va-user-space">1. Ranh giới kernel space và user space<a class="headerlink" href="#1-ranh-gioi-kernel-space-va-user-space" title="Permanent link">¶</a></h2>
+<h3 id="11-privilege-level">1.1. Privilege level<a class="headerlink" href="#11-privilege-level" title="Permanent link">¶</a></h3>
+<p>CPU hỗ trợ nhiều mức đặc quyền. Linux chỉ dùng hai mức:</p>
+<table>
+<thead>
+<tr>
+<th>Kiến trúc</th>
+<th>User space</th>
+<th>Kernel space</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x86_64</td>
+<td>Ring 3</td>
+<td>Ring 0</td>
+</tr>
+<tr>
+<td>arm64</td>
+<td>EL0</td>
+<td>EL1 (EL2 nếu chạy VHE)</td>
+</tr>
+<tr>
+<td>RISC-V</td>
+<td>U-mode</td>
+<td>S-mode</td>
+</tr>
+</tbody>
+</table>
+<p>Ở mức user, CPU chặn các lệnh đặc quyền (cấu hình MMU, tắt interrupt, truy cập thanh ghi hệ thống) và chặn truy cập vào các trang nhớ đánh dấu chỉ dành cho kernel. CPU chuyển từ user sang kernel trong ba trường hợp:</p>
+<ul>
+<li><strong>System call</strong>: ứng dụng chủ động gọi bằng lệnh <code>syscall</code> (x86_64) hoặc <code>svc #0</code> (arm64).</li>
+<li><strong>Exception</strong>: ví dụ page fault, chia cho 0, lệnh không hợp lệ.</li>
+<li><strong>Interrupt</strong>: phần cứng báo sự kiện, không liên quan đến tiến trình đang chạy.</li>
+</ul>
+<p>Mọi interface trong bộ tài liệu này, từ đọc file trong <code>/sys</code>, gửi message netlink đến thiết lập <code>mmap</code>, đều bắt đầu bằng một system call.</p>
+<h3 id="12-chia-khong-gian-ia-chi">1.2. Chia không gian địa chỉ<a class="headerlink" href="#12-chia-khong-gian-ia-chi" title="Permanent link">¶</a></h3>
+<p>Mỗi tiến trình có một không gian địa chỉ ảo riêng, nhưng nửa kernel thì giống nhau ở mọi tiến trình. Với cấu hình phổ biến (page table 4 mức, VA 48 bit):</p>
+<table>
+<thead>
+<tr>
+<th>Kiến trúc</th>
+<th>User space</th>
+<th>Kernel space</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x86_64</td>
+<td><code>0x0000000000000000</code> – <code>0x00007fffffffffff</code> (128 TiB)</td>
+<td>từ <code>0xffff800000000000</code></td>
+</tr>
+<tr>
+<td>arm64</td>
+<td><code>0x0000000000000000</code> – <code>0x0000ffffffffffff</code>, qua <code>TTBR0_EL1</code></td>
+<td>từ <code>0xffff000000000000</code>, qua <code>TTBR1_EL1</code></td>
+</tr>
+</tbody>
+</table>
+<p>Nhờ vậy, khi vào kernel qua system call, kernel vẫn "nhìn thấy" bộ nhớ của tiến trình vừa gọi. Đây là điều kiện để kernel copy dữ liệu từ buffer của ứng dụng.</p>
+<h3 id="13-vi-sao-kernel-khong-uoc-dereference-truc-tiep-con-tro-tu-user">1.3. Vì sao kernel không được dereference trực tiếp con trỏ từ user<a class="headerlink" href="#13-vi-sao-kernel-khong-uoc-dereference-truc-tiep-con-tro-tu-user" title="Permanent link">¶</a></h3>
+<p>Khi ứng dụng gọi <code>read(fd, buf, n)</code>, <code>buf</code> là một địa chỉ ảo do user cung cấp. Về mặt kỹ thuật, kernel có thể viết <code>*buf = x</code>, nhưng làm vậy là sai vì bốn lý do:</p>
+<ol>
+<li><strong>Địa chỉ có thể không hợp lệ.</strong> Trang có thể chưa được map, đã bị swap ra đĩa, hoặc chỉ cho phép đọc. Một page fault không được xử lý trong kernel sẽ gây oops.</li>
+<li><strong>Địa chỉ có thể trỏ vào kernel.</strong> Nếu ứng dụng truyền một địa chỉ thuộc nửa kernel, một driver dereference trực tiếp sẽ vô tình đọc hoặc ghi bộ nhớ kernel thay cho ứng dụng. Đây là lỗ hổng leo thang đặc quyền kinh điển.</li>
+<li><strong>Phần cứng chặn.</strong> SMAP (x86) và PAN (arm64) cấm kernel truy cập trang của user, trừ khi kernel mở một "cửa sổ" rõ ràng. Code dereference trực tiếp sẽ fault ngay trên CPU hiện đại.</li>
+<li><strong>Dữ liệu có thể thay đổi bất kỳ lúc nào.</strong> Một thread khác trong cùng tiến trình có thể sửa buffer trong lúc kernel đang đọc. Nếu kernel đọc một giá trị hai lần (lần đầu để kiểm tra, lần sau để dùng), kẻ tấn công có thể đổi giá trị ở giữa. Lỗi này gọi là <em>double fetch</em>.</li>
+</ol>
+<p>Vì vậy, kernel luôn truy cập bộ nhớ user qua các hàm <em>uaccess</em>. Các hàm này kiểm tra dải địa chỉ, mở cửa sổ SMAP/PAN, và đăng ký lệnh truy cập vào <em>exception table</em> để page fault được chuyển thành lỗi <code>-EFAULT</code> thay vì oops.</p>
+<p>Trong code kernel, con trỏ trỏ vào bộ nhớ user được đánh dấu <code>__user</code>. Công cụ <code>sparse</code> (<code>make C=1</code>) cảnh báo khi một con trỏ <code>__user</code> bị dereference trực tiếp hoặc bị gán lẫn với con trỏ kernel.</p>
+<h2 id="2-truyen-du-lieu-qua-ranh-gioi">2. Truyền dữ liệu qua ranh giới<a class="headerlink" href="#2-truyen-du-lieu-qua-ranh-gioi" title="Permanent link">¶</a></h2>
+<h3 id="21-cac-ham-uaccess">2.1. Các hàm uaccess<a class="headerlink" href="#21-cac-ham-uaccess" title="Permanent link">¶</a></h3>
+<p>Khai báo trong <code>&lt;linux/uaccess.h&gt;</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Hàm</th>
+<th>Dùng cho</th>
+<th>Giá trị trả về</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>copy_from_user(to, from, n)</code></td>
+<td>Copy <code>n</code> byte từ user vào kernel</td>
+<td>Số byte <strong>không</strong> copy được; <code>0</code> là thành công</td>
+</tr>
+<tr>
+<td><code>copy_to_user(to, from, n)</code></td>
+<td>Copy <code>n</code> byte từ kernel ra user</td>
+<td>Như trên</td>
+</tr>
+<tr>
+<td><code>get_user(x, ptr)</code></td>
+<td>Đọc một biến đơn (1/2/4/8 byte), kiểu suy ra từ <code>ptr</code></td>
+<td><code>0</code> hoặc <code>-EFAULT</code></td>
+</tr>
+<tr>
+<td><code>put_user(x, ptr)</code></td>
+<td>Ghi một biến đơn</td>
+<td><code>0</code> hoặc <code>-EFAULT</code></td>
+</tr>
+<tr>
+<td><code>strncpy_from_user(dst, src, count)</code></td>
+<td>Copy chuỗi kết thúc bằng <code>'\0'</code></td>
+<td>Độ dài chuỗi, hoặc <code>-EFAULT</code>; bằng <code>count</code> nghĩa là chưa gặp <code>'\0'</code></td>
+</tr>
+<tr>
+<td><code>memdup_user(src, len)</code></td>
+<td><code>kmalloc()</code> rồi copy</td>
+<td>Con trỏ kernel, hoặc <code>ERR_PTR(-EFAULT/-ENOMEM)</code></td>
+</tr>
+<tr>
+<td><code>memdup_user_nul(src, len)</code></td>
+<td>Như trên, thêm <code>'\0'</code> ở cuối</td>
+<td>Như trên</td>
+</tr>
+<tr>
+<td><code>copy_struct_from_user(dst, ksize, src, usize)</code></td>
+<td>Struct có thể mở rộng theo phiên bản (dùng bởi <code>openat2()</code>, <code>clone3()</code>)</td>
+<td><code>0</code>, <code>-EFAULT</code> hoặc <code>-E2BIG</code></td>
+</tr>
+<tr>
+<td><code>access_ok(addr, size)</code></td>
+<td>Chỉ kiểm tra dải địa chỉ thuộc user space</td>
+<td><code>true</code>/<code>false</code></td>
+</tr>
+</tbody>
+</table>
+<p>Một số lưu ý:</p>
+<ul>
+<li><code>copy_*_user()</code>, <code>get_user()</code>, <code>put_user()</code> đã tự gọi <code>access_ok()</code>. Không cần gọi thêm, và không nên dùng các biến thể có hai dấu gạch dưới (<code>__copy_from_user()</code>, <code>__get_user()</code>) vì chúng bỏ qua bước kiểm tra này.</li>
+<li><code>access_ok()</code> chỉ kiểm tra địa chỉ có nằm trong nửa user hay không, <strong>không</strong> đảm bảo trang đã được map. Từ kernel 5.0, hàm nhận hai tham số; tham số <code>type</code> (<code>VERIFY_READ</code>/<code>VERIFY_WRITE</code>) đã bị bỏ.</li>
+<li>Bộ nhớ user có thể đang nằm trên đĩa, nên các hàm uaccess có thể <strong>ngủ</strong> để chờ nạp trang. Không gọi chúng khi đang giữ spinlock hoặc trong interrupt context. Bật <code>CONFIG_DEBUG_ATOMIC_SLEEP</code> để <code>might_fault()</code> cảnh báo khi vi phạm.</li>
+</ul>
+<h3 id="22-mau-code-chuan">2.2. Mẫu code chuẩn<a class="headerlink" href="#22-mau-code-chuan" title="Permanent link">¶</a></h3>
+<p>Giá trị trả về khác 0 của <code>copy_*_user()</code> là số byte còn lại, không phải mã lỗi. Mẫu đúng là chuyển nó thành <code>-EFAULT</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">struct</span><span class="w"> </span><span class="nc">foo_config</span><span class="w"> </span><span class="n">cfg</span><span class="p">;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">copy_from_user</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cfg</span><span class="p">,</span><span class="w"> </span><span class="n">argp</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">cfg</span><span class="p">)))</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="n">EFAULT</span><span class="p">;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="cm">/* Từ đây chỉ làm việc trên bản sao cfg trong kernel. */</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cfg</span><span class="p">.</span><span class="n">mode</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">FOO_MODE_MAX</span><span class="p">)</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="n">EINVAL</span><span class="p">;</span>
+</code></pre></div>
+<p>Mẫu này cũng giải quyết vấn đề double fetch: kernel copy dữ liệu <strong>một lần</strong> vào bộ nhớ của mình, rồi kiểm tra và dùng bản sao đó. Không bao giờ kiểm tra trên buffer user rồi copy lại lần nữa để dùng.</p>
+<p>Chiều ngược lại, khi trả dữ liệu ra user, phải đảm bảo không có byte nào chưa khởi tạo trong struct, kể cả các byte padding do compiler chèn vào. Nếu không, <code>copy_to_user()</code> sẽ làm lộ nội dung cũ của stack kernel ra ngoài. Cách an toàn là <code>memset()</code> struct về 0 trước khi điền, hoặc thiết kế struct không có padding (xem <a href="abi_security/">ABI, bảo mật và độ ổn định</a>).</p>
+<h3 id="23-kiem-chung-kernel-xu-ly-con-tro-sai-nhu-the-nao">2.3. Kiểm chứng: kernel xử lý con trỏ sai như thế nào<a class="headerlink" href="#23-kiem-chung-kernel-xu-ly-con-tro-sai-nhu-the-nao" title="Permanent link">¶</a></h3>
+<p>Driver mẫu <code>vux_demo</code> ở trang <a href="device_file/#vux-demo">Device File và ioctl</a> dùng <code>copy_to_user()</code> trong lệnh <code>VUX_DEMO_GET_STATS</code>. Chương trình test cố tình truyền vào hai con trỏ sai: địa chỉ <code>0x1</code> (không được map) và một địa chỉ thuộc nửa kernel. Kết quả khi chạy trên kernel 6.8 (QEMU x86_64):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>bad ptr   : Bad address
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>kernel ptr: Bad address
+</code></pre></div>
+<p>Cả hai trường hợp đều trả về <code>-EFAULT</code> (<code>Bad address</code>), kernel không oops và không bị đọc/ghi nhầm vùng nhớ.</p>
+<h2 id="3-bang-so-sanh-cac-interface">3. Bảng so sánh các interface<a class="headerlink" href="#3-bang-so-sanh-cac-interface" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Interface</th>
+<th>Chiều dữ liệu</th>
+<th>Mô hình</th>
+<th>Phù hợp cho</th>
+<th>Ổn định ABI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="syscall/">System call</a></td>
+<td>U → K, kết quả trả về</td>
+<td>Đồng bộ</td>
+<td>Dịch vụ chung của kernel, không gắn với một thiết bị</td>
+<td>Rất cao; thêm mới phải qua review mainline</td>
+</tr>
+<tr>
+<td><a href="device_file/">Device file <code>read</code>/<code>write</code></a></td>
+<td>Hai chiều</td>
+<td>Đồng bộ, blocking hoặc non-blocking</td>
+<td>Luồng byte của thiết bị</td>
+<td>Do driver định nghĩa</td>
+</tr>
+<tr>
+<td><a href="device_file/#ioctl">ioctl</a></td>
+<td>Hai chiều</td>
+<td>Đồng bộ</td>
+<td>Lệnh điều khiển có cấu trúc</td>
+<td>Là ABI, khai báo qua UAPI header</td>
+</tr>
+<tr>
+<td><a href="pseudo_fs/#sysfs">sysfs</a></td>
+<td>Hai chiều</td>
+<td>Đồng bộ; có thể <code>poll()</code> một attribute</td>
+<td>Thuộc tính một giá trị: trạng thái, cấu hình</td>
+<td>Là ABI, mô tả trong <code>Documentation/ABI/</code></td>
+</tr>
+<tr>
+<td><a href="pseudo_fs/#procfs">procfs</a></td>
+<td>Chủ yếu K → U</td>
+<td>Đồng bộ</td>
+<td>Thông tin tiến trình và hệ thống</td>
+<td>Là ABI; hạn chế thêm mục mới</td>
+</tr>
+<tr>
+<td><a href="pseudo_fs/#debugfs">debugfs</a></td>
+<td>Hai chiều</td>
+<td>Đồng bộ</td>
+<td>Chỉ để debug</td>
+<td>Không có cam kết</td>
+</tr>
+<tr>
+<td><a href="pseudo_fs/#configfs">configfs</a></td>
+<td>U → K</td>
+<td>Đồng bộ</td>
+<td>User tạo và cấu hình object trong kernel</td>
+<td>Là ABI</td>
+</tr>
+<tr>
+<td><a href="mmap/">mmap</a></td>
+<td>Dùng chung bộ nhớ</td>
+<td>Không copy</td>
+<td>Dữ liệu lớn, zero-copy, thanh ghi thiết bị</td>
+<td>Bố cục bộ nhớ là ABI</td>
+</tr>
+<tr>
+<td><a href="notification/">poll/epoll, signal, eventfd</a></td>
+<td>K → U</td>
+<td>Bất đồng bộ</td>
+<td>Báo dữ liệu sẵn sàng hoặc sự kiện</td>
+<td>Theo interface gốc</td>
+</tr>
+<tr>
+<td><a href="notification/#uevent-va-udev">uevent</a></td>
+<td>K → U, broadcast</td>
+<td>Bất đồng bộ</td>
+<td>Hotplug thiết bị</td>
+<td>Là ABI</td>
+</tr>
+<tr>
+<td><a href="netlink/">Netlink</a></td>
+<td>Hai chiều, có multicast</td>
+<td>Đồng bộ và bất đồng bộ</td>
+<td>Networking; subsystem cần kernel chủ động gửi sự kiện</td>
+<td>Là ABI, mở rộng được nhờ attribute</td>
+</tr>
+<tr>
+<td><a href="advanced/#io_uring">io_uring</a></td>
+<td>Hai chiều qua ring buffer</td>
+<td>Bất đồng bộ</td>
+<td>I/O hiệu năng cao, ít system call</td>
+<td>Là ABI</td>
+</tr>
+<tr>
+<td><a href="advanced/#ebpf">eBPF</a></td>
+<td>User nạp chương trình vào kernel</td>
+<td>Theo sự kiện</td>
+<td>Tracing, networking, security policy</td>
+<td>Helper và map là ABI</td>
+</tr>
+<tr>
+<td><a href="advanced/#vfio">UIO, VFIO</a></td>
+<td>User điều khiển thiết bị trực tiếp</td>
+<td>Thanh ghi qua <code>mmap</code>, interrupt qua <code>read</code></td>
+<td>Driver ở user space</td>
+<td>Là ABI</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-chon-interface-nao">4. Chọn interface nào?<a class="headerlink" href="#4-chon-interface-nao" title="Permanent link">¶</a></h2>
+<p>Không có interface "tốt nhất"; mỗi loại sinh ra cho một dạng bài toán. Có thể chọn theo các câu hỏi sau, đi từ trên xuống:</p>
+<ol>
+<li><strong>Chỉ phục vụ debug, không cho ứng dụng thật dùng?</strong> Dùng <strong>debugfs</strong>. Không có cam kết ABI nên có thể thay đổi tùy ý.</li>
+<li><strong>Đọc hoặc ghi một giá trị đơn lẻ của thiết bị</strong> (trạng thái, ngưỡng, chế độ)? Dùng <strong>sysfs</strong>, mỗi file một giá trị. Có thể thao tác bằng <code>cat</code>/<code>echo</code>, không cần viết chương trình.</li>
+<li><strong>Truyền một luồng dữ liệu</strong> (đọc mẫu ADC, ghi frame ra UART)? Dùng <strong><code>read</code>/<code>write</code></strong> trên device file.</li>
+<li><strong>Gửi lệnh điều khiển có tham số cấu trúc</strong>, hoặc cần một thao tác nguyên tử gồm nhiều tham số? Dùng <strong>ioctl</strong>.</li>
+<li><strong>Khối lượng dữ liệu lớn, cần tránh copy</strong> (buffer DMA, frame video)? Dùng <strong>mmap</strong>.</li>
+<li><strong>Kernel cần chủ động báo sự kiện?</strong><ul>
+<li>Báo cho tiến trình đang mở device file: <strong>poll/epoll</strong> (kèm <code>read</code> để lấy dữ liệu).</li>
+<li>Báo cho toàn hệ thống khi thiết bị xuất hiện hoặc biến mất: <strong>uevent</strong>.</li>
+<li>Gửi message có cấu trúc, nhiều bên nhận, hoặc giao tiếp hai chiều phức tạp: <strong>netlink</strong>.</li>
+</ul>
+</li>
+<li><strong>Thêm một dịch vụ mới cho toàn hệ thống, không gắn với thiết bị?</strong> Cân nhắc <strong>system call</strong> mới. Đây là lựa chọn cuối cùng vì phải qua review rất kỹ và không bao giờ được gỡ bỏ.</li>
+</ol>
+<p>Một driver thật thường kết hợp nhiều interface. Ví dụ, một driver ADC có thể dùng sysfs để chỉnh sample rate, <code>read()</code> hoặc <code>mmap()</code> để lấy dữ liệu, <code>poll()</code> để báo dữ liệu sẵn sàng, và debugfs để dump thanh ghi.</p>
+<h2 id="5-cac-trang-con">5. Các trang con<a class="headerlink" href="#5-cac-trang-con" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="syscall/">System call</a></li>
+<li><a href="device_file/">Device File và ioctl</a></li>
+<li><a href="pseudo_fs/">Pseudo filesystem: procfs, sysfs, debugfs, configfs</a></li>
+<li><a href="mmap/">Chia sẻ bộ nhớ: mmap, UIO, dma-buf</a></li>
+<li><a href="notification/">Thông báo bất đồng bộ</a></li>
+<li><a href="netlink/">Netlink</a></li>
+<li><a href="advanced/">Interface nâng cao: io_uring, eBPF, VFIO...</a></li>
+<li><a href="abi_security/">ABI, bảo mật và độ ổn định</a></li>
+<li><a href="lab/">Lab tổng hợp</a></li>
+</ul>
+<h2 id="tham-khao">Tham khảo<a class="headerlink" href="#tham-khao" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="http://wiki.tldp.org/kernel_user_space_howto">Kernel Space - User Space Interfaces HOWTO (TLDP)</a></li>
+<li>Kernel source: <code>include/linux/uaccess.h</code>, <code>Documentation/arch/x86/x86_64/mm.rst</code>, <code>Documentation/arch/arm64/memory.rst</code></li>
+<li>Linux Device Drivers, 3rd Edition (LDD3), chương 3 và 6</li>
+<li>The Linux Programming Interface (TLPI), chương 3</li>
+</ul>
 
 
 
@@ -6588,7 +7563,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 14, 2019 10:33:46 UTC">February 14, 2019</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 24, 2026 05:44:51 UTC">October 24, 2026</span>
   </span>
 
     
@@ -6598,7 +7573,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 14, 2019 10:33:46 UTC">February 14, 2019</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 24, 2026 05:34:19 UTC">October 24, 2026</span>
   </span>
 
     
@@ -6654,13 +7629,13 @@
         
         
           
-          <a href="../../lnx_ldd/kernel_module/" class="md-footer__link md-footer__link--next" aria-label="Next: Kernel Module">
+          <a href="syscall/" class="md-footer__link md-footer__link--next" aria-label="Next: System Call">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Kernel Module
+                System Call
               </div>
             </div>
             <div class="md-footer__button md-icon">

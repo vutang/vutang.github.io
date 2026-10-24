@@ -337,10 +337,6 @@
          <lastmod>2026-10-24</lastmod>
     </url>
     <url>
-         <loc>https://vutang.github.io/lnx_kernel/kernel_user_space/</loc>
-         <lastmod>2026-10-24</lastmod>
-    </url>
-    <url>
          <loc>https://vutang.github.io/lnx_kernel/clk/clk/</loc>
          <lastmod>2026-10-24</lastmod>
     </url>
@@ -354,6 +350,46 @@
     </url>
     <url>
          <loc>https://vutang.github.io/lnx_kernel/ftrace/ftrace/</loc>
+         <lastmod>2026-10-24</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/lnx_kernel/kernel_user_space/</loc>
+         <lastmod>2026-10-24</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/lnx_kernel/kernel_user_space/abi_security/</loc>
+         <lastmod>2026-10-24</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/lnx_kernel/kernel_user_space/advanced/</loc>
+         <lastmod>2026-10-24</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/lnx_kernel/kernel_user_space/device_file/</loc>
+         <lastmod>2026-10-24</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/lnx_kernel/kernel_user_space/lab/</loc>
+         <lastmod>2026-10-24</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/lnx_kernel/kernel_user_space/mmap/</loc>
+         <lastmod>2026-10-24</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/lnx_kernel/kernel_user_space/netlink/</loc>
+         <lastmod>2026-10-24</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/lnx_kernel/kernel_user_space/notification/</loc>
+         <lastmod>2026-10-24</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/lnx_kernel/kernel_user_space/pseudo_fs/</loc>
+         <lastmod>2026-10-24</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/lnx_kernel/kernel_user_space/syscall/</loc>
          <lastmod>2026-10-24</lastmod>
     </url>
     <url>
