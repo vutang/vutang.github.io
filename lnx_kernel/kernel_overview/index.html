@@ -2989,7 +2989,7 @@
   <span class="md-ellipsis">
     
   
-    LDD Overview
+    Linux Device Driver Overview
   
 
     
@@ -3192,7 +3192,7 @@
   <span class="md-ellipsis">
     
   
-    SPI Device
+    SPI Subsystem
   
 
     
@@ -3220,7 +3220,7 @@
   <span class="md-ellipsis">
     
   
-    SPI Device Advance
+    SPI Subsystem (Advanced)
   
 
     
@@ -7496,6 +7496,11 @@
 <p>Tài liệu này giới thiệu nhanh về Linux kernel: vai trò, các thành phần bên
 trong và các subsystem. Mỗi mục chỉ ở mức tổng quan, nội dung chi tiết nằm
 trong các page được link kèm theo.</p>
+<div class="admonition note">
+<p class="admonition-title">Phiên bản kernel</p>
+<p>Trang này tham chiếu kernel mainline dòng 6.x. Một số page con được viết từ
+các phiên bản cũ hơn; khi chi tiết phụ thuộc phiên bản, page sẽ ghi rõ.</p>
+</div>
 <h2 id="linux-kernel-la-gi">Linux Kernel là gì<a class="headerlink" href="#linux-kernel-la-gi" title="Permanent link">¶</a></h2>
 <p>Linux kernel là phần lõi của hệ điều hành, đóng vai trò lớp trung gian giữa
 phần cứng và các ứng dụng: quản lý CPU, bộ nhớ, thiết bị ngoại vi và cung cấp
@@ -7509,6 +7514,8 @@ một giao diện thống nhất để ứng dụng sử dụng các tài nguyê
 <li><strong>Mã nguồn mở</strong>, hỗ trợ nhiều kiến trúc (x86, ARM/ARM64, RISC-V...).</li>
 <li><strong>Cấu hình được</strong> thông qua Kconfig/defconfig: chỉ build những tính năng cần
   thiết, phù hợp từ hệ nhúng nhỏ đến server.</li>
+<li><strong>Hỗ trợ real-time</strong>: PREEMPT_RT đã vào mainline từ 6.12, không cần vá
+  patch ngoài để có kernel real-time (bật bằng <code>CONFIG_PREEMPT_RT</code>).</li>
 </ul>
 <h2 id="kernel-space-va-user-space">Kernel Space và User Space<a class="headerlink" href="#kernel-space-va-user-space" title="Permanent link">¶</a></h2>
 <figure>
@@ -7523,7 +7530,10 @@ một giao diện thống nhất để ứng dụng sử dụng các tài nguyê
 <li><strong>System call</strong> là cửa ngõ để ứng dụng yêu cầu dịch vụ từ kernel (<code>open</code>,
   <code>read</code>, <code>write</code>, <code>mmap</code>, <code>ioctl</code>...).</li>
 <li>Ngoài system call, kernel còn trao đổi với user space qua các file đặc biệt:
-  <code>/dev</code> (device file), <code>/proc</code> và <code>/sys</code> (thông tin và cấu hình kernel).</li>
+  <code>/dev</code> (device file), <code>/proc</code> và <code>/sys</code> (thông tin và cấu hình kernel),
+  <code>debugfs</code>, <code>configfs</code>.</li>
+<li><strong>Netlink</strong> socket: kênh hai chiều dạng message, dùng cho cấu hình mạng
+  (<code>ip</code>, <code>ethtool</code>), uevent cho udev, và nhiều subsystem khác.</li>
 </ul>
 <p>Xem thêm: <a href="../kernel_user_space/">Kernel Space, User Space Interfaces</a>.</p>
 <h2 id="cac-thanh-phan-chinh-trong-kernel">Các thành phần chính trong kernel<a class="headerlink" href="#cac-thanh-phan-chinh-trong-kernel" title="Permanent link">¶</a></h2>
@@ -7543,7 +7553,7 @@ một giao diện thống nhất để ứng dụng sử dụng các tài nguyê
 </tr>
 <tr>
 <td>Memory Management</td>
-<td>Bộ nhớ ảo, page, cấp phát (slab, buddy), <code>mmap</code></td>
+<td>Bộ nhớ ảo, page, cấp phát (buddy, slab allocator SLUB), <code>mmap</code></td>
 <td><code>mm/</code></td>
 </tr>
 <tr>
@@ -7558,8 +7568,8 @@ một giao diện thống nhất để ứng dụng sử dụng các tài nguyê
 </tr>
 <tr>
 <td>IPC</td>
-<td>Giao tiếp giữa các process (pipe, signal, shared memory...)</td>
-<td><code>ipc/</code>, <code>kernel/</code></td>
+<td>SysV IPC, POSIX mqueue (<code>ipc/</code>); signal (<code>kernel/signal.c</code>); pipe (<code>fs/pipe.c</code>)</td>
+<td><code>ipc/</code>, <code>kernel/</code>, <code>fs/</code></td>
 </tr>
 <tr>
 <td>Device Drivers</td>
@@ -7575,6 +7585,8 @@ một giao diện thống nhất để ứng dụng sử dụng các tài nguyê
 </table>
 <p>Các cấu trúc dữ liệu dùng chung trong kernel (list, rbtree, kfifo...) xem tại
 <a href="../kernel_data_structure/">Kernel Data Structure</a>.</p>
+<p>Lưu ý: allocator SLAB cũ đã bị bỏ từ 6.8, hiện kernel chỉ còn SLUB (API
+<code>kmalloc</code>/<code>kmem_cache_*</code> không đổi).</p>
 <h2 id="cac-subsystem">Các subsystem<a class="headerlink" href="#cac-subsystem" title="Permanent link">¶</a></h2>
 <p>Subsystem là một framework chung do kernel cung cấp cho một nhóm thiết bị hoặc
 chức năng. Driver của từng phần cứng cụ thể chỉ cần đăng ký vào framework này
@@ -7612,7 +7624,7 @@ thay vì tự làm lại phần chung. Dưới đây là các subsystem chính, 
 </tr>
 <tr>
 <td>Timer / Time</td>
-<td>hrtimer, clocksource, clockevent, RTC</td>
+<td>hrtimer, clocksource, clockevent</td>
 <td></td>
 </tr>
 <tr>
@@ -7631,9 +7643,14 @@ thay vì tự làm lại phần chung. Dưới đây là các subsystem chính, 
 <td></td>
 </tr>
 <tr>
+<td>cgroups / namespaces</td>
+<td>Giới hạn tài nguyên và cô lập process (nền tảng của container)</td>
+<td><a href="../../virtualization/container/internals/">Container Internals</a></td>
+</tr>
+<tr>
 <td>Tracing / Debug</td>
 <td>ftrace, perf, kprobe, eBPF, dynamic debug</td>
-<td><a href="../ftrace/ftrace/">FTrace</a>, <a href="../ddebug/ddebug/">Dynamic Debug</a></td>
+<td><a href="../ftrace/ftrace/">FTrace</a>, <a href="../ddebug/ddebug/">Dynamic Debug</a>, <a href="../../programming/perf/perf/">Perf</a></td>
 </tr>
 </tbody>
 </table>
@@ -7650,11 +7667,11 @@ thay vì tự làm lại phần chung. Dưới đây là các subsystem chính, 
 <tr>
 <td>Driver core / Device model</td>
 <td>bus, device, driver, kobject, sysfs</td>
-<td><a href="../../lnx_ldd/overview/">Overview LDD</a></td>
+<td><a href="../../lnx_ldd/overview/">Linux Device Driver Overview</a></td>
 </tr>
 <tr>
 <td>Platform bus</td>
-<td>Thiết bị gắn trực tiếp vào system bus của CPU</td>
+<td>Pseudo-bus cho thiết bị không tự dò được (thường là ngoại vi MMIO trên SoC); cần Device Tree/ACPI khai báo</td>
 <td><a href="../../lnx_ldd/platform_dev/platform_device/">Platform Device</a></td>
 </tr>
 <tr>
@@ -7695,7 +7712,12 @@ thay vì tự làm lại phần chung. Dưới đây là các subsystem chính, 
 <tr>
 <td>Virtio</td>
 <td>Thiết bị ảo hóa</td>
-<td></td>
+<td><a href="../../virtualization/foundations/io/">I/O Virtualization</a></td>
+</tr>
+<tr>
+<td>UIO / VFIO</td>
+<td>Đưa thiết bị ra cho driver chạy ở user space (nền tảng của DPDK)</td>
+<td><a href="../../lnx_es/dpdk/dpdk/">DPDK</a></td>
 </tr>
 </tbody>
 </table>
@@ -7767,6 +7789,26 @@ thay vì tự làm lại phần chung. Dưới đây là các subsystem chính, 
 <tr>
 <td>Mailbox / Remoteproc / RPMsg</td>
 <td>Giao tiếp với core/processor khác</td>
+<td></td>
+</tr>
+<tr>
+<td>RTC</td>
+<td>Real-time clock, giữ giờ khi tắt máy (<code>drivers/rtc</code>)</td>
+<td></td>
+</tr>
+<tr>
+<td>NVMEM</td>
+<td>EEPROM, OTP, eFuse</td>
+<td><a href="../../lnx_es/eeprom/eeprom/">EEPROM</a></td>
+</tr>
+<tr>
+<td>FPGA Manager</td>
+<td>Nạp bitstream, FPGA region/bridge (Zynq, ZynqMP)</td>
+<td></td>
+</tr>
+<tr>
+<td>Firmware loader</td>
+<td>Nạp firmware cho thiết bị (<code>request_firmware</code>)</td>
 <td></td>
 </tr>
 </tbody>
@@ -7841,15 +7883,23 @@ thay vì tự làm lại phần chung. Dưới đây là các subsystem chính, 
 <tr>
 <td>Networking</td>
 <td>Socket, TCP/IP, netfilter, netdev, phylib</td>
-<td></td>
+<td><a href="../../lnx_es/dpdk/dpdk/">DPDK</a> (bypass kernel)</td>
+</tr>
+<tr>
+<td>PTP hardware clock</td>
+<td>PHC, hardware timestamping (<code>drivers/ptp</code>)</td>
+<td><a href="../../lnx_es/linuxptp/linuxptp/">Linux PTP</a></td>
 </tr>
 <tr>
 <td>Block layer</td>
 <td>Block device, I/O scheduler, device-mapper, NBD</td>
-<td></td>
+<td><a href="../../lnx_es/nbd/nbd/">Network Block Device</a></td>
 </tr>
 </tbody>
 </table>
+<p>JESD204 không phải subsystem trong mainline: các driver JESD204 (AXI JESD204,
+framework <code>jesd204</code>) chủ yếu nằm trong tree Linux của Analog Devices, dùng
+cùng các driver IIO của ADC/DAC tốc độ cao.</p>
 <p>Danh sách trên mang tính tổng quan, không phải đầy đủ tuyệt đối; xem danh sách
 đầy đủ trong <code>Documentation/</code> của kernel source hoặc tại
 <a href="https://docs.kernel.org/">docs.kernel.org</a>.</p>
@@ -7858,10 +7908,14 @@ thay vì tự làm lại phần chung. Dưới đây là các subsystem chính, 
 báo (thường qua <strong>device-tree</strong> trên hệ nhúng), driver được đăng ký, và kernel
 ghép (match) hai bên rồi gọi <code>probe()</code>. Thông tin này được phơi ra user space
 qua sysfs (<code>/sys</code>).</p>
-<p>Xem thêm: <a href="../../lnx_ldd/overview/">Overview about Linux Device Driver</a>, <a href="../devicetree/devicetree/">Device Tree</a>.</p>
+<p>Thiết bị trên bus tự dò được (PCI, USB) được kernel tự enumerate. Thiết bị
+không tự dò được (I2C, SPI, ngoại vi MMIO trên <strong>platform bus</strong>) phải được khai
+báo, đó là lý do hệ nhúng cần Device Tree.</p>
+<p>Xem thêm: <a href="../../lnx_ldd/overview/">Linux Device Driver Overview</a>, <a href="../devicetree/devicetree/">Device Tree</a>.</p>
 <h2 id="kernel-module">Kernel Module<a class="headerlink" href="#kernel-module" title="Permanent link">¶</a></h2>
 <p>Kernel hỗ trợ hai dạng: <strong>built-in</strong> (nằm trong kernel image, khởi tạo lúc
-boot) và <strong>loadable module</strong> (nạp/gỡ lúc chạy bằng <code>insmod</code>/<code>modprobe</code>).
+boot) và <strong>loadable module</strong> (nạp lúc chạy bằng <code>insmod</code>/<code>modprobe</code>, gỡ bằng
+<code>rmmod</code>/<code>modprobe -r</code>).
 Device driver thường được viết dưới dạng kernel module.</p>
 <p>Xem thêm: <a href="../../lnx_ldd/kernel_module/">Kernel Module</a>.</p>
 <h2 id="source-tree-va-build">Source tree và build<a class="headerlink" href="#source-tree-va-build" title="Permanent link">¶</a></h2>
@@ -7871,8 +7925,14 @@ Device driver thường được viết dưới dạng kernel module.</p>
   <code>include/</code>, <code>Documentation/</code>.</li>
 <li>Cấu hình bằng <strong>Kconfig</strong> (<code>make menuconfig</code>, <code>defconfig</code>) và build bằng
   <strong>Kbuild/Makefile</strong>.</li>
-<li>Kết quả build gồm kernel image (<code>Image</code>/<code>zImage</code>/<code>bzImage</code>), device-tree blob
-  (<code>.dtb</code>) và các module (<code>.ko</code>).</li>
+<li>Kết quả build gồm:<ul>
+<li>Kernel image, tùy kiến trúc: <code>Image</code> (arm64), <code>zImage</code> (arm32),
+  <code>bzImage</code> (x86).</li>
+<li><code>vmlinux</code> (ELF chưa nén, có symbol) và <code>System.map</code>: dùng khi debug,
+  giải mã Oops.</li>
+<li>Device-tree blob (<code>.dtb</code>) và các module (<code>.ko</code>).</li>
+</ul>
+</li>
 </ul>
 <h2 id="debug-va-quan-sat">Debug và quan sát<a class="headerlink" href="#debug-va-quan-sat" title="Permanent link">¶</a></h2>
 <ul>
@@ -7883,8 +7943,9 @@ Device driver thường được viết dưới dạng kernel module.</p>
 <h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="https://docs.kernel.org/">The Linux Kernel documentation</a></li>
-<li>Linux Device Drivers (LDD3) - Corbet, Rubini, Kroah-Hartman</li>
-<li>Understanding the Linux Kernel - Bovet, Cesati</li>
+<li>Linux Device Drivers (LDD3) - Corbet, Rubini, Kroah-Hartman (viết cho kernel
+  2.6.10, năm 2005: khái niệm vẫn đúng, nhiều API đã đổi)</li>
+<li>Understanding the Linux Kernel, 3rd ed. - Bovet, Cesati (kernel 2.6.11)</li>
 <li><a href="https://linux-kernel-labs.github.io/">Linux Kernel Labs</a></li>
 </ul>
 
