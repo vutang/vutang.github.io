@@ -12,7 +12,7 @@
         <link rel="canonical" href="https://vutang.github.io/projects/zynq/u-boot/">
       
       
-        <link rel="prev" href="../../pi3b/">
+        <link rel="prev" href="../../../lnx_es/bootloader/bootloader/">
       
       
         <link rel="next" href="../../../lnx_es/tool_chain/yocto/yocto/">
@@ -927,6 +927,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_es/bootloader/bootloader/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bootloader Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -988,6 +1016,67 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#chuoi-boot-tren-zynq-7000" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chuỗi boot trên Zynq-7000
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chuỗi boot trên Zynq-7000">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bootbin-va-bootgen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BOOT.BIN và bootgen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bo-tri-sd-card" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bố trí SD card
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qspi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QSPI
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#khac-biet-tren-zynq-ultrascale-mpsoc-zynqmp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Khác biệt trên Zynq UltraScale+ MPSoC (ZynqMP)
+      
+    </span>
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#u-boot-on-zynq" class="md-nav__link">
@@ -7188,6 +7277,67 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#chuoi-boot-tren-zynq-7000" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chuỗi boot trên Zynq-7000
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chuỗi boot trên Zynq-7000">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bootbin-va-bootgen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BOOT.BIN và bootgen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bo-tri-sd-card" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bố trí SD card
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qspi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QSPI
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#khac-biet-tren-zynq-ultrascale-mpsoc-zynqmp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Khác biệt trên Zynq UltraScale+ MPSoC (ZynqMP)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#u-boot-on-zynq" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -7373,6 +7523,102 @@
 
 
 <h1 id="porting-linux-for-zynq">Porting Linux for Zynq<a class="headerlink" href="#porting-linux-for-zynq" title="Permanent link">¶</a></h1>
+<p>Khái niệm chung về bootloader, SPL, environment, FIT image và các lệnh boot của U-Boot xem tại <a href="../../../lnx_es/bootloader/bootloader/">Bootloader trong hệ nhúng Linux</a>. Trang này tập trung vào phần riêng của Zynq.</p>
+<h2 id="chuoi-boot-tren-zynq-7000">Chuỗi boot trên Zynq-7000<a class="headerlink" href="#chuoi-boot-tren-zynq-7000" title="Permanent link">¶</a></h2>
+<p>Zynq-7000 có hai phần: PS (Processing System, 2 nhân Cortex-A9) và PL (Programmable Logic, FPGA). PS luôn khởi động trước, PL chỉ hoạt động sau khi được nạp bitstream. Chuỗi boot gồm:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a> BootROM ──► FSBL (OCM) ──► [bitstream → PL] ──► U-Boot (DDR) ──► Linux
+</code></pre></div>
+<ol>
+<li><strong>BootROM</strong>: code cố định trong chip. Đọc chân boot mode (trên Zedboard chọn bằng jumper JP7 đến JP11), tìm boot header trong boot media, nạp FSBL vào OCM (On-Chip Memory, 256 KB; FSBL tối đa khoảng 192 KB). BootROM cũng xử lý giải mã và xác thực FSBL nếu bật secure boot.</li>
+<li><strong>FSBL</strong> (First Stage Boot Loader): generate từ Xilinx SDK/Vitis theo file thiết kế phần cứng (<code>.hdf</code>/<code>.xsa</code>), vì nó chứa <code>ps7_init</code> cấu hình clock, DDR, MIO đúng như thiết kế trong Vivado. FSBL đọc các partition trong <code>BOOT.BIN</code>: nạp bitstream vào PL qua PCAP (nếu có), nạp U-Boot vào DDR rồi nhảy sang U-Boot.</li>
+<li><strong>U-Boot</strong> (SSBL, Second Stage Boot Loader): nạp kernel, DTB, rootfs (hoặc initramfs) rồi boot Linux.</li>
+</ol>
+<p>Boot media mà BootROM hỗ trợ: JTAG, QSPI, NAND, NOR và SD (chỉ SD0). Zynq-7000 không boot trực tiếp từ eMMC: thường boot từ QSPI rồi để U-Boot nạp kernel và rootfs từ eMMC.</p>
+<div class="admonition note">
+<p class="admonition-title">U-Boot SPL thay cho FSBL</p>
+<p>Mainline U-Boot hỗ trợ SPL cho Zynq-7000: SPL dùng file <code>ps7_init_gpl.c</code> sinh từ thiết kế phần cứng và đóng vai trò FSBL, output là <code>spl/boot.bin</code>. Cách này bỏ được phụ thuộc vào SDK, nhưng FSBL của Xilinx vẫn là cách phổ biến và được hỗ trợ tốt hơn (secure boot, multiboot, fallback).</p>
+</div>
+<h3 id="bootbin-va-bootgen"><code>BOOT.BIN</code> và bootgen<a class="headerlink" href="#bootbin-va-bootgen" title="Permanent link">¶</a></h3>
+<p><code>BOOT.BIN</code> là file BootROM đọc, gồm boot header và các partition. File này tạo bằng <strong>bootgen</strong> từ một file <code>.bif</code> mô tả các partition theo thứ tự:</p>
+<div class="highlight"><span class="filename">boot.bif</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>the_ROM_image:
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>{
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    [bootloader] fsbl.elf
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    system.bit
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    u-boot.elf
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>}
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>bootgen<span class="w"> </span>-image<span class="w"> </span>boot.bif<span class="w"> </span>-arch<span class="w"> </span>zynq<span class="w"> </span>-o<span class="w"> </span>BOOT.BIN<span class="w"> </span>-w<span class="w"> </span>on
+</code></pre></div>
+<ul>
+<li><code>[bootloader]</code> đánh dấu partition FSBL, BootROM nạp phần này vào OCM.</li>
+<li>Bitstream <code>system.bit</code> là tùy chọn. Nếu bỏ, có thể nạp bitstream sau bằng lệnh <code>fpga loadb</code> trong U-Boot hoặc qua FPGA Manager trong Linux.</li>
+<li>Có thể thêm partition dữ liệu nạp vào DDR tại địa chỉ cố định, ví dụ <code>[load=0x2a00000] system.dtb</code>.</li>
+<li>Petalinux tạo file này bằng <code>petalinux-package --boot --fsbl &lt;fsbl.elf&gt; --fpga &lt;system.bit&gt; --u-boot</code>.</li>
+</ul>
+<h3 id="bo-tri-sd-card">Bố trí SD card<a class="headerlink" href="#bo-tri-sd-card" title="Permanent link">¶</a></h3>
+<p>Với boot mode SD, BootROM đọc <code>BOOT.BIN</code> từ phân vùng FAT đầu tiên. Bố trí thường dùng:</p>
+<table>
+<thead>
+<tr>
+<th>Phân vùng</th>
+<th>Định dạng</th>
+<th>Nội dung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>FAT32</td>
+<td><code>BOOT.BIN</code>, kernel (<code>uImage</code>/<code>zImage</code>) và <code>system.dtb</code>, hoặc <code>image.ub</code> (FIT), <code>boot.scr</code> hoặc <code>uEnv.txt</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>ext4</td>
+<td>Root filesystem</td>
+</tr>
+</tbody>
+</table>
+<p>Chi tiết các bước xem tại <a href="../zedboard/zedboard/#bootext4rootfs">Boot from SD Card with ext4 filesystem</a>.</p>
+<p>Một <code>bootcmd</code> tối giản để boot từ SD với kernel <code>uImage</code> (build với <code>UIMAGE_LOADADDR=0x8000</code> như phần <a href="#linux-kernel">Linux Kernel</a>):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>=&gt; setenv bootargs console=ttyPS0,115200 root=/dev/mmcblk0p2 rw rootwait earlycon
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>=&gt; fatload mmc 0 0x3000000 uImage
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>=&gt; fatload mmc 0 0x2a00000 system.dtb
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>=&gt; bootm 0x3000000 - 0x2a00000
+</code></pre></div>
+<p>Với kernel <code>zImage</code> thay <code>bootm</code> bằng <code>bootz</code>. U-Boot của Xilinx các bản mới dùng Standard Boot / distro boot, tự tìm <code>boot.scr</code> trên phân vùng FAT; Petalinux sinh sẵn <code>boot.scr</code> này.</p>
+<h3 id="qspi">QSPI<a class="headerlink" href="#qspi" title="Permanent link">¶</a></h3>
+<p>Với boot mode QSPI, <code>BOOT.BIN</code> ghi từ offset 0 của flash. Kernel, DTB và rootfs đặt ở các offset tiếp theo (theo bảng phân vùng trong cấu hình Petalinux hoặc trong DTB). Ghi flash từ U-Boot:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>=&gt; sf probe 0
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>=&gt; fatload mmc 0 ${loadaddr} BOOT.BIN
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>=&gt; sf erase 0 +${filesize}
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>=&gt; sf write ${loadaddr} 0 ${filesize}
+</code></pre></div>
+<p>Hoặc dùng <code>program_flash</code> của Vivado/SDK qua JTAG, cần chỉ định FSBL để công cụ khởi tạo PS trước khi ghi.</p>
+<h2 id="khac-biet-tren-zynq-ultrascale-mpsoc-zynqmp">Khác biệt trên Zynq UltraScale+ MPSoC (ZynqMP)<a class="headerlink" href="#khac-biet-tren-zynq-ultrascale-mpsoc-zynqmp" title="Permanent link">¶</a></h2>
+<p>ZynqMP (Cortex-A53 64-bit, Cortex-R5, PMU) có chuỗi boot dài hơn:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a> PMU ROM + CSU BootROM ──► FSBL (A53 hoặc R5) ──► PMU firmware
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>                                │
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>                                ├──► TF-A BL31 (EL3)  ──► U-Boot (EL2) ──► Linux
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>                                └──► (tùy chọn) bitstream, OP-TEE, firmware R5
+</code></pre></div>
+<ul>
+<li><strong>PMU firmware</strong> chạy trên MicroBlaze trong PMU, quản lý nguồn và reset cho toàn chip. Linux gọi tới nó qua TF-A (giao thức EEMI).</li>
+<li><strong>TF-A BL31</strong> ở lại EL3 lúc runtime để xử lý PSCI và SMC. Xem <a href="../../../embedded_security/secure_boot/secure-boot-trustzone/">Secure boot và TrustZone</a>.</li>
+<li>U-Boot chạy ở EL2 và boot kernel <code>Image</code> bằng <code>booti</code>.</li>
+<li>Từ Versal, PMU và CSU được thay bằng PMC và PLM, <code>BOOT.BIN</code> chuyển sang định dạng PDI.</li>
+</ul>
+<p>File <code>.bif</code> cho ZynqMP chỉ rõ CPU đích và exception level cho từng partition:</p>
+<div class="highlight"><span class="filename">boot.bif</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>the_ROM_image:
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>{
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    [bootloader, destination_cpu=a53-0] zynqmp_fsbl.elf
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    [pmufw_image] pmufw.elf
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    [destination_device=pl] system.bit
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    [destination_cpu=a53-0, exception_level=el-3, trustzone] bl31.elf
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    [destination_cpu=a53-0, exception_level=el-2] u-boot.elf
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>}
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>bootgen<span class="w"> </span>-image<span class="w"> </span>boot.bif<span class="w"> </span>-arch<span class="w"> </span>zynqmp<span class="w"> </span>-o<span class="w"> </span>BOOT.BIN<span class="w"> </span>-w<span class="w"> </span>on
+</code></pre></div>
 <h2 id="u-boot-on-zynq">U-Boot on Zynq<a class="headerlink" href="#u-boot-on-zynq" title="Permanent link">¶</a></h2>
 <h3 id="references">References<a class="headerlink" href="#references" title="Permanent link">¶</a></h3>
 <p>[1] - <a href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841973/Build+U-Boot">Build U-Boot</a> - xilinx-wiki.atlassian.net</p>
@@ -7381,14 +7627,14 @@
 <p>Quá trình build U-Boot cho một thiết bị Zynq7000 có thể tiến hành bằng cách sử dụng bộ công cụ Petalinux của Xilinx. Thử nghiệm này sẽ trực tiếp build U-Boot từ mã nguồn cung cấp bởi Xilinx từ Github bằng compiler cung cấp bởi Xilinx SDK.</p>
 <p><strong><code>make</code> U-Boot</strong></p>
 <p>Tiến hành theo các bước hướng dẫn trong [1], tiến hành fetch source code, cấu hình và make U-Boot.</p>
-<p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>&gt; git clone https://github.com/Xilinx/u-boot-xlnx.git
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>&gt; cd u-boot-xlnx
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>&gt; export CROSS_COMPILE=arm-linux-gnueabihf-
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>&gt; export ARCH=arm
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>&gt; source &lt;SDK setting.sh file&gt; // khai báo arm-linux-gnueabihf compiler
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>&gt; make distclean
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>&gt; make zynq_zed_defconfig
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>&gt; make
+<p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>&gt; git clone https://github.com/Xilinx/u-boot-xlnx.git
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>&gt; cd u-boot-xlnx
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>&gt; export CROSS_COMPILE=arm-linux-gnueabihf-
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>&gt; export ARCH=arm
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>&gt; source &lt;SDK setting.sh file&gt; // khai báo arm-linux-gnueabihf compiler
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>&gt; make distclean
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>&gt; make zynq_zed_defconfig
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>&gt; make
 </code></pre></div>
 Kết quả build là file <code>u-boot.elf</code>. File này có thể tiến hành chạy thử nghiệm bằng phương pháp sử dụng XSCT được mô tả ở phần <code>Zedboard</code>.<p></p>
 <h3 id="nhan-xet">Nhận xét<a class="headerlink" href="#nhan-xet" title="Permanent link">¶</a></h3>
@@ -7402,21 +7648,21 @@ Kết quả build là file <code>u-boot.elf</code>. File này có thể tiến h
 <ul>
 <li>Quá trình build kernel sử dụng họ compiler arm-linux-gnueabihf, do đó cần cấu hình <code>export CROSS_COMPILE=arm-linux-gnueabihf-</code></li>
 <li>Tại source code của Linux kernel thực hiện những bước sau:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>&gt; make ARCH=arm xilinx_zynq_defconfig
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>&gt; make ARCH=arm menuconfig
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>&gt; make ARCH=arm UIMAGE_LOADADDR=0x8000 uImage
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>&gt; make ARCH=arm xilinx_zynq_defconfig
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>&gt; make ARCH=arm menuconfig
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>&gt; make ARCH=arm UIMAGE_LOADADDR=0x8000 uImage
 </code></pre></div></li>
 <li>Kết quả build kernel được lưu tại: [Linux source]/arch/arm/boot/ bao gồm các nội dung như dưới đây. Trong đó quan trọng nhất là Image, uImage, zImage.
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>drwxrwxr-x 2 vutt6 vutt6     4096 Feb 15 00:53 bootp
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>drwxrwxr-x 2 vutt6 vutt6     4096 Mar  4 15:21 compressed
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>-rwxr-xr-x 1 vutt6 vutt6     1805 Feb 15 00:53 deflate_xip_data.sh
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>drwxrwxr-x 2 vutt6 vutt6    73728 Feb 15 00:53 dts
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>-rwxrwxr-x 1 vutt6 vutt6 10662592 Mar  4 15:21 Image
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>-rw-rw-r-- 1 vutt6 vutt6     1648 Feb 15 00:53 install.sh
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>-rw-rw-r-- 1 vutt6 vutt6     3128 Feb 15 00:53 Makefile
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>-rw-rw-r-- 1 vutt6 vutt6  4160040 Mar  4 15:21 uImage
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>-rwxrwxr-x 1 vutt6 vutt6  4159976 Mar  4 15:21 zImage
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>drwxrwxr-x 2 vutt6 vutt6     4096 Feb 15 00:53 bootp
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>drwxrwxr-x 2 vutt6 vutt6     4096 Mar  4 15:21 compressed
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>-rwxr-xr-x 1 vutt6 vutt6     1805 Feb 15 00:53 deflate_xip_data.sh
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>drwxrwxr-x 2 vutt6 vutt6    73728 Feb 15 00:53 dts
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>-rwxrwxr-x 1 vutt6 vutt6 10662592 Mar  4 15:21 Image
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>-rw-rw-r-- 1 vutt6 vutt6     1648 Feb 15 00:53 install.sh
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>-rw-rw-r-- 1 vutt6 vutt6     3128 Feb 15 00:53 Makefile
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>-rw-rw-r-- 1 vutt6 vutt6  4160040 Mar  4 15:21 uImage
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>-rwxrwxr-x 1 vutt6 vutt6  4159976 Mar  4 15:21 zImage
 </code></pre></div></li>
 </ul>
 <p><strong>uImage</strong> sẽ được sử dụng cho quá trình đóng gói boot.bin.</p>
@@ -7432,7 +7678,7 @@ Kết quả build là file <code>u-boot.elf</code>. File này có thể tiến h
 <h2 id="build-rootfs">Build rootfs<a class="headerlink" href="#build-rootfs" title="Permanent link">¶</a></h2>
 <p>http://xilinx.wikidot.com/zynq-rootfs</p>
 <h2 id="create-boot-image">Create boot image<a class="headerlink" href="#create-boot-image" title="Permanent link">¶</a></h2>
-<p>Sử dụng công cụ bootgen tích hợp trong Xilinx SDK.</p>
+<p>Sử dụng công cụ bootgen tích hợp trong Xilinx SDK. Xem mục <a href="#bootbin-va-bootgen"><code>BOOT.BIN</code> và bootgen</a>.</p>
 <h2 id="tool-for-package-images">Tool for package images<a class="headerlink" href="#tool-for-package-images" title="Permanent link">¶</a></h2>
 <p><strong>mkimage</strong> - Generate image for U-Boot  </p>
 <p>The mkimage command is used to create images for use with the U-Boot boot loader. Thes eimages can contain the linux kernel, device tree blob, root file system image, firmware images etc., either separate or combined.</p>
@@ -7463,7 +7709,7 @@ Kết quả build là file <code>u-boot.elf</code>. File này có thể tiến h
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 20, 2026 09:37:50 UTC">October 20, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 24, 2026 12:44:30 UTC">October 24, 2026</span>
   </span>
 
     
@@ -7512,7 +7758,7 @@ Kết quả build là file <code>u-boot.elf</code>. File này có thể tiến h
       <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
-          <a href="../../pi3b/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Raspberry Pi 3B">
+          <a href="../../../lnx_es/bootloader/bootloader/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Bootloader Overview">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -7522,7 +7768,7 @@ Kết quả build là file <code>u-boot.elf</code>. File này có thể tiến h
                 Previous
               </span>
               <div class="md-ellipsis">
-                Raspberry Pi 3B
+                Bootloader Overview
               </div>
             </div>
           </a>
