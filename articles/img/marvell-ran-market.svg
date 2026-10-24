@@ -1,0 +1,68 @@
+<svg font-family='IBM Plex Sans,Segoe UI,Roboto,Arial,sans-serif' aria-label="Thị trường RAN và lựa chọn silicon của các nhà cung cấp" role="img" viewBox="0 0 714 176" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="714" height="176" rx="6" style="fill:#FFFFFF;stroke:#DDD8CD"/>
+      
+      <text x="14" y="19" font-size="9" font-weight="800" style="fill:#1B1B1A">Thị trường RAN toàn cầu</text>
+      <text x="14" y="29" font-size="7.2" style="fill:#77756F">tỷ USD · Omdia</text>
+      
+      <line x1="14" x2="124" y1="156" y2="156" style="stroke:#B5B0A5"/>
+      <path d="M20 156 V61 a4 4 0 0 1 4 -4 H46 a4 4 0 0 1 4 4 V156 Z" fill="#eb6834"/>
+      <path d="M54 156 V72 a4 4 0 0 1 4 -4 H80 a4 4 0 0 1 4 4 V156 Z" fill="#eb6834"/>
+      <path d="M88 156 V83 a4 4 0 0 1 4 -4 H114 a4 4 0 0 1 4 4 V156 Z" fill="#eb6834"/>
+      <g font-size="8" font-weight="700" text-anchor="middle" style="fill:#1B1B1A"><text x="35" y="53">45</text><text x="69" y="64">40</text><text x="103" y="75">35</text></g>
+      <g font-size="7.2" text-anchor="middle" style="fill:#4A4945"><text x="35" y="166">2022</text><text x="69" y="166">2023</text><text x="103" y="166">2024</text></g>
+
+      
+      <text x="146" y="19" font-size="9" font-weight="800" style="fill:#1B1B1A">Doanh thu carrier Marvell</text>
+      <text x="146" y="29" font-size="7.2" style="fill:#77756F">triệu USD · năm tài chính</text>
+      
+      <line x1="146" x2="256" y1="156" y2="156" style="stroke:#B5B0A5"/>
+      <path d="M160 156 V59.2 a4 4 0 0 1 4 -4 H190 a4 4 0 0 1 4 4 V156 Z" fill="#eb6834"/>
+      <path d="M212 156 V129 a4 4 0 0 1 4 -4 H242 a4 4 0 0 1 4 4 V156 Z" fill="#eb6834"/>
+      <g font-size="8" font-weight="700" text-anchor="middle" style="fill:#1B1B1A"><text x="177" y="51">~1.100</text><text x="229" y="121">338</text></g>
+      <g font-size="7.2" text-anchor="middle" style="fill:#4A4945"><text x="177" y="166">FY23</text><text x="229" y="166">FY25</text></g>
+      <text x="229" y="95" font-size="6.8" text-anchor="middle" style="fill:#77756F">−69%</text>
+
+      <line x1="272" x2="272" y1="12" y2="164" style="stroke:#DDD8CD"/>
+
+      
+      <text x="288" y="19" font-size="9" font-weight="800" style="fill:#1B1B1A">Nhà cung cấp RAN chọn silicon nào</text>
+      <text x="288" y="29" font-size="7.2" style="fill:#77756F">theo Light Reading, 1/2026</text>
+      
+      <g font-size="7.4" font-weight="800" text-anchor="middle" style="fill:#1B1B1A">
+        <rect x="350" y="36" width="72" height="22" rx="4" stroke="#eb6834" stroke-width="1" style="fill:#FDEEE6"/>
+        <text x="386" y="45.5">Marvell</text><text x="386" y="54" font-size="6.4" font-weight="600" style="fill:#4A4945">Octeon/Fusion</text>
+        <text x="460" y="50">Intel x86</text>
+        <text x="530" y="50">NVIDIA GPU</text>
+        <text x="600" y="50">CPU Arm</text>
+        <text x="668" y="50">ASIC riêng</text>
+      </g>
+      <g style="stroke:#ECE8DF"><line x1="288" x2="702" y1="62" y2="62" style="stroke:#B5B0A5"/><line x1="288" x2="702" y1="94" y2="94"/><line x1="288" x2="702" y1="126" y2="126"/></g>
+      <g font-size="8.2" font-weight="800" style="fill:#1B1B1A"><text x="288" y="81">Samsung</text><text x="288" y="113">Nokia</text><text x="288" y="145">Ericsson</text></g>
+      
+      <g font-size="6.4" text-anchor="middle">
+        
+        <rect x="352" y="68" width="68" height="20" rx="10" stroke-width="1" stroke-dasharray="3 2" style="fill:#FFFFFF;stroke:#A23B12"/>
+        <text x="386" y="76.5" font-weight="700" style="fill:#1B1B1A">RAN chuyên dụng</text><text x="386" y="84.5" style="fill:#4A4945">tìm phương án khác</text>
+        <rect x="430" y="70" width="60" height="16" rx="8" fill="#0E5A66"/><text x="460" y="80.5" fill="#FFFFFF" font-weight="700">vRAN</text>
+        <text x="530" y="80.5" style="fill:#B5B0A5">—</text><text x="600" y="80.5" style="fill:#B5B0A5">—</text>
+        <rect x="638" y="70" width="60" height="16" rx="8" fill="#0E5A66"/><text x="668" y="80.5" fill="#FFFFFF" font-weight="700">modem riêng</text>
+        
+        <rect x="352" y="102" width="68" height="16" rx="8" fill="#0E5A66"/><text x="386" y="112.5" fill="#FFFFFF" font-weight="700">Layer 1 · chính</text>
+        <text x="460" y="112.5" style="fill:#B5B0A5">—</text>
+        <rect x="496" y="100" width="68" height="20" rx="10" stroke-width="1" stroke-dasharray="3 2" style="fill:#FFFFFF;stroke:#0E5A66"/>
+        <text x="530" y="108.5" font-weight="700" style="fill:#1B1B1A">5G-A / 6G</text><text x="530" y="116.5" style="fill:#4A4945">AI-RAN</text>
+        <text x="600" y="112.5" style="fill:#B5B0A5">—</text><text x="668" y="112.5" style="fill:#B5B0A5">—</text>
+        
+        <text x="386" y="144.5" style="fill:#B5B0A5">—</text>
+        <rect x="430" y="134" width="60" height="16" rx="8" fill="#0E5A66"/><text x="460" y="144.5" fill="#FFFFFF" font-weight="700">cloud RAN</text>
+        <rect x="500" y="134" width="60" height="16" rx="8" stroke-width="1" stroke-dasharray="3 2" style="fill:#FFFFFF;stroke:#0E5A66"/><text x="530" y="144.5" font-weight="700" style="fill:#1B1B1A">chưa chọn</text>
+        <rect x="570" y="132" width="60" height="20" rx="10" stroke-width="1" stroke-dasharray="3 2" style="fill:#FFFFFF;stroke:#0E5A66"/><text x="600" y="140.5" font-weight="700" style="fill:#1B1B1A">đã port</text><text x="600" y="148.5" style="fill:#4A4945">SVE2</text>
+        <rect x="638" y="134" width="60" height="16" rx="8" fill="#0E5A66"/><text x="668" y="144.5" fill="#FFFFFF" font-weight="700">chủ lực</text>
+      </g>
+      
+      <g font-size="6.8" style="fill:#4A4945">
+        <rect x="288" y="157" width="16" height="9" rx="4.5" fill="#0E5A66"/><text x="309" y="164.5">đang dùng thương mại</text>
+        <rect x="400" y="157" width="16" height="9" rx="4.5" stroke-dasharray="3 2" style="fill:#FFFFFF;stroke:#0E5A66"/><text x="421" y="164.5">thăm dò, phát triển hoặc chưa quyết</text>
+        <rect x="560" y="157" width="16" height="9" rx="4.5" stroke-dasharray="3 2" style="fill:#FFFFFF;stroke:#A23B12"/><text x="581" y="164.5">đang được thay thế dần</text>
+      </g>
+    </svg>

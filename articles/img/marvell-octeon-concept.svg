@@ -1,0 +1,89 @@
+<svg font-family='IBM Plex Sans,Segoe UI,Roboto,Arial,sans-serif' aria-label="Sơ đồ khái niệm SoC Octeon 10 nối tới trung tâm dữ liệu AI" role="img" viewBox="0 0 714 196" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="fib" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0" stop-color="#5FB8C9"/><stop offset="1" stop-color="#7FE0B4"/>
+        </linearGradient>
+        <pattern id="grid" width="18" height="18" patternUnits="userSpaceOnUse">
+          <path d="M18 0H0V18" fill="none" stroke="#1C3A4E" stroke-width="0.6"/>
+        </pattern>
+      </defs>
+      <rect x="0" y="0" width="714" height="196" rx="7" fill="#0E2232"/>
+      <rect x="0" y="0" width="714" height="196" rx="7" fill="url(#grid)"/>
+
+      
+      <text x="34" y="24" fill="#9CC9D3" font-size="9" font-weight="700" letter-spacing="1.4">OCTEON 10 · 5NM · ARM NEOVERSE N2</text>
+      <rect x="34" y="32" width="232" height="146" rx="6" fill="#163448" stroke="#5FB8C9" stroke-width="1.4"/>
+      
+      <g>
+        
+        <rect x="46" y="44" width="24" height="18" rx="2.5" fill="#2a78d6"/><rect x="74" y="44" width="24" height="18" rx="2.5" fill="#2a78d6"/><rect x="102" y="44" width="24" height="18" rx="2.5" fill="#2a78d6"/><rect x="130" y="44" width="24" height="18" rx="2.5" fill="#2a78d6"/><rect x="158" y="44" width="24" height="18" rx="2.5" fill="#2a78d6"/><rect x="186" y="44" width="24" height="18" rx="2.5" fill="#2a78d6"/>
+        <rect x="46" y="66" width="24" height="18" rx="2.5" fill="#2a78d6"/><rect x="74" y="66" width="24" height="18" rx="2.5" fill="#2a78d6"/><rect x="102" y="66" width="24" height="18" rx="2.5" fill="#2a78d6"/><rect x="130" y="66" width="24" height="18" rx="2.5" fill="#2a78d6"/><rect x="158" y="66" width="24" height="18" rx="2.5" fill="#2a78d6"/><rect x="186" y="66" width="24" height="18" rx="2.5" fill="#2a78d6"/>
+        <rect x="46" y="88" width="24" height="18" rx="2.5" fill="#2a78d6"/><rect x="74" y="88" width="24" height="18" rx="2.5" fill="#2a78d6"/><rect x="102" y="88" width="24" height="18" rx="2.5" fill="#2a78d6"/><rect x="130" y="88" width="24" height="18" rx="2.5" fill="#2a78d6"/><rect x="158" y="88" width="24" height="18" rx="2.5" fill="#2a78d6"/><rect x="186" y="88" width="24" height="18" rx="2.5" fill="#2a78d6"/>
+        <rect x="46" y="110" width="24" height="18" rx="2.5" fill="#2a78d6"/><rect x="74" y="110" width="24" height="18" rx="2.5" fill="#2a78d6"/><rect x="102" y="110" width="24" height="18" rx="2.5" fill="#2a78d6"/><rect x="130" y="110" width="24" height="18" rx="2.5" fill="#2a78d6"/><rect x="158" y="110" width="24" height="18" rx="2.5" fill="#2a78d6"/><rect x="186" y="110" width="24" height="18" rx="2.5" fill="#2a78d6"/>
+      </g>
+      <g font-size="6.4" fill="#EAF4FF" font-weight="700" text-anchor="middle">
+        <text x="58" y="55.5">N2</text><text x="86" y="55.5">N2</text><text x="114" y="55.5">N2</text><text x="142" y="55.5">N2</text><text x="170" y="55.5">N2</text><text x="198" y="55.5">N2</text>
+        <text x="58" y="77.5">N2</text><text x="86" y="77.5">N2</text><text x="114" y="77.5">N2</text><text x="142" y="77.5">N2</text><text x="170" y="77.5">N2</text><text x="198" y="77.5">N2</text>
+        <text x="58" y="99.5">N2</text><text x="86" y="99.5">N2</text><text x="114" y="99.5">N2</text><text x="142" y="99.5">N2</text><text x="170" y="99.5">N2</text><text x="198" y="99.5">N2</text>
+        <text x="58" y="121.5">N2</text><text x="86" y="121.5">N2</text><text x="114" y="121.5">N2</text><text x="142" y="121.5">N2</text><text x="170" y="121.5">N2</text><text x="198" y="121.5">N2</text>
+      </g>
+      
+      <rect x="216" y="44" width="40" height="40" rx="3" fill="#1F4D63" stroke="#5FB8C9" stroke-width=".8"/>
+      <text x="236" y="61" fill="#CDE7EC" font-size="6.4" font-weight="700" text-anchor="middle">Crypto</text>
+      <text x="236" y="71" fill="#CDE7EC" font-size="6.4" font-weight="700" text-anchor="middle">ML</text>
+      <rect x="216" y="88" width="40" height="40" rx="3" fill="#3A2A1A" stroke="#eb6834" stroke-width=".9"/>
+      <text x="236" y="104" fill="#F6C9B1" font-size="6.4" font-weight="700" text-anchor="middle">L1 accel</text>
+      <text x="236" y="114" fill="#F6C9B1" font-size="6" text-anchor="middle">(Fusion)</text>
+      
+      <g font-size="6.4" font-weight="700" fill="#CDE7EC" text-anchor="middle">
+        <rect x="46" y="136" width="50" height="30" rx="3" fill="#1F4D63"/><text x="71" y="154">DDR5</text>
+        <rect x="100" y="136" width="52" height="30" rx="3" fill="#1F4D63"/><text x="126" y="154">PCIe 5.0</text>
+        <rect x="156" y="136" width="54" height="30" rx="3" fill="#1F4D63"/><text x="183" y="154">Ethernet</text>
+        <rect x="214" y="136" width="42" height="30" rx="3" fill="#1F4D63"/><text x="235" y="150">Packet</text><text x="235" y="159">engine</text>
+      </g>
+
+      
+      <g fill="none" stroke="url(#fib)" stroke-linecap="round">
+        <path d="M266 62 C 360 62, 380 58, 470 58" stroke-width="2.2"/>
+        <path d="M266 74 C 360 74, 390 82, 470 82" stroke-width="1.6" opacity=".9"/>
+        <path d="M266 86 C 370 86, 400 106, 470 106" stroke-width="2.2"/>
+        <path d="M266 98 C 370 98, 410 130, 470 130" stroke-width="1.4" opacity=".85"/>
+      </g>
+      <g fill="#7FE0B4">
+        <circle cx="330" cy="62" r="2"/><circle cx="392" cy="65" r="1.6"/><circle cx="360" cy="78" r="1.6"/><circle cx="410" cy="99" r="2"/><circle cx="430" cy="124" r="1.6"/>
+      </g>
+      <text x="368" y="44" fill="#9CC9D3" font-size="8" font-weight="600" text-anchor="middle">liên kết quang · scale-up</text>
+
+      
+      <text x="583" y="24" fill="#7FE0B4" font-size="9" font-weight="700" letter-spacing="1.4" text-anchor="middle">TRUNG TÂM DỮ LIỆU AI</text>
+      <g>
+        <rect x="474" y="34" width="62" height="136" rx="4" fill="#163448" stroke="#7FE0B4" stroke-width="1.1"/>
+        <rect x="552" y="34" width="62" height="136" rx="4" fill="#163448" stroke="#7FE0B4" stroke-width="1.1"/>
+        <rect x="630" y="34" width="62" height="136" rx="4" fill="#163448" stroke="#7FE0B4" stroke-width="1.1"/>
+      </g>
+      <g fill="#24546B">
+        <rect x="481" y="42" width="48" height="10" rx="2"/><rect x="481" y="56" width="48" height="10" rx="2"/><rect x="481" y="70" width="48" height="10" rx="2"/><rect x="481" y="84" width="48" height="10" rx="2"/><rect x="481" y="98" width="48" height="10" rx="2"/><rect x="481" y="112" width="48" height="10" rx="2"/><rect x="481" y="126" width="48" height="10" rx="2"/><rect x="481" y="140" width="48" height="10" rx="2"/><rect x="481" y="154" width="48" height="10" rx="2"/>
+        <rect x="559" y="42" width="48" height="10" rx="2"/><rect x="559" y="56" width="48" height="10" rx="2"/><rect x="559" y="70" width="48" height="10" rx="2"/><rect x="559" y="84" width="48" height="10" rx="2"/><rect x="559" y="98" width="48" height="10" rx="2"/><rect x="559" y="112" width="48" height="10" rx="2"/><rect x="559" y="126" width="48" height="10" rx="2"/><rect x="559" y="140" width="48" height="10" rx="2"/><rect x="559" y="154" width="48" height="10" rx="2"/>
+        <rect x="637" y="42" width="48" height="10" rx="2"/><rect x="637" y="56" width="48" height="10" rx="2"/><rect x="637" y="70" width="48" height="10" rx="2"/><rect x="637" y="84" width="48" height="10" rx="2"/><rect x="637" y="98" width="48" height="10" rx="2"/><rect x="637" y="112" width="48" height="10" rx="2"/><rect x="637" y="126" width="48" height="10" rx="2"/><rect x="637" y="140" width="48" height="10" rx="2"/><rect x="637" y="154" width="48" height="10" rx="2"/>
+      </g>
+      <g fill="#7FE0B4">
+        <circle cx="524" cy="47" r="1.6"/><circle cx="524" cy="75" r="1.6"/><circle cx="524" cy="117" r="1.6"/><circle cx="602" cy="61" r="1.6"/><circle cx="602" cy="103" r="1.6"/><circle cx="602" cy="145" r="1.6"/><circle cx="680" cy="47" r="1.6"/><circle cx="680" cy="89" r="1.6"/><circle cx="680" cy="131" r="1.6"/>
+      </g>
+      <g fill="#0E2232" stroke="#7FE0B4" stroke-width=".8">
+        <rect x="490" y="176" width="30" height="0" />
+      </g>
+      <text x="505" y="186" fill="#9CC9D3" font-size="7" text-anchor="middle">XPU</text>
+      <text x="583" y="186" fill="#9CC9D3" font-size="7" text-anchor="middle">switch · quang</text>
+      <text x="661" y="186" fill="#9CC9D3" font-size="7" text-anchor="middle">CXL · bộ nhớ</text>
+
+      
+      <g opacity=".8">
+        <path d="M266 160 C 284 166, 296 170, 312 171" fill="none" stroke="#8A9AA5" stroke-width="1.2" stroke-dasharray="3 3"/>
+        <path d="M330 172 L 322 150 M330 172 L 338 150 M325 160 L 335 160 M322 150 L 338 150" stroke="#B8C3CA" stroke-width="1.4" fill="none"/>
+        <line x1="330" y1="150" x2="330" y2="138" stroke="#B8C3CA" stroke-width="1.4"/>
+        <path d="M321 136 a 12 12 0 0 1 18 0 M317 132 a 18 18 0 0 1 26 0" fill="none" stroke="#B8C3CA" stroke-width="1.2"/>
+        <text x="352" y="148" fill="#B8C3CA" font-size="8" font-weight="700">5G RAN</text>
+        <text x="352" y="159" fill="#8A9AA5" font-size="7">không nằm trong</text>
+        <text x="352" y="168" fill="#8A9AA5" font-size="7">lộ trình tăng trưởng</text>
+      </g>
+    </svg>

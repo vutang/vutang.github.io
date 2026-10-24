@@ -1,0 +1,62 @@
+<svg font-family='IBM Plex Sans,Segoe UI,Roboto,Arial,sans-serif' aria-label="Biểu đồ doanh thu và cơ cấu mục tiêu FY31" role="img" viewBox="0 0 714 168" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="714" height="168" rx="6" style="fill:#FFFFFF;stroke:#DDD8CD"/>
+      
+      <text x="16" y="20" font-size="9.5" font-weight="800" style="fill:#1B1B1A">Doanh thu Marvell</text>
+      <text x="16" y="31" font-size="7.6" style="fill:#77756F">tỷ USD theo năm tài chính · FY26 là thực tế, còn lại là mục tiêu</text>
+      
+      <g stroke-width="1" style="stroke:#ECE8DF">
+        <line x1="40" x2="318" y1="150" y2="150" style="stroke:#B5B0A5"/>
+        <line x1="40" x2="318" y1="115.3" y2="115.3"/>
+        <line x1="40" x2="318" y1="80.7" y2="80.7"/>
+        <line x1="40" x2="318" y1="46" y2="46"/>
+      </g>
+      <g font-size="7" text-anchor="end" style="fill:#77756F">
+        <text x="34" y="152">0</text><text x="34" y="117.5">30</text><text x="34" y="83">60</text><text x="34" y="48.5">90</text>
+      </g>
+      
+      
+      <path d="M63 150 V144.5 a4 4 0 0 1 4 -4 H93 a4 4 0 0 1 4 4 V150 Z" fill="#2a78d6"/>
+      
+      <path d="M128 150 V140.1 a4 4 0 0 1 4 -4 H158 a4 4 0 0 1 4 4 V150 Z" fill="#2a78d6" fill-opacity=".55" stroke="#2a78d6" stroke-width="1"/>
+      
+      <path d="M193 150 V130.9 a4 4 0 0 1 4 -4 H223 a4 4 0 0 1 4 4 V150 Z" fill="#2a78d6" fill-opacity=".55" stroke="#2a78d6" stroke-width="1"/>
+      
+      <path d="M263 150 V61.6 a4 4 0 0 1 4 -4 H293 a4 4 0 0 1 4 4 V150 Z" fill="#2a78d6" fill-opacity=".55" stroke="#2a78d6" stroke-width="1"/>
+      <g stroke-width="1.2" style="stroke:#1B1B1A">
+        <line x1="280" x2="280" y1="46" y2="69.1"/>
+        <line x1="274" x2="286" y1="46" y2="46"/><line x1="274" x2="286" y1="69.1" y2="69.1"/>
+      </g>
+      <g font-size="8" font-weight="700" text-anchor="middle" style="fill:#1B1B1A">
+        <text x="80" y="136">8,2</text><text x="145" y="131.5">~12</text><text x="210" y="122">~20</text>
+      </g>
+      <text x="300" y="44" font-size="8" font-weight="700" style="fill:#1B1B1A">70–90</text>
+      <g font-size="7.6" text-anchor="middle" style="fill:#4A4945">
+        <text x="80" y="161">FY26</text><text x="145" y="161">FY27</text><text x="210" y="161">FY28</text><text x="280" y="161">FY31</text>
+      </g>
+      <text x="240" y="140" font-size="7" text-anchor="middle" style="fill:#77756F">…</text>
+
+      <line x1="342" x2="342" y1="16" y2="152" style="stroke:#DDD8CD"/>
+
+      
+      <text x="362" y="20" font-size="9.5" font-weight="800" style="fill:#1B1B1A">Cơ cấu mục tiêu FY31 (điểm giữa ~80 tỷ USD)</text>
+      <text x="362" y="31" font-size="7.6" style="fill:#77756F">Theo slide Investor Day; mảng viễn thông nằm trong “Comms and other”</text>
+      <g>
+        <path d="M366 46 H515.7 V70 H366 a4 4 0 0 1 -4 -4 V50 a4 4 0 0 1 4 -4 Z" fill="#2a78d6"/>
+        <rect x="517.7" y="46" width="121.75" height="24" fill="#eb6834"/>
+        <rect x="641.45" y="46" width="39.25" height="24" fill="#1baf7a"/>
+        <path d="M682.7 46 H688 a4 4 0 0 1 4 4 V66 a4 4 0 0 1 -4 4 H682.7 Z" fill="#eda100"/>
+      </g>
+      <g font-size="8" font-weight="700" fill="#FFFFFF">
+        <text x="370" y="61.5">Interconnect</text>
+        <text x="522" y="61.5">Custom</text>
+      </g>
+      
+      <g font-size="8.2" style="fill:#1B1B1A">
+        <rect x="362" y="88" width="9" height="9" rx="2" fill="#2a78d6"/><text x="377" y="96">Interconnect · DSP quang, TIA/driver</text><text x="692" y="96" text-anchor="end" font-weight="700">~37,5</text>
+        <rect x="362" y="104" width="9" height="9" rx="2" fill="#eb6834"/><text x="377" y="112">Custom · XPU và XPU attach</text><text x="692" y="112" text-anchor="end" font-weight="700">~30</text>
+        <rect x="362" y="120" width="9" height="9" rx="2" fill="#1baf7a"/><text x="377" y="128">Switching và storage</text><text x="692" y="128" text-anchor="end" font-weight="700">~10</text>
+        <rect x="362" y="136" width="9" height="9" rx="2" fill="#eda100"/><text x="377" y="144">Comms and other · gồm carrier/RAN</text><text x="692" y="144" text-anchor="end" font-weight="700">~2,5</text>
+      </g>
+      <g style="stroke:#ECE8DF"><line x1="362" x2="692" y1="100" y2="100"/><line x1="362" x2="692" y1="116" y2="116"/><line x1="362" x2="692" y1="132" y2="132"/></g>
+      <text x="692" y="84" font-size="7" text-anchor="end" style="fill:#77756F">tỷ USD</text>
+    </svg>

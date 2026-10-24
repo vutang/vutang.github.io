@@ -1,0 +1,83 @@
+<svg font-family='IBM Plex Sans,Segoe UI,Roboto,Arial,sans-serif' aria-label="Dòng thời gian các thế hệ Octeon" role="img" viewBox="0 0 714 150" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="714" height="150" rx="6" style="fill:#FFFFFF;stroke:#DDD8CD"/>
+      <text x="16" y="19" font-size="9.5" font-weight="800" style="fill:#1B1B1A">Các thế hệ Octeon dùng lõi Arm</text>
+      
+      <text x="16" y="52" font-size="7.6" font-weight="700" fill="#2a78d6">DPU / XỬ LÝ MẠNG</text>
+      <text x="16" y="116" font-size="7.6" font-weight="700" style="fill:#A23B12">BASEBAND RAN</text>
+      
+      <line x1="120" x2="700" y1="80" y2="80" stroke-width="1.4" style="stroke:#B5B0A5"/>
+      <g font-size="7.4" text-anchor="middle" style="fill:#77756F">
+        <line x1="150" x2="150" y1="77" y2="83" style="stroke:#B5B0A5"/><text x="150" y="91">2020</text>
+        <line x1="227.7" x2="227.7" y1="77" y2="83" style="stroke:#B5B0A5"/><text x="227.7" y="91">2021</text>
+        <line x1="305.4" x2="305.4" y1="77" y2="83" style="stroke:#B5B0A5"/><text x="305.4" y="91">2022</text>
+        <line x1="383.1" x2="383.1" y1="77" y2="83" style="stroke:#B5B0A5"/><text x="383.1" y="91">2023</text>
+        <line x1="460.8" x2="460.8" y1="77" y2="83" style="stroke:#B5B0A5"/><text x="460.8" y="91">2024</text>
+        <line x1="538.5" x2="538.5" y1="77" y2="83" style="stroke:#B5B0A5"/><text x="538.5" y="91">2025</text>
+        <line x1="616.2" x2="616.2" y1="77" y2="83" style="stroke:#B5B0A5"/><text x="616.2" y="91">2026</text>
+      </g>
+      
+      <g>
+        <line x1="128" x2="128" y1="62" y2="80" stroke="#2a78d6" stroke-dasharray="2 2"/>
+        <circle cx="128" cy="80" r="3.5" stroke="#2a78d6" stroke-width="1.6" style="fill:#FFFFFF"/>
+        <rect x="96" y="30" width="78" height="32" rx="5" stroke="#2a78d6" stroke-width=".9" style="fill:#EAF2FC"/>
+        <text x="135" y="43" font-size="7.6" font-weight="800" text-anchor="middle" style="fill:#1B1B1A">OCTEON TX2</text>
+        <text x="135" y="54" font-size="6.8" text-anchor="middle" style="fill:#4A4945">Armv8 · 4–36 lõi</text>
+      </g>
+      
+      <g>
+        <line x1="260" x2="260" y1="62" y2="80" stroke="#2a78d6"/>
+        <circle cx="260" cy="80" r="4" fill="#2a78d6"/>
+        <rect x="206" y="24" width="108" height="38" rx="5" fill="#2a78d6"/>
+        <text x="260" y="37" font-size="7.6" font-weight="800" fill="#FFFFFF" text-anchor="middle">OCTEON 10 · 6/2021</text>
+        <text x="260" y="47.5" font-size="6.8" text-anchor="middle" style="fill:#EAF2FC">Neoverse N2 · 5nm</text>
+        <text x="260" y="56.5" font-size="6.8" text-anchor="middle" style="fill:#EAF2FC">8–36 lõi · DDR5 · PCIe 5.0</text>
+      </g>
+      
+      <g>
+        <line x1="454.6" x2="454.6" y1="62" y2="80" stroke="#2a78d6"/>
+        <circle cx="454.6" cy="80" r="4" fill="#2a78d6"/>
+        <rect x="402" y="30" width="106" height="32" rx="5" stroke="#2a78d6" stroke-width=".9" style="fill:#EAF2FC"/>
+        <text x="455" y="43" font-size="7.6" font-weight="800" text-anchor="middle" style="fill:#1B1B1A">CN102 / CN103 · 12/2023</text>
+        <text x="455" y="54" font-size="6.8" text-anchor="middle" style="fill:#4A4945">8 lõi N2 · ~25W · small cell</text>
+      </g>
+      
+      <g>
+        <rect x="538.5" y="74" width="100" height="12" rx="6" fill="#2a78d6" fill-opacity=".18"/>
+        <line x1="588" x2="588" y1="62" y2="74" stroke="#2a78d6" stroke-dasharray="2 2"/>
+        <rect x="530" y="24" width="116" height="38" rx="5" stroke="#2a78d6" stroke-width="1" stroke-dasharray="3 2" style="fill:#FFFFFF"/>
+        <text x="588" y="37" font-size="7.6" font-weight="800" text-anchor="middle" style="fill:#1B1B1A">CN20K · 2025–2026</text>
+        <text x="588" y="47.5" font-size="6.8" text-anchor="middle" style="fill:#4A4945">bản vá Linux, DPDK/ROC</text>
+        <text x="588" y="56.5" font-size="6.8" text-anchor="middle" style="fill:#4A4945">lõi, tiến trình: chưa công bố</text>
+      </g>
+      
+      <g>
+        <line x1="676" x2="676" y1="66" y2="96" stroke-width="1.2" style="stroke:#1B1B1A"/>
+        <path d="M676 62 l4 4 l-4 4 l-4 -4 Z" style="fill:#1B1B1A"/>
+        <text x="676" y="106" font-size="7" font-weight="800" text-anchor="middle" style="fill:#1B1B1A">Investor Day</text>
+        <text x="676" y="115" font-size="6.6" text-anchor="middle" style="fill:#4A4945">10/2026: không</text>
+        <text x="676" y="123" font-size="6.6" text-anchor="middle" style="fill:#4A4945">có lộ trình CPU</text>
+      </g>
+      
+      <g>
+        <line x1="178.7" x2="178.7" y1="80" y2="100" stroke="#eb6834"/>
+        <circle cx="178.7" cy="80" r="4" fill="#eb6834"/>
+        <rect x="128" y="100" width="102" height="32" rx="5" stroke="#eb6834" stroke-width=".9" style="fill:#FDEEE6"/>
+        <text x="179" y="113" font-size="7.6" font-weight="800" text-anchor="middle" style="fill:#1B1B1A">Fusion CNF95 · 2020</text>
+        <text x="179" y="124" font-size="6.8" text-anchor="middle" style="fill:#4A4945">nền TX2 · baseband 5G</text>
+      </g>
+      
+      <g>
+        <line x1="392.4" x2="392.4" y1="80" y2="100" stroke="#eb6834"/>
+        <circle cx="392.4" cy="80" r="4" fill="#eb6834"/>
+        <rect x="324" y="100" width="138" height="38" rx="5" fill="#eb6834"/>
+        <text x="393" y="113" font-size="7.6" font-weight="800" fill="#FFFFFF" text-anchor="middle">OCTEON 10 Fusion · 2/2023</text>
+        <text x="393" y="123.5" font-size="6.8" fill="#FFF3EC" text-anchor="middle">CNF105 · 5nm · L1 inline, JESD204</text>
+        <text x="393" y="132.5" font-size="6.8" fill="#FFF3EC" text-anchor="middle">đang sản xuất</text>
+      </g>
+      
+      <g>
+        <rect x="500" y="100" width="128" height="32" rx="5" stroke="#eb6834" stroke-width="1" stroke-dasharray="3 2" style="fill:#FFFFFF"/>
+        <text x="564" y="113" font-size="7.6" font-weight="800" text-anchor="middle" style="fill:#1B1B1A">Fusion thế hệ sau?</text>
+        <text x="564" y="124" font-size="6.8" text-anchor="middle" style="fill:#4A4945">chưa có thông tin công khai</text>
+      </g>
+    </svg>
