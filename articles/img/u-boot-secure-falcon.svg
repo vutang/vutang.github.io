@@ -1,0 +1,39 @@
+<svg role="img" aria-label="Falcon mode và secure falcon mode" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+  <rect width="760" height="300" rx="6" fill="#ffffff"/>
+  <defs>
+    <marker id="fg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker>
+    <marker id="fo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#3949ab"/></marker>
+    <marker id="fr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c62828"/></marker>
+  </defs>
+
+  <g font-size="11.5" font-weight="700" text-anchor="middle">
+    <rect x="14" y="94" width="120" height="50" rx="6" fill="#e8eaf6" stroke="#3949ab"/><text x="74" y="114">SPL</text><text x="74" y="130" font-size="10" font-weight="400">(sau TF-A, OP-TEE)</text>
+    <rect x="320" y="24" width="120" height="44" rx="6" fill="#f5f5f5" stroke="#999"/><text x="380" y="51">U-Boot proper</text>
+    <rect x="626" y="94" width="120" height="50" rx="6" fill="#e8f5e9" stroke="#2e7d32"/><text x="686" y="124">Linux</text>
+  </g>
+
+  <!-- normal path -->
+  <path d="M134 108 L318 52" stroke="#555" stroke-width="1.5" fill="none" marker-end="url(#fg)"/>
+  <path d="M440 52 L624 108" stroke="#555" stroke-width="1.5" fill="none" marker-end="url(#fg)"/>
+  <text x="200" y="64" font-size="10.5" fill="#555">boot thường</text>
+
+  <!-- falcon path -->
+  <line x1="134" y1="126" x2="624" y2="126" stroke="#3949ab" stroke-width="2" marker-end="url(#fo)"/>
+  <text x="300" y="146" font-size="10.5" text-anchor="middle" fill="#1a237e" font-weight="700">falcon mode: SPL nạp trực tiếp kernel (nhanh hơn)</text>
+
+  <!-- fallback (blocked) -->
+  <path d="M520 124 Q 480 84 404 72" stroke="#c62828" stroke-width="1.5" stroke-dasharray="4,3" fill="none" marker-end="url(#fr)"/>
+  <text x="476" y="112" font-size="10.5" text-anchor="end" fill="#b71c1c">falcon lỗi → fallback</text>
+  <g stroke="#c62828" stroke-width="3"><line x1="458" y1="78" x2="474" y2="94"/><line x1="474" y1="78" x2="458" y2="94"/></g>
+
+  <!-- checklist -->
+  <rect x="14" y="196" width="732" height="92" rx="6" fill="#fafafa" stroke="#ddd"/>
+  <text x="26" y="216" font-size="11.5" font-weight="700" fill="#333">Secure falcon (SPL_OS_BOOT_SECURE) chặn bốn đường vòng:</text>
+  <g font-size="10.5" fill="#333">
+    <text x="26" y="238">✗ fallback sang boot thường khi falcon lỗi</text>
+    <text x="390" y="238">✗ file args (DTB) nạp riêng, không được ký</text>
+    <text x="26" y="258">✗ đọc environment để lấy tên file kernel</text>
+    <text x="390" y="258">✗ boot raw image không có chữ ký</text>
+    <text x="26" y="278" fill="#1b5e20">→ chỉ giữ lại một luồng: FIT đã ký, chứa cả kernel và DTB; lỗi sẽ dừng boot.</text>
+  </g>
+</svg>
