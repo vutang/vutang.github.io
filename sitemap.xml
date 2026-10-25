@@ -269,6 +269,22 @@
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
+         <loc>https://vutang.github.io/lnx_es/bmc/bmc/</loc>
+         <lastmod>2026-10-25</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/lnx_es/bmc/ipmi/</loc>
+         <lastmod>2026-10-25</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/lnx_es/bmc/openbmc/</loc>
+         <lastmod>2026-10-25</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/lnx_es/bmc/redfish/</loc>
+         <lastmod>2026-10-25</lastmod>
+    </url>
+    <url>
          <loc>https://vutang.github.io/lnx_es/bootloader/bootloader/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
