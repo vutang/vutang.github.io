@@ -273,6 +273,14 @@
          <lastmod>2026-10-25</lastmod>
     </url>
     <url>
+         <loc>https://vutang.github.io/lnx_es/bootloader/grub/</loc>
+         <lastmod>2026-10-25</lastmod>
+    </url>
+    <url>
+         <loc>https://vutang.github.io/lnx_es/bootloader/u-boot/</loc>
+         <lastmod>2026-10-25</lastmod>
+    </url>
+    <url>
          <loc>https://vutang.github.io/lnx_es/cmake/cmake/</loc>
          <lastmod>2026-10-25</lastmod>
     </url>
