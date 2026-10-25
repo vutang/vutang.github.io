@@ -7140,6 +7140,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="1. Bối cảnh: chain of trust và những chỗ hở">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ky-kernel-nghia-la-gi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "Ký kernel" nghĩa là gì
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#la-u-va-hai-iem-yeu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "Là đủ" và hai điểm yếu
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -7414,7 +7442,7 @@
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"></path></svg>
                           <span class="md-ellipsis">
                             
-                              11 min read
+                              13 min read
                             
                           </span>
                         </div>
@@ -7572,11 +7600,19 @@
 <h2 id="1-boi-canh-chain-of-trust-va-nhung-cho-ho">1. Bối cảnh: chain of trust và những chỗ hở<a class="headerlink" href="#1-boi-canh-chain-of-trust-va-nhung-cho-ho" title="Permanent link">¶</a></h2>
 <p>Secure boot dựa trên một chuỗi: mỗi tầng xác minh chữ ký của tầng sau trước khi trao quyền điều khiển. Chuỗi chỉ mạnh bằng mắt xích yếu nhất, nên một tầng không kiểm tra, hay một đường đi vòng qua bước kiểm tra, cũng đủ vô hiệu hóa các tầng còn lại.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../img/u-boot-chain-of-trust-2026.svg" data-desc-position="bottom"><img alt="Chuỗi tin cậy U-Boot trước và sau 2026" src="../../../../img/u-boot-chain-of-trust-2026.svg"></a></p>
-<p><em>Trên: trước 2026, verified boot dừng ở kernel, rootfs nằm ngoài chuỗi và có nhiều đường vòng. Dưới: sau v2026.10, mỗi chỗ hở có một cơ chế tương ứng.</em></p>
-<p>Verified boot của U-Boot xoay quanh <strong>FIT image</strong> (Flat Image Tree): một container gói kernel, device tree, ramdisk và các thành phần khác. Mỗi thành phần có hash riêng, và một node <em>configuration</em> được ký số, bao phủ các hash đó. U-Boot xác minh chữ ký configuration rồi mới boot.</p>
-<p>Mô hình này có hai điểm yếu mang tính hệ thống:</p>
+<p><em>Trên: trước 2026, verified boot mặc định dừng ở kernel, rootfs nằm ngoài chuỗi và có nhiều đường vòng. Dưới: sau v2026.10, mỗi chỗ hở có một cơ chế tương ứng.</em></p>
+<h3 id="ky-kernel-nghia-la-gi">"Ký kernel" nghĩa là gì<a class="headerlink" href="#ky-kernel-nghia-la-gi" title="Permanent link">¶</a></h3>
+<p>Verified boot của U-Boot xoay quanh <strong>FIT image</strong> (Flat Image Tree): một container gói kernel, device tree, ramdisk và các thành phần khác. "Ký kernel" trong U-Boot gồm hai giai đoạn:</p>
+<ul>
+<li><strong>Khi build:</strong> công cụ <code>mkimage</code> tính hash của từng thành phần trong FIT, rồi dùng private key ký node <em>configuration</em>, tức node chỉ định bộ kernel, device tree và ramdisk được boot cùng nhau. Chữ ký được ghi vào chính FIT.</li>
+<li><strong>Khi boot:</strong> U-Boot dùng public key để xác minh chữ ký của configuration, rồi so hash của từng thành phần với giá trị nằm trong vùng đã ký. Chỉ khi mọi kiểm tra đều khớp, U-Boot mới chuyển quyền điều khiển cho kernel.</li>
+</ul>
+<p>Public key không thể nằm trong FIT, vì kẻ tấn công có thể thay key cùng lúc với image. U-Boot lưu public key trong device tree điều khiển của chính nó (node <code>/signature</code>). Bản thân U-Boot lại được tầng trước xác minh, và cuối cùng chuỗi được neo vào hash của root key ghi trong eFuse hoặc OTP của SoC (xem bài <a href="../../22/rk3399-secure-efuse/">Rockchip RK3399 secure eFuse</a>).</p>
+<p>U-Boot ký configuration thay vì ký riêng từng image để chống tấn công <em>mix-and-match</em>. Nếu chỉ từng image được ký, kẻ tấn công có thể ghép một kernel và một device tree, cả hai đều có chữ ký hợp lệ, thành một tổ hợp mà nhà sản xuất chưa từng phát hành.</p>
+<h3 id="la-u-va-hai-iem-yeu">"Là đủ" và hai điểm yếu<a class="headerlink" href="#la-u-va-hai-iem-yeu" title="Permanent link">¶</a></h3>
+<p>Cụm "ký kernel là đủ" chỉ quan niệm cho rằng khi kernel và device tree đã được xác minh thì toàn bộ hệ thống đáng tin. Thực tế, phạm vi kiểm tra của U-Boot kết thúc tại thời điểm chuyển quyền cho kernel; những gì kernel nạp sau đó, trước hết là rootfs, nằm ngoài phạm vi này. Mô hình có hai điểm yếu mang tính hệ thống:</p>
 <ol>
-<li><strong>Rootfs nằm ngoài chuỗi.</strong> Rootfs thường có dung lượng hàng trăm MB, việc để U-Boot hash toàn bộ khi khởi động tốn quá nhiều thời gian. Vì vậy, trên thực tế chuỗi tin cậy dừng ở kernel.</li>
+<li><strong>Rootfs không nằm trong chuỗi mặc định.</strong> Rootfs thường có dung lượng hàng trăm MB, việc để U-Boot hash toàn bộ khi khởi động tốn quá nhiều thời gian. Bảo vệ rootfs bằng dm-verity vốn đã khả thi, nhưng mỗi dự án phải tự đưa root hash vào một thành phần đã ký, chẳng hạn initramfs, và U-Boot không hỗ trợ trực tiếp. Vì vậy, trên nhiều sản phẩm, chuỗi tin cậy thực tế dừng ở kernel.</li>
 <li><strong>Đường vòng.</strong> Có những luồng boot nạp dữ liệu chưa được chữ ký bao phủ: fallback khi lỗi, file phụ nạp riêng, environment có thể ghi, và metadata trong FIT nằm ngoài vùng ký.</li>
 </ol>
 <p>Các thay đổi trong năm 2026 có thể xem là một nỗ lực có hệ thống nhằm khắc phục hai điểm yếu này.</p>
@@ -7622,7 +7658,7 @@
 <p>Các thay đổi bảo mật trải đều qua cả năm: secure falcon vào v2026.01, firewall vùng nhớ TEE vào v2026.04 và v2026.07, còn dm-verity cùng phần lớn bản vá parser vào v2026.10.</p>
 <h2 id="3-keo-chuoi-tin-cay-toi-rootfs-dm-verity-trong-fit">3. Kéo chuỗi tin cậy tới rootfs: dm-verity trong FIT<a class="headerlink" href="#3-keo-chuoi-tin-cay-toi-rootfs-dm-verity-trong-fit" title="Permanent link">¶</a></h2>
 <h3 id="y-tuong">Ý tưởng<a class="headerlink" href="#y-tuong" title="Permanent link">¶</a></h3>
-<p>Thay vì hash toàn bộ rootfs, U-Boot chỉ cần xác thực một giá trị duy nhất là <strong>root hash</strong>, rồi giao việc kiểm tra dữ liệu cho kernel.</p>
+<p>Thay vì hash toàn bộ rootfs, U-Boot chỉ cần xác thực một giá trị duy nhất là <strong>root hash</strong>, rồi giao việc kiểm tra dữ liệu cho kernel. Bản thân dm-verity không mới; điểm mới của v2026.10 là FIT có định dạng chuẩn để mang root hash, và U-Boot tự xử lý phần chuyển giao cho kernel thay vì để mỗi dự án tự dựng.</p>
 <ul>
 <li>Rootfs (squashfs hoặc erofs, chỉ đọc) được đặt trong FIT, kèm một <strong>cây hash Merkle</strong> nằm ngay sau dữ liệu.</li>
 <li>Một node <code>dm-verity</code> trong FIT chứa root hash, salt và kích thước block.</li>
@@ -7720,6 +7756,7 @@
 <h2 id="nguon-tham-khao">Nguồn tham khảo<a class="headerlink" href="#nguon-tham-khao" title="Permanent link">¶</a></h2>
 <ul>
 <li>U-Boot source, git tag v2025.10 đến v2026.10: <a href="https://github.com/u-boot/u-boot">github.com/u-boot/u-boot</a></li>
+<li>Tài liệu U-Boot, <em>U-Boot Verified Boot</em> và <em>U-Boot FIT Signature Verification</em>: <a href="https://github.com/u-boot/u-boot/blob/v2026.10/doc/usage/fit/verified-boot.rst">doc/usage/fit/verified-boot.rst</a>, <a href="https://github.com/u-boot/u-boot/blob/v2026.10/doc/usage/fit/signature.rst">doc/usage/fit/signature.rst</a></li>
 <li>Daniel Golle, <em>fit: dm-verity support</em> (v2026.10-rc1): <a href="https://lore.kernel.org/r/cover.1778887196.git.daniel@makrotopia.org">lore.kernel.org</a></li>
 <li>Daniel Golle, <em>boot: fit: authenticate the dm-verity roothash</em> (v2026.10-rc2): <a href="https://lore.kernel.org/r/cover.1785276461.git.daniel@makrotopia.org">lore.kernel.org</a></li>
 <li>Đặc tả flat-image-tree, node dm-verity: <a href="https://github.com/open-source-firmware/flat-image-tree/commit/795fd5fd7f0121d0cb03efb1900aafc61c704771">github.com/open-source-firmware/flat-image-tree</a></li>
@@ -7758,7 +7795,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 25, 2026 04:49:00 UTC">October 25, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 25, 2026 04:55:18 UTC">October 25, 2026</span>
   </span>
 
     
