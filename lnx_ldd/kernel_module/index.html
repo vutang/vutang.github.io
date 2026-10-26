@@ -3092,21 +3092,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#in-log-trong-kernel" class="md-nav__link">
+  <a href="#vi-du-hello-world" class="md-nav__link">
     <span class="md-ellipsis">
       
-        In log trong kernel
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cai-at-lkm-module-vao-he-thong" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cài đặt LKM module vào hệ thống
+        Ví dụ: hello world
       
     </span>
   </a>
@@ -3125,10 +3114,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#dynamic-debug" class="md-nav__link">
+  <a href="#in-log-trong-kernel" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Dynamic debug
+        In log trong kernel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nap-va-go-lkm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nạp và gỡ LKM
       
     </span>
   </a>
@@ -3137,6 +3137,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tham khảo
+      
+    </span>
+  </a>
   
 </li>
       
@@ -7587,21 +7598,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#in-log-trong-kernel" class="md-nav__link">
+  <a href="#vi-du-hello-world" class="md-nav__link">
     <span class="md-ellipsis">
       
-        In log trong kernel
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cai-at-lkm-module-vao-he-thong" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cài đặt LKM module vào hệ thống
+        Ví dụ: hello world
       
     </span>
   </a>
@@ -7620,10 +7620,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#dynamic-debug" class="md-nav__link">
+  <a href="#in-log-trong-kernel" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Dynamic debug
+        In log trong kernel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nap-va-go-lkm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nạp và gỡ LKM
       
     </span>
   </a>
@@ -7632,6 +7643,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tham khảo
+      
+    </span>
+  </a>
   
 </li>
       
@@ -7683,61 +7705,145 @@
 <h1 id="about-kernel-module">About Kernel Module<a class="headerlink" href="#about-kernel-module" title="Permanent link">¶</a></h1>
 <h2 id="kernel-module-information">Kernel Module Information<a class="headerlink" href="#kernel-module-information" title="Permanent link">¶</a></h2>
 <h3 id="inh-nghia">Định nghĩa<a class="headerlink" href="#inh-nghia" title="Permanent link">¶</a></h3>
-<p>Kernel Module là một đoạn mã có thể được cài đặt hoặc gỡ cài đặt khỏi
-Kernel theo yêu cầu. Kernel module giúp mở rộng chức năng cho kernel mà
-không cần phải khởi động lại hệ thống. Device Driver là một loại kernel
-module. Trong trường hợp cần thêm một chức năng vào kernel trong khi
-không có kernel module, người phát triển sẽ cần phải build lại cả hệ
+<p>Kernel Module là một đoạn mã có thể được nạp vào hoặc gỡ khỏi Kernel
+theo yêu cầu. Kernel module giúp mở rộng chức năng cho kernel mà không
+cần phải khởi động lại hệ thống. Device Driver là một loại kernel module.
+Nếu không có kernel module, mỗi khi cần thêm một chức năng vào kernel,
+người phát triển sẽ phải build lại kernel image rồi khởi động lại hệ
 thống.</p>
-<p>Một blog viết về Kernel Module tương đối hay và chi tiết có thể xem thêm
-<a href="http://derekmolloy.ie/writing-a-linux-kernel-module-part-1-introduction/">tại đây</a>. Blog được viết bởi Derek Molloy.</p>
-<p>Kernel Module cũng được định nghĩa tại một bài viết của ArchLinux (một
-Linux Distro) <a href="https://wiki.archlinux.org/index.php/Kernel_module">tại đây</a>. Ngoài ra, tai trang web tldp.org có
-một chuỗi các bài viết liên quan đến phát triển Kernel module (<a href="http://tldp.org/LDP/lkmpg/2.6/html/index.html">The
-Linux Kernel Module Programming Guide</a>).</p>
-<p>Có hai dạng Kernel module: build-in và loadable file. Trong đó built-in
-module được tích hợp vào Kernel Image và được cài đặt vào hệ thống trong
-quá trình khởi động kernel. Người lại, loadable module có thể được người
-dùng cài đặt vào hệ thống sau khi kernel đã khởi động thành công.</p>
-<p><strong>Loadable Kernel Module (LKM)</strong> được cài đặt vào hệ thống bằng các câu lệnh
-như modprobe hoặc insmod.</p>
+<p>Có hai dạng Kernel module: built-in và loadable module. Trong đó
+built-in module được tích hợp vào Kernel Image và được khởi tạo trong
+quá trình khởi động kernel. Ngược lại, loadable module có thể được người
+dùng nạp vào hệ thống sau khi kernel đã khởi động thành công.</p>
+<p>Việc một module là built-in hay loadable được quyết định bởi <code>Kconfig</code>
+(kiểu <code>tristate</code>): <code>y</code> là built-in, <code>m</code> là loadable module, <code>n</code> là không
+build.</p>
+<p><strong>Loadable Kernel Module (LKM)</strong> được nạp vào hệ thống bằng các câu lệnh
+như <code>modprobe</code> hoặc <code>insmod</code>.</p>
 <h3 id="module_init-module_exit">module_init &amp; module_exit<a class="headerlink" href="#module_init-module_exit" title="Permanent link">¶</a></h3>
 <p>Kernel module có thể được hiểu là một chương trình chạy trong Kernel
 Space, nhưng không giống như chương trình bình thường, kernel module
-không bắt đầu bằng hàm "main".</p>
-<p>Macro <code>module_init()</code> và <code>module_exit()</code> được sử dụng để đăng ký các hàm
-khởi tạo và hàm hủy cho kernel module. Tùy thuộc vào kernel module là
-built-in hay LKM mà nội dụng của module_init/exit sẽ khác nhau.</p>
-<p>Trong trường hợp là built-in module, module_init sẽ gọi đến macro
-<code>_init_call</code> dùng để đăng ký với hệ thống là module sẽ được khởi tạo
-trọng quá trình init. Hai macro được định nghĩa trong linux/init.h.</p>
-<h3 id="in-log-trong-kernel">In log trong kernel<a class="headerlink" href="#in-log-trong-kernel" title="Permanent link">¶</a></h3>
-<p>Phương pháp debug cơ bản và phổ biến nhất khi đi phát triển một chương
-trình là in log chạy của chương trình đó ra màn hình hoặc file. Kernel
-module sử dụng lệnh prink thay vì printf như phát triển ứng dụng User
-space.</p>
-<p>Ngoài ra có thể sử dụng thêm các họ hàm dev_* và pr_* để in thêm
-thông tin trong kernel module.</p>
-<h3 id="cai-at-lkm-module-vao-he-thong">Cài đặt LKM module vào hệ thống<a class="headerlink" href="#cai-at-lkm-module-vao-he-thong" title="Permanent link">¶</a></h3>
-<p>Để cài đặt LKM vào hệ thống có thể sử dụng lệnh <code>insmod/rmmod/lsmod</code>. Ngoài ra có thể dùng thêm modprobe. Quá trình sử dụng modprobe phức tạp hơn insmod, có thể đọc thêm <a href="https://www.computerhope.com/unix/modprobe.htm">[tại đây]</a>. Trong quá trình cài đặt module vào hệ thống có thể thêm các paramtters cho module.</p>
-<p>Để liệt kê toàn bộ thông tin của các module đang được cài đặt trong hệ
-thống có thể sử dụng lsmod. Lsmod đọc thông tin từ /proc/modules, người
-dùng có thể đọc trực tiếp từ text file /proc/modules để biết thêm được
-thông tin của các module đang chạy trong hệ thống.</p>
-<p>Khi một module được cài đặt vào hệ thống, thông tin về module này có thể
-được tìm thấy trong sysfs virtual file system <code>/sys/module</code></p>
+không bắt đầu bằng hàm "main". Module cũng không thể dùng thư viện C
+chuẩn (libc), chỉ có thể gọi các hàm kernel cung cấp.</p>
+<p>Macro <code>module_init()</code> và <code>module_exit()</code> (định nghĩa trong
+<code>linux/module.h</code>) được sử dụng để đăng ký hàm khởi tạo và hàm hủy cho
+kernel module. Nội dung của chúng khác nhau tùy theo module là built-in
+hay LKM:</p>
+<ul>
+<li><strong>Built-in</strong>: <code>module_init(fn)</code> được quy về <code>__initcall(fn)</code>, tương
+  đương <code>device_initcall(fn)</code> (các macro <code>*_initcall</code> được định nghĩa
+  trong <code>linux/init.h</code>). Hàm <code>fn</code> sẽ được gọi trong quá trình khởi động
+  kernel, theo thứ tự initcall level. <code>module_exit</code> không có tác dụng vì
+  built-in module không bao giờ bị gỡ.</li>
+<li><strong>LKM</strong>: <code>module_init(fn)</code> tạo alias <code>init_module</code> cho <code>fn</code>, còn
+  <code>module_exit(fn)</code> tạo alias <code>cleanup_module</code>. Đây là các entry point
+  mà kernel gọi khi <code>insmod</code>/<code>rmmod</code> (thông qua syscall
+  <code>finit_module</code>/<code>delete_module</code>).</li>
+</ul>
+<p>Hàm init trả về <code>0</code> nếu thành công; trả về giá trị âm (ví dụ <code>-ENOMEM</code>)
+thì module sẽ không được nạp. Hàm init/exit nên gắn <code>__init</code>/<code>__exit</code> để
+kernel giải phóng bộ nhớ của hàm init sau khi chạy xong.</p>
+<h3 id="vi-du-hello-world">Ví dụ: hello world<a class="headerlink" href="#vi-du-hello-world" title="Permanent link">¶</a></h3>
+<p><code>hello.c</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;linux/init.h&gt;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;linux/module.h&gt;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;linux/kernel.h&gt;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">__init</span><span class="w"> </span><span class="nf">hello_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">{</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="n">pr_info</span><span class="p">(</span><span class="s">"hello: module loaded</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="p">}</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">__exit</span><span class="w"> </span><span class="nf">hello_exit</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="p">{</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="n">pr_info</span><span class="p">(</span><span class="s">"hello: module unloaded</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="p">}</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="n">module_init</span><span class="p">(</span><span class="n">hello_init</span><span class="p">);</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="n">module_exit</span><span class="p">(</span><span class="n">hello_exit</span><span class="p">);</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="n">MODULE_LICENSE</span><span class="p">(</span><span class="s">"GPL"</span><span class="p">);</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="n">MODULE_AUTHOR</span><span class="p">(</span><span class="s">"Your Name"</span><span class="p">);</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="n">MODULE_DESCRIPTION</span><span class="p">(</span><span class="s">"A simple hello world kernel module"</span><span class="p">);</span>
+</code></pre></div>
+<p><code>Makefile</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">obj-m</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span>hello.o
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nv">KDIR</span><span class="w"> </span><span class="o">?=</span><span class="w"> </span>/lib/modules/<span class="k">$(</span>shell<span class="w"> </span>uname<span class="w"> </span>-r<span class="k">)</span>/build
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nf">all</span><span class="o">:</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="k">$(</span>MAKE<span class="k">)</span><span class="w"> </span>-C<span class="w"> </span><span class="k">$(</span>KDIR<span class="k">)</span><span class="w"> </span><span class="nv">M</span><span class="o">=</span><span class="k">$(</span>PWD<span class="k">)</span><span class="w"> </span>modules
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="nf">clean</span><span class="o">:</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="k">$(</span>MAKE<span class="k">)</span><span class="w"> </span>-C<span class="w"> </span><span class="k">$(</span>KDIR<span class="k">)</span><span class="w"> </span><span class="nv">M</span><span class="o">=</span><span class="k">$(</span>PWD<span class="k">)</span><span class="w"> </span>clean
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Dòng lệnh trong Makefile phải thụt bằng ký tự <strong>Tab</strong>. Cần cài
+kernel headers tương ứng với kernel đang chạy (ví dụ trên Debian/Ubuntu:
+<code>apt install linux-headers-$(uname -r)</code>). Khi cross-compile, truyền
+thêm <code>ARCH=</code> và <code>CROSS_COMPILE=</code>, và đặt <code>KDIR</code> trỏ tới source/build tree
+của kernel đích.</p>
+</div>
+<p>Build và thử nghiệm:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>make
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>insmod<span class="w"> </span>hello.ko
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>lsmod<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>hello
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>modinfo<span class="w"> </span>hello.ko
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>sudo<span class="w"> </span>rmmod<span class="w"> </span>hello
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail
+</code></pre></div>
+<p><code>MODULE_LICENSE</code> là bắt buộc nên khai báo đúng. Nếu module không có
+license tương thích GPL, kernel sẽ bị đánh dấu <em>tainted</em> và module không
+dùng được các symbol <code>EXPORT_SYMBOL_GPL</code>.</p>
 <h3 id="compile-a-kernel-module">Compile a kernel module<a class="headerlink" href="#compile-a-kernel-module" title="Permanent link">¶</a></h3>
 <p>Để build một kernel module, Linux Kernel sử dụng một hệ thống gọi là
-kbuild. Có thể đọc thêm thông tin về hệ thống kbuild này trong Kernel
-Documentation (<code>kbuild/modules.txt</code>). Trong mục 2.2 của [1] có giới
-thiệu về build kernel module.</p>
-<h3 id="dynamic-debug">Dynamic debug<a class="headerlink" href="#dynamic-debug" title="Permanent link">¶</a></h3>
-<p>About dynamic debug: <a href="https://www.kernel.org/doc/html/v4.15/admin-guide/dynamic-debug-howto.html">https://www.kernel.org/doc/html/v4.15/admin-guide/dynamic-debug-howto.html</a></p>
+kbuild. Với module nằm ngoài source tree (out-of-tree) như ví dụ trên,
+<code>obj-m</code> liệt kê các module cần build, và <code>make -C &lt;kernel build dir&gt;
+M=&lt;module dir&gt; modules</code> sẽ gọi kbuild của kernel để build chúng. Nếu
+module gồm nhiều file source, dùng <code>&lt;tên&gt;-objs := a.o b.o</code>.</p>
+<p>Chi tiết xem trong Kernel Documentation:
+<code>Documentation/kbuild/modules.rst</code>.</p>
+<h3 id="in-log-trong-kernel">In log trong kernel<a class="headerlink" href="#in-log-trong-kernel" title="Permanent link">¶</a></h3>
+<p>Phương pháp debug cơ bản và phổ biến nhất khi phát triển một chương
+trình là in log ra màn hình hoặc file. Kernel module sử dụng <code>printk</code>
+thay vì <code>printf</code> như khi phát triển ứng dụng User space. Log được ghi
+vào kernel ring buffer và đọc bằng lệnh <code>dmesg</code>.</p>
 <p>Các hàm in log thường dùng trong kernel module:</p>
 <ul>
-<li><strong>printk()</strong>: cách dùng tương tự printf() trong C.</li>
-<li><strong>dev_*</strong>: họ hàm in log gắn với một <code>struct device</code>.</li>
-<li><strong>pr_*</strong>: họ hàm in log theo mức (<code>pr_info</code>, <code>pr_err</code>...).</li>
+<li><strong>printk()</strong>: cách dùng tương tự <code>printf()</code>, có thể kèm mức log như
+  <code>KERN_INFO</code>, <code>KERN_ERR</code>.</li>
+<li><strong>pr_*</strong>: họ hàm in log theo mức (<code>pr_info</code>, <code>pr_err</code>, <code>pr_debug</code>...).
+  Nên dùng thay cho <code>printk</code> trần.</li>
+<li><strong>dev_*</strong>: họ hàm in log gắn với một <code>struct device</code>, tự thêm tên
+  device vào log.</li>
+</ul>
+<p>Khi cần bật/tắt các log <code>pr_debug</code>/<code>dev_dbg</code> lúc runtime, xem
+<a href="../../lnx_kernel/ddebug/ddebug/">Dynamic debug</a>.</p>
+<h3 id="nap-va-go-lkm">Nạp và gỡ LKM<a class="headerlink" href="#nap-va-go-lkm" title="Permanent link">¶</a></h3>
+<p>Để nạp LKM vào hệ thống có thể dùng <code>insmod</code>, gỡ bằng <code>rmmod</code>, và liệt
+kê bằng <code>lsmod</code>. Ngoài ra có thể dùng <code>modprobe</code>. Khác với <code>insmod</code>
+(nhận đường dẫn tới file <code>.ko</code>), <code>modprobe</code> tìm module theo tên trong
+<code>/lib/modules/$(uname -r)/</code> và tự nạp cả các module phụ thuộc dựa trên
+<code>modules.dep</code> (được tạo bởi <code>depmod</code>). Cấu hình cho <code>modprobe</code> nằm trong
+<code>/etc/modprobe.d/</code>. Xem thêm
+<a href="https://www.computerhope.com/unix/modprobe.htm">modprobe</a>.</p>
+<p>Khi nạp module có thể truyền thêm parameters, ví dụ:
+<code>sudo insmod hello.ko name=value</code>. Module khai báo parameter bằng macro
+<code>module_param()</code>; giá trị hiện tại của parameter có thể xem trong
+<code>/sys/module/&lt;tên module&gt;/parameters/</code>.</p>
+<p><code>lsmod</code> đọc thông tin từ <code>/proc/modules</code>; người dùng cũng có thể đọc
+trực tiếp file này để biết thông tin của các module đang chạy. Khi một
+module được nạp, thông tin về module cũng xuất hiện trong sysfs tại
+<code>/sys/module/&lt;tên module&gt;/</code>.</p>
+<h2 id="tham-khao">Tham khảo<a class="headerlink" href="#tham-khao" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="https://sysprog21.github.io/lkmpg/">The Linux Kernel Module Programming Guide</a> (bản cập nhật cho kernel 5.x/6.x).</li>
+<li><a href="http://derekmolloy.ie/writing-a-linux-kernel-module-part-1-introduction/">Writing a Linux Kernel Module</a> - Derek Molloy.</li>
+<li><a href="https://wiki.archlinux.org/index.php/Kernel_module">Kernel module - ArchWiki</a>.</li>
+<li><a href="https://www.kernel.org/doc/html/latest/admin-guide/dynamic-debug-howto.html">Dynamic debug howto</a>.</li>
 </ul>
 
 
@@ -7761,7 +7867,7 @@ thiệu về build kernel module.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 21, 2026 02:33:25 UTC">October 21, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 26, 2026 03:50:43 UTC">October 26, 2026</span>
   </span>
 
     
