@@ -1,0 +1,60 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 400 400" role="img" aria-labelledby="f3t"><style>text{fill:#142033;font-family:'Be Vietnam Pro','Segoe UI',system-ui,sans-serif;font-size:13px;font-weight:500}
+text.t14{font-size:14px;font-weight:700}text.t12{font-size:12px;font-weight:400}text.t11{font-size:11px;font-weight:400}
+text.b{font-weight:700}text.mut{fill:#55657a}text.mid{text-anchor:middle}text.end{text-anchor:end}
+.bx-sw{fill:#dce7ff;stroke:#2f5fe0;stroke-width:1.5}.bx-gpu{fill:#dff2cc;stroke:#4f8f12;stroke-width:1.5}
+.bx-hw{fill:#e6ebf1;stroke:#76879b;stroke-width:1.5}.bx-plan{fill:#ffebc7;stroke:#bb7a10;stroke-width:1.5}
+.bx-none{fill:none;stroke:#76879b;stroke-width:1.5;stroke-dasharray:6 4}
+.arrow{stroke:#55657a;stroke-width:1.8;fill:none}marker path{fill:#55657a}
+.dot-gpu{fill:#4f8f12}.dot-plan{fill:#bb7a10}.dot-hw{fill:#76879b}</style><rect x='0' y='0' width='400' height='400' fill='#ffffff'/>
+        <title id="f3t">So sánh stack RAN hiện nay với stack AI-RAN của Nokia và Nvidia</title>
+
+        <text x="107.5" y="20" class="t14 mid">RAN hiện nay</text>
+        <text x="107.5" y="36" class="t11 mut mid">Cloud RAN · RAN chuyên dụng</text>
+        <text x="292.5" y="20" class="t14 mid">AI-RAN</text>
+        <text x="292.5" y="36" class="t11 mut mid">Nokia + Nvidia</text>
+
+        <rect class="bx-sw" x="20" y="48" width="360" height="38" rx="10"/>
+        <text x="200" y="72" class="mid">anyRAN: phần mềm RAN chung của Nokia</text>
+
+        <rect class="bx-hw" x="20" y="96" width="175" height="60" rx="10"/>
+        <text x="107.5" y="112" class="t11 mut mid">Xử lý RAN nặng (L1)</text>
+        <text x="107.5" y="132" class="t12 mid">ASIC/SoC, hoặc</text>
+        <text x="107.5" y="148" class="t12 mid">accelerator trên x86</text>
+        <rect class="bx-gpu" x="205" y="96" width="175" height="60" rx="10"/>
+        <text x="292.5" y="112" class="t11 mut mid">Xử lý RAN nặng (L1)</text>
+        <text x="292.5" y="132" class="t12 mid">GPU Blackwell</text>
+        <text x="292.5" y="148" class="t12 mid">chạy trên CUDA</text>
+
+        <rect class="bx-hw" x="20" y="166" width="175" height="60" rx="10"/>
+        <text x="107.5" y="182" class="t11 mut mid">CPU</text>
+        <text x="107.5" y="202" class="t12 mid">CPU x86 hoặc</text>
+        <text x="107.5" y="218" class="t12 mid">CPU trong SoC</text>
+        <rect class="bx-gpu" x="205" y="166" width="175" height="60" rx="10"/>
+        <text x="292.5" y="182" class="t11 mut mid">CPU</text>
+        <text x="292.5" y="202" class="t12 mid">Grace CPU</text>
+        <text x="292.5" y="218" class="t12 mid">(cùng nền tảng ARC-Pro)</text>
+
+        <rect class="bx-hw" x="20" y="236" width="175" height="60" rx="10"/>
+        <text x="107.5" y="252" class="t11 mut mid">Phần cứng</text>
+        <text x="107.5" y="272" class="t12 mid">Thiết bị riêng của hãng</text>
+        <text x="107.5" y="288" class="t12 mid">hoặc server đa dụng</text>
+        <rect class="bx-gpu" x="205" y="236" width="175" height="60" rx="10"/>
+        <text x="292.5" y="252" class="t11 mut mid">Phần cứng</text>
+        <text x="292.5" y="272" class="t12 mid">Server Dell PowerEdge</text>
+        <text x="292.5" y="288" class="t12 mid">tích hợp ARC-Pro</text>
+
+        <rect class="bx-hw" x="20" y="306" width="175" height="60" rx="10"/>
+        <text x="107.5" y="322" class="t11 mut mid">Khối lượng công việc</text>
+        <text x="107.5" y="348" class="t12 mid">Chủ yếu xử lý RAN</text>
+        <rect class="bx-gpu" x="205" y="306" width="175" height="60" rx="10"/>
+        <text x="292.5" y="322" class="t11 mut mid">Khối lượng công việc</text>
+        <text x="292.5" y="342" class="t12 mid">RAN + suy luận AI</text>
+        <text x="292.5" y="358" class="t12 mid">trên cùng hạ tầng</text>
+
+        <rect class="bx-sw" x="20" y="380" width="12" height="12" rx="3"/>
+        <text x="38" y="390" class="t11 mut">Phần mềm</text>
+        <rect class="bx-gpu" x="140" y="380" width="12" height="12" rx="3"/>
+        <text x="158" y="390" class="t11 mut">AI-RAN</text>
+        <rect class="bx-hw" x="250" y="380" width="12" height="12" rx="3"/>
+        <text x="268" y="390" class="t11 mut">Cách làm hiện nay</text>
+      </svg>

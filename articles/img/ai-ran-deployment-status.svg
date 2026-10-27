@@ -1,0 +1,47 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 400 456" role="img" aria-labelledby="f4t"><style>text{fill:#142033;font-family:'Be Vietnam Pro','Segoe UI',system-ui,sans-serif;font-size:13px;font-weight:500}
+text.t14{font-size:14px;font-weight:700}text.t12{font-size:12px;font-weight:400}text.t11{font-size:11px;font-weight:400}
+text.b{font-weight:700}text.mut{fill:#55657a}text.mid{text-anchor:middle}text.end{text-anchor:end}
+.bx-sw{fill:#dce7ff;stroke:#2f5fe0;stroke-width:1.5}.bx-gpu{fill:#dff2cc;stroke:#4f8f12;stroke-width:1.5}
+.bx-hw{fill:#e6ebf1;stroke:#76879b;stroke-width:1.5}.bx-plan{fill:#ffebc7;stroke:#bb7a10;stroke-width:1.5}
+.bx-none{fill:none;stroke:#76879b;stroke-width:1.5;stroke-dasharray:6 4}
+.arrow{stroke:#55657a;stroke-width:1.8;fill:none}marker path{fill:#55657a}
+.dot-gpu{fill:#4f8f12}.dot-plan{fill:#bb7a10}.dot-hw{fill:#76879b}</style><rect x='0' y='0' width='400' height='456' fill='#ffffff'/>
+        <title id="f4t">Các mốc triển khai AI-RAN của Nokia và Nvidia theo mức độ đã thực hiện</title>
+
+        <circle class="dot-gpu" cx="26" cy="14" r="5"/>
+        <text x="38" y="18" class="t12 b">Đã thực hiện hoặc đang chạy</text>
+
+        <rect class="bx-gpu" x="20" y="28" width="360" height="46" rx="10"/>
+        <text x="34" y="47" class="b">Deutsche Telekom · Bonn, Oulu</text>
+        <text x="34" y="65" class="t12 mut">Kiểm chứng nền tảng thương mại trong lab</text>
+
+        <rect class="bx-gpu" x="20" y="82" width="360" height="46" rx="10"/>
+        <text x="34" y="101" class="b">Orange</text>
+        <text x="34" y="119" class="t12 mut">Thử phần mềm 5G Nokia trên ARC trong mạng thực</text>
+
+        <rect class="bx-gpu" x="20" y="136" width="360" height="46" rx="10"/>
+        <text x="34" y="155" class="b">T-Mobile · Bellevue, Mỹ</text>
+        <text x="34" y="173" class="t12 mut">Cuộc gọi AI-RAN đầu tiên trên mạng thương mại</text>
+
+        <rect class="bx-gpu" x="20" y="190" width="360" height="46" rx="10"/>
+        <text x="34" y="209" class="b">Elisa · Phần Lan</text>
+        <text x="34" y="227" class="t12 mut">Thoại, dữ liệu và workload AI cùng lúc</text>
+
+        <circle class="dot-plan" cx="26" cy="258" r="5"/>
+        <text x="38" y="262" class="t12 b">Kế hoạch năm 2027</text>
+
+        <rect class="bx-plan" x="20" y="272" width="360" height="46" rx="10"/>
+        <text x="34" y="291" class="b">BT · Birmingham</text>
+        <text x="34" y="309" class="t12 mut">Thử nghiệm trực tiếp AI-RAN</text>
+
+        <rect class="bx-plan" x="20" y="326" width="360" height="46" rx="10"/>
+        <text x="34" y="345" class="b">Deutsche Telekom</text>
+        <text x="34" y="363" class="t12 mut">Thử nghiệm thực địa</text>
+
+        <circle class="dot-hw" cx="26" cy="396" r="5"/>
+        <text x="38" y="400" class="t12 b">Chưa thấy trong các nguồn đã đọc</text>
+
+        <rect class="bx-none" x="20" y="410" width="360" height="46" rx="10"/>
+        <text x="34" y="429" class="b">Triển khai thương mại quy mô lớn</text>
+        <text x="34" y="447" class="t12 mut">Chưa có lịch hoặc số liệu công khai</text>
+      </svg>

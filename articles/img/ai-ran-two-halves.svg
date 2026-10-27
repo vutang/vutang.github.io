@@ -1,0 +1,39 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 400 360" role="img" aria-labelledby="f2t"><style>text{fill:#142033;font-family:'Be Vietnam Pro','Segoe UI',system-ui,sans-serif;font-size:13px;font-weight:500}
+text.t14{font-size:14px;font-weight:700}text.t12{font-size:12px;font-weight:400}text.t11{font-size:11px;font-weight:400}
+text.b{font-weight:700}text.mut{fill:#55657a}text.mid{text-anchor:middle}text.end{text-anchor:end}
+.bx-sw{fill:#dce7ff;stroke:#2f5fe0;stroke-width:1.5}.bx-gpu{fill:#dff2cc;stroke:#4f8f12;stroke-width:1.5}
+.bx-hw{fill:#e6ebf1;stroke:#76879b;stroke-width:1.5}.bx-plan{fill:#ffebc7;stroke:#bb7a10;stroke-width:1.5}
+.bx-none{fill:none;stroke:#76879b;stroke-width:1.5;stroke-dasharray:6 4}
+.arrow{stroke:#55657a;stroke-width:1.8;fill:none}marker path{fill:#55657a}
+.dot-gpu{fill:#4f8f12}.dot-plan{fill:#bb7a10}.dot-hw{fill:#76879b}</style><rect x='0' y='0' width='400' height='360' fill='#ffffff'/>
+        <title id="f2t">Hai nửa của AI-RAN cùng dùng một nền tảng tính toán</title>
+        <defs><marker id="a2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z"/></marker></defs>
+
+        <rect class="bx-sw" x="20" y="10" width="175" height="130" rx="12"/>
+        <text x="107.5" y="34" class="t14 mid">AI cho RAN</text>
+        <text x="107.5" y="62" class="t12 mid">Nâng dung lượng</text>
+        <text x="107.5" y="80" class="t12 mid">và hiệu năng mạng</text>
+        <text x="107.5" y="106" class="t12 mid">Cải thiện hiệu suất phổ</text>
+        <text x="107.5" y="124" class="t11 mut mid">(Orange đang thử)</text>
+
+        <rect class="bx-gpu" x="205" y="10" width="175" height="130" rx="12"/>
+        <text x="292.5" y="34" class="t14 mid">RAN cho AI</text>
+        <text x="292.5" y="62" class="t12 mid">Suy luận AI tại edge</text>
+        <text x="292.5" y="88" class="t12 mid">Sensing môi trường</text>
+        <text x="292.5" y="106" class="t12 mid">bằng sóng vô tuyến</text>
+        <text x="292.5" y="124" class="t11 mut mid">(Elisa, demo Radio World)</text>
+
+        <line class="arrow" x1="107" y1="144" x2="107" y2="184" marker-end="url(#a2)"/>
+        <line class="arrow" x1="292" y1="144" x2="292" y2="184" marker-end="url(#a2)"/>
+
+        <rect class="bx-hw" x="20" y="188" width="360" height="70" rx="12"/>
+        <text x="200" y="214" class="t14 mid">Một nền tảng tính toán dùng chung</text>
+        <text x="200" y="236" class="t12 mut mid">anyRAN + Nvidia ARC (GPU) + CUDA</text>
+
+        <line class="arrow" x1="200" y1="262" x2="200" y2="292" marker-end="url(#a2)"/>
+        <text x="214" y="282" class="t12 mut">mục tiêu kinh doanh</text>
+
+        <rect class="bx-plan" x="20" y="296" width="360" height="56" rx="12"/>
+        <text x="200" y="320" class="mid">Nhà mạng: phục vụ viễn thông</text>
+        <text x="200" y="340" class="mid">và tìm cách kiếm tiền từ AI</text>
+      </svg>
