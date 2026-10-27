@@ -1,0 +1,81 @@
+<svg role="img" viewBox="0 0 660 372" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+  <title>Ví dụ MESI: hai core đọc và ghi cùng địa chỉ X, trạng thái của line thay đổi theo từng bước</title>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#444"/></marker>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c0392b"/></marker>
+  </defs>
+  <rect x="0" y="0" width="660" height="372" rx="8" fill="#ffffff"/>
+  <rect x="20" y="20" width="36" height="28" rx="3" fill="#e8eef7" stroke="#9bb4d8" stroke-width="1.2"/>
+  <text x="38.0" y="38" font-size="10.5" text-anchor="middle" fill="#1d4278" font-weight="bold">Bước</text>
+  <rect x="60" y="20" width="190" height="28" rx="3" fill="#e8eef7" stroke="#9bb4d8" stroke-width="1.2"/>
+  <text x="155.0" y="38" font-size="10.5" text-anchor="middle" fill="#1d4278" font-weight="bold">Hành động</text>
+  <rect x="256" y="20" width="90" height="28" rx="3" fill="#e8eef7" stroke="#9bb4d8" stroke-width="1.2"/>
+  <text x="301.0" y="38" font-size="10.5" text-anchor="middle" fill="#1d4278" font-weight="bold">Cache Core 0</text>
+  <rect x="352" y="20" width="90" height="28" rx="3" fill="#e8eef7" stroke="#9bb4d8" stroke-width="1.2"/>
+  <text x="397.0" y="38" font-size="10.5" text-anchor="middle" fill="#1d4278" font-weight="bold">Cache Core 1</text>
+  <rect x="450" y="20" width="200" height="28" rx="3" fill="#e8eef7" stroke="#9bb4d8" stroke-width="1.2"/>
+  <text x="550.0" y="38" font-size="10.5" text-anchor="middle" fill="#1d4278" font-weight="bold">Điều gì xảy ra</text>
+  <rect x="20" y="56" width="36" height="32" rx="3" fill="#fafafa" stroke="#ddd" stroke-width="1.2"/>
+  <text x="28" y="76" font-size="10.5" text-anchor="start" fill="#111">0</text>
+  <rect x="60" y="56" width="190" height="32" rx="3" fill="#fafafa" stroke="#ddd" stroke-width="1.2"/>
+  <text x="68" y="76" font-size="10.5" text-anchor="start" fill="#111">Ban đầu</text>
+  <rect x="256" y="56" width="90" height="32" rx="3" fill="#eeeeee" stroke="#888" stroke-width="1.5"/>
+  <text x="301.0" y="77" font-size="13" text-anchor="middle" fill="#888" font-weight="bold">I</text>
+  <rect x="352" y="56" width="90" height="32" rx="3" fill="#eeeeee" stroke="#888" stroke-width="1.5"/>
+  <text x="397.0" y="77" font-size="13" text-anchor="middle" fill="#888" font-weight="bold">I</text>
+  <rect x="450" y="56" width="200" height="32" rx="3" fill="#fafafa" stroke="#ddd" stroke-width="1.2"/>
+  <text x="458" y="76" font-size="10.5" text-anchor="start" fill="#111">chưa core nào có X</text>
+  <rect x="20" y="96" width="36" height="32" rx="3" fill="#fafafa" stroke="#ddd" stroke-width="1.2"/>
+  <text x="28" y="116" font-size="10.5" text-anchor="start" fill="#111">1</text>
+  <rect x="60" y="96" width="190" height="32" rx="3" fill="#fafafa" stroke="#ddd" stroke-width="1.2"/>
+  <text x="68" y="116" font-size="10.5" text-anchor="start" fill="#111">Core 0 đọc X</text>
+  <rect x="256" y="96" width="90" height="32" rx="3" fill="#d3e3f7" stroke="#2f5d9e" stroke-width="1.5"/>
+  <text x="301.0" y="117" font-size="13" text-anchor="middle" fill="#2f5d9e" font-weight="bold">E</text>
+  <rect x="352" y="96" width="90" height="32" rx="3" fill="#eeeeee" stroke="#888" stroke-width="1.5"/>
+  <text x="397.0" y="117" font-size="13" text-anchor="middle" fill="#888" font-weight="bold">I</text>
+  <rect x="450" y="96" width="200" height="32" rx="3" fill="#fafafa" stroke="#ddd" stroke-width="1.2"/>
+  <text x="458" y="116" font-size="10.5" text-anchor="start" fill="#111">bộ nhớ trả dữ liệu, chỉ Core 0 có</text>
+  <rect x="20" y="136" width="36" height="32" rx="3" fill="#fafafa" stroke="#ddd" stroke-width="1.2"/>
+  <text x="28" y="156" font-size="10.5" text-anchor="start" fill="#111">2</text>
+  <rect x="60" y="136" width="190" height="32" rx="3" fill="#fafafa" stroke="#ddd" stroke-width="1.2"/>
+  <text x="68" y="156" font-size="10.5" text-anchor="start" fill="#111">Core 1 đọc X</text>
+  <rect x="256" y="136" width="90" height="32" rx="3" fill="#d5ecd9" stroke="#2e7d4f" stroke-width="1.5"/>
+  <text x="301.0" y="157" font-size="13" text-anchor="middle" fill="#2e7d4f" font-weight="bold">S</text>
+  <rect x="352" y="136" width="90" height="32" rx="3" fill="#d5ecd9" stroke="#2e7d4f" stroke-width="1.5"/>
+  <text x="397.0" y="157" font-size="13" text-anchor="middle" fill="#2e7d4f" font-weight="bold">S</text>
+  <rect x="450" y="136" width="200" height="32" rx="3" fill="#fafafa" stroke="#ddd" stroke-width="1.2"/>
+  <text x="458" y="156" font-size="10.5" text-anchor="start" fill="#111">Core 0 hạ E → S, cả hai chia sẻ</text>
+  <rect x="20" y="176" width="36" height="32" rx="3" fill="#fafafa" stroke="#ddd" stroke-width="1.2"/>
+  <text x="28" y="196" font-size="10.5" text-anchor="start" fill="#111">3</text>
+  <rect x="60" y="176" width="190" height="32" rx="3" fill="#fafafa" stroke="#ddd" stroke-width="1.2"/>
+  <text x="68" y="196" font-size="10.5" text-anchor="start" fill="#111">Core 0 ghi X</text>
+  <rect x="256" y="176" width="90" height="32" rx="3" fill="#f8d9d2" stroke="#b5483a" stroke-width="1.5"/>
+  <text x="301.0" y="197" font-size="13" text-anchor="middle" fill="#b5483a" font-weight="bold">M</text>
+  <rect x="352" y="176" width="90" height="32" rx="3" fill="#eeeeee" stroke="#888" stroke-width="1.5"/>
+  <text x="397.0" y="197" font-size="13" text-anchor="middle" fill="#888" font-weight="bold">I</text>
+  <rect x="450" y="176" width="200" height="32" rx="3" fill="#fafafa" stroke="#ddd" stroke-width="1.2"/>
+  <text x="458" y="196" font-size="10.5" text-anchor="start" fill="#111">Core 1 bị vô hiệu (invalidate)</text>
+  <rect x="20" y="216" width="36" height="32" rx="3" fill="#fafafa" stroke="#ddd" stroke-width="1.2"/>
+  <text x="28" y="236" font-size="10.5" text-anchor="start" fill="#111">4</text>
+  <rect x="60" y="216" width="190" height="32" rx="3" fill="#fafafa" stroke="#ddd" stroke-width="1.2"/>
+  <text x="68" y="236" font-size="10.5" text-anchor="start" fill="#111">Core 1 đọc X</text>
+  <rect x="256" y="216" width="90" height="32" rx="3" fill="#d5ecd9" stroke="#2e7d4f" stroke-width="1.5"/>
+  <text x="301.0" y="237" font-size="13" text-anchor="middle" fill="#2e7d4f" font-weight="bold">S</text>
+  <rect x="352" y="216" width="90" height="32" rx="3" fill="#d5ecd9" stroke="#2e7d4f" stroke-width="1.5"/>
+  <text x="397.0" y="237" font-size="13" text-anchor="middle" fill="#2e7d4f" font-weight="bold">S</text>
+  <rect x="450" y="216" width="200" height="32" rx="3" fill="#fafafa" stroke="#ddd" stroke-width="1.2"/>
+  <text x="458" y="236" font-size="10.5" text-anchor="start" fill="#111">Core 0 chuyển dữ liệu mới, M → S</text>
+  <text x="20" y="268" font-size="11" text-anchor="start" fill="#444" font-weight="bold">Bốn trạng thái của một line:</text>
+  <rect x="20" y="282" width="22" height="16" rx="3" fill="#f8d9d2" stroke="#b5483a" stroke-width="1.5"/>
+  <text x="31" y="294" font-size="10.5" text-anchor="middle" fill="#b5483a" font-weight="bold">M</text>
+  <text x="52" y="294" font-size="10.5" text-anchor="start" fill="#111">Modified: bẩn, chỉ core này có bản hợp lệ</text>
+  <rect x="20" y="302" width="22" height="16" rx="3" fill="#d3e3f7" stroke="#2f5d9e" stroke-width="1.5"/>
+  <text x="31" y="314" font-size="10.5" text-anchor="middle" fill="#2f5d9e" font-weight="bold">E</text>
+  <text x="52" y="314" font-size="10.5" text-anchor="start" fill="#111">Exclusive: sạch, chỉ core này có</text>
+  <rect x="20" y="322" width="22" height="16" rx="3" fill="#d5ecd9" stroke="#2e7d4f" stroke-width="1.5"/>
+  <text x="31" y="334" font-size="10.5" text-anchor="middle" fill="#2e7d4f" font-weight="bold">S</text>
+  <text x="52" y="334" font-size="10.5" text-anchor="start" fill="#111">Shared: sạch, nhiều core cùng có</text>
+  <rect x="20" y="342" width="22" height="16" rx="3" fill="#eeeeee" stroke="#888" stroke-width="1.5"/>
+  <text x="31" y="354" font-size="10.5" text-anchor="middle" fill="#888" font-weight="bold">I</text>
+  <text x="52" y="354" font-size="10.5" text-anchor="start" fill="#111">Invalid: không dùng được</text>
+</svg>
