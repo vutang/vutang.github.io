@@ -6549,6 +6549,61 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#1-may-tinh-gom-nhung-gi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Máy tính gồm những gì
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-von-neumann-va-harvard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Von Neumann và Harvard
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-ba-tang-truu-tuong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Ba tầng trừu tượng
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-o-hieu-nang" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Đo hiệu năng
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-mot-lenh-uoc-xu-ly-nhu-the-nao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Một lệnh được xử lý như thế nào
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#pham-vi" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -7863,6 +7918,61 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#1-may-tinh-gom-nhung-gi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Máy tính gồm những gì
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-von-neumann-va-harvard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Von Neumann và Harvard
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-ba-tang-truu-tuong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Ba tầng trừu tượng
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-o-hieu-nang" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Đo hiệu năng
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-mot-lenh-uoc-xu-ly-nhu-the-nao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Một lệnh được xử lý như thế nào
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#pham-vi" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -7906,6 +8016,121 @@
 
 <h1 id="computer-architecture">Computer Architecture<a class="headerlink" href="#computer-architecture" title="Permanent link">¶</a></h1>
 <p>Trả lời câu hỏi: <strong>CPU/SoC làm gì và được tổ chức ra sao?</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Bản ôn tập</p>
+<p>Trang này là bản ôn tập ngắn gọn về kiến thức nền, sẽ mở rộng sau.</p>
+</div>
+<h2 id="1-may-tinh-gom-nhung-gi">1. Máy tính gồm những gì<a class="headerlink" href="#1-may-tinh-gom-nhung-gi" title="Permanent link">¶</a></h2>
+<p>Một máy tính gồm ba khối chính nối với nhau qua <strong>bus</strong>:</p>
+<ul>
+<li><strong>CPU</strong>: gồm <em>control unit</em> (giải mã lệnh, điều khiển) và <em>datapath</em> (ALU, thanh ghi) thực hiện tính toán.</li>
+<li><strong>Bộ nhớ</strong>: chứa chương trình và dữ liệu.</li>
+<li><strong>I/O</strong>: ngoại vi, mạng, lưu trữ.</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="img/computer-blocks.svg" data-desc-position="bottom"><img alt="Sơ đồ khối máy tính" src="img/computer-blocks.svg"></a></p>
+<h2 id="2-von-neumann-va-harvard">2. Von Neumann và Harvard<a class="headerlink" href="#2-von-neumann-va-harvard" title="Permanent link">¶</a></h2>
+<p>Hai cách tổ chức bộ nhớ của máy tính:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Von Neumann</th>
+<th>Harvard</th>
+<th>Modified Harvard</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bộ nhớ lệnh và dữ liệu</td>
+<td>Chung một bộ nhớ</td>
+<td>Hai bộ nhớ riêng</td>
+<td>Tách ở L1 cache, thống nhất ở bộ nhớ chính</td>
+</tr>
+<tr>
+<td>Đường truy cập</td>
+<td>Một bus</td>
+<td>Hai bus độc lập</td>
+<td>Hai đường ở L1, một đường ở cấp dưới</td>
+</tr>
+<tr>
+<td>Ưu điểm</td>
+<td>Đơn giản, linh hoạt (chương trình cũng là dữ liệu, nạp được như dữ liệu)</td>
+<td>Nạp lệnh và truy cập dữ liệu song song</td>
+<td>Giữ sự linh hoạt của von Neumann, có băng thông của Harvard</td>
+</tr>
+<tr>
+<td>Nhược điểm</td>
+<td><strong>Von Neumann bottleneck</strong>: lệnh và dữ liệu tranh nhau một đường truy cập</td>
+<td>Tốn tài nguyên, khó nạp chương trình vào bộ nhớ lệnh</td>
+<td>Phức tạp hơn</td>
+</tr>
+<tr>
+<td>Thường gặp</td>
+<td>CPU đơn giản, mô hình học thuật</td>
+<td>DSP, MCU nhỏ</td>
+<td>Hầu hết CPU hiện nay (x86, Arm, RISC-V)</td>
+</tr>
+</tbody>
+</table>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="img/von-neumann-vs-harvard.svg" data-desc-position="bottom"><img alt="So sánh von Neumann, Harvard và modified Harvard" src="img/von-neumann-vs-harvard.svg"></a></p>
+<p>Ý nghĩa thực tế: về mặt lập trình, CPU hiện đại vẫn là von Neumann (chương trình và dữ liệu chung một không gian địa chỉ), nhưng bên trong tách I-cache/D-cache để tránh tranh chấp giữa nạp lệnh và truy cập dữ liệu (xem <a href="microarch/pipeline/">Pipeline</a> và <a href="microarch/cache/">Cache</a>).</p>
+<h2 id="3-ba-tang-truu-tuong">3. Ba tầng trừu tượng<a class="headerlink" href="#3-ba-tang-truu-tuong" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Tầng</th>
+<th>Là gì</th>
+<th>Trang</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ISA</strong></td>
+<td>"Hợp đồng" giữa phần cứng và phần mềm: tập lệnh, thanh ghi, ngắt/ngoại lệ</td>
+<td><a href="isa/isa/">ISA</a>, <a href="isa/riscv/">RISC-V</a></td>
+</tr>
+<tr>
+<td><strong>Microarchitecture</strong></td>
+<td>Cách một CPU hiện thực ISA: pipeline, cache, bộ nhớ. Cùng ISA có thể có nhiều microarchitecture</td>
+<td><a href="microarch/microarch/">Microarchitecture</a></td>
+</tr>
+<tr>
+<td><strong>SoC / system</strong></td>
+<td>Ghép CPU core với interconnect, bộ nhớ, ngoại vi thành hệ thống hoàn chỉnh</td>
+<td><a href="soc/soc/">SoC / System</a></td>
+</tr>
+</tbody>
+</table>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="img/abstraction-layers.svg" data-desc-position="bottom"><img alt="Các tầng trừu tượng" src="img/abstraction-layers.svg"></a></p>
+<h2 id="4-o-hieu-nang">4. Đo hiệu năng<a class="headerlink" href="#4-o-hieu-nang" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>CPU time = số lệnh × CPI × chu kỳ clock
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Thành phần</th>
+<th>Chịu ảnh hưởng bởi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Số lệnh</td>
+<td>ISA, compiler</td>
+</tr>
+<tr>
+<td>CPI (chu kỳ trên mỗi lệnh)</td>
+<td>Microarchitecture: pipeline, cache, branch prediction</td>
+</tr>
+<tr>
+<td>Chu kỳ clock</td>
+<td>Microarchitecture và công nghệ chế tạo</td>
+</tr>
+</tbody>
+</table>
+<p>Công thức này cho thấy các kỹ thuật ở phần sau tác động vào đâu. Pipeline giảm CPI về gần 1, superscalar đưa CPI xuống dưới 1, cache giảm số chu kỳ chờ bộ nhớ. Các yếu tố thường đánh đổi lẫn nhau: pipeline sâu hơn cho clock nhanh hơn nhưng branch penalty lớn hơn.</p>
+<p><strong>Định luật Amdahl</strong>: tăng tốc một phần của chương trình chỉ cải thiện tổng thể tương ứng với tỷ lệ thời gian phần đó chiếm. Tối ưu cho trường hợp phổ biến (common case) trước.</p>
+<h2 id="5-mot-lenh-uoc-xu-ly-nhu-the-nao">5. Một lệnh được xử lý như thế nào<a class="headerlink" href="#5-mot-lenh-uoc-xu-ly-nhu-the-nao" title="Permanent link">¶</a></h2>
+<p>Mỗi lệnh đi qua các bước: <strong>fetch</strong> (nạp lệnh) → <strong>decode</strong> (giải mã, đọc thanh ghi) → <strong>execute</strong> (tính toán) → <strong>memory</strong> (truy cập bộ nhớ) → <strong>write-back</strong> (ghi kết quả). Pipeline chồng lấp các bước này giữa nhiều lệnh, chi tiết ở trang <a href="microarch/pipeline/">Pipeline</a>.</p>
 <h2 id="pham-vi">Phạm vi<a class="headerlink" href="#pham-vi" title="Permanent link">¶</a></h2>
 <ul>
 <li><strong>ISA</strong>: tập lệnh, mô hình lập trình (RISC-V, ARM).</li>
@@ -7936,7 +8161,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 22, 2026 11:35:01 UTC">October 22, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 27, 2026 10:11:28 UTC">October 27, 2026</span>
   </span>
 
     

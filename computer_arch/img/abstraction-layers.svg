@@ -1,0 +1,36 @@
+<svg role="img" viewBox="0 0 660 346" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+  <title>Các tầng trừu tượng: ISA, microarchitecture, SoC và hiện thực RTL/silicon</title>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#444"/></marker>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c0392b"/></marker>
+  </defs>
+  <rect x="0" y="0" width="660" height="346" rx="8" fill="#ffffff"/>
+  <rect x="20" y="30" width="340" height="44" rx="6" fill="#d5ecd9" stroke="#2e7d4f" stroke-width="1.5"/>
+  <text x="190.0" y="50.0" font-size="11" text-anchor="middle" fill="#111" font-weight="bold">Phần mềm</text>
+  <text x="190.0" y="65.0" font-size="9.5" text-anchor="middle" fill="#444">ứng dụng, hệ điều hành, compiler</text>
+  <line x1="190" y1="74" x2="190" y2="86" stroke="#444" stroke-width="1.4" marker-end="url(#ar)"/>
+  <rect x="20" y="86" width="340" height="44" rx="6" fill="#d3e3f7" stroke="#2f5d9e" stroke-width="1.5"/>
+  <text x="190.0" y="106.0" font-size="11" text-anchor="middle" fill="#111" font-weight="bold">ISA</text>
+  <text x="190.0" y="121.0" font-size="9.5" text-anchor="middle" fill="#444">tập lệnh, mô hình lập trình (RISC-V, Arm)</text>
+  <line x1="190" y1="130" x2="190" y2="142" stroke="#444" stroke-width="1.4" marker-end="url(#ar)"/>
+  <rect x="20" y="142" width="340" height="44" rx="6" fill="#fbeccb" stroke="#b07d12" stroke-width="1.5"/>
+  <text x="190.0" y="162.0" font-size="11" text-anchor="middle" fill="#111" font-weight="bold">Microarchitecture</text>
+  <text x="190.0" y="177.0" font-size="9.5" text-anchor="middle" fill="#444">pipeline, cache, memory hierarchy</text>
+  <line x1="190" y1="186" x2="190" y2="198" stroke="#444" stroke-width="1.4" marker-end="url(#ar)"/>
+  <rect x="20" y="198" width="340" height="44" rx="6" fill="#f8d9d2" stroke="#b5483a" stroke-width="1.5"/>
+  <text x="190.0" y="218.0" font-size="11" text-anchor="middle" fill="#111" font-weight="bold">RTL / HDL / FPGA</text>
+  <text x="190.0" y="233.0" font-size="9.5" text-anchor="middle" fill="#444">mô tả phần cứng bằng mã</text>
+  <line x1="190" y1="242" x2="190" y2="254" stroke="#444" stroke-width="1.4" marker-end="url(#ar)"/>
+  <rect x="20" y="254" width="340" height="44" rx="6" fill="#e4dcf3" stroke="#6b4fa3" stroke-width="1.5"/>
+  <text x="190.0" y="274.0" font-size="11" text-anchor="middle" fill="#111" font-weight="bold">Silicon / logic gate</text>
+  <text x="190.0" y="289.0" font-size="9.5" text-anchor="middle" fill="#444">chip thật, timing, verification</text>
+  <text x="190" y="20" font-size="11" text-anchor="middle" fill="#444" font-weight="bold">Hợp đồng và hiện thực</text>
+  <path d="M 372 86 h 10 V 186 h -10" fill="none" stroke="#1d4278" stroke-width="1.6"/>
+  <text x="392" y="132.0" font-size="11" text-anchor="start" fill="#1d4278" font-weight="bold">Computer Architecture</text>
+  <text x="392" y="147.0" font-size="10" text-anchor="start" fill="#444">ISA + Microarchitecture</text>
+  <path d="M 372 198 h 10 V 298 h -10" fill="none" stroke="#8a5a00" stroke-width="1.6"/>
+  <text x="392" y="244.0" font-size="11" text-anchor="start" fill="#8a5a00" font-weight="bold">IC Design</text>
+  <text x="392" y="259.0" font-size="10" text-anchor="start" fill="#444">RTL, FPGA, STA, verification</text>
+  <text x="392" y="322" font-size="10" text-anchor="start" fill="#6b4fa3" font-weight="bold">SoC: ghép core, interconnect,</text>
+  <text x="392" y="336" font-size="10" text-anchor="start" fill="#6b4fa3" font-weight="bold">bộ nhớ, ngoại vi thành hệ thống</text>
+</svg>
