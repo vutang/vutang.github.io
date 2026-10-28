@@ -1998,6 +1998,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#kien-truc-web-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kiến trúc web server
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#hai-mo-hinh-su-dung" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -9059,6 +9070,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#kien-truc-web-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kiến trúc web server
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#hai-mo-hinh-su-dung" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -9171,11 +9193,83 @@
 
 <h1 id="web-server-cho-linux-nhung">Web Server cho Linux nhúng<a class="headerlink" href="#web-server-cho-linux-nhung" title="Permanent link">¶</a></h1>
 <p>Trên thiết bị nhúng, web server thường dùng để cung cấp giao diện cấu hình (web UI), REST API cho hệ thống quản lý, hoặc phục vụ firmware update qua HTTP. Trang này so sánh các lựa chọn phổ biến; chi tiết từng gói nằm ở các trang con.</p>
+<h2 id="kien-truc-web-server">Kiến trúc web server<a class="headerlink" href="#kien-truc-web-server" title="Permanent link">¶</a></h2>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="img/web-server-architecture.svg" data-desc-position="bottom"><img alt="Kiến trúc web server trên thiết bị Linux nhúng" src="img/web-server-architecture.svg"></a>
+  </p>
+<figcaption>Kiến trúc web server standalone trên thiết bị Linux nhúng và các bước xử lý một request</figcaption>
+</figure>
+<p>Một request đi qua các bước sau:</p>
+<ol>
+<li><strong>Listener + event loop</strong>: web server lắng nghe trên socket (port 80 cho HTTP, 443 cho HTTPS), nhận kết nối mới và dùng event loop (<code>epoll</code>) để phục vụ nhiều kết nối trong một hoặc vài tiến trình.</li>
+<li><strong>TLS</strong>: với HTTPS, thực hiện handshake và giải mã dữ liệu bằng thư viện TLS (OpenSSL, mbedTLS, wolfSSL).</li>
+<li><strong>HTTP parser</strong>: tách request thành method, URL, header và body.</li>
+<li><strong>Router</strong>: dựa vào URL hoặc đuôi file để chọn handler, theo các quy tắc trong file cấu hình (<code>lighttpd.conf</code>, <code>nginx.conf</code>).</li>
+<li><strong>Static handler</strong>: với file tĩnh (HTML, CSS, JS, ảnh), đọc thẳng từ thư mục gốc (ví dụ <code>/www</code>) và trả về.</li>
+<li><strong>Dynamic handler</strong>: với nội dung động, chuyển request sang backend qua CGI, FastCGI hoặc reverse proxy (xem mục <a href="#noi-dung-ong-dynamic-content">Nội dung động</a>).</li>
+<li><strong>Backend</strong>: tiến trình riêng (CGI script, PHP-FPM, ứng dụng REST API) xử lý request, đọc/ghi tài nguyên hệ thống như file cấu hình thiết bị, <code>/sys</code>, <code>/proc</code>, gọi lệnh hệ thống, rồi trả kết quả về web server.</li>
+<li><strong>Response</strong>: web server gửi response (mã hóa lại bằng TLS nếu là HTTPS) về client.</li>
+</ol>
+<p>Mọi request đều đi qua các bước 1 → 4; sau đó request tới file tĩnh đi tiếp 5 → 8, còn request động đi 6 → 7 → 8. Vì phần lớn tài nguyên của web UI (CSS, JS, ảnh) là file tĩnh, web server tự phục vụ chúng mà không cần đánh thức backend, giúp tiết kiệm CPU và RAM trên thiết bị nhúng.</p>
 <h2 id="hai-mo-hinh-su-dung">Hai mô hình sử dụng<a class="headerlink" href="#hai-mo-hinh-su-dung" title="Permanent link">¶</a></h2>
 <ul>
 <li><strong>Web server độc lập (standalone)</strong>: một daemon riêng (lighttpd, Nginx, BusyBox httpd) phục vụ file tĩnh và chuyển request động sang backend qua CGI, FastCGI hoặc reverse proxy.</li>
 <li><strong>Web server nhúng vào ứng dụng (embedded library)</strong>: thư viện C (Mongoose, CivetWeb) được link thẳng vào ứng dụng, handler HTTP là các hàm C, truy cập trực tiếp dữ liệu của ứng dụng mà không cần IPC.</li>
 </ul>
+<p>Hình <a href="#kien-truc-web-server">Kiến trúc web server</a> ở trên là mô hình standalone. Với mô hình thư viện nhúng, web server và code ứng dụng chạy chung một tiến trình:</p>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="img/web-server-embedded-library.svg" data-desc-position="bottom"><img alt="Mô hình thư viện web server nhúng vào ứng dụng" src="img/web-server-embedded-library.svg"></a>
+  </p>
+<figcaption>Mô hình thư viện nhúng (Mongoose / CivetWeb): web server và logic ứng dụng chung một tiến trình</figcaption>
+</figure>
+<ul>
+<li><strong>Bước 1–4 (Listener, TLS, HTTP parser, Router)</strong>: giống mô hình standalone, nhưng do thư viện thực hiện bên trong tiến trình ứng dụng. Ứng dụng đăng ký URL và hàm xử lý tương ứng, ví dụ <code>mg_set_request_handler()</code> trong CivetWeb.</li>
+<li><strong>Bước 5 (Handler)</strong>: thư viện gọi callback C do ứng dụng viết (REST, WebSocket). Không có bước chuyển request sang tiến trình khác.</li>
+<li><strong>Bước 6 (Logic ứng dụng)</strong>: handler gọi hàm và đọc biến của ứng dụng trực tiếp (trạng thái thiết bị trong RAM, điều khiển phần cứng qua driver, <code>/sys</code>), không cần IPC.</li>
+<li><strong>Bước 7 (Response)</strong>: handler ghi response (thường là JSON) qua API của thư viện, ví dụ <code>mg_printf()</code>, rồi thư viện gửi về client.</li>
+</ul>
+<p>So với mô hình standalone:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Standalone + backend</th>
+<th>Thư viện nhúng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Số tiến trình</td>
+<td>Web server + một hoặc nhiều backend</td>
+<td>Một tiến trình</td>
+</tr>
+<tr>
+<td>Giao tiếp web ↔ logic</td>
+<td>CGI, FastCGI, reverse proxy (IPC)</td>
+<td>Gọi hàm trực tiếp</td>
+</tr>
+<tr>
+<td>Độ trễ, tài nguyên</td>
+<td>Cao hơn (tạo tiến trình, copy dữ liệu qua socket)</td>
+<td>Thấp nhất</td>
+</tr>
+<tr>
+<td>Cách ly lỗi</td>
+<td>Backend lỗi không làm sập web server</td>
+<td>Lỗi trong handler (ví dụ segfault) làm sập cả ứng dụng</td>
+</tr>
+<tr>
+<td>Nâng cấp</td>
+<td>Thay web server hoặc backend độc lập</td>
+<td>Build lại cả ứng dụng</td>
+</tr>
+<tr>
+<td>Phù hợp</td>
+<td>Web UI nhiều trang, nhiều backend khác nhau</td>
+<td>REST API / WebSocket gắn chặt với một daemon C</td>
+</tr>
+</tbody>
+</table>
 <h2 id="bang-so-sanh">Bảng so sánh<a class="headerlink" href="#bang-so-sanh" title="Permanent link">¶</a></h2>
 <table>
 <thead>
@@ -9329,7 +9423,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 28, 2026 09:58:54 UTC">October 28, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 28, 2026 11:05:05 UTC">October 28, 2026</span>
   </span>
 
     
