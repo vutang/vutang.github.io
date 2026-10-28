@@ -7258,6 +7258,56 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="4. Hardware RAID và software RAID">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-hardware-raid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1. Hardware RAID
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-software-raid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2. Software RAID
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-firmware-raid-fake-raid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3. Firmware RAID (fake RAID)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-so-sanh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4. So sánh
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -8836,6 +8886,56 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="4. Hardware RAID và software RAID">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-hardware-raid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1. Hardware RAID
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-software-raid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2. Software RAID
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-firmware-raid-fake-raid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3. Firmware RAID (fake RAID)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-so-sanh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4. So sánh
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -8941,7 +9041,112 @@
 <li>RAID không thay thế sao lưu.</li>
 </ul>
 <h2 id="4-hardware-raid-va-software-raid">4. Hardware RAID và software RAID<a class="headerlink" href="#4-hardware-raid-va-software-raid" title="Permanent link">¶</a></h2>
-<p>TODO: so sánh RAID controller, firmware/fake RAID và software RAID.</p>
+<p>Ba cách triển khai RAID khác nhau ở chỗ <strong>ai</strong> thực hiện việc chia stripe, tính parity và xử lý lỗi ổ.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/raid-implementations.svg" data-desc-position="bottom"><img alt="Hardware, firmware và software RAID" src="../img/raid-implementations.svg"></a></p>
+<p>Hình trên chỉ ra tầng nào đảm nhiệm RAID (khối đỏ) và việc đó chạy trên CPU nào.</p>
+<h3 id="41-hardware-raid">4.1. Hardware RAID<a class="headerlink" href="#41-hardware-raid" title="Permanent link">¶</a></h3>
+<p>Một <strong>RAID controller</strong> chuyên dụng (card PCIe hoặc chip trên mainboard server) có CPU và RAM riêng để làm toàn bộ công việc RAID. Hệ điều hành chỉ thấy <strong>một ổ logic</strong> (virtual disk), không biết phía sau là bao nhiêu ổ vật lý.</p>
+<ul>
+<li><strong>Tính parity trên controller</strong>: CPU của host không phải tính XOR hay Reed-Solomon cho RAID 5/6.</li>
+<li><strong>Cache có pin hoặc supercapacitor</strong> (BBU/CacheVault): controller báo "đã ghi xong" ngay khi dữ liệu vào cache. Đây là <strong>write-back cache</strong>, giảm đáng kể write penalty của RAID 5/6. Nếu mất điện, pin hoặc tụ giữ dữ liệu trong cache cho tới khi ghi xong xuống ổ, nhờ đó giảm nguy cơ write hole.</li>
+<li><strong>Boot dễ</strong>: BIOS/UEFI thấy ngay ổ logic, không cần driver RAID riêng của OS lúc khởi động.</li>
+<li><strong>Hot-swap, báo lỗi</strong>: thay ổ nóng, đèn LED báo ổ hỏng, rebuild chạy nền trên controller.</li>
+</ul>
+<p>Nhược điểm:</p>
+<ul>
+<li><strong>Phụ thuộc controller</strong>: array thường chỉ đọc được bằng controller cùng hãng (đôi khi cùng dòng). Controller hỏng phải tìm controller tương thích để lấy lại dữ liệu.</li>
+<li><strong>Giá cao</strong> và cần quản lý firmware, công cụ riêng của hãng (<code>storcli</code>, <code>perccli</code>, <code>ssacli</code>).</li>
+<li>Controller trở thành <strong>điểm hỏng đơn</strong>, và là lớp bạn phải tin tưởng, nhất là với cache.</li>
+</ul>
+<h3 id="42-software-raid">4.2. Software RAID<a class="headerlink" href="#42-software-raid" title="Permanent link">¶</a></h3>
+<p>Chính <strong>OS</strong> làm RAID bằng CPU của host: stripe, mirror và tính parity nằm trong kernel. Các ổ vật lý nối thẳng vào HBA hoặc cổng SATA/NVMe thông thường.</p>
+<ul>
+<li><strong>Linux</strong>: <code>md</code> (quản lý bằng <code>mdadm</code>) và <code>dm-raid</code> trên device-mapper. Chi tiết ở mục 5.</li>
+<li><strong>Khác</strong>: ZFS (RAID-Z), Btrfs RAID, Windows Storage Spaces, macOS Software RAID.</li>
+</ul>
+<p>Ưu điểm:</p>
+<ul>
+<li><strong>Không tốn tiền controller</strong>, không bị khoá vào một hãng. Array đọc được trên bất kỳ máy Linux nào, chỉ cần gắn ổ sang máy khác.</li>
+<li><strong>Linh hoạt</strong>: tạo RAID trên partition, trộn ổ khác dung lượng, đổi mức RAID, mở rộng array khi đang chạy.</li>
+<li>Với CPU hiện đại, tính XOR và parity gần như không đáng kể, hiệu năng thường ngang hoặc tốt hơn hardware RAID tầm trung, nhất là với SSD/NVMe.</li>
+</ul>
+<p>Nhược điểm:</p>
+<ul>
+<li><strong>Tốn CPU và băng thông bộ nhớ</strong> của host, rõ nhất ở RAID 6 và khi rebuild.</li>
+<li><strong>Không có cache bền vững</strong> như BBU. Muốn tránh write hole phải dùng journal hoặc bitmap (xem mục 3).</li>
+<li>Bootloader phải hỗ trợ đọc từ array. Với GRUB, thường đặt <code>/boot</code> trên RAID 1 hoặc một phân vùng riêng (xem <a href="../../../lnx_es/bootloader/grub/">GRUB</a>).</li>
+</ul>
+<h3 id="43-firmware-raid-fake-raid">4.3. Firmware RAID (fake RAID)<a class="headerlink" href="#43-firmware-raid-fake-raid" title="Permanent link">¶</a></h3>
+<p>Chipset (Intel RST/VROC, AMD RAID...) hoặc card RAID rẻ cung cấp <strong>cấu hình RAID trong BIOS/UEFI</strong>, nhưng phần tính toán vẫn do <strong>driver trong OS</strong> làm, tức về bản chất là software RAID. Metadata theo định dạng của hãng (ví dụ Intel IMSM).</p>
+<ul>
+<li>Ưu điểm: cho phép boot từ array và dùng chung metadata với Windows khi dual-boot.</li>
+<li>Nhược điểm: không có cache phần cứng và bị gắn với chipset như hardware RAID, nhưng lại tốn CPU như software RAID.</li>
+<li>Trên Linux, <code>mdadm</code> đọc được nhiều định dạng này (IMSM, DDF), nên array dùng được mà không cần driver riêng.</li>
+</ul>
+<h3 id="44-so-sanh">4.4. So sánh<a class="headerlink" href="#44-so-sanh" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Tiêu chí</th>
+<th>Hardware RAID</th>
+<th>Firmware RAID</th>
+<th>Software RAID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ai tính RAID</td>
+<td>Controller</td>
+<td>Driver của OS (CPU host)</td>
+<td>Kernel (CPU host)</td>
+</tr>
+<tr>
+<td>Chi phí</td>
+<td>Cao (card + BBU)</td>
+<td>Thấp (có sẵn trên chipset)</td>
+<td>Không có thêm</td>
+</tr>
+<tr>
+<td>Cache bền vững</td>
+<td>Có (BBU/supercap)</td>
+<td>Không</td>
+<td>Không (dùng journal)</td>
+</tr>
+<tr>
+<td>Phụ thuộc phần cứng</td>
+<td>Cao, cần controller cùng hãng</td>
+<td>Cao, cần chipset cùng hãng</td>
+<td>Thấp, đổi máy vẫn đọc được</td>
+</tr>
+<tr>
+<td>Tải CPU host</td>
+<td>Thấp</td>
+<td>Cao hơn</td>
+<td>Cao hơn</td>
+</tr>
+<tr>
+<td>Công cụ quản lý</td>
+<td>Của hãng (<code>storcli</code>...)</td>
+<td>BIOS + <code>mdadm</code></td>
+<td><code>mdadm</code>, <code>dm-raid</code>, ZFS...</td>
+</tr>
+<tr>
+<td>Dùng điển hình</td>
+<td>Server doanh nghiệp</td>
+<td>Desktop, workstation</td>
+<td>Server Linux, NAS, hệ thống nhúng</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Chọn cách nào?</p>
+<ul>
+<li>Server cần write-back cache và quản lý tập trung bằng công cụ của hãng: <strong>hardware RAID</strong>.</li>
+<li>Muốn linh hoạt, không bị khoá phần cứng, hoặc dùng SSD/NVMe: <strong>software RAID</strong>. Với NVMe, phần lớn hệ thống dùng software RAID, vì hardware RAID dễ thành nút cổ chai khi băng thông ổ rất lớn.</li>
+<li><strong>Fake RAID</strong> chỉ nên dùng khi cần dual-boot với Windows hoặc cần boot từ array mà BIOS yêu cầu.</li>
+<li>Trong hệ thống nhúng, RAID thường là software RAID bằng <code>md</code>, hoặc NBD kết hợp RAID (xem <a href="../../../lnx_es/nbd/nbd/">Network Block Device</a>).</li>
+</ul>
+</div>
 <h2 id="5-raid-tren-linux">5. RAID trên Linux<a class="headerlink" href="#5-raid-tren-linux" title="Permanent link">¶</a></h2>
 <p>TODO: <code>md</code>/<code>mdadm</code>, <code>dm-raid</code>, ví dụ tạo và theo dõi array (<code>/proc/mdstat</code>). RAID kết hợp NBD xem <a href="../../../lnx_es/nbd/nbd/">Network Block Device</a>.</p>
 
@@ -8966,7 +9171,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 28, 2026 02:48:29 UTC">October 28, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 28, 2026 05:22:57 UTC">October 28, 2026</span>
   </span>
 
     
