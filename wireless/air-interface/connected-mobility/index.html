@@ -9427,6 +9427,8 @@
 </tr>
 </tbody>
 </table>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/meas-event-a3.svg" data-desc-position="bottom"><img alt="Sự kiện A3: cell lân cận tốt hơn serving một offset trong thời gian timeToTrigger" src="../img/meas-event-a3.svg"></a></p>
+<p><em>Sự kiện A3: khi cell lân cận vượt serving cộng offset và hysteresis, UE chờ hết timeToTrigger rồi mới gửi MeasurementReport. Handover diễn ra sau đó.</em></p>
 <p>Mỗi sự kiện có thêm <code>hysteresis</code> và <code>timeToTrigger</code> để tránh báo cáo dao động (ping-pong). UE gửi <strong>MeasurementReport</strong> trên SRB1.</p>
 <h2 id="handover">Handover<a class="headerlink" href="#handover" title="Permanent link">¶</a></h2>
 <p>Handover ở CONNECTED do mạng quyết định, dựa trên báo cáo đo của UE. Có hai kiểu theo đường báo hiệu:</p>
@@ -9467,6 +9469,8 @@
 <li><strong>Không mất gói.</strong> SN Status Transfer và chuyển tiếp dữ liệu giúp PDCP ở trạm đích tiếp tục đúng số thứ tự, AM bearer không mất gói. End marker báo cho trạm đích biết đã hết dữ liệu từ đường cũ, để sắp xếp đúng thứ tự.</li>
 <li><strong>Khóa.</strong> KeNB* / KgNB* suy ra từ khóa hiện tại (handover ngang) hoặc từ NH do core cấp (handover dọc), kết hợp PCI và tần số downlink của cell đích. NCC cho UE biết dùng cách nào.</li>
 </ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/handover-data-path.svg" data-desc-position="bottom"><img alt="Đường user plane trước, trong và sau handover X2/Xn" src="../img/handover-data-path.svg"></a></p>
+<p><em>Đường dữ liệu downlink qua ba giai đoạn của handover. Trong lúc thực hiện, trạm nguồn chuyển tiếp dữ liệu cho trạm đích. Sau path switch, core chuyển tunnel sang trạm đích.</em></p>
 <h3 id="cac-cai-tien-cua-nr">Các cải tiến của NR<a class="headerlink" href="#cac-cai-tien-cua-nr" title="Permanent link">¶</a></h3>
 <table>
 <thead>
@@ -9521,6 +9525,8 @@
     MME-&gt;&gt;SGW: Modify Bearer - S1-U chuyển sang en-gNB
     MME-&gt;&gt;MN: E-RAB Modification Confirm
     Note over UE,SGW: Dữ liệu đi qua en-gNB, chia sang eNB theo split bearer</code></pre>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/en-dc-option3x.svg" data-desc-position="bottom"><img alt="EN-DC option 3x với eNB là master node và en-gNB là secondary node" src="../img/en-dc-option3x.svg"></a></p>
+<p><em>EN-DC option 3x: eNB giữ kết nối RRC, en-gNB nhận toàn bộ user plane từ S-GW rồi chia một phần sang eNB qua X2-U.</em></p>
 <p>Với option 3x, user plane từ S-GW đi vào en-gNB, PDCP ở en-gNB chia gói ra hai leg (NR trực tiếp và LTE qua X2-U). Control plane vẫn neo ở eNB, en-gNB có thể nói RRC trực tiếp với UE qua SRB3 cho các cấu hình chỉ liên quan NR. Khi NR leg yếu, UE báo SCG failure cho MN thay vì mất cả kết nối.</p>
 <h2 id="rrc-release-va-rrc_inactive">RRC release và RRC_INACTIVE<a class="headerlink" href="#rrc-release-va-rrc_inactive" title="Permanent link">¶</a></h2>
 <h3 id="lte-nha-ve-idle">LTE: nhả về IDLE<a class="headerlink" href="#lte-nha-ve-idle" title="Permanent link">¶</a></h3>
@@ -9556,10 +9562,14 @@
     N-&gt;&gt;AMF: NGAP Path Switch Request
     AMF-&gt;&gt;N: Path Switch Request Acknowledge
     N-&gt;&gt;A: XnAP UE Context Release</code></pre>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/rrc-inactive-rna.svg" data-desc-position="bottom"><img alt="Vùng RNA nằm trong tracking area list, gNB neo giữ UE context" src="../img/rrc-inactive-rna.svg"></a></p>
+<p><em>Ở RRC_INACTIVE, UE di chuyển trong RNA mà không cần báo hiệu, khi ra khỏi RNA thì gửi RNA update. Paging của RAN chỉ phủ RNA, paging của core phủ cả TA list.</em></p>
 <p>Nếu UE resume ở chính gNB neo, bước 2, 3, 6 đến 8 không cần, chỉ còn một vòng RRCResumeRequest, RRCResume, RRCResumeComplete. Khi UE ra khỏi RNA, hoặc timer <strong>T380</strong> hết, nó resume với cause <code>rna-Update</code> để báo vị trí rồi thường được cho về INACTIVE lại.</p>
 <p>Rel-17 thêm <strong>Small Data Transmission (SDT)</strong>: UE ở INACTIVE gửi luôn một lượng nhỏ dữ liệu uplink cùng RRCResumeRequest (qua 4-step, 2-step RACH hoặc configured grant) mà không cần vào CONNECTED.</p>
 <h2 id="loi-lien-ket-va-tai-thiet-lap">Lỗi liên kết và tái thiết lập<a class="headerlink" href="#loi-lien-ket-va-tai-thiet-lap" title="Permanent link">¶</a></h2>
 <p><strong>Radio link failure (RLF)</strong> được phát hiện khi lớp vật lý báo "out-of-sync" (chất lượng PDCCH giả định quá kém) liên tiếp <strong>N310</strong> lần: UE bật timer <strong>T310</strong>. Nếu nhận <strong>N311</strong> lần "in-sync" thì dừng T310, ngược lại hết T310 là RLF. Các nguyên nhân khác: random access thất bại, RLC đạt số lần truyền lại tối đa, handover thất bại (T304 hết).</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/rlf-timeline.svg" data-desc-position="bottom"><img alt="Phát hiện radio link failure bằng N310 và T310, sau đó tái thiết lập với T311 và T301" src="../img/rlf-timeline.svg"></a></p>
+<p><em>Trình tự timer khi mất liên kết: N310 lần out-of-sync liên tiếp làm T310 chạy, T310 hết thì khai báo RLF, UE chọn cell trong T311 rồi gửi yêu cầu tái thiết lập và chờ trong T301.</em></p>
 <p>Sau RLF, UE chọn lại cell trong thời gian <strong>T311</strong> và gửi yêu cầu tái thiết lập:</p>
 <table>
 <thead>
@@ -9669,6 +9679,8 @@
 </tr>
 </tbody>
 </table>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/paging-drx.svg" data-desc-position="bottom"><img alt="Paging DRX: UE chỉ thức ở paging occasion, ở NR mỗi PO gồm các occasion trên từng beam SSB" src="../img/paging-drx.svg"></a></p>
+<p><em>UE ngủ giữa các paging occasion. Ở NR, một PO gồm nhiều occasion giám sát PDCCH, mỗi occasion ứng với một beam SSB, vì gNB không biết UE đang ở beam nào.</em></p>
 <p><code>T</code> là chu kỳ DRX paging (nhỏ hơn giữa giá trị mặc định của cell và giá trị riêng UE thương lượng qua NAS), <code>N</code> là số paging frame trong một chu kỳ. Ở NR, gNB phải phát paging trên mọi beam vì không biết UE ở beam nào. Rel-17 thêm <strong>Paging Early Indication (PEI)</strong>: một DCI báo trước để UE biết có cần thức dậy giải mã paging hay không.</p>
 <p>Với UE ở INACTIVE, gNB neo tự khởi tạo <strong>RAN paging</strong> (dùng I-RNTI đầy đủ) trong các cell của RNA, gửi tới các gNB khác qua XnAP RAN Paging, core không tham gia.</p>
 <h2 id="timer-hay-gap">Timer hay gặp<a class="headerlink" href="#timer-hay-gap" title="Permanent link">¶</a></h2>
@@ -9754,7 +9766,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 27, 2026 14:35:18 UTC">October 27, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 28, 2026 09:00:03 UTC">October 28, 2026</span>
   </span>
 
     

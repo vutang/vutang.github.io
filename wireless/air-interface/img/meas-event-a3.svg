@@ -1,0 +1,35 @@
+<svg role="img" viewBox="0 0 960 360" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+  <title>Measurement event A3: neighbour becomes offset better than serving, then time to trigger</title>
+  <rect x="0" y="0" width="960" height="360" rx="8" fill="#ffffff"/>
+  <defs>
+    <marker id="m333" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333"/></marker>
+    <marker id="m475569" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker>
+  </defs>
+  <text x="20" y="28" font-size="14" font-weight="700" text-anchor="start" fill="#1d4278">Event A3 and the path to a handover</text>
+  <line x1="80" y1="260" x2="920" y2="260" stroke="#333" stroke-width="1.2" marker-end="url(#m333)"/>
+  <line x1="80" y1="260" x2="80" y2="44" stroke="#333" stroke-width="1.2" marker-end="url(#m333)"/>
+  <text x="74" y="54" font-size="10.5" text-anchor="end" fill="#555">RSRP</text>
+  <text x="920" y="278" font-size="10.5" text-anchor="end" fill="#555">time</text>
+  <line x1="80" y1="90" x2="920" y2="230" stroke="#2f5d9e" stroke-width="2.5"/>
+  <line x1="80" y1="64" x2="920" y2="204" stroke="#2f5d9e" stroke-width="1.3" stroke-dasharray="6 4"/>
+  <line x1="80" y1="240" x2="920" y2="100" stroke="#b7791f" stroke-width="2.5"/>
+  <text x="912" y="248" font-size="10.5" font-weight="700" text-anchor="end" fill="#1d4278">serving cell</text>
+  <text x="88" y="56" font-size="10.5" text-anchor="start" fill="#1d4278">serving + offset + hysteresis</text>
+  <text x="912" y="90" font-size="10.5" font-weight="700" text-anchor="end" fill="#7b4f10">neighbour cell</text>
+  <line x1="608" y1="50" x2="608" y2="260" stroke="#c0392b" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <line x1="590" y1="152" x2="590" y2="178" stroke="#475569" stroke-width="1.2" marker-end="url(#m475569)" marker-start="url(#m475569)"/>
+  <text x="584" y="196" font-size="10" text-anchor="end" fill="#333">Off + Hys</text>
+  <rect x="608" y="54" width="110" height="22" rx="3" fill="#fdecea" stroke="#c0392b" stroke-width="1.2"/>
+  <text x="663" y="69" font-size="10.5" font-weight="700" text-anchor="middle" fill="#922b21">timeToTrigger</text>
+  <line x1="718" y1="50" x2="718" y2="260" stroke="#c0392b" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <line x1="608" y1="260" x2="608" y2="268" stroke="#333" stroke-width="1.2"/>
+  <text x="608" y="284" font-size="10.5" font-weight="700" text-anchor="middle" fill="#333">① entering condition met</text>
+  <line x1="718" y1="260" x2="718" y2="268" stroke="#333" stroke-width="1.2"/>
+  <text x="718" y="300" font-size="10.5" font-weight="700" text-anchor="middle" fill="#333">② MeasurementReport</text>
+  <line x1="788" y1="260" x2="788" y2="268" stroke="#333" stroke-width="1.2"/>
+  <text x="788" y="284" font-size="10.5" font-weight="700" text-anchor="middle" fill="#333">③ HO command</text>
+  <line x1="858" y1="260" x2="858" y2="268" stroke="#333" stroke-width="1.2"/>
+  <text x="858" y="300" font-size="10.5" font-weight="700" text-anchor="middle" fill="#333">④ UE on target</text>
+  <text x="480" y="322" font-size="10.5" text-anchor="middle" fill="#555">A3 condition: Mn + Ofn + Ocn − Hys &gt; Mp + Ofp + Ocp + Off, held for timeToTrigger.</text>
+  <text x="480" y="336.175" font-size="10.5" text-anchor="middle" fill="#555">Leaving condition uses + Hys, so small fluctuations do not toggle the event (ping-pong).</text>
+</svg>

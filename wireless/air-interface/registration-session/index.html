@@ -9142,6 +9142,8 @@
     UPF-&gt;&gt;SMF: PFCP Session Modification Response
     Note over UE,UPF: Có dữ liệu uplink và downlink trên PDU session</code></pre>
 <p>Phía gNB, phần quan trọng nằm ở <code>PDU Session Resource Setup Request</code>: danh sách QoS flow với 5QI, ARP, GBR/MBR, cộng thông tin tunnel N3 phía UPF. gNB tự quyết định tạo bao nhiêu DRB và ánh xạ QoS flow nào vào DRB nào, rồi báo cho UE trong cấu hình SDAP. Nếu không đủ tài nguyên, gNB có thể từ chối từng QoS flow.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/pdu-session-tunnels.svg" data-desc-position="bottom"><img alt="Trao đổi TEID của tunnel N3 khi thiết lập PDU session" src="../img/pdu-session-tunnels.svg"></a></p>
+<p><em>Hai đầu tunnel N3 được trao đổi qua sáu bước báo hiệu. Mỗi đầu cấp TEID cho chiều dữ liệu đi tới nó: gNB nhận downlink tại TEID của mình, UPF nhận uplink tại TEID của UPF.</em></p>
 <p>Khi gNB tách CU/DU, thủ tục này kéo theo hai thủ tục nội bộ:</p>
 <ol>
 <li><strong>E1AP Bearer Context Setup</strong> từ CU-CP sang CU-UP: lập thực thể SDAP, PDCP-U, tunnel N3 và F1-U.</li>
@@ -9201,17 +9203,8 @@
 </table>
 <h2 id="phan-cap-khoa">Phân cấp khóa<a class="headerlink" href="#phan-cap-khoa" title="Permanent link">¶</a></h2>
 <p>Khóa dùng trên giao diện vô tuyến được suy ra dần từ khóa gốc K lưu trong USIM và trong HSS/UDM. Trạm gốc chỉ nhận khóa ở tầng của nó.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a> LTE                                   NR
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a> K (USIM, HSS)                         K (USIM, UDM)
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  └─ CK, IK                             └─ CK, IK
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>      └─ KASME (MME)                        └─ KAUSF (AUSF)
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>          ├─ KNASenc, KNASint                   └─ KSEAF (SEAF)
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>          └─ KeNB (eNB)                             └─ KAMF (AMF)
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>              ├─ KRRCenc, KRRCint                       ├─ KNASenc, KNASint
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>              └─ KUPenc                                 └─ KgNB (gNB)
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>                                                            ├─ KRRCenc, KRRCint
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>                                                            └─ KUPenc, KUPint
-</code></pre></div>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/key-hierarchy.svg" data-desc-position="bottom"><img alt="Phân cấp khóa của LTE và NR theo node giữ khóa" src="../img/key-hierarchy.svg"></a></p>
+<p><em>Phân cấp khóa LTE (trái) và NR (phải), mỗi hàng là node giữ khóa. NR thêm hai tầng ở AUSF và SEAF để mạng nhà kiểm soát việc xác thực, và có thêm khóa toàn vẹn user plane.</em></p>
 <p>Thuật toán đánh số giống nhau ở hai hệ: 0 là không mã hóa (null), 1 dựa trên SNOW 3G, 2 dựa trên AES, 3 dựa trên ZUC. LTE gọi là EEA/EIA, NR gọi là NEA/NIA. Khi handover, trạm gốc nguồn suy ra khóa cho trạm đích (KeNB<em>, KgNB</em>) từ khóa hiện tại và PCI, tần số của cell đích, xem <a href="../connected-mobility/#handover">Connected Mode &amp; Mobility</a>.</p>
 <h2 id="oc-them">Đọc thêm<a class="headerlink" href="#oc-them" title="Permanent link">¶</a></h2>
 <ul>
@@ -9244,7 +9237,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 27, 2026 14:35:18 UTC">October 27, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 28, 2026 09:00:03 UTC">October 28, 2026</span>
   </span>
 
     

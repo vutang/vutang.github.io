@@ -9164,18 +9164,8 @@
 
 <h1 id="initial-access-lte-va-nr">Initial Access (LTE và NR)<a class="headerlink" href="#initial-access-lte-va-nr" title="Permanent link">¶</a></h1>
 <p>Initial access là chuỗi bước đưa UE từ lúc bật máy tới lúc có kết nối RRC với trạm gốc: tìm cell, đồng bộ thời gian và tần số, đọc thông tin hệ thống, chọn cell để "camp", rồi random access và thiết lập RRC. Các lớp và định danh dùng ở đây được giới thiệu ở <a href="../protocol-stack/">Protocol Stack &amp; States</a>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Bật máy / mất sóng
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>   │
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>   ▼
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Chọn PLMN (NAS)  ─►  Dò cell: PSS, SSS  ─►  Đọc MIB (PBCH)  ─►  Đọc SIB1  ─►  Chọn cell (S-criterion)
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>                                                                                     │
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>                                                                          Camp trên cell, RRC_IDLE
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>                                                                                     │
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>                                                             Có nhu cầu (đăng ký, dữ liệu, paging)
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>                                                                                     │
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>                                                                                     ▼
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>                                                        Random access (Msg1 đến Msg4)  ─►  RRC_CONNECTED
-</code></pre></div>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/initial-access-flow.svg" data-desc-position="bottom"><img alt="Các bước initial access từ lúc bật máy tới RRC_CONNECTED" src="../img/initial-access-flow.svg"></a></p>
+<p><em>Chuỗi initial access. Các bước 1 đến 5 chỉ nghe, không phát gì. UE chỉ phát lần đầu ở bước 6 (random access), sau khi đã có trigger.</em></p>
 <h2 id="do-cell-va-ong-bo">Dò cell và đồng bộ<a class="headerlink" href="#do-cell-va-ong-bo" title="Permanent link">¶</a></h2>
 <p>Mục tiêu của bước này là tìm ra tần số sóng mang, biên khung (frame boundary) và Physical Cell ID (PCI). PCI được ghép từ hai phần, mỗi phần mang trong một tín hiệu đồng bộ:</p>
 <ul>
@@ -9222,18 +9212,14 @@
 </tr>
 </tbody>
 </table>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/lte-sync-grid.svg" data-desc-position="bottom"><img alt="Vị trí PSS, SSS, PBCH và SIB1 trong một radio frame LTE FDD" src="../img/lte-sync-grid.svg"></a></p>
+<p><em>Một radio frame LTE FDD. PSS/SSS nằm ở 6 RB giữa băng, lặp mỗi 5 ms. PBCH (MIB) nằm ngay sau trong subframe 0, SIB1 ở subframe 5. Vùng PDCCH trải toàn băng ở đầu mọi subframe.</em></p>
 <p>Khoảng cách giữa PSS và SSS cho UE biết cell dùng FDD hay TDD và dùng CP thường hay CP mở rộng. Sau khi có PCI, UE biết vị trí CRS và đo RSRP, RSRQ trên CRS.</p>
 <p>UE quét theo channel raster 100 kHz (EARFCN). Vì PSS/SSS luôn ở tâm sóng mang nên tìm được đồng bộ cũng có nghĩa là tìm được tâm kênh.</p>
 <h3 id="nr-khoi-ssb">NR: khối SSB<a class="headerlink" href="#nr-khoi-ssb" title="Permanent link">¶</a></h3>
-<p>NR gói PSS, SSS và PBCH vào một khối gọi là <strong>SSB</strong> (SS/PBCH block):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>            240 subcarrier (20 RB)
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>          ┌───────────────────────────┐
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a> symbol 0 │        │   PSS   │        │   PSS: 127 subcarrier ở giữa
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a> symbol 1 │           PBCH            │
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a> symbol 2 │ PBCH │     SSS     │ PBCH │   SSS: 127 subcarrier ở giữa
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a> symbol 3 │           PBCH            │
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>          └───────────────────────────┘
-</code></pre></div>
+<p>NR gói PSS, SSS và PBCH vào một khối gọi là <strong>SSB</strong> (SS/PBCH block), và phát nhiều SSB liên tiếp, mỗi SSB trên một beam:</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/nr-ssb.svg" data-desc-position="bottom"><img alt="Cấu trúc SSB của NR và beam sweep trong nửa khung 5 ms" src="../img/nr-ssb.svg"></a></p>
+<p><em>Trái: SSB gồm 4 symbol, 240 subcarrier. Phải: gNB quét các beam, mỗi beam một SSB có chỉ số riêng, toàn bộ burst nằm trong 5 ms.</em></p>
 <table>
 <thead>
 <tr>
@@ -9282,6 +9268,8 @@
 <li><strong>Sync raster thưa hơn channel raster.</strong> Băng NR rộng tới hàng trăm MHz, quét theo channel raster sẽ rất lâu. GSCN có bước cỡ 1,2 MHz (dưới 3 GHz) hoặc 1,44 MHz (3 đến 24,25 GHz), nên UE chỉ thử vài điểm. Vì vậy SSB có thể lệch khỏi tâm kênh, MIB phải cho UE biết độ lệch (<code>ssb-SubcarrierOffset</code>, gọi là k_SSB) và vị trí CORESET#0.</li>
 <li><strong>Không có CRS.</strong> UE đo SS-RSRP, SS-RSRQ, SS-SINR trên SSB.</li>
 </ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/nr-initial-bwp.svg" data-desc-position="bottom"><img alt="So sánh vị trí tín hiệu đồng bộ của LTE và NR, CORESET#0 và BWP của NR" src="../img/nr-initial-bwp.svg"></a></p>
+<p><em>LTE đặt tín hiệu đồng bộ ở tâm và cho UE biết băng thông từ MIB. NR đặt SSB theo sync raster, có thể lệch tâm, MIB chỉ dẫn UE tới CORESET#0 (initial BWP). BWP rộng hơn được cấu hình sau bằng RRC.</em></p>
 <h2 id="mib-va-sib1">MIB và SIB1<a class="headerlink" href="#mib-va-sib1" title="Permanent link">¶</a></h2>
 <h3 id="mib">MIB<a class="headerlink" href="#mib" title="Permanent link">¶</a></h3>
 <p>MIB là bản tin nhỏ nhất, cố định, đủ để UE đọc được SIB1.</p>
@@ -9395,8 +9383,8 @@
 <p>Với on-demand SI ở NR, UE ở IDLE hoặc INACTIVE gửi yêu cầu bằng một preamble dành riêng (cách Msg1) hoặc bằng bản tin <code>RRCSystemInfoRequest</code> trong Msg3. Cell chỉ phát SIB đó trong một khoảng thời gian sau yêu cầu, giúp tiết kiệm tài nguyên và năng lượng.</p>
 <h2 id="chon-cell">Chọn cell<a class="headerlink" href="#chon-cell" title="Permanent link">¶</a></h2>
 <p>Sau khi có SIB1, UE kiểm tra cell có hợp lệ không: đúng PLMN, không bị barred, không bị cấm theo TA, và thỏa <strong>S-criterion</strong>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Srxlev = Qrxlevmeas − (Qrxlevmin + Qrxlevminoffset) − Pcompensation − Qoffsettemp &gt; 0
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Squal  = Qqualmeas  − (Qqualmin  + Qqualminoffset)  − Qoffsettemp                 &gt; 0
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Srxlev = Qrxlevmeas − (Qrxlevmin + Qrxlevminoffset) − Pcompensation − Qoffsettemp &gt; 0
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Squal  = Qqualmeas  − (Qqualmin  + Qqualminoffset)  − Qoffsettemp                 &gt; 0
 </code></pre></div>
 <p><code>Qrxlevmeas</code> là RSRP đo được (trên CRS ở LTE, trên SSB ở NR), <code>Qrxlevmin</code> và các offset lấy từ SIB1, <code>Pcompensation</code> phạt các UE có công suất phát tối đa thấp hơn mức cell yêu cầu. Thỏa điều kiện thì UE <strong>camp</strong> trên cell, lắng nghe paging và theo dõi các cell lân cận để reselection (xem <a href="../connected-mobility/#idle-mode-cell-reselection-va-cap-nhat-vung">Connected Mode &amp; Mobility</a>).</p>
 <h2 id="random-access">Random access<a class="headerlink" href="#random-access" title="Permanent link">¶</a></h2>
@@ -9440,6 +9428,8 @@
 </tbody>
 </table>
 <p>Ở NR, mỗi SSB được ánh xạ tới một tập RACH occasion và preamble (<code>ssb-perRACH-OccasionAndCB-PreamblesPerSSB</code>). UE chọn SSB tốt nhất rồi phát preamble ở occasion tương ứng. Nhờ đó gNB biết UE nằm ở beam nào ngay từ Msg1 và phát Msg2 trên đúng beam đó.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/ssb-rach-mapping.svg" data-desc-position="bottom"><img alt="Ánh xạ giữa SSB và RACH occasion giúp gNB biết UE ở beam nào" src="../img/ssb-rach-mapping.svg"></a></p>
+<p><em>UE đo thấy SSB #2 mạnh nhất nên phát preamble ở RO #2. gNB nhận preamble ở RO #2 và suy ra phải trả RAR trên beam #2.</em></p>
 <h3 id="thu-tuc-4-buoc-co-tranh-chap-cbra">Thủ tục 4 bước có tranh chấp (CBRA)<a class="headerlink" href="#thu-tuc-4-buoc-co-tranh-chap-cbra" title="Permanent link">¶</a></h3>
 <pre class="mermaid"><code>sequenceDiagram
     autonumber
@@ -9465,6 +9455,8 @@
 <li><strong>Msg4.</strong> Nhiều UE có thể chọn trùng một preamble và cùng gửi Msg3. Trạm gốc chỉ giải mã được một, rồi gửi lại 48 bit đầu của SDU Msg3 trong <strong>UE Contention Resolution Identity MAC CE</strong>. UE nào thấy khớp với bản tin của mình thì thắng, giữ TC-RNTI làm C-RNTI, các UE khác bắt đầu lại từ Msg1 khi <code>ra-ContentionResolutionTimer</code> hết. Cùng PDU có bản tin RRC setup cấu hình SRB1 và cấu hình lớp dưới (LTE <code>radioResourceConfigDedicated</code>, NR <code>radioBearerConfig</code> và <code>masterCellGroup</code>).</li>
 <li><strong>Msg5.</strong> UE trả lời trên SRB1. Bản tin này mang NAS PDU đầu tiên (Attach Request, Registration Request hoặc Service Request), PLMN đã chọn, và ở NR thêm <code>ng-5G-S-TMSI-Part2</code> (9 bit còn lại) cùng thông tin AMF đã đăng ký để gNB chọn đúng AMF.</li>
 </ol>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/rach-power-ramping.svg" data-desc-position="bottom"><img alt="Phát lại preamble với công suất tăng dần cho tới khi nhận được RAR" src="../img/rach-power-ramping.svg"></a></p>
+<p><em>Mỗi lần không nhận được RAR trong cửa sổ chờ, UE phát lại preamble với công suất cao hơn một bước, tối đa preambleTransMax lần.</em></p>
 <p>Trạm gốc có thể từ chối bằng <code>RRCConnectionReject</code> / <code>RRCReject</code> kèm thời gian chờ. Timer <strong>T300</strong> chạy từ khi UE gửi Msg3 tới khi nhận được setup hoặc reject.</p>
 <h3 id="khong-tranh-chap-cfra-va-2-buoc">Không tranh chấp (CFRA) và 2 bước<a class="headerlink" href="#khong-tranh-chap-cfra-va-2-buoc" title="Permanent link">¶</a></h3>
 <ul>
@@ -9558,7 +9550,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 27, 2026 14:35:18 UTC">October 27, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 28, 2026 09:00:03 UTC">October 28, 2026</span>
   </span>
 
     
