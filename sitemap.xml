@@ -233,6 +233,10 @@
          <lastmod>2026-10-29</lastmod>
     </url>
     <url>
+         <loc>https://note.vutang.dev/embedded_security/iot/iot-security/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
          <loc>https://note.vutang.dev/embedded_security/ipsec/ipsec/</loc>
          <lastmod>2026-10-29</lastmod>
     </url>
@@ -370,6 +374,70 @@
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/gnss/nmea/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/lnx_es/iot/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/lnx_es/iot/architecture/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/lnx_es/iot/gateway/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/lnx_es/iot/lab/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/lnx_es/iot/mcu-node/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/lnx_es/iot/connectivity/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/lnx_es/iot/connectivity/ble/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/lnx_es/iot/connectivity/cellular/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/lnx_es/iot/connectivity/lorawan/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/lnx_es/iot/connectivity/thread-matter/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/lnx_es/iot/connectivity/wifi/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/lnx_es/iot/device_mgmt/ota/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/lnx_es/iot/device_mgmt/provisioning/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/lnx_es/iot/protocols/coap-lwm2m/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/lnx_es/iot/protocols/industrial/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/lnx_es/iot/protocols/mqtt/</loc>
          <lastmod>2026-10-29</lastmod>
     </url>
     <url>
