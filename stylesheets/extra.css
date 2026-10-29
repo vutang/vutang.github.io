@@ -786,3 +786,11 @@ p:has(> a > .article-cover)::after {
   filter: invert(1);
   opacity: 0.85;
 }
+
+/* Công thức display dài hơn màn hình (điện thoại): cuộn ngang trong chính khối công thức
+   thay vì bị cắt mất phần bên phải */
+.md-typeset mjx-container[display="true"] {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
