@@ -583,6 +583,27 @@ body:has(.home-top) .md-grid {
   box-shadow: 0 1px 4px rgba(0, 0, 0, .18);
 }
 
+/* Signature in the top-right corner of every cover (the paragraph that holds it).
+   The PNG is black ink, inverted to white to sit on the gradient. */
+p:has(> .article-cover),
+p:has(> a > .article-cover) {
+  position: relative;
+}
+
+p:has(> .article-cover)::after,
+p:has(> a > .article-cover)::after {
+  content: "";
+  position: absolute;
+  right: 3%;
+  top: 9%;
+  width: 7%;
+  max-width: 3.5rem;
+  aspect-ratio: 480 / 399;
+  background: url("../assets/signature.png") center / contain no-repeat;
+  filter: invert(1) drop-shadow(0 0 1.5px rgba(0, 0, 0, .55)) drop-shadow(0 0 3px rgba(0, 0, 0, .3));
+  pointer-events: none;
+}
+
 /* Heatmap tables: cells get a level class from javascripts/heatmap.js */
 :root {
   --heat-4: rgba(46, 160, 67, 0.55);
