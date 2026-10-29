@@ -1,0 +1,70 @@
+<svg role="img" viewBox="0 0 660 290" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+  <title>Dòng thời gian của x86 từ 8086 năm 1978 đến Panther Lake năm 2026</title>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#444"/></marker>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c0392b"/></marker>
+  </defs>
+  <rect x="0" y="0" width="660" height="290" rx="8" fill="#ffffff"/>
+  <line x1="14" y1="165" x2="646" y2="165" stroke="#555" stroke-width="2.4"/>
+  <circle cx="62.0" cy="165" r="6" fill="#2f5d9e" stroke="#fff" stroke-width="1.5"/>
+  <line x1="62.0" y1="159" x2="62.0" y2="128" stroke="#2f5d9e" stroke-width="1.2"/>
+  <rect x="5.0" y="64" width="114" height="64" rx="6" fill="#d3e3f7" stroke="#2f5d9e" stroke-width="1.4"/>
+  <text x="62.0" y="81" font-size="12" text-anchor="middle" fill="#2f5d9e" font-weight="bold">1978</text>
+  <text x="62.0" y="100" font-size="9.5" text-anchor="middle" fill="#111">8086</text>
+  <text x="62.0" y="114" font-size="9.5" text-anchor="middle" fill="#111">x86 16-bit đầu tiên</text>
+  <circle cx="121.5" cy="165" r="6" fill="#2e7d4f" stroke="#fff" stroke-width="1.5"/>
+  <line x1="121.5" y1="171" x2="121.5" y2="200" stroke="#2e7d4f" stroke-width="1.2"/>
+  <rect x="64.5" y="200" width="114" height="64" rx="6" fill="#d5ecd9" stroke="#2e7d4f" stroke-width="1.4"/>
+  <text x="121.5" y="217" font-size="12" text-anchor="middle" fill="#2e7d4f" font-weight="bold">1981</text>
+  <text x="121.5" y="236" font-size="9.5" text-anchor="middle" fill="#111">IBM PC chọn</text>
+  <text x="121.5" y="250" font-size="9.5" text-anchor="middle" fill="#111">Intel 8088</text>
+  <circle cx="181.0" cy="165" r="6" fill="#b07d12" stroke="#fff" stroke-width="1.5"/>
+  <line x1="181.0" y1="159" x2="181.0" y2="128" stroke="#b07d12" stroke-width="1.2"/>
+  <rect x="124.0" y="64" width="114" height="64" rx="6" fill="#fbeccb" stroke="#b07d12" stroke-width="1.4"/>
+  <text x="181.0" y="81" font-size="12" text-anchor="middle" fill="#b07d12" font-weight="bold">1985</text>
+  <text x="181.0" y="100" font-size="9.5" text-anchor="middle" fill="#111">Intel 386</text>
+  <text x="181.0" y="114" font-size="9.5" text-anchor="middle" fill="#111">32-bit, protected mode</text>
+  <circle cx="240.5" cy="165" r="6" fill="#b5483a" stroke="#fff" stroke-width="1.5"/>
+  <line x1="240.5" y1="171" x2="240.5" y2="200" stroke="#b5483a" stroke-width="1.2"/>
+  <rect x="183.5" y="200" width="114" height="64" rx="6" fill="#f8d9d2" stroke="#b5483a" stroke-width="1.4"/>
+  <text x="240.5" y="217" font-size="12" text-anchor="middle" fill="#b5483a" font-weight="bold">1993</text>
+  <text x="240.5" y="236" font-size="9.5" text-anchor="middle" fill="#111">Pentium</text>
+  <text x="240.5" y="250" font-size="9.5" text-anchor="middle" fill="#111">superscalar</text>
+  <circle cx="300.0" cy="165" r="6" fill="#6b4fa3" stroke="#fff" stroke-width="1.5"/>
+  <line x1="300.0" y1="159" x2="300.0" y2="128" stroke="#6b4fa3" stroke-width="1.2"/>
+  <rect x="243.0" y="64" width="114" height="64" rx="6" fill="#e4dcf3" stroke="#6b4fa3" stroke-width="1.4"/>
+  <text x="300.0" y="81" font-size="12" text-anchor="middle" fill="#6b4fa3" font-weight="bold">2003</text>
+  <text x="300.0" y="100" font-size="9.5" text-anchor="middle" fill="#111">AMD64</text>
+  <text x="300.0" y="114" font-size="9.5" text-anchor="middle" fill="#111">64-bit (Opteron)</text>
+  <circle cx="359.5" cy="165" r="6" fill="#2f5d9e" stroke="#fff" stroke-width="1.5"/>
+  <line x1="359.5" y1="171" x2="359.5" y2="200" stroke="#2f5d9e" stroke-width="1.2"/>
+  <rect x="302.5" y="200" width="114" height="64" rx="6" fill="#d3e3f7" stroke="#2f5d9e" stroke-width="1.4"/>
+  <text x="359.5" y="217" font-size="12" text-anchor="middle" fill="#2f5d9e" font-weight="bold">2004</text>
+  <text x="359.5" y="236" font-size="9.5" text-anchor="middle" fill="#111">Intel EM64T</text>
+  <text x="359.5" y="250" font-size="9.5" text-anchor="middle" fill="#111">(Xeon Nocona)</text>
+  <circle cx="419.0" cy="165" r="6" fill="#2e7d4f" stroke="#fff" stroke-width="1.5"/>
+  <line x1="419.0" y1="159" x2="419.0" y2="128" stroke="#2e7d4f" stroke-width="1.2"/>
+  <rect x="362.0" y="64" width="114" height="64" rx="6" fill="#d5ecd9" stroke="#2e7d4f" stroke-width="1.4"/>
+  <text x="419.0" y="81" font-size="12" text-anchor="middle" fill="#2e7d4f" font-weight="bold">2017</text>
+  <text x="419.0" y="100" font-size="9.5" text-anchor="middle" fill="#111">AMD Zen</text>
+  <text x="419.0" y="114" font-size="9.5" text-anchor="middle" fill="#111">cạnh tranh trở lại</text>
+  <circle cx="478.5" cy="165" r="6" fill="#b07d12" stroke="#fff" stroke-width="1.5"/>
+  <line x1="478.5" y1="171" x2="478.5" y2="200" stroke="#b07d12" stroke-width="1.2"/>
+  <rect x="421.5" y="200" width="114" height="64" rx="6" fill="#fbeccb" stroke="#b07d12" stroke-width="1.4"/>
+  <text x="478.5" y="217" font-size="12" text-anchor="middle" fill="#b07d12" font-weight="bold">2024</text>
+  <text x="478.5" y="236" font-size="9.5" text-anchor="middle" fill="#111">x86 Ecosystem</text>
+  <text x="478.5" y="250" font-size="9.5" text-anchor="middle" fill="#111">Advisory Group</text>
+  <circle cx="538.0" cy="165" r="6" fill="#b5483a" stroke="#fff" stroke-width="1.5"/>
+  <line x1="538.0" y1="159" x2="538.0" y2="128" stroke="#b5483a" stroke-width="1.2"/>
+  <rect x="481.0" y="64" width="114" height="64" rx="6" fill="#f8d9d2" stroke="#b5483a" stroke-width="1.4"/>
+  <text x="538.0" y="81" font-size="12" text-anchor="middle" fill="#b5483a" font-weight="bold">2025</text>
+  <text x="538.0" y="100" font-size="9.5" text-anchor="middle" fill="#111">Chính phủ Mỹ và</text>
+  <text x="538.0" y="114" font-size="9.5" text-anchor="middle" fill="#111">Nvidia đầu tư Intel</text>
+  <circle cx="597.5" cy="165" r="6" fill="#6b4fa3" stroke="#fff" stroke-width="1.5"/>
+  <line x1="597.5" y1="171" x2="597.5" y2="200" stroke="#6b4fa3" stroke-width="1.2"/>
+  <rect x="540.5" y="200" width="114" height="64" rx="6" fill="#e4dcf3" stroke="#6b4fa3" stroke-width="1.4"/>
+  <text x="597.5" y="217" font-size="12" text-anchor="middle" fill="#6b4fa3" font-weight="bold">2026</text>
+  <text x="597.5" y="236" font-size="9.5" text-anchor="middle" fill="#111">Panther Lake,</text>
+  <text x="597.5" y="250" font-size="9.5" text-anchor="middle" fill="#111">Intel 18A</text>
+  <text x="330" y="20" font-size="12" text-anchor="middle" fill="#1d4278" font-weight="bold">Gần 50 năm, vẫn tương thích ngược với mã từ thời 16-bit</text>
+</svg>
