@@ -2677,13 +2677,41 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Thành phần phần cứng">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ang-ten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ăng-ten
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module-va-giao-tiep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Module và giao tiếp
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#iem-yeu-nhieu-va-gia-mao" class="md-nav__link">
+  <a href="#han-che-nhieu-va-gia-mao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Điểm yếu: nhiễu và giả mạo
+        Hạn chế: nhiễu và giả mạo
       
     </span>
   </a>
@@ -2725,6 +2753,34 @@
     
   
     GNSS trên Linux (gpsd, NMEA, 1PPS)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nmea/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NMEA 0183
   
 
     
@@ -9528,13 +9584,41 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Thành phần phần cứng">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ang-ten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ăng-ten
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module-va-giao-tiep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Module và giao tiếp
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#iem-yeu-nhieu-va-gia-mao" class="md-nav__link">
+  <a href="#han-che-nhieu-va-gia-mao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Điểm yếu: nhiễu và giả mạo
+        Hạn chế: nhiễu và giả mạo
       
     </span>
   </a>
@@ -9573,6 +9657,13 @@
       
       
       
+        <a href="../../../articles/tags/#tag:antenna" class="md-tag">antenna</a>
+      
+    
+      
+      
+      
+      
         <a href="../../../articles/tags/#tag:gnss" class="md-tag">gnss</a>
       
     
@@ -9605,7 +9696,7 @@
 
 
 <h1 id="gnss">GNSS<a class="headerlink" href="#gnss" title="Permanent link">¶</a></h1>
-<p><strong>GNSS</strong> (Global Navigation Satellite System) là tên chung của các hệ thống định vị vệ tinh toàn cầu. Với một thiết bị nhúng, GNSS cho hai thứ: <strong>vị trí</strong> và <strong>thời gian chính xác</strong> (UTC, cỡ chục ns khi dùng bộ thu chuyên dụng). Thời gian là lý do GNSS xuất hiện trong mạng viễn thông, xem <a href="../../../wireless/sync/sync/">Synchronization</a>. Cách đọc dữ liệu GNSS trên Linux nằm ở <a href="../gnss-linux/">GNSS trên Linux</a>.</p>
+<p><strong>GNSS</strong> (Global Navigation Satellite System) là tên chung của các hệ thống định vị vệ tinh toàn cầu. Với một thiết bị nhúng, GNSS cung cấp hai loại dữ liệu: <strong>vị trí</strong> và <strong>thời gian chính xác</strong> (UTC, cỡ chục ns khi dùng bộ thu chuyên dụng). Dữ liệu thời gian là lý do GNSS được dùng trong mạng viễn thông, xem <a href="../../../wireless/sync/sync/">Synchronization</a>. Cách đọc dữ liệu GNSS trên Linux nằm ở <a href="../gnss-linux/">GNSS trên Linux</a>.</p>
 <h2 id="cac-he-thong">Các hệ thống<a class="headerlink" href="#cac-he-thong" title="Permanent link">¶</a></h2>
 <table>
 <thead>
@@ -9645,7 +9736,7 @@
 </table>
 <p>Module hiện đại thường thu nhiều hệ thống cùng lúc (multi-constellation) để có nhiều vệ tinh hơn, nhất là ở nơi bị che khuất.</p>
 <h2 id="nguyen-ly-o-vi-tri">Nguyên lý đo vị trí<a class="headerlink" href="#nguyen-ly-o-vi-tri" title="Permanent link">¶</a></h2>
-<p>Mỗi vệ tinh phát tín hiệu chứa <strong>thời điểm phát</strong> và <strong>ephemeris</strong> (quỹ đạo của chính nó). Bộ thu đo thời gian tín hiệu đến, nhân với tốc độ ánh sáng để ra <strong>pseudorange</strong> tới từng vệ tinh.</p>
+<p>Mỗi vệ tinh phát tín hiệu chứa <strong>thời điểm phát</strong> và <strong>ephemeris</strong> (quỹ đạo của chính nó). Bộ thu đo thời gian tín hiệu đến, nhân với tốc độ ánh sáng để tính <strong>pseudorange</strong> tới từng vệ tinh.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/gnss-pvt.svg" data-desc-position="bottom"><img alt="PVT: bốn pseudorange giải ra x, y, z và sai lệch đồng hồ" src="../img/gnss-pvt.svg"></a></p>
 <ul>
 <li>Bộ thu có 4 ẩn số: x, y, z và <strong>sai lệch đồng hồ</strong> của chính nó. Vì vậy cần tối thiểu <strong>4 vệ tinh</strong> để giải vị trí.</li>
@@ -9665,11 +9756,11 @@
 <tr>
 <td>Đơn tần số (L1)</td>
 <td>Vài mét</td>
-<td>Module giá rẻ</td>
+<td>Module phổ thông</td>
 </tr>
 <tr>
 <td>Đa tần số (L1 + L5/L2)</td>
-<td>Dưới 1–2 m</td>
+<td>Khoảng 1–2 m</td>
 <td>Giảm lỗi do tầng điện ly</td>
 </tr>
 <tr>
@@ -9692,14 +9783,78 @@
 <p>Các con số trên là giá trị thường gặp, thực tế phụ thuộc môi trường, ăng-ten và bộ thu.</p>
 <h2 id="thanh-phan-phan-cung">Thành phần phần cứng<a class="headerlink" href="#thanh-phan-phan-cung" title="Permanent link">¶</a></h2>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/gnss-chain.svg" data-desc-position="bottom"><img alt="Chuỗi phần cứng: ăng-ten, module GNSS, host" src="../img/gnss-chain.svg"></a></p>
+<h3 id="ang-ten">Ăng-ten<a class="headerlink" href="#ang-ten" title="Permanent link">¶</a></h3>
+<p>Tín hiệu GNSS tại mặt đất rất yếu, nên ăng-ten và đoạn RF từ ăng-ten đến bộ thu quyết định phần lớn chất lượng thu. Ăng-ten GNSS thường là loại <strong>patch gốm</strong> phân cực tròn phải (RHCP), thu băng L1 (1575,42 MHz), một số loại thu thêm L2 hoặc L5.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/gnss-antenna.svg" data-desc-position="bottom"><img alt="So sánh ăng-ten thụ động và ăng-ten chủ động" src="../img/gnss-antenna.svg"></a></p>
+<table>
+<thead>
+<tr>
+<th>Tiêu chí</th>
+<th>Ăng-ten thụ động (passive)</th>
+<th>Ăng-ten chủ động (active)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cấu tạo</td>
+<td>Chỉ có phần tử thu (patch gốm hoặc chip antenna)</td>
+<td>Phần tử thu, bộ lọc và <strong>LNA</strong> (bộ khuếch đại tạp âm thấp)</td>
+</tr>
+<tr>
+<td>Nguồn</td>
+<td>Không cần</td>
+<td>Cần điện áp <strong>bias</strong> cấp qua chính cáp đồng trục</td>
+</tr>
+<tr>
+<td>Độ lợi</td>
+<td>Thường vài dBi, do bản thân phần tử thu</td>
+<td>Thêm độ lợi LNA, thường cỡ 15–30 dB</td>
+</tr>
+<tr>
+<td>Cáp nối</td>
+<td>Càng ngắn càng tốt, vì suy hao cáp cộng thẳng vào hệ số tạp âm</td>
+<td>Có thể dài vài mét, vì LNA đặt trước cáp</td>
+</tr>
+<tr>
+<td>Tạp âm hệ thống</td>
+<td>Phụ thuộc LNA bên trong module và suy hao đoạn nối</td>
+<td>LNA của ăng-ten quyết định hệ số tạp âm tổng (theo công thức Friis)</td>
+</tr>
+<tr>
+<td>Thiết kế phía module</td>
+<td>Cần mặt phẳng đất đủ lớn và đặt sát module</td>
+<td>Cần nguồn bias và đường DC block hoặc bias tee</td>
+</tr>
+<tr>
+<td>Rủi ro</td>
+<td>Dễ giảm độ nhạy do cáp dài, mặt đất nhỏ</td>
+<td>LNA bị quá tải nếu có tín hiệu mạnh ngoài băng, lỗi nguồn bias</td>
+</tr>
+<tr>
+<td>Dùng khi</td>
+<td>Ăng-ten đặt sát module trên cùng board</td>
+<td>Ăng-ten đặt xa module, ngoài vỏ thiết bị hoặc ngoài trời</td>
+</tr>
+</tbody>
+</table>
+<p>Một số điểm cần lưu ý khi chọn và thiết kế:</p>
 <ul>
-<li><strong>Ăng-ten</strong>: loại chủ động (có LNA) thường cấp nguồn bias qua cáp đồng trục. Đặt ngoài trời, tầm nhìn bầu trời rộng.</li>
+<li><strong>Module thường có sẵn LNA và bộ lọc SAW ở đầu vào.</strong> Với ăng-ten thụ động đặt sát module thì thường đủ. Khi cáp dài hoặc ăng-ten đặt xa, dùng ăng-ten chủ động hoặc thêm LNA ngoài đặt sát ăng-ten.</li>
+<li><strong>Độ lợi tổng nằm trong khoảng module cho phép.</strong> Datasheet module nêu khoảng độ lợi ăng-ten (tính cả LNA, trừ suy hao cáp). Độ lợi quá thấp làm giảm độ nhạy, quá cao làm bão hòa đầu vào.</li>
+<li><strong>Cấp nguồn bias cho ăng-ten chủ động.</strong> Một số module có chân cấp nguồn ăng-ten (ví dụ chân <code>VCC_RF</code> hoặc <code>ANT_BIAS</code>), có module cần bias tee ngoài. Điện áp bias phải đúng với điện áp LNA chấp nhận, thường ở mức 3 đến 5 V, cần đối chiếu datasheet ăng-ten.</li>
+<li><strong>Phát hiện lỗi ăng-ten.</strong> Một số module đo dòng bias để báo ăng-ten hở mạch hoặc chập, và báo qua bản tin trạng thái. Nên bật chức năng này khi thiết bị đặt ở nơi khó bảo trì.</li>
+<li><strong>Bảo vệ đầu vào.</strong> Ăng-ten ngoài trời cần chống sét và chống xả tĩnh điện ở đường RF, đồng thời cần DC block nếu dùng ăng-ten thụ động trên đường có thể có bias.</li>
+<li><strong>Vị trí đặt.</strong> Đặt nơi có tầm nhìn bầu trời rộng, xa nguồn nhiễu số trên cùng thiết bị (USB 3, DDR, bộ nguồn xung) vì nhiễu này nâng nền tạp âm ở băng L1. Đường cáp RF đi xa các tín hiệu số.</li>
+<li><strong>Đầu nối.</strong> Thường gặp SMA, MMCX, u.FL, FAKRA. Đầu nối nhỏ tiện cho board nhưng suy hao và độ bền kém hơn SMA.</li>
+</ul>
+<h3 id="module-va-giao-tiep">Module và giao tiếp<a class="headerlink" href="#module-va-giao-tiep" title="Permanent link">¶</a></h3>
+<ul>
 <li><strong>Module / chip thu</strong>: ví dụ u-blox, Quectel, Septentrio. Dòng timing (như u-blox LEA-M8T, ZED-F9T) có chế độ time-only và bù sai số ăng-ten/cáp.</li>
 <li><strong>Giao tiếp với host</strong>: UART là phổ biến nhất, ngoài ra có I²C, SPI, USB.</li>
-<li><strong>1PPS</strong>: chân xuất xung mỗi giây, cạnh lên bám sát giây UTC. Thời điểm giây đầy đủ (ngày, giờ) đi kèm qua UART. Với thiết bị cần sai số dưới µs, <strong>PPS là đường dẫn chính xác</strong>, UART chỉ cho biết "giây nào".</li>
+<li><strong>1PPS</strong>: chân xuất xung mỗi giây, cạnh lên bám sát giây UTC. Thời điểm giây đầy đủ (ngày, giờ) đi kèm qua UART. Với thiết bị cần sai số dưới µs, <strong>PPS là đường dẫn chính xác</strong>, UART chỉ xác định giây tương ứng.</li>
 </ul>
-<h2 id="iem-yeu-nhieu-va-gia-mao">Điểm yếu: nhiễu và giả mạo<a class="headerlink" href="#iem-yeu-nhieu-va-gia-mao" title="Permanent link">¶</a></h2>
-<p>Tín hiệu GNSS đến mặt đất rất yếu, nên dễ bị ảnh hưởng:</p>
+<h2 id="han-che-nhieu-va-gia-mao">Hạn chế: nhiễu và giả mạo<a class="headerlink" href="#han-che-nhieu-va-gia-mao" title="Permanent link">¶</a></h2>
+<p>Tín hiệu GNSS đến mặt đất rất yếu, nên dễ bị ảnh hưởng bởi:</p>
 <ul>
 <li><strong>Jamming</strong>: phát nhiễu làm bộ thu mất tín hiệu.</li>
 <li><strong>Spoofing</strong>: phát tín hiệu giả để bộ thu tính sai vị trí hoặc thời gian.</li>
@@ -9709,7 +9864,7 @@
 <ul>
 <li>Cấu hình <strong>holdover</strong> bằng dao động nội (OCXO, rubidium) để giữ thời gian khi mất GNSS.</li>
 <li>Dùng <strong>PTP</strong> làm nguồn dự phòng từ mạng, xem <a href="../../linuxptp/linuxptp/">Linux PTP</a>.</li>
-<li>Bộ thu có phát hiện nhiễu/giả mạo, hoặc dùng tín hiệu có xác thực (như Galileo OSNMA).</li>
+<li>Dùng bộ thu có chức năng phát hiện nhiễu/giả mạo, hoặc dùng tín hiệu có xác thực (như Galileo OSNMA).</li>
 </ul>
 <h2 id="oc-them">Đọc thêm<a class="headerlink" href="#oc-them" title="Permanent link">¶</a></h2>
 <ul>
@@ -9740,7 +9895,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 29, 2026 07:32:57 UTC">October 29, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 29, 2026 08:01:18 UTC">October 29, 2026</span>
   </span>
 
     

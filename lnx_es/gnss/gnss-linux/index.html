@@ -15,7 +15,7 @@
         <link rel="prev" href="../gnss/">
       
       
-        <link rel="next" href="../../tips/tips/">
+        <link rel="next" href="../nmea/">
       
       
         
@@ -2755,6 +2755,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nmea/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NMEA 0183
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -9656,13 +9684,13 @@
 
 
 <h1 id="gnss-tren-linux">GNSS trên Linux<a class="headerlink" href="#gnss-tren-linux" title="Permanent link">¶</a></h1>
-<p>Trang này nói về cách đưa dữ liệu từ module GNSS vào Linux: đọc vị trí qua UART, lấy thời gian chính xác qua PPS, và cấp thời gian cho hệ thống hoặc cho PTP. Phần khái niệm nằm ở <a href="../gnss/">GNSS</a>.</p>
+<p>Trang này trình bày cách đưa dữ liệu từ module GNSS vào Linux: đọc vị trí qua UART, lấy thời gian chính xác qua PPS, và cấp thời gian cho hệ thống hoặc cho PTP. Phần khái niệm nằm ở <a href="../gnss/">GNSS</a>.</p>
 <h2 id="luong-du-lieu">Luồng dữ liệu<a class="headerlink" href="#luong-du-lieu" title="Permanent link">¶</a></h2>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/gnss-dataflow.svg" data-desc-position="bottom"><img alt="Luồng dữ liệu GNSS trên Linux: UART tới gpsd, PPS tới chrony và ts2phc" src="../img/gnss-dataflow.svg"></a></p>
 <ul>
-<li>Đường <strong>UART</strong> cho biết vị trí và "giây nào" (ngày giờ UTC).</li>
-<li>Đường <strong>PPS</strong> cho biết "thời điểm chính xác của giây" bằng cạnh xung.</li>
-<li>Kết hợp hai đường mới có thời gian vừa đúng giây, vừa chính xác tới cỡ µs.</li>
+<li>Đường <strong>UART</strong> cung cấp vị trí và giây tương ứng (ngày giờ UTC).</li>
+<li>Đường <strong>PPS</strong> xác định thời điểm chính xác của giây bằng cạnh xung.</li>
+<li>Cần kết hợp cả hai đường để có thời gian vừa đúng giây, vừa chính xác cỡ µs.</li>
 </ul>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/gnss-pps-uart.svg" data-desc-position="bottom"><img alt="Cạnh 1PPS đánh dấu thời điểm chính xác, câu NMEA sau đó cho biết là giây nào" src="../img/gnss-pps-uart.svg"></a></p>
 <h2 id="oc-du-lieu-qua-uart">Đọc dữ liệu qua UART<a class="headerlink" href="#oc-du-lieu-qua-uart" title="Permanent link">¶</a></h2>
@@ -9677,7 +9705,7 @@
 <tbody>
 <tr>
 <td><strong>NMEA 0183</strong></td>
-<td>Văn bản ASCII, câu như <code>$GPGGA</code>, <code>$GPRMC</code>. Chuẩn chung, dễ đọc, ít thông tin</td>
+<td>Văn bản ASCII, câu như <code>$GPGGA</code>, <code>$GPRMC</code>. Chuẩn chung, dễ đọc, ít thông tin. Chi tiết xem <a href="../nmea/">NMEA 0183</a></td>
 </tr>
 <tr>
 <td><strong>UBX</strong></td>
@@ -9685,17 +9713,17 @@
 </tr>
 </tbody>
 </table>
-<p>Kiểm tra nhanh khi vừa nối dây (tốc độ mặc định thường là 9600 hoặc 38400 baud, tùy module):</p>
+<p>Kiểm tra nhanh sau khi nối dây (tốc độ mặc định thường là 9600 hoặc 38400 baud, tùy module):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>stty<span class="w"> </span>-F<span class="w"> </span>/dev/ttyS1<span class="w"> </span><span class="m">9600</span><span class="w"> </span>raw
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>cat<span class="w"> </span>/dev/ttyS1
 </code></pre></div>
-<p>Nếu thấy các dòng <code>$G...</code> là đường UART đã thông. Với module USB, thiết bị thường là <code>/dev/ttyACM0</code>.</p>
+<p>Nếu xuất hiện các dòng bắt đầu bằng <code>$G</code> thì đường UART hoạt động. Với module USB, thiết bị thường là <code>/dev/ttyACM0</code>.</p>
 <h2 id="gpsd">gpsd<a class="headerlink" href="#gpsd" title="Permanent link">¶</a></h2>
 <p><code>gpsd</code> là daemon đọc module và chia sẻ dữ liệu cho nhiều chương trình qua socket (cổng 2947).</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>gpsd<span class="w"> </span>-n<span class="w"> </span>/dev/ttyS1<span class="w"> </span>/dev/pps0
 </code></pre></div>
 <ul>
-<li><code>-n</code> yêu cầu đọc ngay khi khởi động, không đợi client kết nối. Cần cho trường hợp dùng làm nguồn thời gian.</li>
+<li><code>-n</code> yêu cầu đọc ngay khi khởi động, không chờ client kết nối. Nên dùng khi <code>gpsd</code> làm nguồn thời gian.</li>
 <li>Truyền cả <code>/dev/pps0</code> để <code>gpsd</code> biết thiết bị PPS đi cùng.</li>
 <li>Công cụ kiểm tra: <code>gpsmon</code>, <code>cgps</code>, <code>gpspipe -w</code>.</li>
 </ul>
@@ -9711,7 +9739,7 @@
 <p>Cần bật <code>CONFIG_PPS</code> và <code>CONFIG_PPS_CLIENT_GPIO</code> (hoặc <code>CONFIG_PPS_CLIENT_LDISC</code> cho kiểu DCD). Kiểm tra bằng gói <code>pps-tools</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ppstest<span class="w"> </span>/dev/pps0
 </code></pre></div>
-<p>Mỗi giây phải có một dòng <code>assert</code> mới. Không thấy dòng nào thì kiểm tra chân GPIO, mức logic, cạnh kích hoạt của module.</p>
+<p>Mỗi giây phải có một dòng <code>assert</code> mới. Nếu không có dòng nào, kiểm tra chân GPIO, mức logic, cạnh kích hoạt của module.</p>
 <p>Lưu ý: độ trễ ngắt và cáp làm lệch thời điểm một lượng cố định. Module timing có tham số bù độ trễ cáp ăng-ten, còn phía host cần hiệu chỉnh nếu muốn chính xác dưới µs.</p>
 <h2 id="cap-thoi-gian-cho-he-thong-chrony">Cấp thời gian cho hệ thống: chrony<a class="headerlink" href="#cap-thoi-gian-cho-he-thong-chrony" title="Permanent link">¶</a></h2>
 <p><code>chrony</code> kết hợp thời gian từ <code>gpsd</code> (qua SHM) và xung từ PPS:</p>
@@ -9725,8 +9753,8 @@
 <li>Kiểm tra: <code>chronyc sources -v</code>, <code>chronyc tracking</code>.</li>
 </ul>
 <h2 id="cap-thoi-gian-cho-ptp-ts2phc">Cấp thời gian cho PTP: ts2phc<a class="headerlink" href="#cap-thoi-gian-cho-ptp-ts2phc" title="Permanent link">¶</a></h2>
-<p>Khi thiết bị đóng vai <strong>grandmaster</strong> trong mạng PTP, PHC của NIC phải bám GNSS. <code>ts2phc</code> từ gói linuxptp làm việc này: nhận xung PPS (từ GNSS hoặc chân PPS của NIC) và hiệu chỉnh PHC.</p>
-<p>Sơ đồ thường gặp:</p>
+<p>Khi thiết bị đóng vai <strong>grandmaster</strong> trong mạng PTP, PHC của NIC phải bám GNSS. <code>ts2phc</code> từ gói linuxptp đảm nhiệm việc này: nhận xung PPS (từ GNSS hoặc chân PPS của NIC) và hiệu chỉnh PHC.</p>
+<p>Trình tự thường gặp:</p>
 <ol>
 <li><code>ts2phc</code> khóa PHC theo PPS của GNSS.</li>
 <li><code>ptp4l</code> phát PTP ra mạng, lấy thời gian từ PHC.</li>
@@ -9735,11 +9763,11 @@
 <p>Chi tiết cấu hình xem <a href="../../linuxptp/linuxptp/">Linux PTP</a>. Bối cảnh trong mạng RAN (PRTC, T-GM, LLS-C4) xem <a href="../../../wireless/sync/sync/">Synchronization</a>.</p>
 <h2 id="cac-loi-thuong-gap">Các lỗi thường gặp<a class="headerlink" href="#cac-loi-thuong-gap" title="Permanent link">¶</a></h2>
 <ul>
-<li><strong>Không có fix</strong>: ăng-ten đặt trong nhà hoặc chưa nối nguồn bias. Thử ngoài trời, thời gian bắt đầu lạnh (cold start) có thể vài phút.</li>
-<li><strong>Đúng giờ nhưng lệch đúng 1 giây</strong>: <code>gpsd</code> và PPS không khớp giây. Kiểm tra <code>lock GPS</code> trong chrony và độ trễ SHM.</li>
-<li><strong>PPS có nhưng <code>chrony</code> không chọn</strong>: module chưa fix, nên xung PPS không đáng tin. Nhiều module chỉ xuất PPS khi đã có fix.</li>
-<li><strong>Dữ liệu hỏng trên UART</strong>: sai baud rate, hoặc mức điện áp UART (1.8 V so với 3.3 V) không khớp.</li>
-<li><strong>Bị nhiễu/giả mạo</strong>: vị trí nhảy bất thường, số vệ tinh thay đổi đột ngột. Xem phần nhiễu và giả mạo ở <a href="../gnss/">GNSS</a>.</li>
+<li><strong>Không có fix</strong>: ăng-ten đặt trong nhà hoặc chưa nối nguồn bias. Cần đặt ăng-ten ngoài trời. Lần khởi động nguội (cold start) có thể mất vài phút.</li>
+<li><strong>Thời gian lệch đúng 1 giây</strong>: <code>gpsd</code> và PPS không khớp giây. Kiểm tra <code>lock GPS</code> trong chrony và độ trễ SHM.</li>
+<li><strong><code>chrony</code> không chọn nguồn PPS</strong>: module chưa có fix nên xung PPS không đáng tin. Nhiều module chỉ xuất PPS khi đã có fix.</li>
+<li><strong>Dữ liệu UART bị lỗi</strong>: sai baud rate, hoặc mức điện áp UART (1.8 V so với 3.3 V) không khớp.</li>
+<li><strong>Nghi ngờ nhiễu/giả mạo</strong>: vị trí nhảy bất thường, số vệ tinh thay đổi đột ngột. Xem phần nhiễu và giả mạo ở <a href="../gnss/">GNSS</a>.</li>
 </ul>
 <h2 id="oc-them">Đọc thêm<a class="headerlink" href="#oc-them" title="Permanent link">¶</a></h2>
 <ul>
@@ -9769,7 +9797,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 29, 2026 07:32:57 UTC">October 29, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 29, 2026 07:57:54 UTC">October 29, 2026</span>
   </span>
 
     
@@ -9835,13 +9863,13 @@
         
         
           
-          <a href="../../tips/tips/" class="md-footer__link md-footer__link--next" aria-label="Next: Tips">
+          <a href="../nmea/" class="md-footer__link md-footer__link--next" aria-label="Next: NMEA 0183">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Tips
+                NMEA 0183
               </div>
             </div>
             <div class="md-footer__button md-icon">
