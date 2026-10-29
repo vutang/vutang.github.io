@@ -609,11 +609,39 @@
          <lastmod>2026-10-29</lastmod>
     </url>
     <url>
-         <loc>https://note.vutang.dev/programming/C/compiling/</loc>
+         <loc>https://note.vutang.dev/programming/C/cprogramming/</loc>
          <lastmod>2026-10-29</lastmod>
     </url>
     <url>
-         <loc>https://note.vutang.dev/programming/C/cprogramming/</loc>
+         <loc>https://note.vutang.dev/programming/C/toolchain/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/programming/C/toolchain/cross-compile/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/programming/C/toolchain/debug/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/programming/C/toolchain/linking/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/programming/C/toolchain/multi-file/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/programming/C/toolchain/object-file/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/programming/C/toolchain/pipeline/</loc>
+         <lastmod>2026-10-29</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/programming/C/toolchain/process/</loc>
          <lastmod>2026-10-29</lastmod>
     </url>
     <url>
