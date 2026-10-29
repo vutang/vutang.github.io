@@ -378,10 +378,127 @@ body:has(.home-top) .md-grid {
 
 .home-tree {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr));
-  gap: 0 1.2rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+  gap: 0 1rem;
   align-items: start;
 }
+
+/* Topic cards on the index page: each document-tree block is a tinted card with a large
+   icon, the topic name and a one-line summary; opening it lists the pages. */
+.md-typeset .home-tree details.note {
+  margin: 0 0 1rem;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  box-shadow: var(--md-shadow-z1);
+  background: var(--md-code-bg-color);
+}
+
+@supports (background: color-mix(in srgb, red 10%, blue)) {
+  .md-typeset .home-tree details.note {
+    background: color-mix(in srgb, var(--md-primary-fg-color) 10%, var(--md-default-bg-color));
+  }
+}
+
+.md-typeset .home-tree details.note > summary {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  margin: 0;
+  padding: 0.7rem 2.2rem 0.7rem 1rem;
+  border: 0;
+  background: none;
+  font-weight: 400;
+}
+
+.md-typeset .home-tree details.note > summary::before {
+  display: none;
+}
+
+.md-typeset .home-tree details.note > summary::after {
+  top: 50%;
+  right: 0.6rem;
+  transform: translateY(-50%);
+  background-color: var(--md-default-fg-color--light);
+}
+
+.md-typeset .home-tree details.note[open] > summary::after {
+  transform: translateY(-50%) rotate(90deg);
+}
+
+/* Topic icon: white glyph on a solid badge. The six hues are the bubble-chart palette, so the
+   white-on-solid contrast holds in both colour schemes; they repeat every six cards. */
+.home-tree {
+  --topic-0: var(--md-primary-fg-color);
+  --topic-1: #4a5bc7;
+  --topic-2: #00796b;
+  --topic-3: #b45309;
+  --topic-4: #7b3fa0;
+  --topic-5: #2e7d32;
+}
+
+.home-tree details:nth-of-type(6n + 1) { --topic: var(--topic-0); }
+.home-tree details:nth-of-type(6n + 2) { --topic: var(--topic-1); }
+.home-tree details:nth-of-type(6n + 3) { --topic: var(--topic-2); }
+.home-tree details:nth-of-type(6n + 4) { --topic: var(--topic-3); }
+.home-tree details:nth-of-type(6n + 5) { --topic: var(--topic-4); }
+.home-tree details:nth-of-type(6n) { --topic: var(--topic-5); }
+
+.md-typeset .home-tree summary .twemoji {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 0.5rem;
+  background: var(--topic);
+  color: #fff;
+}
+
+.md-typeset .home-tree summary .twemoji svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  max-height: none;
+}
+
+.home-tree .tt {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.home-tree .tt strong {
+  font-size: 0.8rem;
+}
+
+.home-tree .tt small {
+  font-size: 0.66rem;
+  line-height: 1.4;
+  color: var(--md-default-fg-color--light);
+}
+
+/* Equal-height card headers in the multi-column grid, so icons line up across a row */
+@media (min-width: 40em) {
+  .md-typeset .home-tree details.note > summary {
+    min-height: 5.6rem;
+  }
+
+  .home-tree .tt small {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
+}
+
+.md-typeset .home-tree details.note > ul {
+  margin: 0;
+  padding: 0.3rem 1rem 0.9rem 2rem;
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+  font-size: 0.72rem;
+}
+
 
 @media (max-width: 60em) {
   .home-top {
