@@ -9,7 +9,7 @@
         <meta name="author" content="Vu Tang">
       
       
-        <link rel="canonical" href="https://note.vutang.dev/articles/category/networking/">
+        <link rel="canonical" href="https://note.vutang.dev/articles/category/embedded/">
       
       
       
@@ -22,7 +22,7 @@
     
     
       
-        <title>Networking - Vu Tang's Docs</title>
+        <title>Embedded - Vu Tang's Docs</title>
       
     
     
@@ -68,17 +68,17 @@
     
   
 <meta property="og:type" content="website">
-<meta property="og:title" content="Networking - Vu Tang's Docs">
+<meta property="og:title" content="Embedded - Vu Tang's Docs">
 <meta property="og:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
-<meta property="og:image" content="https://note.vutang.dev/assets/images/social/articles/category/networking.png">
+<meta property="og:image" content="https://note.vutang.dev/assets/images/social/articles/category/embedded.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:url" content="https://note.vutang.dev/articles/category/networking/">
+<meta property="og:url" content="https://note.vutang.dev/articles/category/embedded/">
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:title" content="Networking - Vu Tang's Docs">
+<meta property="twitter:title" content="Embedded - Vu Tang's Docs">
 <meta property="twitter:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
-<meta property="twitter:image" content="https://note.vutang.dev/assets/images/social/articles/category/networking.png">
+<meta property="twitter:image" content="https://note.vutang.dev/assets/images/social/articles/category/embedded.png">
 <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
@@ -108,7 +108,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#networking" class="md-skip">
+        <a href="#embedded" class="md-skip">
           Skip to content
         </a>
       
@@ -141,7 +141,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Networking
+              Embedded
             
           </span>
         </div>
@@ -9448,10 +9448,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#bien-tram-goc-thanh-radar-isac-phat-hien-drone-kho-o-cho-nao" class="md-nav__link">
+  <a href="#u-boot-2026-verified-boot-khong-con-dung-o-chu-ky-kernel" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Biến trạm gốc thành radar: ISAC phát hiện drone khó ở chỗ nào?
+        U-Boot 2026: verified boot không còn dừng ở chữ ký kernel
       
     </span>
   </a>
@@ -9459,10 +9459,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#php2shell-tu-loi-su-dung-bo-nho-en-thuc-thi-ma-tu-xa-tren-server" class="md-nav__link">
+  <a href="#rockchip-rk3399-secure-efuse-vi-sao-kernel-linux-oc-vao-la-panic" class="md-nav__link">
     <span class="md-ellipsis">
       
-        PHP2Shell: từ lỗi sử dụng bộ nhớ đến thực thi mã từ xa trên server
+        Rockchip RK3399 secure eFuse: vì sao kernel Linux đọc vào là panic
       
     </span>
   </a>
@@ -9470,32 +9470,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ai-ran-cua-nokia-va-nvidia-tu-ran-chuyen-dung-en-ran-tren-gpu" class="md-nav__link">
+  <a href="#yocto-project-hien-trang-release-va-15-nam-phat-trien" class="md-nav__link">
     <span class="md-ellipsis">
       
-        AI-RAN của Nokia và Nvidia: từ RAN chuyên dụng đến RAN trên GPU
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#marvell-sau-investor-day-2026-ket-noi-ai-la-trong-tam-ran-vang-mat-trong-lo-trinh-tang-truong" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Marvell sau Investor Day 2026: kết nối AI là trọng tâm, RAN vắng mặt trong lộ trình tăng trưởng
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ba-train-ba-mach-chinh-open-fronthaul-tiet-kiem-nang-luong-va-bao-mat-cua-o-ran-112025-102026" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ba train, ba mạch chính: Open Fronthaul, tiết kiệm năng lượng và bảo mật của O-RAN (11/2025 – 10/2026)
+        Yocto Project: hiện trạng release và 15 năm phát triển
       
     </span>
   </a>
@@ -9514,7 +9492,7 @@
   <div class="md-content" data-md-component="content">
     <div class="md-content__inner">
       <header class="md-typeset">
-        <h1 id="networking">Networking<a class="headerlink" href="#networking" title="Permanent link">¶</a></h1>
+        <h1 id="embedded">Embedded<a class="headerlink" href="#embedded" title="Permanent link">¶</a></h1>
       </header>
       
         <article class="md-post md-post--excerpt">
@@ -9531,19 +9509,20 @@
     <div class="md-post__meta md-meta">
       <ul class="md-meta__list">
         <li class="md-meta__item">
-          <time datetime="2026-10-28 00:00:00+00:00">Oct 28, 2026</time></li>
+          <time datetime="2026-10-25 00:00:00+00:00">Oct 25, 2026</time></li>
         
         
           <li class="md-meta__item">
             in
             
-              <a href="./" class="md-meta__link">Networking</a></li>
+              <a href="./" class="md-meta__link">Embedded</a>, 
+              <a href="../security/" class="md-meta__link">Security</a></li>
         
         
           
           <li class="md-meta__item">
             
-              9 min read
+              13 min read
             
           </li>
         
@@ -9553,13 +9532,13 @@
     </div>
   </header>
   <div class="md-post__content md-typeset">
-    <h2 id="bien-tram-goc-thanh-radar-isac-phat-hien-drone-kho-o-cho-nao"><a class="toclink" href="../../2026/10/28/isac-drone-detection/">Biến trạm gốc thành radar: ISAC phát hiện drone khó ở chỗ nào?</a></h2>
-<p><img alt="ISAC" class="article-cover" src="../../img/cover-isac-drone-detection.svg"></p>
-<p>Mạng di động đã phát RF khắp nơi. Một panel quốc phòng Mỹ vừa bàn xem có dùng luôn nguồn năng lượng đó để thấy drone được không, và vì sao chuyện này khó hơn nghe có vẻ.</p>
+    <h2 id="u-boot-2026-verified-boot-khong-con-dung-o-chu-ky-kernel"><a class="toclink" href="../../2026/10/25/u-boot-boot-chain-security-2026/">U-Boot 2026: verified boot không còn dừng ở chữ ký kernel</a></h2>
+<p><img alt="U-Boot" class="article-cover" src="../../img/cover-u-boot-boot-chain-security-2026.svg"></p>
+<p>Qua bốn bản release năm 2026, U-Boot chuyển từ "ký kernel là đủ" sang bảo vệ cả chuỗi khởi động: mở rộng chuỗi tin cậy tới rootfs, loại bỏ các đường vòng và xem mọi dữ liệu trên boot media là không đáng tin.</p>
 
     
       <nav class="md-post__action">
-        <a href="../../2026/10/28/isac-drone-detection/">
+        <a href="../../2026/10/25/u-boot-boot-chain-security-2026/">
           Continue reading
         </a>
       </nav>
@@ -9582,19 +9561,20 @@
     <div class="md-post__meta md-meta">
       <ul class="md-meta__list">
         <li class="md-meta__item">
-          <time datetime="2026-10-28 00:00:00+00:00">Oct 28, 2026</time></li>
+          <time datetime="2026-10-22 00:00:00+00:00">Oct 22, 2026</time></li>
         
         
           <li class="md-meta__item">
             in
             
-              <a href="./" class="md-meta__link">Networking</a></li>
+              <a href="./" class="md-meta__link">Embedded</a>, 
+              <a href="../security/" class="md-meta__link">Security</a></li>
         
         
           
           <li class="md-meta__item">
             
-              11 min read
+              5 min read
             
           </li>
         
@@ -9604,115 +9584,13 @@
     </div>
   </header>
   <div class="md-post__content md-typeset">
-    <h2 id="php2shell-tu-loi-su-dung-bo-nho-en-thuc-thi-ma-tu-xa-tren-server"><a class="toclink" href="../../2026/10/28/php2shell-rce/">PHP2Shell: từ lỗi sử dụng bộ nhớ đến thực thi mã từ xa trên server</a></h2>
-<p><img alt="PHP2Shell" class="article-cover" src="../../img/cover-php2shell.svg"></p>
-<p>PHP2Shell (CVE-2026-109618 và CVE-2026-109619) cho thấy một lỗi sử dụng bộ nhớ trong lõi PHP có thể thành thực thi mã từ xa không cần xác thực, và các PoC bắt đầu lưu hành trong vòng một ngày sau khi thông tin bị rò rỉ.</p>
+    <h2 id="rockchip-rk3399-secure-efuse-vi-sao-kernel-linux-oc-vao-la-panic"><a class="toclink" href="../../2026/10/22/rk3399-secure-efuse/">Rockchip RK3399 secure eFuse: vì sao kernel Linux đọc vào là panic</a></h2>
+<p><img alt="RK3399" class="article-cover" src="../../img/cover-rk3399-secure-efuse.svg"></p>
+<p>Secure boot cần một nơi lưu hash của root key mà không ai sửa được sau khi xuất xưởng. Trên SoC Rockchip, nơi đó là eFuse, và Linux không được phép đọc nó.</p>
 
     
       <nav class="md-post__action">
-        <a href="../../2026/10/28/php2shell-rce/">
-          Continue reading
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://github.com/vutang.png?size=128" alt="Vu Tang">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2026-10-27 00:00:00+00:00">Oct 27, 2026</time></li>
-        
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="./" class="md-meta__link">Networking</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              8 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="ai-ran-cua-nokia-va-nvidia-tu-ran-chuyen-dung-en-ran-tren-gpu"><a class="toclink" href="../../2026/10/27/nokia-nvidia-ai-ran/">AI-RAN của Nokia và Nvidia: từ RAN chuyên dụng đến RAN trên GPU</a></h2>
-<p><img alt="AI-RAN" class="article-cover" src="../../img/cover-nokia-nvidia-ai-ran.svg"></p>
-<p>Nokia nói AI-RAN đang tiến gần triển khai thương mại. Bài này giải thích AI-RAN là gì, kiến trúc đứng sau, các mốc đã đạt được và những câu hỏi kỹ thuật chưa có lời đáp.</p>
-
-    
-      <nav class="md-post__action">
-        <a href="../../2026/10/27/nokia-nvidia-ai-ran/">
-          Continue reading
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://github.com/vutang.png?size=128" alt="Vu Tang">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2026-10-24 00:00:00+00:00">Oct 24, 2026</time></li>
-        
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="./" class="md-meta__link">Networking</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              6 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="marvell-sau-investor-day-2026-ket-noi-ai-la-trong-tam-ran-vang-mat-trong-lo-trinh-tang-truong"><a class="toclink" href="../../2026/10/24/marvell-arm-ran/">Marvell sau Investor Day 2026: kết nối AI là trọng tâm, RAN vắng mặt trong lộ trình tăng trưởng</a></h2>
-<p><img alt="Marvell" class="article-cover" src="../../img/cover-marvell-arm-ran.svg"></p>
-<p>Tại Investor Day ngày 6/10/2026, Marvell công bố lộ trình doanh thu 70–90 tỷ USD cho năm tài chính 2031, gần như toàn bộ đến từ trung tâm dữ liệu. Dòng Octeon dùng lõi Arm vẫn được bán và hỗ trợ, nhưng 5G RAN không nằm trong lộ trình tăng trưởng của công ty.</p>
-
-    
-      <nav class="md-post__action">
-        <a href="../../2026/10/24/marvell-arm-ran/">
+        <a href="../../2026/10/22/rk3399-secure-efuse/">
           Continue reading
         </a>
       </nav>
@@ -9741,13 +9619,13 @@
           <li class="md-meta__item">
             in
             
-              <a href="./" class="md-meta__link">Networking</a></li>
+              <a href="./" class="md-meta__link">Embedded</a></li>
         
         
           
           <li class="md-meta__item">
             
-              8 min read
+              6 min read
             
           </li>
         
@@ -9757,13 +9635,13 @@
     </div>
   </header>
   <div class="md-post__content md-typeset">
-    <h2 id="ba-train-ba-mach-chinh-open-fronthaul-tiet-kiem-nang-luong-va-bao-mat-cua-o-ran-112025-102026"><a class="toclink" href="../../2026/10/21/oran-three-trains-2026/">Ba train, ba mạch chính: Open Fronthaul, tiết kiệm năng lượng và bảo mật của O-RAN (11/2025 – 10/2026)</a></h2>
-<p><img alt="O-RAN" class="article-cover" src="../../img/cover-oran-three-trains-2026.svg"></p>
-<p>Trong chưa đầy một năm, O-RAN Alliance công bố ba "train" tài liệu kỹ thuật liên tiếp (11/2025, 03/2026, 07/2026) và hoàn tất Specification Release 5 (R005) vào 08/06/2026. Từ góc nhìn người làm firmware và tích hợp, ba mạch đáng theo dõi nhất là Open Fronthaul, tiết kiệm năng lượng và bảo mật.</p>
+    <h2 id="yocto-project-hien-trang-release-va-15-nam-phat-trien"><a class="toclink" href="../../2026/10/21/yocto-release-status/">Yocto Project: hiện trạng release và 15 năm phát triển</a></h2>
+<p><img alt="Yocto" class="article-cover" src="../../img/cover-yocto-release-status.svg"></p>
+<p>Tính đến tháng 10/2026, bản mới nhất là Yocto 6.0.2 Wrynose (LTS, hỗ trợ đến tháng 4/2030), còn 6.1 Blacksail vẫn đang phát triển và được lên lịch phát hành vào đầu tháng 11/2026.</p>
 
     
       <nav class="md-post__action">
-        <a href="../../2026/10/21/oran-three-trains-2026/">
+        <a href="../../2026/10/21/yocto-release-status/">
           Continue reading
         </a>
       </nav>
@@ -9779,7 +9657,7 @@
 
 
 <nav class="md-pagination">
-  <span class="md-pagination__current">1</span> <a class="md-pagination__link" href="page/2/">2</a>
+  
 </nav>
         
       

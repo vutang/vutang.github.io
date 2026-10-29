@@ -11,7 +11,7 @@
   <rect width="1200" height="300" fill="url(#p710227)"/>
   <circle cx="1060" cy="60" r="190" fill="#fff" fill-opacity=".08"/>
   <circle cx="1130" cy="270" r="120" fill="#fff" fill-opacity=".08"/>
-  <text x="64" y="86" fill="#fff" fill-opacity=".85" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="26" font-weight="600" letter-spacing="3">EMBEDDED LINUX</text>
+  <text x="64" y="86" fill="#fff" fill-opacity=".85" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="26" font-weight="600" letter-spacing="3">EMBEDDED</text>
   <text x="64" y="180" fill="#fff" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="96" font-weight="800">Yocto</text>
   <text x="66" y="236" fill="#fff" fill-opacity=".9" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="30">Release &amp; 15 năm phát triển</text>
 </svg>

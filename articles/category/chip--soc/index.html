@@ -9,7 +9,7 @@
         <meta name="author" content="Vu Tang">
       
       
-        <link rel="canonical" href="https://note.vutang.dev/articles/category/embedded-linux/">
+        <link rel="canonical" href="https://note.vutang.dev/articles/category/chip--soc/">
       
       
       
@@ -22,7 +22,7 @@
     
     
       
-        <title>Embedded Linux - Vu Tang's Docs</title>
+        <title>Chip &amp; SoC - Vu Tang's Docs</title>
       
     
     
@@ -68,17 +68,17 @@
     
   
 <meta property="og:type" content="website">
-<meta property="og:title" content="Embedded Linux - Vu Tang's Docs">
+<meta property="og:title" content="Chip &amp; SoC - Vu Tang's Docs">
 <meta property="og:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
-<meta property="og:image" content="https://note.vutang.dev/assets/images/social/articles/category/embedded-linux.png">
+<meta property="og:image" content="https://note.vutang.dev/assets/images/social/articles/category/chip--soc.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:url" content="https://note.vutang.dev/articles/category/embedded-linux/">
+<meta property="og:url" content="https://note.vutang.dev/articles/category/chip--soc/">
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:title" content="Embedded Linux - Vu Tang's Docs">
+<meta property="twitter:title" content="Chip &amp; SoC - Vu Tang's Docs">
 <meta property="twitter:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
-<meta property="twitter:image" content="https://note.vutang.dev/assets/images/social/articles/category/embedded-linux.png">
+<meta property="twitter:image" content="https://note.vutang.dev/assets/images/social/articles/category/chip--soc.png">
 <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
@@ -108,7 +108,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#embedded-linux" class="md-skip">
+        <a href="#chip-soc" class="md-skip">
           Skip to content
         </a>
       
@@ -141,7 +141,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Embedded Linux
+              Chip &amp; SoC
             
           </span>
         </div>
@@ -9448,10 +9448,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#u-boot-2026-verified-boot-khong-con-dung-o-chu-ky-kernel" class="md-nav__link">
+  <a href="#spacemit-v100-cpu-server-risc-v-46-core-tien-bo-ve-hieu-nang-hay-ve-chuan-hoa" class="md-nav__link">
     <span class="md-ellipsis">
       
-        U-Boot 2026: verified boot không còn dừng ở chữ ký kernel
+        SpacemiT V100: CPU server RISC-V 46 core, tiến bộ về hiệu năng hay về chuẩn hóa?
       
     </span>
   </a>
@@ -9459,21 +9459,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#rockchip-rk3399-secure-efuse-vi-sao-kernel-linux-oc-vao-la-panic" class="md-nav__link">
+  <a href="#kien-truc-cpu-thuong-mai-2026-x86-arm-risc-v-va-goc-nhin-5g-ran" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Rockchip RK3399 secure eFuse: vì sao kernel Linux đọc vào là panic
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#yocto-project-hien-trang-release-va-15-nam-phat-trien" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Yocto Project: hiện trạng release và 15 năm phát triển
+        Kiến trúc CPU thương mại 2026: x86, ARM, RISC-V và góc nhìn 5G RAN
       
     </span>
   </a>
@@ -9492,59 +9481,8 @@
   <div class="md-content" data-md-component="content">
     <div class="md-content__inner">
       <header class="md-typeset">
-        <h1 id="embedded-linux">Embedded Linux<a class="headerlink" href="#embedded-linux" title="Permanent link">¶</a></h1>
+        <h1 id="chip-soc">Chip &amp; SoC<a class="headerlink" href="#chip-soc" title="Permanent link">¶</a></h1>
       </header>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://github.com/vutang.png?size=128" alt="Vu Tang">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2026-10-25 00:00:00+00:00">Oct 25, 2026</time></li>
-        
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="./" class="md-meta__link">Embedded Linux</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              13 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="u-boot-2026-verified-boot-khong-con-dung-o-chu-ky-kernel"><a class="toclink" href="../../2026/10/25/u-boot-boot-chain-security-2026/">U-Boot 2026: verified boot không còn dừng ở chữ ký kernel</a></h2>
-<p><img alt="U-Boot" class="article-cover" src="../../img/cover-u-boot-boot-chain-security-2026.svg"></p>
-<p>Qua bốn bản release năm 2026, U-Boot chuyển từ "ký kernel là đủ" sang bảo vệ cả chuỗi khởi động: mở rộng chuỗi tin cậy tới rootfs, loại bỏ các đường vòng và xem mọi dữ liệu trên boot media là không đáng tin.</p>
-
-    
-      <nav class="md-post__action">
-        <a href="../../2026/10/25/u-boot-boot-chain-security-2026/">
-          Continue reading
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -9566,7 +9504,7 @@
           <li class="md-meta__item">
             in
             
-              <a href="./" class="md-meta__link">Embedded Linux</a></li>
+              <a href="./" class="md-meta__link">Chip &amp; SoC</a></li>
         
         
           
@@ -9582,13 +9520,13 @@
     </div>
   </header>
   <div class="md-post__content md-typeset">
-    <h2 id="rockchip-rk3399-secure-efuse-vi-sao-kernel-linux-oc-vao-la-panic"><a class="toclink" href="../../2026/10/22/rk3399-secure-efuse/">Rockchip RK3399 secure eFuse: vì sao kernel Linux đọc vào là panic</a></h2>
-<p><img alt="RK3399" class="article-cover" src="../../img/cover-rk3399-secure-efuse.svg"></p>
-<p>Secure boot cần một nơi lưu hash của root key mà không ai sửa được sau khi xuất xưởng. Trên SoC Rockchip, nơi đó là eFuse, và Linux không được phép đọc nó.</p>
+    <h2 id="spacemit-v100-cpu-server-risc-v-46-core-tien-bo-ve-hieu-nang-hay-ve-chuan-hoa"><a class="toclink" href="../../2026/10/22/spacemit-v100-risc-v-server/">SpacemiT V100: CPU server RISC-V 46 core, tiến bộ về hiệu năng hay về chuẩn hóa?</a></h2>
+<p><img alt="SpacemiT V100" class="article-cover" src="../../img/cover-spacemit-v100-risc-v.svg"></p>
+<p>Ngày 19/10/2026, SpacemiT công bố V100, một CPU server RISC-V 46 core phát triển cùng nhóm XiangShan. Hãng cho biết đây là chip đầu tiên tuân thủ đầy đủ RISC-V Server Specification. Câu hỏi đáng đặt ra là V100 mạnh lên ở đâu: hiệu năng, hay nền tảng xung quanh nó.</p>
 
     
       <nav class="md-post__action">
-        <a href="../../2026/10/22/rk3399-secure-efuse/">
+        <a href="../../2026/10/22/spacemit-v100-risc-v-server/">
           Continue reading
         </a>
       </nav>
@@ -9617,13 +9555,13 @@
           <li class="md-meta__item">
             in
             
-              <a href="./" class="md-meta__link">Embedded Linux</a></li>
+              <a href="./" class="md-meta__link">Chip &amp; SoC</a></li>
         
         
           
           <li class="md-meta__item">
             
-              6 min read
+              5 min read
             
           </li>
         
@@ -9633,13 +9571,13 @@
     </div>
   </header>
   <div class="md-post__content md-typeset">
-    <h2 id="yocto-project-hien-trang-release-va-15-nam-phat-trien"><a class="toclink" href="../../2026/10/21/yocto-release-status/">Yocto Project: hiện trạng release và 15 năm phát triển</a></h2>
-<p><img alt="Yocto" class="article-cover" src="../../img/cover-yocto-release-status.svg"></p>
-<p>Tính đến tháng 10/2026, bản mới nhất là Yocto 6.0.2 Wrynose (LTS, hỗ trợ đến tháng 4/2030), còn 6.1 Blacksail vẫn đang phát triển và được lên lịch phát hành vào đầu tháng 11/2026.</p>
+    <h2 id="kien-truc-cpu-thuong-mai-2026-x86-arm-risc-v-va-goc-nhin-5g-ran"><a class="toclink" href="../../2026/10/21/cpu-architecture-2026/">Kiến trúc CPU thương mại 2026: x86, ARM, RISC-V và góc nhìn 5G RAN</a></h2>
+<p><img alt="CPU 2026" class="article-cover" src="../../img/cover-cpu-architecture-2026.svg"></p>
+<p>x86 vẫn dẫn server và PC, ARM thống trị mobile và đang vào server, còn RISC-V đi lên từ MCU sang AI và edge. Bài này tóm tắt ba kiến trúc chính, cách chúng được cấp phép, và ý nghĩa với hạ tầng 5G RAN. Số liệu thị phần lấy từ Mercury Research cho Q1 và Q2 2026.</p>
 
     
       <nav class="md-post__action">
-        <a href="../../2026/10/21/yocto-release-status/">
+        <a href="../../2026/10/21/cpu-architecture-2026/">
           Continue reading
         </a>
       </nav>
