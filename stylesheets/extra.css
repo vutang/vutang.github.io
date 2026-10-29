@@ -55,6 +55,11 @@
   font-size: 0.9rem;
 }
 
+/* Buttons: same corner radius as the hero image and the cards, instead of Material's near-square default */
+.md-typeset .md-button {
+  border-radius: 0.6rem;
+}
+
 /* Dark mode: the outlined (non-primary) buttons use the blue-grey primary colour, which is
    too dark on the dark background; use the link colour instead. Hover/focus keep the theme's accent. */
 [data-md-color-scheme="slate"] .md-typeset .md-button:not(.md-button--primary):not(:hover):not(:focus) {
