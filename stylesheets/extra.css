@@ -634,19 +634,13 @@ body:has(.home-top) .md-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-/* Articles index: 8 category cards in 4 x 2 (2 columns on tablets, 1 on phones) */
-.md-typeset .grid.home-topics.topics-4col {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
-@media (max-width: 60em) {
-  .md-typeset .grid.home-topics.topics-4col {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+/* Articles index: 8 category cards in 2 x 4 (one column on phones) */
+.md-typeset .grid.home-topics.topics-2col {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 @media (max-width: 40em) {
-  .md-typeset .grid.home-topics.topics-4col,
+  .md-typeset .grid.home-topics.topics-2col,
   .md-typeset .grid.home-topics {
     grid-template-columns: minmax(0, 1fr);
   }
