@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" font-family="sans-serif" font-size="12">
+  <text x="380" y="18" text-anchor="middle" font-size="14" font-weight="bold" fill="currentColor">Phân bố điện áp ngưỡng Vth theo số bit/cell</text>
+  <text x="40" y="46" fill="currentColor" font-weight="bold">SLC — 2 mức (1 bit/cell)</text>
+  <text x="720" y="46" text-anchor="end" fill="currentColor" font-size="11">Khoảng cách rộng → ít lỗi, bền nhất, nhanh nhất</text>
+  <g fill="#607d8b" opacity=".85" stroke="currentColor">
+    <path d="M100 130 Q130 58 160 130Z"/>
+    <path d="M600 130 Q630 58 660 130Z"/>
+  </g>
+  <line x1="40" y1="130" x2="720" y2="130" stroke="currentColor" stroke-width="1.5"/>
+  <text x="130" y="146" text-anchor="middle" fill="currentColor">1 (erased)</text>
+  <text x="630" y="146" text-anchor="middle" fill="currentColor">0 (programmed)</text>
+  <line x1="380" y1="70" x2="380" y2="130" stroke="currentColor" stroke-dasharray="4 3"/><text x="386" y="82" fill="currentColor" font-size="11">Vread</text>
+  <text x="40" y="176" fill="currentColor" font-weight="bold">MLC — 4 mức (2 bit/cell)</text>
+  <text x="720" y="176" text-anchor="end" fill="currentColor" font-size="11">Khoảng cách hẹp hơn → cần ECC mạnh hơn</text>
+  <g fill="#607d8b" opacity=".85" stroke="currentColor">
+    <path d="M110 260 Q130 188 150 260Z"/>
+    <path d="M277 260 Q297 188 317 260Z"/>
+    <path d="M443 260 Q463 188 483 260Z"/>
+    <path d="M610 260 Q630 188 650 260Z"/>
+  </g>
+  <line x1="40" y1="260" x2="720" y2="260" stroke="currentColor" stroke-width="1.5"/>
+  <text x="130" y="276" text-anchor="middle" fill="currentColor">11</text>
+  <text x="297" y="276" text-anchor="middle" fill="currentColor">10</text>
+  <text x="463" y="276" text-anchor="middle" fill="currentColor">00</text>
+  <text x="630" y="276" text-anchor="middle" fill="currentColor">01</text>
+  <text x="40" y="306" fill="currentColor" font-weight="bold">TLC — 8 mức (3 bit/cell)</text>
+  <text x="720" y="306" text-anchor="end" fill="currentColor" font-size="11">Rất sát nhau → chậm hơn, endurance thấp, cần LDPC</text>
+  <g fill="#607d8b" opacity=".85" stroke="currentColor">
+    <path d="M120 390 Q130 318 140 390Z"/>
+    <path d="M191 390 Q201 318 211 390Z"/>
+    <path d="M263 390 Q273 318 283 390Z"/>
+    <path d="M334 390 Q344 318 354 390Z"/>
+    <path d="M406 390 Q416 318 426 390Z"/>
+    <path d="M477 390 Q487 318 497 390Z"/>
+    <path d="M549 390 Q559 318 569 390Z"/>
+    <path d="M620 390 Q630 318 640 390Z"/>
+  </g>
+  <line x1="40" y1="390" x2="720" y2="390" stroke="currentColor" stroke-width="1.5"/>
+  <text x="130" y="406" text-anchor="middle" fill="currentColor">111</text>
+  <text x="201" y="406" text-anchor="middle" fill="currentColor">110</text>
+  <text x="273" y="406" text-anchor="middle" fill="currentColor">101</text>
+  <text x="344" y="406" text-anchor="middle" fill="currentColor">100</text>
+  <text x="416" y="406" text-anchor="middle" fill="currentColor">011</text>
+  <text x="487" y="406" text-anchor="middle" fill="currentColor">010</text>
+  <text x="559" y="406" text-anchor="middle" fill="currentColor">001</text>
+  <text x="630" y="406" text-anchor="middle" fill="currentColor">000</text>
+  <text x="720" y="425" text-anchor="end" fill="currentColor" font-size="11">Vth →</text>
+</svg>

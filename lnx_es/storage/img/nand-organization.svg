@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 330" font-family="sans-serif" font-size="13">
+  <text x="380" y="20" text-anchor="middle" font-size="14" font-weight="bold" fill="currentColor">Tổ chức NAND Flash: Die → Plane → Block → Page</text>
+  <rect x="20" y="36" width="360" height="270" rx="8" fill="none" stroke="currentColor" stroke-width="2"/>
+  <text x="32" y="56" fill="currentColor" font-weight="bold">Die (LUN)</text>
+  <rect x="36" y="66" width="160" height="228" rx="6" fill="#cfd8dc" stroke="currentColor"/>
+  <text x="46" y="84" fill="#263238">Plane 0</text>
+  <rect x="204" y="66" width="160" height="228" rx="6" fill="#cfd8dc" stroke="currentColor"/>
+  <text x="214" y="84" fill="#263238">Plane 1</text>
+  <g fill="#607d8b" stroke="currentColor">
+    <rect x="48" y="96" width="136" height="36"/><rect x="48" y="138" width="136" height="36"/><rect x="48" y="180" width="136" height="36"/><rect x="48" y="222" width="136" height="60" fill="#37474f"/>
+    <rect x="216" y="96" width="136" height="36"/><rect x="216" y="138" width="136" height="36"/><rect x="216" y="180" width="136" height="36"/><rect x="216" y="222" width="136" height="60"/>
+  </g>
+  <g fill="#fff" font-size="12">
+    <text x="58" y="119">Block 0</text><text x="58" y="161">Block 1</text><text x="58" y="203">Block 2</text><text x="58" y="246">Block N (chọn)</text>
+    <text x="226" y="119">Block 0</text><text x="226" y="161">Block 1</text><text x="226" y="203">Block 2</text><text x="226" y="246">Block N</text>
+  </g>
+  <path d="M184 252 L420 150" stroke="currentColor" stroke-dasharray="4 3"/>
+  <text x="420" y="36" fill="currentColor" font-weight="bold">Block = đơn vị XÓA (128 KB – vài MB)</text>
+  <g stroke="currentColor">
+    <rect x="420" y="48" width="320" height="26" fill="#78909c"/><rect x="420" y="76" width="320" height="26" fill="#78909c"/><rect x="420" y="104" width="320" height="26" fill="#78909c"/><rect x="420" y="132" width="320" height="26" fill="#78909c"/><rect x="420" y="160" width="320" height="26" fill="#78909c"/>
+  </g>
+  <g fill="#fff" font-size="12"><text x="430" y="66">Page 0</text><text x="430" y="94">Page 1</text><text x="430" y="122">Page 2</text><text x="430" y="150">...</text><text x="430" y="178">Page 63..255</text></g>
+  <text x="420" y="210" fill="currentColor" font-weight="bold">Page = đơn vị ĐỌC / GHI (2 – 16 KB)</text>
+  <rect x="420" y="222" width="250" height="34" fill="#546e7a" stroke="currentColor"/><text x="545" y="244" text-anchor="middle" fill="#fff">Main area (data)</text>
+  <rect x="670" y="222" width="70" height="34" fill="#ef6c00" stroke="currentColor"/><text x="705" y="244" text-anchor="middle" fill="#fff">OOB</text>
+  <text x="420" y="278" fill="currentColor" font-size="12">OOB / spare: ECC, bad block marker, metadata UBI</text>
+  <text x="420" y="298" fill="currentColor" font-size="12">Ghi tuần tự theo page trong block;</text>
+  <text x="420" y="316" fill="currentColor" font-size="12">muốn ghi lại phải xóa cả block</text>
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 360" font-family="sans-serif" font-size="13">
+  <text x="380" y="20" text-anchor="middle" font-size="14" font-weight="bold" fill="currentColor">Storage stack trong Linux: MTD vs Block</text>
+  <g fill="#455a64"><rect x="150" y="36" width="460" height="30" rx="4"/></g>
+  <text x="380" y="56" text-anchor="middle" fill="#fff">Ứng dụng (open / read / write)</text>
+  <path d="M380 66V80" stroke="currentColor" stroke-width="2"/>
+  <rect x="150" y="80" width="460" height="30" rx="4" fill="#546e7a"/><text x="380" y="100" text-anchor="middle" fill="#fff">VFS</text>
+  <path d="M265 110V130M495 110V130" stroke="currentColor" stroke-width="2"/>
+  <!-- left: MTD -->
+  <rect x="40" y="130" width="330" height="30" rx="4" fill="#78909c"/><text x="205" y="150" text-anchor="middle" fill="#fff">UBIFS / JFFS2 / squashfs</text>
+  <path d="M205 160V174" stroke="currentColor" stroke-width="2"/>
+  <rect x="40" y="174" width="330" height="30" rx="4" fill="#78909c"/><text x="205" y="194" text-anchor="middle" fill="#fff">UBI (wear leveling, bad block)</text>
+  <path d="M205 204V218" stroke="currentColor" stroke-width="2"/>
+  <rect x="40" y="218" width="330" height="30" rx="4" fill="#607d8b"/><text x="205" y="238" text-anchor="middle" fill="#fff">MTD core (/dev/mtdN)</text>
+  <path d="M205 248V262" stroke="currentColor" stroke-width="2"/>
+  <rect x="40" y="262" width="160" height="30" rx="4" fill="#37474f"/><text x="120" y="282" text-anchor="middle" fill="#fff">spi-nor driver</text>
+  <rect x="210" y="262" width="160" height="30" rx="4" fill="#37474f"/><text x="290" y="282" text-anchor="middle" fill="#fff">raw NAND driver</text>
+  <rect x="40" y="304" width="330" height="30" rx="4" fill="#26a69a"/><text x="205" y="324" text-anchor="middle" fill="#fff">NOR / SPI NAND / Raw NAND chip</text>
+  <path d="M120 292V304M290 292V304" stroke="currentColor" stroke-width="2"/>
+  <!-- right: block -->
+  <rect x="400" y="130" width="320" height="30" rx="4" fill="#78909c"/><text x="560" y="150" text-anchor="middle" fill="#fff">ext4 / f2fs</text>
+  <path d="M560 160V218" stroke="currentColor" stroke-width="2"/>
+  <rect x="400" y="218" width="320" height="30" rx="4" fill="#607d8b"/><text x="560" y="238" text-anchor="middle" fill="#fff">Block layer (/dev/mmcblkN)</text>
+  <path d="M560 248V262" stroke="currentColor" stroke-width="2"/>
+  <rect x="400" y="262" width="320" height="30" rx="4" fill="#37474f"/><text x="560" y="282" text-anchor="middle" fill="#fff">MMC subsystem + sdhci / dw_mmc</text>
+  <path d="M560 292V304" stroke="currentColor" stroke-width="2"/>
+  <rect x="400" y="304" width="320" height="30" rx="4" fill="#26a69a"/><text x="560" y="324" text-anchor="middle" fill="#fff">eMMC (controller + FTL + NAND)</text>
+  <text x="205" y="350" text-anchor="middle" fill="currentColor" font-size="12">Phần mềm tự lo wear/bad block</text>
+  <text x="560" y="350" text-anchor="middle" fill="currentColor" font-size="12">Controller trong chip lo</text>
+</svg>
