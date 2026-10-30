@@ -27,6 +27,6 @@
     <rect x="250" y="134" width="60" height="22" fill="#26a69a"/><text x="280" y="150" text-anchor="middle" fill="#fff" font-size="11">Drain</text>
     <text x="165" y="212" text-anchor="middle" fill="currentColor">Electron bị nhốt → kênh bị chặn → không dẫn</text>
   </g>
-  <text x="380" y="250" text-anchor="middle" fill="currentColor">Program: electron đi xuyên tunnel oxide vào floating gate (CHE ở NOR, FN tunneling ở NAND)</text>
-  <text x="380" y="272" text-anchor="middle" fill="currentColor">Erase: điện áp ngược chiều kéo electron ra khỏi floating gate (FN tunneling)</text>
+  <text x="380" y="250" text-anchor="middle" fill="currentColor">Ghi (program): điện áp cao đẩy electron xuyên qua tunnel oxide vào floating gate</text>
+  <text x="380" y="272" text-anchor="middle" fill="currentColor">Xóa (erase): điện áp ngược chiều kéo electron ra khỏi floating gate</text>
 </svg>
