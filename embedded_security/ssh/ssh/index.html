@@ -3066,15 +3066,67 @@
   
   
   
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_10">
+        
+          
+          <label class="md-nav__link" for="__nav_3_10" id="__nav_3_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux System
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Linux System
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../../../lnx_es/tips/tips/" class="md-nav__link">
+      <a href="../../../lnx_es/linux_system/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Linux Tips
+    Overview
   
 
     
@@ -3083,6 +3135,98 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_es/linux_system/ssh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SSH: điều khiển từ xa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_es/linux_system/init/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Init system (WIP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_es/linux_system/host-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Môi trường phát triển trên host
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -10405,7 +10549,7 @@
 <li><strong>Hardening cơ bản:</strong> tắt đăng nhập bằng mật khẩu và đăng nhập root bằng mật khẩu (<code>PasswordAuthentication no</code>, <code>PermitRootLogin prohibit-password</code>), chỉ để SSH trên interface quản lý.</li>
 <li><strong>Hậu lượng tử:</strong> OpenSSH đã chuyển key exchange mặc định sang thuật toán lai hậu lượng tử (<code>sntrup761x25519-sha512</code> từ bản 9.0, <code>mlkem768x25519-sha256</code> từ bản 10.0). Dropbear và client cũ có thể chưa hỗ trợ, nên kiểm tra khi kết nối giữa hai bên khác phiên bản. Host key và user key vẫn là thuật toán cổ điển (Ed25519, RSA).</li>
 </ul>
-<p>Mẹo dùng SSH khi làm việc với board (bỏ kiểm tra host key khi flash lại board liên tục, ...) có ở trang <a href="../../../lnx_es/tips/tips/">Tips</a>.</p>
+<p>Mẹo dùng SSH khi làm việc với board (bỏ kiểm tra host key khi flash lại board liên tục, ...) có ở trang <a href="../../../lnx_es/linux_system/ssh/">SSH: điều khiển từ xa</a> (Embedded, nhóm Linux System).</p>
 <h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="https://www.rfc-editor.org/rfc/rfc4251">RFC 4251: The Secure Shell (SSH) Protocol Architecture</a></li>
@@ -10436,7 +10580,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 24, 2026 10:56:06 UTC">October 24, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 30, 2026 07:53:16 UTC">October 30, 2026</span>
   </span>
 
     
