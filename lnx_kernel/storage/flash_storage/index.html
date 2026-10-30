@@ -4868,10 +4868,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#hai-uong-i-trong-kernel" class="md-nav__link">
+  <a href="#tong-quan-mtd-va-mmc" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Hai đường đi trong kernel
+        Tổng quan: MTD và MMC
       
     </span>
   </a>
@@ -10473,10 +10473,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#hai-uong-i-trong-kernel" class="md-nav__link">
+  <a href="#tong-quan-mtd-va-mmc" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Hai đường đi trong kernel
+        Tổng quan: MTD và MMC
       
     </span>
   </a>
@@ -10615,8 +10615,8 @@
 
 
 <h1 id="flash-storage-trong-linux-kernel-mtd-va-mmc">Flash Storage trong Linux kernel: MTD và MMC<a class="headerlink" href="#flash-storage-trong-linux-kernel-mtd-va-mmc" title="Permanent link">¶</a></h1>
-<p>Trang này mô tả cách Linux kernel tổ chức code và giao diện cho bộ nhớ flash: subsystem nào xử lý, khai báo trong device tree ra sao, xuất hiện trong <code>/dev</code> dưới dạng gì và mount rootfs thế nào. Phần cứng (cell, NOR/NAND, ECC, eMMC) xem tại <a href="../../../lnx_es/storage/memory-types/">Bộ nhớ flash: NOR, NAND và eMMC</a>.</p>
-<h2 id="hai-uong-i-trong-kernel">Hai đường đi trong kernel<a class="headerlink" href="#hai-uong-i-trong-kernel" title="Permanent link">¶</a></h2>
+<p>Trang này mô tả cách Linux kernel tổ chức code và giao diện cho bộ nhớ flash, gồm các subsystem liên quan, cách khai báo trong device tree, các node trong <code>/dev</code> và cách mount rootfs. Phần cứng (cell, NOR/NAND, ECC, eMMC) được trình bày tại <a href="../../../lnx_es/storage/memory-types/">Bộ nhớ flash: NOR, NAND và eMMC</a>.</p>
+<h2 id="tong-quan-mtd-va-mmc">Tổng quan: MTD và MMC<a class="headerlink" href="#tong-quan-mtd-va-mmc" title="Permanent link">¶</a></h2>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../lnx_es/storage/img/linux-storage-stack.svg" data-desc-position="bottom"><img alt="Storage stack trong Linux: MTD và Block" src="../../../lnx_es/storage/img/linux-storage-stack.svg"></a></p>
 <table>
 <thead>
@@ -10716,9 +10716,9 @@
 <a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">    </span><span class="p">};</span>
 <a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="p">};</span>
 </code></pre></div>
-<p>Cũng có thể truyền phân vùng qua kernel command line, ví dụ <code>mtdparts=spi0.0:1M(boot)ro,128k(env),-(rootfs)</code>. Cách này tiện khi bootloader (U-Boot) đã quản lý bảng phân vùng.</p>
+<p>Cũng có thể truyền phân vùng qua kernel command line, ví dụ <code>mtdparts=spi0.0:1M(boot)ro,128k(env),-(rootfs)</code>. Cách này thuận tiện khi bootloader (U-Boot) đã quản lý bảng phân vùng.</p>
 <h2 id="ubi-va-ubifs">UBI và UBIFS<a class="headerlink" href="#ubi-va-ubifs" title="Permanent link">¶</a></h2>
-<p>Trên raw NAND, ghi trực tiếp lên MTD không có wear leveling và bad block management. <strong>UBI</strong> (Unsorted Block Images) chạy trên một phân vùng MTD để làm các việc đó, và chia phân vùng thành các <strong>volume</strong> (<code>/dev/ubiX_Y</code>). <strong>UBIFS</strong> là filesystem chạy trên một UBI volume.</p>
+<p>Trên raw NAND, ghi trực tiếp lên MTD không có wear leveling và bad block management. <strong>UBI</strong> (Unsorted Block Images) chạy trên một phân vùng MTD để đảm nhận các chức năng này, và chia phân vùng thành các <strong>volume</strong> (<code>/dev/ubiX_Y</code>). <strong>UBIFS</strong> là filesystem chạy trên một UBI volume.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>/dev/mtd2  ──►  UBI device ubi0  ──►  volume ubi0:rootfs (/dev/ubi0_0)  ──►  UBIFS
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ubiformat<span class="w"> </span>/dev/mtd2<span class="w">                      </span><span class="c1"># chuẩn bị phân vùng cho UBI, giữ lại erase counter</span>
@@ -10758,7 +10758,7 @@
 <p>Node trong <code>/dev</code>:</p>
 <ul>
 <li><code>/dev/mmcblkN</code>: toàn bộ vùng dữ liệu (user area); <code>/dev/mmcblkNpM</code> là các phân vùng trong bảng MBR/GPT.</li>
-<li><code>/dev/mmcblkNboot0</code>, <code>boot1</code>: boot partition của eMMC, mặc định chỉ đọc. Mở ghi bằng <code>echo 0 &gt; /sys/block/mmcblk0boot0/force_ro</code>.</li>
+<li><code>/dev/mmcblkNboot0</code>, <code>boot1</code>: boot partition của eMMC, mặc định chỉ đọc. Cho phép ghi bằng lệnh <code>echo 0 &gt; /sys/block/mmcblk0boot0/force_ro</code>.</li>
 <li><code>/dev/mmcblkNrpmb</code>: vùng RPMB, truy cập qua <code>mmc-utils</code> hoặc TEE.</li>
 </ul>
 <h2 id="mount-rootfs-tu-flash">Mount rootfs từ flash<a class="headerlink" href="#mount-rootfs-tu-flash" title="Permanent link">¶</a></h2>
@@ -10785,7 +10785,7 @@
 </tr>
 </tbody>
 </table>
-<p><code>rootwait</code> cần cho eMMC và SD vì thiết bị được dò thấy chậm hơn lúc kernel tìm rootfs.</p>
+<p><code>rootwait</code> là cần thiết với eMMC và SD card, do thiết bị có thể được phát hiện muộn hơn thời điểm kernel tìm rootfs.</p>
 <h2 id="kiem-tra-va-debug">Kiểm tra và debug<a class="headerlink" href="#kiem-tra-va-debug" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>cat<span class="w"> </span>/proc/mtd<span class="w">                            </span><span class="c1"># danh sách phân vùng MTD, kích thước, erase size</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>mtdinfo<span class="w"> </span>-a<span class="w">                               </span><span class="c1"># chi tiết từng MTD device (mtd-utils)</span>
@@ -10819,7 +10819,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 30, 2026 01:21:56 UTC">October 30, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 30, 2026 03:48:03 UTC">October 30, 2026</span>
   </span>
 
     

@@ -3361,10 +3361,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#he-qua-cua-cach-ghi-va-xoa" class="md-nav__link">
+  <a href="#he-qua-cua-co-che-ghi-va-xoa" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Hệ quả của cách ghi và xóa
+        Hệ quả của cơ chế ghi và xóa
       
     </span>
   </a>
@@ -3377,10 +3377,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#hai-cach-noi-cell-nor-va-nand" class="md-nav__link">
+  <a href="#kien-truc-mang-cell-nor-va-nand" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Hai cách nối cell: NOR và NAND
+        Kiến trúc mảng cell: NOR và NAND
       
     </span>
   </a>
@@ -3482,10 +3482,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#linux-xu-ly-the-nao" class="md-nav__link">
+  <a href="#truy-cap-flash-trong-linux" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Linux xử lý thế nào
+        Truy cập flash trong Linux
       
     </span>
   </a>
@@ -3504,10 +3504,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#chon-loai-nao" class="md-nav__link">
+  <a href="#lua-chon-loai-bo-nho" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Chọn loại nào
+        Lựa chọn loại bộ nhớ
       
     </span>
   </a>
@@ -3515,10 +3515,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#lien-ket" class="md-nav__link">
+  <a href="#tai-lieu-lien-quan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Liên kết
+        Tài liệu liên quan
       
     </span>
   </a>
@@ -10637,10 +10637,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#he-qua-cua-cach-ghi-va-xoa" class="md-nav__link">
+  <a href="#he-qua-cua-co-che-ghi-va-xoa" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Hệ quả của cách ghi và xóa
+        Hệ quả của cơ chế ghi và xóa
       
     </span>
   </a>
@@ -10653,10 +10653,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#hai-cach-noi-cell-nor-va-nand" class="md-nav__link">
+  <a href="#kien-truc-mang-cell-nor-va-nand" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Hai cách nối cell: NOR và NAND
+        Kiến trúc mảng cell: NOR và NAND
       
     </span>
   </a>
@@ -10758,10 +10758,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#linux-xu-ly-the-nao" class="md-nav__link">
+  <a href="#truy-cap-flash-trong-linux" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Linux xử lý thế nào
+        Truy cập flash trong Linux
       
     </span>
   </a>
@@ -10780,10 +10780,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#chon-loai-nao" class="md-nav__link">
+  <a href="#lua-chon-loai-bo-nho" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Chọn loại nào
+        Lựa chọn loại bộ nhớ
       
     </span>
   </a>
@@ -10791,10 +10791,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#lien-ket" class="md-nav__link">
+  <a href="#tai-lieu-lien-quan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Liên kết
+        Tài liệu liên quan
       
     </span>
   </a>
@@ -10861,25 +10861,25 @@
 
 
 <h1 id="bo-nho-flash-nor-nand-va-emmc">Bộ nhớ flash: NOR, NAND và eMMC<a class="headerlink" href="#bo-nho-flash-nor-nand-va-emmc" title="Permanent link">¶</a></h1>
-<p>Trong embedded Linux, bộ nhớ không mất dữ liệu (non-volatile) chứa bootloader, kernel, rootfs và dữ liệu ứng dụng. Loại phổ biến nhất là <strong>flash</strong>, gồm hai dạng NOR và NAND; eMMC là NAND đóng gói kèm một controller. Bài này đi theo thứ tự: cell (đơn vị lưu trữ nhỏ nhất của flash), cách nối các cell thành NOR và NAND, eMMC, cách Linux truy cập từng loại, và cuối cùng là so sánh để chọn loại phù hợp.</p>
+<p>Trong embedded Linux, bộ nhớ không mất dữ liệu (non-volatile) chứa bootloader, kernel, rootfs và dữ liệu ứng dụng. Loại phổ biến nhất là <strong>flash</strong>, gồm hai dạng NOR và NAND; eMMC là NAND đóng gói kèm một controller. Nội dung được trình bày theo thứ tự: cell (đơn vị lưu trữ nhỏ nhất của flash), kiến trúc mảng cell NOR và NAND, eMMC, cách Linux truy cập từng loại, và cuối cùng là so sánh và lựa chọn.</p>
 <h2 id="cell-on-vi-luu-tru-cua-flash">Cell: đơn vị lưu trữ của flash<a class="headerlink" href="#cell-on-vi-luu-tru-cua-flash" title="Permanent link">¶</a></h2>
-<p>Flash lưu dữ liệu trong rất nhiều <strong>cell</strong>, mỗi cell là một transistor đặc biệt. Các đặc điểm của flash ở những mục sau (xóa theo block, giới hạn số lần ghi, NOR khác NAND, SLC/MLC/TLC) đều bắt nguồn từ cấu tạo và cách ghi/xóa của cell.</p>
+<p>Flash lưu dữ liệu trong các <strong>cell</strong>, mỗi cell là một transistor có cấu tạo riêng. Các đặc điểm của flash ở những mục sau (xóa theo block, giới hạn số lần ghi, NOR khác NAND, SLC/MLC/TLC) đều bắt nguồn từ cấu tạo và cách ghi/xóa của cell.</p>
 <h3 id="cau-tao-cell">Cấu tạo cell<a class="headerlink" href="#cau-tao-cell" title="Permanent link">¶</a></h3>
 <p>Cell là một MOSFET có thêm lớp <strong>floating gate</strong> nằm giữa control gate và kênh dẫn, được bọc kín bởi lớp cách điện oxide. Electron đưa vào floating gate bị oxide giữ lại kể cả khi mất nguồn, và làm thay đổi <strong>điện áp ngưỡng Vth</strong> (điện áp cần đặt lên control gate để transistor dẫn):</p>
 <ul>
 <li>Không có electron → Vth thấp → cell dẫn khi đọc → giá trị <code>1</code> (trạng thái erased).</li>
 <li>Có electron → Vth cao → cell không dẫn khi đọc → giá trị <code>0</code> (trạng thái programmed).</li>
 </ul>
-<p>Đọc cell là đặt lên control gate một điện áp nằm giữa hai mức Vth rồi kiểm tra cell có dẫn hay không.</p>
+<p>Khi đọc, một điện áp nằm giữa hai mức Vth được đặt lên control gate, và trạng thái dẫn hay không dẫn của cell cho biết giá trị đang lưu.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/floating-gate-cell.svg" data-desc-position="bottom"><img alt="Cell floating-gate: erased và programmed" src="../img/floating-gate-cell.svg"></a></p>
 <h3 id="ghi-va-xoa">Ghi và xóa<a class="headerlink" href="#ghi-va-xoa" title="Permanent link">¶</a></h3>
 <ul>
-<li><strong>Ghi (program)</strong>: đặt điện áp cao (khoảng 10–20 V) để đẩy electron xuyên qua lớp oxide mỏng (tunnel oxide) vào floating gate, chuyển cell từ <code>1</code> sang <code>0</code>. Ghi được từng cell riêng lẻ.</li>
+<li><strong>Ghi (program)</strong>: đặt điện áp cao (khoảng 10–20 V) để đẩy electron xuyên qua lớp oxide mỏng (tunnel oxide) vào floating gate, chuyển cell từ <code>1</code> sang <code>0</code>. Thao tác ghi thực hiện được trên từng cell riêng lẻ.</li>
 <li><strong>Xóa (erase)</strong>: đặt điện áp ngược chiều để kéo electron ra, đưa cell về <code>1</code>. Để tiết kiệm diện tích, nhiều cell nằm chung một vùng đế và điện áp xóa đặt lên cả vùng đó, nên <strong>chỉ xóa được cả nhóm cell cùng lúc</strong>. Nhóm này gọi là <strong>block</strong> (NOR thường gọi là sector).</li>
 <li>Điện áp cao được tạo ngay trong chip bằng <strong>charge pump</strong> từ nguồn 1.8/3.3 V.</li>
 </ul>
-<p>EEPROM, tiền thân của flash, có thêm một select transistor cho mỗi cell nên xóa được từng byte, nhưng cell to và đắt. Flash bỏ transistor đó để tăng mật độ, chấp nhận xóa theo block.</p>
-<h3 id="he-qua-cua-cach-ghi-va-xoa">Hệ quả của cách ghi và xóa<a class="headerlink" href="#he-qua-cua-cach-ghi-va-xoa" title="Permanent link">¶</a></h3>
+<p>EEPROM, tiền thân của flash, có thêm một select transistor cho mỗi cell nên xóa được từng byte, nhưng kích thước cell lớn và chi phí cao. Flash loại bỏ transistor này để tăng mật độ, đổi lại phải xóa theo block.</p>
+<h3 id="he-qua-cua-co-che-ghi-va-xoa">Hệ quả của cơ chế ghi và xóa<a class="headerlink" href="#he-qua-cua-co-che-ghi-va-xoa" title="Permanent link">¶</a></h3>
 <table>
 <thead>
 <tr>
@@ -10914,11 +10914,11 @@
 </tr>
 </tbody>
 </table>
-<h2 id="hai-cach-noi-cell-nor-va-nand">Hai cách nối cell: NOR và NAND<a class="headerlink" href="#hai-cach-noi-cell-nor-va-nand" title="Permanent link">¶</a></h2>
+<h2 id="kien-truc-mang-cell-nor-va-nand">Kiến trúc mảng cell: NOR và NAND<a class="headerlink" href="#kien-truc-mang-cell-nor-va-nand" title="Permanent link">¶</a></h2>
 <p>Trong chip, các cell xếp thành ma trận. Mỗi hàng nối control gate của các cell vào một <strong>word line</strong> để chọn cell; mỗi cột có một <strong>bit line</strong> để đọc dòng điện qua cell. Có hai cách nối cell vào bit line, và tên NOR, NAND đến từ hai cách này:</p>
 <ul>
-<li><strong>NOR</strong>: mỗi cell nối <strong>song song</strong> giữa bit line và đất. Chỉ cần một cell dẫn là bit line bị kéo xuống mức thấp, giống hành vi của cổng logic NOR. Vì mỗi cell nối thẳng ra bit line nên đọc được ngẫu nhiên từng byte, đủ nhanh để CPU chạy code trực tiếp từ flash (<strong>XIP</strong>, execute in place). Đổi lại, mỗi cell cần một điểm tiếp xúc (contact) riêng nên tốn diện tích.</li>
-<li><strong>NAND</strong>: 32–128+ cell nối <strong>nối tiếp</strong> thành một chuỗi (<strong>string</strong>); chỉ hai đầu chuỗi có transistor chọn (SSL phía bit line, GSL phía đất). Bit line chỉ bị kéo xuống khi mọi cell trong chuỗi cùng dẫn, giống cổng logic NAND. Ít contact nên cell nhỏ, mật độ cao, giá rẻ. Nhưng muốn đọc một cell phải bật mọi cell khác trong chuỗi, nên NAND đọc và ghi theo <strong>page</strong> (nhóm cell cùng một word line), không đọc ngẫu nhiên từng byte được.</li>
+<li><strong>NOR</strong>: mỗi cell nối <strong>song song</strong> giữa bit line và đất. Chỉ cần một cell dẫn là bit line bị kéo xuống mức thấp, giống hành vi của cổng logic NOR. Vì mỗi cell nối thẳng ra bit line nên đọc được ngẫu nhiên từng byte, đủ nhanh để CPU chạy code trực tiếp từ flash (<strong>XIP</strong>, execute in place). Tuy nhiên, mỗi cell cần một điểm tiếp xúc (contact) riêng nên chiếm nhiều diện tích.</li>
+<li><strong>NAND</strong>: 32–128+ cell nối <strong>nối tiếp</strong> thành một chuỗi (<strong>string</strong>); chỉ hai đầu chuỗi có transistor chọn (SSL phía bit line, GSL phía đất). Bit line chỉ bị kéo xuống khi mọi cell trong chuỗi cùng dẫn, giống cổng logic NAND. Nhờ số contact ít, cell có kích thước nhỏ, mật độ cao và giá thành thấp. Tuy nhiên, để đọc một cell cần bật toàn bộ các cell còn lại trong chuỗi, vì vậy NAND đọc và ghi theo <strong>page</strong> (nhóm cell cùng một word line) và không hỗ trợ đọc ngẫu nhiên từng byte.</li>
 </ul>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/nor-nand-array.svg" data-desc-position="bottom"><img alt="Kiến trúc mảng NOR và NAND" src="../img/nor-nand-array.svg"></a></p>
 <table>
@@ -10941,9 +10941,9 @@
 <td>Theo page</td>
 </tr>
 <tr>
-<td>Mật độ, giá/bit</td>
-<td>Thấp, đắt</td>
-<td>Cao, rẻ</td>
+<td>Mật độ / giá/bit</td>
+<td>Mật độ thấp, giá/bit cao</td>
+<td>Mật độ cao, giá/bit thấp</td>
 </tr>
 <tr>
 <td>Dùng chủ yếu để chứa</td>
@@ -10955,14 +10955,14 @@
 <h2 id="nor-flash">NOR Flash<a class="headerlink" href="#nor-flash" title="Permanent link">¶</a></h2>
 <ul>
 <li>Đọc ngẫu nhiên nhanh, hỗ trợ XIP.</li>
-<li>Ghi chậm và tốn điện: NOR ghi bằng cơ chế <strong>channel hot electron (CHE)</strong>, dòng điện lớn, ghi từng byte hoặc word. Xóa theo sector 4–64 KB, mỗi lần có thể mất tới hàng trăm ms.</li>
+<li>Ghi chậm và tiêu thụ điện năng lớn: NOR ghi bằng cơ chế <strong>channel hot electron (CHE)</strong> với dòng điện lớn, theo từng byte hoặc word. Xóa theo sector 4–64 KB, thời gian mỗi lần xóa có thể lên tới hàng trăm ms.</li>
 <li>Dung lượng từ vài MB đến khoảng 1 GB, giá/bit cao.</li>
-<li>Cell lớn nên ít lỗi bit: thường không cần mã sửa lỗi, hầu như không có block hỏng, độ bền khoảng 100K P/E cycles.</li>
+<li>Kích thước cell lớn nên tỉ lệ lỗi bit thấp: thường không cần mã sửa lỗi, hầu như không có block hỏng, độ bền khoảng 100K P/E cycles.</li>
 <li>Giao tiếp: parallel (CFI), hoặc phổ biến hơn là SPI / QSPI / OSPI.</li>
 <li>Dùng cho: bootloader (SPL, U-Boot), firmware nhỏ, cấu hình. Ví dụ Zynq boot từ QSPI flash chứa <code>BOOT.BIN</code>.</li>
 </ul>
 <h2 id="nand-flash">NAND Flash<a class="headerlink" href="#nand-flash" title="Permanent link">¶</a></h2>
-<p>NAND ghi bằng cơ chế <strong>Fowler-Nordheim (FN) tunneling</strong>: dòng điện rất nhỏ nên ghi song song cả page được, vì vậy ghi và xóa nhanh hơn NOR nhiều. Cell nhỏ, nằm sát nhau giúp NAND rẻ và dung lượng lớn, nhưng cũng sinh ra lỗi bit, được giải thích ở các mục dưới.</p>
+<p>NAND ghi bằng cơ chế <strong>Fowler-Nordheim (FN) tunneling</strong>: dòng điện rất nhỏ cho phép ghi song song cả page, vì vậy tốc độ ghi và xóa cao hơn NOR nhiều. Cell nhỏ và nằm sát nhau giúp NAND có giá thành thấp và dung lượng lớn, nhưng cũng làm phát sinh lỗi bit (trình bày ở các mục dưới).</p>
 <h3 id="to-chuc-chip-nand">Tổ chức chip NAND<a class="headerlink" href="#to-chuc-chip-nand" title="Permanent link">¶</a></h3>
 <p>Một chip NAND chia theo cấp <strong>die → plane → block → page</strong>:</p>
 <ul>
@@ -10980,7 +10980,7 @@
 </ul>
 <p>Do đó NAND luôn cần <strong>ECC</strong> (error-correcting code, mã sửa lỗi; thường là BCH hoặc LDPC), lưu trong vùng OOB, để phát hiện và sửa bit lỗi khi đọc. Ngoài ra chip có sẵn một số <strong>bad block</strong> (block hỏng) từ nhà máy và phát sinh thêm trong quá trình dùng; phần mềm hoặc controller phải đánh dấu và bỏ qua chúng (<strong>bad block management</strong>).</p>
 <h3 id="slc-mlc-tlc-qlc">SLC, MLC, TLC, QLC<a class="headerlink" href="#slc-mlc-tlc-qlc" title="Permanent link">¶</a></h3>
-<p>Cell không chỉ phân biệt "có / không có điện tích" mà có thể giữ nhiều mức điện tích, tức nhiều mức Vth, mỗi mức ứng với một tổ hợp bit. Lưu <code>n</code> bit cần <code>2^n</code> mức. SLC, MLC, TLC, QLC khác nhau ở <code>n</code>:</p>
+<p>Thay vì chỉ hai trạng thái có và không có điện tích, một cell có thể lưu nhiều mức điện tích, tức nhiều mức Vth, mỗi mức ứng với một tổ hợp bit. Lưu <code>n</code> bit cần <code>2^n</code> mức. SLC, MLC, TLC, QLC khác nhau ở <code>n</code>:</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/vth-levels.svg" data-desc-position="bottom"><img alt="Phân bố Vth của SLC, MLC, TLC" src="../img/vth-levels.svg"></a></p>
 <table>
 <thead>
@@ -11028,26 +11028,26 @@
 </tr>
 </tbody>
 </table>
-<p>Dải Vth là cố định nên thêm bit thì các mức <strong>sát nhau hơn</strong>. Hệ quả là lỗi bit nhiều hơn (cần ECC mạnh hơn), ghi và đọc chậm hơn, độ bền thấp hơn; đổi lại cùng diện tích lưu được nhiều bit hơn nên rẻ hơn. Thiết bị công nghiệp ghi nhiều thường chọn SLC, còn thiết bị tiêu dùng chủ yếu đọc thì chọn TLC.</p>
-<p><strong>pSLC</strong> (pseudo-SLC) là cách dùng chip TLC/MLC chỉ với 2 mức như SLC: mất bớt dung lượng nhưng được độ bền và tốc độ gần SLC.</p>
+<p>Dải Vth là cố định nên thêm bit thì các mức <strong>sát nhau hơn</strong>. Hệ quả là lỗi bit nhiều hơn (cần ECC mạnh hơn), ghi và đọc chậm hơn, độ bền thấp hơn; đổi lại cùng diện tích lưu được nhiều bit hơn nên giá thành thấp hơn. SLC thường được dùng trong thiết bị công nghiệp có tần suất ghi cao; TLC phổ biến ở thiết bị tiêu dùng, nơi thao tác đọc chiếm ưu thế.</p>
+<p><strong>pSLC</strong> (pseudo-SLC) là cách dùng chip TLC/MLC chỉ với 2 mức như SLC: dung lượng khả dụng giảm, nhưng độ bền và tốc độ đạt gần mức của SLC.</p>
 <h3 id="3d-nand">3D NAND<a class="headerlink" href="#3d-nand" title="Permanent link">¶</a></h3>
 <p>Khi không thể thu nhỏ cell trên mặt phẳng (2D) thêm nữa vì nhiễu giữa các cell, NAND chuyển sang <strong>xếp chồng cell theo chiều dọc</strong> (V-NAND, BiCS): string dựng đứng, các word line là các lớp chồng lên nhau, hiện đã trên 200 lớp. 3D NAND thường thay floating gate bằng <strong>charge trap</strong> (lớp SiN giữ điện tích), ít nhạy với khuyết tật oxide cục bộ hơn. Vì không phải thu nhỏ cell, 3D NAND có độ bền và retention tốt hơn NAND 2D cùng mật độ. Hầu hết NAND và eMMC đời mới là 3D.</p>
 <h3 id="raw-nand-va-managed-nand">Raw NAND và managed NAND<a class="headerlink" href="#raw-nand-va-managed-nand" title="Permanent link">¶</a></h3>
-<p>ECC, bad block management và wear leveling là những việc bắt buộc với NAND. Tùy ai làm các việc này mà có hai dạng:</p>
+<p>ECC, bad block management và wear leveling là những việc bắt buộc với NAND. Tùy theo thành phần đảm nhận các chức năng này, NAND được chia thành hai dạng:</p>
 <ul>
-<li><strong>Raw NAND</strong> (parallel NAND hoặc SPI NAND): SoC điều khiển chip trực tiếp qua NAND controller; phần mềm (driver, UBI) tự lo các việc trên.</li>
-<li><strong>Managed NAND</strong>: NAND đóng gói chung với một controller riêng làm các việc đó; host chỉ thấy một thiết bị lưu trữ đơn giản. eMMC, SD card, UFS và SSD đều thuộc dạng này.</li>
+<li><strong>Raw NAND</strong> (parallel NAND hoặc SPI NAND): SoC điều khiển chip trực tiếp qua NAND controller; phần mềm (driver, UBI) đảm nhận các chức năng trên.</li>
+<li><strong>Managed NAND</strong>: NAND được đóng gói chung với một controller riêng thực hiện các chức năng này; host chỉ làm việc với một thiết bị lưu trữ đơn giản. eMMC, SD card, UFS và SSD đều thuộc dạng này.</li>
 </ul>
 <h2 id="emmc">eMMC<a class="headerlink" href="#emmc" title="Permanent link">¶</a></h2>
 <p><strong>eMMC</strong> (embedded MultiMediaCard) là managed NAND dạng chip BGA hàn trên board: gồm các die NAND (thường là 3D TLC) và một controller trong cùng package, giao tiếp với SoC qua bus MMC (1/4/8 bit dữ liệu, chế độ HS200/HS400).</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/emmc-architecture.svg" data-desc-position="bottom"><img alt="Kiến trúc bên trong eMMC" src="../img/emmc-architecture.svg"></a></p>
 <p>Controller đảm nhận:</p>
 <ul>
-<li><strong>FTL</strong> (Flash Translation Layer): ánh xạ địa chỉ logic mà host dùng (theo sector 512 B) sang page vật lý. Khi host ghi đè, FTL ghi dữ liệu mới sang page trống rồi cập nhật bảng ánh xạ, nhờ vậy host không phải quan tâm tới quy tắc xóa theo block.</li>
-<li><strong>Garbage collection</strong>: gom các page còn hợp lệ ra khỏi block chứa nhiều page cũ, rồi xóa block đó để dùng lại. Đây là lý do tốc độ ghi có thể tụt khi eMMC gần đầy.</li>
+<li><strong>FTL</strong> (Flash Translation Layer): ánh xạ địa chỉ logic mà host dùng (theo sector 512 B) sang page vật lý. Khi host ghi đè, FTL ghi dữ liệu mới sang page trống rồi cập nhật bảng ánh xạ, nhờ đó host không cần xử lý quy tắc xóa theo block.</li>
+<li><strong>Garbage collection</strong>: gom các page còn hợp lệ ra khỏi block chứa nhiều page cũ, rồi xóa block đó để dùng lại. Quá trình này khiến tốc độ ghi có thể giảm khi eMMC gần đầy.</li>
 <li><strong>Wear leveling</strong>, <strong>ECC</strong> và <strong>bad block management</strong>.</li>
 <li><strong>Over-provisioning</strong>: giữ lại một phần dung lượng không công bố để làm vùng đệm và thay thế block hỏng.</li>
-<li><strong>pSLC cache</strong>: ghi tạm vào một vùng chạy chế độ pSLC cho nhanh, sau đó dồn xuống vùng TLC.</li>
+<li><strong>pSLC cache</strong>: ghi tạm vào một vùng chạy chế độ pSLC để tăng tốc độ, sau đó chuyển dữ liệu sang vùng TLC.</li>
 </ul>
 <p>Với Linux, eMMC là một <strong>block device</strong> (<code>/dev/mmcblk0</code>), dùng được filesystem thông thường như ext4, f2fs. eMMC còn có các vùng riêng:</p>
 <ul>
@@ -11055,15 +11055,15 @@
 <li><strong>RPMB</strong> (Replay Protected Memory Block): vùng ghi có xác thực, chống ghi lại dữ liệu cũ, dùng cho secure boot và TrustZone.</li>
 <li><strong>GP / enhanced partition</strong>: có thể cấu hình chạy chế độ pSLC cho dữ liệu quan trọng.</li>
 </ul>
-<p>Độ tin cậy của eMMC phụ thuộc nhiều vào firmware controller của từng hãng (Micron, Samsung, Kioxia, SanDisk...), phần mềm không kiểm soát được. Khả năng chống mất điện (power-loss protection) có ở một số dòng công nghiệp, nhiều dòng tiêu dùng không đảm bảo; cần xem datasheet.</p>
-<h2 id="linux-xu-ly-the-nao">Linux xử lý thế nào<a class="headerlink" href="#linux-xu-ly-the-nao" title="Permanent link">¶</a></h2>
-<p>Linux có hai đường truy cập, tùy bộ nhớ là raw flash hay managed NAND:</p>
+<p>Độ tin cậy của eMMC phụ thuộc nhiều vào firmware controller của từng hãng (Micron, Samsung, Kioxia, SanDisk...), phần mềm không kiểm soát được. Khả năng chống mất điện (power-loss protection) có ở một số dòng công nghiệp, nhiều dòng tiêu dùng không đảm bảo; cần tham khảo datasheet.</p>
+<h2 id="truy-cap-flash-trong-linux">Truy cập flash trong Linux<a class="headerlink" href="#truy-cap-flash-trong-linux" title="Permanent link">¶</a></h2>
+<p>Linux truy cập flash theo hai cách, tùy theo bộ nhớ là raw flash hay managed NAND:</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/linux-storage-stack.svg" data-desc-position="bottom"><img alt="Storage stack trong Linux: MTD và Block" src="../img/linux-storage-stack.svg"></a></p>
 <ul>
-<li><strong>Raw flash</strong> (NOR, raw NAND, SPI NAND) đi qua <strong>MTD</strong> (Memory Technology Device, <code>/dev/mtdN</code>), lớp trừu tượng cho flash thô với các thao tác đọc, ghi và xóa theo block. Trên NAND, <strong>UBI</strong> chạy trên MTD để làm wear leveling và bad block management, và <strong>UBIFS</strong> chạy trên UBI. NOR có thể dùng JFFS2 hoặc squashfs.</li>
-<li><strong>Managed NAND</strong> (eMMC, SD card) đi qua MMC subsystem thành block device <code>/dev/mmcblkN</code>, dùng ext4 hoặc f2fs. Không cần MTD hay UBI vì controller đã lo.</li>
+<li><strong>Raw flash</strong> (NOR, raw NAND, SPI NAND) được truy cập qua <strong>MTD</strong> (Memory Technology Device, <code>/dev/mtdN</code>), lớp trừu tượng cho flash thô với các thao tác đọc, ghi và xóa theo block. Trên NAND, <strong>UBI</strong> chạy trên MTD để làm wear leveling và bad block management, và <strong>UBIFS</strong> chạy trên UBI. NOR có thể dùng JFFS2 hoặc squashfs.</li>
+<li><strong>Managed NAND</strong> (eMMC, SD card) được truy cập qua MMC subsystem dưới dạng block device <code>/dev/mmcblkN</code>, dùng ext4 hoặc f2fs. Không cần MTD hay UBI vì controller đã đảm nhận các chức năng này.</li>
 </ul>
-<p>Chi tiết về subsystem, device tree, node trong <code>/dev</code> và cách mount rootfs: xem <a href="../../../lnx_kernel/storage/flash_storage/">Flash Storage (MTD, MMC)</a>.</p>
+<p>Chi tiết về subsystem, device tree, node trong <code>/dev</code> và cách mount rootfs được trình bày tại <a href="../../../lnx_kernel/storage/flash_storage/">Flash Storage (MTD, MMC)</a>.</p>
 <h2 id="so-sanh">So sánh<a class="headerlink" href="#so-sanh" title="Permanent link">¶</a></h2>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/memory-types.svg" data-desc-position="bottom"><img alt="Phân loại bộ nhớ" src="../img/memory-types.svg"></a></p>
 <table>
@@ -11103,7 +11103,7 @@
 <td>Byte</td>
 <td>Sector 4–64 KB</td>
 <td>Block 128 KB+</td>
-<td>Ẩn (controller lo)</td>
+<td>Do controller quản lý</td>
 </tr>
 <tr>
 <td>XIP</td>
@@ -11130,8 +11130,8 @@
 <td>ECC, bad block</td>
 <td>Không cần</td>
 <td>Hầu như không cần</td>
-<td><strong>Cần</strong>, phần mềm lo</td>
-<td>Controller lo</td>
+<td><strong>Cần</strong>, do phần mềm xử lý</td>
+<td>Do controller xử lý</td>
 </tr>
 <tr>
 <td>Giá/bit</td>
@@ -11164,18 +11164,18 @@
 </tbody>
 </table>
 <p>🟢 tốt · 🟡 trung bình · 🔴 kém</p>
-<h2 id="chon-loai-nao">Chọn loại nào<a class="headerlink" href="#chon-loai-nao" title="Permanent link">¶</a></h2>
+<h2 id="lua-chon-loai-bo-nho">Lựa chọn loại bộ nhớ<a class="headerlink" href="#lua-chon-loai-bo-nho" title="Permanent link">¶</a></h2>
 <ul>
-<li><strong>Chỉ cần chứa bootloader</strong>: NOR (QSPI) vài chục MB là đủ.</li>
-<li><strong>Cần rootfs lớn, tiết kiệm chi phí, chấp nhận tự quản lý UBI</strong>: raw NAND hoặc SPI NAND.</li>
-<li><strong>Muốn đơn giản, tốc độ cao, dung lượng lớn</strong>: eMMC. Đây là lựa chọn mặc định cho thiết kế mới.</li>
-<li><strong>Tổ hợp thường gặp</strong>: NOR/QSPI cho bootloader, eMMC cho rootfs.</li>
+<li><strong>Lưu trữ bootloader</strong>: NOR (QSPI) dung lượng vài chục MB.</li>
+<li><strong>Rootfs dung lượng lớn, ưu tiên chi phí thấp và có thể tự quản lý UBI</strong>: raw NAND hoặc SPI NAND.</li>
+<li><strong>Ưu tiên tích hợp đơn giản, tốc độ cao và dung lượng lớn</strong>: eMMC, lựa chọn mặc định cho thiết kế mới.</li>
+<li><strong>Cấu hình phổ biến</strong>: NOR/QSPI cho bootloader, eMMC cho rootfs.</li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Lưu ý khi thiết kế</p>
-<p>Với eMMC và NAND, cần tính đến độ bền khi ghi log liên tục (ghi vào tmpfs hoặc dùng log rotation). Nên dùng filesystem phù hợp (UBIFS cho raw NAND, f2fs/ext4 cho eMMC), bật <code>discard</code>/<code>fstrim</code>, và cân nhắc chế độ pSLC cho vùng dữ liệu quan trọng.</p>
+<p>Với eMMC và NAND, cần tính đến độ bền khi ghi log liên tục (ghi vào tmpfs hoặc dùng log rotation). Nên chọn filesystem phù hợp (UBIFS cho raw NAND, f2fs/ext4 cho eMMC), bật <code>discard</code>/<code>fstrim</code>, và cân nhắc chế độ pSLC cho vùng dữ liệu quan trọng.</p>
 </div>
-<h2 id="lien-ket">Liên kết<a class="headerlink" href="#lien-ket" title="Permanent link">¶</a></h2>
+<h2 id="tai-lieu-lien-quan">Tài liệu liên quan<a class="headerlink" href="#tai-lieu-lien-quan" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="../../eeprom/eeprom/">EEPROM</a></li>
 <li><a href="../../bootloader/bootloader/">Bootloader Overview</a>: boot từ QSPI/NAND/eMMC</li>
@@ -11203,7 +11203,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 30, 2026 03:33:45 UTC">October 30, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 30, 2026 03:48:03 UTC">October 30, 2026</span>
   </span>
 
     
