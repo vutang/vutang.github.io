@@ -12,10 +12,10 @@
         <link rel="canonical" href="https://note.vutang.dev/lnx_es/eeprom/eeprom/">
       
       
-        <link rel="prev" href="../../iot/lab/">
+        <link rel="prev" href="../../storage/memory-types/">
       
       
-        <link rel="next" href="../../storage/memory-types/">
+        <link rel="next" href="../../gnss/gnss/">
       
       
         
@@ -112,7 +112,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#electrically-erasable-and-programmable-read-only-memory" class="md-skip">
+        <a href="#eeprom" class="md-skip">
           Skip to content
         </a>
       
@@ -3186,6 +3186,88 @@
   
   
   
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_10_1" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_3_10_1" id="__nav_3_10_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Storage &amp; Memory
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_10_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_10_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Storage &amp; Memory
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../storage/memory-types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bộ nhớ flash (NOR/NAND/eMMC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
@@ -3245,10 +3327,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
+  <a href="#gioi-thieu" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Introduction
+        Giới thiệu
       
     </span>
   </a>
@@ -3256,10 +3338,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-is-eeprom" class="md-nav__link">
+  <a href="#serial-eeprom-i2c-va-spi" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What is EEPROM?
+        Serial EEPROM: I2C và SPI
       
     </span>
   </a>
@@ -3267,34 +3349,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#serial-eeprom" class="md-nav__link">
+  <a href="#anh-ia-chi-tren-eeprom-i2c" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Serial EEPROM
+        Đánh địa chỉ trên EEPROM I2C
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Serial EEPROM">
+    <nav class="md-nav" aria-label="Đánh địa chỉ trên EEPROM I2C">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#byte-writeread" class="md-nav__link">
+  <a href="#word-address-2-byte-br24g64-3a" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Byte Write/Read
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Byte Write/Read">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#br24g64-3a" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        BR24G64-3A
+        Word address 2 byte (BR24G64-3A)
       
     </span>
   </a>
@@ -3302,10 +3372,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#at32c08a" class="md-nav__link">
+  <a href="#muon-bit-trong-device-address-at24c08a" class="md-nav__link">
     <span class="md-ellipsis">
       
-        AT32C08A
+        Mượn bit trong device address (AT24C08A)
       
     </span>
   </a>
@@ -3316,15 +3386,140 @@
     </nav>
   
 </li>
+      
+        <li class="md-nav__item">
+  <a href="#ghi-du-lieu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ghi dữ liệu
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ghi dữ liệu">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#byte-write-va-page-write" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Byte write và page write
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thoi-gian-ghi-va-ack-polling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thời gian ghi và ACK polling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chan-write-protect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chân write protect
+      
+    </span>
+  </a>
+  
+</li>
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oc-du-lieu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Đọc dữ liệu
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spi-eeprom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SPI EEPROM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tren-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trên Linux
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Trên Linux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#thu-nhanh-bang-i2c-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thử nhanh bằng i2c-tools
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#driver-at24-va-nvmem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Driver at24 và NVMEM
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nguon-tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nguồn tham khảo
+      
+    </span>
+  </a>
   
 </li>
       
     </ul>
   
 </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -3361,7 +3556,7 @@
   <span class="md-ellipsis">
     
   
-    Storage &amp; Memory
+    GNSS
   
 
     
@@ -3374,94 +3569,6 @@
         
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_10_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_10_2">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Storage &amp; Memory
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../storage/memory-types/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Loại bộ nhớ (NOR/NAND/eMMC)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_10_3">
-        
-          
-          <label class="md-nav__link" for="__nav_3_10_3" id="__nav_3_10_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    GNSS
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_10_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_10_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -10480,10 +10587,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
+  <a href="#gioi-thieu" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Introduction
+        Giới thiệu
       
     </span>
   </a>
@@ -10491,10 +10598,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-is-eeprom" class="md-nav__link">
+  <a href="#serial-eeprom-i2c-va-spi" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What is EEPROM?
+        Serial EEPROM: I2C và SPI
       
     </span>
   </a>
@@ -10502,34 +10609,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#serial-eeprom" class="md-nav__link">
+  <a href="#anh-ia-chi-tren-eeprom-i2c" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Serial EEPROM
+        Đánh địa chỉ trên EEPROM I2C
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Serial EEPROM">
+    <nav class="md-nav" aria-label="Đánh địa chỉ trên EEPROM I2C">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#byte-writeread" class="md-nav__link">
+  <a href="#word-address-2-byte-br24g64-3a" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Byte Write/Read
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Byte Write/Read">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#br24g64-3a" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        BR24G64-3A
+        Word address 2 byte (BR24G64-3A)
       
     </span>
   </a>
@@ -10537,10 +10632,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#at32c08a" class="md-nav__link">
+  <a href="#muon-bit-trong-device-address-at24c08a" class="md-nav__link">
     <span class="md-ellipsis">
       
-        AT32C08A
+        Mượn bit trong device address (AT24C08A)
       
     </span>
   </a>
@@ -10551,9 +10646,126 @@
     </nav>
   
 </li>
+      
+        <li class="md-nav__item">
+  <a href="#ghi-du-lieu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ghi dữ liệu
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ghi dữ liệu">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#byte-write-va-page-write" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Byte write và page write
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thoi-gian-ghi-va-ack-polling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thời gian ghi và ACK polling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chan-write-protect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chân write protect
+      
+    </span>
+  </a>
+  
+</li>
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oc-du-lieu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Đọc dữ liệu
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spi-eeprom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SPI EEPROM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tren-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trên Linux
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Trên Linux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#thu-nhanh-bang-i2c-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thử nhanh bằng i2c-tools
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#driver-at24-va-nvmem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Driver at24 và NVMEM
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nguon-tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nguồn tham khảo
+      
+    </span>
+  </a>
   
 </li>
       
@@ -10595,6 +10807,13 @@
         <a href="../../../articles/tags/#tag:i2c" class="md-tag">i2c</a>
       
     
+      
+      
+      
+      
+        <a href="../../../articles/tags/#tag:nvmem" class="md-tag">nvmem</a>
+      
+    
   </nav>
 
 
@@ -10602,40 +10821,184 @@
   
 
 
-<h1 id="electrically-erasable-and-programmable-read-only-memory">Electrically Erasable and Programmable Read-Only Memory<a class="headerlink" href="#electrically-erasable-and-programmable-read-only-memory" title="Permanent link">¶</a></h1>
-<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">¶</a></h2>
-<p>Serial EEPROM devices are by far the most popular vehicle utilized in today’s modern electronic equipment to <strong>store personal preference and configuration data</strong>. </p>
-<p>Applications span a wide spectrum of consumer, automotive, telecommunication, medical, industrial, and computing applications. This popularity stems from a unique combination of capabilities that cannot be found in any other memory solution. These features include:</p>
+<h1 id="eeprom">EEPROM<a class="headerlink" href="#eeprom" title="Permanent link">¶</a></h1>
+<h2 id="gioi-thieu">Giới thiệu<a class="headerlink" href="#gioi-thieu" title="Permanent link">¶</a></h2>
+<p><strong>EEPROM</strong> (Electrically Erasable Programmable Read-Only Memory) là bộ nhớ không mất dữ liệu, ghi và xóa được theo từng byte. Khác với flash phải xóa cả block, EEPROM có thêm một select transistor cho mỗi cell nên sửa được từng byte riêng lẻ; đổi lại cell lớn, dung lượng nhỏ (vài Kbit đến vài Mbit) và giá/bit cao. So sánh chi tiết với NOR, NAND và eMMC được trình bày tại <a href="../../storage/memory-types/">Bộ nhớ flash: NOR, NAND và eMMC</a>.</p>
+<p>Trong hệ thống embedded, EEPROM thường dùng để lưu dữ liệu nhỏ, ít thay đổi và cần giữ khi mất nguồn:</p>
 <ul>
-<li>byte-write alterability</li>
-<li>nonvolatile data storage</li>
-<li>1 million cycles of write endurance</li>
-<li>very low power supply voltage operation</li>
-<li>100 year data retention</li>
-<li>low pin-count packages, low cost of ownership, and extremely low active and standby currents.</li>
+<li>Thông tin bo mạch: serial number, phiên bản phần cứng, địa chỉ MAC.</li>
+<li>Tham số cấu hình và hiệu chuẩn (calibration).</li>
+<li>Dữ liệu nhận dạng module (ví dụ SPD trên thanh RAM, EEPROM trên module quang SFP).</li>
 </ul>
-<h2 id="what-is-eeprom">What is EEPROM?<a class="headerlink" href="#what-is-eeprom" title="Permanent link">¶</a></h2>
-<h2 id="serial-eeprom">Serial EEPROM<a class="headerlink" href="#serial-eeprom" title="Permanent link">¶</a></h2>
-<p>Serial EEPROM uses serial interfaces likes: I2C or SPI. For I2C EEPROM, Read/Write operation populary has two mode: Byte Write and Page Write.</p>
-<p>Normaly, EEPROM data is 8 bit word. Each word is addressed by word address that its width depends on EEPROM size. For example, BR24G64-3A ROHM Semiconductor EEPROM with 64 Kb has to have 13 bit for addressing. Or AT24C08A Atmel EEPROM with 2 Kb uses 10 bit word address. </p>
-<p>Now we will take a look at how EEPROM device manages word address.</p>
-<h3 id="byte-writeread">Byte Write/Read<a class="headerlink" href="#byte-writeread" title="Permanent link">¶</a></h3>
-<h4 id="br24g64-3a">BR24G64-3A<a class="headerlink" href="#br24g64-3a" title="Permanent link">¶</a></h4>
-<p>With BR24G64-3A, it has 13 bit word address so timing for Byte Write Cycle will look like figure below.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../imgs/BR24G64-3A-wr-byte-cycle.png" data-desc-position="bottom"><img alt="BR24G64-3A" src="../imgs/BR24G64-3A-wr-byte-cycle.png"></a></p>
-<p>In this case, I2C master need to use 4 bytes for writing: 1 device address byte, 2 byte for word address (15th to 13th bit are ignored) and 1 byte for data word. In Linux, we can using i2ctransfer (a program in i2c-tools) for write a byte to EEPROM. For example:</p>
-<p><code>&gt; i2ctransfer -y 1 w3@0x57 0x00 0x0a 0x55</code> (1)</p>
-<p>Command (1) is used to write to device 0x57 in I2C bus 1. Data 0x55 will be writen to address: 0x000a.</p>
-<p>Reading operation also has to use 2 bytes for word address. The difference here is using two I2C messages instead of using one I2C message in writing case. </p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../imgs/BR24G64-3A-rd-byte-cycle.png" data-desc-position="bottom"><img alt="BR24G64-3A" src="../imgs/BR24G64-3A-rd-byte-cycle.png"></a></p>
-<p>i2ctransfer command for reading case. </p>
-<p><code>&gt; i2ctransfer -y 1 w2@0x57 0x00 0x00 r1</code></p>
-<h4 id="at32c08a">AT32C08A<a class="headerlink" href="#at32c08a" title="Permanent link">¶</a></h4>
-<p>AT32C08A uses 10 bit for word address. Although using more than 8 bit for word address, AT32C08A has different way in write/read with BR24G64-3A.</p>
-<p>AT32C08A has to use 3 bytes for writing a byte: 1 device address byte, 1 byte for word address and 1 byte for data. To get 10 bit word address, AT32C08A borrows 2 LSB bit (P0 P1 in figure below) in device address byte. </p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../imgs/AT32C08A-dev-addr.png" data-desc-position="bottom"><img alt="AT32C08A" src="../imgs/AT32C08A-dev-addr.png"></a></p>
-<p>So, I2C transfer will look like:</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../imgs/AT32C08A-wr-byte-cycle.png" data-desc-position="bottom"><img alt="AT32C08A" src="../imgs/AT32C08A-wr-byte-cycle.png"></a></p>
+<p>Độ bền điển hình khoảng 1 triệu chu kỳ ghi và thời gian lưu dữ liệu khoảng 100 năm (theo datasheet của từng chip).</p>
+<h2 id="serial-eeprom-i2c-va-spi">Serial EEPROM: I2C và SPI<a class="headerlink" href="#serial-eeprom-i2c-va-spi" title="Permanent link">¶</a></h2>
+<p>EEPROM rời trên bo mạch hầu hết là <strong>serial EEPROM</strong>, giao tiếp qua:</p>
+<ul>
+<li><strong>I2C</strong> (họ 24xx): phổ biến nhất, chỉ cần 2 dây, nhiều chip dùng chung bus. Trang này chủ yếu trình bày loại I2C.</li>
+<li><strong>SPI</strong> (họ 25xx): tốc độ cao hơn, dùng lệnh dạng opcode (xem mục <a href="#spi-eeprom">SPI EEPROM</a>).</li>
+</ul>
+<p>Dữ liệu được tổ chức theo byte; mỗi byte có một <strong>word address</strong>. Độ rộng word address phụ thuộc dung lượng chip: chip 1 KB cần 10 bit, chip 8 KB cần 13 bit.</p>
+<h2 id="anh-ia-chi-tren-eeprom-i2c">Đánh địa chỉ trên EEPROM I2C<a class="headerlink" href="#anh-ia-chi-tren-eeprom-i2c" title="Permanent link">¶</a></h2>
+<p>Mỗi giao dịch I2C bắt đầu bằng <strong>device address</strong> (7 bit, dạng <code>1010xxx</code>), sau đó là word address. Khi word address dài hơn 8 bit, có hai cách tổ chức. Hai chip dưới đây minh họa hai cách đó.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>BR24G64-3A (ROHM)</th>
+<th>AT24C08A (Atmel/Microchip)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dung lượng</td>
+<td>64 Kbit (8 KB)</td>
+<td>8 Kbit (1 KB)</td>
+</tr>
+<tr>
+<td>Số bit word address</td>
+<td>13</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Cách đánh địa chỉ</td>
+<td>Word address 2 byte</td>
+<td>Mượn 2 bit của device address + word address 1 byte</td>
+</tr>
+<tr>
+<td>Device address</td>
+<td><code>1010 A2 A1 A0</code></td>
+<td><code>1010 A2 P1 P0</code></td>
+</tr>
+<tr>
+<td>Kích thước page</td>
+<td>32 byte</td>
+<td>16 byte</td>
+</tr>
+</tbody>
+</table>
+<h3 id="word-address-2-byte-br24g64-3a">Word address 2 byte (BR24G64-3A)<a class="headerlink" href="#word-address-2-byte-br24g64-3a" title="Permanent link">¶</a></h3>
+<p>Chip có 13 bit địa chỉ nên master gửi word address bằng 2 byte; 3 bit cao nhất (bit 15–13) của byte đầu bị bỏ qua. Các chân A2, A1, A0 chọn địa chỉ phần cứng, cho phép tối đa 8 chip trên cùng bus.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../imgs/BR24G64-3A-wr-byte-cycle.png" data-desc-position="bottom"><img alt="BR24G64-3A: chu kỳ ghi một byte" src="../imgs/BR24G64-3A-wr-byte-cycle.png"></a></p>
+<p>Ghi một byte gồm 4 byte trên bus: device address, 2 byte word address và 1 byte dữ liệu.</p>
+<h3 id="muon-bit-trong-device-address-at24c08a">Mượn bit trong device address (AT24C08A)<a class="headerlink" href="#muon-bit-trong-device-address-at24c08a" title="Permanent link">¶</a></h3>
+<p>Chip có 10 bit địa chỉ nhưng chỉ gửi 1 byte word address. 2 bit cao còn lại (P1, P0) được đặt vào vị trí của chân A1, A0 trong device address:</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../imgs/AT24C08A-dev-addr.png" data-desc-position="bottom"><img alt="AT24C08A: device address" src="../imgs/AT24C08A-dev-addr.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../imgs/AT24C08A-wr-byte-cycle.png" data-desc-position="bottom"><img alt="AT24C08A: chu kỳ ghi một byte" src="../imgs/AT24C08A-wr-byte-cycle.png"></a></p>
+<p>Ghi một byte chỉ gồm 3 byte trên bus. Hệ quả là chip chiếm <strong>4 địa chỉ I2C liên tiếp</strong> (với A2 = 0 là <code>0x50</code>–<code>0x53</code>), mỗi địa chỉ ứng với một vùng 256 byte. Khi quét bus bằng <code>i2cdetect</code>, một chip AT24C08A hiện ra như 4 thiết bị.</p>
+<h2 id="ghi-du-lieu">Ghi dữ liệu<a class="headerlink" href="#ghi-du-lieu" title="Permanent link">¶</a></h2>
+<h3 id="byte-write-va-page-write">Byte write và page write<a class="headerlink" href="#byte-write-va-page-write" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Byte write</strong>: gửi word address rồi 1 byte dữ liệu.</li>
+<li><strong>Page write</strong>: gửi word address rồi nhiều byte dữ liệu liên tiếp, tối đa bằng kích thước page. Chip tự tăng địa chỉ sau mỗi byte.</li>
+</ul>
+<p>Page write chỉ tăng các bit thấp của địa chỉ trong phạm vi một page. Nếu ghi vượt biên page, địa chỉ <strong>cuộn vòng (wrap-around)</strong> về đầu page đó và ghi đè dữ liệu cũ, không sang page kế tiếp. Vì vậy dữ liệu dài phải được chia theo biên page.</p>
+<h3 id="thoi-gian-ghi-va-ack-polling">Thời gian ghi và ACK polling<a class="headerlink" href="#thoi-gian-ghi-va-ack-polling" title="Permanent link">¶</a></h3>
+<p>Sau STOP, chip mới thực sự ghi dữ liệu vào cell, mất <strong>tWR</strong> (thường tối đa 5 ms). Trong thời gian này chip không trả lời (NACK) khi được gọi tới địa chỉ của nó. Master có hai cách xử lý:</p>
+<ul>
+<li>Chờ cố định hết tWR.</li>
+<li><strong>ACK polling</strong>: lặp lại START + device address cho tới khi chip trả ACK, nghĩa là đã ghi xong.</li>
+</ul>
+<h3 id="chan-write-protect">Chân write protect<a class="headerlink" href="#chan-write-protect" title="Permanent link">¶</a></h3>
+<p>Chân <strong>WP</strong> nối mức cao thì toàn bộ bộ nhớ bị khóa ghi; nối mức thấp (hoặc để hở với chip có pull-down nội) thì ghi bình thường. Bo mạch thường nối WP lên mức cao để bảo vệ dữ liệu như địa chỉ MAC, chỉ mở khi lập trình ở nhà máy.</p>
+<h2 id="oc-du-lieu">Đọc dữ liệu<a class="headerlink" href="#oc-du-lieu" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Chế độ</th>
+<th>Cách thực hiện</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Current address read</td>
+<td>Chỉ gửi device address với bit đọc; chip trả byte tại địa chỉ hiện tại của bộ đếm nội</td>
+</tr>
+<tr>
+<td>Random read</td>
+<td>Ghi giả (dummy write) word address để đặt bộ đếm, sau đó repeated START và đọc</td>
+</tr>
+<tr>
+<td>Sequential read</td>
+<td>Sau byte đầu, master tiếp tục ACK để đọc các byte kế tiếp; địa chỉ tự tăng trên toàn bộ bộ nhớ (không giới hạn trong page)</td>
+</tr>
+</tbody>
+</table>
+<p>Random read trên BR24G64-3A gồm hai message I2C: một message ghi 2 byte word address và một message đọc:</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../imgs/BR24G64-3A-rd-byte-cycle.png" data-desc-position="bottom"><img alt="BR24G64-3A: random read" src="../imgs/BR24G64-3A-rd-byte-cycle.png"></a></p>
+<h2 id="spi-eeprom">SPI EEPROM<a class="headerlink" href="#spi-eeprom" title="Permanent link">¶</a></h2>
+<p>EEPROM SPI (họ 25xx) dùng lệnh opcode thay vì device address:</p>
+<table>
+<thead>
+<tr>
+<th>Lệnh</th>
+<th>Opcode</th>
+<th>Chức năng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WREN</td>
+<td><code>0x06</code></td>
+<td>Cho phép ghi; phải gửi trước mỗi lần ghi</td>
+</tr>
+<tr>
+<td>WRITE</td>
+<td><code>0x02</code></td>
+<td>Ghi từ địa chỉ chỉ định, giới hạn trong một page</td>
+</tr>
+<tr>
+<td>READ</td>
+<td><code>0x03</code></td>
+<td>Đọc từ địa chỉ chỉ định, đọc liên tục được</td>
+</tr>
+<tr>
+<td>RDSR</td>
+<td><code>0x05</code></td>
+<td>Đọc thanh ghi trạng thái; bit WIP = 1 khi đang ghi</td>
+</tr>
+</tbody>
+</table>
+<p>Quy tắc page và wrap-around giống EEPROM I2C. Thay cho ACK polling, master đọc RDSR cho tới khi bit WIP về 0.</p>
+<h2 id="tren-linux">Trên Linux<a class="headerlink" href="#tren-linux" title="Permanent link">¶</a></h2>
+<h3 id="thu-nhanh-bang-i2c-tools">Thử nhanh bằng i2c-tools<a class="headerlink" href="#thu-nhanh-bang-i2c-tools" title="Permanent link">¶</a></h3>
+<p><code>i2ctransfer</code> (gói i2c-tools) gửi các message I2C trực tiếp từ user space, tiện để kiểm tra phần cứng:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># BR24G64-3A, địa chỉ 0x57, bus 1</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>i2ctransfer<span class="w"> </span>-y<span class="w"> </span><span class="m">1</span><span class="w"> </span>w3@0x57<span class="w"> </span>0x00<span class="w"> </span>0x0a<span class="w"> </span>0x55<span class="w">            </span><span class="c1"># ghi 0x55 vào 0x000a</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>i2ctransfer<span class="w"> </span>-y<span class="w"> </span><span class="m">1</span><span class="w"> </span>w5@0x57<span class="w"> </span>0x00<span class="w"> </span>0x20<span class="w"> </span>0x11<span class="w"> </span>0x22<span class="w"> </span>0x33<span class="w">  </span><span class="c1"># page write từ 0x0020</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>i2ctransfer<span class="w"> </span>-y<span class="w"> </span><span class="m">1</span><span class="w"> </span>w2@0x57<span class="w"> </span>0x00<span class="w"> </span>0x0a<span class="w"> </span>r1<span class="w">              </span><span class="c1"># đọc 1 byte tại 0x000a</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># AT24C08A: vùng 256 byte thứ 3 ở địa chỉ I2C 0x52</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>i2ctransfer<span class="w"> </span>-y<span class="w"> </span><span class="m">1</span><span class="w"> </span>w2@0x52<span class="w"> </span>0x05<span class="w"> </span>0xaa<span class="w">                 </span><span class="c1"># ghi 0xaa vào 0x205</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>i2ctransfer<span class="w"> </span>-y<span class="w"> </span><span class="m">1</span><span class="w"> </span>w1@0x52<span class="w"> </span>0x05<span class="w"> </span>r1<span class="w">                   </span><span class="c1"># đọc lại</span>
+</code></pre></div>
+<p>Trong <code>i2ctransfer</code>, message không ghi <code>@address</code> dùng lại địa chỉ của message trước. Nếu chip đã được driver <code>at24</code> quản lý, lệnh sẽ báo thiết bị bận; khi đó nên đọc/ghi qua sysfs (mục dưới) thay vì dùng tùy chọn <code>-f</code> để ép truy cập.</p>
+<h3 id="driver-at24-va-nvmem">Driver at24 và NVMEM<a class="headerlink" href="#driver-at24-va-nvmem" title="Permanent link">¶</a></h3>
+<p>Trong sản phẩm, EEPROM được quản lý bởi driver <strong><code>at24</code></strong> (I2C) hoặc <strong><code>at25</code></strong> (SPI) trong <code>drivers/misc/eeprom/</code>. Driver tự chia dữ liệu theo page, chờ tWR và đăng ký EEPROM với <strong>NVMEM subsystem</strong>. Khai báo trong device tree:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="o">&amp;</span><span class="nf">i2c1</span><span class="cm"> </span><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="nf">eeprom</span><span class="o">@</span><span class="mi">57</span><span class="cm"> </span><span class="p">{</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">        </span><span class="kr">compatible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"atmel,24c64"</span><span class="p">;</span><span class="w">     </span><span class="cm">/* BR24G64-3A tương thích 24c64 */</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">        </span><span class="kr">reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mh">0x57</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">        </span><span class="n">pagesize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">32</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="p">};</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="nf">eeprom</span><span class="o">@</span><span class="mi">50</span><span class="cm"> </span><span class="p">{</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="kr">compatible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"atmel,24c08"</span><span class="p">;</span><span class="w">     </span><span class="cm">/* AT24C08A, driver tự chiếm 0x50-0x53 */</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">        </span><span class="kr">reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mh">0x50</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">        </span><span class="n">pagesize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">16</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="p">};</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="p">};</span>
+</code></pre></div>
+<p>Sau khi driver nhận chip, nội dung EEPROM xuất hiện dưới dạng file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>hexdump<span class="w"> </span>-C<span class="w"> </span>/sys/bus/i2c/devices/1-0057/eeprom<span class="w">   </span><span class="c1"># đọc toàn bộ EEPROM</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>ls<span class="w"> </span>/sys/bus/nvmem/devices/<span class="w">                      </span><span class="c1"># thiết bị NVMEM, vd 1-00570</span>
+</code></pre></div>
+<p>Qua NVMEM, driver khác có thể đọc trực tiếp một vùng của EEPROM (gọi là <strong>nvmem cell</strong>), ví dụ driver Ethernet lấy địa chỉ MAC thông qua thuộc tính <code>nvmem-cells</code> trong device tree.</p>
+<h2 id="nguon-tham-khao">Nguồn tham khảo<a class="headerlink" href="#nguon-tham-khao" title="Permanent link">¶</a></h2>
+<ul>
+<li>ROHM, <em>BR24G64-3A Datasheet</em>: các hình chu kỳ ghi và đọc của BR24G64-3A.</li>
+<li>Atmel (Microchip), <em>AT24C01A/02/04/08A/16A Datasheet</em>: các hình device address và chu kỳ ghi của AT24C08A.</li>
+<li>Linux kernel, <code>Documentation/devicetree/bindings/eeprom/at24.yaml</code> và <code>drivers/misc/eeprom/at24.c</code>.</li>
+</ul>
 
 
 
@@ -10658,7 +11021,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 20, 2026 09:37:50 UTC">October 20, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 30, 2026 03:56:11 UTC">October 30, 2026</span>
   </span>
 
     
@@ -10707,7 +11070,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
-          <a href="../../iot/lab/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Lab: Pi 3B IoT Gateway (WIP)">
+          <a href="../../storage/memory-types/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Bộ nhớ flash (NOR/NAND/eMMC)">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -10717,20 +11080,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Lab: Pi 3B IoT Gateway (WIP)
+                Bộ nhớ flash (NOR/NAND/eMMC)
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../storage/memory-types/" class="md-footer__link md-footer__link--next" aria-label="Next: Loại bộ nhớ (NOR/NAND/eMMC)">
+          <a href="../../gnss/gnss/" class="md-footer__link md-footer__link--next" aria-label="Next: GNSS Overview">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Loại bộ nhớ (NOR/NAND/eMMC)
+                GNSS Overview
               </div>
             </div>
             <div class="md-footer__button md-icon">
