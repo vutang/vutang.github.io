@@ -201,19 +201,23 @@
          <lastmod>2026-10-30</lastmod>
     </url>
     <url>
-         <loc>https://note.vutang.dev/computer_arch/microarch/raid/</loc>
-         <lastmod>2026-10-30</lastmod>
-    </url>
-    <url>
-         <loc>https://note.vutang.dev/computer_arch/microarch/storage/</loc>
-         <lastmod>2026-10-30</lastmod>
-    </url>
-    <url>
          <loc>https://note.vutang.dev/computer_arch/soc/riscv-server-soc/</loc>
          <lastmod>2026-10-30</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/computer_arch/soc/soc/</loc>
+         <lastmod>2026-10-30</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/computer_arch/storage/flash/</loc>
+         <lastmod>2026-10-30</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/computer_arch/storage/raid/</loc>
+         <lastmod>2026-10-30</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/computer_arch/storage/storage/</loc>
          <lastmod>2026-10-30</lastmod>
     </url>
     <url>

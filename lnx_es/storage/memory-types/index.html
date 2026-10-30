@@ -26,7 +26,7 @@
     
     
       
-        <title>Bộ nhớ flash (NOR/NAND/eMMC) - Vu Tang's Docs</title>
+        <title>Chọn bộ nhớ non-volatile - Vu Tang's Docs</title>
       
     
     
@@ -72,7 +72,7 @@
     
   
 <meta property="og:type" content="website">
-<meta property="og:title" content="Bộ nhớ flash (NOR/NAND/eMMC) - Vu Tang's Docs">
+<meta property="og:title" content="Chọn bộ nhớ non-volatile - Vu Tang's Docs">
 <meta property="og:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
 <meta property="og:image" content="https://note.vutang.dev/assets/images/social/lnx_es/storage/memory-types.png">
 <meta property="og:image:type" content="image/png">
@@ -80,7 +80,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://note.vutang.dev/lnx_es/storage/memory-types/">
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:title" content="Bộ nhớ flash (NOR/NAND/eMMC) - Vu Tang's Docs">
+<meta property="twitter:title" content="Chọn bộ nhớ non-volatile - Vu Tang's Docs">
 <meta property="twitter:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
 <meta property="twitter:image" content="https://note.vutang.dev/assets/images/social/lnx_es/storage/memory-types.png">
 <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
@@ -112,7 +112,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#bo-nho-flash-nor-nand-va-emmc" class="md-skip">
+        <a href="#chon-bo-nho-non-volatile-cho-he-nhung" class="md-skip">
           Skip to content
         </a>
       
@@ -145,7 +145,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Bộ nhớ flash (NOR/NAND/eMMC)
+              Chọn bộ nhớ non-volatile
             
           </span>
         </div>
@@ -1167,7 +1167,7 @@
   <span class="md-ellipsis">
     
   
-    Bộ nhớ flash (NOR/NAND/eMMC)
+    Chọn bộ nhớ non-volatile
   
 
     
@@ -1185,7 +1185,7 @@
   <span class="md-ellipsis">
     
   
-    Bộ nhớ flash (NOR/NAND/eMMC)
+    Chọn bộ nhớ non-volatile
   
 
     
@@ -1209,161 +1209,6 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-      
-        <li class="md-nav__item">
-  <a href="#cell-on-vi-luu-tru-cua-flash" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cell: đơn vị lưu trữ của flash
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Cell: đơn vị lưu trữ của flash">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cau-tao-cell" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cấu tạo cell
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ghi-va-xoa" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ghi và xóa
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#he-qua-cua-co-che-ghi-va-xoa" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Hệ quả của cơ chế ghi và xóa
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#kien-truc-mang-cell-nor-va-nand" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Kiến trúc mảng cell: NOR và NAND
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#nor-flash" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        NOR Flash
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#nand-flash" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        NAND Flash
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="NAND Flash">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#to-chuc-chip-nand" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tổ chức chip NAND
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#loi-bit-ecc-va-bad-block" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Lỗi bit, ECC và bad block
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#slc-mlc-tlc-qlc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SLC, MLC, TLC, QLC
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3d-nand" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3D NAND
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#raw-nand-va-managed-nand" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Raw NAND và managed NAND
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#emmc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        eMMC
-      
-    </span>
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#truy-cap-flash-trong-linux" class="md-nav__link">
@@ -8731,6 +8576,66 @@
 
               
             
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2_4">
+        
+          
+          <label class="md-nav__link" for="__nav_9_2_4" id="__nav_9_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Storage
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_9_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Storage
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
               
                 
   
@@ -8738,14 +8643,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../computer_arch/microarch/storage/" class="md-nav__link">
+      <a href="../../../computer_arch/storage/flash/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Storage (HDD/SSD)
+    Flash (NOR, NAND, eMMC)
   
 
     
@@ -8766,7 +8671,35 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../computer_arch/microarch/raid/" class="md-nav__link">
+      <a href="../../../computer_arch/storage/storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HDD &amp; SSD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computer_arch/storage/raid/" class="md-nav__link">
         
   
   
@@ -8815,10 +8748,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2_4">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2_5">
         
           
-          <label class="md-nav__link" for="__nav_9_2_4" id="__nav_9_2_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_9_2_5" id="__nav_9_2_5_label" tabindex="0">
             
   
   
@@ -8836,8 +8769,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_9_2_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9_2_4">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_9_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -10299,161 +10232,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#cell-on-vi-luu-tru-cua-flash" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cell: đơn vị lưu trữ của flash
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Cell: đơn vị lưu trữ của flash">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cau-tao-cell" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cấu tạo cell
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ghi-va-xoa" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ghi và xóa
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#he-qua-cua-co-che-ghi-va-xoa" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Hệ quả của cơ chế ghi và xóa
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#kien-truc-mang-cell-nor-va-nand" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Kiến trúc mảng cell: NOR và NAND
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#nor-flash" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        NOR Flash
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#nand-flash" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        NAND Flash
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="NAND Flash">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#to-chuc-chip-nand" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tổ chức chip NAND
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#loi-bit-ecc-va-bad-block" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Lỗi bit, ECC và bad block
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#slc-mlc-tlc-qlc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SLC, MLC, TLC, QLC
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3d-nand" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3D NAND
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#raw-nand-va-managed-nand" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Raw NAND và managed NAND
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#emmc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        eMMC
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#truy-cap-flash-trong-linux" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -10556,202 +10334,14 @@
   
 
 
-<h1 id="bo-nho-flash-nor-nand-va-emmc">Bộ nhớ flash: NOR, NAND và eMMC<a class="headerlink" href="#bo-nho-flash-nor-nand-va-emmc" title="Permanent link">¶</a></h1>
-<p>Trong embedded Linux, bộ nhớ không mất dữ liệu (non-volatile) chứa bootloader, kernel, rootfs và dữ liệu ứng dụng. Loại phổ biến nhất là <strong>flash</strong>, gồm hai dạng NOR và NAND; eMMC là NAND đóng gói kèm một controller. Nội dung được trình bày theo thứ tự: cell (đơn vị lưu trữ nhỏ nhất của flash), kiến trúc mảng cell NOR và NAND, eMMC, cách Linux truy cập từng loại, và cuối cùng là so sánh và lựa chọn.</p>
-<h2 id="cell-on-vi-luu-tru-cua-flash">Cell: đơn vị lưu trữ của flash<a class="headerlink" href="#cell-on-vi-luu-tru-cua-flash" title="Permanent link">¶</a></h2>
-<p>Flash lưu dữ liệu trong các <strong>cell</strong>, mỗi cell là một transistor có cấu tạo riêng. Các đặc điểm của flash ở những mục sau (xóa theo block, giới hạn số lần ghi, NOR khác NAND, SLC/MLC/TLC) đều bắt nguồn từ cấu tạo và cách ghi/xóa của cell.</p>
-<h3 id="cau-tao-cell">Cấu tạo cell<a class="headerlink" href="#cau-tao-cell" title="Permanent link">¶</a></h3>
-<p>Cell là một MOSFET có thêm lớp <strong>floating gate</strong> nằm giữa control gate và kênh dẫn, được bọc kín bởi lớp cách điện oxide. Electron đưa vào floating gate bị oxide giữ lại kể cả khi mất nguồn, và làm thay đổi <strong>điện áp ngưỡng Vth</strong> (điện áp cần đặt lên control gate để transistor dẫn):</p>
+<h1 id="chon-bo-nho-non-volatile-cho-he-nhung">Chọn bộ nhớ non-volatile cho hệ nhúng<a class="headerlink" href="#chon-bo-nho-non-volatile-cho-he-nhung" title="Permanent link">¶</a></h1>
+<p>Trong embedded Linux, bộ nhớ không mất dữ liệu (non-volatile) chứa bootloader, kernel, rootfs, dữ liệu ứng dụng và cấu hình của board. Các loại thường gặp là EEPROM, NOR flash, raw NAND (parallel hoặc SPI NAND) và eMMC. Trang này so sánh các loại theo góc nhìn thiết kế board: Linux truy cập chúng thế nào, mỗi loại hợp với việc gì và nên chọn ra sao.</p>
+<p>Nguyên lý bên trong (cell, kiến trúc mảng NOR/NAND, ECC, bad block, SLC/MLC/TLC, cấu tạo eMMC) được trình bày tại <a href="../../../computer_arch/storage/flash/">Flash: NOR, NAND và eMMC</a>. Các điểm cần nhớ khi đọc trang này:</p>
 <ul>
-<li>Không có electron → Vth thấp → cell dẫn khi đọc → giá trị <code>1</code> (trạng thái erased).</li>
-<li>Có electron → Vth cao → cell không dẫn khi đọc → giá trị <code>0</code> (trạng thái programmed).</li>
+<li>Flash chỉ xóa được theo block và có số lần ghi/xóa giới hạn, nên cần <strong>wear leveling</strong>.</li>
+<li>NAND luôn cần <strong>ECC</strong> và quản lý <strong>bad block</strong>. Với <strong>raw NAND</strong>, phần mềm (driver, UBI) làm việc này; với <strong>managed NAND</strong> (eMMC, SD card), controller trong chip làm.</li>
+<li>NOR đọc ngẫu nhiên từng byte và hỗ trợ <strong>XIP</strong>, đổi lại dung lượng nhỏ và giá/bit cao.</li>
 </ul>
-<p>Khi đọc, một điện áp nằm giữa hai mức Vth được đặt lên control gate, và trạng thái dẫn hay không dẫn của cell cho biết giá trị đang lưu.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/floating-gate-cell.svg" data-desc-position="bottom"><img alt="Cell floating-gate: erased và programmed" src="../img/floating-gate-cell.svg"></a></p>
-<h3 id="ghi-va-xoa">Ghi và xóa<a class="headerlink" href="#ghi-va-xoa" title="Permanent link">¶</a></h3>
-<ul>
-<li><strong>Ghi (program)</strong>: đặt điện áp cao (khoảng 10–20 V) để đẩy electron xuyên qua lớp oxide mỏng (tunnel oxide) vào floating gate, chuyển cell từ <code>1</code> sang <code>0</code>. Thao tác ghi thực hiện được trên từng cell riêng lẻ.</li>
-<li><strong>Xóa (erase)</strong>: đặt điện áp ngược chiều để kéo electron ra, đưa cell về <code>1</code>. Để tiết kiệm diện tích, nhiều cell nằm chung một vùng đế và điện áp xóa đặt lên cả vùng đó, nên <strong>chỉ xóa được cả nhóm cell cùng lúc</strong>. Nhóm này gọi là <strong>block</strong> (NOR thường gọi là sector).</li>
-<li>Điện áp cao được tạo ngay trong chip bằng <strong>charge pump</strong> từ nguồn 1.8/3.3 V.</li>
-</ul>
-<p>EEPROM, tiền thân của flash, có thêm một select transistor cho mỗi cell nên xóa được từng byte, nhưng kích thước cell lớn và chi phí cao. Flash loại bỏ transistor này để tăng mật độ, đổi lại phải xóa theo block.</p>
-<h3 id="he-qua-cua-co-che-ghi-va-xoa">Hệ quả của cơ chế ghi và xóa<a class="headerlink" href="#he-qua-cua-co-che-ghi-va-xoa" title="Permanent link">¶</a></h3>
-<table>
-<thead>
-<tr>
-<th>Đặc điểm của flash</th>
-<th>Nguyên nhân</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Khi ghi chỉ chuyển được <code>1 → 0</code>; muốn <code>0 → 1</code> phải xóa cả block</td>
-<td>Ghi từng cell, nhưng xóa cả block</td>
-</tr>
-<tr>
-<td>Không ghi đè tại chỗ: sửa dữ liệu phải ghi sang chỗ trống, hoặc xóa block rồi ghi lại</td>
-<td>Hệ quả của dòng trên</td>
-</tr>
-<tr>
-<td>Số lần ghi/xóa có giới hạn (<strong>độ bền</strong>, tính bằng số chu kỳ program/erase, gọi tắt là P/E cycles)</td>
-<td>Mỗi lần electron xuyên qua tunnel oxide làm oxide hao mòn dần</td>
-</tr>
-<tr>
-<td>Cần <strong>wear leveling</strong>: dàn đều số lần xóa trên các block để không block nào hỏng sớm</td>
-<td>Hệ quả của độ bền có giới hạn</td>
-</tr>
-<tr>
-<td>Giữ dữ liệu nhiều năm khi không có nguồn (<strong>retention</strong>), nhưng kém dần khi cell đã hao mòn</td>
-<td>Electron bị oxide giữ lại; oxide hao thì điện tích rò dần</td>
-</tr>
-<tr>
-<td>Ghi và xóa chậm hơn đọc nhiều</td>
-<td>Cần điện áp cao và thời gian để electron xuyên qua oxide</td>
-</tr>
-</tbody>
-</table>
-<h2 id="kien-truc-mang-cell-nor-va-nand">Kiến trúc mảng cell: NOR và NAND<a class="headerlink" href="#kien-truc-mang-cell-nor-va-nand" title="Permanent link">¶</a></h2>
-<p>Trong chip, các cell xếp thành ma trận. Mỗi hàng nối control gate của các cell vào một <strong>word line</strong> để chọn cell; mỗi cột có một <strong>bit line</strong> để đọc dòng điện qua cell. Có hai cách nối cell vào bit line, và tên NOR, NAND đến từ hai cách này:</p>
-<ul>
-<li><strong>NOR</strong>: mỗi cell nối <strong>song song</strong> giữa bit line và đất. Chỉ cần một cell dẫn là bit line bị kéo xuống mức thấp, giống hành vi của cổng logic NOR. Vì mỗi cell nối thẳng ra bit line nên đọc được ngẫu nhiên từng byte, đủ nhanh để CPU chạy code trực tiếp từ flash (<strong>XIP</strong>, execute in place). Tuy nhiên, mỗi cell cần một điểm tiếp xúc (contact) riêng nên chiếm nhiều diện tích.</li>
-<li><strong>NAND</strong>: 32–128+ cell nối <strong>nối tiếp</strong> thành một chuỗi (<strong>string</strong>); chỉ hai đầu chuỗi có transistor chọn (SSL phía bit line, GSL phía đất). Bit line chỉ bị kéo xuống khi mọi cell trong chuỗi cùng dẫn, giống cổng logic NAND. Nhờ số contact ít, cell có kích thước nhỏ, mật độ cao và giá thành thấp. Tuy nhiên, để đọc một cell cần bật toàn bộ các cell còn lại trong chuỗi, vì vậy NAND đọc và ghi theo <strong>page</strong> (nhóm cell cùng một word line) và không hỗ trợ đọc ngẫu nhiên từng byte.</li>
-</ul>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/nor-nand-array.svg" data-desc-position="bottom"><img alt="Kiến trúc mảng NOR và NAND" src="../img/nor-nand-array.svg"></a></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>NOR</th>
-<th>NAND</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Cách nối cell</td>
-<td>Song song</td>
-<td>Nối tiếp (string)</td>
-</tr>
-<tr>
-<td>Đọc</td>
-<td>Ngẫu nhiên từng byte, có XIP</td>
-<td>Theo page</td>
-</tr>
-<tr>
-<td>Mật độ / giá/bit</td>
-<td>Mật độ thấp, giá/bit cao</td>
-<td>Mật độ cao, giá/bit thấp</td>
-</tr>
-<tr>
-<td>Dùng chủ yếu để chứa</td>
-<td>Code (bootloader, firmware)</td>
-<td>Dữ liệu (rootfs, file)</td>
-</tr>
-</tbody>
-</table>
-<h2 id="nor-flash">NOR Flash<a class="headerlink" href="#nor-flash" title="Permanent link">¶</a></h2>
-<ul>
-<li>Đọc ngẫu nhiên nhanh, hỗ trợ XIP.</li>
-<li>Ghi chậm và tiêu thụ điện năng lớn: NOR ghi bằng cơ chế <strong>channel hot electron (CHE)</strong> với dòng điện lớn, theo từng byte hoặc word. Xóa theo sector 4–64 KB, thời gian mỗi lần xóa có thể lên tới hàng trăm ms.</li>
-<li>Dung lượng từ vài MB đến khoảng 1 GB, giá/bit cao.</li>
-<li>Kích thước cell lớn nên tỉ lệ lỗi bit thấp: thường không cần mã sửa lỗi, hầu như không có block hỏng, độ bền khoảng 100K P/E cycles.</li>
-<li>Giao tiếp: parallel (CFI), hoặc phổ biến hơn là SPI / QSPI / OSPI.</li>
-<li>Dùng cho: bootloader (SPL, U-Boot), firmware nhỏ, cấu hình. Ví dụ Zynq boot từ QSPI flash chứa <code>BOOT.BIN</code>.</li>
-</ul>
-<h2 id="nand-flash">NAND Flash<a class="headerlink" href="#nand-flash" title="Permanent link">¶</a></h2>
-<p>NAND ghi bằng cơ chế <strong>Fowler-Nordheim (FN) tunneling</strong>: dòng điện rất nhỏ cho phép ghi song song cả page, vì vậy tốc độ ghi và xóa cao hơn NOR nhiều. Cell nhỏ và nằm sát nhau giúp NAND có giá thành thấp và dung lượng lớn, nhưng cũng làm phát sinh lỗi bit (trình bày ở các mục dưới).</p>
-<h3 id="to-chuc-chip-nand">Tổ chức chip NAND<a class="headerlink" href="#to-chuc-chip-nand" title="Permanent link">¶</a></h3>
-<p>Một chip NAND chia theo cấp <strong>die → plane → block → page</strong>:</p>
-<ul>
-<li><strong>Page</strong> (2–16 KB): đơn vị đọc và ghi. Mỗi page có thêm một vùng nhỏ gọi là <strong>OOB</strong> (out-of-band, hay spare) để chứa mã sửa lỗi và metadata.</li>
-<li><strong>Block</strong> (64–256+ page, tức 128 KB đến vài MB): đơn vị xóa. Trong một block, các page phải được ghi theo thứ tự.</li>
-<li><strong>Plane</strong> và <strong>die</strong>: các nhóm block có thể hoạt động song song để tăng tốc độ.</li>
-</ul>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/nand-organization.svg" data-desc-position="bottom"><img alt="Tổ chức NAND: die, plane, block, page" src="../img/nand-organization.svg"></a></p>
-<h3 id="loi-bit-ecc-va-bad-block">Lỗi bit, ECC và bad block<a class="headerlink" href="#loi-bit-ecc-va-bad-block" title="Permanent link">¶</a></h3>
-<p>Vì cell nhỏ và nằm sát nhau, dữ liệu trên NAND có thể bị sai lệch do:</p>
-<ul>
-<li><strong>Read disturb</strong>: đọc nhiều lần một block làm Vth của các cell lân cận lệch dần.</li>
-<li><strong>Program disturb</strong>: ghi một page ảnh hưởng tới các page bên cạnh trong cùng string.</li>
-<li><strong>Suy giảm retention</strong>: cell càng hao mòn thì điện tích càng rò nhanh, nhất là ở nhiệt độ cao.</li>
-</ul>
-<p>Do đó NAND luôn cần <strong>ECC</strong> (error-correcting code, mã sửa lỗi; thường là BCH hoặc LDPC), lưu trong vùng OOB, để phát hiện và sửa bit lỗi khi đọc. Ngoài ra chip có sẵn một số <strong>bad block</strong> (block hỏng) từ nhà máy và phát sinh thêm trong quá trình dùng; phần mềm hoặc controller phải đánh dấu và bỏ qua chúng (<strong>bad block management</strong>).</p>
-<h3 id="slc-mlc-tlc-qlc">SLC, MLC, TLC, QLC<a class="headerlink" href="#slc-mlc-tlc-qlc" title="Permanent link">¶</a></h3>
-<p>Thay vì chỉ hai trạng thái có và không có điện tích, một cell có thể lưu nhiều mức điện tích, tức nhiều mức Vth, mỗi mức ứng với một tổ hợp bit. Lưu <code>n</code> bit cần <code>2^n</code> mức. SLC, MLC, TLC, QLC khác nhau ở <code>n</code>:</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/vth-levels.svg" data-desc-position="bottom"><img alt="Phân bố Vth của SLC, MLC, TLC" src="../img/vth-levels.svg"></a></p>
-<table>
-<thead>
-<tr>
-<th>Loại</th>
-<th>Bit/cell</th>
-<th>Số mức Vth</th>
-<th>Độ bền (P/E cycles)</th>
-<th>Tốc độ</th>
-<th>Giá/bit</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>SLC</td>
-<td>1</td>
-<td>2</td>
-<td>~50K–100K</td>
-<td>Nhanh nhất</td>
-<td>Cao nhất</td>
-</tr>
-<tr>
-<td>MLC</td>
-<td>2</td>
-<td>4</td>
-<td>~3K–10K</td>
-<td>↓</td>
-<td>↓</td>
-</tr>
-<tr>
-<td>TLC</td>
-<td>3</td>
-<td>8</td>
-<td>~1K–3K</td>
-<td>↓</td>
-<td>↓</td>
-</tr>
-<tr>
-<td>QLC</td>
-<td>4</td>
-<td>16</td>
-<td>~100–1K</td>
-<td>Chậm nhất</td>
-<td>Thấp nhất</td>
-</tr>
-</tbody>
-</table>
-<p>Dải Vth là cố định nên thêm bit thì các mức <strong>sát nhau hơn</strong>. Hệ quả là lỗi bit nhiều hơn (cần ECC mạnh hơn), ghi và đọc chậm hơn, độ bền thấp hơn; đổi lại cùng diện tích lưu được nhiều bit hơn nên giá thành thấp hơn. SLC thường được dùng trong thiết bị công nghiệp có tần suất ghi cao; TLC phổ biến ở thiết bị tiêu dùng, nơi thao tác đọc chiếm ưu thế.</p>
-<p><strong>pSLC</strong> (pseudo-SLC) là cách dùng chip TLC/MLC chỉ với 2 mức như SLC: dung lượng khả dụng giảm, nhưng độ bền và tốc độ đạt gần mức của SLC.</p>
-<h3 id="3d-nand">3D NAND<a class="headerlink" href="#3d-nand" title="Permanent link">¶</a></h3>
-<p>Khi không thể thu nhỏ cell trên mặt phẳng (2D) thêm nữa vì nhiễu giữa các cell, NAND chuyển sang <strong>xếp chồng cell theo chiều dọc</strong> (V-NAND, BiCS): string dựng đứng, các word line là các lớp chồng lên nhau, hiện đã trên 200 lớp. 3D NAND thường thay floating gate bằng <strong>charge trap</strong> (lớp SiN giữ điện tích), ít nhạy với khuyết tật oxide cục bộ hơn. Vì không phải thu nhỏ cell, 3D NAND có độ bền và retention tốt hơn NAND 2D cùng mật độ. Hầu hết NAND và eMMC đời mới là 3D.</p>
-<h3 id="raw-nand-va-managed-nand">Raw NAND và managed NAND<a class="headerlink" href="#raw-nand-va-managed-nand" title="Permanent link">¶</a></h3>
-<p>ECC, bad block management và wear leveling là những việc bắt buộc với NAND. Tùy theo thành phần đảm nhận các chức năng này, NAND được chia thành hai dạng:</p>
-<ul>
-<li><strong>Raw NAND</strong> (parallel NAND hoặc SPI NAND): SoC điều khiển chip trực tiếp qua NAND controller; phần mềm (driver, UBI) đảm nhận các chức năng trên.</li>
-<li><strong>Managed NAND</strong>: NAND được đóng gói chung với một controller riêng thực hiện các chức năng này; host chỉ làm việc với một thiết bị lưu trữ đơn giản. eMMC, SD card, UFS và SSD đều thuộc dạng này.</li>
-</ul>
-<h2 id="emmc">eMMC<a class="headerlink" href="#emmc" title="Permanent link">¶</a></h2>
-<p><strong>eMMC</strong> (embedded MultiMediaCard) là managed NAND dạng chip BGA hàn trên board: gồm các die NAND (thường là 3D TLC) và một controller trong cùng package, giao tiếp với SoC qua bus MMC (1/4/8 bit dữ liệu, chế độ HS200/HS400).</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/emmc-architecture.svg" data-desc-position="bottom"><img alt="Kiến trúc bên trong eMMC" src="../img/emmc-architecture.svg"></a></p>
-<p>Controller đảm nhận:</p>
-<ul>
-<li><strong>FTL</strong> (Flash Translation Layer): ánh xạ địa chỉ logic mà host dùng (theo sector 512 B) sang page vật lý. Khi host ghi đè, FTL ghi dữ liệu mới sang page trống rồi cập nhật bảng ánh xạ, nhờ đó host không cần xử lý quy tắc xóa theo block.</li>
-<li><strong>Garbage collection</strong>: gom các page còn hợp lệ ra khỏi block chứa nhiều page cũ, rồi xóa block đó để dùng lại. Quá trình này khiến tốc độ ghi có thể giảm khi eMMC gần đầy.</li>
-<li><strong>Wear leveling</strong>, <strong>ECC</strong> và <strong>bad block management</strong>.</li>
-<li><strong>Over-provisioning</strong>: giữ lại một phần dung lượng không công bố để làm vùng đệm và thay thế block hỏng.</li>
-<li><strong>pSLC cache</strong>: ghi tạm vào một vùng chạy chế độ pSLC để tăng tốc độ, sau đó chuyển dữ liệu sang vùng TLC.</li>
-</ul>
-<p>Với Linux, eMMC là một <strong>block device</strong> (<code>/dev/mmcblk0</code>), dùng được filesystem thông thường như ext4, f2fs. eMMC còn có các vùng riêng:</p>
-<ul>
-<li><strong>Boot partition</strong> (<code>mmcblk0boot0/1</code>): chứa bootloader.</li>
-<li><strong>RPMB</strong> (Replay Protected Memory Block): vùng ghi có xác thực, chống ghi lại dữ liệu cũ, dùng cho secure boot và TrustZone.</li>
-<li><strong>GP / enhanced partition</strong>: có thể cấu hình chạy chế độ pSLC cho dữ liệu quan trọng.</li>
-</ul>
-<p>Độ tin cậy của eMMC phụ thuộc nhiều vào firmware controller của từng hãng (Micron, Samsung, Kioxia, SanDisk...), phần mềm không kiểm soát được. Khả năng chống mất điện (power-loss protection) có ở một số dòng công nghiệp, nhiều dòng tiêu dùng không đảm bảo; cần tham khảo datasheet.</p>
 <h2 id="truy-cap-flash-trong-linux">Truy cập flash trong Linux<a class="headerlink" href="#truy-cap-flash-trong-linux" title="Permanent link">¶</a></h2>
 <p>Linux truy cập flash theo hai cách, tùy theo bộ nhớ là raw flash hay managed NAND:</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/linux-storage-stack.svg" data-desc-position="bottom"><img alt="Storage stack trong Linux: MTD và Block" src="../img/linux-storage-stack.svg"></a></p>
@@ -10873,7 +10463,10 @@
 </div>
 <h2 id="tai-lieu-lien-quan">Tài liệu liên quan<a class="headerlink" href="#tai-lieu-lien-quan" title="Permanent link">¶</a></h2>
 <ul>
+<li><a href="../../../computer_arch/storage/flash/">Flash: NOR, NAND và eMMC</a>: nguyên lý cell, NOR/NAND, ECC, eMMC</li>
+<li><a href="../../../computer_arch/storage/storage/">Storage: HDD và SSD</a>: SSD, giao tiếp SATA/NVMe/eMMC/UFS</li>
 <li><a href="../../eeprom/eeprom/">EEPROM</a></li>
+<li><a href="../../../lnx_kernel/storage/flash_storage/">Flash Storage (MTD, MMC)</a>: phía Linux kernel</li>
 <li><a href="../../bootloader/bootloader/">Bootloader Overview</a>: boot từ QSPI/NAND/eMMC</li>
 <li><a href="../../bootloader/u-boot/">U-Boot</a>: lệnh <code>sf</code>, <code>nand</code>, <code>mmc</code></li>
 </ul>
@@ -10899,7 +10492,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 30, 2026 03:48:03 UTC">October 30, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 30, 2026 07:07:35 UTC">October 30, 2026</span>
   </span>
 
     
