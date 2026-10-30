@@ -12,7 +12,7 @@
         <link rel="canonical" href="https://note.vutang.dev/lnx_es/tool_chain/yocto/yocto/">
       
       
-        <link rel="prev" href="../../../bmc/openbmc/">
+        <link rel="prev" href="../../../gnss/nmea/">
       
       
         <link rel="next" href="../../petalinux/ptlnx/">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Yocto Overview - Vu Tang's Docs</title>
+        <title>Yocto - Vu Tang's Docs</title>
       
     
     
@@ -72,7 +72,7 @@
     
   
 <meta property="og:type" content="website">
-<meta property="og:title" content="Yocto Overview - Vu Tang's Docs">
+<meta property="og:title" content="Yocto - Vu Tang's Docs">
 <meta property="og:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
 <meta property="og:image" content="https://note.vutang.dev/assets/images/social/lnx_es/tool_chain/yocto/yocto.png">
 <meta property="og:image:type" content="image/png">
@@ -80,7 +80,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://note.vutang.dev/lnx_es/tool_chain/yocto/yocto/">
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:title" content="Yocto Overview - Vu Tang's Docs">
+<meta property="twitter:title" content="Yocto - Vu Tang's Docs">
 <meta property="twitter:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
 <meta property="twitter:image" content="https://note.vutang.dev/assets/images/social/lnx_es/tool_chain/yocto/yocto.png">
 <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
@@ -145,7 +145,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Yocto Overview
+              Yocto
             
           </span>
         </div>
@@ -714,7 +714,7 @@
   <span class="md-ellipsis">
     
   
-    Hardware &amp; Projects
+    Hardware Platforms
   
 
     
@@ -730,7 +730,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Hardware &amp; Projects
+    Hardware Platforms
   
 
           </label>
@@ -1120,7 +1120,7 @@
   <span class="md-ellipsis">
     
   
-    Platform Management (BMC)
+    Storage &amp; Peripherals
   
 
     
@@ -1136,7 +1136,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Platform Management (BMC)
+    Storage &amp; Peripherals
   
 
           </label>
@@ -1149,14 +1149,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../bmc/bmc/" class="md-nav__link">
+      <a href="../../../storage/memory-types/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    BMC Overview
+    Bộ nhớ flash (NOR/NAND/eMMC)
   
 
     
@@ -1177,14 +1177,94 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../bmc/ipmi/" class="md-nav__link">
+      <a href="../../../eeprom/eeprom/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    IPMI
+    EEPROM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3_4_3" id="__nav_3_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GNSS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    GNSS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../gnss/gnss/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GNSS Overview
   
 
     
@@ -1205,14 +1285,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../bmc/redfish/" class="md-nav__link">
+      <a href="../../../gnss/gnss-linux/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Redfish (WIP)
+    GNSS trên Linux (gpsd, NMEA, 1PPS)
   
 
     
@@ -1233,14 +1313,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../bmc/openbmc/" class="md-nav__link">
+      <a href="../../../gnss/nmea/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    OpenBMC (WIP)
+    NMEA 0183
   
 
     
@@ -1249,6 +1329,14 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1327,60 +1415,6 @@
   
   
   
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_1" checked="">
-        
-          
-          <label class="md-nav__link" for="__nav_3_5_1" id="__nav_3_5_1_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Yocto
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_5_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3_5_1">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Yocto
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-    
-  
-  
-  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
@@ -1396,7 +1430,7 @@
   <span class="md-ellipsis">
     
   
-    Yocto Overview
+    Yocto
   
 
     
@@ -1414,7 +1448,7 @@
   <span class="md-ellipsis">
     
   
-    Yocto Overview
+    Yocto
   
 
     
@@ -1484,15 +1518,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#working-flow" class="md-nav__link">
+  <a href="#quy-trinh-build" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Working flow
+        Quy trình build
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Working flow">
+    <nav class="md-nav" aria-label="Quy trình build">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1702,14 +1736,6 @@
 
               
             
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
               
                 
   
@@ -1776,7 +1802,7 @@
   <span class="md-ellipsis">
     
   
-    Petalinux Overview
+    Petalinux Overview (WIP)
   
 
     
@@ -1895,7 +1921,7 @@
   <span class="md-ellipsis">
     
   
-    Application Dev
+    Networking
   
 
     
@@ -1908,592 +1934,6 @@
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_6">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Application Dev
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_1">
-        
-          
-          <label class="md-nav__link" for="__nav_3_6_1" id="__nav_3_6_1_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Common Tools
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_6_1">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Common Tools
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../makefile/makefile/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Makefile
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../cmake/cmake/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    CMake
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../version_control/verctl/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Version control Concept
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../version_control/git/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Git
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7">
-        
-          
-          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Open Source Packages
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_7">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Open Source Packages
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../oss/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Overview
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_2">
-        
-          
-          <label class="md-nav__link" for="__nav_3_7_2" id="__nav_3_7_2_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Web Server
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_7_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_7_2">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Web Server
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../oss/web_server/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Overview &amp; So sánh
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../oss/web_server/lighttpd/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    lighttpd
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../oss/web_server/nginx/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Nginx
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../oss/web_server/mongoose_civetweb/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Mongoose / CivetWeb
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_2_5">
-        
-          
-          <label class="md-nav__link" for="__nav_3_7_2_5" id="__nav_3_7_2_5_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Backend
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_7_2_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_7_2_5">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Backend
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../oss/web_server/backend/php/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    PHP
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8">
-        
-          
-          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Networking
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2758,10 +2198,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7">
         
           
-          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="">
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="">
             
   
   
@@ -2779,8 +2219,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_9">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2894,10 +2334,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9_4">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_4">
         
           
-          <label class="md-nav__link" for="__nav_3_9_4" id="__nav_3_9_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_7_4" id="__nav_3_7_4_label" tabindex="0">
             
   
   
@@ -2915,8 +2355,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_9_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_9_4">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_7_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -3122,10 +2562,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9_5">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_5">
         
           
-          <label class="md-nav__link" for="__nav_3_9_5" id="__nav_3_9_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_7_5" id="__nav_3_7_5_label" tabindex="0">
             
   
   
@@ -3143,8 +2583,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_9_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_9_5">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_7_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -3266,10 +2706,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9_6">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7_6">
         
           
-          <label class="md-nav__link" for="__nav_3_9_6" id="__nav_3_9_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_7_6" id="__nav_3_7_6_label" tabindex="0">
             
   
   
@@ -3287,8 +2727,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_9_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_9_6">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_7_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -3449,17 +2889,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_10">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8">
         
           
-          <label class="md-nav__link" for="__nav_3_10" id="__nav_3_10_label" tabindex="">
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="">
             
   
   
   <span class="md-ellipsis">
     
   
-    Device &amp; Peripherals
+    Open Source Packages
   
 
     
@@ -3470,16 +2910,44 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_10_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_10">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Device &amp; Peripherals
+    Open Source Packages
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../oss/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -3501,17 +2969,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_10_1">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_2">
         
           
-          <label class="md-nav__link" for="__nav_3_10_1" id="__nav_3_10_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_8_2" id="__nav_3_8_2_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    Storage &amp; Memory
+    Web Server
   
 
     
@@ -3522,12 +2990,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_10_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_10_1">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8_2">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Storage &amp; Memory
+    Web Server
   
 
           </label>
@@ -3540,14 +3008,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../storage/memory-types/" class="md-nav__link">
+      <a href="../../../oss/web_server/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Bộ nhớ flash (NOR/NAND/eMMC)
+    Overview &amp; So sánh
   
 
     
@@ -3568,14 +3036,150 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../eeprom/eeprom/" class="md-nav__link">
+      <a href="../../../oss/web_server/lighttpd/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    EEPROM
+    lighttpd
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../oss/web_server/nginx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nginx
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../oss/web_server/mongoose_civetweb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mongoose / CivetWeb
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_2_5">
+        
+          
+          <label class="md-nav__link" for="__nav_3_8_2_5" id="__nav_3_8_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backend
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_8_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Backend
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../oss/web_server/backend/php/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PHP
   
 
     
@@ -3592,142 +3196,6 @@
           </ul>
         </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_10_2">
-        
-          
-          <label class="md-nav__link" for="__nav_3_10_2" id="__nav_3_10_2_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    GNSS
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_10_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_10_2">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    GNSS
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../gnss/gnss/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    GNSS Overview
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../gnss/gnss-linux/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    GNSS trên Linux (gpsd, NMEA, 1PPS)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../gnss/nmea/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    NMEA 0183
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -3772,17 +3240,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_11">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9">
         
           
-          <label class="md-nav__link" for="__nav_3_11" id="__nav_3_11_label" tabindex="">
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="">
             
   
   
   <span class="md-ellipsis">
     
   
-    Tips &amp; Linux Basics
+    Platform Management (BMC)
   
 
     
@@ -3793,12 +3261,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_11_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_11">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_9">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Tips &amp; Linux Basics
+    Platform Management (BMC)
   
 
           </label>
@@ -3811,14 +3279,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tips/tips/" class="md-nav__link">
+      <a href="../../../bmc/bmc/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Tips
+    BMC Overview
   
 
     
@@ -3839,14 +3307,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../lnx/linux/" class="md-nav__link">
+      <a href="../../../bmc/ipmi/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Unsorted
+    IPMI
   
 
     
@@ -3867,14 +3335,42 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../lnx/cmds/" class="md-nav__link">
+      <a href="../../../bmc/redfish/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Commands
+    Redfish (WIP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bmc/openbmc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenBMC (WIP)
   
 
     
@@ -3891,6 +3387,34 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tips/tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux Tips
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -8161,7 +7685,7 @@
   <span class="md-ellipsis">
     
   
-    DSA
+    Dev Tools
   
 
     
@@ -8174,6 +7698,178 @@
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dev Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../makefile/makefile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Makefile
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cmake/cmake/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CMake
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../version_control/verctl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Version control Concept
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../version_control/git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_3">
+        
+          
+          <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSA
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -8295,10 +7991,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_3">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_4">
         
           
-          <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8_4" id="__nav_8_4_label" tabindex="0">
             
   
   
@@ -8316,8 +8012,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_3">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -10702,15 +10398,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#working-flow" class="md-nav__link">
+  <a href="#quy-trinh-build" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Working flow
+        Quy trình build
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Working flow">
+    <nav class="md-nav" aria-label="Quy trình build">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -10958,7 +10654,7 @@
 
 <h1 id="yocto-project-tong-quan">Yocto Project – Tổng quan<a class="headerlink" href="#yocto-project-tong-quan" title="Permanent link">¶</a></h1>
 <h2 id="yocto-project-la-gi">Yocto Project là gì?<a class="headerlink" href="#yocto-project-la-gi" title="Permanent link">¶</a></h2>
-<p>Yocto Project là dự án mã nguồn mở cung cấp template, công cụ và phương pháp để tạo ra bản Linux tùy biến cho thiết bị nhúng và IoT, không phụ thuộc kiến trúc phần cứng (xem <a href="https://www.yoctoproject.org/">website chính thức</a>). Yocto <strong>không phải một distro có sẵn</strong>: nó là bộ công cụ để <em>tự build ra</em> distro của riêng bạn từ mã nguồn.</p>
+<p>Yocto Project là dự án mã nguồn mở cung cấp template, công cụ và phương pháp để tạo ra bản Linux tùy biến cho thiết bị nhúng và IoT, không phụ thuộc kiến trúc phần cứng (xem <a href="https://www.yoctoproject.org/">website chính thức</a>). Yocto <strong>không phải một distro có sẵn</strong>: nó là bộ công cụ để <em>tự build ra</em> distro riêng cho sản phẩm từ mã nguồn.</p>
 <p>Bức tranh tổng thể gồm năm thành phần:</p>
 <ul>
 <li><strong>BitBake</strong>: engine đọc metadata, lập lịch và chạy các task.</li>
@@ -11081,10 +10777,10 @@
 <li><code>bitbake &lt;image&gt;</code>: build toàn bộ image.</li>
 </ul>
 <p>Các lệnh chi tiết hơn nằm ở phần <em>Thực hành</em>.</p>
-<h2 id="working-flow">Working flow<a class="headerlink" href="#working-flow" title="Permanent link">¶</a></h2>
+<h2 id="quy-trinh-build">Quy trình build<a class="headerlink" href="#quy-trinh-build" title="Permanent link">¶</a></h2>
 <p>Để "nấu ăn" có quy trình, BitBake chia việc build mỗi recipe thành các task nhỏ. Các task mặc định được định nghĩa trong <code>base.bbclass</code> và các class khác (<code>autotools</code>, <code>package</code>, <code>image</code>, ...). Recipe có thể thay đổi bước nào cần thiết bằng cách định nghĩa lại task. Danh sách task đầy đủ có trong <a href="https://docs.yoctoproject.org/ref-manual/tasks.html">Reference Manual - Tasks</a>.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/yocto-working-flow.png" data-desc-position="bottom"><img alt="Yocto working flow" src="../img/yocto-working-flow.png"></a></p>
-<p>Sơ đồ cho thấy hai điểm hay bị hiểu sai: <code>do_populate_sysroot</code> rẽ nhánh song song từ <code>do_install</code> chứ không nằm sau <code>do_package</code>, và image chỉ được tạo từ package đã đóng gói (feed <code>.rpm</code>), không phải từ thư mục build.</p>
+<p>Sơ đồ cho thấy hai điểm dễ bị hiểu sai: <code>do_populate_sysroot</code> rẽ nhánh song song từ <code>do_install</code> chứ không nằm sau <code>do_package</code>, và image chỉ được tạo từ package đã đóng gói (feed <code>.rpm</code>), không phải từ thư mục build.</p>
 <h3 id="1-lay-source-va-va">① Lấy source và vá<a class="headerlink" href="#1-lay-source-va-va" title="Permanent link">¶</a></h3>
 <p><code>do_fetch → do_unpack → do_patch</code></p>
 <p>Fetcher tải source theo <code>SRC_URI</code> vào <code>${DL_DIR}</code>, unpack vào <code>${WORKDIR}</code> rồi áp các patch lên <code>${S}</code>.</p>
@@ -11209,7 +10905,7 @@
 <a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span>install<span class="w"> </span>-m<span class="w"> </span><span class="m">0755</span><span class="w"> </span>hello<span class="w"> </span><span class="si">${</span><span class="nv">D</span><span class="si">}${</span><span class="nv">bindir</span><span class="si">}</span>/hello
 <a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="p">}</span>
 </code></pre></div>
-<p>Tách package và thêm patch bằng <code>.bbappend</code> ở layer của bạn:</p>
+<p>Tách package và thêm patch bằng <code>.bbappend</code> ở layer của dự án:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># libiio_%.bbappend</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nv">FILESEXTRAPATHS</span><span class="nd">:prepend</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">THISDIR</span><span class="si">}</span><span class="s2">/files:"</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nv">SRC_URI</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s2">"file://0001-fix-build.patch"</span>
@@ -11258,7 +10954,7 @@
 </tr>
 <tr>
 <td><code>IMAGE_INSTALL</code></td>
-<td>Package đưa vào image; khai trong image recipe hoặc <code>local.conf</code> (ví dụ <code>IMAGE_INSTALL:append = " libiio"</code>, nhớ dấu cách đầu)</td>
+<td>Package đưa vào image; khai trong image recipe hoặc <code>local.conf</code> (ví dụ <code>IMAGE_INSTALL:append = " libiio"</code>, lưu ý dấu cách ở đầu chuỗi)</td>
 </tr>
 <tr>
 <td><code>PACKAGE_INSTALL</code></td>
@@ -11317,7 +11013,7 @@
 <thead>
 <tr>
 <th>Khái niệm Yocto</th>
-<th>Trong Petalinux 2017.4 (theo ghi chú trước đây)</th>
+<th>Trong Petalinux 2017.4</th>
 </tr>
 </thead>
 <tbody>
@@ -11347,7 +11043,7 @@
 </tr>
 </tbody>
 </table>
-<p>Ghi chú trước đây "chưa tìm hiểu được tác dụng của <code>build/tmp/sysroots/plnx_arm</code> và <code>do_populate_sysroot</code>" đã được giải đáp ở mục <em>Working flow</em>, bước ④: đó là nơi chứa header và lib để recipe khác dùng khi build, không phải thành phần của rootfs.</p>
+<p>Sysroot dùng chung <code>build/tmp/sysroots/plnx_arm</code> là nơi <code>do_populate_sysroot</code> đặt header và lib để recipe khác dùng khi build (xem bước ④ ở mục <em>Quy trình build</em>), không phải thành phần của rootfs.</p>
 <p>Metadata của Petalinux 2017.4 dùng override syntax cũ (dấu <code>_</code>). Khi chuyển sang layer Yocto mới hơn cần đổi sang dấu <code>:</code>.</p>
 <div class="admonition note">
 <p class="admonition-title">Cần kiểm chứng</p>
@@ -11358,7 +11054,6 @@
 </ul>
 </div>
 <h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
-<p>Các điểm sửa về <code>PV</code>/<code>PR</code>, <code>PACKAGE_INSTALL</code>, task <code>do_populate_sysroot</code> và override syntax đã được đối chiếu với tài liệu Yocto chính thức ngày 2026-10-21 (qua kết quả tìm kiếm trên docs.yoctoproject.org).</p>
 <ul>
 <li><a href="https://docs.yoctoproject.org/">Yocto Project documentation</a>: Overview and Concepts Manual, BitBake manual, Reference Manual, Development Tasks Manual.</li>
 <li><a href="https://docs.yoctoproject.org/ref-manual/terms.html">Reference Manual - Terms</a></li>
@@ -11392,7 +11087,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 21, 2026 00:56:41 UTC">October 21, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 30, 2026 04:56:30 UTC">October 30, 2026</span>
   </span>
 
     
@@ -11441,7 +11136,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
-          <a href="../../../bmc/openbmc/" class="md-footer__link md-footer__link--prev" aria-label="Previous: OpenBMC (WIP)">
+          <a href="../../../gnss/nmea/" class="md-footer__link md-footer__link--prev" aria-label="Previous: NMEA 0183">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -11451,20 +11146,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                OpenBMC (WIP)
+                NMEA 0183
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../petalinux/ptlnx/" class="md-footer__link md-footer__link--next" aria-label="Next: Petalinux Overview">
+          <a href="../../petalinux/ptlnx/" class="md-footer__link md-footer__link--next" aria-label="Next: Petalinux Overview (WIP)">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Petalinux Overview
+                Petalinux Overview (WIP)
               </div>
             </div>
             <div class="md-footer__button md-icon">
