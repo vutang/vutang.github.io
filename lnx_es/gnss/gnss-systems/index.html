@@ -2204,10 +2204,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#oc-them" class="md-nav__link">
+  <a href="#lien-quan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Đọc thêm
+        Liên quan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài liệu tham khảo
       
     </span>
   </a>
@@ -10818,10 +10829,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#oc-them" class="md-nav__link">
+  <a href="#lien-quan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Đọc thêm
+        Liên quan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài liệu tham khảo
       
     </span>
   </a>
@@ -10895,7 +10917,11 @@
 
 
 <h1 id="cac-he-thong-gnss">Các hệ thống GNSS<a class="headerlink" href="#cac-he-thong-gnss" title="Permanent link">¶</a></h1>
-<p>Trang này mô tả chi tiết từng hệ thống định vị vệ tinh: tổ chức vận hành, cấu hình chòm sao, tín hiệu, dịch vụ và thang thời gian. Phần nguyên lý định vị và phần cứng nằm ở <a href="../gnss/">GNSS</a>. Các giá trị là thông số thiết kế hoặc giá trị danh định. <strong>Số vệ tinh hoạt động và trạng thái dịch vụ thay đổi theo thời gian</strong>, cần đối chiếu với trang trạng thái chính thức của từng hệ thống (liệt kê ở cuối trang).</p>
+<p>Trang này mô tả chi tiết các hệ thống định vị vệ tinh. Trình tự gồm bảng so sánh, từng hệ thống (GPS, GLONASS, Galileo, BeiDou, QZSS, NavIC), hệ thống tăng cường SBAS, tần số dùng chung, thang thời gian và các lưu ý khi chọn hệ thống cho thiết kế. Phần nguyên lý định vị và phần cứng nằm ở <a href="../gnss/">GNSS</a>. Các giá trị là thông số thiết kế hoặc giá trị danh định. Số vệ tinh hoạt động và trạng thái dịch vụ thay đổi theo thời gian, nên cần đối chiếu với trang trạng thái chính thức của từng hệ thống (xem mục Tài liệu tham khảo).</p>
+<div class="admonition todo">
+<p class="admonition-title">Chưa kiểm chứng</p>
+<p>Các nội dung sau chưa được đối chiếu với tài liệu giao diện (ICD) chính thức: trạng thái dịch vụ chính thức của OSNMA, số vệ tinh QZSS hiện có, tín hiệu CDMA trên từng thế hệ vệ tinh GLONASS, các đặc tính của NavIC, độ lệch giữa GST và GPST, tên thang thời gian của QZSS và NavIC, và dải 1559 đến 1610 MHz của băng L1. Các mục còn lại dựa trên kiến thức chung và các nguồn ở cuối trang.</p>
+</div>
 <h2 id="so-sanh-nhanh">So sánh nhanh<a class="headerlink" href="#so-sanh-nhanh" title="Permanent link">¶</a></h2>
 <table>
 <thead>
@@ -10994,6 +11020,41 @@
 </tbody>
 </table>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/gnss-orbits.svg" data-desc-position="bottom"><img alt="So sánh độ cao quỹ đạo và chu kỳ của các chòm sao" src="../img/gnss-orbits.svg"></a></p>
+<p>Các thuật ngữ trong bảng:</p>
+<table>
+<thead>
+<tr>
+<th>Thuật ngữ</th>
+<th>Ý nghĩa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MEO</strong> (Medium Earth Orbit)</td>
+<td>Quỹ đạo tầm trung, độ cao vài chục nghìn km, vệ tinh chuyển động so với mặt đất</td>
+</tr>
+<tr>
+<td><strong>GEO</strong> (Geostationary Orbit)</td>
+<td>Quỹ đạo địa tĩnh, vệ tinh đứng yên trên xích đạo</td>
+</tr>
+<tr>
+<td><strong>IGSO</strong> (Inclined Geosynchronous Orbit)</td>
+<td>Quỹ đạo địa đồng bộ nghiêng, chu kỳ bằng một ngày thiên văn, quỹ đạo mặt đất có dạng số 8</td>
+</tr>
+<tr>
+<td><strong>QZO</strong> (Quasi-Zenith Orbit)</td>
+<td>Quỹ đạo địa đồng bộ nghiêng cao và lệch tâm của QZSS</td>
+</tr>
+<tr>
+<td><strong>CDMA</strong> (Code Division Multiple Access)</td>
+<td>Đa truy cập phân chia theo mã: mọi vệ tinh dùng chung tần số, phân biệt bằng mã</td>
+</tr>
+<tr>
+<td><strong>FDMA</strong> (Frequency Division Multiple Access)</td>
+<td>Đa truy cập phân chia theo tần số: mỗi vệ tinh một tần số riêng</td>
+</tr>
+</tbody>
+</table>
 <p>Quỹ đạo thấp hơn thì vệ tinh chuyển động nhanh hơn, tín hiệu mạnh hơn ở mặt đất, nhưng mỗi vệ tinh phủ được vùng nhỏ hơn. GLONASS nghiêng 64,8° nên phủ tốt hơn ở vĩ độ cao. Các vệ tinh GEO và IGSO nằm cố định hoặc dao động nhẹ trên một vùng bầu trời nên chỉ phục vụ khu vực.</p>
 <h2 id="gps-my">GPS (Mỹ)<a class="headerlink" href="#gps-my" title="Permanent link">¶</a></h2>
 <p><strong>GPS</strong> (NAVSTAR GPS) là hệ thống GNSS đầu tiên và phổ biến nhất, do Không quân Mỹ phát triển từ thập niên 1970, vận hành bởi Space Force. Vệ tinh đầu tiên phóng năm 1978, hệ thống đạt năng lực hoạt động đầy đủ năm 1995. Từ năm 2000, Mỹ ngừng cố ý làm giảm độ chính xác tín hiệu dân dụng (Selective Availability).</p>
@@ -11308,15 +11369,33 @@
 <li><strong>Độ bền.</strong> Dùng nhiều hệ thống do nhiều quốc gia vận hành làm giảm rủi ro khi một hệ thống gặp sự cố. Đây là lý do mạng viễn thông thường thu đa hệ thống.</li>
 <li><strong>Talker ID trong NMEA</strong> thay đổi theo hệ thống (<code>GP</code>, <code>GL</code>, <code>GA</code>, <code>GB</code>, <code>GQ</code> cho QZSS, <code>GI</code> cho NavIC), hoặc <code>GN</code> khi kết hợp, xem <a href="../nmea/">NMEA 0183</a>.</li>
 </ul>
-<h2 id="oc-them">Đọc thêm<a class="headerlink" href="#oc-them" title="Permanent link">¶</a></h2>
+<h2 id="lien-quan">Liên quan<a class="headerlink" href="#lien-quan" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="../gnss/">GNSS</a>: nguyên lý định vị, độ chính xác, phần cứng và ăng-ten.</li>
+<li><a href="../gnss-linux/">GNSS trên Linux</a>: đọc dữ liệu, PPS, <code>chrony</code> và <code>ts2phc</code>.</li>
+<li><a href="../nmea/">NMEA 0183</a>: talker ID theo từng hệ thống.</li>
+<li><a href="../../linuxptp/linuxptp/">Linux PTP</a>: đồng bộ thời gian qua PTP, dùng GNSS làm nguồn tham chiếu.</li>
+<li><a href="../../../wireless/sync/sync/">Synchronization</a>: vai trò GNSS trong đồng bộ mạng RAN.</li>
+<li><a href="../../../wireless/ntn/ntn-overview/">NTN Overview</a>: UE dùng GNSS để bù Doppler và timing.</li>
+</ul>
+<h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
+<p>Trang trạng thái và tài liệu chính thức:</p>
 <ul>
 <li><a href="https://www.gps.gov/">GPS.gov</a>: thông tin chính thức về GPS, trạng thái chòm sao.</li>
-<li><a href="https://www.glonass-iac.ru/en/">GLONASS: Information-Analytical Centre</a>: trạng thái và tài liệu giao diện GLONASS.</li>
+<li><a href="https://www.glonass-iac.ru/en/">GLONASS Information-Analytical Centre</a>: trạng thái và tài liệu giao diện GLONASS.</li>
 <li><a href="https://www.gsc-europa.eu/">European GNSS Service Centre (GSC)</a>: trạng thái Galileo, thông báo dịch vụ, tài liệu HAS và OSNMA.</li>
 <li><a href="http://en.beidou.gov.cn/">BeiDou Navigation Satellite System</a>: trang chính thức của BeiDou, gồm các tài liệu giao diện (ICD).</li>
 <li><a href="https://qzss.go.jp/en/">QZSS (Cabinet Office)</a>: thông tin QZSS, CLAS và MADOCA-PPP.</li>
 <li><a href="https://www.isro.gov.in/">ISRO</a>: thông tin NavIC.</li>
-<li><a href="https://gssc.esa.int/navipedia/">Navipedia (ESA)</a>: tài liệu tổng hợp về tín hiệu và thang thời gian của các hệ thống.</li>
+</ul>
+<p>Tài liệu tổng hợp đã dùng để đối chiếu số liệu:</p>
+<ul>
+<li><a href="https://gssc.esa.int/navipedia/index.php/GLONASS_Signal_Plan">Navipedia (ESA): GLONASS Signal Plan</a>: kế hoạch tín hiệu GLONASS (FDMA và CDMA).</li>
+<li><a href="https://novatel.com/an-introduction-to-gnss/gnss-constellations/glonass">NovAtel: GLONASS</a>: cấu hình quỹ đạo GLONASS.</li>
+<li><a href="https://www.gsc-europa.eu/electronic-library/performance-reports/galileo-high-accuracy-service-has">Galileo High Accuracy Service (GSC)</a>: dịch vụ HAS.</li>
+<li><a href="https://glonass-iac.ru/guide/gnss/beidou_eng.php">BeiDou (GLONASS IAC)</a>: cấu hình và tần số BeiDou.</li>
+<li><a href="https://www.mdpi.com/2072-4292/14/3/643">Remote Sensing 14(3), 643</a>: tín hiệu BeiDou-3 và dịch vụ PPP-B2b.</li>
+<li><a href="https://www.gpsworld.com/the-status-of-qzss/">GPS World: The status of QZSS</a>: tình trạng QZSS.</li>
 </ul>
 
 
@@ -11340,7 +11419,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 31, 2026 14:49:56 UTC">October 31, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 31, 2026 23:03:48 UTC">October 31, 2026</span>
   </span>
 
     
