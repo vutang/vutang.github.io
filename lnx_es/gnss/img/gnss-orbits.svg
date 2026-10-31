@@ -1,0 +1,21 @@
+<svg role="img" viewBox="0 0 960 310" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+  <title>Orbit altitude and period of the GNSS constellations</title>
+  <rect x="0" y="0" width="960" height="310" rx="8" fill="#ffffff"/>
+  <text x="20" y="28" font-size="14" font-weight="700" fill="#1d4278">Orbit altitude above Earth's surface</text>
+    <text x="20" y="78" font-size="12" font-weight="700" fill="#333">GLONASS</text>
+  <rect x="250" y="60" width="297.1" height="26" rx="3" fill="#b9770e"/>
+  <text x="557.1" y="72" font-size="11" fill="#333">19,100 km</text><text x="557.1" y="85" font-size="10" fill="#555">period 11 h 15 min</text>
+  <text x="20" y="122" font-size="12" font-weight="700" fill="#333">GPS</text>
+  <rect x="250" y="104" width="314.2" height="26" rx="3" fill="#2f5d9e"/>
+  <text x="574.2" y="116" font-size="11" fill="#333">20,200 km</text><text x="574.2" y="129" font-size="10" fill="#555">period 11 h 58 min</text>
+  <text x="20" y="166" font-size="12" font-weight="700" fill="#333">BeiDou MEO</text>
+  <rect x="250" y="148" width="334.9" height="26" rx="3" fill="#c0392b"/>
+  <text x="594.9" y="160" font-size="11" fill="#333">21,528 km</text><text x="594.9" y="173" font-size="10" fill="#555">period 12 h 53 min</text>
+  <text x="20" y="210" font-size="12" font-weight="700" fill="#333">Galileo</text>
+  <rect x="250" y="192" width="361.2" height="26" rx="3" fill="#1b7f5c"/>
+  <text x="621.2" y="204" font-size="11" fill="#333">23,222 km</text><text x="621.2" y="217" font-size="10" fill="#555">period 14 h 05 min</text>
+  <text x="20" y="254" font-size="12" font-weight="700" fill="#333">GEO / IGSO</text>
+  <rect x="250" y="236" width="556.7" height="26" rx="3" fill="#475569"/>
+  <text x="816.7" y="248" font-size="11" fill="#333">35,786 km</text><text x="816.7" y="261" font-size="10" fill="#555">period 23 h 56 min</text>
+  <text x="20" y="292" font-size="10.5" fill="#555">Nominal values. Higher orbit: slower motion, larger coverage per satellite, weaker signal at the ground.</text>
+</svg>
