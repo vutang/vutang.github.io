@@ -2,1058 +2,1062 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://note.vutang.dev/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/whatnext/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/about/about/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/tags/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/2026/10/17/6g-trends-standardization-2026/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/2026/10/21/cpu-architecture-2026/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/2026/10/20/cpufreq-pstate-driver/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/2026/10/28/isac-drone-detection/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/2026/10/23/linux-7-3-release-7-4-merge-window/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/2026/10/21/linux-kernel-design-patterns-1/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/2026/10/21/linux-kernel-design-patterns-2/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/2026/10/21/linux-kernel-design-patterns-3/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/2026/09/28/linux-kernel-release-status/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/2026/10/24/marvell-arm-ran/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/2026/10/18/nbcon-linux-printk/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/2026/10/27/nokia-nvidia-ai-ran/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/2026/10/21/oran-three-trains-2026/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/2026/10/28/php2shell-rce/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/2026/10/13/pviommu-hyperv-linux-guest/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/2026/10/18/ran-silicon-rethink/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/2026/10/22/rk3399-secure-efuse/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/2026/10/19/rust-in-linux-kernel/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/2026/10/22/spacemit-v100-risc-v-server/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/2026/10/25/u-boot-boot-chain-security-2026/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/2026/10/21/yocto-release-status/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/bookmarks/bookmarks/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/books/c_books/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/books/device_driver/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/books/es_linux/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/books/ldd3/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/books/linux/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/books/linux_kernel/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/books/others/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/books/tlpi/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/books/utlk/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/books/cbooks/head_first_c/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/books/dsa/algorithm-in-c/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/books/dsa/algorithm4th/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/books/dsa/dsa_toc/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/chip_soc/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/computer_arch/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/computer_arch/isa/arm/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/computer_arch/isa/isa/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/computer_arch/isa/riscv/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/computer_arch/isa/x86/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/computer_arch/microarch/cache/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/computer_arch/microarch/memory/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/computer_arch/microarch/microarch/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/computer_arch/microarch/pipeline/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/computer_arch/soc/riscv-server-soc/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/computer_arch/soc/soc/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/computer_arch/storage/flash/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/computer_arch/storage/raid/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/computer_arch/storage/storage/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/embedded_security/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/embedded_security/crypto/rsa/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/embedded_security/cve/cve/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/embedded_security/https/https/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/embedded_security/insightvm/insightvm/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/embedded_security/iot/iot-security/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/embedded_security/ipsec/ipsec/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/embedded_security/secure_boot/secure-boot-trustzone/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/embedded_security/ssh/ssh/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/embedded_security/tls/tls/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/hw_design/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/hw_design/bringup/bringup/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/hw_design/manufacturing/smt/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/hw_design/passives/passives/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/hw_design/pcb/pcb/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/hw_design/power/power/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/ic_design/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/ic_design/fpga/fpga/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/ic_design/fpga/x_ipcore/xipcore/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/ic_design/rtl/rtl/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/ic_design/timing_analysis/timing_analysis/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/ic_design/verification/verification/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/es/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/hw_platform/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/bmc/bmc/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/bmc/ipmi/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/bmc/openbmc/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/bmc/redfish/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/lnx_es/bootloader/bios/</loc>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/bootloader/bootloader/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/bootloader/edk2/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/bootloader/grub/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/bootloader/u-boot/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/cmake/cmake/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/dpdk/dpdk/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/eeprom/eeprom/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/gnss/gnss-linux/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/gnss/gnss/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/gnss/nmea/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/iot/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/iot/architecture/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/iot/gateway/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/iot/lab/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/iot/mcu-node/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/iot/connectivity/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/iot/connectivity/ble/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/iot/connectivity/cellular/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/iot/connectivity/lorawan/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/iot/connectivity/thread-matter/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/iot/connectivity/wifi/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/iot/device_mgmt/ota/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/iot/device_mgmt/provisioning/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/iot/protocols/coap-lwm2m/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/iot/protocols/industrial/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/iot/protocols/mqtt/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/linux_system/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/linux_system/host-setup/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/linux_system/init/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/linux_system/ssh/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/linuxptp/linuxptp/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/makefile/makefile/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/nbd/nbd/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/networking/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/networking/fundamentals/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/networking/link_layer/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/networking/linux_stack/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/networking/tools/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/oss/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/oss/web_server/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/oss/web_server/lighttpd/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/oss/web_server/mongoose_civetweb/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/oss/web_server/nginx/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/oss/web_server/backend/php/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/storage/memory-types/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/tool_chain/buildroot/buildroot-package/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/tool_chain/buildroot/buildroot/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/tool_chain/petalinux/ptlnx/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/tool_chain/yocto/yocto/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/version_control/git/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/version_control/verctl/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_kernel/kernel_boot/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_kernel/kernel_cmdline/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_kernel/kernel_data_structure/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_kernel/kernel_overview/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_kernel/clk/clk/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_kernel/ddebug/ddebug/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_kernel/devicetree/devicetree/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_kernel/ftrace/ftrace/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_kernel/kernel_user_space/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_kernel/kernel_user_space/abi_security/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_kernel/kernel_user_space/advanced/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_kernel/kernel_user_space/device_file/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_kernel/kernel_user_space/lab/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_kernel/kernel_user_space/mmap/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_kernel/kernel_user_space/netlink/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_kernel/kernel_user_space/notification/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_kernel/kernel_user_space/pseudo_fs/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_kernel/kernel_user_space/syscall/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_kernel/release/kernel_release/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_kernel/storage/flash_storage/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_ldd/char_device/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_ldd/kernel_module/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_ldd/overview/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_ldd/audio/linux_audio/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_ldd/gpio/gpio/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_ldd/i2c/i2c/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_ldd/jesd/jesd/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_ldd/pcie/pcie/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_ldd/platform_dev/platform_device/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_ldd/spi_dev/spi_advance/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_ldd/spi_dev/spi_dev/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_ldd/uart/uart/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/math_physics/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/math_physics/calculus_fourier/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/math_physics/circuits_em/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/math_physics/discrete_boolean/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/math_physics/linear_algebra/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/math_physics/probability/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/math_physics/semiconductor/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/math_physics/signals_systems/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/programming/dsg_patterns/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/programming/multi-threaded-programming/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/programming/C/cprogramming/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/programming/C/toolchain/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/programming/C/toolchain/cross-compile/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/programming/C/toolchain/debug/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/programming/C/toolchain/linking/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/programming/C/toolchain/multi-file/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/programming/C/toolchain/object-file/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/programming/C/toolchain/pipeline/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/programming/C/toolchain/process/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/programming/coding_convention/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/programming/coding_convention/linux_kernel/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/programming/dsa/alg/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/programming/dsa/dsa/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/programming/dsa/linked_list/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/programming/dsa/queue/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/programming/lnx/lpi/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/programming/perf/perf/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/programming/python/python/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/programming/shellscript/shellscript/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/programming/sql/mysql/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/projects/pi3b/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/projects/imx6/imx6/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/projects/imx8/imx8/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/projects/rockchip/rockchip/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/projects/zynq/picozed/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/projects/zynq/u-boot/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/projects/zynq/zynq/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/projects/zynq/zc706/zc706/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/projects/zynq/zedboard/zedboard/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/technote/markdown/markdown/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/technote/mkdocs/mkdocs-notes/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/virtualization/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/virtualization/container/compose/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/virtualization/container/docker/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/virtualization/container/internals/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/virtualization/embedded/docker-build-env/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/virtualization/embedded/qemu-cross-arch/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/virtualization/foundations/cpu/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/virtualization/foundations/io/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/virtualization/foundations/memory/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/virtualization/hypervisor/hypervisor/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/virtualization/hypervisor/kvm-qemu/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/virtualization/hypervisor/partitioning/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/virtualization/realtime/rt-kvm/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/virtualization/realtime/vran/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/virtualization/sandbox/sandbox/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/wireless/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/wireless/3gpp/3gpp/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/wireless/6g/6g-roadmap/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/wireless/air-interface/connected-mobility/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/wireless/air-interface/initial-access/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/wireless/air-interface/protocol-stack/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/wireless/air-interface/registration-session/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/wireless/air-interface/resource-grid/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/wireless/architecture/ran-architecture/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/wireless/fronthaul/open-fronthaul/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/wireless/ieee/ieee/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/wireless/isac/isac-overview/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/wireless/itu/itu/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/wireless/l1/l1-acceleration/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/wireless/ntn/ntn-overview/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/wireless/oran/oran-alliance/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/wireless/phy/numerology/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/wireless/phy/ofdm/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/wireless/spectrum/frequency-bands/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/wireless/sync/sync/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/archive/2026/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/category/wireless--ran/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/category/security/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/category/embedded/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/category/linux-kernel/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/category/chip--soc/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/category/virtualization/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/author/vu/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/page/2/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/page/3/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/page/4/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/page/5/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/archive/2026/page/2/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/archive/2026/page/3/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/archive/2026/page/4/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/archive/2026/page/5/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/category/linux-kernel/page/2/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/category/wireless--ran/page/2/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/author/vu/page/2/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/author/vu/page/3/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/author/vu/page/4/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://note.vutang.dev/articles/author/vu/page/5/</loc>
-         <lastmod>2026-10-30</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
 </urlset>

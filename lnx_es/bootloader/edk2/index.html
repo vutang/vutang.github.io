@@ -12,10 +12,10 @@
         <link rel="canonical" href="https://note.vutang.dev/lnx_es/bootloader/edk2/">
       
       
-        <link rel="prev" href="../grub/">
+        <link rel="prev" href="../bios/">
       
       
-        <link rel="next" href="../../../projects/zynq/u-boot/">
+        <link rel="next" href="../grub/">
       
       
         
@@ -1176,14 +1176,42 @@
   
   
     <li class="md-nav__item">
-      <a href="../grub/" class="md-nav__link">
+      <a href="../../../projects/zynq/u-boot/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    GRUB
+    U-Boot on Zynq
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BIOS (Legacy)
   
 
     
@@ -1478,14 +1506,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../projects/zynq/u-boot/" class="md-nav__link">
+      <a href="../grub/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    U-Boot on Zynq
+    GRUB
   
 
     
@@ -10924,7 +10952,7 @@
 
 
 <h1 id="edk2-uefi">EDK2 (UEFI)<a class="headerlink" href="#edk2-uefi" title="Permanent link">¶</a></h1>
-<p><a href="https://github.com/tianocore/edk2">EDK2</a> (EFI Development Kit II, thường viết EDK II) là bản cài đặt mã nguồn mở tham chiếu của hai bộ đặc tả UEFI và PI, do cộng đồng TianoCore duy trì. Đây là nền của phần lớn firmware UEFI trên PC, server x86 và server ARM64, đồng thời là firmware mặc định của máy ảo QEMU/KVM (OVMF, ArmVirtQemu). Trang này trình bày theo thứ tự: quan hệ giữa đặc tả và EDK2, các pha boot, cấu trúc mã nguồn, hệ thống build, mô hình driver, build và chạy OVMF trên QEMU, EDK2 trên ARM64, biến UEFI và debug. Vị trí của firmware trong chuỗi boot nói chung xem tại <a href="../bootloader/">Bootloader trong hệ nhúng Linux</a>.</p>
+<p><a href="https://github.com/tianocore/edk2">EDK2</a> (EFI Development Kit II, thường viết EDK II) là bản cài đặt mã nguồn mở tham chiếu của hai bộ đặc tả UEFI và PI, do cộng đồng TianoCore duy trì. Đây là nền của phần lớn firmware UEFI trên PC, server x86 và server ARM64, đồng thời là firmware mặc định của máy ảo QEMU/KVM (OVMF, ArmVirtQemu). Trang này trình bày theo thứ tự: quan hệ giữa đặc tả và EDK2, các pha boot, cấu trúc mã nguồn, hệ thống build, mô hình driver, build và chạy OVMF trên QEMU, EDK2 trên ARM64, biến UEFI và debug. Firmware legacy BIOS mà UEFI thay thế, và các nghĩa của từ "BIOS", xem tại <a href="../bios/">BIOS (Legacy)</a>. Vị trí của firmware trong chuỗi boot nói chung xem tại <a href="../bootloader/">Bootloader trong hệ nhúng Linux</a>.</p>
 <h2 id="uefi-pi-va-edk2">UEFI, PI và EDK2<a class="headerlink" href="#uefi-pi-va-edk2" title="Permanent link">¶</a></h2>
 <p>UEFI Forum phát hành hai nhóm đặc tả độc lập với nhau:</p>
 <ul>
@@ -11433,6 +11461,7 @@
 </div>
 <h2 id="lien-quan">Liên quan<a class="headerlink" href="#lien-quan" title="Permanent link">¶</a></h2>
 <ul>
+<li><a href="../bios/">BIOS (Legacy)</a>: firmware legacy BIOS, CSM và các nghĩa của từ "BIOS".</li>
 <li><a href="../bootloader/">Bootloader trong hệ nhúng Linux</a>, <a href="../u-boot/">U-Boot</a>, <a href="../grub/">GRUB</a>: các bootloader khác trong tab Embedded.</li>
 <li><a href="../../../embedded_security/secure_boot/secure-boot-trustzone/">Secure boot và TrustZone</a> (Security): chain of trust, TF-A, OP-TEE.</li>
 <li><a href="../../../virtualization/hypervisor/kvm-qemu/">KVM và QEMU</a> (Virtualization): QEMU/KVM, nơi OVMF được dùng làm firmware máy ảo.</li>
@@ -11472,7 +11501,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 30, 2026 15:34:16 UTC">October 30, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 30, 2026 23:17:18 UTC">October 30, 2026</span>
   </span>
 
     
@@ -11521,7 +11550,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
-          <a href="../grub/" class="md-footer__link md-footer__link--prev" aria-label="Previous: GRUB">
+          <a href="../bios/" class="md-footer__link md-footer__link--prev" aria-label="Previous: BIOS (Legacy)">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -11531,20 +11560,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                GRUB
+                BIOS (Legacy)
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../../projects/zynq/u-boot/" class="md-footer__link md-footer__link--next" aria-label="Next: U-Boot on Zynq">
+          <a href="../grub/" class="md-footer__link md-footer__link--next" aria-label="Next: GRUB">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                U-Boot on Zynq
+                GRUB
               </div>
             </div>
             <div class="md-footer__button md-icon">

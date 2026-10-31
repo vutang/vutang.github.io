@@ -1241,6 +1241,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#firmware-x86-bios-va-uefi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Firmware x86: BIOS và UEFI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#grub" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1317,14 +1328,42 @@
   
   
     <li class="md-nav__item">
-      <a href="../grub/" class="md-nav__link">
+      <a href="../../../projects/zynq/u-boot/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    GRUB
+    U-Boot on Zynq
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BIOS (Legacy)
   
 
     
@@ -1373,14 +1412,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../projects/zynq/u-boot/" class="md-nav__link">
+      <a href="../grub/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    U-Boot on Zynq
+    GRUB
   
 
     
@@ -10636,6 +10675,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#firmware-x86-bios-va-uefi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Firmware x86: BIOS và UEFI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#grub" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -10714,7 +10764,7 @@
 
 
 <h1 id="bootloader-trong-he-nhung-linux">Bootloader trong hệ nhúng Linux<a class="headerlink" href="#bootloader-trong-he-nhung-linux" title="Permanent link">¶</a></h1>
-<p>Trang này tổng hợp các khái niệm về bootloader trên hệ nhúng Linux: chuỗi boot từ lúc cấp nguồn đến lúc kernel chạy, vai trò của từng stage, và so sánh các bootloader phổ biến. U-Boot và GRUB có trang riêng. Ví dụ cụ thể theo từng nền tảng nằm ở:</p>
+<p>Trang này tổng hợp các khái niệm về bootloader trên hệ nhúng Linux: chuỗi boot từ lúc cấp nguồn đến lúc kernel chạy, vai trò của từng stage, và so sánh các bootloader phổ biến. U-Boot, BIOS, EDK2 (UEFI) và GRUB có trang riêng. Ví dụ cụ thể theo từng nền tảng nằm ở:</p>
 <ul>
 <li><a href="../../../projects/zynq/u-boot/">U-Boot on Zynq</a>: FSBL, <code>BOOT.BIN</code>, bootgen trên Zynq-7000 và ZynqMP.</li>
 <li><a href="../../../projects/imx6/imx6/">i.MX6 (DART-MX6)</a>: SPL và <code>u-boot.img</code> ghi ở offset cố định trên SD card.</li>
@@ -10879,19 +10929,24 @@
 <td>Tách ra từ U-Boot, thiết kế giống Linux hơn (driver model, filesystem, shell kiểu POSIX).</td>
 </tr>
 <tr>
-<td><a href="../grub/">GRUB</a> / systemd-boot</td>
-<td>x86, server ARM64 có UEFI</td>
-<td>Chạy sau firmware BIOS/UEFI. Hiếm gặp trên SoC nhúng nhỏ.</td>
+<td><a href="../bios/">BIOS (Legacy)</a></td>
+<td>PC x86 đời cũ, máy ảo QEMU mặc định (SeaBIOS)</td>
+<td>Firmware real mode 16-bit, boot từ MBR. Trên máy mới được thay bằng UEFI, nhưng tên "BIOS" vẫn được dùng để gọi firmware nói chung.</td>
 </tr>
 <tr>
 <td><a href="../edk2/">EDK2 (UEFI)</a></td>
-<td>Server ARM64, một số SoC cao cấp</td>
+<td>PC và server x86, server ARM64, máy ảo (OVMF)</td>
 <td>U-Boot cũng có lớp UEFI (<code>bootefi</code>) để boot GRUB hoặc kernel EFI stub.</td>
 </tr>
 <tr>
 <td>coreboot</td>
 <td>x86, Chromebook</td>
 <td>Khởi tạo phần cứng, sau đó chuyển cho payload (SeaBIOS, UEFI, Linux).</td>
+</tr>
+<tr>
+<td><a href="../grub/">GRUB</a> / systemd-boot</td>
+<td>x86, server ARM64 có UEFI</td>
+<td>Chạy sau firmware BIOS/UEFI. Hiếm gặp trên SoC nhúng nhỏ.</td>
 </tr>
 <tr>
 <td>TF-A, OP-TEE</td>
@@ -10902,6 +10957,8 @@
 </table>
 <h2 id="u-boot">U-Boot<a class="headerlink" href="#u-boot" title="Permanent link">¶</a></h2>
 <p>U-Boot là bootloader phổ biến nhất trên embedded Linux: build bằng Kconfig/Kbuild giống kernel, dùng Driver Model và device tree, có shell, environment, hỗ trợ mạng, filesystem, FIT image và verified boot. Nội dung chi tiết tách ra trang riêng: <a href="../u-boot/">U-Boot</a>.</p>
+<h2 id="firmware-x86-bios-va-uefi">Firmware x86: BIOS và UEFI<a class="headerlink" href="#firmware-x86-bios-va-uefi" title="Permanent link">¶</a></h2>
+<p>Trên PC và server x86, phần khởi tạo phần cứng không do bootloader đảm nhận mà do firmware trên mainboard: legacy BIOS ở máy đời cũ, UEFI ở máy hiện nay. Firmware khởi tạo CPU, DRAM, thiết bị PCI, rồi mới nạp bootloader như GRUB. Từ "BIOS" vẫn thường được dùng để gọi cả firmware UEFI, phân biệt các nghĩa xem tại <a href="../bios/">BIOS (Legacy)</a>. Firmware UEFI và bản cài đặt EDK2 xem tại <a href="../edk2/">EDK2 (UEFI)</a>.</p>
 <h2 id="grub">GRUB<a class="headerlink" href="#grub" title="Permanent link">¶</a></h2>
 <p>GRUB là bootloader chuẩn trên PC và server (BIOS, UEFI), xuất hiện trong hệ nhúng ở các máy x86 công nghiệp và các board ARM64 boot qua UEFI. Chi tiết xem trang <a href="../grub/">GRUB</a>.</p>
 <h2 id="debug-qua-trinh-boot">Debug quá trình boot<a class="headerlink" href="#debug-qua-trinh-boot" title="Permanent link">¶</a></h2>
@@ -10968,7 +11025,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 30, 2026 15:34:16 UTC">October 30, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 30, 2026 23:17:18 UTC">October 30, 2026</span>
   </span>
 
     

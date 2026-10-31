@@ -1,0 +1,69 @@
+<svg role="img" viewBox="0 0 772 220" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+  <title>Trình tự boot của legacy BIOS trên x86</title>
+  <rect x="0" y="0" width="772" height="220" rx="8" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker>
+  </defs>
+
+  <!-- group labels -->
+  <rect x="14" y="14" width="420" height="22" rx="4" fill="#dbe7f7" stroke="#3b6fb6"/>
+  <text x="224" y="29" font-size="10" font-weight="700" text-anchor="middle" fill="#1d3f73">Firmware BIOS (ROM trên mainboard)</text>
+  <rect x="446" y="14" width="312" height="22" rx="4" fill="#d4ecdc" stroke="#2e7d4f"/>
+  <text x="602" y="29" font-size="10" font-weight="700" text-anchor="middle" fill="#1d5a36">Code đọc từ disk, vẫn ở real mode</text>
+
+  <!-- boxes: x = 14,122,230,338,446,554,662 ; w=96 -->
+  <rect x="14" y="50" width="96" height="76" rx="6" fill="#ececec" stroke="#777"/>
+  <text x="62" y="72" font-size="11" font-weight="700" text-anchor="middle" fill="#111">Reset vector</text>
+  <text x="62" y="90" font-size="9" text-anchor="middle" fill="#111">F000:FFF0,</text>
+  <text x="62" y="103" font-size="9" text-anchor="middle" fill="#111">real mode</text>
+  <text x="62" y="116" font-size="9" text-anchor="middle" fill="#111">16-bit</text>
+
+  <rect x="122" y="50" width="96" height="76" rx="6" fill="#ececec" stroke="#777"/>
+  <text x="170" y="72" font-size="11" font-weight="700" text-anchor="middle" fill="#111">POST</text>
+  <text x="170" y="90" font-size="9" text-anchor="middle" fill="#111">CPU, DRAM,</text>
+  <text x="170" y="103" font-size="9" text-anchor="middle" fill="#111">chipset, PCI,</text>
+  <text x="170" y="116" font-size="9" text-anchor="middle" fill="#111">bảng ngắt (IVT)</text>
+
+  <rect x="230" y="50" width="96" height="76" rx="6" fill="#ececec" stroke="#777"/>
+  <text x="278" y="72" font-size="11" font-weight="700" text-anchor="middle" fill="#111">Option ROM</text>
+  <text x="278" y="90" font-size="9" text-anchor="middle" fill="#111">VGA, RAID,</text>
+  <text x="278" y="103" font-size="9" text-anchor="middle" fill="#111">NIC (PXE) từ</text>
+  <text x="278" y="116" font-size="9" text-anchor="middle" fill="#111">0xC0000</text>
+
+  <rect x="338" y="50" width="96" height="76" rx="6" fill="#ececec" stroke="#777"/>
+  <text x="386" y="72" font-size="11" font-weight="700" text-anchor="middle" fill="#111">INT 19h</text>
+  <text x="386" y="90" font-size="9" text-anchor="middle" fill="#111">duyệt boot order,</text>
+  <text x="386" y="103" font-size="9" text-anchor="middle" fill="#111">INT 13h đọc</text>
+  <text x="386" y="116" font-size="9" text-anchor="middle" fill="#111">sector 0</text>
+
+  <rect x="446" y="50" width="96" height="76" rx="6" fill="#fbe7c8" stroke="#b8741a"/>
+  <text x="494" y="72" font-size="11" font-weight="700" text-anchor="middle" fill="#7a4a00">MBR</text>
+  <text x="494" y="90" font-size="9" text-anchor="middle" fill="#7a4a00">512 byte tại</text>
+  <text x="494" y="103" font-size="9" text-anchor="middle" fill="#7a4a00">0000:7C00,</text>
+  <text x="494" y="116" font-size="9" text-anchor="middle" fill="#7a4a00">kiểm tra 0xAA55</text>
+
+  <rect x="554" y="50" width="96" height="76" rx="6" fill="#ececec" stroke="#777"/>
+  <text x="602" y="72" font-size="11" font-weight="700" text-anchor="middle" fill="#111">Bootloader</text>
+  <text x="602" y="90" font-size="9" text-anchor="middle" fill="#111">GRUB core.img,</text>
+  <text x="602" y="103" font-size="9" text-anchor="middle" fill="#111">SYSLINUX; đọc</text>
+  <text x="602" y="116" font-size="9" text-anchor="middle" fill="#111">disk qua INT 13h</text>
+
+  <rect x="662" y="50" width="96" height="76" rx="6" fill="#ececec" stroke="#777"/>
+  <text x="710" y="72" font-size="11" font-weight="700" text-anchor="middle" fill="#111">Kernel</text>
+  <text x="710" y="90" font-size="9" text-anchor="middle" fill="#111">setup code gọi</text>
+  <text x="710" y="103" font-size="9" text-anchor="middle" fill="#111">INT 15h E820,</text>
+  <text x="710" y="116" font-size="9" text-anchor="middle" fill="#111">rồi vào 32/64-bit</text>
+
+  <!-- arrows -->
+  <line x1="110" y1="88" x2="121" y2="88" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+  <line x1="218" y1="88" x2="229" y2="88" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+  <line x1="326" y1="88" x2="337" y2="88" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+  <line x1="434" y1="88" x2="445" y2="88" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+  <line x1="542" y1="88" x2="553" y2="88" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+  <line x1="650" y1="88" x2="661" y2="88" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <!-- bottom: services -->
+  <rect x="14" y="150" width="744" height="54" rx="6" fill="#f5f5f5" stroke="#999" stroke-dasharray="3 2"/>
+  <text x="386" y="172" font-size="10" font-weight="700" text-anchor="middle" fill="#333">Dịch vụ BIOS qua ngắt phần mềm, chỉ gọi được ở real mode</text>
+  <text x="386" y="190" font-size="9" text-anchor="middle" fill="#333">INT 10h: màn hình · INT 13h: disk · INT 15h: hệ thống, bản đồ bộ nhớ E820 · INT 16h: bàn phím · INT 19h: nạp hệ điều hành</text>
+</svg>
