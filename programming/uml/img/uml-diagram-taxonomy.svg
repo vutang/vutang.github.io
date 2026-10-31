@@ -1,0 +1,35 @@
+<svg role="img" viewBox="0 0 720 280" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+  <title>Phân loại 14 loại sơ đồ trong UML 2.5.1</title>
+  <rect x="0" y="0" width="720" height="280" rx="8" fill="#ffffff"/>
+  <g stroke="#555" stroke-width="1.3" fill="none">
+    <path d="M360,52 V72 H170 V92"/><path d="M360,72 H530 V92"/>
+    <path d="M170,124 V152"/>
+    <path d="M530,124 V140"/><path d="M405,152 V140 H600 V152"/>
+  </g>
+  <rect x="280" y="14" width="160" height="38" rx="6" fill="#d3e3f7" stroke="#2f5d9e" stroke-width="1.2"/>
+  <text x="360" y="38" font-size="12" text-anchor="middle" font-weight="700" fill="#111">UML diagram</text>
+  <rect x="80" y="92" width="180" height="32" rx="6" fill="#fde68a" stroke="#b45309" stroke-width="1.4"/>
+  <text x="170" y="112" font-size="11" text-anchor="middle" font-weight="700" fill="#111">Structure diagram (7)</text>
+  <rect x="440" y="92" width="180" height="32" rx="6" fill="#d4ecdc" stroke="#2e7d4f" stroke-width="1.4"/>
+  <text x="530" y="112" font-size="11" text-anchor="middle" font-weight="700" fill="#111">Behavior diagram (7)</text>
+  <g font-size="10" fill="#111">
+    <rect x="20" y="152" width="270" height="110" rx="6" fill="#fff7e0" stroke="#b45309"/>
+    <text x="34" y="174">• Class diagram</text>
+    <text x="34" y="192">• Object diagram</text>
+    <text x="34" y="210">• Package diagram</text>
+    <text x="34" y="228">• Component diagram</text>
+    <text x="170" y="174">• Composite structure</text>
+    <text x="170" y="192">• Deployment diagram</text>
+    <text x="170" y="210">• Profile diagram</text>
+    <rect x="320" y="152" width="165" height="110" rx="6" fill="#ecf7ef" stroke="#2e7d4f"/>
+    <text x="332" y="174">• Use case diagram</text>
+    <text x="332" y="192">• Activity diagram</text>
+    <text x="332" y="210">• State machine diagram</text>
+    <rect x="500" y="152" width="200" height="110" rx="6" fill="#e6effa" stroke="#2f5d9e"/>
+    <text x="600" y="170" font-size="10.5" text-anchor="middle" font-weight="700">Interaction diagram (4)</text>
+    <text x="514" y="192">• Sequence diagram</text>
+    <text x="514" y="210">• Communication diagram</text>
+    <text x="514" y="228">• Timing diagram</text>
+    <text x="514" y="246">• Interaction overview</text>
+  </g>
+</svg>
