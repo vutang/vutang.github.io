@@ -115,8 +115,8 @@
 .about-hero {
   display: flex;
   align-items: center;
-  gap: 2rem;
-  padding: 1rem 0 2rem;
+  gap: 2.5rem;
+  padding: 0.5rem 0 1.5rem;
 }
 
 .about-hero__logo {
@@ -137,9 +137,96 @@
   flex: 1 1 auto;
 }
 
+/* The name is the page heading: large, no extra space above or below */
+.about-hero__info h1 {
+  margin: 0 0 0.2rem;
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--md-default-fg-color);
+}
+
+.about-hero__info .about-chips {
+  margin: 0.9rem 0;
+}
+
+/* Call to action button in the hero: accent colour so it stands out from the plain ones */
+.md-typeset .md-button.about-cta {
+  color: var(--md-accent-fg-color);
+  border-color: var(--md-accent-fg-color);
+}
+
+.md-typeset .md-button.about-cta:hover,
+.md-typeset .md-button.about-cta:focus {
+  color: var(--md-accent-bg-color);
+  background: var(--md-accent-fg-color);
+  border-color: var(--md-accent-fg-color);
+}
+
+/* "Join with me" banner: a full-width tinted band with the call to action on the right */
+.about-join {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin: 1.5rem 0;
+  padding: 1.2rem 1.5rem;
+  border-radius: 0.6rem;
+  background: var(--md-code-bg-color);
+}
+
+@supports (background: color-mix(in srgb, red 10%, blue)) {
+  .about-join {
+    background: color-mix(in srgb, var(--md-accent-fg-color) 10%, var(--md-default-bg-color));
+  }
+}
+
+.about-join > p {
+  margin: 0;
+}
+
+.md-typeset .about-join__icon {
+  flex: none;
+  color: var(--md-accent-fg-color);
+}
+
+.md-typeset .about-join__icon svg {
+  width: 2.6rem;
+  height: 2.6rem;
+  max-height: none;
+}
+
+.about-join__text {
+  flex: 1 1 auto;
+}
+
+.about-join__title {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 1rem;
+}
+
+.about-join .md-button {
+  flex: none;
+  white-space: nowrap;
+}
+
+.about-join__text p {
+  margin: 0;
+}
+
 /* Stack on narrow screens */
 @media (max-width: 44.9375em) {
   .about-hero {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .about-hero__info .about-chips {
+    justify-content: center;
+  }
+
+  .about-join {
     flex-direction: column;
     text-align: center;
   }
@@ -785,6 +872,11 @@ p:has(> a > .article-cover)::after {
   margin-left: 0.8em;
   filter: invert(1);
   opacity: 0.85;
+}
+
+/* Link trong footer copyright (Disclaimer): gạch chân để nhận ra là link */
+.md-copyright a {
+  text-decoration: underline;
 }
 
 /* Công thức display dài hơn màn hình (điện thoại): cuộn ngang trong chính khối công thức
