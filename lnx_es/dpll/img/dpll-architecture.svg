@@ -1,0 +1,45 @@
+<svg role="img" viewBox="0 0 960 380" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+  <title>Network synchronizer: input selection, DPLL with local oscillator, APLL synthesis</title>
+  <rect x="0" y="0" width="960" height="380" rx="8" fill="#ffffff"/>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333"/></marker></defs>
+  <text x="20" y="28" font-size="14" font-weight="700" fill="#1d4278">Network synchronizer chip: DPLL for wander and holdover, APLL for low jitter</text>
+  <rect x="20" y="70" width="170" height="50" rx="5" fill="#e2e8f0" stroke="#475569"/>
+  <text x="105.0" y="93.0" font-size="12" font-weight="700" text-anchor="middle" fill="#333">SyncE recovered clock</text>
+  <text x="105.0" y="108.0" font-size="10" text-anchor="middle" fill="#555">from Ethernet PHY</text>
+  <line x1="190" y1="95" x2="240" y2="95" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+  <rect x="20" y="140" width="170" height="50" rx="5" fill="#e2e8f0" stroke="#475569"/>
+  <text x="105.0" y="163.0" font-size="12" font-weight="700" text-anchor="middle" fill="#333">GNSS 1PPS / 10 MHz</text>
+  <text x="105.0" y="178.0" font-size="10" text-anchor="middle" fill="#555">from receiver</text>
+  <line x1="190" y1="165" x2="240" y2="165" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+  <rect x="20" y="210" width="170" height="50" rx="5" fill="#e2e8f0" stroke="#475569"/>
+  <text x="105.0" y="233.0" font-size="12" font-weight="700" text-anchor="middle" fill="#333">External ref</text>
+  <text x="105.0" y="248.0" font-size="10" text-anchor="middle" fill="#555">10 MHz, 1PPS, BITS</text>
+  <line x1="190" y1="235" x2="240" y2="235" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+  <rect x="240" y="70" width="130" height="190" rx="5" fill="#e2e8f0" stroke="#475569"/>
+  <text x="305.0" y="169.0" font-size="12" font-weight="700" text-anchor="middle" fill="#333">Input monitor</text>
+  <text x="305" y="190" font-size="10" text-anchor="middle" fill="#555">qualification,</text>
+  <text x="305" y="204" font-size="10" text-anchor="middle" fill="#555">priority, selection</text>
+  <line x1="370" y1="165" x2="410" y2="165" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+  <rect x="410" y="80" width="230" height="170" rx="6" fill="#2f5d9e"/>
+  <text x="525" y="104" font-size="13" text-anchor="middle" fill="#ffffff" font-weight="700">DPLL</text>
+  <rect x="425" y="116" width="200" height="32" rx="4" fill="#ffffff"/>
+  <text x="525" y="136" font-size="10.5" text-anchor="middle" fill="#333">Digital phase detector</text>
+  <rect x="425" y="158" width="200" height="32" rx="4" fill="#ffffff"/>
+  <text x="525" y="178" font-size="10.5" text-anchor="middle" fill="#333">Digital loop filter (mHz–Hz)</text>
+  <rect x="425" y="200" width="200" height="32" rx="4" fill="#ffffff"/>
+  <text x="525" y="220" font-size="10.5" text-anchor="middle" fill="#333">DCO (numerically controlled)</text>
+  <rect x="410" y="300" width="230" height="50" rx="5" fill="#e2e8f0" stroke="#475569"/>
+  <text x="525.0" y="323.0" font-size="12" font-weight="700" text-anchor="middle" fill="#333">Local oscillator</text>
+  <text x="525.0" y="338.0" font-size="10" text-anchor="middle" fill="#555">TCXO or OCXO: sets holdover quality</text>
+  <line x1="525" y1="300" x2="525" y2="250" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+  <line x1="640" y1="165" x2="690" y2="165" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+  <rect x="690" y="130" width="110" height="70" rx="5" fill="#1b7f5c" stroke="#1b7f5c"/>
+  <text x="745.0" y="163.0" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff">APLL</text>
+  <text x="745.0" y="178.0" font-size="10" text-anchor="middle" fill="#e2e8f0">jitter cleaning</text>
+  <line x1="800" y1="165" x2="812" y2="100" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+  <text x="818" y="104" font-size="10" text-anchor="start" fill="#333">PHY / SerDes ref clock</text>
+  <line x1="800" y1="165" x2="812" y2="165" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+  <text x="818" y="169" font-size="10" text-anchor="start" fill="#333">1PPS to PHC (PTP)</text>
+  <line x1="800" y1="165" x2="812" y2="240" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+  <text x="818" y="244" font-size="10" text-anchor="start" fill="#333">10 MHz, timing outputs</text>
+</svg>
