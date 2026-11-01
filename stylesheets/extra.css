@@ -150,6 +150,29 @@
   margin: 0.9rem 0;
 }
 
+/* Hero buttons: one row of equal-width buttons (four columns), two columns on narrow screens */
+.about-actions {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.5rem;
+  max-width: 36rem;
+}
+
+.about-actions p {
+  display: contents;
+}
+
+.md-typeset .about-actions .md-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  margin: 0;
+  padding: 0.5em 0.6em;
+  white-space: nowrap;
+  text-align: center;
+}
+
 /* Call to action button in the hero: accent colour so it stands out from the plain ones */
 .md-typeset .md-button.about-cta {
   color: var(--md-accent-fg-color);
@@ -224,6 +247,12 @@
 
   .about-hero__info .about-chips {
     justify-content: center;
+  }
+
+  .about-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 20rem;
+    margin: 0 auto;
   }
 
   .about-join {
