@@ -1,0 +1,25 @@
+<svg role="img" aria-label="sched_ext bỏ bước build kernel và reboot khỏi vòng thử nghiệm" viewBox="0 0 760 344" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif" font-size="13">
+  <rect width="760" height="344" rx="6" fill="#ffffff"/>
+  <defs><marker id="la" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6b7280"/></marker><marker id="lb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#2563eb"/></marker></defs>
+  <text x="24" y="32" font-size="15" font-weight="600" fill="#111827">sched_ext bỏ bước build kernel và reboot khỏi vòng thử nghiệm</text>
+  <text x="24" y="72" font-weight="600" fill="#111827">Cách truyền thống: sửa trực tiếp scheduler trong kernel</text>
+  <path d="M174 110H210" fill="none" stroke="#6b7280" stroke-width="1.25" marker-end="url(#la)"/>
+  <path d="M360 110H396" fill="none" stroke="#6b7280" stroke-width="1.25" marker-end="url(#la)"/>
+  <path d="M546 110H582" fill="none" stroke="#6b7280" stroke-width="1.25" marker-end="url(#la)"/>
+  <path d="M657 132V164H99V132" fill="none" stroke="#6b7280" stroke-width="1.25" marker-end="url(#la)"/>
+  <rect x="24" y="88" width="150" height="44" rx="8" fill="none" stroke="#6b7280" stroke-width="1.25"/><text x="99" y="114" text-anchor="middle" fill="#111827">Vá mã scheduler</text>
+  <rect x="210" y="88" width="150" height="44" rx="8" fill="#d97706" fill-opacity=".12" stroke="#d97706" stroke-width="2"/><text x="285" y="114" text-anchor="middle" font-weight="600" fill="#111827">Build lại kernel</text>
+  <rect x="396" y="88" width="150" height="44" rx="8" fill="#d97706" fill-opacity=".12" stroke="#d97706" stroke-width="2"/><text x="471" y="114" text-anchor="middle" font-weight="600" fill="#111827">Cài và reboot</text>
+  <rect x="582" y="88" width="150" height="44" rx="8" fill="none" stroke="#6b7280" stroke-width="1.25"/><text x="657" y="114" text-anchor="middle" fill="#111827">Đo hiệu năng</text>
+  <text x="378" y="156" text-anchor="middle" font-size="11.5" fill="#4b5563">lặp lại; bản vá phải duy trì qua mỗi lần nâng kernel</text>
+  <text x="24" y="232" font-weight="600" fill="#111827">Với sched_ext: chính sách là một chương trình nạp được</text>
+  <path d="M174 270H210" fill="none" stroke="#2563eb" stroke-width="1.25" marker-end="url(#lb)"/>
+  <path d="M360 270H396" fill="none" stroke="#2563eb" stroke-width="1.25" marker-end="url(#lb)"/>
+  <path d="M546 270H582" fill="none" stroke="#2563eb" stroke-width="1.25" marker-end="url(#lb)"/>
+  <path d="M657 292V324H99V292" fill="none" stroke="#2563eb" stroke-width="1.25" marker-end="url(#lb)"/>
+  <rect x="24" y="248" width="150" height="44" rx="8" fill="none" stroke="#6b7280" stroke-width="1.25"/><text x="99" y="274" text-anchor="middle" fill="#111827">Sửa chính sách BPF</text>
+  <rect x="210" y="248" width="150" height="44" rx="8" fill="none" stroke="#6b7280" stroke-width="1.25"/><text x="285" y="274" text-anchor="middle" fill="#111827">Build binary</text>
+  <rect x="396" y="248" width="150" height="44" rx="8" fill="none" stroke="#6b7280" stroke-width="1.25"/><text x="471" y="274" text-anchor="middle" fill="#111827">Chạy scheduler</text>
+  <rect x="582" y="248" width="150" height="44" rx="8" fill="none" stroke="#6b7280" stroke-width="1.25"/><text x="657" y="274" text-anchor="middle" fill="#111827">Đo hiệu năng</text>
+  <text x="378" y="316" text-anchor="middle" font-size="11.5" fill="#4b5563">lặp lại ngay; dừng process là quay về EEVDF</text>
+</svg>
