@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" font-family="Arial, Helvetica, sans-serif">
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#888780" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="1200" height="560" fill="#ffffff"/>
+<text x="600.0" y="38" font-size="24" font-weight="700" fill="#1c1c1a" text-anchor="middle">Bảo vệ các giao diện trong kiến trúc O-RAN</text>
+<rect x="60" y="80" width="300" height="70" rx="12" fill="#F1EFE8" stroke="#888780" stroke-width="1.5"/>
+<text x="210.0" y="109.5" font-size="16" font-weight="700" fill="#2C2C2A" text-anchor="middle">SMO</text>
+<text x="210.0" y="132.5" font-size="13" fill="#5F5E5A" text-anchor="middle">Non-RT RIC</text>
+<rect x="60" y="250" width="300" height="70" rx="12" fill="#F1EFE8" stroke="#888780" stroke-width="1.5"/>
+<text x="210.0" y="289.0" font-size="16" font-weight="700" fill="#2C2C2A" text-anchor="middle">Near-RT RIC</text>
+<rect x="450" y="250" width="220" height="70" rx="12" fill="#F1EFE8" stroke="#888780" stroke-width="1.5"/>
+<text x="560.0" y="279.5" font-size="16" font-weight="700" fill="#2C2C2A" text-anchor="middle">O-CU</text>
+<text x="560.0" y="302.5" font-size="13" fill="#5F5E5A" text-anchor="middle">CU-CP, CU-UP</text>
+<rect x="450" y="430" width="220" height="70" rx="12" fill="#F1EFE8" stroke="#888780" stroke-width="1.5"/>
+<text x="560.0" y="469.0" font-size="16" font-weight="700" fill="#2C2C2A" text-anchor="middle">O-DU</text>
+<rect x="880" y="430" width="220" height="70" rx="12" fill="#F1EFE8" stroke="#888780" stroke-width="1.5"/>
+<text x="990.0" y="469.0" font-size="16" font-weight="700" fill="#2C2C2A" text-anchor="middle">O-RU</text>
+<rect x="880" y="250" width="220" height="70" rx="12" fill="#F1EFE8" stroke="#888780" stroke-width="1.5"/>
+<text x="990.0" y="289.0" font-size="16" font-weight="700" fill="#2C2C2A" text-anchor="middle">5GC</text>
+<line x1="210" y1="150" x2="210" y2="250" stroke="#378ADD" stroke-width="2.5"/>
+<text x="220" y="195" font-size="13" font-weight="700" fill="#0C447C" text-anchor="start">A1: mTLS</text>
+<path d="M360 115 L560 115 L560 250" fill="none" stroke="#378ADD" stroke-width="1.8"/>
+<text x="570" y="170" font-size="13" font-weight="700" fill="#0C447C" text-anchor="start">O1: NETCONF qua SSH hoặc TLS</text>
+<path d="M360 285 L450 285" fill="none" stroke="#378ADD" stroke-width="1.8"/>
+<text x="405" y="275" font-size="13" font-weight="700" fill="#0C447C" text-anchor="middle">E2: IPsec</text>
+<path d="M300 320 L300 465 L450 465" fill="none" stroke="#378ADD" stroke-width="1.8"/>
+<text x="310" y="400" font-size="13" font-weight="700" fill="#0C447C" text-anchor="start">E2: IPsec</text>
+<line x1="560" y1="320" x2="560" y2="430" stroke="#1D9E75" stroke-width="2.5"/>
+<text x="570" y="380" font-size="13" font-weight="700" fill="#04342C" text-anchor="start">F1: IPsec (NDS/IP)</text>
+<line x1="670" y1="285" x2="880" y2="285" stroke="#1D9E75" stroke-width="2.5"/>
+<text x="775" y="275" font-size="13" font-weight="700" fill="#04342C" text-anchor="middle">NG: IPsec (NDS/IP)</text>
+<line x1="670" y1="465" x2="880" y2="465" stroke="#378ADD" stroke-width="2.5"/>
+<text x="775" y="423" font-size="13" font-weight="700" fill="#0C447C" text-anchor="middle">Open Fronthaul</text>
+<text x="775" y="488" font-size="12" fill="#185FA5" text-anchor="middle">M-Plane: SSH hoặc TLS</text>
+<text x="775" y="506" font-size="12" fill="#185FA5" text-anchor="middle">CUS-Plane, PTP: MACsec (tùy chọn)</text>
+<text x="775" y="524" font-size="12" fill="#185FA5" text-anchor="middle">Truy cập cổng: IEEE 802.1X</text>
+<line x1="60" y1="540" x2="90" y2="540" stroke="#378ADD" stroke-width="3"/>
+<text x="98" y="545" font-size="13" fill="#2C2C2A" text-anchor="start">O-RAN WG11</text>
+<line x1="220" y1="540" x2="250" y2="540" stroke="#1D9E75" stroke-width="3"/>
+<text x="258" y="545" font-size="13" fill="#2C2C2A" text-anchor="start">3GPP TS 33.501</text>
+</svg>
