@@ -1,0 +1,35 @@
+<svg role="img" viewBox="0 0 960 260" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+  <title>Quy trình đưa model xuống thiết bị: huấn luyện, chuyển đổi, quantization, biên dịch cho accelerator, chạy bằng runtime</title>
+  <rect x="0" y="0" width="960" height="260" rx="8" fill="#ffffff"/>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333"/></marker></defs>
+  <text x="20" y="28" font-size="14" font-weight="700" fill="#1d4278">Quy trình triển khai model Edge AI</text>
+  <rect x="20" y="60" width="730" height="150" rx="6" fill="#f1f5f9" stroke="#94a3b8" stroke-dasharray="5,4"/>
+  <text x="30" y="200" font-size="11" fill="#475569">Máy phát triển (host, cloud)</text>
+  <rect x="770" y="60" width="170" height="150" rx="6" fill="#ecfdf5" stroke="#10b981" stroke-dasharray="5,4"/>
+  <text x="780" y="200" font-size="11" fill="#047857">Thiết bị edge</text>
+  <rect x="35" y="90" width="150" height="70" rx="5" fill="#e2e8f0" stroke="#475569"/>
+  <text x="110" y="118" font-size="12" font-weight="700" text-anchor="middle" fill="#333">Huấn luyện</text>
+  <text x="110" y="136" font-size="10" text-anchor="middle" fill="#555">PyTorch, TensorFlow,</text>
+  <text x="110" y="150" font-size="10" text-anchor="middle" fill="#555">JAX (float32)</text>
+  <line x1="185" y1="125" x2="215" y2="125" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+  <rect x="215" y="90" width="160" height="70" rx="5" fill="#e2e8f0" stroke="#475569"/>
+  <text x="295" y="118" font-size="12" font-weight="700" text-anchor="middle" fill="#333">Chuyển đổi</text>
+  <text x="295" y="136" font-size="10" text-anchor="middle" fill="#555">.tflite, .onnx, .pte</text>
+  <text x="295" y="150" font-size="10" text-anchor="middle" fill="#555">(định dạng trung gian)</text>
+  <line x1="375" y1="125" x2="405" y2="125" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+  <rect x="405" y="90" width="150" height="70" rx="5" fill="#e2e8f0" stroke="#475569"/>
+  <text x="480" y="118" font-size="12" font-weight="700" text-anchor="middle" fill="#333">Quantization</text>
+  <text x="480" y="136" font-size="10" text-anchor="middle" fill="#555">float32 → int8,</text>
+  <text x="480" y="150" font-size="10" text-anchor="middle" fill="#555">dữ liệu hiệu chuẩn</text>
+  <line x1="555" y1="125" x2="585" y2="125" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+  <rect x="585" y="90" width="150" height="70" rx="5" fill="#e2e8f0" stroke="#475569"/>
+  <text x="660" y="118" font-size="12" font-weight="700" text-anchor="middle" fill="#333">Biên dịch</text>
+  <text x="660" y="136" font-size="10" text-anchor="middle" fill="#555">toolchain của hãng</text>
+  <text x="660" y="150" font-size="10" text-anchor="middle" fill="#555">(RKNN, Vela, ...)</text>
+  <line x1="735" y1="125" x2="785" y2="125" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/>
+  <rect x="785" y="90" width="140" height="70" rx="5" fill="#d1fae5" stroke="#047857"/>
+  <text x="855" y="118" font-size="12" font-weight="700" text-anchor="middle" fill="#333">Runtime</text>
+  <text x="855" y="136" font-size="10" text-anchor="middle" fill="#555">chạy inference</text>
+  <text x="855" y="150" font-size="10" text-anchor="middle" fill="#555">trên CPU/GPU/NPU</text>
+  <text x="20" y="240" font-size="11" fill="#555">Bước biên dịch chỉ cần khi accelerator dùng định dạng riêng; khi chạy bằng CPU hoặc delegate, runtime nạp trực tiếp model đã quantization.</text>
+</svg>
