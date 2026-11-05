@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="540" viewBox="0 0 1200 540" font-family="Arial, Helvetica, sans-serif">
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#888780" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="1200" height="540" fill="#ffffff"/>
+<text x="600.0" y="38" font-size="24" font-weight="700" fill="#1c1c1a" text-anchor="middle">Cấu trúc cây quyết định của một yêu cầu trong EN 18031</text>
+<rect x="420" y="70" width="360" height="70" rx="12" fill="#F1EFE8" stroke="#888780" stroke-width="1.5"/>
+<text x="600.0" y="99.0" font-size="15" font-weight="700" fill="#2C2C2A" text-anchor="middle">Một yêu cầu, ví dụ nhóm AUM</text>
+<text x="600.0" y="122.0" font-size="13" fill="#5F5E5A" text-anchor="middle">Cơ chế xác thực (authentication)</text>
+<rect x="420" y="175" width="360" height="70" rx="12" fill="#E6F1FB" stroke="#378ADD" stroke-width="1.5"/>
+<text x="600.0" y="194.5" font-size="15" font-weight="700" fill="#0C447C" text-anchor="middle">Câu hỏi 1</text>
+<text x="600.0" y="217.5" font-size="13" fill="#185FA5" text-anchor="middle">Giao diện có cho truy cập tài sản</text>
+<text x="600.0" y="236.5" font-size="13" fill="#185FA5" text-anchor="middle">bảo mật hoặc tài sản mạng không?</text>
+<rect x="60" y="175" width="260" height="70" rx="12" fill="#F1EFE8" stroke="#888780" stroke-width="1.5"/>
+<text x="190.0" y="204.0" font-size="15" font-weight="700" fill="#2C2C2A" text-anchor="middle">Không áp dụng</text>
+<text x="190.0" y="227.0" font-size="13" fill="#5F5E5A" text-anchor="middle">Ghi lý do trong hồ sơ</text>
+<rect x="420" y="290" width="360" height="70" rx="12" fill="#E6F1FB" stroke="#378ADD" stroke-width="1.5"/>
+<text x="600.0" y="309.5" font-size="15" font-weight="700" fill="#0C447C" text-anchor="middle">Câu hỏi 2</text>
+<text x="600.0" y="332.5" font-size="13" fill="#185FA5" text-anchor="middle">Có thuộc trường hợp ngoại lệ</text>
+<text x="600.0" y="351.5" font-size="13" fill="#185FA5" text-anchor="middle">mà tiêu chuẩn cho phép không?</text>
+<rect x="60" y="290" width="260" height="70" rx="12" fill="#E1F5EE" stroke="#1D9E75" stroke-width="1.5"/>
+<text x="190.0" y="319.0" font-size="15" font-weight="700" fill="#04342C" text-anchor="middle">Đạt (ngoại lệ)</text>
+<text x="190.0" y="342.0" font-size="13" fill="#0F6E56" text-anchor="middle">Ghi trường hợp ngoại lệ</text>
+<rect x="420" y="405" width="360" height="70" rx="12" fill="#E6F1FB" stroke="#378ADD" stroke-width="1.5"/>
+<text x="600.0" y="424.5" font-size="15" font-weight="700" fill="#0C447C" text-anchor="middle">Câu hỏi 3</text>
+<text x="600.0" y="447.5" font-size="13" fill="#185FA5" text-anchor="middle">Thiết bị có cơ chế xác thực</text>
+<text x="600.0" y="466.5" font-size="13" fill="#185FA5" text-anchor="middle">thỏa điều kiện của yêu cầu không?</text>
+<rect x="880" y="405" width="260" height="70" rx="12" fill="#FAECE7" stroke="#D85A30" stroke-width="1.5"/>
+<text x="1010.0" y="434.0" font-size="15" font-weight="700" fill="#712B13" text-anchor="middle">Không đạt</text>
+<text x="1010.0" y="457.0" font-size="13" fill="#993C1D" text-anchor="middle">Phải bổ sung cơ chế</text>
+<rect x="60" y="405" width="260" height="70" rx="12" fill="#E1F5EE" stroke="#1D9E75" stroke-width="1.5"/>
+<text x="190.0" y="434.0" font-size="15" font-weight="700" fill="#04342C" text-anchor="middle">Đạt</text>
+<text x="190.0" y="457.0" font-size="13" fill="#0F6E56" text-anchor="middle">Kèm bằng chứng</text>
+<line x1="600" y1="140" x2="600" y2="169" stroke="#888780" stroke-width="1.8" marker-end="url(#arrow)"/>
+<line x1="420" y1="210" x2="326" y2="210" stroke="#888780" stroke-width="1.8" marker-end="url(#arrow)"/>
+<text x="372" y="200" font-size="12" font-weight="700" fill="#2C2C2A" text-anchor="middle">Không</text>
+<line x1="600" y1="245" x2="600" y2="284" stroke="#888780" stroke-width="1.8" marker-end="url(#arrow)"/>
+<text x="612" y="270" font-size="12" font-weight="700" fill="#2C2C2A" text-anchor="start">Có</text>
+<line x1="420" y1="325" x2="326" y2="325" stroke="#888780" stroke-width="1.8" marker-end="url(#arrow)"/>
+<text x="372" y="315" font-size="12" font-weight="700" fill="#2C2C2A" text-anchor="middle">Có</text>
+<line x1="600" y1="360" x2="600" y2="399" stroke="#888780" stroke-width="1.8" marker-end="url(#arrow)"/>
+<text x="612" y="385" font-size="12" font-weight="700" fill="#2C2C2A" text-anchor="start">Không</text>
+<line x1="420" y1="440" x2="326" y2="440" stroke="#888780" stroke-width="1.8" marker-end="url(#arrow)"/>
+<text x="372" y="430" font-size="12" font-weight="700" fill="#2C2C2A" text-anchor="middle">Có</text>
+<line x1="780" y1="440" x2="874" y2="440" stroke="#888780" stroke-width="1.8" marker-end="url(#arrow)"/>
+<text x="828" y="430" font-size="12" font-weight="700" fill="#2C2C2A" text-anchor="middle">Không</text>
+<text x="600" y="515" font-size="13" font-style="italic" fill="#5F5E5A" text-anchor="middle">Hình minh họa cấu trúc chung, không phải cây quyết định nguyên văn của tiêu chuẩn.</text>
+</svg>
