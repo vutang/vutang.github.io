@@ -12,7 +12,7 @@
         <link rel="canonical" href="https://note.vutang.dev/embedded_security/testing/wstg/">
       
       
-        <link rel="prev" href="../../compliance/telecom/">
+        <link rel="prev" href="../">
       
       
         <link rel="next" href="../../iot/iot-security/">
@@ -8166,6 +8166,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -12058,7 +12086,7 @@
 
 
 <h1 id="owasp-web-security-testing-guide-wstg">OWASP Web Security Testing Guide (WSTG)<a class="headerlink" href="#owasp-web-security-testing-guide-wstg" title="Permanent link">¶</a></h1>
-<p>Trang này trình bày OWASP Web Security Testing Guide (WSTG) phiên bản 4.2, hướng dẫn kiểm thử bảo mật ứng dụng web được dùng rộng rãi khi pentest, và cách áp dụng nó cho giao diện web của thiết bị nhúng. Nội dung đi theo thứ tự: tổng quan về OWASP và WSTG, cấu trúc tài liệu, khung kiểm thử theo vòng đời phát triển, mã định danh và cấu trúc một test case, 12 nhóm kiểm thử, áp dụng cho thiết bị nhúng, quan hệ với các khung tuân thủ, và quy trình một đợt kiểm thử.</p>
+<p>Trang này trình bày OWASP Web Security Testing Guide (WSTG) phiên bản 4.2, hướng dẫn kiểm thử bảo mật ứng dụng web được dùng rộng rãi khi pentest, và cách áp dụng nó cho giao diện web của thiết bị nhúng. Tổng quan về các loại kiểm thử và so sánh WSTG với các phương pháp khác xem <a href="../">Kiểm thử bảo mật cho thiết bị nhúng</a>. Nội dung đi theo thứ tự: tổng quan về OWASP và WSTG, cấu trúc tài liệu, khung kiểm thử theo vòng đời phát triển, mã định danh và cấu trúc một test case, 12 nhóm kiểm thử, áp dụng cho thiết bị nhúng, quan hệ với các khung tuân thủ, và quy trình một đợt kiểm thử.</p>
 <h2 id="tong-quan">Tổng quan<a class="headerlink" href="#tong-quan" title="Permanent link">¶</a></h2>
 <p>OWASP (Open Worldwide Application Security Project) là tổ chức phi lợi nhuận xây dựng tài liệu và công cụ mã nguồn mở về bảo mật phần mềm. WSTG là một dự án của OWASP. Tài liệu này trả lời hai câu hỏi khi kiểm thử bảo mật một ứng dụng web: cần kiểm tra những gì, và kiểm tra từng mục bằng cách nào.</p>
 <table>
@@ -12427,9 +12455,9 @@
 </table>
 <p>Khi chuẩn bị hồ sơ cho các khung này, có thể dùng kết quả kiểm thử theo WSTG làm bằng chứng, với điều kiện báo cáo ghi rõ test case và phiên bản WSTG đã dùng.</p>
 <h2 id="quy-trinh-mot-ot-kiem-thu">Quy trình một đợt kiểm thử<a class="headerlink" href="#quy-trinh-mot-ot-kiem-thu" title="Permanent link">¶</a></h2>
-<p>Một đợt kiểm thử giao diện web theo WSTG thường đi qua các bước:</p>
+<p>Quy trình chung của một đợt kiểm thử (thỏa thuận phạm vi, chuẩn bị môi trường, báo cáo, kiểm thử lại) được trình bày ở <a href="../#quy-trinh-chung-cua-mot-ot-kiem-thu">Kiểm thử bảo mật cho thiết bị nhúng</a>. Phần dưới chỉ nêu các bước riêng khi dùng WSTG cho giao diện web:</p>
 <ol>
-<li>Thống nhất phạm vi và quy tắc kiểm thử (rules of engagement): địa chỉ, tài khoản được cấp, thời gian, các thao tác bị cấm như làm treo thiết bị đang chạy thật.</li>
+<li>Thống nhất phạm vi và quy tắc kiểm thử theo quy trình chung, gồm danh sách URL, tài khoản được cấp cho từng vai trò, và các chức năng không được thử (ví dụ khôi phục cấu hình gốc trên thiết bị đang vận hành).</li>
 <li>Thu thập thông tin theo nhóm INFO: nhận diện web server, framework, các điểm vào và luồng chức năng.</li>
 <li>Chọn test case từ checklist <code>WSTG-Checklist_v4.2.xlsx</code>, bỏ những mục không áp dụng (ví dụ APIT-01 nếu không có GraphQL) và ghi lý do.</li>
 <li>Thực hiện kiểm thử theo từng nhóm, kết hợp công cụ tự động và kiểm tra thủ công. Công cụ quét tự động không phát hiện được lỗi logic nghiệp vụ (BUSL) và nhiều lỗi phân quyền.</li>
@@ -12462,6 +12490,7 @@
 <p>Các công cụ thường dùng là proxy chặn và sửa request như OWASP ZAP và Burp Suite, cùng các công cụ chuyên biệt được liệt kê trong mục Tools của từng test case và trong phụ lục của WSTG.</p>
 <h2 id="lien-quan">Liên quan<a class="headerlink" href="#lien-quan" title="Permanent link">¶</a></h2>
 <ul>
+<li>Tổng quan về kiểm thử bảo mật và so sánh các phương pháp (NIST SP 800-115, PTES, OSSTMM, FSTM): <a href="../">Kiểm thử bảo mật cho thiết bị nhúng</a>.</li>
 <li>Yêu cầu bảo mật cho thiết bị theo quy định và tiêu chuẩn: <a href="../../compliance/">Chứng nhận và tuân thủ bảo mật</a>, <a href="../../compliance/ce-red/">CE marking và RED</a>, <a href="../../compliance/telecom/">Telecom &amp; RAN</a>.</li>
 <li>Chấm điểm và quản lý lỗ hổng tìm được: <a href="../../cve/cve/">CVE</a>, <a href="../../insightvm/insightvm/">InsightVM (Rapid7)</a>.</li>
 <li>Bảo vệ kênh truyền mà nhóm CRYP kiểm tra: <a href="../../tls/tls/">TLS</a>, <a href="../../https/https/">HTTPS</a>.</li>
@@ -12498,7 +12527,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 5, 2026 10:43:26 UTC">November 5, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 5, 2026 11:00:08 UTC">November 5, 2026</span>
   </span>
 
     
@@ -12547,7 +12576,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
-          <a href="../../compliance/telecom/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Telecom &amp; RAN">
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -12557,7 +12586,7 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Telecom &amp; RAN
+                Overview
               </div>
             </div>
           </a>
