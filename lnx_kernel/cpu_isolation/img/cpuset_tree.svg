@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 305" font-family="Helvetica, Arial, sans-serif" font-size="13">
+  <rect width="760" height="305" fill="#ffffff"/>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
+    </marker>
+  </defs>
+  <rect x="230" y="20" width="300" height="74" rx="8" fill="#f7f7f7" stroke="#555" stroke-width="1.2"/>
+  <text x="380" y="42" text-anchor="middle" fill="#1f2d3d" font-weight="bold">/sys/fs/cgroup (cgroup gốc)</text>
+  <text x="380" y="62" text-anchor="middle" fill="#555" font-size="12">luôn là partition root, CPU 0-7</text>
+  <text x="380" y="80" text-anchor="middle" fill="#1f2d3d" font-size="12">cpuset.cpus.isolated = 7</text>
+  <rect x="40" y="150" width="300" height="110" rx="8" fill="#eef4fb" stroke="#4a78b5" stroke-width="1.2"/>
+  <text x="190" y="174" text-anchor="middle" fill="#1f3f6b" font-weight="bold">system/</text>
+  <text x="60" y="198" text-anchor="start" fill="#1f2d3d" font-size="12">cpuset.cpus.partition = member</text>
+  <text x="60" y="218" text-anchor="start" fill="#1f2d3d" font-size="12">cpuset.cpus.effective = 0-6</text>
+  <text x="60" y="242" text-anchor="start" fill="#555" font-size="12">daemon, tiến trình hệ thống</text>
+  <rect x="420" y="150" width="300" height="110" rx="8" fill="#fbf1e8" stroke="#c0712b" stroke-width="1.2"/>
+  <text x="570" y="174" text-anchor="middle" fill="#6b3a12" font-weight="bold">rt/</text>
+  <text x="440" y="198" text-anchor="start" fill="#1f2d3d" font-size="12">cpuset.cpus = 7</text>
+  <text x="440" y="218" text-anchor="start" fill="#1f2d3d" font-size="12">cpuset.cpus.partition = isolated</text>
+  <text x="440" y="242" text-anchor="start" fill="#555" font-size="12">task workload, không cân bằng tải</text>
+  <line x1="330" y1="94" x2="200" y2="148" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="430" y1="94" x2="560" y2="148" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="380" y="290" text-anchor="middle" fill="#555" font-size="12">CPU 7 thuộc độc quyền partition rt/: cgroup ngoài partition không dùng được CPU 7.</text>
+
+</svg>

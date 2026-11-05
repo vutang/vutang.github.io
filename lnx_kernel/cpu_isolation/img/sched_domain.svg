@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 245" font-family="Helvetica, Arial, sans-serif" font-size="13">
+  <rect width="760" height="245" fill="#ffffff"/>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
+    </marker>
+  </defs>
+  <text x="195" y="30" text-anchor="middle" fill="#1f2d3d" font-weight="bold">Không cô lập</text>
+  <rect x="28" y="48" width="336" height="128" rx="8" fill="none" stroke="#4a78b5" stroke-width="1.5" stroke-dasharray="6 3"/>
+  <text x="195" y="196" text-anchor="middle" fill="#1f3f6b" font-size="12">Một scheduler domain gồm cả 8 core</text>
+  <rect x="40" y="60" width="58" height="34" rx="5" fill="#eef4fb" stroke="#4a78b5" stroke-width="1.2"/>
+  <text x="69.0" y="82.0" text-anchor="middle" fill="#1f2d3d">CPU 0</text>
+  <rect x="126" y="60" width="58" height="34" rx="5" fill="#eef4fb" stroke="#4a78b5" stroke-width="1.2"/>
+  <text x="155.0" y="82.0" text-anchor="middle" fill="#1f2d3d">CPU 1</text>
+  <rect x="212" y="60" width="58" height="34" rx="5" fill="#eef4fb" stroke="#4a78b5" stroke-width="1.2"/>
+  <text x="241.0" y="82.0" text-anchor="middle" fill="#1f2d3d">CPU 2</text>
+  <rect x="298" y="60" width="58" height="34" rx="5" fill="#eef4fb" stroke="#4a78b5" stroke-width="1.2"/>
+  <text x="327.0" y="82.0" text-anchor="middle" fill="#1f2d3d">CPU 3</text>
+  <rect x="40" y="130" width="58" height="34" rx="5" fill="#eef4fb" stroke="#4a78b5" stroke-width="1.2"/>
+  <text x="69.0" y="152.0" text-anchor="middle" fill="#1f2d3d">CPU 4</text>
+  <rect x="126" y="130" width="58" height="34" rx="5" fill="#eef4fb" stroke="#4a78b5" stroke-width="1.2"/>
+  <text x="155.0" y="152.0" text-anchor="middle" fill="#1f2d3d">CPU 5</text>
+  <rect x="212" y="130" width="58" height="34" rx="5" fill="#eef4fb" stroke="#4a78b5" stroke-width="1.2"/>
+  <text x="241.0" y="152.0" text-anchor="middle" fill="#1f2d3d">CPU 6</text>
+  <rect x="298" y="130" width="58" height="34" rx="5" fill="#eef4fb" stroke="#4a78b5" stroke-width="1.2"/>
+  <text x="327.0" y="152.0" text-anchor="middle" fill="#1f2d3d">CPU 7</text>
+  <line x1="98" y1="77" x2="126" y2="77" stroke="#4a78b5" stroke-width="1.5" marker-end="url(#arr)" marker-start="url(#arr)"/>
+  <line x1="184" y1="77" x2="212" y2="77" stroke="#4a78b5" stroke-width="1.5" marker-end="url(#arr)" marker-start="url(#arr)"/>
+  <line x1="270" y1="77" x2="298" y2="77" stroke="#4a78b5" stroke-width="1.5" marker-end="url(#arr)" marker-start="url(#arr)"/>
+  <line x1="98" y1="147" x2="126" y2="147" stroke="#4a78b5" stroke-width="1.5" marker-end="url(#arr)" marker-start="url(#arr)"/>
+  <line x1="184" y1="147" x2="212" y2="147" stroke="#4a78b5" stroke-width="1.5" marker-end="url(#arr)" marker-start="url(#arr)"/>
+  <line x1="270" y1="147" x2="298" y2="147" stroke="#4a78b5" stroke-width="1.5" marker-end="url(#arr)" marker-start="url(#arr)"/>
+  <line x1="69" y1="94" x2="69" y2="130" stroke="#4a78b5" stroke-width="1.5" marker-end="url(#arr)" marker-start="url(#arr)"/>
+  <line x1="327" y1="94" x2="327" y2="130" stroke="#4a78b5" stroke-width="1.5" marker-end="url(#arr)" marker-start="url(#arr)"/>
+  <text x="575" y="30" text-anchor="middle" fill="#1f2d3d" font-weight="bold">isolcpus=domain,2-7</text>
+  <rect x="408" y="50" width="170" height="54" rx="8" fill="none" stroke="#4a78b5" stroke-width="1.5" stroke-dasharray="6 3"/>
+  <text x="494" y="196" text-anchor="middle" fill="#1f3f6b" font-size="12">domain: CPU 0-1</text>
+  <text x="660" y="196" text-anchor="middle" fill="#6b3a12" font-size="12">ngoài domain: CPU 2-7</text>
+  <rect x="420" y="60" width="58" height="34" rx="5" fill="#eef4fb" stroke="#4a78b5" stroke-width="1.2"/>
+  <text x="449.0" y="82.0" text-anchor="middle" fill="#1f2d3d">CPU 0</text>
+  <rect x="506" y="60" width="58" height="34" rx="5" fill="#eef4fb" stroke="#4a78b5" stroke-width="1.2"/>
+  <text x="535.0" y="82.0" text-anchor="middle" fill="#1f2d3d">CPU 1</text>
+  <rect x="592" y="60" width="58" height="34" rx="5" fill="#fbf1e8" stroke="#c0712b" stroke-width="1.2"/>
+  <text x="621.0" y="82.0" text-anchor="middle" fill="#1f2d3d">CPU 2</text>
+  <rect x="678" y="60" width="58" height="34" rx="5" fill="#fbf1e8" stroke="#c0712b" stroke-width="1.2"/>
+  <text x="707.0" y="82.0" text-anchor="middle" fill="#1f2d3d">CPU 3</text>
+  <rect x="420" y="130" width="58" height="34" rx="5" fill="#fbf1e8" stroke="#c0712b" stroke-width="1.2"/>
+  <text x="449.0" y="152.0" text-anchor="middle" fill="#1f2d3d">CPU 4</text>
+  <rect x="506" y="130" width="58" height="34" rx="5" fill="#fbf1e8" stroke="#c0712b" stroke-width="1.2"/>
+  <text x="535.0" y="152.0" text-anchor="middle" fill="#1f2d3d">CPU 5</text>
+  <rect x="592" y="130" width="58" height="34" rx="5" fill="#fbf1e8" stroke="#c0712b" stroke-width="1.2"/>
+  <text x="621.0" y="152.0" text-anchor="middle" fill="#1f2d3d">CPU 6</text>
+  <rect x="678" y="130" width="58" height="34" rx="5" fill="#fbf1e8" stroke="#c0712b" stroke-width="1.2"/>
+  <text x="707.0" y="152.0" text-anchor="middle" fill="#1f2d3d">CPU 7</text>
+  <line x1="478" y1="77" x2="506" y2="77" stroke="#4a78b5" stroke-width="1.5" marker-end="url(#arr)" marker-start="url(#arr)"/>
+  <text x="380" y="228" text-anchor="middle" fill="#555" font-size="12">Mũi tên: scheduler cân bằng tải, di chuyển task giữa các core. Core ngoài domain chỉ chạy task được gắn affinity tường minh.</text>
+
+</svg>

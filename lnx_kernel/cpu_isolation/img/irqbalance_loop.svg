@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 475" font-family="Helvetica, Arial, sans-serif" font-size="13">
+  <rect width="760" height="475" fill="#ffffff"/>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
+    </marker>
+  </defs>
+  <rect x="40" y="40" width="320" height="54" rx="5" fill="#f7f7f7" stroke="#555" stroke-width="1.2"/>
+  <text x="200" y="63" text-anchor="middle" fill="#1f2d3d" font-weight="bold">1. Đọc /proc/interrupts</text>
+  <text x="200" y="82" text-anchor="middle" fill="#555" font-size="12">đếm số ngắt mỗi IRQ, mỗi core</text>
+  <rect x="40" y="130" width="320" height="54" rx="5" fill="#f7f7f7" stroke="#555" stroke-width="1.2"/>
+  <text x="200" y="153" text-anchor="middle" fill="#1f2d3d" font-weight="bold">2. Xác định core bị cấm</text>
+  <text x="200" y="172" text-anchor="middle" fill="#555" font-size="12">xem khung bên phải</text>
+  <rect x="40" y="220" width="320" height="54" rx="5" fill="#f7f7f7" stroke="#555" stroke-width="1.2"/>
+  <text x="200" y="243" text-anchor="middle" fill="#1f2d3d" font-weight="bold">3. Tính tải, chọn đích</text>
+  <text x="200" y="262" text-anchor="middle" fill="#555" font-size="12">theo balance level: package, cache, core</text>
+  <rect x="40" y="310" width="320" height="54" rx="5" fill="#f7f7f7" stroke="#555" stroke-width="1.2"/>
+  <text x="200" y="333" text-anchor="middle" fill="#1f2d3d" font-weight="bold">4. Ghi /proc/irq/N/smp_affinity</text>
+  <text x="200" y="352" text-anchor="middle" fill="#555" font-size="12">chỉ cho IRQ cần di chuyển</text>
+  <rect x="40" y="400" width="320" height="54" rx="5" fill="#f7f7f7" stroke="#555" stroke-width="1.2"/>
+  <text x="200" y="423" text-anchor="middle" fill="#1f2d3d" font-weight="bold">5. Ngủ --interval</text>
+  <text x="200" y="442" text-anchor="middle" fill="#555" font-size="12">mặc định 10 giây</text>
+  <line x1="200" y1="94" x2="200" y2="128" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="200" y1="184" x2="200" y2="218" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="200" y1="274" x2="200" y2="308" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="200" y1="364" x2="200" y2="398" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <path d="M40,427 H18 V67 H36" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="14" y="250" text-anchor="end" fill="#555" font-size="12">lặp</text>
+  <rect x="420" y="110" width="320" height="116" rx="8" fill="#eef4fb" stroke="#4a78b5" stroke-width="1.2"/>
+  <text x="580" y="134" text-anchor="middle" fill="#1f3f6b" font-weight="bold">Danh sách core bị cấm</text>
+  <text x="436" y="158" text-anchor="start" fill="#1f2d3d" font-size="12">Có IRQBALANCE_BANNED_CPULIST:</text>
+  <text x="452" y="176" text-anchor="start" fill="#555" font-size="12">dùng đúng danh sách đó</text>
+  <text x="436" y="198" text-anchor="start" fill="#1f2d3d" font-size="12">Không có: hợp của</text>
+  <text x="452" y="216" text-anchor="start" fill="#555" font-size="12">/sys/devices/system/cpu/isolated + nohz_full</text>
+  <line x1="418" y1="157" x2="362" y2="157" stroke="#555" stroke-width="1.5" marker-end="url(#arr)" stroke-dasharray="5 3"/>
+  <rect x="420" y="296" width="320" height="82" rx="8" fill="#fbf1e8" stroke="#c0712b" stroke-width="1.2"/>
+  <text x="580" y="320" text-anchor="middle" fill="#6b3a12" font-weight="bold">Ghi lỗi vĩnh viễn (ví dụ -EPERM</text>
+  <text x="580" y="338" text-anchor="middle" fill="#6b3a12" font-weight="bold">của managed interrupt)</text>
+  <text x="580" y="362" text-anchor="middle" fill="#1f2d3d" font-size="12">IRQ chuyển sang mức none, bỏ qua</text>
+  <line x1="362" y1="337" x2="418" y2="337" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+
+</svg>

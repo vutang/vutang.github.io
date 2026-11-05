@@ -11960,6 +11960,8 @@
 </tr>
 </tbody>
 </table>
+<p>Hình dưới so sánh cân bằng tải trước và sau khi cô lập bằng cờ <code>domain</code>: core cô lập nằm ngoài scheduler domain, scheduler chỉ di chuyển task giữa các core housekeeping.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/sched_domain.svg" data-desc-position="bottom"><img alt="Scheduler domain trước và sau isolcpus=domain" src="../img/sched_domain.svg"></a></p>
 <p>Khi không ghi cờ nào, kernel dùng mặc định <code>domain</code>. Vì vậy <code>isolcpus=2-7</code> và <code>isolcpus=domain,2-7</code> cho cùng kết quả. Có thể kết hợp nhiều cờ, ví dụ <code>isolcpus=domain,managed_irq,2-7</code>.</p>
 <p>Cờ <code>managed_irq</code> chỉ có hiệu lực khi mask ngắt mà kernel tự gán cho một hàng đợi thiết bị chứa cả core cô lập lẫn core housekeeping. Khi đó ngắt được hướng sang core housekeeping. Nếu mask của hàng đợi chỉ gồm core cô lập, cờ này không thay đổi việc định tuyến, nhưng ngắt của hàng đợi đó chỉ phát sinh khi chính task trên core cô lập gửi I/O. Chi tiết về managed interrupt nằm ở <a href="../irq_affinity/#managed-interrupt">IRQ affinity và irqbalance</a>.</p>
 <h2 id="xu-ly-tham-so-trong-kernel">Xử lý tham số trong kernel<a class="headerlink" href="#xu-ly-tham-so-trong-kernel" title="Permanent link">¶</a></h2>
@@ -12023,6 +12025,8 @@
 </table>
 <p>Partition giữ quyền dùng độc quyền tập core của nó: cgroup bên ngoài partition không dùng được các core đó. Khi đọc lại, file có thể hiện <code>root invalid (&lt;lý do&gt;)</code> hoặc <code>isolated invalid (&lt;lý do&gt;)</code> nếu điều kiện hợp lệ bị phá, ví dụ do hotplug CPU hoặc do sửa <code>cpuset.cpus</code>. File này hỗ trợ poll và inotify để một agent ở user space theo dõi thay đổi trạng thái.</p>
 <p>File <code>cpuset.cpus.isolated</code> ở cgroup gốc (chỉ đọc) liệt kê mọi core đang bị cô lập, gồm core của các isolated partition và core cô lập lúc boot bằng <code>isolcpus=domain</code>. Core cô lập lúc boot vẫn được liệt kê kể cả khi partition dùng chúng đã bị hủy.</p>
+<p>Hình dưới là cây cgroup sau khi chạy ví dụ bên dưới: partition <code>rt/</code> giữ riêng CPU 7, các cgroup khác chỉ còn CPU 0-6.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/cpuset_tree.svg" data-desc-position="bottom"><img alt="Cây cpuset với isolated partition" src="../img/cpuset_tree.svg"></a></p>
 <p>Ví dụ cô lập CPU 7 trên máy 8 core, giả sử cgroup v2 được mount ở <code>/sys/fs/cgroup</code> (theo ví dụ trong tài liệu CPU isolation của kernel):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">cd</span><span class="w"> </span>/sys/fs/cgroup
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">echo</span><span class="w"> </span>+cpuset<span class="w"> </span>&gt;<span class="w"> </span>cgroup.subtree_control
@@ -12158,7 +12162,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 5, 2026 06:52:05 UTC">November 5, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 5, 2026 09:53:17 UTC">November 5, 2026</span>
   </span>
 
     
