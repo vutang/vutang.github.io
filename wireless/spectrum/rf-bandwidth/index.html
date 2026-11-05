@@ -12172,10 +12172,14 @@
 <p>Trong một channel bandwidth, gNB có thể cấu hình nhiều bandwidth part (BWP) hẹp hơn cho UE. BWP thuộc lớp lập lịch và không làm thay đổi channel bandwidth của sóng mang. Chi tiết ở <a href="../../air-interface/resource-grid/">Frame Structure &amp; Resource Grid</a> và <a href="../../air-interface/initial-access/">Initial Access</a>.</p>
 <h2 id="occupied-bandwidth-trong-3gpp">Occupied bandwidth trong 3GPP<a class="headerlink" href="#occupied-bandwidth-trong-3gpp" title="Permanent link">¶</a></h2>
 <p>Occupied bandwidth là độ rộng của dải tần sao cho công suất phát trung bình nằm dưới biên dưới và nằm trên biên trên đều bằng β/2 tổng công suất phát. Với β = 1%, OBW là dải chứa 99% công suất phát của sóng mang, 0,5% còn lại chia đều ra hai bên. TS 38.521-2 nêu định nghĩa theo mức 99% này cho UE, TS 38.104 dùng cùng cách định nghĩa cho trạm gốc.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/obw-99.svg" data-desc-position="bottom"><img alt="Occupied bandwidth là dải chứa 99% công suất phát, mỗi bên ngoài dải chứa 0,5%" src="../img/obw-99.svg"></a></p>
+<p><em>Hai biên của OBW được đặt sao cho phần công suất nằm ngoài mỗi biên bằng β/2 = 0,5% tổng công suất.</em></p>
 <p>Yêu cầu trong TS 38.104 (mục 6.6.2, bản V15.2.0) là OBW của mỗi sóng mang NR phải nhỏ hơn BS channel bandwidth. Khi dùng carrier aggregation, OBW phải nhỏ hơn hoặc bằng aggregated BS channel bandwidth. Nói cách khác, OBW là thông số đo được trên tín hiệu phát, còn channel bandwidth là giới hạn mà OBW phải nằm trong. Các yêu cầu phát xạ khác như ACLR nằm ở <a href="../rf-requirements/">RF Requirements</a>.</p>
 <p>OBW được đo bằng máy phân tích phổ có chức năng đo OBW: máy tích phân công suất trên toàn phổ rồi tìm hai biên tần số chứa đúng 99% công suất. Khi sóng mang được cấp phát đủ RB, OBW gần bằng transmission bandwidth configuration. Khi chỉ cấp phát một phần RB, OBW hẹp hơn tương ứng.</p>
 <h2 id="base-station-rf-bandwidth">Base Station RF Bandwidth<a class="headerlink" href="#base-station-rf-bandwidth" title="Permanent link">¶</a></h2>
 <p>Base Station RF Bandwidth là băng thông RF mà trạm gốc phát hoặc thu một hay nhiều sóng mang trong một band. Khi chỉ có một sóng mang, Base Station RF Bandwidth bằng BS channel bandwidth. Khi có nhiều sóng mang, Base Station RF Bandwidth trải từ biên dưới của sóng mang thấp nhất tới biên trên của sóng mang cao nhất, gồm cả khoảng trống giữa các sóng mang.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/bs-rf-bandwidth.svg" data-desc-position="bottom"><img alt="Base Station RF Bandwidth với một sóng mang và với nhiều sóng mang, nằm trong Maximum Base Station RF Bandwidth" src="../img/bs-rf-bandwidth.svg"></a></p>
+<p><em>Với nhiều sóng mang, Base Station RF Bandwidth gồm cả khoảng trống giữa chúng và không được vượt Maximum Base Station RF Bandwidth.</em></p>
 <p>Maximum Base Station RF Bandwidth là Base Station RF Bandwidth lớn nhất mà trạm gốc hỗ trợ trong mỗi band. Đây là giới hạn của thiết bị, nhà sản xuất công bố, và là thông số trong đặc tả 3GPP gần nhất với IBW của datasheet. Bản LTE có khái niệm tương tự là Maximum Radio Bandwidth, được định nghĩa là khoảng cách tần số lớn nhất giữa biên trên của sóng mang cao nhất và biên dưới của sóng mang thấp nhất.</p>
 <table>
 <thead>
@@ -12244,6 +12248,8 @@
 <p>Việc IBW tương ứng với Maximum Base Station RF Bandwidth của 3GPP là cách hiểu dựa trên định nghĩa của hai bên, chưa tìm thấy tài liệu chính thức nào xác nhận hai khái niệm là một.</p>
 <h2 id="anh-huong-toi-quy-hoach-pho">Ảnh hưởng tới quy hoạch phổ<a class="headerlink" href="#anh-huong-toi-quy-hoach-pho" title="Permanent link">¶</a></h2>
 <p>IBW và OBW quyết định một RU có dùng được cho một bộ khối phổ hay không:</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/ibw-planning.svg" data-desc-position="bottom"><img alt="Hai khối phổ nằm trong một cửa sổ IBW, và hai khối phổ cách nhau xa hơn IBW" src="../img/ibw-planning.svg"></a></p>
+<p><em>Ví dụ minh họa với RU có frequency range 3300 – 3700 MHz và IBW 200 MHz. Trường hợp dưới, hai khối đều nằm trong frequency range nhưng không cùng nằm trong một cửa sổ IBW.</em></p>
 <ul>
 <li><strong>Carrier aggregation intra-band không liền kề:</strong> hai sóng mang và khoảng trống giữa chúng phải nằm trọn trong IBW. Nếu hai khối phổ cách nhau xa hơn IBW, cần hai RU hoặc hai nhánh RF. Các kiểu CA nằm ở <a href="../carrier-aggregation/">Carrier Aggregation</a>.</li>
 <li><strong>Dùng chung RU giữa các nhà mạng:</strong> các khối phổ của các nhà mạng phải nằm trong cùng một cửa sổ IBW, và tổng băng thông của chúng không vượt OBW.</li>
@@ -12297,7 +12303,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 5, 2026 12:39:31 UTC">November 5, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 5, 2026 13:21:34 UTC">November 5, 2026</span>
   </span>
 
     
