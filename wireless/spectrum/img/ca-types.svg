@@ -1,0 +1,40 @@
+<svg role="img" viewBox="0 0 960 330" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+<title>Ba kiểu Carrier Aggregation: intra-band liền kề, intra-band không liền kề và inter-band</title>
+<rect x="0" y="0" width="960" height="330" rx="8" fill="#ffffff"/>
+<rect x="20" y="16" width="290" height="298" rx="10" fill="#f6f8fb" stroke="#c9d3e3"/>
+<text x="165" y="44" font-size="14" font-weight="700" text-anchor="middle" fill="#1d4278">Intra-band liền kề</text>
+<text x="165" y="62" font-size="10.5" text-anchor="middle" fill="#666">Hai CC sát nhau trong cùng một band</text>
+<line x1="40" y1="250" x2="290" y2="250" stroke="#555" stroke-width="1.3"/>
+<text x="290" y="270" font-size="10" text-anchor="end" fill="#555">Tần số</text>
+<path d="M40 108 V100 H290 V108" fill="none" stroke="#777" stroke-width="1.2"/>
+<text x="165.0" y="94" font-size="11" text-anchor="middle" fill="#444">Band X</text>
+<rect x="60" y="160" width="105" height="70" rx="4" fill="#2f5d9e" fill-opacity="0.28" stroke="#2f5d9e" stroke-width="1.5"/>
+<text x="112.5" y="200" font-size="12" font-weight="700" text-anchor="middle" fill="#2f5d9e">CC1</text>
+<rect x="165" y="160" width="105" height="70" rx="4" fill="#b7791f" fill-opacity="0.28" stroke="#b7791f" stroke-width="1.5"/>
+<text x="217.5" y="200" font-size="12" font-weight="700" text-anchor="middle" fill="#b7791f">CC2</text>
+<rect x="335" y="16" width="290" height="298" rx="10" fill="#f6f8fb" stroke="#c9d3e3"/>
+<text x="480" y="44" font-size="14" font-weight="700" text-anchor="middle" fill="#1d4278">Intra-band không liền kề</text>
+<text x="480" y="62" font-size="10.5" text-anchor="middle" fill="#666">Hai CC cùng band, có khoảng trống</text>
+<line x1="355" y1="250" x2="605" y2="250" stroke="#555" stroke-width="1.3"/>
+<text x="605" y="270" font-size="10" text-anchor="end" fill="#555">Tần số</text>
+<path d="M355 108 V100 H605 V108" fill="none" stroke="#777" stroke-width="1.2"/>
+<text x="480.0" y="94" font-size="11" text-anchor="middle" fill="#444">Band X</text>
+<rect x="375" y="160" width="75" height="70" rx="4" fill="#2f5d9e" fill-opacity="0.28" stroke="#2f5d9e" stroke-width="1.5"/>
+<text x="412.5" y="200" font-size="12" font-weight="700" text-anchor="middle" fill="#2f5d9e">CC1</text>
+<rect x="520" y="160" width="75" height="70" rx="4" fill="#b7791f" fill-opacity="0.28" stroke="#b7791f" stroke-width="1.5"/>
+<text x="557.5" y="200" font-size="12" font-weight="700" text-anchor="middle" fill="#b7791f">CC2</text>
+<text x="485" y="200" font-size="10" text-anchor="middle" fill="#888">trống</text>
+<rect x="650" y="16" width="290" height="298" rx="10" fill="#f6f8fb" stroke="#c9d3e3"/>
+<text x="795" y="44" font-size="14" font-weight="700" text-anchor="middle" fill="#1d4278">Inter-band</text>
+<text x="795" y="62" font-size="10.5" text-anchor="middle" fill="#666">Các CC thuộc hai band khác nhau</text>
+<line x1="670" y1="250" x2="920" y2="250" stroke="#555" stroke-width="1.3"/>
+<text x="920" y="270" font-size="10" text-anchor="end" fill="#555">Tần số</text>
+<path d="M670 108 V100 H790 V108" fill="none" stroke="#777" stroke-width="1.2"/>
+<text x="730.0" y="94" font-size="11" text-anchor="middle" fill="#444">Band X</text>
+<path d="M810 108 V100 H930 V108" fill="none" stroke="#777" stroke-width="1.2"/>
+<text x="870.0" y="94" font-size="11" text-anchor="middle" fill="#444">Band Y</text>
+<rect x="690" y="160" width="80" height="70" rx="4" fill="#2f5d9e" fill-opacity="0.28" stroke="#2f5d9e" stroke-width="1.5"/>
+<text x="730.0" y="200" font-size="12" font-weight="700" text-anchor="middle" fill="#2f5d9e">CC1</text>
+<rect x="830" y="160" width="80" height="70" rx="4" fill="#b7791f" fill-opacity="0.28" stroke="#b7791f" stroke-width="1.5"/>
+<text x="870.0" y="200" font-size="12" font-weight="700" text-anchor="middle" fill="#b7791f">CC2</text>
+</svg>

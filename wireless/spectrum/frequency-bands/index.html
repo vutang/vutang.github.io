@@ -15,7 +15,7 @@
         <link rel="prev" href="../../oran/wg11/">
       
       
-        <link rel="next" href="../../architecture/ran-architecture/">
+        <link rel="next" href="../carrier-aggregation/">
       
       
         
@@ -6694,6 +6694,90 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../carrier-aggregation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Carrier Aggregation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dual-connectivity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Connectivity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dss-refarming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSS và Refarming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -12215,10 +12299,10 @@
 <p>Ví dụ: N_REF = 633334 → <code>F = 3000 + 0.015 × (633334 − 600000) = 3500.01 MHz</code> (thuộc n78).</p>
 <h2 id="6-ky-thuat-lien-quan-trong-ran">6. Kỹ thuật liên quan trong RAN<a class="headerlink" href="#6-ky-thuat-lien-quan-trong-ran" title="Permanent link">¶</a></h2>
 <ul>
-<li><strong>Carrier Aggregation (CA)</strong>: gộp nhiều sóng mang (intra-band hoặc inter-band) để tăng băng thông và tốc độ.</li>
-<li><strong>Dual Connectivity (EN-DC, NR-DC)</strong>: UE kết nối đồng thời LTE + NR hoặc NR + NR, thường dùng low/mid-band LTE làm anchor.</li>
-<li><strong>DSS</strong> (Dynamic Spectrum Sharing): LTE và NR dùng chung sóng mang, hỗ trợ refarming 4G sang 5G.</li>
-<li><strong>Refarming</strong>: chuyển dần phổ 2G/3G sang 4G/5G.</li>
+<li><strong>Carrier Aggregation (CA)</strong>: gộp nhiều sóng mang (intra-band hoặc inter-band) để tăng băng thông và tốc độ. Chi tiết ở <a href="../carrier-aggregation/">Carrier Aggregation</a>.</li>
+<li><strong>Dual Connectivity (EN-DC, NR-DC)</strong>: UE kết nối đồng thời LTE + NR hoặc NR + NR, thường dùng low/mid-band LTE làm anchor. Chi tiết ở <a href="../dual-connectivity/">Dual Connectivity</a>.</li>
+<li><strong>DSS</strong> (Dynamic Spectrum Sharing): LTE và NR dùng chung sóng mang, hỗ trợ chuyển tiếp từ 4G sang 5G.</li>
+<li><strong>Refarming</strong>: chuyển khối phổ từ công nghệ cũ (2G/3G) sang công nghệ mới. Chi tiết DSS và refarming ở <a href="../dss-refarming/">DSS và Refarming</a>.</li>
 <li><strong>Can nhiễu và cùng tồn tại</strong>:<ul>
 <li>Guard band giữa các band/nhà mạng kề nhau (đặc biệt TDD, cần đồng bộ UL/DL pattern).</li>
 <li>PIM (Passive Intermodulation) trên hệ thống anten dùng chung nhiều band.</li>
@@ -12316,6 +12400,8 @@
 <li><a href="../../itu/itu/">ITU</a>: phân bổ phổ tần toàn cầu, WRC.</li>
 <li><a href="../../3gpp/3gpp/">3GPP</a>: các release và đặc tả band.</li>
 <li><a href="../../architecture/ran-architecture/">RAN Architecture &amp; Splits</a>: vị trí RU, nơi RF và anten gắn với từng band.</li>
+<li><a href="../carrier-aggregation/">Carrier Aggregation</a> và <a href="../dual-connectivity/">Dual Connectivity</a>: gộp tài nguyên phổ giữa nhiều sóng mang và nhiều node.</li>
+<li><a href="../dss-refarming/">DSS và Refarming</a>: chia sẻ sóng mang giữa LTE và NR, chuyển phổ từ công nghệ cũ sang công nghệ mới.</li>
 <li><a href="../../sync/sync/">Synchronization</a>: TDD trên các band mid-band cần đồng pha giữa các trạm.</li>
 </ul>
 
@@ -12340,7 +12426,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 5, 2026 04:52:18 UTC">November 5, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 5, 2026 05:14:43 UTC">November 5, 2026</span>
   </span>
 
     
@@ -12406,13 +12492,13 @@
         
         
           
-          <a href="../../architecture/ran-architecture/" class="md-footer__link md-footer__link--next" aria-label="Next: RAN Architecture &amp; Splits">
+          <a href="../carrier-aggregation/" class="md-footer__link md-footer__link--next" aria-label="Next: Carrier Aggregation">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                RAN Architecture &amp; Splits
+                Carrier Aggregation
               </div>
             </div>
             <div class="md-footer__button md-icon">
