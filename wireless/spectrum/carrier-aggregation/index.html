@@ -12,7 +12,7 @@
         <link rel="canonical" href="https://note.vutang.dev/wireless/spectrum/carrier-aggregation/">
       
       
-        <link rel="prev" href="../frequency-bands/">
+        <link rel="prev" href="../rf-bandwidth/">
       
       
         <link rel="next" href="../dual-connectivity/">
@@ -6601,6 +6601,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../rf-bandwidth/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RF Bandwidth (IBW, OBW)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -12145,7 +12173,7 @@
 <p>Các ký hiệu trên chỉ minh họa cách đọc. Tổ hợp nào được hỗ trợ, với băng thông tối đa bao nhiêu, do TS 36.101 (LTE), TS 38.101-1 (FR1), TS 38.101-2 (FR2) quy định. Tổ hợp kết hợp LTE và NR thuộc về Dual Connectivity và nằm ở TS 38.101-3.</p>
 <h2 id="rang-buoc-ve-rf">Ràng buộc về RF<a class="headerlink" href="#rang-buoc-ve-rf" title="Permanent link">¶</a></h2>
 <ul>
-<li><strong>Băng thông tức thời (IBW) của RU:</strong> CA intra-band liền kề đòi hỏi RU phát và thu được trọn khối băng thông gộp, còn inter-band thường cần các nhánh RF riêng.</li>
+<li><strong>Băng thông tức thời (IBW) của RU:</strong> CA intra-band liền kề đòi hỏi RU phát và thu được trọn khối băng thông gộp, còn inter-band thường cần các nhánh RF riêng. Khái niệm IBW nằm ở <a href="../rf-bandwidth/">RF Bandwidth</a>.</li>
 <li><strong>Công suất uplink:</strong> UE chia công suất phát giữa các CC, và UL CA thường khó hơn DL CA nên ít được hỗ trợ hơn.</li>
 <li><strong>Nhiễu nội UE:</strong> khi phát trên hai band, hài và sản phẩm intermodulation có thể rơi vào băng thu của một band khác. Đặc tả cho phép giảm độ nhạy thu có kiểm soát (MSD, Maximum Sensitivity Degradation) cho các tổ hợp bị ảnh hưởng.</li>
 <li><strong>Khả năng UE:</strong> mỗi UE công bố các tổ hợp mình hỗ trợ, nên một tổ hợp được cấu hình ở mạng chỉ có tác dụng với UE tương ứng.</li>
@@ -12154,6 +12182,7 @@
 <ul>
 <li><a href="../dual-connectivity/">Dual Connectivity</a>: gộp tài nguyên giữa hai node, khác CA ở tầng thực hiện.</li>
 <li><a href="../frequency-bands/">Frequency Bands</a>: bảng band và đặc tính truyền sóng cần để chọn tổ hợp.</li>
+<li><a href="../rf-bandwidth/">RF Bandwidth</a>: IBW và OBW của RU, giới hạn khối phổ gộp được trên một RU.</li>
 <li><a href="../../sync/sync/">Synchronization</a>: TDD intra-band và inter-band cần đồng pha giữa các trạm.</li>
 </ul>
 <h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
@@ -12186,7 +12215,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 5, 2026 05:13:06 UTC">November 5, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 5, 2026 12:30:17 UTC">November 5, 2026</span>
   </span>
 
     
@@ -12235,7 +12264,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
-          <a href="../frequency-bands/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Frequency Bands">
+          <a href="../rf-bandwidth/" class="md-footer__link md-footer__link--prev" aria-label="Previous: RF Bandwidth (IBW, OBW)">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -12245,7 +12274,7 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Frequency Bands
+                RF Bandwidth (IBW, OBW)
               </div>
             </div>
           </a>
