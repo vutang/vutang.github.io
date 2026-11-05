@@ -625,6 +625,18 @@
          <lastmod>2026-11-05</lastmod>
     </url>
     <url>
+         <loc>https://note.vutang.dev/lnx_kernel/cpu_isolation/irq_affinity/</loc>
+         <lastmod>2026-11-05</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/lnx_kernel/cpu_isolation/isolcpus/</loc>
+         <lastmod>2026-11-05</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/lnx_kernel/cpu_isolation/nohz_full/</loc>
+         <lastmod>2026-11-05</lastmod>
+    </url>
+    <url>
          <loc>https://note.vutang.dev/lnx_kernel/ddebug/ddebug/</loc>
          <lastmod>2026-11-05</lastmod>
     </url>
