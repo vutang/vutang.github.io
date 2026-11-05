@@ -1,0 +1,52 @@
+<svg role="img" viewBox="0 0 960 380" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+  <title>So sánh đồng hồ không đồng bộ, đồng bộ tần số và đồng bộ pha so với đồng hồ tham chiếu</title>
+  <rect x="0" y="0" width="960" height="380" rx="8" fill="#ffffff"/>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#7a5a00"/></marker><marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#b42318"/></marker></defs>
+  <line x1="290" y1="40" x2="290" y2="330" stroke="#9aa5b8" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="410" y1="40" x2="410" y2="330" stroke="#9aa5b8" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="530" y1="40" x2="530" y2="330" stroke="#9aa5b8" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="650" y1="40" x2="650" y2="330" stroke="#9aa5b8" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="770" y1="40" x2="770" y2="330" stroke="#9aa5b8" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="890" y1="40" x2="890" y2="330" stroke="#9aa5b8" stroke-width="1" stroke-dasharray="4 4"/>
+  <text x="20" y="78" font-size="13" font-weight="700" fill="#475569">Tham chiếu</text>
+  <text x="20" y="94" font-size="10" fill="#444">PRTC / GNSS</text>
+  <line x1="250" y1="90" x2="935" y2="90" stroke="#475569" stroke-width="2"/>
+  <rect x="290" y="62" width="14" height="28" fill="#e2e8f0" stroke="#475569" stroke-width="1.5"/>
+  <rect x="410" y="62" width="14" height="28" fill="#e2e8f0" stroke="#475569" stroke-width="1.5"/>
+  <rect x="530" y="62" width="14" height="28" fill="#e2e8f0" stroke="#475569" stroke-width="1.5"/>
+  <rect x="650" y="62" width="14" height="28" fill="#e2e8f0" stroke="#475569" stroke-width="1.5"/>
+  <rect x="770" y="62" width="14" height="28" fill="#e2e8f0" stroke="#475569" stroke-width="1.5"/>
+  <rect x="890" y="62" width="14" height="28" fill="#e2e8f0" stroke="#475569" stroke-width="1.5"/>
+  <text x="20" y="150" font-size="13" font-weight="700" fill="#b42318">Không đồng bộ</text>
+  <text x="20" y="166" font-size="10" fill="#444">chu kỳ khác, lệch tăng dần</text>
+  <line x1="250" y1="162" x2="935" y2="162" stroke="#b42318" stroke-width="2"/>
+  <rect x="290" y="134" width="14" height="28" fill="#fde2e0" stroke="#b42318" stroke-width="1.5"/>
+  <rect x="400" y="134" width="14" height="28" fill="#fde2e0" stroke="#b42318" stroke-width="1.5"/>
+  <rect x="510" y="134" width="14" height="28" fill="#fde2e0" stroke="#b42318" stroke-width="1.5"/>
+  <rect x="620" y="134" width="14" height="28" fill="#fde2e0" stroke="#b42318" stroke-width="1.5"/>
+  <rect x="730" y="134" width="14" height="28" fill="#fde2e0" stroke="#b42318" stroke-width="1.5"/>
+  <rect x="840" y="134" width="14" height="28" fill="#fde2e0" stroke="#b42318" stroke-width="1.5"/>
+  <text x="20" y="222" font-size="13" font-weight="700" fill="#b8860b">Đồng bộ tần số</text>
+  <text x="20" y="238" font-size="10" fill="#444">cùng chu kỳ, lệch pha cố định</text>
+  <line x1="250" y1="234" x2="935" y2="234" stroke="#b8860b" stroke-width="2"/>
+  <rect x="330" y="206" width="14" height="28" fill="#fff3cf" stroke="#b8860b" stroke-width="1.5"/>
+  <rect x="450" y="206" width="14" height="28" fill="#fff3cf" stroke="#b8860b" stroke-width="1.5"/>
+  <rect x="570" y="206" width="14" height="28" fill="#fff3cf" stroke="#b8860b" stroke-width="1.5"/>
+  <rect x="690" y="206" width="14" height="28" fill="#fff3cf" stroke="#b8860b" stroke-width="1.5"/>
+  <rect x="810" y="206" width="14" height="28" fill="#fff3cf" stroke="#b8860b" stroke-width="1.5"/>
+  <text x="20" y="294" font-size="13" font-weight="700" fill="#2f8a55">Đồng bộ pha / thời gian</text>
+  <text x="20" y="310" font-size="10" fill="#444">cùng chu kỳ và cùng thời điểm</text>
+  <line x1="250" y1="306" x2="935" y2="306" stroke="#2f8a55" stroke-width="2"/>
+  <rect x="290" y="278" width="14" height="28" fill="#d4efdf" stroke="#2f8a55" stroke-width="1.5"/>
+  <rect x="410" y="278" width="14" height="28" fill="#d4efdf" stroke="#2f8a55" stroke-width="1.5"/>
+  <rect x="530" y="278" width="14" height="28" fill="#d4efdf" stroke="#2f8a55" stroke-width="1.5"/>
+  <rect x="650" y="278" width="14" height="28" fill="#d4efdf" stroke="#2f8a55" stroke-width="1.5"/>
+  <rect x="770" y="278" width="14" height="28" fill="#d4efdf" stroke="#2f8a55" stroke-width="1.5"/>
+  <rect x="890" y="278" width="14" height="28" fill="#d4efdf" stroke="#2f8a55" stroke-width="1.5"/>
+  <line x1="292" y1="246" x2="328" y2="246" stroke="#7a5a00" stroke-width="1.5" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="310" y="261" font-size="10.5" font-weight="700" text-anchor="middle" fill="#7a5a00">Δt</text>
+  <line x1="842" y1="174" x2="888" y2="174" stroke="#b42318" stroke-width="1.5" marker-start="url(#a2)" marker-end="url(#a2)"/>
+  <text x="865" y="189" font-size="10.5" font-weight="700" text-anchor="middle" fill="#b42318">lệch tăng</text>
+  <text x="480" y="352" font-size="10.5" text-anchor="middle" fill="#333">Mỗi xung là một mốc thời gian của đồng hồ (ví dụ 1PPS). Đường nét đứt là mốc của đồng hồ tham chiếu.</text>
+  <text x="480" y="368" font-size="10.5" text-anchor="middle" fill="#333">FDD chỉ cần đồng bộ tần số, TDD cần thêm đồng bộ pha để các trạm chuyển uplink/downlink cùng lúc.</text>
+</svg>

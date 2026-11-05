@@ -1,0 +1,60 @@
+<svg role="img" viewBox="0 0 960 400" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+  <title>Cơ chế delay request-response của PTP: trao đổi Sync, Follow_Up, Delay_Req, Delay_Resp để có bốn timestamp t1 đến t4</title>
+  <defs>
+    <marker id="m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2f5d9e"/></marker>
+    <marker id="s" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2f8a55"/></marker>
+  </defs>
+  <rect x="0" y="0" width="960" height="400" rx="8" fill="#ffffff"/>
+
+  <!-- Headers -->
+  <rect x="80" y="20" width="120" height="40" rx="6" fill="#fbe0c0" stroke="#d9822b" stroke-width="1.5"/>
+  <text x="140" y="45" font-size="13" font-weight="700" text-anchor="middle" fill="#8a4a0a">Master</text>
+  <rect x="410" y="20" width="120" height="40" rx="6" fill="#d4efdf" stroke="#2f8a55" stroke-width="1.5"/>
+  <text x="470" y="45" font-size="13" font-weight="700" text-anchor="middle" fill="#1f5c38">Slave</text>
+
+  <!-- Timelines -->
+  <line x1="140" y1="60" x2="140" y2="370" stroke="#666" stroke-width="2"/>
+  <line x1="470" y1="60" x2="470" y2="370" stroke="#666" stroke-width="2"/>
+  <text x="140" y="388" font-size="9.5" text-anchor="middle" fill="#555">thời gian ↓</text>
+  <text x="470" y="388" font-size="9.5" text-anchor="middle" fill="#555">thời gian ↓</text>
+
+  <!-- Sync -->
+  <line x1="140" y1="95" x2="466" y2="140" stroke="#2f5d9e" stroke-width="2" marker-end="url(#m)"/>
+  <text x="305" y="110" transform="rotate(7.9 305 110)" font-size="11" font-weight="700" text-anchor="middle" fill="#1d4278">Sync</text>
+  <circle cx="140" cy="95" r="4" fill="#d9822b"/>
+  <text x="128" y="99" font-size="12" font-weight="700" text-anchor="end" fill="#8a4a0a">t1</text>
+  <circle cx="470" cy="140" r="4" fill="#2f8a55"/>
+  <text x="482" y="144" font-size="12" font-weight="700" fill="#1f5c38">t2</text>
+
+  <!-- Follow_Up -->
+  <line x1="140" y1="150" x2="466" y2="195" stroke="#2f5d9e" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#m)"/>
+  <text x="305" y="165" transform="rotate(7.9 305 165)" font-size="11" text-anchor="middle" fill="#1d4278">Follow_Up (mang giá trị t1)</text>
+
+  <!-- Delay_Req -->
+  <line x1="470" y1="235" x2="144" y2="280" stroke="#2f8a55" stroke-width="2" marker-end="url(#s)"/>
+  <text x="305" y="250" transform="rotate(-7.9 305 250)" font-size="11" font-weight="700" text-anchor="middle" fill="#1f5c38">Delay_Req</text>
+  <circle cx="470" cy="235" r="4" fill="#2f8a55"/>
+  <text x="482" y="239" font-size="12" font-weight="700" fill="#1f5c38">t3</text>
+  <circle cx="140" cy="280" r="4" fill="#d9822b"/>
+  <text x="128" y="284" font-size="12" font-weight="700" text-anchor="end" fill="#8a4a0a">t4</text>
+
+  <!-- Delay_Resp -->
+  <line x1="140" y1="300" x2="466" y2="345" stroke="#2f5d9e" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#m)"/>
+  <text x="305" y="315" transform="rotate(7.9 305 315)" font-size="11" text-anchor="middle" fill="#1d4278">Delay_Resp (mang giá trị t4)</text>
+
+  <!-- Formula box -->
+  <rect x="570" y="95" width="370" height="250" rx="8" fill="#f5f7fa" stroke="#7d8fb3" stroke-width="1.2"/>
+  <text x="590" y="122" font-size="12" font-weight="700" fill="#1d4278">Slave tính từ t1, t2, t3, t4</text>
+
+  <text x="590" y="154" font-size="11" fill="#111">Độ trễ đường truyền (một chiều):</text>
+  <text x="605" y="176" font-size="12" font-weight="700" fill="#111">delay = [(t2 − t1) + (t4 − t3)] / 2</text>
+
+  <text x="590" y="208" font-size="11" fill="#111">Độ lệch đồng hồ slave so với master:</text>
+  <text x="605" y="230" font-size="12" font-weight="700" fill="#111">offset = [(t2 − t1) − (t4 − t3)] / 2</text>
+
+  <text x="590" y="264" font-size="10.5" fill="#b42318">Công thức giả định độ trễ hai chiều bằng nhau.</text>
+  <text x="590" y="280" font-size="10.5" fill="#b42318">Chênh lệch Δ giữa hai chiều làm offset sai Δ/2.</text>
+
+  <text x="590" y="312" font-size="10.5" fill="#333">Two-step: t1 gửi trong Follow_Up.</text>
+  <text x="590" y="328" font-size="10.5" fill="#333">One-step: t1 ghi thẳng vào gói Sync.</text>
+</svg>
