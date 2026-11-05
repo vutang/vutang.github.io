@@ -1,0 +1,79 @@
+<svg role="img" viewBox="0 0 960 400" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+<title>Chuỗi phát Low-PHY, DUC, CFR, DPD, DAC, RF, PA với đường phản hồi qua bộ thu quan sát, và chuỗi thu LNA, RF, ADC, DDC, Low-PHY</title>
+<rect x="0" y="0" width="960" height="400" rx="8" fill="#ffffff"/>
+<rect x="20" y="16" width="920" height="368" rx="10" fill="#f6f8fb" stroke="#c9d3e3"/>
+<text x="40" y="42" font-size="14" font-weight="700" fill="#1d4278">Vị trí của DFE trong chuỗi phát và thu của RU</text>
+<text x="40" y="60" font-size="10.5" fill="#666">Sơ đồ khối đơn giản hóa cho một nhánh anten</text>
+<rect x="150" y="66" width="440" height="200" rx="8" fill="#b7791f" fill-opacity="0.06" stroke="#b7791f" stroke-dasharray="5 4"/>
+<text x="370" y="82" font-size="11.5" text-anchor="middle" fill="#b7791f" font-weight="700">Digital front-end (DFE)</text>
+<rect x="40" y="100" width="95" height="48" rx="6" fill="#1d4278" fill-opacity="0.16" stroke="#1d4278" stroke-width="1.5"/>
+<text x="87.5" y="122.0" font-size="11.5" text-anchor="middle" fill="#1d4278" font-weight="700">Low-PHY</text>
+<text x="87.5" y="137.0" font-size="9.5" text-anchor="middle" fill="#555">iFFT, CP</text>
+<rect x="165" y="100" width="90" height="48" rx="6" fill="#555" fill-opacity="0.16" stroke="#555" stroke-width="1.5"/>
+<text x="210.0" y="122.0" font-size="11.5" text-anchor="middle" fill="#555" font-weight="700">DUC</text>
+<text x="210.0" y="137.0" font-size="9.5" text-anchor="middle" fill="#555">nội suy, NCO</text>
+<rect x="285" y="100" width="80" height="48" rx="6" fill="#1d4278" fill-opacity="0.16" stroke="#1d4278" stroke-width="1.5"/>
+<text x="325.0" y="128.0" font-size="11.5" text-anchor="middle" fill="#1d4278" font-weight="700">CFR</text>
+<rect x="395" y="100" width="80" height="48" rx="6" fill="#b7791f" fill-opacity="0.16" stroke="#b7791f" stroke-width="1.5"/>
+<text x="435.0" y="128.0" font-size="11.5" text-anchor="middle" fill="#b7791f" font-weight="700">DPD</text>
+<rect x="505" y="100" width="70" height="48" rx="6" fill="#555" fill-opacity="0.16" stroke="#555" stroke-width="1.5"/>
+<text x="540.0" y="128.0" font-size="11.5" text-anchor="middle" fill="#555" font-weight="700">DAC</text>
+<rect x="615" y="100" width="95" height="48" rx="6" fill="#555" fill-opacity="0.16" stroke="#555" stroke-width="1.5"/>
+<text x="662.5" y="128.0" font-size="11.5" text-anchor="middle" fill="#555" font-weight="700">RF up-conv.</text>
+<rect x="740" y="100" width="60" height="48" rx="6" fill="#2f5d9e" fill-opacity="0.16" stroke="#2f5d9e" stroke-width="1.5"/>
+<text x="770.0" y="128.0" font-size="11.5" text-anchor="middle" fill="#2f5d9e" font-weight="700">PA</text>
+<line x1="135" y1="124" x2="165" y2="124" stroke="#555" stroke-width="1.5"/>
+<path d="M157.6 127.1 L165 124 L157.6 120.9" fill="none" stroke="#555" stroke-width="1.5"/>
+<line x1="255" y1="124" x2="285" y2="124" stroke="#555" stroke-width="1.5"/>
+<path d="M277.6 127.1 L285 124 L277.6 120.9" fill="none" stroke="#555" stroke-width="1.5"/>
+<line x1="365" y1="124" x2="395" y2="124" stroke="#555" stroke-width="1.5"/>
+<path d="M387.6 127.1 L395 124 L387.6 120.9" fill="none" stroke="#555" stroke-width="1.5"/>
+<line x1="475" y1="124" x2="505" y2="124" stroke="#555" stroke-width="1.5"/>
+<path d="M497.6 127.1 L505 124 L497.6 120.9" fill="none" stroke="#555" stroke-width="1.5"/>
+<line x1="575" y1="124" x2="615" y2="124" stroke="#555" stroke-width="1.5"/>
+<path d="M607.6 127.1 L615 124 L607.6 120.9" fill="none" stroke="#555" stroke-width="1.5"/>
+<line x1="710" y1="124" x2="740" y2="124" stroke="#555" stroke-width="1.5"/>
+<path d="M732.6 127.1 L740 124 L732.6 120.9" fill="none" stroke="#555" stroke-width="1.5"/>
+<line x1="800" y1="124" x2="870" y2="124" stroke="#555" stroke-width="1.5"/>
+<circle cx="825" cy="124" r="5" fill="#fff" stroke="#555" stroke-width="1.5"/>
+<text x="825" y="104" font-size="9.5" text-anchor="middle" fill="#555">coupler</text>
+<path d="M870 124 V94 M858 94 L870 110 L882 94 Z" fill="none" stroke="#555" stroke-width="1.5"/>
+<text x="870" y="146" font-size="9.5" text-anchor="middle" fill="#555">anten</text>
+<rect x="615" y="196" width="95" height="44" rx="6" fill="#a23b72" fill-opacity="0.16" stroke="#a23b72" stroke-width="1.5"/>
+<text x="662.5" y="216.0" font-size="11.5" text-anchor="middle" fill="#a23b72" font-weight="700">ORx ADC</text>
+<text x="662.5" y="231.0" font-size="9.5" text-anchor="middle" fill="#555">thu quan sát</text>
+<rect x="395" y="196" width="80" height="44" rx="6" fill="#a23b72" fill-opacity="0.16" stroke="#a23b72" stroke-width="1.5"/>
+<text x="435.0" y="216.0" font-size="11.5" text-anchor="middle" fill="#a23b72" font-weight="700">Ước lượng</text>
+<text x="435.0" y="231.0" font-size="9.5" text-anchor="middle" fill="#555">hệ số DPD</text>
+<polyline points="825,129 825,218 710,218" fill="none" stroke="#a23b72" stroke-width="1.5"/>
+<path d="M717.4 214.9 L710 218 L717.4 221.1" fill="none" stroke="#a23b72" stroke-width="1.5"/>
+<line x1="615" y1="218" x2="475" y2="218" stroke="#a23b72" stroke-width="1.5"/>
+<path d="M482.4 214.9 L475 218 L482.4 221.1" fill="none" stroke="#a23b72" stroke-width="1.5"/>
+<line x1="435" y1="196" x2="435" y2="148" stroke="#a23b72" stroke-width="1.5"/>
+<path d="M438.1 155.4 L435 148 L431.9 155.4" fill="none" stroke="#a23b72" stroke-width="1.5"/>
+<text x="604" y="258" font-size="10.5" text-anchor="start" fill="#a23b72">Đường phản hồi: lấy mẫu đầu ra PA để cập nhật DPD</text>
+<text x="40" y="292" font-size="11" text-anchor="start" fill="#555" font-weight="700">Chuỗi thu</text>
+<rect x="740" y="300" width="60" height="44" rx="6" fill="#2f5d9e" fill-opacity="0.16" stroke="#2f5d9e" stroke-width="1.5"/>
+<text x="770.0" y="326.0" font-size="11.5" text-anchor="middle" fill="#2f5d9e" font-weight="700">LNA</text>
+<rect x="615" y="300" width="95" height="44" rx="6" fill="#555" fill-opacity="0.16" stroke="#555" stroke-width="1.5"/>
+<text x="662.5" y="326.0" font-size="11.5" text-anchor="middle" fill="#555" font-weight="700">RF down-conv.</text>
+<rect x="505" y="300" width="70" height="44" rx="6" fill="#555" fill-opacity="0.16" stroke="#555" stroke-width="1.5"/>
+<text x="540.0" y="326.0" font-size="11.5" text-anchor="middle" fill="#555" font-weight="700">ADC</text>
+<rect x="395" y="300" width="80" height="44" rx="6" fill="#555" fill-opacity="0.16" stroke="#555" stroke-width="1.5"/>
+<text x="435.0" y="320.0" font-size="11.5" text-anchor="middle" fill="#555" font-weight="700">DDC</text>
+<text x="435.0" y="335.0" font-size="9.5" text-anchor="middle" fill="#555">lọc, decimation</text>
+<rect x="40" y="300" width="95" height="44" rx="6" fill="#1d4278" fill-opacity="0.16" stroke="#1d4278" stroke-width="1.5"/>
+<text x="87.5" y="320.0" font-size="11.5" text-anchor="middle" fill="#1d4278" font-weight="700">Low-PHY</text>
+<text x="87.5" y="335.0" font-size="9.5" text-anchor="middle" fill="#555">FFT, bỏ CP</text>
+<line x1="740" y1="322" x2="710" y2="322" stroke="#555" stroke-width="1.5"/>
+<path d="M717.4 318.9 L710 322 L717.4 325.1" fill="none" stroke="#555" stroke-width="1.5"/>
+<line x1="615" y1="322" x2="575" y2="322" stroke="#555" stroke-width="1.5"/>
+<path d="M582.4 318.9 L575 322 L582.4 325.1" fill="none" stroke="#555" stroke-width="1.5"/>
+<line x1="505" y1="322" x2="475" y2="322" stroke="#555" stroke-width="1.5"/>
+<path d="M482.4 318.9 L475 322 L482.4 325.1" fill="none" stroke="#555" stroke-width="1.5"/>
+<line x1="395" y1="322" x2="135" y2="322" stroke="#555" stroke-width="1.5"/>
+<path d="M142.4 318.9 L135 322 L142.4 325.1" fill="none" stroke="#555" stroke-width="1.5"/>
+<line x1="870" y1="322" x2="800" y2="322" stroke="#555" stroke-width="1.5"/>
+<text x="870" y="316" font-size="9.5" text-anchor="end" fill="#555">từ anten</text>
+<text x="40" y="372" font-size="10.5" text-anchor="start" fill="#444">Fronthaul (eCPRI, split 7.2) nối vào khối Low-PHY ở bên trái.</text>
+</svg>
