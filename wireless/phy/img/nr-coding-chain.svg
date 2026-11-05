@@ -1,0 +1,57 @@
+<svg role="img" viewBox="0 0 960 330" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+  <title>Chuỗi mã hóa kênh trong NR cho kênh dữ liệu và kênh điều khiển</title>
+  <rect x="0" y="0" width="960" height="330" rx="8" fill="#ffffff"/>
+  <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <text x="20" y="28" font-size="14" text-anchor="start" font-weight="700" fill="#1d4278">Chuỗi mã hóa kênh trong NR (TS 38.212)</text>
+  <text x="20" y="62" font-size="12" text-anchor="start" font-weight="700" fill="#555">Kênh dữ liệu (DL-SCH, UL-SCH) → PDSCH, PUSCH</text>
+  <rect x="20" y="76" width="116" height="56" rx="6" fill="#e8f0fb" stroke="#1d4278" stroke-width="1.2"/>
+  <text x="78.0" y="108.0" font-size="11.5" text-anchor="middle" font-weight="700" fill="#111">Transport block</text>
+  <rect x="154" y="76" width="116" height="56" rx="6" fill="#e8f0fb" stroke="#1d4278" stroke-width="1.2"/>
+  <text x="212.0" y="101.0" font-size="11.5" text-anchor="middle" font-weight="700" fill="#111">CRC của TB</text>
+  <text x="212.0" y="117.0" font-size="9.5" text-anchor="middle" font-weight="400" fill="#444">16 hoặc 24 bit</text>
+  <line x1="136" y1="104.0" x2="152" y2="104.0" stroke="#555" stroke-width="1.4" marker-end="url(#ah)"/>
+  <rect x="288" y="76" width="116" height="56" rx="6" fill="#e8f0fb" stroke="#1d4278" stroke-width="1.2"/>
+  <text x="346.0" y="101.0" font-size="11.5" text-anchor="middle" font-weight="700" fill="#111">Phân đoạn</text>
+  <text x="346.0" y="117.0" font-size="9.5" text-anchor="middle" font-weight="400" fill="#444">+ CRC 24 bit/CB</text>
+  <line x1="270" y1="104.0" x2="286" y2="104.0" stroke="#555" stroke-width="1.4" marker-end="url(#ah)"/>
+  <rect x="422" y="76" width="116" height="56" rx="6" fill="#fdf1e3" stroke="#1d4278" stroke-width="1.2"/>
+  <text x="480.0" y="101.0" font-size="11.5" text-anchor="middle" font-weight="700" fill="#111">LDPC</text>
+  <text x="480.0" y="117.0" font-size="9.5" text-anchor="middle" font-weight="400" fill="#444">BG1 hoặc BG2</text>
+  <line x1="404" y1="104.0" x2="420" y2="104.0" stroke="#555" stroke-width="1.4" marker-end="url(#ah)"/>
+  <rect x="556" y="76" width="116" height="56" rx="6" fill="#e8f0fb" stroke="#1d4278" stroke-width="1.2"/>
+  <text x="614.0" y="101.0" font-size="11.5" text-anchor="middle" font-weight="700" fill="#111">Rate matching</text>
+  <text x="614.0" y="117.0" font-size="9.5" text-anchor="middle" font-weight="400" fill="#444">circular buffer, RV</text>
+  <line x1="538" y1="104.0" x2="554" y2="104.0" stroke="#555" stroke-width="1.4" marker-end="url(#ah)"/>
+  <rect x="690" y="76" width="116" height="56" rx="6" fill="#e8f0fb" stroke="#1d4278" stroke-width="1.2"/>
+  <text x="748.0" y="108.0" font-size="11.5" text-anchor="middle" font-weight="700" fill="#111">Ghép code block</text>
+  <line x1="672" y1="104.0" x2="688" y2="104.0" stroke="#555" stroke-width="1.4" marker-end="url(#ah)"/>
+  <rect x="824" y="76" width="116" height="56" rx="6" fill="#e8f0fb" stroke="#1d4278" stroke-width="1.2"/>
+  <text x="882.0" y="101.0" font-size="11.5" text-anchor="middle" font-weight="700" fill="#111">Scrambling</text>
+  <text x="882.0" y="117.0" font-size="9.5" text-anchor="middle" font-weight="400" fill="#444">và điều chế</text>
+  <line x1="806" y1="104.0" x2="822" y2="104.0" stroke="#555" stroke-width="1.4" marker-end="url(#ah)"/>
+  <text x="20" y="186" font-size="12" text-anchor="start" font-weight="700" fill="#555">Kênh điều khiển (DCI → PDCCH, UCI → PUCCH/PUSCH, BCH → PBCH)</text>
+  <rect x="20" y="200" width="116" height="56" rx="6" fill="#e8f0fb" stroke="#1d4278" stroke-width="1.2"/>
+  <text x="78.0" y="232.0" font-size="11.5" text-anchor="middle" font-weight="700" fill="#111">DCI / UCI / MIB</text>
+  <rect x="154" y="200" width="116" height="56" rx="6" fill="#e8f0fb" stroke="#1d4278" stroke-width="1.2"/>
+  <text x="212.0" y="225.0" font-size="11.5" text-anchor="middle" font-weight="700" fill="#111">CRC</text>
+  <text x="212.0" y="241.0" font-size="9.5" text-anchor="middle" font-weight="400" fill="#444">DCI: 24 bit, mask RNTI</text>
+  <line x1="136" y1="228.0" x2="152" y2="228.0" stroke="#555" stroke-width="1.4" marker-end="url(#ah)"/>
+  <rect x="288" y="200" width="116" height="56" rx="6" fill="#e8f0fb" stroke="#1d4278" stroke-width="1.2"/>
+  <text x="346.0" y="225.0" font-size="11.5" text-anchor="middle" font-weight="700" fill="#111">Gán sub-channel</text>
+  <text x="346.0" y="241.0" font-size="9.5" text-anchor="middle" font-weight="400" fill="#444">theo độ tin cậy</text>
+  <line x1="270" y1="228.0" x2="286" y2="228.0" stroke="#555" stroke-width="1.4" marker-end="url(#ah)"/>
+  <rect x="422" y="200" width="116" height="56" rx="6" fill="#fdf1e3" stroke="#1d4278" stroke-width="1.2"/>
+  <text x="480.0" y="225.0" font-size="11.5" text-anchor="middle" font-weight="700" fill="#111">Polar</text>
+  <text x="480.0" y="241.0" font-size="9.5" text-anchor="middle" font-weight="400" fill="#444">N ≤ 512 (DL)</text>
+  <line x1="404" y1="228.0" x2="420" y2="228.0" stroke="#555" stroke-width="1.4" marker-end="url(#ah)"/>
+  <rect x="556" y="200" width="116" height="56" rx="6" fill="#e8f0fb" stroke="#1d4278" stroke-width="1.2"/>
+  <text x="614.0" y="225.0" font-size="11.5" text-anchor="middle" font-weight="700" fill="#111">Rate matching</text>
+  <text x="614.0" y="241.0" font-size="9.5" text-anchor="middle" font-weight="400" fill="#444">puncture, shorten, lặp</text>
+  <line x1="538" y1="228.0" x2="554" y2="228.0" stroke="#555" stroke-width="1.4" marker-end="url(#ah)"/>
+  <rect x="690" y="200" width="116" height="56" rx="6" fill="#e8f0fb" stroke="#1d4278" stroke-width="1.2"/>
+  <text x="748.0" y="225.0" font-size="11.5" text-anchor="middle" font-weight="700" fill="#111">Scrambling</text>
+  <text x="748.0" y="241.0" font-size="9.5" text-anchor="middle" font-weight="400" fill="#444">và điều chế</text>
+  <line x1="672" y1="228.0" x2="688" y2="228.0" stroke="#555" stroke-width="1.4" marker-end="url(#ah)"/>
+  <text x="20" y="300" font-size="11.5" text-anchor="start" font-weight="400" fill="#333">Khối màu cam là bộ mã. UCI rất ngắn (dưới 12 bit) không dùng Polar mà dùng mã lặp, simplex hoặc Reed-Muller.</text>
+  <text x="20" y="318" font-size="11.5" text-anchor="start" font-weight="400" fill="#333">Hình rút gọn: bỏ qua interleaving sau rate matching và các khác biệt nhỏ giữa đường xuống và đường lên.</text>
+</svg>
