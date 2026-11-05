@@ -1,0 +1,46 @@
+<svg role="img" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+  <title>Luồng sản xuất một board: lắp ráp SMT gồm in solder paste, pick and place, reflow, kiểm tra quang; sau đó test gồm ICT, nạp firmware, functional test, burn-in và đóng gói</title>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker>
+  <marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#b5483a"/></marker></defs>
+  <rect x="0" y="0" width="760" height="300" rx="8" fill="#ffffff"/>
+  <text x="740" y="32" font-size="13" font-weight="700" text-anchor="end" fill="#1d4278">LẮP RÁP (SMT)</text>
+  <text x="740" y="152" font-size="13" font-weight="700" text-anchor="end" fill="#1f5c38">TEST VÀ HOÀN THIỆN</text>
+  <rect x="20" y="46" width="118" height="54" rx="6" fill="#eaf1fb" stroke="#2f5d9e" stroke-width="1.5"/>
+  <text x="79.0" y="69" font-size="11" text-anchor="middle" fill="#111">In</text>
+  <text x="79.0" y="85" font-size="11" text-anchor="middle" fill="#111">solder paste</text>
+  <line x1="138" y1="73.0" x2="161" y2="73.0" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+  <rect x="162" y="46" width="118" height="54" rx="6" fill="#eaf1fb" stroke="#2f5d9e" stroke-width="1.5"/>
+  <text x="221.0" y="69" font-size="11" text-anchor="middle" fill="#111">Pick and</text>
+  <text x="221.0" y="85" font-size="11" text-anchor="middle" fill="#111">place</text>
+  <line x1="280" y1="73.0" x2="303" y2="73.0" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+  <rect x="304" y="46" width="118" height="54" rx="6" fill="#eaf1fb" stroke="#2f5d9e" stroke-width="1.5"/>
+  <text x="363.0" y="77" font-size="11" text-anchor="middle" fill="#111">Reflow</text>
+  <line x1="422" y1="73.0" x2="445" y2="73.0" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+  <rect x="446" y="46" width="118" height="54" rx="6" fill="#eaf1fb" stroke="#2f5d9e" stroke-width="1.5"/>
+  <text x="505.0" y="69" font-size="11" text-anchor="middle" fill="#111">Kiểm tra mối hàn</text>
+  <text x="505.0" y="85" font-size="11" text-anchor="middle" fill="#111">AOI, X-ray</text>
+  <path d="M 564 73.0 L 594 73.0 L 594 120 L 79.0 120 L 79.0 165" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+  <rect x="20" y="166" width="124" height="54" rx="6" fill="#e6f4ea" stroke="#2e7d4f" stroke-width="1.5"/>
+  <text x="82.0" y="189" font-size="11" text-anchor="middle" fill="#111">ICT hoặc</text>
+  <text x="82.0" y="205" font-size="11" text-anchor="middle" fill="#111">flying probe</text>
+  <line x1="144" y1="193.0" x2="169" y2="193.0" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+  <rect x="170" y="166" width="124" height="54" rx="6" fill="#e6f4ea" stroke="#2e7d4f" stroke-width="1.5"/>
+  <text x="232.0" y="189" font-size="11" text-anchor="middle" fill="#111">Nạp firmware,</text>
+  <text x="232.0" y="205" font-size="11" text-anchor="middle" fill="#111">provisioning</text>
+  <line x1="294" y1="193.0" x2="319" y2="193.0" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+  <rect x="320" y="166" width="124" height="54" rx="6" fill="#e6f4ea" stroke="#2e7d4f" stroke-width="1.5"/>
+  <text x="382.0" y="189" font-size="11" text-anchor="middle" fill="#111">Functional</text>
+  <text x="382.0" y="205" font-size="11" text-anchor="middle" fill="#111">test (FCT)</text>
+  <line x1="444" y1="193.0" x2="469" y2="193.0" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+  <rect x="470" y="166" width="124" height="54" rx="6" fill="#e6f4ea" stroke="#2e7d4f" stroke-width="1.5"/>
+  <text x="532.0" y="189" font-size="11" text-anchor="middle" fill="#111">Burn-in</text>
+  <text x="532.0" y="205" font-size="11" text-anchor="middle" fill="#111">(tùy chọn)</text>
+  <line x1="594" y1="193.0" x2="619" y2="193.0" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+  <rect x="620" y="166" width="124" height="54" rx="6" fill="#e6f4ea" stroke="#2e7d4f" stroke-width="1.5"/>
+  <text x="682.0" y="197" font-size="11" text-anchor="middle" fill="#111">Đóng gói</text>
+  <text x="380" y="262" font-size="11" text-anchor="middle" fill="#b5483a">đơn vị không đạt ở một trạm test: phân tích lỗi, sửa (rework) rồi test lại, hoặc loại bỏ</text>
+  <line x1="82.0" y1="220" x2="82.0" y2="242" stroke="#b5483a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#r)"/>
+  <line x1="232.0" y1="220" x2="232.0" y2="242" stroke="#b5483a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#r)"/>
+  <line x1="382.0" y1="220" x2="382.0" y2="242" stroke="#b5483a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#r)"/>
+  <line x1="532.0" y1="220" x2="532.0" y2="242" stroke="#b5483a" stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#r)"/>
+</svg>

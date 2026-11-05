@@ -26,7 +26,7 @@
     
     
       
-        <title>Product Development (WIP) - Vu Tang's Docs</title>
+        <title>Product Development - Vu Tang's Docs</title>
       
     
     
@@ -72,7 +72,7 @@
     
   
 <meta property="og:type" content="website">
-<meta property="og:title" content="Product Development (WIP) - Vu Tang's Docs">
+<meta property="og:title" content="Product Development - Vu Tang's Docs">
 <meta property="og:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
 <meta property="og:image" content="https://note.vutang.dev/assets/images/social/hw_design/product_dev/product-dev.png">
 <meta property="og:image:type" content="image/png">
@@ -80,7 +80,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://note.vutang.dev/hw_design/product_dev/product-dev/">
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:title" content="Product Development (WIP) - Vu Tang's Docs">
+<meta property="twitter:title" content="Product Development - Vu Tang's Docs">
 <meta property="twitter:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
 <meta property="twitter:image" content="https://note.vutang.dev/assets/images/social/hw_design/product_dev/product-dev.png">
 <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
@@ -145,7 +145,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Product Development (WIP)
+              Product Development
             
           </span>
         </div>
@@ -10653,7 +10653,7 @@
   <span class="md-ellipsis">
     
   
-    Product Development (WIP)
+    Product Development
   
 
     
@@ -10671,7 +10671,7 @@
   <span class="md-ellipsis">
     
   
-    Product Development (WIP)
+    Product Development
   
 
     
@@ -10767,6 +10767,17 @@
     <span class="md-ellipsis">
       
         Liên quan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài liệu tham khảo
       
     </span>
   </a>
@@ -11743,6 +11754,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài liệu tham khảo
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -11769,43 +11791,280 @@
 <p>Hình dưới tóm tắt thứ tự các giai đoạn. Lỗi phát hiện ở EVT hoặc DVT dẫn tới sửa thiết kế và làm lại board (re-spin) trước khi chuyển sang mốc tiếp theo.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/hw-stages.svg" data-desc-position="bottom"><img alt="Các giai đoạn phát triển sản phẩm phần cứng" src="../img/hw-stages.svg"></a></p>
 <h2 id="cac-giai-oan-thiet-ke">Các giai đoạn thiết kế<a class="headerlink" href="#cac-giai-oan-thiet-ke" title="Permanent link">¶</a></h2>
-<p>Giai đoạn thiết kế đi từ yêu cầu sản phẩm tới bản prototype đầu tiên: xác định yêu cầu và kiến trúc, vẽ schematic, layout PCB, chế tạo và lắp ráp board mẫu. Vòng lặp ở mức board đã được tóm tắt trong <a href="../../#quy-trinh-thiet-ke-board">Hardware Design</a>.</p>
-<div class="admonition todo">
-<p class="admonition-title">Todo</p>
-<p>Trình bày đầu ra của từng giai đoạn và các buổi review thiết kế (schematic review, layout review).</p>
-</div>
+<p>Giai đoạn thiết kế đi từ yêu cầu sản phẩm tới bản prototype đầu tiên. Vòng lặp ở mức board đã được tóm tắt trong <a href="../../#quy-trinh-thiet-ke-board">Hardware Design</a>; bảng dưới bổ sung đầu ra của từng bước, vì đầu ra của bước trước là đầu vào để review và làm bước sau.</p>
+<table>
+<thead>
+<tr>
+<th>Giai đoạn</th>
+<th>Hoạt động chính</th>
+<th>Đầu ra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Yêu cầu sản phẩm</td>
+<td>Xác định chức năng, giá thành mục tiêu, kích thước, nguồn cấp, môi trường hoạt động (nhiệt độ, độ ẩm), thị trường sẽ bán</td>
+<td>Tài liệu yêu cầu sản phẩm (Product Requirements Document, PRD)</td>
+</tr>
+<tr>
+<td>Kiến trúc hệ thống</td>
+<td>Chọn SoC hoặc MCU, bộ nhớ, giao tiếp ngoại vi, kiến trúc nguồn; ước tính công suất và giá BOM</td>
+<td>Sơ đồ khối, bảng công suất (power budget), BOM sơ bộ</td>
+</tr>
+<tr>
+<td>Schematic</td>
+<td>Vẽ mạch nguyên lý cho từng khối, chọn linh kiện cụ thể</td>
+<td>Schematic, BOM</td>
+</tr>
+<tr>
+<td>Layout PCB</td>
+<td>Chọn stackup, đặt linh kiện, đi dây, kiểm tra theo luật của nhà sản xuất PCB</td>
+<td>File chế tạo (Gerber hoặc ODB++), file tọa độ linh kiện (pick and place), bản vẽ lắp ráp</td>
+</tr>
+<tr>
+<td>Prototype</td>
+<td>Chế tạo PCB và lắp ráp một số lượng nhỏ board mẫu</td>
+<td>Board mẫu cho EVT</td>
+</tr>
+</tbody>
+</table>
+<p>Thị trường sẽ bán cần được xác định ngay từ bước yêu cầu, vì nó quyết định bộ chứng nhận sản phẩm phải đạt (xem <a href="#chung-nhan-san-pham">mục Chứng nhận sản phẩm</a>), và các yêu cầu chứng nhận ảnh hưởng tới schematic và layout.</p>
+<p>Mỗi bước schematic và layout kết thúc bằng một buổi review thiết kế, trong đó người không trực tiếp thiết kế kiểm tra lại bản vẽ trước khi chuyển sang bước sau:</p>
+<table>
+<thead>
+<tr>
+<th>Buổi review</th>
+<th>Các điểm kiểm tra chính</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Schematic review</td>
+<td>Pinout khớp với datasheet; mức điện áp giữa các miền nguồn (voltage domain) tương thích; thứ tự cấp nguồn (power sequencing); điện trở pull-up, pull-down và giá trị linh kiện; footprint khớp với linh kiện đã chọn; có đủ test point và cổng debug</td>
+</tr>
+<tr>
+<td>Layout review</td>
+<td>Trở kháng đường tín hiệu tốc độ cao; đường hồi dòng (return path); đặt tụ decoupling sát chân nguồn; khoảng cách cách điện; tản nhiệt; tuân thủ luật thiết kế (design rule) của nhà sản xuất PCB và nhà lắp ráp</td>
+</tr>
+</tbody>
+</table>
+<p>Chi tiết kỹ thuật của từng bước nằm ở các trang <a href="../../passives/passives/">Passives</a>, <a href="../../power/power/">Power</a> và <a href="../../pcb/pcb/">PCB Design</a>.</p>
 <h2 id="evt-dvt-va-pvt">EVT, DVT và PVT<a class="headerlink" href="#evt-dvt-va-pvt" title="Permanent link">¶</a></h2>
 <p>EVT (Engineering Validation Test), DVT (Design Validation Test) và PVT (Production Validation Test) là ba mốc kiểm chứng thường dùng trước khi sản xuất hàng loạt. Mỗi mốc kiểm chứng một đối tượng khác nhau: thiết kế kỹ thuật có hoạt động không, thiết kế hoàn chỉnh có đạt yêu cầu không, và quy trình sản xuất có ổn định không.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>EVT</th>
+<th>DVT</th>
+<th>PVT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Câu hỏi cần trả lời</td>
+<td>Thiết kế kỹ thuật có hoạt động không?</td>
+<td>Thiết kế hoàn chỉnh có đạt mọi yêu cầu không?</td>
+<td>Nhà máy có sản xuất ổn định với chất lượng đạt yêu cầu không?</td>
+</tr>
+<tr>
+<td>Mẫu được làm ra sao</td>
+<td>Board mẫu, có thể chưa có vỏ hoặc dùng vỏ tạm</td>
+<td>Board và vỏ gần như bản cuối, làm bằng quy trình gần với sản xuất</td>
+<td>Sản xuất trên dây chuyền thật, với linh kiện, fixture và phần mềm test của sản xuất</td>
+</tr>
+<tr>
+<td>Hoạt động chính</td>
+<td>Bring-up, test chức năng từng khối, đo nguồn và tín hiệu, đo nhiệt sơ bộ</td>
+<td>Test độ tin cậy, test môi trường (nhiệt độ, độ ẩm, rung, rơi), ESD, đo EMC, thử nghiệm chứng nhận</td>
+<td>Đo yield, thời gian sản xuất mỗi đơn vị, độ ổn định của các trạm test</td>
+</tr>
+<tr>
+<td>Kết quả để qua mốc</td>
+<td>Mọi chức năng chính hoạt động; lỗi còn lại đã có hướng sửa</td>
+<td>Đạt đặc tả và các thử nghiệm chứng nhận; thiết kế được đóng băng (design freeze)</td>
+<td>Yield và chất lượng đạt mục tiêu; nhà máy sẵn sàng sản xuất hàng loạt</td>
+</tr>
+</tbody>
+</table>
+<p>Số lượng mẫu tăng dần qua các mốc, vì mỗi mốc cần nhiều mẫu hơn cho các loại test của nó: DVT cần mẫu cho test phá hủy (rơi, rung, chu kỳ nhiệt) và cho phòng thử nghiệm chứng nhận, còn PVT cần đủ số lượng để đánh giá quy trình sản xuất một cách thống kê. Mẫu của mỗi mốc cũng được dùng cho nhóm phần mềm và có thể gửi cho khách hàng dùng thử.</p>
 <div class="admonition todo">
 <p class="admonition-title">Todo</p>
-<p>Trình bày mục tiêu, số lượng mẫu, tiêu chí hoàn thành của từng mốc và cần dẫn nguồn. Phần <a href="../../bringup/bringup/">Bring-up &amp; Debug</a> thuộc giai đoạn EVT.</p>
+<p>Bổ sung số lượng mẫu tham khảo cho từng mốc và ví dụ tiêu chí qua mốc, kèm nguồn.</p>
 </div>
+<p>Một mốc có thể lặp lại nhiều lần. Nếu EVT phát hiện lỗi phải sửa PCB, board được làm lại (re-spin) và chạy EVT lần hai trước khi sang DVT. Thay đổi thiết kế sau khi qua DVT có chi phí cao hơn, vì kéo theo phải chạy lại các test bị ảnh hưởng, có khi cả thử nghiệm chứng nhận. Từ thời điểm này, mọi thay đổi đi qua quy trình ECO (xem <a href="#quan-ly-bom-va-thay-oi-ky-thuat">mục Quản lý BOM và thay đổi kỹ thuật</a>).</p>
+<p>Phần mềm cần có ở từng mốc được trình bày ở trang <a href="../../../programming/dev_process/sw-process/#phan-mem-theo-cac-giai-oan-phat-trien-phan-cung">Quy trình phát triển phần mềm</a>. Bring-up board ở EVT được trình bày ở trang <a href="../../bringup/bringup/">Bring-up &amp; Debug</a>.</p>
 <h2 id="ua-san-pham-vao-san-xuat-npi">Đưa sản phẩm vào sản xuất (NPI)<a class="headerlink" href="#ua-san-pham-vao-san-xuat-npi" title="Permanent link">¶</a></h2>
+<p>New Product Introduction (NPI, đưa sản phẩm mới vào sản xuất) là các hoạt động chuyển một thiết kế đã kiểm chứng thành quy trình sản xuất ở nhà máy. Nhiều công ty không tự sản xuất mà thuê nhà sản xuất dịch vụ điện tử (Electronics Manufacturing Services, EMS); khi đó NPI chủ yếu là chuyển giao hồ sơ và cùng nhà máy dựng quy trình.</p>
+<p>Hồ sơ chuyển giao cho nhà máy gồm:</p>
+<ul>
+<li>File chế tạo PCB (Gerber hoặc ODB++) và yêu cầu chế tạo: vật liệu, độ dày, stackup, kiểm soát trở kháng.</li>
+<li>BOM có mã linh kiện của nhà sản xuất (Manufacturer Part Number, MPN) và danh sách linh kiện thay thế đã được duyệt.</li>
+<li>File tọa độ linh kiện cho máy pick and place, và bản vẽ lắp ráp.</li>
+<li>Tiêu chuẩn chấp nhận mối hàn và lắp ráp, thường viện dẫn IPC-A-610 cùng cấp chất lượng (class) áp dụng.</li>
+<li>Quy trình test, fixture test, và phần mềm để nạp firmware và test.</li>
+<li>Hướng dẫn lắp vỏ, dán nhãn và đóng gói.</li>
+</ul>
+<p>Một board đi qua dây chuyền theo hai phần: lắp ráp SMT, rồi test và hoàn thiện. Hình dưới minh họa luồng này.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/production-flow.svg" data-desc-position="bottom"><img alt="Luồng lắp ráp và test sản xuất" src="../img/production-flow.svg"></a></p>
+<table>
+<thead>
+<tr>
+<th>Trạm</th>
+<th>Kiểm tra gì</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AOI (Automated Optical Inspection)</td>
+<td>Camera kiểm tra vị trí, hướng linh kiện và hình dạng mối hàn nhìn thấy được</td>
+</tr>
+<tr>
+<td>X-ray</td>
+<td>Mối hàn bị che khuất, như bi hàn dưới BGA hoặc pad dưới QFN</td>
+</tr>
+<tr>
+<td>ICT (In-Circuit Test) hoặc flying probe</td>
+<td>Đo điện từng net qua test point: ngắn mạch, hở mạch, giá trị linh kiện. ICT dùng fixture kim (bed-of-nails), flying probe dùng đầu dò di chuyển, không cần fixture riêng nhưng chậm hơn</td>
+</tr>
+<tr>
+<td>Nạp firmware và provisioning</td>
+<td>Nạp bootloader, firmware; ghi thông tin riêng của từng đơn vị như số serial, địa chỉ MAC, khóa</td>
+</tr>
+<tr>
+<td>Functional test (FCT)</td>
+<td>Cấp nguồn và chạy board như khi sử dụng, kiểm tra từng chức năng qua phần mềm test</td>
+</tr>
+<tr>
+<td>Burn-in</td>
+<td>Chạy board trong thời gian dài, có thể ở nhiệt độ cao, để loại các đơn vị hỏng sớm; không phải sản phẩm nào cũng cần</td>
+</tr>
+</tbody>
+</table>
+<p>Chất lượng của quy trình được đo bằng yield. First Pass Yield (FPY) là tỷ lệ đơn vị qua mọi trạm test ngay lần đầu mà không phải sửa. Dữ liệu lỗi từ các trạm test cho biết lỗi nằm ở thiết kế, ở linh kiện hay ở quy trình lắp ráp, và là cơ sở để cải tiến trong PVT.</p>
+<p>Sau PVT, sản lượng được tăng dần (ramp-up) thay vì chạy ngay ở công suất tối đa, để các vấn đề chỉ xuất hiện ở số lượng lớn được phát hiện khi số đơn vị bị ảnh hưởng còn ít.</p>
 <div class="admonition todo">
 <p class="admonition-title">Todo</p>
-<p>Trình bày New Product Introduction (NPI): chuyển giao thiết kế cho nhà máy, sản xuất thử (pilot run), thiết lập test sản xuất, tăng sản lượng (ramp-up).</p>
+<p>Bổ sung mức FPY mục tiêu tham khảo, kèm nguồn.</p>
 </div>
 <h2 id="thiet-ke-cho-san-xuat-va-kiem-thu-dfm-dft">Thiết kế cho sản xuất và kiểm thử (DFM, DFT)<a class="headerlink" href="#thiet-ke-cho-san-xuat-va-kiem-thu-dfm-dft" title="Permanent link">¶</a></h2>
-<div class="admonition todo">
-<p class="admonition-title">Todo</p>
-<p>Trình bày Design for Manufacturing (DFM) và Design for Test (DFT): test point, boundary scan, fixture test. Phần lắp ráp đã có ở <a href="../../manufacturing/smt/">Manufacturing &amp; SMT</a>.</p>
-</div>
+<p>Design for Manufacturing (DFM, thiết kế cho sản xuất) là thiết kế sao cho board chế tạo và lắp ráp được với yield cao và chi phí thấp. Các luật DFM đến từ năng lực của nhà sản xuất PCB và nhà lắp ráp: độ rộng và khoảng cách đường mạch tối thiểu, kích thước via, khoảng cách từ linh kiện tới mép board, fiducial (dấu định vị cho máy pick and place), cách ghép nhiều board trên một tấm (panelization). Luật này cần lấy từ nhà sản xuất trước khi layout, không phải sau khi đã xong. Chi tiết quy trình lắp ráp nằm ở trang <a href="../../manufacturing/smt/">Manufacturing &amp; SMT</a>.</p>
+<p>Design for Test (DFT, thiết kế cho kiểm thử) là thiết kế sao cho board kiểm tra được ở nhà máy. Các biện pháp chính:</p>
+<ul>
+<li><strong>Test point</strong>: pad trên các net cần đo, đặt ở vị trí kim của fixture ICT hoặc đầu dò flying probe chạm tới được.</li>
+<li><strong>Boundary scan</strong>: chuẩn IEEE 1149.1 (JTAG) cho phép điều khiển và đọc trạng thái chân của các chip hỗ trợ chuẩn này qua chuỗi JTAG, nhờ đó kiểm tra được kết nối của các chân BGA mà đầu dò không chạm tới.</li>
+<li><strong>Cổng nạp và debug</strong>: cổng JTAG/SWD và UART console đặt ở vị trí fixture tiếp cận được, dùng cho cả nạp firmware và test.</li>
+<li><strong>Tự kiểm tra trong phần mềm</strong>: firmware hoặc phần mềm test có lệnh kiểm tra từng ngoại vi, để trạm FCT chỉ cần gọi lệnh và đọc kết quả.</li>
+</ul>
+<p>DFT cần được tính từ lúc vẽ schematic. Thêm test point sau khi layout đã xong thường phải đi dây lại, còn một chip không được nối vào chuỗi JTAG thì không thể bổ sung ở nhà máy.</p>
 <h2 id="quan-ly-bom-va-thay-oi-ky-thuat">Quản lý BOM và thay đổi kỹ thuật<a class="headerlink" href="#quan-ly-bom-va-thay-oi-ky-thuat" title="Permanent link">¶</a></h2>
-<div class="admonition todo">
-<p class="admonition-title">Todo</p>
-<p>Trình bày quản lý Bill of Materials (BOM), linh kiện thay thế, vòng đời linh kiện (EOL), và quy trình Engineering Change Order (ECO).</p>
-</div>
+<p>Bill of Materials (BOM) là danh sách mọi linh kiện cần để sản xuất một sản phẩm. Một BOM dùng cho sản xuất có tối thiểu các cột sau:</p>
+<table>
+<thead>
+<tr>
+<th>Cột</th>
+<th>Nội dung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reference designator</td>
+<td>Ký hiệu vị trí trên board (R12, C5, U3)</td>
+</tr>
+<tr>
+<td>Số lượng</td>
+<td>Số linh kiện cùng loại trên một board</td>
+</tr>
+<tr>
+<td>Mô tả và giá trị</td>
+<td>Ví dụ "10 kΩ, 1%, 0402"</td>
+</tr>
+<tr>
+<td>Nhà sản xuất và MPN</td>
+<td>Linh kiện chính được chọn</td>
+</tr>
+<tr>
+<td>Linh kiện thay thế</td>
+<td>Các MPN khác đã được duyệt dùng thay, thuộc danh sách nhà cung cấp được duyệt (Approved Vendor List, AVL)</td>
+</tr>
+</tbody>
+</table>
+<p>Mỗi linh kiện có vòng đời do nhà sản xuất công bố. Khi một linh kiện chuyển sang trạng thái không khuyến nghị cho thiết kế mới (Not Recommended for New Designs, NRND) hoặc ngừng sản xuất (End of Life, EOL), nhà sản xuất thường gửi thông báo thay đổi sản phẩm (Product Change Notification, PCN) và cho một hạn đặt mua lần cuối (last time buy). Vì vậy cần kiểm tra trạng thái vòng đời khi chọn linh kiện, và chọn trước linh kiện thay thế cho các linh kiện chỉ có một nguồn cung.</p>
+<p>Sau khi thiết kế đã đóng băng, mọi thay đổi đi qua một quy trình có kiểm soát để các bên liên quan (thiết kế, phần mềm, nhà máy, mua hàng, chứng nhận) đều biết và đồng ý:</p>
+<ol>
+<li><strong>Engineering Change Request (ECR)</strong>: đề xuất thay đổi, nêu lý do (sửa lỗi, thay linh kiện EOL, giảm chi phí).</li>
+<li><strong>Đánh giá ảnh hưởng</strong>: thay đổi ảnh hưởng tới những test nào, chứng nhận nào, linh kiện tồn kho nào, phần mềm có phải sửa không.</li>
+<li><strong>Phê duyệt</strong>: các bên liên quan duyệt đề xuất.</li>
+<li><strong>Engineering Change Order (ECO)</strong>: lệnh thực hiện thay đổi, kèm hồ sơ đã cập nhật (schematic, BOM, file chế tạo) và thời điểm áp dụng trong sản xuất.</li>
+</ol>
+<p>Mỗi thay đổi PCB tạo ra một revision mới của board, cần được ghi trên lớp in (silkscreen) và đọc được bằng phần mềm, ví dụ qua chân GPIO cấu hình bằng điện trở hoặc qua <a href="../../../lnx_es/eeprom/eeprom/">EEPROM</a> chứa thông tin board. Nhờ đó cùng một bản phần mềm có thể nhận biết và hỗ trợ nhiều revision.</p>
 <h2 id="chung-nhan-san-pham">Chứng nhận sản phẩm<a class="headerlink" href="#chung-nhan-san-pham" title="Permanent link">¶</a></h2>
-<p>Sản phẩm thường phải qua chứng nhận trước khi bán ra thị trường, và lịch thử nghiệm chứng nhận cần được tính vào giai đoạn DVT và PVT. Các quy định và chương trình chứng nhận liên quan tới bảo mật được trình bày ở tab Security, trong <a href="../../../embedded_security/compliance/">Compliance &amp; Certification</a>.</p>
+<p>Sản phẩm điện tử phải đáp ứng các quy định của thị trường nơi nó được bán. Các nhóm yêu cầu chính:</p>
+<table>
+<thead>
+<tr>
+<th>Nhóm</th>
+<th>Nội dung</th>
+<th>Ví dụ văn bản</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tương thích điện từ (EMC)</td>
+<td>Thiết bị không phát nhiễu điện từ quá giới hạn, và vẫn hoạt động đúng khi chịu nhiễu từ môi trường</td>
+<td>EU: EMC Directive 2014/30/EU; Mỹ: FCC 47 CFR Part 15</td>
+</tr>
+<tr>
+<td>An toàn điện</td>
+<td>Bảo vệ người dùng khỏi điện giật, cháy, nhiệt độ cao</td>
+<td>EU: Low Voltage Directive 2014/35/EU; tiêu chuẩn IEC 62368-1 cho thiết bị nghe nhìn và công nghệ thông tin</td>
+</tr>
+<tr>
+<td>Vô tuyến</td>
+<td>Thiết bị có phát sóng vô tuyến phải dùng đúng băng tần và công suất</td>
+<td>EU: Radio Equipment Directive 2014/53/EU; Mỹ: FCC 47 CFR Part 15</td>
+</tr>
+<tr>
+<td>Hạn chế chất độc hại</td>
+<td>Giới hạn các chất như chì, thủy ngân, cadmium trong linh kiện và vật liệu</td>
+<td>EU: RoHS Directive 2011/65/EU</td>
+</tr>
+<tr>
+<td>Bảo mật</td>
+<td>Yêu cầu bảo mật cho thiết bị kết nối mạng</td>
+<td>Xem tab Security</td>
+</tr>
+</tbody>
+</table>
+<p>Tại EU, thiết bị vô tuyến thuộc phạm vi của RED, và RED bao gồm cả yêu cầu về an toàn và EMC cho các thiết bị này. Quan hệ giữa dấu CE, RED và tiêu chuẩn hài hòa được trình bày ở trang <a href="../../../embedded_security/compliance/ce-red/">CE marking và Radio Equipment Directive</a>; phần yêu cầu bảo mật nằm ở <a href="../../../embedded_security/compliance/">Compliance &amp; Certification</a>.</p>
+<p>Chứng nhận gắn với lịch phát triển ở ba điểm:</p>
+<ul>
+<li><strong>Từ khi thiết kế</strong>: yêu cầu EMC và an toàn ảnh hưởng tới schematic (lọc nhiễu, bảo vệ ESD) và layout (stackup, nối đất, khoảng cách cách điện), nên cần được xem xét ngay từ giai đoạn thiết kế.</li>
+<li><strong>EVT và DVT</strong>: đo EMC sơ bộ (pre-compliance) trong phòng thí nghiệm của mình hoặc thuê ngoài, để phát hiện vấn đề trước khi thử nghiệm chính thức.</li>
+<li><strong>DVT</strong>: thử nghiệm chính thức tại phòng thử nghiệm được công nhận, trên mẫu có thiết kế cuối cùng.</li>
+</ul>
+<p>Sản phẩm đã được chứng nhận mà thay đổi thiết kế sau đó (ví dụ thay linh kiện qua ECO) thì phải đánh giá xem thay đổi có ảnh hưởng tới kết quả thử nghiệm không, và có thể phải thử nghiệm lại.</p>
 <div class="admonition todo">
 <p class="admonition-title">Todo</p>
-<p>Bổ sung các nhóm chứng nhận về EMC, an toàn điện và vô tuyến, kèm nguồn.</p>
+<p>Bổ sung các quy định tương ứng cho thị trường Việt Nam (quy chuẩn kỹ thuật QCVN về EMC và thiết bị vô tuyến), kèm nguồn.</p>
 </div>
 <h2 id="lien-quan">Liên quan<a class="headerlink" href="#lien-quan" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="../../../programming/dev_process/sw-process/">Quy trình phát triển phần mềm</a> (Programming): mô hình phát triển phần mềm và phần mềm theo từng giai đoạn phần cứng.</li>
-<li><a href="../../../embedded_security/compliance/">Compliance &amp; Certification</a> (Security).</li>
-<li><a href="../../bringup/bringup/">Bring-up &amp; Debug</a> và <a href="../../manufacturing/smt/">Manufacturing &amp; SMT</a> (Hardware Design).</li>
+<li><a href="../../../embedded_security/compliance/ce-red/">CE marking và Radio Equipment Directive</a> và <a href="../../../embedded_security/compliance/">Compliance &amp; Certification</a> (Security).</li>
+<li><a href="../../../lnx_es/iot/device_mgmt/provisioning/">Provisioning &amp; Device Identity</a> (Embedded): ghi định danh và khóa cho từng thiết bị khi sản xuất.</li>
+<li><a href="../../bringup/bringup/">Bring-up &amp; Debug</a>, <a href="../../manufacturing/smt/">Manufacturing &amp; SMT</a> và <a href="../../pcb/pcb/">PCB Design</a> (Hardware Design).</li>
+</ul>
+<h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="https://eur-lex.europa.eu/eli/dir/2014/30/oj">Directive 2014/30/EU</a> về tương thích điện từ (EMC Directive).</li>
+<li><a href="https://eur-lex.europa.eu/eli/dir/2014/35/oj">Directive 2014/35/EU</a> về thiết bị điện hạ áp (Low Voltage Directive).</li>
+<li><a href="https://eur-lex.europa.eu/eli/dir/2014/53/oj">Directive 2014/53/EU</a> về thiết bị vô tuyến (Radio Equipment Directive).</li>
+<li><a href="https://eur-lex.europa.eu/eli/dir/2011/65/oj">Directive 2011/65/EU</a> về hạn chế chất độc hại trong thiết bị điện, điện tử (RoHS).</li>
+<li><a href="https://www.ecfr.gov/current/title-47/chapter-I/subchapter-A/part-15">47 CFR Part 15</a>, Radio Frequency Devices, FCC.</li>
+<li>IEC 62368-1, Audio/video, information and communication technology equipment, Part 1: Safety requirements.</li>
+<li>IEEE 1149.1, Standard for Test Access Port and Boundary-Scan Architecture.</li>
+<li>IPC-A-610, Acceptability of Electronic Assemblies.</li>
 </ul>
 
 
@@ -11829,7 +12088,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 5, 2026 09:39:43 UTC">November 5, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 5, 2026 10:09:03 UTC">November 5, 2026</span>
   </span>
 
     
