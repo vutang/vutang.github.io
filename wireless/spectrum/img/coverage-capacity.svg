@@ -1,0 +1,35 @@
+<svg role="img" viewBox="0 0 960 360" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+<title>So sánh vùng phủ và băng thông của low-band, mid-band và mmWave</title>
+<rect x="0" y="0" width="960" height="360" rx="8" fill="#ffffff"/>
+<rect x="30" y="20" width="280" height="320" rx="10" fill="#eaf3ea" stroke="#2e7d4f" stroke-width="1.3"/>
+<text x="170" y="48" font-size="15" font-weight="700" text-anchor="middle" fill="#2e7d4f">Low-band</text>
+<text x="170" y="66" font-size="11" text-anchor="middle" fill="#555">&lt; 1 GHz</text>
+<circle cx="170" cy="156" r="78" fill="#2e7d4f" fill-opacity="0.18" stroke="#2e7d4f" stroke-width="1.5"/>
+<circle cx="170" cy="156" r="4" fill="#2e7d4f"/>
+<text x="50" y="244" font-size="10" fill="#555">Băng thông tương đối</text>
+<rect x="50" y="250" width="24" height="12" rx="3" fill="#2e7d4f"/>
+<text x="50" y="288" font-size="11" fill="#333">Phủ rộng, xuyên tường tốt</text>
+<text x="50" y="306" font-size="11" fill="#333">Băng thông hẹp: 5 – 20 MHz</text>
+<text x="50" y="324" font-size="11" fill="#333">Vai trò: phủ nền, indoor, uplink</text>
+<rect x="340" y="20" width="280" height="320" rx="10" fill="#e8eef8" stroke="#2f5d9e" stroke-width="1.3"/>
+<text x="480" y="48" font-size="15" font-weight="700" text-anchor="middle" fill="#2f5d9e">Mid-band</text>
+<text x="480" y="66" font-size="11" text-anchor="middle" fill="#555">1 – 7,125 GHz</text>
+<circle cx="480" cy="156" r="54" fill="#2f5d9e" fill-opacity="0.18" stroke="#2f5d9e" stroke-width="1.5"/>
+<circle cx="480" cy="156" r="4" fill="#2f5d9e"/>
+<text x="360" y="244" font-size="10" fill="#555">Băng thông tương đối</text>
+<rect x="360" y="250" width="70" height="12" rx="3" fill="#2f5d9e"/>
+<text x="360" y="288" font-size="11" fill="#333">Cân bằng phủ và dung lượng</text>
+<text x="360" y="306" font-size="11" fill="#333">Băng thông đến 100 MHz</text>
+<text x="360" y="324" font-size="11" fill="#333">Vai trò: lớp dung lượng chính</text>
+<rect x="650" y="20" width="280" height="320" rx="10" fill="#fff1e0" stroke="#b7791f" stroke-width="1.3"/>
+<text x="790" y="48" font-size="15" font-weight="700" text-anchor="middle" fill="#b7791f">mmWave</text>
+<text x="790" y="66" font-size="11" text-anchor="middle" fill="#555">&gt; 24 GHz</text>
+<circle cx="790" cy="156" r="24" fill="#b7791f" fill-opacity="0.18" stroke="#b7791f" stroke-width="1.5"/>
+<circle cx="790" cy="156" r="4" fill="#b7791f"/>
+<text x="670" y="244" font-size="10" fill="#555">Băng thông tương đối</text>
+<rect x="670" y="250" width="140" height="12" rx="3" fill="#b7791f"/>
+<text x="670" y="288" font-size="11" fill="#333">Phủ ngắn, dễ bị chặn</text>
+<text x="670" y="306" font-size="11" fill="#333">Băng thông 400 MHz trở lên</text>
+<text x="670" y="324" font-size="11" fill="#333">Vai trò: hotspot, FWA</text>
+<text x="480" y="352" font-size="9.5" text-anchor="middle" fill="#777">Bán kính cell chỉ mang tính minh họa tương đối, không theo tỷ lệ thực</text>
+</svg>

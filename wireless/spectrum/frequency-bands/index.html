@@ -6605,6 +6605,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="8. Tình hình tại Việt Nam">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bang-tan-700-mhz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Băng tần 700 MHz
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cac-band-2g3g4g" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các band 2G/3G/4G
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -11582,6 +11610,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="8. Tình hình tại Việt Nam">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bang-tan-700-mhz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Băng tần 700 MHz
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cac-band-2g3g4g" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các band 2G/3G/4G
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -11713,6 +11769,8 @@
 <li><strong>FR1</strong>: 410 MHz – 7.125 GHz. <strong>FR2-1</strong>: 24.25 – 52.6 GHz. <strong>FR2-2</strong> (Rel-17): 52.6 – 71 GHz.</li>
 <li>Quản lý phổ: ITU (phân chia toàn cầu), 3GPP (định nghĩa band), cơ quan quốc gia (cấp phép; tại Việt Nam là Cục Tần số vô tuyến điện, Bộ TT&amp;TT).</li>
 </ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/spectrum-map.svg" data-desc-position="bottom"><img alt="Bản đồ phổ tần di động theo thang log: low-band, mid-band, mmWave, các band LTE, NR và khối 5G đã đấu giá ở Việt Nam" src="../img/spectrum-map.svg"></a></p>
+<p><em>Vị trí các band LTE, NR trên trục tần số (thang logarit) và ba khối 5G đã đấu giá ở Việt Nam. Chỉ vẽ các band tiêu biểu, không phải toàn bộ danh sách của 3GPP.</em></p>
 <h2 id="2-khai-niem-co-ban">2. Khái niệm cơ bản<a class="headerlink" href="#2-khai-niem-co-ban" title="Permanent link">¶</a></h2>
 <ul>
 <li><strong>Band</strong>: dải tần do 3GPP định nghĩa, ký hiệu <code>B&lt;x&gt;</code> cho LTE và <code>n&lt;x&gt;</code> cho NR.</li>
@@ -11752,6 +11810,8 @@
 </tr>
 </tbody>
 </table>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/fdd-tdd.svg" data-desc-position="bottom"><img alt="FDD dùng hai dải tần riêng cho downlink và uplink, TDD dùng chung một dải tần và chia theo thời gian" src="../img/fdd-tdd.svg"></a></p>
+<p><em>So sánh FDD và TDD. Mẫu DDDSU chỉ là ví dụ, cấu hình thực tế do nhà mạng chọn.</em></p>
 <h2 id="3-bang-band-tieu-bieu">3. Bảng band tiêu biểu<a class="headerlink" href="#3-bang-band-tieu-bieu" title="Permanent link">¶</a></h2>
 <h3 id="31-lte">3.1 LTE<a class="headerlink" href="#31-lte" title="Permanent link">¶</a></h3>
 <table>
@@ -11971,6 +12031,8 @@
 </tbody>
 </table>
 <p><strong>Chiến lược thường dùng</strong>: low-band để đảm bảo phủ và uplink, mid-band làm lớp dung lượng chính, mmWave bổ sung tại điểm nóng.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/coverage-capacity.svg" data-desc-position="bottom"><img alt="So sánh vùng phủ và băng thông của low-band, mid-band, mmWave" src="../img/coverage-capacity.svg"></a></p>
+<p><em>Đánh đổi giữa vùng phủ và băng thông theo từng nhóm tần số. Bán kính cell chỉ minh họa tương đối.</em></p>
 <h2 id="5-quy-oi-arfcn-sang-tan-so">5. Quy đổi ARFCN sang tần số<a class="headerlink" href="#5-quy-oi-arfcn-sang-tan-so" title="Permanent link">¶</a></h2>
 <h3 id="lte-earfcn">LTE (EARFCN)<a class="headerlink" href="#lte-earfcn" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>F_DL = F_DL_low + 0.1 × (N_DL − N_Offs-DL)     [MHz]
@@ -12083,15 +12145,63 @@
 </ul>
 <h2 id="8-tinh-hinh-tai-viet-nam">8. Tình hình tại Việt Nam<a class="headerlink" href="#8-tinh-hinh-tai-viet-nam" title="Permanent link">¶</a></h2>
 <div class="admonition warning">
-<p class="admonition-title">Chưa có số liệu chi tiết</p>
-<p>Phần này mới ở mức tổng quát. Bảng phân bổ băng tần theo từng nhà mạng cần lấy từ quyết định cấp phép chính thức của Cục Tần số vô tuyến điện, nên chưa đưa vào đây.</p>
+<p class="admonition-title">Về nguồn số liệu</p>
+<p>Bảng dưới tổng hợp từ báo chí và các trang tin ngành (liệt kê ở cuối mục), chưa đối chiếu với quyết định cấp phép gốc của cơ quan quản lý. Số liệu tới giữa năm 2025, các khối 700 MHz còn lại có thể đã thay đổi. Kiểm tra lại trước khi trích dẫn.</p>
 </div>
+<p>Ba nhà mạng chính là Viettel, VNPT (VinaPhone) và MobiFone. Các khối phổ cho 5G được cấp qua đấu giá:</p>
+<table>
+<thead>
+<tr>
+<th>Nhà mạng</th>
+<th>Khối</th>
+<th>Dải tần</th>
+<th>Band 3GPP</th>
+<th>Thời điểm</th>
+<th>Ghi chú</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Viettel</td>
+<td>B1</td>
+<td>2500 – 2600 MHz</td>
+<td>n41</td>
+<td>3/2024</td>
+<td>Nhà mạng đầu tiên trúng đấu giá 5G, giá trên 7.533 tỷ đồng</td>
+</tr>
+<tr>
+<td>VNPT</td>
+<td>C2</td>
+<td>3700 – 3800 MHz</td>
+<td>n78</td>
+<td>3/2024</td>
+<td>Giá trên 2.581 tỷ đồng, ra mắt 5G tháng 12/2024</td>
+</tr>
+<tr>
+<td>MobiFone</td>
+<td>C3</td>
+<td>3800 – 3900 MHz</td>
+<td>n77</td>
+<td>7/2024</td>
+<td>Giá chưa được công bố, ra mắt 5G tháng 3/2025</td>
+</tr>
+</tbody>
+</table>
+<p>Ghi chú về cách quy đổi band: 3700 – 3800 MHz nằm trong n78 (3300 – 3800 MHz), còn 3800 – 3900 MHz vượt ra ngoài n78 nên thuộc n77 (3300 – 4200 MHz). Cột "Band 3GPP" là suy ra từ bảng band ở mục 3, không phải thông tin lấy từ các nguồn.</p>
+<p>Điều kiện kèm theo giấy phép: triển khai dịch vụ 5G trong 12 tháng kể từ ngày được cấp phép và sau hai năm có tối thiểu 3.000 trạm phát sóng 5G.</p>
+<h3 id="bang-tan-700-mhz">Băng tần 700 MHz<a class="headerlink" href="#bang-tan-700-mhz" title="Permanent link">¶</a></h3>
 <ul>
-<li>Các nhà mạng chính: Viettel, VNPT (Vinaphone), MobiFone.</li>
-<li>Phổ 4G chủ yếu ở các band 700/900/1800/2100/2600 MHz.</li>
-<li>5G triển khai trên mid-band (khu vực 2.5–3.8 GHz) và có kế hoạch cho mmWave.</li>
-<li>Lộ trình tắt 2G/3G và refarming sang 4G/5G.</li>
+<li>Tháng 5/2025, Viettel trúng khối <strong>B2-B2'</strong> của băng 700 MHz (thời hạn 15 năm), trở thành nhà mạng đầu tiên có băng tần thấp cho 5G.</li>
+<li>Hai khối còn lại (B1-B1' và B3-B3') dự kiến đấu giá lại, Viettel không được tham gia vì đã trúng B2-B2'. Kết quả đấu giá lại <strong>chưa xác minh được</strong>.</li>
+<li>Một cơ sở dữ liệu phổ tần liệt kê giấy phép n28 (700 MHz) cho cả Viettel và VinaPhone, VinaPhone có hiệu lực từ 16/9/2025. Thông tin này chỉ từ một nguồn, chưa đối chiếu.</li>
 </ul>
+<h3 id="cac-band-2g3g4g">Các band 2G/3G/4G<a class="headerlink" href="#cac-band-2g3g4g" title="Permanent link">¶</a></h3>
+<p>Chưa có số liệu đã xác minh về từng band 2G/3G/4G của mỗi nhà mạng. Cơ sở dữ liệu phổ tần nêu ở trên liệt kê các band 900 MHz (n8) và 1800 MHz (n3) cho cả ba nhà mạng, nhưng chưa đối chiếu độ rộng và dải cụ thể, nên chưa đưa vào bảng.</p>
+<div class="admonition todo">
+<p class="admonition-title">Todo</p>
+<p>Bổ sung bảng band 2G/3G/4G theo từng nhà mạng và kết quả đấu giá lại 700 MHz từ quyết định cấp phép chính thức.</p>
+</div>
+<p>Nguồn của mục này được liệt kê ở mục "Tài liệu tham khảo".</p>
 <h2 id="9-tai-lieu-tham-khao">9. Tài liệu tham khảo<a class="headerlink" href="#9-tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
 <ul>
 <li>3GPP TS 36.101: LTE UE radio transmission and reception</li>
@@ -12100,6 +12210,14 @@
 <li>3GPP TS 38.101-2: NR UE radio transmission and reception, FR2</li>
 <li>3GPP TS 38.104: NR BS radio transmission and reception</li>
 <li>ITU Radio Regulations</li>
+<li><a href="https://znews.vn/mobifone-trung-thau-mot-trong-nhung-bang-tan-quan-trong-nhat-cho-5g-post1485463.html">MobiFone trúng thầu băng tần 5G (Znews)</a></li>
+<li><a href="https://vnexpress.net/bang-tan-5g-thu-ba-tai-viet-nam-co-chu-4768026.html">Băng tần 5G thứ ba tại Việt Nam có chủ (VnExpress)</a></li>
+<li><a href="https://viettimes.vn/viettel-va-vnpt-chi-hon-10000-ty-de-trung-dau-gia-bang-tan-5g-post174177.html">Viettel và VNPT chi bao nhiêu tiền để trúng đấu giá băng tần 5G (Viettimes)</a></li>
+<li><a href="https://resources.telegeography.com/5g-comes-to-vietnam">5G Comes to Vietnam (TeleGeography)</a></li>
+<li><a href="https://www.lightreading.com/5g/mobifone-becomes-vietnam-s-third-5g-operator">MobiFone becomes Vietnam's third 5G operator (Light Reading)</a></li>
+<li><a href="https://rcrwireless.com/20250523/5g/viettel-700-mhz-5g">Viettel gets 700MHz spectrum block (RCR Wireless)</a></li>
+<li><a href="https://www.rcrwireless.com/20250728/5g/vietnam-700-mhz">Vietnam to re-auction 700 MHz spectrum (RCR Wireless)</a></li>
+<li><a href="https://www.spectrum-tracker.com/vietnam">Vietnam mobile frequency spectrum bands (Spectrum Tracker)</a></li>
 </ul>
 <h2 id="10-lien-quan">10. Liên quan<a class="headerlink" href="#10-lien-quan" title="Permanent link">¶</a></h2>
 <ul>
@@ -12130,7 +12248,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 27, 2026 09:30:38 UTC">October 27, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 5, 2026 04:42:41 UTC">November 5, 2026</span>
   </span>
 
     

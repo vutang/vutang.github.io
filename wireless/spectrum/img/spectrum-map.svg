@@ -1,0 +1,73 @@
+<svg role="img" viewBox="0 0 960 430" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+<title>Bản đồ phổ tần di động theo thang log: low-band, mid-band, mmWave và các band LTE, NR, 5G Việt Nam</title>
+<rect x="0" y="0" width="960" height="430" rx="8" fill="#ffffff"/>
+<rect x="110.0" y="52" width="99.7" height="318" fill="#eaf3ea"/>
+<rect x="209.7" y="52" width="383.4" height="318" fill="#e8eef8"/>
+<rect x="832.3" y="52" width="97.7" height="318" fill="#fff1e0"/>
+<text x="114.0" y="44" font-size="11" font-weight="700" fill="#2e5a34">Low-band</text>
+<text x="269.7" y="44" font-size="12" font-weight="700" fill="#1d4278">Mid-band (FR1, đến 7,125 GHz)</text>
+<text x="832.3" y="44" font-size="12" font-weight="700" fill="#7b4f10">mmWave (FR2)</text>
+<text x="14" y="114" font-size="12" font-weight="700" fill="#333">LTE</text>
+<rect x="140.9" y="100" width="26.0" height="20" rx="3" fill="#2f5d9e"/>
+<text x="153.9" y="95" font-size="10.5" font-weight="700" text-anchor="middle" fill="#2f5d9e">B28</text>
+<rect x="184.8" y="100" width="17.0" height="20" rx="3" fill="#2f5d9e"/>
+<text x="193.3" y="83" font-size="10.5" font-weight="700" text-anchor="middle" fill="#2f5d9e">B8</text>
+<rect x="314.5" y="100" width="18.5" height="20" rx="3" fill="#2f5d9e"/>
+<text x="323.7" y="95" font-size="10.5" font-weight="700" text-anchor="middle" fill="#2f5d9e">B3</text>
+<rect x="337.1" y="100" width="23.9" height="20" rx="3" fill="#2f5d9e"/>
+<text x="349.1" y="83" font-size="10.5" font-weight="700" text-anchor="middle" fill="#2f5d9e">B1</text>
+<rect x="372.4" y="100" width="8.3" height="20" rx="3" fill="#2f5d9e"/>
+<text x="376.5" y="95" font-size="10.5" font-weight="700" text-anchor="middle" fill="#2f5d9e">B40</text>
+<rect x="388.6" y="100" width="14.3" height="20" rx="3" fill="#2f5d9e"/>
+<text x="395.8" y="83" font-size="10.5" font-weight="700" text-anchor="middle" fill="#2f5d9e">B7</text>
+<text x="14" y="182" font-size="12" font-weight="700" fill="#333">NR FR1</text>
+<rect x="140.9" y="168" width="26.0" height="20" rx="3" fill="#b7791f"/>
+<text x="153.9" y="163" font-size="10.5" font-weight="700" text-anchor="middle" fill="#b7791f">n28</text>
+<rect x="388.3" y="168" width="14.6" height="20" rx="3" fill="#b7791f"/>
+<text x="395.6" y="163" font-size="10.5" font-weight="700" text-anchor="middle" fill="#b7791f">n41</text>
+<rect x="442.9" y="168" width="27.5" height="20" rx="3" fill="#b7791f"/>
+<text x="456.6" y="163" font-size="10.5" font-weight="700" text-anchor="middle" fill="#b7791f">n78</text>
+<rect x="499.0" y="168" width="25.0" height="20" rx="3" fill="#b7791f"/>
+<text x="511.5" y="163" font-size="10.5" font-weight="700" text-anchor="middle" fill="#b7791f">n79</text>
+<rect x="442.9" y="200" width="47.1" height="20" rx="3" fill="#b7791f"/>
+<text x="527.8" y="195" font-size="10.5" font-weight="700" text-anchor="middle" fill="#b7791f">n77 (3,3 – 4,2 GHz)</text>
+<text x="14" y="276" font-size="12" font-weight="700" fill="#333">NR FR2</text>
+<rect x="832.3" y="262" width="24.6" height="20" rx="3" fill="#b7791f"/>
+<text x="844.6" y="257" font-size="10.5" font-weight="700" text-anchor="middle" fill="#b7791f">n258</text>
+<rect x="914.8" y="262" width="15.2" height="20" rx="3" fill="#b7791f"/>
+<text x="915.0" y="257" font-size="10.5" font-weight="700" text-anchor="middle" fill="#b7791f">n260</text>
+<rect x="849.6" y="304" width="20.9" height="20" rx="3" fill="#b7791f"/>
+<text x="860.4" y="299" font-size="10.5" font-weight="700" text-anchor="middle" fill="#b7791f">n257</text>
+<text x="14" y="354" font-size="12" font-weight="700" fill="#333">5G Việt Nam</text>
+<text x="14" y="368" font-size="10" fill="#666">đấu giá 2024</text>
+<rect x="388.6" y="340" width="7.7" height="20" rx="3" fill="#2e7d4f"/>
+<text x="372.5" y="335" font-size="10.5" font-weight="700" text-anchor="middle" fill="#2e7d4f">Viettel 2,5–2,6</text>
+<rect x="465.2" y="340" width="5.2" height="20" rx="3" fill="#2e7d4f"/>
+<text x="467.8" y="323" font-size="10.5" font-weight="700" text-anchor="middle" fill="#2e7d4f">VNPT 3,7–3,8</text>
+<rect x="470.4" y="340" width="5.1" height="20" rx="3" fill="#2e7d4f"/>
+<text x="511.0" y="335" font-size="10.5" font-weight="700" text-anchor="middle" fill="#2e7d4f">MobiFone 3,8–3,9</text>
+<line x1="110" y1="372" x2="930" y2="372" stroke="#555" stroke-width="1.2"/>
+<line x1="140.1" y1="372" x2="140.1" y2="378" stroke="#555"/>
+<text x="140.1" y="392" font-size="10" text-anchor="middle" fill="#444">0,7</text>
+<line x1="209.7" y1="372" x2="209.7" y2="378" stroke="#555"/>
+<text x="209.7" y="392" font-size="10" text-anchor="middle" fill="#444">1</text>
+<line x1="345.1" y1="372" x2="345.1" y2="378" stroke="#555"/>
+<text x="345.1" y="392" font-size="10" text-anchor="middle" fill="#444">2</text>
+<line x1="424.2" y1="372" x2="424.2" y2="378" stroke="#555"/>
+<text x="424.2" y="392" font-size="10" text-anchor="middle" fill="#444">3</text>
+<line x1="524.0" y1="372" x2="524.0" y2="378" stroke="#555"/>
+<text x="524.0" y="392" font-size="10" text-anchor="middle" fill="#444">5</text>
+<line x1="593.1" y1="372" x2="593.1" y2="378" stroke="#555"/>
+<text x="593.1" y="392" font-size="10" text-anchor="middle" fill="#444">7,125</text>
+<line x1="659.3" y1="372" x2="659.3" y2="378" stroke="#555"/>
+<text x="659.3" y="392" font-size="10" text-anchor="middle" fill="#444">10</text>
+<line x1="794.7" y1="372" x2="794.7" y2="378" stroke="#555"/>
+<text x="794.7" y="392" font-size="10" text-anchor="middle" fill="#444">20</text>
+<line x1="832.3" y1="372" x2="832.3" y2="378" stroke="#555"/>
+<text x="832.3" y="392" font-size="10" text-anchor="middle" fill="#444">24,25</text>
+<line x1="873.8" y1="372" x2="873.8" y2="378" stroke="#555"/>
+<text x="873.8" y="392" font-size="10" text-anchor="middle" fill="#444">30</text>
+<line x1="930.0" y1="372" x2="930.0" y2="378" stroke="#555"/>
+<text x="930.0" y="392" font-size="10" text-anchor="middle" fill="#444">40</text>
+<text x="520.0" y="414" font-size="11" text-anchor="middle" fill="#444">Tần số (GHz), thang logarit</text>
+</svg>
