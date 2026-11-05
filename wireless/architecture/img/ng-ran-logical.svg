@@ -1,0 +1,82 @@
+<svg role="img" viewBox="0 0 960 470" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+  <title>Kiến trúc logic NG-RAN: RU, DU, CU-CP, CU-UP nối qua Open Fronthaul, F1-C, F1-U, E1, nối 5G Core qua NG-C, NG-U và nối gNB lân cận qua Xn</title>
+  <rect x="0" y="0" width="960" height="470" rx="8" fill="#ffffff"/>
+
+  <!-- Containers -->
+  <rect x="95" y="40" width="560" height="300" rx="12" fill="none" stroke="#7d8fb3" stroke-width="1.5" stroke-dasharray="7 5"/>
+  <text x="112" y="62" font-size="13" font-weight="700" fill="#1d4278">gNB</text>
+  <text x="150" y="62" font-size="10" fill="#555">(O-RAN: O-RU, O-DU, O-CU-CP, O-CU-UP)</text>
+  <rect x="745" y="40" width="195" height="300" rx="12" fill="none" stroke="#d9822b" stroke-width="1.5" stroke-dasharray="7 5"/>
+  <text x="762" y="62" font-size="13" font-weight="700" fill="#8a4a0a">5G Core</text>
+
+  <!-- Links -->
+  <line x1="75" y1="200" x2="115" y2="200" stroke="#2f5d9e" stroke-width="2.5" stroke-dasharray="6 4"/>
+  <line x1="225" y1="200" x2="300" y2="200" stroke="#475569" stroke-width="4"/>
+  <line x1="410" y1="188" x2="500" y2="118" stroke="#475569" stroke-width="2.5"/>
+  <line x1="410" y1="212" x2="500" y2="282" stroke="#475569" stroke-width="4"/>
+  <line x1="565" y1="146" x2="565" y2="254" stroke="#475569" stroke-width="2.5"/>
+  <line x1="630" y1="118" x2="775" y2="118" stroke="#475569" stroke-width="2.5"/>
+  <line x1="630" y1="282" x2="775" y2="282" stroke="#475569" stroke-width="4"/>
+  <line x1="565" y1="310" x2="565" y2="372" stroke="#475569" stroke-width="2.5" stroke-dasharray="4 3"/>
+
+  <!-- Link labels -->
+  <text x="45" y="160" font-size="10" font-weight="700" text-anchor="middle" fill="#1d4278">NR-Uu</text>
+  <text x="262" y="186" font-size="10.5" font-weight="700" text-anchor="middle" fill="#1d4278">Open</text>
+  <text x="262" y="226" font-size="10.5" font-weight="700" text-anchor="middle" fill="#1d4278">Fronthaul</text>
+  <text x="440" y="142" font-size="10.5" font-weight="700" text-anchor="end" fill="#1d4278">F1-C</text>
+  <text x="440" y="266" font-size="10.5" font-weight="700" text-anchor="end" fill="#1d4278">F1-U</text>
+  <text x="575" y="204" font-size="10.5" font-weight="700" text-anchor="start" fill="#1d4278">E1</text>
+  <text x="702" y="110" font-size="10.5" font-weight="700" text-anchor="middle" fill="#1d4278">NG-C</text>
+  <text x="702" y="274" font-size="10.5" font-weight="700" text-anchor="middle" fill="#1d4278">NG-U</text>
+  <text x="575" y="352" font-size="10.5" font-weight="700" text-anchor="start" fill="#1d4278">Xn-C / Xn-U</text>
+  <text x="480" y="320" font-size="9.5" text-anchor="middle" fill="#555">nét dày: user plane</text>
+  <text x="480" y="333" font-size="9.5" text-anchor="middle" fill="#555">nét mảnh: control plane</text>
+
+  <!-- UE -->
+  <rect x="15" y="172" width="60" height="56" rx="6" fill="#eeeeee" stroke="#666666" stroke-width="1.5"/>
+  <text x="45" y="205" font-size="13" font-weight="700" text-anchor="middle" fill="#111">UE</text>
+
+  <!-- RU -->
+  <rect x="115" y="172" width="110" height="56" rx="6" fill="#d3e3f7" stroke="#2f5d9e" stroke-width="1.5"/>
+  <text x="170" y="196" font-size="14" font-weight="700" text-anchor="middle" fill="#1d4278">RU</text>
+  <text x="170" y="214" font-size="9.5" text-anchor="middle" fill="#111">Low-PHY, RF</text>
+
+  <!-- DU -->
+  <rect x="300" y="172" width="110" height="56" rx="6" fill="#d4efdf" stroke="#2f8a55" stroke-width="1.5"/>
+  <text x="355" y="196" font-size="14" font-weight="700" text-anchor="middle" fill="#1f5c38">DU</text>
+  <text x="355" y="214" font-size="9.5" text-anchor="middle" fill="#111">High-PHY, MAC, RLC</text>
+
+  <!-- CU-CP -->
+  <rect x="500" y="90" width="130" height="56" rx="6" fill="#fff3cf" stroke="#b8860b" stroke-width="1.5"/>
+  <text x="565" y="114" font-size="13" font-weight="700" text-anchor="middle" fill="#7a5a00">CU-CP</text>
+  <text x="565" y="132" font-size="9.5" text-anchor="middle" fill="#111">RRC, PDCP-C</text>
+
+  <!-- CU-UP -->
+  <rect x="500" y="254" width="130" height="56" rx="6" fill="#fff3cf" stroke="#b8860b" stroke-width="1.5"/>
+  <text x="565" y="278" font-size="13" font-weight="700" text-anchor="middle" fill="#7a5a00">CU-UP</text>
+  <text x="565" y="296" font-size="9.5" text-anchor="middle" fill="#111">SDAP, PDCP-U</text>
+
+  <!-- Core -->
+  <rect x="775" y="90" width="145" height="56" rx="6" fill="#fbe0c0" stroke="#d9822b" stroke-width="1.5"/>
+  <text x="847" y="114" font-size="13" font-weight="700" text-anchor="middle" fill="#8a4a0a">AMF</text>
+  <text x="847" y="132" font-size="9.5" text-anchor="middle" fill="#111">control plane</text>
+  <rect x="775" y="254" width="145" height="56" rx="6" fill="#fbe0c0" stroke="#d9822b" stroke-width="1.5"/>
+  <text x="847" y="278" font-size="13" font-weight="700" text-anchor="middle" fill="#8a4a0a">UPF</text>
+  <text x="847" y="296" font-size="9.5" text-anchor="middle" fill="#111">user plane</text>
+
+  <!-- Neighbour gNB -->
+  <rect x="500" y="372" width="130" height="40" rx="6" fill="#f1f5f9" stroke="#7d8fb3" stroke-width="1.5"/>
+  <text x="565" y="397" font-size="11" font-weight="700" text-anchor="middle" fill="#334155">gNB lân cận</text>
+
+  <!-- Transport segments -->
+  <g font-size="10" text-anchor="middle">
+    <rect x="225" y="430" width="75" height="6" rx="3" fill="#2f5d9e"/>
+    <text x="262" y="454" font-weight="700" fill="#1d4278">fronthaul</text>
+    <text x="262" y="466" fill="#555">≈ 100 µs</text>
+    <rect x="410" y="430" width="90" height="6" rx="3" fill="#2f8a55"/>
+    <text x="455" y="454" font-weight="700" fill="#1f5c38">midhaul</text>
+    <text x="455" y="466" fill="#555">1,5–10 ms</text>
+    <rect x="630" y="430" width="145" height="6" rx="3" fill="#b8860b"/>
+    <text x="702" y="454" font-weight="700" fill="#7a5a00">backhaul</text>
+  </g>
+</svg>

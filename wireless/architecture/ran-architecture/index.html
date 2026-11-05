@@ -6622,10 +6622,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cac-lop-giao-thuc" class="md-nav__link">
+  <a href="#functional-split-cua-3gpp" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Các lớp giao thức
+        Functional split của 3GPP
       
     </span>
   </a>
@@ -6633,21 +6633,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cac-option-split-cua-3gpp" class="md-nav__link">
+  <a href="#gioi-han-bang-thong-cua-split-8-cpri" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Các option split của 3GPP
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vi-sao-khong-con-dung-split-8-cpri" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Vì sao không còn dùng split 8 (CPRI)
+        Giới hạn băng thông của split 8 (CPRI)
       
     </span>
   </a>
@@ -6688,10 +6677,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#oc-them" class="md-nav__link">
+  <a href="#lien-quan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Đọc thêm
+        Liên quan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài liệu tham khảo
       
     </span>
   </a>
@@ -11402,10 +11402,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cac-lop-giao-thuc" class="md-nav__link">
+  <a href="#functional-split-cua-3gpp" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Các lớp giao thức
+        Functional split của 3GPP
       
     </span>
   </a>
@@ -11413,21 +11413,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cac-option-split-cua-3gpp" class="md-nav__link">
+  <a href="#gioi-han-bang-thong-cua-split-8-cpri" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Các option split của 3GPP
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vi-sao-khong-con-dung-split-8-cpri" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Vì sao không còn dùng split 8 (CPRI)
+        Giới hạn băng thông của split 8 (CPRI)
       
     </span>
   </a>
@@ -11468,10 +11457,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#oc-them" class="md-nav__link">
+  <a href="#lien-quan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Đọc thêm
+        Liên quan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài liệu tham khảo
       
     </span>
   </a>
@@ -11531,9 +11531,9 @@
 
 
 <h1 id="ran-architecture-splits">RAN Architecture &amp; Splits<a class="headerlink" href="#ran-architecture-splits" title="Permanent link">¶</a></h1>
-<p>Trang này mô tả cách NG-RAN của 5G được chia thành các khối CU, DU, RU, những giao diện nối giữa chúng và các phương án chia chức năng (functional split) của 3GPP, kèm lý do O-RAN chọn split 7.2x cho fronthaul.</p>
+<p>Trang này mô tả cách NG-RAN của 5G được chia thành các khối CU, DU, RU và các giao diện nối giữa chúng, sau đó trình bày các phương án chia chức năng (functional split) của 3GPP, giới hạn băng thông của split 8, chi tiết split 7.2x mà O-RAN chọn cho fronthaul, và cuối cùng là các kiểu triển khai vật lý.</p>
 <h2 id="cac-khoi-va-giao-dien">Các khối và giao diện<a class="headerlink" href="#cac-khoi-va-giao-dien" title="Permanent link">¶</a></h2>
-<p>NG-RAN gồm các gNodeB (gNB). Một gNB có thể tách thành:</p>
+<p>NG-RAN gồm các gNodeB (gNB). Theo TS 38.401, một gNB có thể tách thành một gNB-CU và một hoặc nhiều gNB-DU; gNB-CU lại có thể tách tiếp thành phần control plane (CU-CP) và user plane (CU-UP). RU là khối do O-RAN định nghĩa thêm khi tách phần PHY thấp ra khỏi DU.</p>
 <table>
 <thead>
 <tr>
@@ -11561,7 +11561,7 @@
 <tr>
 <td><strong>RU</strong></td>
 <td>Low-PHY, RF</td>
-<td>Gần anten, nhiều chức năng số hóa tín hiệu</td>
+<td>Gần anten, nhiều chức năng xử lý tín hiệu số</td>
 </tr>
 </tbody>
 </table>
@@ -11578,12 +11578,12 @@
 <tr>
 <td><strong>NG</strong></td>
 <td>gNB và 5G Core</td>
-<td>NG-C cho control plane, NG-U cho user plane</td>
+<td>NG-C (tới AMF) cho control plane, NG-U (tới UPF) cho user plane</td>
 </tr>
 <tr>
 <td><strong>Xn</strong></td>
 <td>gNB với gNB</td>
-<td>Handover, phối hợp giữa các trạm</td>
+<td>Handover, phối hợp giữa các trạm; Xn-C và Xn-U</td>
 </tr>
 <tr>
 <td><strong>F1</strong></td>
@@ -11602,23 +11602,58 @@
 </tr>
 </tbody>
 </table>
-<p>Theo đường truyền, người ta gọi ba đoạn mạng là <strong>fronthaul</strong> (RU và DU), <strong>midhaul</strong> (DU và CU) và <strong>backhaul</strong> (CU và core). Yêu cầu độ trễ nới dần từ fronthaul tới backhaul: fronthaul cỡ 100 µs một chiều, midhaul cỡ vài ms đến chục ms, backhaul chục ms trở lên. Các con số này là mức thường được trích dẫn, giá trị cụ thể phụ thuộc split và profile triển khai.</p>
-<p>Trong thuật ngữ O-RAN, các khối có tên có tiền tố O-: O-RU, O-DU, O-CU-CP, O-CU-UP, cùng các thành phần điều khiển (Near-RT RIC, Non-RT RIC, SMO) nằm ngoài phạm vi trang này.</p>
-<h2 id="cac-lop-giao-thuc">Các lớp giao thức<a class="headerlink" href="#cac-lop-giao-thuc" title="Permanent link">¶</a></h2>
-<p>Từ trên xuống dưới, chồng giao thức NR ở phía gNB:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>RRC           điều khiển kết nối, mobility, cấu hình
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>SDAP          ánh xạ QoS flow vào data radio bearer
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>PDCP          nén header, mã hóa, bảo vệ toàn vẹn
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>RLC           phân mảnh, ghép, ARQ
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>MAC           lập lịch, HARQ, ghép kênh
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>PHY (High)    CRC, mã hóa kênh, rate matching, scrambling, điều chế, layer mapping
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>PHY (Low)     precoding, FFT/iFFT, thêm/bỏ cyclic prefix
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>RF            DAC/ADC, khuếch đại, lọc
-</code></pre></div>
-<p>Các lớp càng thấp càng nhạy với thời gian: PDCP và RRC chịu được vài ms, MAC và PHY phải xong trong một slot.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/ng-ran-logical.svg" data-desc-position="bottom"><img alt="Kiến trúc logic NG-RAN: RU, DU, CU-CP, CU-UP, các giao diện Open Fronthaul, F1, E1, NG, Xn và ba đoạn mạng fronthaul, midhaul, backhaul" src="../img/ng-ran-logical.svg"></a></p>
+<p><em>Kiến trúc logic NG-RAN khi tách đầy đủ RU, DU, CU-CP và CU-UP. Nét dày là user plane, nét mảnh là control plane.</em></p>
+<p>Theo đường truyền, ba đoạn mạng được gọi là <strong>fronthaul</strong> (RU và DU), <strong>midhaul</strong> (DU và CU) và <strong>backhaul</strong> (CU và core). Yêu cầu độ trễ nới dần từ fronthaul tới backhaul. Với fronthaul, đặc tả eCPRI Transport Network V1.2 đặt lớp độ trễ High100 ở mức 100 µs một chiều cho hiệu năng NR đầy đủ, và IEEE 802.1CM cũng dùng mức 100 µs. Với midhaul ở option 2, TR 38.801 Annex A đưa giá trị ví dụ 1,5 đến 10 ms. Backhaul không có yêu cầu riêng ở mức này. Giá trị cụ thể trong một mạng thực tế phụ thuộc split, profile triển khai và độ dài sợi quang.</p>
+<p>Trong thuật ngữ O-RAN, các khối có tên có tiền tố O-: O-RU, O-DU, O-CU-CP, O-CU-UP. Các thành phần điều khiển (Near-RT RIC, Non-RT RIC, SMO) nằm ngoài phạm vi trang này, xem <a href="../../oran/oran-alliance/">O-RAN Alliance</a>.</p>
+<h2 id="functional-split-cua-3gpp">Functional split của 3GPP<a class="headerlink" href="#functional-split-cua-3gpp" title="Permanent link">¶</a></h2>
+<p>Chồng giao thức NR ở phía gNB, từ trên xuống dưới:</p>
+<table>
+<thead>
+<tr>
+<th>Lớp</th>
+<th>Chức năng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RRC</td>
+<td>Điều khiển kết nối, mobility, cấu hình</td>
+</tr>
+<tr>
+<td>SDAP</td>
+<td>Ánh xạ QoS flow vào data radio bearer</td>
+</tr>
+<tr>
+<td>PDCP</td>
+<td>Nén header, mã hóa, bảo vệ toàn vẹn</td>
+</tr>
+<tr>
+<td>RLC</td>
+<td>Phân mảnh, ghép, ARQ</td>
+</tr>
+<tr>
+<td>MAC</td>
+<td>Lập lịch, HARQ, ghép kênh</td>
+</tr>
+<tr>
+<td>PHY (High)</td>
+<td>CRC, mã hóa kênh, rate matching, scrambling, điều chế, layer mapping</td>
+</tr>
+<tr>
+<td>PHY (Low)</td>
+<td>Precoding, ánh xạ resource element, iFFT/FFT, thêm hoặc bỏ cyclic prefix</td>
+</tr>
+<tr>
+<td>RF</td>
+<td>DAC/ADC, khuếch đại, lọc</td>
+</tr>
+</tbody>
+</table>
 <p>Chức năng từng lớp nhìn từ phía UE, so sánh với LTE, và các thủ tục trao đổi giữa UE và gNB nằm ở nhóm trang Air Interface &amp; Procedures, bắt đầu từ <a href="../../air-interface/protocol-stack/">Protocol Stack &amp; States</a>.</p>
-<h2 id="cac-option-split-cua-3gpp">Các option split của 3GPP<a class="headerlink" href="#cac-option-split-cua-3gpp" title="Permanent link">¶</a></h2>
-<p>3GPP phân tích tám điểm cắt có thể (TR 38.801). Điểm cắt càng thấp thì các khối phía trên được tập trung hóa nhiều hơn, đổi lại băng thông và yêu cầu độ trễ của đường nối càng cao.</p>
+<p>TR 38.801 phân tích tám điểm cắt có thể trên chồng giao thức này. Điểm cắt càng thấp thì càng nhiều chức năng được tập trung hóa ở khối phía trên, đổi lại băng thông của đường nối tăng và độ trễ cho phép giảm. Lý do là các lớp thấp gắn với vòng HARQ và nhịp symbol: TR 38.801 Annex A đưa giá trị ví dụ 1,5 đến 10 ms cho option 2, nhưng chỉ 250 µs cho option 8.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/split-options.svg" data-desc-position="bottom"><img alt="Chồng giao thức gNB chiều downlink với tám điểm cắt của 3GPP, cách chia CU, DU, RU thường gặp và giao diện tương ứng" src="../img/split-options.svg"></a></p>
+<p><em>Tám điểm cắt của TR 38.801 trên chồng giao thức gNB (chiều downlink). Cột trái là cách chia thường gặp khi kết hợp split 2 và split 7.2x.</em></p>
 <table>
 <thead>
 <tr>
@@ -11631,7 +11666,7 @@
 <tr>
 <td>1</td>
 <td>RRC / PDCP</td>
-<td>Cắt giữa control và user plane ở tầng cao</td>
+<td>RRC ở khối trung tâm, PDCP trở xuống ở khối phân tán; ít dùng</td>
 </tr>
 <tr>
 <td>2</td>
@@ -11656,30 +11691,76 @@
 <tr>
 <td>6</td>
 <td>MAC / PHY</td>
-<td>Giao diện FAPI giữa L2 và L1 (nội bộ DU hoặc small cell)</td>
+<td>Giao diện FAPI giữa L2 và L1 trong DU; nFAPI khi tách qua mạng (small cell)</td>
 </tr>
 <tr>
 <td>7</td>
-<td>trong PHY (7.1, 7.2, 7.3)</td>
-<td><strong>Fronthaul</strong> DU và RU, O-RAN chọn 7.2x</td>
+<td>trong PHY (7-1, 7-2, 7-3)</td>
+<td><strong>Fronthaul</strong> DU và RU, O-RAN chọn 7.2x; 7-3 chỉ định nghĩa cho downlink</td>
 </tr>
 <tr>
 <td>8</td>
 <td>PHY / RF</td>
-<td>CPRI truyền thống, truyền IQ thô</td>
+<td>CPRI truyền thống, truyền IQ miền thời gian</td>
 </tr>
 </tbody>
 </table>
+<p>Tách control plane và user plane của CU không thuộc tám option trên. Đó là giao diện E1 giữa CU-CP và CU-UP, áp dụng bên trong CU khi đã dùng option 2.</p>
 <p>Hai điểm cắt đóng vai trò chính trong thực tế:</p>
 <ul>
-<li><strong>Option 2</strong> tạo ra giao diện F1 và tách CU khỏi DU. Băng thông bám sát lưu lượng người dùng và chịu được độ trễ lớn.</li>
-<li><strong>Option 7</strong> (nhóm 7.x) là fronthaul hiện đại. <strong>Option 8</strong> là CPRI cũ, không còn khả thi cho băng rộng lớn và Massive MIMO.</li>
+<li><strong>Option 2</strong> tạo ra giao diện F1 và tách CU khỏi DU. Băng thông bám sát lưu lượng người dùng và chịu được độ trễ cỡ ms.</li>
+<li><strong>Option 7</strong> (nhóm 7-x) là fronthaul hiện đại. <strong>Option 8</strong> là CPRI cũ, không còn khả thi cho băng thông kênh lớn và Massive MIMO.</li>
 </ul>
-<h2 id="vi-sao-khong-con-dung-split-8-cpri">Vì sao không còn dùng split 8 (CPRI)<a class="headerlink" href="#vi-sao-khong-con-dung-split-8-cpri" title="Permanent link">¶</a></h2>
-<p>Ở split 8 RU chỉ làm RF và truyền mẫu IQ ở miền thời gian. Băng thông fronthaul tỷ lệ với số anten nhân với băng thông kênh, bất kể có tải hay không. Với Massive MIMO 64 anten trên kênh 100 MHz, tốc độ cần thiết quá lớn để truyền bằng sợi quang với chi phí hợp lý.</p>
-<p>Ở split 7.2x, RU thực hiện FFT và thêm cyclic prefix, nên dữ liệu truyền là các resource element ở miền tần số. Băng thông tỷ lệ với số <strong>layer</strong> (không phải số anten) và với tải thực tế, nên tiết kiệm đáng kể khi dùng beamforming.</p>
+<h2 id="gioi-han-bang-thong-cua-split-8-cpri">Giới hạn băng thông của split 8 (CPRI)<a class="headerlink" href="#gioi-han-bang-thong-cua-split-8-cpri" title="Permanent link">¶</a></h2>
+<p>Ở split 8, RU chỉ làm RF và DU gửi mẫu IQ ở miền thời gian cho từng anten. Băng thông fronthaul tỷ lệ với số anten nhân với tốc độ lấy mẫu, và không phụ thuộc tải: cell không có người dùng vẫn chiếm nguyên băng thông.</p>
+<p>Ở split 7.2x, RU thực hiện iFFT và thêm cyclic prefix (downlink), bỏ cyclic prefix và FFT (uplink), nên dữ liệu trên fronthaul là các resource element ở miền tần số. Có hai nguồn tiết kiệm. Thứ nhất, chỉ các PRB có dữ liệu được gửi, guard band và phần cyclic prefix không đi qua fronthaul, nên băng thông giảm theo tải. Thứ hai, với RU Category B, precoding nằm trong RU, nên số luồng trên fronthaul bằng số layer thay vì số anten. Với RU Category A, luồng trên fronthaul là tín hiệu sau precoding, nên chỉ có lợi ích thứ nhất.</p>
+<p>Phép tính ví dụ dưới đây cho một cell 100 MHz, subcarrier spacing (SCS) 30 kHz, 64 anten, 16 layer, tải đầy, chiều downlink. Các giả định là của trang này, không lấy từ một profile cụ thể.</p>
+<table>
+<thead>
+<tr>
+<th>Đại lượng</th>
+<th>Split 8</th>
+<th>Split 7.2x</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Đơn vị mẫu</td>
+<td>Mẫu IQ miền thời gian</td>
+<td>Resource element</td>
+</tr>
+<tr>
+<td>Tốc độ mẫu mỗi luồng</td>
+<td>122,88 Msps (FFT 4096 × 30 kHz)</td>
+<td>273 PRB × 12 subcarrier × 28 000 symbol/s ≈ 91,7 triệu RE/s</td>
+</tr>
+<tr>
+<td>Độ rộng mỗi mẫu</td>
+<td>2 × 16 bit</td>
+<td>2 × 9 bit (block floating point) + 4 bit exponent mỗi PRB</td>
+</tr>
+<tr>
+<td>Tốc độ mỗi luồng</td>
+<td>≈ 3,93 Gbps</td>
+<td>≈ 1,68 Gbps</td>
+</tr>
+<tr>
+<td>Số luồng</td>
+<td>64 (số anten)</td>
+<td>64 với Category A, 16 với Category B</td>
+</tr>
+<tr>
+<td>Tổng</td>
+<td>≈ 252 Gbps</td>
+<td>≈ 108 Gbps (Cat A), ≈ 27 Gbps (Cat B)</td>
+</tr>
+</tbody>
+</table>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/fronthaul-bandwidth.svg" data-desc-position="bottom"><img alt="Biểu đồ băng thông fronthaul ước tính: split 8 khoảng 252 Gbps, split 7.2x Category A khoảng 108 Gbps, Category B khoảng 27 Gbps" src="../img/fronthaul-bandwidth.svg"></a></p>
+<p><em>Băng thông fronthaul ước tính theo bảng trên. Các con số chưa tính header Ethernet/eCPRI, C-plane và mã đường truyền của CPRI.</em></p>
+<p>Số PRB tối đa (273 PRB cho 100 MHz ở SCS 30 kHz) lấy từ TS 38.104. Định dạng block floating point 9 bit là một trong các phương án nén IQ của O-RAN.WG4.CUS. Ở tải thấp hơn, băng thông split 7.2x giảm tương ứng, còn split 8 giữ nguyên.</p>
 <h2 id="split-72x-cua-o-ran">Split 7.2x của O-RAN<a class="headerlink" href="#split-72x-cua-o-ran" title="Permanent link">¶</a></h2>
-<p>O-RAN WG4 chọn 7.2x, một biến thể của option 7-2 của 3GPP, và chia RU thành hai loại:</p>
+<p>O-RAN WG4 chọn 7.2x, một biến thể của option 7-2 của 3GPP. Khác với 7-2, ánh xạ resource element nằm ở DU. RU được chia thành hai loại theo vị trí của precoding:</p>
 <table>
 <thead>
 <tr>
@@ -11692,25 +11773,35 @@
 <tr>
 <td><strong>Category A</strong></td>
 <td>Nằm ở DU</td>
-<td>RU đơn giản, số luồng truyền bằng số anten (không dùng precoding trong RU)</td>
+<td>RU đơn giản hơn; luồng trên fronthaul là tín hiệu sau precoding, số luồng tăng theo số cổng anten</td>
 </tr>
 <tr>
 <td><strong>Category B</strong></td>
 <td>Nằm ở RU</td>
-<td>Băng thông fronthaul theo số layer, hợp Massive MIMO</td>
+<td>Băng thông fronthaul theo số layer, phù hợp Massive MIMO</td>
 </tr>
 </tbody>
 </table>
-<p>Ở <strong>downlink</strong>, DU làm mã hóa kênh, rate matching, scrambling, điều chế, layer mapping và ánh xạ resource element, rồi gửi qua fronthaul. RU thực hiện (precoding nếu Category B), iFFT, thêm cyclic prefix và đưa ra RF. <strong>Uplink</strong> đi theo chiều ngược lại: RU bỏ cyclic prefix, FFT, rồi gửi mẫu miền tần số lên DU để ước lượng kênh, cân bằng, giải điều chế và giải mã.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/split72-chain.svg" data-desc-position="bottom"><img alt="Chuỗi xử lý downlink và uplink ở split 7.2x với ranh giới DU và RU của Category A và Category B" src="../img/split72-chain.svg"></a></p>
+<p><em>Chuỗi xử lý ở split 7.2x. Downlink có hai ranh giới tùy loại RU; uplink dùng chung một ranh giới.</em></p>
+<p>Ở <strong>downlink</strong>, DU thực hiện mã hóa kênh, rate matching, scrambling, điều chế, layer mapping và ánh xạ resource element, cùng với precoding nếu RU thuộc Category A, rồi gửi qua fronthaul. RU thực hiện precoding nếu thuộc Category B, digital beamforming nếu có, iFFT, thêm cyclic prefix và đưa ra RF. <strong>Uplink</strong> đi theo chiều ngược lại: RU bỏ cyclic prefix, thực hiện FFT và digital beamforming nếu có, nén IQ rồi gửi mẫu miền tần số lên DU để ước lượng kênh, cân bằng, giải điều chế và giải mã.</p>
+<div class="admonition todo">
+<p class="admonition-title">Todo</p>
+<p>Vị trí của digital beamforming trong RU Category A và các phương án tùy chọn của uplink cần đối chiếu lại với bản O-RAN.WG4.CUS hiện hành. Hình và đoạn trên mô tả mô hình cơ bản, chưa kiểm chứng với từng phiên bản đặc tả.</p>
+</div>
 <p>Phần PRACH có xử lý riêng ở RU để giảm băng thông fronthaul. Điểm khác này cùng với nén IQ được trình bày ở <a href="../../fronthaul/open-fronthaul/">Open Fronthaul</a>.</p>
 <p>Hệ quả cho người làm firmware và phần mềm:</p>
 <ul>
 <li><strong>DU</strong> giữ phần PHY nặng nhất (mã hóa/giải mã, MIMO) và toàn bộ deadline slot, nên là chỗ cần accelerator và tối ưu real-time, xem <a href="../../l1/l1-acceleration/">L1 &amp; Acceleration</a>.</li>
 <li><strong>RU</strong> là hệ nhúng có FPGA hoặc SoC, nhiều xử lý tín hiệu số theo tốc độ symbol và đồng bộ chặt với PTP.</li>
-<li><strong>Giao diện mở</strong> cho phép trộn RU và DU của các hãng khác nhau, đổi lại phải kiểm thử tương thích (interoperability).</li>
+<li><strong>Giao diện mở</strong> cho phép kết hợp RU và DU của các hãng khác nhau, đổi lại phải kiểm thử tương thích (interoperability).</li>
 </ul>
 <h2 id="sensing-trong-kien-truc">Sensing trong kiến trúc<a class="headerlink" href="#sensing-trong-kien-truc" title="Permanent link">¶</a></h2>
-<p>ISAC (xem <a href="../../isac/isac-overview/">ISAC Overview</a>) đặt thêm câu hỏi chức năng sensing nằm ở RU, DU hay một khối riêng, và dữ liệu sensing đi qua giao diện nào. Hiện 3GPP chưa chốt, nên split 7.2x chưa mô tả luồng này.</p>
+<p>ISAC (xem <a href="../../isac/isac-overview/">ISAC Overview</a>) đặt thêm câu hỏi chức năng sensing nằm ở RU, DU hay một khối riêng, và dữ liệu sensing đi qua giao diện nào. Split 7.2x hiện chưa mô tả luồng dữ liệu này.</p>
+<div class="admonition todo">
+<p class="admonition-title">Todo</p>
+<p>Bổ sung trạng thái chuẩn hóa ISAC trong 3GPP (release, study item) kèm nguồn và mốc thời gian.</p>
+</div>
 <h2 id="trien-khai">Triển khai<a class="headerlink" href="#trien-khai" title="Permanent link">¶</a></h2>
 <p>Cùng một kiến trúc logic có thể đặt vật lý theo nhiều kiểu:</p>
 <table>
@@ -11743,11 +11834,24 @@
 </tr>
 </tbody>
 </table>
-<h2 id="oc-them">Đọc thêm<a class="headerlink" href="#oc-them" title="Permanent link">¶</a></h2>
+<h2 id="lien-quan">Liên quan<a class="headerlink" href="#lien-quan" title="Permanent link">¶</a></h2>
 <ul>
-<li>3GPP TS 38.401: NG-RAN architecture description.</li>
-<li>3GPP TR 38.801: Study on new radio access technology, radio access architecture and interfaces.</li>
+<li><a href="../../fronthaul/open-fronthaul/">Open Fronthaul</a>: các plane, đóng gói và nén IQ trên giao diện DU và RU.</li>
+<li><a href="../../oran/wg4/">WG4 (Open Fronthaul)</a>: bộ đặc tả của O-RAN WG4.</li>
+<li><a href="../../air-interface/protocol-stack/">Protocol Stack &amp; States</a>: chồng giao thức nhìn từ phía UE.</li>
+<li><a href="../../l1/l1-acceleration/">L1 &amp; Acceleration</a>: tăng tốc phần High-PHY trong DU.</li>
+<li><a href="../../../virtualization/realtime/vran/">vRAN trên VM</a>: chạy DU/CU trên máy ảo real-time.</li>
+<li><a href="../../ntn/ntn-overview/">NTN Overview</a>: đặt một phần gNB trên vệ tinh.</li>
 <li><a href="../../../articles/2026/10/18/ran-silicon-rethink/">RAN Silicon Rethink</a>: hướng phần cứng cho DU hiện nay.</li>
+</ul>
+<h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
+<ul>
+<li>3GPP TS 38.401: NG-RAN; Architecture description.</li>
+<li>3GPP TR 38.801: Study on new radio access technology: Radio access architecture and interfaces (Annex A: yêu cầu băng thông và độ trễ theo option).</li>
+<li>3GPP TS 38.104: NR; Base Station (BS) radio transmission and reception (bảng cấu hình băng thông kênh theo số PRB).</li>
+<li>O-RAN.WG4.CUS: O-RAN Fronthaul Control, User and Synchronization Plane Specification (split 7.2x, Category A/B, nén IQ).</li>
+<li>CPRI Forum, Requirements for the eCPRI Transport Network V1.2 (2018): các lớp độ trễ High25, High100, High200, High500; tóm tắt trong <a href="https://grouper.ieee.org/groups/802/1/files/public/docs2018/cm-mustala-eCPRI-update-0718.pdf">bài trình bày eCPRI tại IEEE 802.1</a>.</li>
+<li>IEEE 802.1CM: Time-Sensitive Networking for Fronthaul.</li>
 </ul>
 
 
@@ -11771,7 +11875,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 27, 2026 14:35:18 UTC">October 27, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 5, 2026 05:33:26 UTC">November 5, 2026</span>
   </span>
 
     
