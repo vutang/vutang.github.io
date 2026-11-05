@@ -1,0 +1,43 @@
+<svg role="img" viewBox="0 0 960 330" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+<title>Các vùng yêu cầu phát xạ ngoài ý muốn của trạm gốc: OBW trong kênh, ACLR ở kênh kề, operating band unwanted emissions và spurious emissions</title>
+<rect x="0" y="0" width="960" height="330" rx="8" fill="#ffffff"/>
+<rect x="20" y="16" width="920" height="298" rx="10" fill="#f6f8fb" stroke="#c9d3e3"/>
+<text x="40" y="42" font-size="14" font-weight="700" fill="#1d4278">Vùng áp dụng các yêu cầu phát xạ (không theo tỷ lệ)</text>
+
+<!-- operating band bracket -->
+<path d="M200 82 V74 H760 V82" fill="none" stroke="#777" stroke-width="1.3"/>
+<text x="480" y="68" font-size="11.5" text-anchor="middle" fill="#444">Operating band (downlink)</text>
+
+<!-- spurious regions -->
+<rect x="40" y="96" width="100" height="164" fill="#888" fill-opacity="0.12"/>
+<rect x="820" y="96" width="100" height="164" fill="#888" fill-opacity="0.12"/>
+<text x="90" y="114" font-size="11" font-weight="700" text-anchor="middle" fill="#555">Spurious</text>
+<text x="870" y="114" font-size="11" font-weight="700" text-anchor="middle" fill="#555">Spurious</text>
+
+<!-- OBUE region -->
+<rect x="140" y="96" width="680" height="164" fill="#b7791f" fill-opacity="0.08"/>
+<text x="480" y="114" font-size="11" font-weight="700" text-anchor="middle" fill="#b7791f">Operating band unwanted emissions: từ biên carrier tới Δf_OBUE ngoài band</text>
+
+<!-- adjacent channels -->
+<rect x="270" y="170" width="140" height="90" fill="#2c7a4b" fill-opacity="0.14" stroke="#2c7a4b" stroke-dasharray="5 3"/>
+<rect x="550" y="170" width="140" height="90" fill="#2c7a4b" fill-opacity="0.14" stroke="#2c7a4b" stroke-dasharray="5 3"/>
+<text x="340" y="190" font-size="11" font-weight="700" text-anchor="middle" fill="#2c7a4b">Kênh kề dưới</text>
+<text x="620" y="190" font-size="11" font-weight="700" text-anchor="middle" fill="#2c7a4b">Kênh kề trên</text>
+<text x="340" y="206" font-size="10.5" text-anchor="middle" fill="#2c7a4b">đo ACLR</text>
+<text x="620" y="206" font-size="10.5" text-anchor="middle" fill="#2c7a4b">đo ACLR</text>
+
+<!-- carrier spectrum -->
+<path d="M405 260 L418 140 H542 L555 260 Z" fill="#2f5d9e" fill-opacity="0.3" stroke="#2f5d9e" stroke-width="1.5"/>
+<text x="480" y="168" font-size="12" font-weight="700" text-anchor="middle" fill="#2f5d9e">Carrier</text>
+<text x="480" y="186" font-size="10.5" text-anchor="middle" fill="#2f5d9e">OBW, EVM</text>
+
+<!-- leakage skirts -->
+<path d="M405 260 Q370 236 270 254 L270 260 Z" fill="#2f5d9e" fill-opacity="0.18"/>
+<path d="M555 260 Q590 236 690 254 L690 260 Z" fill="#2f5d9e" fill-opacity="0.18"/>
+<path d="M270 254 Q200 258 140 259 L140 260 L270 260 Z" fill="#2f5d9e" fill-opacity="0.12"/>
+<path d="M690 254 Q760 258 820 259 L820 260 L690 260 Z" fill="#2f5d9e" fill-opacity="0.12"/>
+
+<line x1="40" y1="260" x2="920" y2="260" stroke="#555" stroke-width="1.3"/>
+<text x="920" y="278" font-size="10" text-anchor="end" fill="#555">Tần số</text>
+<text x="40" y="300" font-size="11" fill="#444">Phần phổ rò ra ngoài kênh (vùng tô nhạt quanh carrier) do PA phi tuyến và giới hạn của bộ lọc là đối tượng của ACLR và OBUE.</text>
+</svg>
