@@ -1,0 +1,42 @@
+<svg role="img" viewBox="0 0 760 330" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+  <title>Bù skew trong cặp vi sai tại góc rẽ: trace ở góc ngoài dài hơn; đoạn bù (bump) đặt ngay sau góc rẽ tốt hơn đặt ở cuối đường</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker>
+  </defs>
+  <rect x="0" y="0" width="760" height="330" rx="8" fill="#ffffff"/>
+
+  <!-- Panel A -->
+  <rect x="12" y="12" width="360" height="306" rx="6" fill="#f4faf6" stroke="#2e7d4f"/>
+  <text x="192" y="36" font-size="13" font-weight="700" text-anchor="middle" fill="#2e7d4f">Nên: bù ngay sau chỗ phát sinh lệch</text>
+  <polyline fill="none" stroke="#2f5d9e" stroke-width="5" stroke-linejoin="round" points="40,80 250,80 290,120 290,300"/>
+  <polyline fill="none" stroke="#b5483a" stroke-width="5" stroke-linejoin="round" points="40,100 242,100 270,128 270,145 254,153 254,177 270,185 270,300"/>
+  <text x="44" y="72" font-size="11" font-weight="700" fill="#2f5d9e">P (góc ngoài, dài hơn)</text>
+  <text x="44" y="120" font-size="11" font-weight="700" fill="#b5483a">N (góc trong)</text>
+  <ellipse cx="275" cy="102" rx="34" ry="30" fill="none" stroke="#b9770e" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="314" y="70" font-size="10" fill="#8a5a0a">lệch phát</text>
+  <text x="314" y="83" font-size="10" fill="#8a5a0a">sinh ở đây</text>
+  <line x1="200" y1="165" x2="246" y2="165" stroke="#2e7d4f" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="196" y="161" font-size="10" text-anchor="end" fill="#2e7d4f">đoạn bù</text>
+  <text x="196" y="174" font-size="10" text-anchor="end" fill="#2e7d4f">(bump) trên N</text>
+  <text x="196" y="230" font-size="10" text-anchor="end" fill="#444">đoạn còn lại:</text>
+  <text x="196" y="243" font-size="10" text-anchor="end" fill="#444">P và N cân bằng</text>
+  <line x1="320" y1="200" x2="320" y2="290" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+  <text x="328" y="250" font-size="10" fill="#555">hướng</text>
+  <text x="328" y="263" font-size="10" fill="#555">tín hiệu</text>
+
+  <!-- Panel B -->
+  <rect x="388" y="12" width="360" height="306" rx="6" fill="#fdf3f1" stroke="#b5483a"/>
+  <text x="568" y="36" font-size="13" font-weight="700" text-anchor="middle" fill="#b5483a">Kém hơn: bù ở cuối đường</text>
+  <polyline fill="none" stroke="#2f5d9e" stroke-width="5" stroke-linejoin="round" points="416,80 626,80 666,120 666,300"/>
+  <polyline fill="none" stroke="#b5483a" stroke-width="5" stroke-linejoin="round" points="416,100 618,100 646,128 646,240 630,248 630,272 646,280 646,300"/>
+  <text x="420" y="72" font-size="11" font-weight="700" fill="#2f5d9e">P (góc ngoài, dài hơn)</text>
+  <text x="420" y="120" font-size="11" font-weight="700" fill="#b5483a">N (góc trong)</text>
+  <ellipse cx="651" cy="102" rx="34" ry="30" fill="none" stroke="#b9770e" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <rect x="604" y="134" width="20" height="96" fill="#b5483a" fill-opacity="0.12"/>
+  <text x="596" y="170" font-size="10" text-anchor="end" fill="#b5483a">đoạn P và N lệch pha:</text>
+  <text x="596" y="183" font-size="10" text-anchor="end" fill="#b5483a">một phần tín hiệu chuyển</text>
+  <text x="596" y="196" font-size="10" text-anchor="end" fill="#b5483a">thành common-mode</text>
+  <line x1="576" y1="260" x2="622" y2="260" stroke="#b5483a" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="572" y="256" font-size="10" text-anchor="end" fill="#b5483a">đoạn bù đặt</text>
+  <text x="572" y="269" font-size="10" text-anchor="end" fill="#b5483a">xa chỗ lệch</text>
+</svg>

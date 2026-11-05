@@ -1,0 +1,47 @@
+<svg role="img" viewBox="0 0 760 290" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+  <title>Mặt cắt cặp vi sai: edge-coupled microstrip ở lớp ngoài tham chiếu một mặt phẳng đất, edge-coupled stripline ở lớp trong nằm giữa hai mặt phẳng đất; các kích thước W, S, H quyết định trở kháng</title>
+  <defs>
+    <marker id="d" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333"/></marker>
+  </defs>
+  <rect x="0" y="0" width="760" height="290" rx="8" fill="#ffffff"/>
+
+  <!-- Microstrip -->
+  <text x="200" y="30" font-size="13" font-weight="700" text-anchor="middle" fill="#111">Edge-coupled microstrip</text>
+  <text x="200" y="47" font-size="11" text-anchor="middle" fill="#555">lớp ngoài, tham chiếu một mặt phẳng</text>
+  <rect x="40" y="140" width="320" height="64" fill="#f3efe2" stroke="#c9bf9f"/>
+  <rect x="40" y="204" width="320" height="12" fill="#d9a441" stroke="#b9770e"/>
+  <text x="200" y="236" font-size="11" text-anchor="middle" fill="#8a5a0a">mặt phẳng đất (GND)</text>
+  <text x="56" y="180" font-size="10" fill="#7a6f50">điện môi εr</text>
+  <rect x="140" y="128" width="44" height="12" fill="#2f5d9e"/>
+  <rect x="216" y="128" width="44" height="12" fill="#b5483a"/>
+  <text x="162" y="122" font-size="11" font-weight="700" text-anchor="middle" fill="#2f5d9e">P</text>
+  <text x="238" y="122" font-size="11" font-weight="700" text-anchor="middle" fill="#b5483a">N</text>
+  <line x1="140" y1="100" x2="184" y2="100" stroke="#333" marker-start="url(#d)" marker-end="url(#d)"/>
+  <text x="162" y="94" font-size="11" text-anchor="middle" fill="#333">W</text>
+  <line x1="184" y1="100" x2="216" y2="100" stroke="#333" marker-start="url(#d)" marker-end="url(#d)"/>
+  <text x="200" y="94" font-size="11" text-anchor="middle" fill="#333">S</text>
+  <line x1="300" y1="140" x2="300" y2="204" stroke="#333" marker-start="url(#d)" marker-end="url(#d)"/>
+  <text x="310" y="176" font-size="11" fill="#333">H</text>
+
+  <!-- Stripline -->
+  <text x="560" y="30" font-size="13" font-weight="700" text-anchor="middle" fill="#111">Edge-coupled stripline</text>
+  <text x="560" y="47" font-size="11" text-anchor="middle" fill="#555">lớp trong, nằm giữa hai mặt phẳng</text>
+  <rect x="400" y="64" width="320" height="12" fill="#d9a441" stroke="#b9770e"/>
+  <rect x="400" y="76" width="320" height="128" fill="#f3efe2" stroke="#c9bf9f"/>
+  <rect x="400" y="204" width="320" height="12" fill="#d9a441" stroke="#b9770e"/>
+  <text x="560" y="236" font-size="11" text-anchor="middle" fill="#8a5a0a">hai mặt phẳng đất (GND) trên và dưới</text>
+  <rect x="500" y="134" width="44" height="12" fill="#2f5d9e"/>
+  <rect x="576" y="134" width="44" height="12" fill="#b5483a"/>
+  <text x="522" y="126" font-size="11" font-weight="700" text-anchor="middle" fill="#2f5d9e">P</text>
+  <text x="598" y="126" font-size="11" font-weight="700" text-anchor="middle" fill="#b5483a">N</text>
+  <line x1="500" y1="166" x2="544" y2="166" stroke="#333" marker-start="url(#d)" marker-end="url(#d)"/>
+  <text x="522" y="182" font-size="11" text-anchor="middle" fill="#333">W</text>
+  <line x1="544" y1="166" x2="576" y2="166" stroke="#333" marker-start="url(#d)" marker-end="url(#d)"/>
+  <text x="560" y="182" font-size="11" text-anchor="middle" fill="#333">S</text>
+  <line x1="670" y1="76" x2="670" y2="140" stroke="#333" marker-start="url(#d)" marker-end="url(#d)"/>
+  <text x="678" y="112" font-size="11" fill="#333">H1</text>
+  <line x1="670" y1="140" x2="670" y2="204" stroke="#333" marker-start="url(#d)" marker-end="url(#d)"/>
+  <text x="678" y="176" font-size="11" fill="#333">H2</text>
+
+  <text x="380" y="272" font-size="12" text-anchor="middle" fill="#111">Z_diff ≈ 2 × Z_odd; S nhỏ (ghép chặt) làm Z_odd giảm, nên cần W hẹp hơn để giữ Z_diff</text>
+</svg>
