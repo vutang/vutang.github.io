@@ -1,0 +1,64 @@
+<svg role="img" viewBox="0 0 800 370" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+  <title>Các thành phần cơ khí và điện của một card PCIe: bracket, connector I/O, PCB, edge connector với key notch, đầu cấp nguồn phụ và tản nhiệt</title>
+  <rect x="0" y="0" width="800" height="370" rx="8" fill="#ffffff"/>
+  <text x="400" y="26" font-size="14" font-weight="700" fill="#333333" text-anchor="middle">Cấu tạo một card PCIe (không theo tỉ lệ)</text>
+
+  <!-- bracket -->
+  <path d="M120,52 L190,52 L190,62 L136,62 L136,300 L130,318 L126,318 L120,300 Z" fill="#a8a8a8" stroke="#666666" stroke-width="1.2"/>
+  <!-- I/O connectors through bracket -->
+  <rect x="136" y="118" width="34" height="30" fill="#5b6770"/>
+  <rect x="136" y="176" width="34" height="30" fill="#5b6770"/>
+
+  <!-- PCB -->
+  <rect x="150" y="84" width="470" height="188" rx="3" fill="#3f7f4f" stroke="#2c5a37" stroke-width="1.5"/>
+  <!-- edge connector -->
+  <g fill="#d4a017">
+    <rect x="232" y="272" width="44" height="22"/>
+    <rect x="284" y="272" width="276" height="22"/>
+  </g>
+  <g stroke="#b08408" stroke-width="1">
+    <line x1="240" y1="274" x2="240" y2="292"/><line x1="248" y1="274" x2="248" y2="292"/><line x1="256" y1="274" x2="256" y2="292"/><line x1="264" y1="274" x2="264" y2="292"/><line x1="272" y1="274" x2="272" y2="292"/>
+    <line x1="292" y1="274" x2="292" y2="292"/><line x1="300" y1="274" x2="300" y2="292"/><line x1="308" y1="274" x2="308" y2="292"/><line x1="316" y1="274" x2="316" y2="292"/><line x1="324" y1="274" x2="324" y2="292"/><line x1="332" y1="274" x2="332" y2="292"/><line x1="340" y1="274" x2="340" y2="292"/><line x1="348" y1="274" x2="348" y2="292"/><line x1="356" y1="274" x2="356" y2="292"/><line x1="364" y1="274" x2="364" y2="292"/><line x1="372" y1="274" x2="372" y2="292"/><line x1="380" y1="274" x2="380" y2="292"/><line x1="388" y1="274" x2="388" y2="292"/><line x1="396" y1="274" x2="396" y2="292"/><line x1="404" y1="274" x2="404" y2="292"/><line x1="412" y1="274" x2="412" y2="292"/><line x1="420" y1="274" x2="420" y2="292"/><line x1="428" y1="274" x2="428" y2="292"/><line x1="436" y1="274" x2="436" y2="292"/><line x1="444" y1="274" x2="444" y2="292"/><line x1="452" y1="274" x2="452" y2="292"/><line x1="460" y1="274" x2="460" y2="292"/><line x1="468" y1="274" x2="468" y2="292"/><line x1="476" y1="274" x2="476" y2="292"/><line x1="484" y1="274" x2="484" y2="292"/><line x1="492" y1="274" x2="492" y2="292"/><line x1="500" y1="274" x2="500" y2="292"/><line x1="508" y1="274" x2="508" y2="292"/><line x1="516" y1="274" x2="516" y2="292"/><line x1="524" y1="274" x2="524" y2="292"/><line x1="532" y1="274" x2="532" y2="292"/><line x1="540" y1="274" x2="540" y2="292"/><line x1="548" y1="274" x2="548" y2="292"/><line x1="556" y1="274" x2="556" y2="292"/>
+  </g>
+
+  <!-- main chip + heatsink -->
+  <rect x="330" y="122" width="150" height="104" rx="4" fill="#c9ced3" stroke="#7a8288" stroke-width="1.2"/>
+  <g stroke="#9aa1a7" stroke-width="2">
+    <line x1="345" y1="128" x2="345" y2="220"/><line x1="360" y1="128" x2="360" y2="220"/><line x1="375" y1="128" x2="375" y2="220"/><line x1="390" y1="128" x2="390" y2="220"/><line x1="405" y1="128" x2="405" y2="220"/><line x1="420" y1="128" x2="420" y2="220"/><line x1="435" y1="128" x2="435" y2="220"/><line x1="450" y1="128" x2="450" y2="220"/><line x1="465" y1="128" x2="465" y2="220"/>
+  </g>
+  <!-- small components -->
+  <g fill="#2b2b2b">
+    <rect x="200" y="110" width="40" height="40"/>
+    <rect x="200" y="190" width="28" height="18"/>
+    <rect x="520" y="200" width="60" height="24"/>
+  </g>
+  <!-- aux power -->
+  <rect x="560" y="70" width="44" height="16" fill="#222222"/>
+
+  <!-- leaders and labels -->
+  <g stroke="#555555" stroke-width="1" fill="none">
+    <path d="M155,52 L155,32 L72,32"/>
+    <path d="M140,125 L112,125"/>
+    <path d="M582,70 L582,40 L650,40"/>
+    <path d="M405,122 L405,96 L650,96"/>
+    <path d="M600,152 L650,152"/>
+    <path d="M280,294 L280,312 L92,312"/>
+    <path d="M420,294 L420,340 L206,340"/>
+  </g>
+  <g font-size="12" fill="#333333">
+    <text x="16" y="36">Bracket</text>
+    <text x="16" y="50" font-size="10" fill="#666666">gắn vào khung máy</text>
+    <text x="16" y="129">Connector I/O</text>
+    <text x="16" y="143" font-size="10" fill="#666666">(RJ45, SFP, video)</text>
+    <text x="656" y="44">Nguồn phụ</text>
+    <text x="656" y="58" font-size="10" fill="#666666">2x3, 2x4, 12V-2x6</text>
+    <text x="656" y="100">Tản nhiệt</text>
+    <text x="656" y="114" font-size="10" fill="#666666">chiếm thêm slot</text>
+    <text x="656" y="156">PCB</text>
+    <text x="656" y="170" font-size="10" fill="#666666">mặt linh kiện</text>
+    <text x="16" y="316">Key notch</text>
+    <text x="16" y="328" font-size="10" fill="#666666">tách đoạn ngắn và đoạn dài</text>
+    <text x="16" y="344">Edge connector (gold finger)</text>
+    <text x="16" y="358" font-size="10" fill="#666666">số chân theo độ rộng x1, x4, x8, x16</text>
+  </g>
+</svg>

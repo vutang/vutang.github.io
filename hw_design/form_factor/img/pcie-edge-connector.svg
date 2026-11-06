@@ -1,0 +1,31 @@
+<svg role="img" viewBox="0 0 800 330" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+  <title>Chiều dài edge connector và số chân của card PCIe x1, x4, x8 và x16, vẽ theo cùng tỉ lệ; key notch ở cùng vị trí trên mọi độ rộng</title>
+  <rect x="0" y="0" width="800" height="330" rx="8" fill="#ffffff"/>
+  <text x="400" y="28" font-size="14" font-weight="700" fill="#333333" text-anchor="middle">Edge connector theo độ rộng link (cùng tỉ lệ)</text>
+  <line x1="222" y1="52" x2="222" y2="262" stroke="#b5483a" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <text x="20" y="86" font-size="13" font-weight="700" fill="#333333">x1</text>
+  <text x="56" y="86" font-size="11" fill="#555555">36 chân</text>
+  <rect x="150" y="70" width="66" height="22" fill="#d4a017"/>
+  <rect x="228" y="70" width="72" height="22" fill="#d4a017"/>
+  <text x="310" y="86" font-size="12" fill="#333333">≈ 25 mm</text>
+  <text x="20" y="138" font-size="13" font-weight="700" fill="#333333">x4</text>
+  <text x="56" y="138" font-size="11" fill="#555555">64 chân</text>
+  <rect x="150" y="122" width="66" height="22" fill="#d4a017"/>
+  <rect x="228" y="122" width="156" height="22" fill="#d4a017"/>
+  <text x="394" y="138" font-size="12" fill="#333333">≈ 39 mm</text>
+  <text x="20" y="190" font-size="13" font-weight="700" fill="#333333">x8</text>
+  <text x="56" y="190" font-size="11" fill="#555555">98 chân</text>
+  <rect x="150" y="174" width="66" height="22" fill="#d4a017"/>
+  <rect x="228" y="174" width="258" height="22" fill="#d4a017"/>
+  <text x="496" y="190" font-size="12" fill="#333333">≈ 56 mm</text>
+  <text x="20" y="242" font-size="13" font-weight="700" fill="#333333">x16</text>
+  <text x="56" y="242" font-size="11" fill="#555555">164 chân</text>
+  <rect x="150" y="226" width="66" height="22" fill="#d4a017"/>
+  <rect x="228" y="226" width="456" height="22" fill="#d4a017"/>
+  <text x="694" y="242" font-size="12" fill="#333333">≈ 89 mm</text>
+  <text x="222" y="282" font-size="11" fill="#b5483a" text-anchor="middle">key notch</text>
+  <text x="183" y="300" font-size="10" fill="#555555" text-anchor="middle">đoạn ngắn: nguồn,</text>
+  <text x="183" y="313" font-size="10" fill="#555555" text-anchor="middle">tín hiệu sideband</text>
+  <text x="450" y="300" font-size="10" fill="#555555" text-anchor="middle">đoạn dài: các cặp vi sai TX/RX của từng lane và clock tham chiếu,</text>
+  <text x="450" y="313" font-size="10" fill="#555555" text-anchor="middle">kéo dài thêm khi số lane tăng</text>
+</svg>

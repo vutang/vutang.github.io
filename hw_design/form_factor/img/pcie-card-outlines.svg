@@ -1,0 +1,53 @@
+<svg role="img" viewBox="0 0 760 390" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+  <title>Đường bao tối đa của các form factor card PCIe vẽ theo cùng tỉ lệ: FHFL 111,15 x 312 mm, FHHL 111,15 x 167,65 mm, HHHL 68,90 x 167,65 mm</title>
+  <rect x="0" y="0" width="760" height="390" rx="8" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,1 L9,5 L0,9 z" fill="#555555"/>
+    </marker>
+  </defs>
+  <text x="380" y="28" font-size="14" font-weight="700" fill="#333333" text-anchor="middle">Đường bao tối đa của card (cùng tỉ lệ, nhìn từ mặt linh kiện)</text>
+
+  <!-- FHFL -->
+  <rect x="110" y="77.7" width="624" height="222.3" fill="#eaf0f9" stroke="#2f5d9e" stroke-width="2"/>
+  <!-- FHHL -->
+  <rect x="110" y="77.7" width="335.3" height="222.3" fill="#d4e1f3" stroke="#2f5d9e" stroke-width="2" stroke-dasharray="6 4"/>
+  <!-- HHHL / low-profile -->
+  <rect x="110" y="162.2" width="335.3" height="137.8" fill="#f7e4cf" stroke="#b9770e" stroke-width="2"/>
+
+  <!-- bracket -->
+  <rect x="100" y="56" width="10" height="268" fill="#9a9a9a"/>
+  <text x="104" y="50" font-size="11" fill="#555555" text-anchor="middle">bracket</text>
+  <!-- edge connector hint -->
+  <rect x="160" y="300" width="180" height="8" fill="#d4a017"/>
+  <text x="250" y="320" font-size="10" fill="#8a6a00" text-anchor="middle">edge connector</text>
+
+  <!-- labels -->
+  <text x="590" y="180" font-size="15" font-weight="700" fill="#2f5d9e" text-anchor="middle">FHFL</text>
+  <text x="590" y="198" font-size="11" fill="#2f5d9e" text-anchor="middle">full-height, full-length</text>
+  <text x="278" y="112" font-size="15" font-weight="700" fill="#2f5d9e" text-anchor="middle">FHHL</text>
+  <text x="278" y="130" font-size="11" fill="#2f5d9e" text-anchor="middle">full-height, half-length</text>
+  <text x="278" y="225" font-size="15" font-weight="700" fill="#8a5a0a" text-anchor="middle">HHHL</text>
+  <text x="278" y="243" font-size="11" fill="#8a5a0a" text-anchor="middle">half-height (low-profile), half-length</text>
+
+  <!-- length dimensions -->
+  <line x1="110" y1="340" x2="445.3" y2="340" stroke="#555555" stroke-width="1.2" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="278" y="332" font-size="11" fill="#333333" text-anchor="middle">half-length: 167,65 mm</text>
+  <line x1="110" y1="368" x2="734" y2="368" stroke="#555555" stroke-width="1.2" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="422" y="360" font-size="11" fill="#333333" text-anchor="middle">full-length: 312,00 mm</text>
+  <g stroke="#bbbbbb" stroke-width="1" stroke-dasharray="3 3">
+    <line x1="445.3" y1="300" x2="445.3" y2="346"/>
+    <line x1="734" y1="300" x2="734" y2="374"/>
+  </g>
+
+  <!-- height dimensions -->
+  <line x1="78" y1="162.2" x2="78" y2="300" stroke="#555555" stroke-width="1.2" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="72" y="231" font-size="11" fill="#333333" text-anchor="middle" transform="rotate(-90 72 231)">68,90 mm</text>
+  <line x1="44" y1="77.7" x2="44" y2="300" stroke="#555555" stroke-width="1.2" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="38" y="189" font-size="11" fill="#333333" text-anchor="middle" transform="rotate(-90 38 189)">111,15 mm</text>
+  <g stroke="#bbbbbb" stroke-width="1" stroke-dasharray="3 3">
+    <line x1="40" y1="77.7" x2="100" y2="77.7"/>
+    <line x1="74" y1="162.2" x2="100" y2="162.2"/>
+    <line x1="40" y1="300" x2="100" y2="300"/>
+  </g>
+</svg>
