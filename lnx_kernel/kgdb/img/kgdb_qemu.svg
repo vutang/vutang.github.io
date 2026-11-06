@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 330" font-family="Helvetica, Arial, sans-serif" font-size="13">
+  <rect width="800" height="330" fill="#ffffff"/>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <!-- Host -->
+  <rect x="20" y="20" width="760" height="290" rx="8" fill="#f3f6f3" stroke="#5b8a5b" stroke-width="1.5"/>
+  <text x="40" y="46" font-weight="bold" fill="#2d4f2d">Máy host</text>
+
+  <rect x="40" y="70" width="200" height="64" rx="5" fill="#ffffff" stroke="#5b8a5b"/>
+  <text x="140" y="96" text-anchor="middle" fill="#1f2d3d">Terminal chạy QEMU</text>
+  <text x="140" y="116" text-anchor="middle" fill="#555" font-size="12">stdio: console + monitor</text>
+
+  <rect x="40" y="200" width="200" height="64" rx="5" fill="#ffffff" stroke="#5b8a5b"/>
+  <text x="140" y="226" text-anchor="middle" fill="#1f2d3d">gdb vmlinux</text>
+  <text x="140" y="246" text-anchor="middle" fill="#555" font-size="12">target remote :5551</text>
+
+  <!-- QEMU -->
+  <rect x="300" y="60" width="460" height="230" rx="8" fill="#eef4fb" stroke="#4a78b5" stroke-width="1.5"/>
+  <text x="530" y="84" text-anchor="middle" font-weight="bold" fill="#1f3f6b">QEMU (qemu-system-x86_64)</text>
+
+  <rect x="320" y="100" width="150" height="40" rx="5" fill="#ffffff" stroke="#4a78b5"/>
+  <text x="395" y="125" text-anchor="middle" fill="#1f2d3d">-serial mon:stdio</text>
+  <rect x="320" y="212" width="150" height="40" rx="5" fill="#ffffff" stroke="#4a78b5"/>
+  <text x="395" y="237" text-anchor="middle" fill="#1f2d3d">-serial tcp::5551</text>
+
+  <rect x="510" y="100" width="230" height="170" rx="6" fill="#dde9f7" stroke="#4a78b5"/>
+  <text x="625" y="122" text-anchor="middle" font-weight="bold" fill="#1f3f6b">Kernel guest</text>
+  <rect x="525" y="134" width="200" height="34" rx="4" fill="#ffffff" stroke="#4a78b5"/>
+  <text x="625" y="156" text-anchor="middle" fill="#1f2d3d">ttyS0: console=ttyS0</text>
+  <rect x="525" y="222" width="200" height="34" rx="4" fill="#ffffff" stroke="#4a78b5"/>
+  <text x="625" y="244" text-anchor="middle" fill="#1f2d3d">ttyS1: kgdboc=ttyS1</text>
+  <text x="625" y="196" text-anchor="middle" fill="#555" font-size="12">debug core, gdbstub, kdb</text>
+
+  <!-- links -->
+  <line x1="242" y1="120" x2="318" y2="120" stroke="#555" stroke-width="2" marker-start="url(#arr)" marker-end="url(#arr)"/>
+  <line x1="242" y1="232" x2="318" y2="232" stroke="#555" stroke-width="2" marker-start="url(#arr)" marker-end="url(#arr)"/>
+  <text x="280" y="224" text-anchor="middle" fill="#333" font-size="12">TCP</text>
+  <line x1="472" y1="120" x2="523" y2="151" stroke="#555" marker-start="url(#arr)" marker-end="url(#arr)"/>
+  <line x1="472" y1="232" x2="523" y2="239" stroke="#555" marker-start="url(#arr)" marker-end="url(#arr)"/>
+
+  <text x="140" y="170" text-anchor="middle" fill="#6b4a12" font-size="12">Ctrl-a b, rồi g: SysRq-G</text>
+</svg>

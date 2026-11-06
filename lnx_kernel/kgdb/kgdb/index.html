@@ -15,7 +15,7 @@
         <link rel="prev" href="../../ddebug/ddebug/">
       
       
-        <link rel="next" href="../../../virtualization/">
+        <link rel="next" href="../kgdb_qemu/">
       
       
         
@@ -5602,6 +5602,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kgdb_qemu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KGDB trên QEMU (Lab)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -13442,18 +13470,7 @@
 </table>
 <p>KGDB chạy bên trong kernel và dựa vào trap handler, driver UART và cơ chế IPI của chính kernel. Nếu lỗi làm hỏng một trong các phần này, ví dụ treo khi đã tắt ngắt trên mọi CPU, KGDB có thể không vào được; khi đó JTAG hoặc QEMU là lựa chọn phù hợp hơn. Cách dùng ftrace và dynamic debug xem ở <a href="../../ftrace/ftrace/">FTrace</a> và <a href="../../ddebug/ddebug/">Dynamic Debug</a>.</p>
 <h2 id="thu-nghiem-tren-qemu">Thử nghiệm trên QEMU<a class="headerlink" href="#thu-nghiem-tren-qemu" title="Permanent link">¶</a></h2>
-<p>Có thể thử KGDB mà không cần board bằng cách cho QEMU tạo hai cổng serial: cổng thứ nhất làm console, cổng thứ hai đưa ra TCP cho gdb. Ví dụ cho x86_64:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>qemu-system-x86_64<span class="w"> </span>-kernel<span class="w"> </span>arch/x86/boot/bzImage<span class="w"> </span>-initrd<span class="w"> </span>rootfs.cpio.gz<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span>-append<span class="w"> </span><span class="s2">"console=ttyS0 kgdboc=ttyS1,115200 kgdbwait nokaslr"</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span>-serial<span class="w"> </span>mon:stdio<span class="w"> </span>-serial<span class="w"> </span>tcp::5551,server,nowait<span class="w"> </span>-nographic
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>$ gdb vmlinux
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>(gdb) target remote :5551
-</code></pre></div>
-<div class="admonition todo">
-<p class="admonition-title">Chưa kiểm chứng</p>
-<p>Lệnh QEMU ở trên được dựng từ tài liệu KGDB của kernel và cú pháp <code>-serial</code> của QEMU, chưa được chạy thử. Cách viết <code>server,nowait</code> là cú pháp cũ; các bản QEMU mới dùng <code>server=on,wait=off</code>. Lưu ý gdbstub có sẵn của QEMU (<code>-s</code>) không đi qua KGDB, nên muốn kiểm tra chính KGDB thì phải kết nối qua cổng serial như trên.</p>
-</div>
+<p>Có thể thực hành KGDB mà không cần board bằng máy ảo QEMU: cổng serial thứ nhất của guest làm console, cổng thứ hai được QEMU đưa ra TCP cho gdb kết nối. Quy trình đầy đủ, gồm build kernel, tạo initramfs, chạy QEMU, kết nối gdb, dùng kdb và debug module, được trình bày ở <a href="../kgdb_qemu/">KGDB trên QEMU</a>.</p>
 <h2 id="gioi-han-va-luu-y">Giới hạn và lưu ý<a class="headerlink" href="#gioi-han-va-luu-y" title="Permanent link">¶</a></h2>
 <ul>
 <li>Khi kernel dừng trong debugger, mọi CPU đều dừng. Ứng dụng phụ thuộc thời gian thực hoặc kết nối mạng có thể bị ảnh hưởng, và watchdog phần cứng có thể reset máy nếu dừng quá lâu.</li>
@@ -13477,6 +13494,7 @@
 <li><a href="../../../lnx_ldd/uart/uart/">UART</a>: driver UART và serial core, nơi hiện thực các hook polling.</li>
 <li><a href="../../../lnx_ldd/kernel_module/">Kernel Module</a>: viết và nạp module cần debug.</li>
 <li><a href="../../../programming/C/toolchain/debug/">Debug và phân tích</a> (Programming): dùng gdb với chương trình user space và debug trên target bằng gdbserver.</li>
+<li><a href="../kgdb_qemu/">KGDB trên QEMU</a>: lab thực hành KGDB và kdb trên máy ảo QEMU.</li>
 <li><a href="../../../virtualization/hypervisor/kvm-qemu/">KVM &amp; QEMU</a> (Virtualization): chạy kernel trong máy ảo, nơi có thể dùng gdbstub của QEMU.</li>
 </ul>
 <h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
@@ -13489,7 +13507,6 @@
 <li><a href="https://github.com/torvalds/linux/blob/master/include/linux/kgdb.h">Mã nguồn <code>include/linux/kgdb.h</code></a>: <code>struct kgdb_io</code> và API cho phần riêng kiến trúc.</li>
 <li><a href="https://github.com/torvalds/linux/tree/master/scripts/gdb">Mã nguồn <code>scripts/gdb/</code></a>: GDB helper script.</li>
 <li><a href="https://git.kernel.org/pub/scm/utils/kernel/kgdb/agent-proxy.git/">agent-proxy trên git.kernel.org</a></li>
-<li><a href="https://www.qemu.org/docs/master/system/invocation.html">QEMU docs: Invocation, tùy chọn <code>-serial</code></a></li>
 <li>Danh sách kiến trúc hỗ trợ KGDB được lấy bằng cách tìm <code>select HAVE_ARCH_KGDB</code> trong <code>arch/*/Kconfig</code> của tag <code>v7.4-rc1</code> trong <a href="https://github.com/torvalds/linux">cây mã nguồn Linux</a>.</li>
 </ul>
 
@@ -13514,7 +13531,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 6, 2026 01:29:55 UTC">November 6, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 6, 2026 11:47:37 UTC">November 6, 2026</span>
   </span>
 
     
@@ -13580,13 +13597,13 @@
         
         
           
-          <a href="../../../virtualization/" class="md-footer__link md-footer__link--next" aria-label="Next: Overview">
+          <a href="../kgdb_qemu/" class="md-footer__link md-footer__link--next" aria-label="Next: KGDB trên QEMU (Lab)">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Overview
+                KGDB trên QEMU (Lab)
               </div>
             </div>
             <div class="md-footer__button md-icon">
