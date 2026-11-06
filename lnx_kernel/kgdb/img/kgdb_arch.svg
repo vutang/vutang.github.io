@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" font-family="Helvetica, Arial, sans-serif" font-size="13">
+  <rect width="800" height="460" fill="#ffffff"/>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <!-- Host -->
+  <rect x="20" y="20" width="210" height="420" rx="8" fill="#f3f6f3" stroke="#5b8a5b" stroke-width="1.5"/>
+  <text x="125" y="46" text-anchor="middle" font-weight="bold" fill="#2d4f2d">Máy phát triển (host)</text>
+  <rect x="40" y="70" width="170" height="64" rx="5" fill="#ffffff" stroke="#5b8a5b"/>
+  <text x="125" y="96" text-anchor="middle" fill="#1f2d3d">gdb</text>
+  <text x="125" y="116" text-anchor="middle" fill="#555" font-size="12">+ vmlinux (symbol)</text>
+  <rect x="40" y="150" width="170" height="64" rx="5" fill="#ffffff" stroke="#5b8a5b"/>
+  <text x="125" y="176" text-anchor="middle" fill="#1f2d3d">Terminal (kdb)</text>
+  <text x="125" y="196" text-anchor="middle" fill="#555" font-size="12">minicom, picocom</text>
+  <rect x="40" y="250" width="170" height="64" rx="5" fill="#ffffff" stroke="#5b8a5b" stroke-dasharray="5,3"/>
+  <text x="125" y="276" text-anchor="middle" fill="#1f2d3d">Console proxy</text>
+  <text x="125" y="296" text-anchor="middle" fill="#555" font-size="12">(tùy chọn, gửi SysRq-G)</text>
+  <line x1="125" y1="134" x2="125" y2="150" stroke="#5b8a5b" stroke-dasharray="4,3"/>
+  <line x1="125" y1="214" x2="125" y2="250" stroke="#5b8a5b" stroke-dasharray="4,3"/>
+  <text x="250" y="270" text-anchor="middle" fill="#333" font-size="12">UART</text>
+
+  <!-- Target -->
+  <rect x="290" y="20" width="490" height="420" rx="8" fill="#eef4fb" stroke="#4a78b5" stroke-width="1.5"/>
+  <text x="535" y="46" text-anchor="middle" font-weight="bold" fill="#1f3f6b">Máy target (kernel cần debug)</text>
+
+  <!-- Frontends -->
+  <rect x="310" y="64" width="215" height="58" rx="5" fill="#ffffff" stroke="#4a78b5"/>
+  <text x="417" y="88" text-anchor="middle" fill="#1f2d3d">gdbstub (kgdb)</text>
+  <text x="417" y="108" text-anchor="middle" fill="#555" font-size="12">kernel/debug/gdbstub.c</text>
+  <rect x="545" y="64" width="215" height="58" rx="5" fill="#ffffff" stroke="#4a78b5"/>
+  <text x="652" y="88" text-anchor="middle" fill="#1f2d3d">kdb shell</text>
+  <text x="652" y="108" text-anchor="middle" fill="#555" font-size="12">kernel/debug/kdb/</text>
+
+  <!-- Debug core -->
+  <rect x="310" y="146" width="450" height="76" rx="5" fill="#dde9f7" stroke="#4a78b5"/>
+  <text x="535" y="170" text-anchor="middle" font-weight="bold" fill="#1f3f6b">Debug core (kernel/debug/debug_core.c)</text>
+  <text x="535" y="190" text-anchor="middle" fill="#1f2d3d" font-size="12">Xử lý exception, đưa các CPU khác về trạng thái dừng,</text>
+  <text x="535" y="208" text-anchor="middle" fill="#1f2d3d" font-size="12">đọc/ghi bộ nhớ an toàn, software breakpoint</text>
+
+  <!-- Arch + IO -->
+  <rect x="310" y="246" width="215" height="76" rx="5" fill="#ffffff" stroke="#4a78b5"/>
+  <text x="417" y="270" text-anchor="middle" fill="#1f2d3d">Phần riêng kiến trúc</text>
+  <text x="417" y="290" text-anchor="middle" fill="#555" font-size="12">arch/*/kernel/kgdb.c</text>
+  <text x="417" y="308" text-anchor="middle" fill="#555" font-size="12">trap, pt_regs, HW breakpoint</text>
+  <rect x="545" y="246" width="215" height="76" rx="5" fill="#ffffff" stroke="#4a78b5"/>
+  <text x="652" y="270" text-anchor="middle" fill="#1f2d3d">kgdb I/O driver: kgdboc</text>
+  <text x="652" y="290" text-anchor="middle" fill="#555" font-size="12">đọc/ghi từng ký tự</text>
+  <text x="652" y="308" text-anchor="middle" fill="#555" font-size="12">bằng polling</text>
+
+  <rect x="545" y="346" width="215" height="64" rx="5" fill="#ffffff" stroke="#4a78b5"/>
+  <text x="652" y="372" text-anchor="middle" fill="#1f2d3d">serial_core + UART driver</text>
+  <text x="652" y="392" text-anchor="middle" fill="#555" font-size="12">poll_get_char / poll_put_char</text>
+
+  <rect x="310" y="346" width="215" height="64" rx="5" fill="#fff6e5" stroke="#c08a2b"/>
+  <text x="417" y="368" text-anchor="middle" fill="#6b4a12">Điểm vào debugger</text>
+  <text x="417" y="386" text-anchor="middle" fill="#6b4a12" font-size="12">SysRq-G, breakpoint, oops,</text>
+  <text x="417" y="402" text-anchor="middle" fill="#6b4a12" font-size="12">panic, kgdbwait</text>
+
+  <!-- arrows -->
+  <line x1="417" y1="144" x2="417" y2="124" stroke="#555" marker-end="url(#arr)" marker-start="url(#arr)"/>
+  <line x1="652" y1="144" x2="652" y2="124" stroke="#555" marker-end="url(#arr)" marker-start="url(#arr)"/>
+  <line x1="417" y1="244" x2="417" y2="224" stroke="#555" marker-end="url(#arr)" marker-start="url(#arr)"/>
+  <line x1="652" y1="244" x2="652" y2="224" stroke="#555" marker-end="url(#arr)" marker-start="url(#arr)"/>
+  <line x1="652" y1="344" x2="652" y2="324" stroke="#555" marker-end="url(#arr)" marker-start="url(#arr)"/>
+  <line x1="417" y1="344" x2="417" y2="324" stroke="#555" marker-end="url(#arr)"/>
+  <!-- UART link host to target -->
+  <path d="M652,412 L652,428 L270,428 L270,282 L212,282" fill="none" stroke="#555" stroke-width="2" marker-end="url(#arr)" marker-start="url(#arr)"/>
+</svg>
