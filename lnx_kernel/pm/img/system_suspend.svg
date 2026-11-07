@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 860 300" font-family="Helvetica, Arial, sans-serif" font-size="13">
+  <title>Trình tự suspend: đóng băng process, các pha prepare, suspend, suspend_late, suspend_noirq, tắt CPU phụ và vào trạng thái ngủ của nền tảng; sự kiện đánh thức kích hoạt resume theo thứ tự ngược lại: resume_noirq, resume_early, resume, complete, rã đông process</title>
+  <rect width="860" height="300" fill="#ffffff"/>
+  <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <rect x="20" y="50" width="118" height="54" rx="5" fill="#fdecea" stroke="#c0392b" stroke-width="1.2"/>
+  <text x="79.0" y="72.5" text-anchor="middle" fill="#1f2d3d" font-weight="bold">Freeze</text>
+  <text x="79.0" y="89.5" text-anchor="middle" fill="#555" font-size="11.5">user space</text>
+  <line x1="138" y1="77" x2="158" y2="77" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="160" y="50" width="118" height="54" rx="5" fill="#eef4fb" stroke="#4a78b5" stroke-width="1.2"/>
+  <text x="219.0" y="81.0" text-anchor="middle" fill="#1f2d3d" font-weight="bold">prepare</text>
+  <line x1="278" y1="77" x2="298" y2="77" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="300" y="50" width="118" height="54" rx="5" fill="#eef4fb" stroke="#4a78b5" stroke-width="1.2"/>
+  <text x="359.0" y="72.5" text-anchor="middle" fill="#1f2d3d" font-weight="bold">suspend</text>
+  <text x="359.0" y="89.5" text-anchor="middle" fill="#555" font-size="11.5">ngắt còn bật</text>
+  <line x1="418" y1="77" x2="438" y2="77" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="440" y="50" width="118" height="54" rx="5" fill="#eef4fb" stroke="#4a78b5" stroke-width="1.2"/>
+  <text x="499.0" y="81.0" text-anchor="middle" fill="#1f2d3d" font-weight="bold">suspend_late</text>
+  <line x1="558" y1="77" x2="578" y2="77" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="580" y="50" width="118" height="54" rx="5" fill="#eef4fb" stroke="#4a78b5" stroke-width="1.2"/>
+  <text x="639.0" y="72.5" text-anchor="middle" fill="#1f2d3d" font-weight="bold">suspend_noirq</text>
+  <text x="639.0" y="89.5" text-anchor="middle" fill="#555" font-size="11.5">ngắt đã tắt</text>
+  <line x1="698" y1="77" x2="718" y2="77" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="720" y="50" width="118" height="54" rx="5" fill="#f7f7f7" stroke="#555" stroke-width="1.2"/>
+  <text x="779.0" y="72.5" text-anchor="middle" fill="#1f2d3d" font-weight="bold">Ngủ</text>
+  <text x="779.0" y="89.5" text-anchor="middle" fill="#555" font-size="11.5">PSCI, ACPI</text>
+  <text x="20" y="34" text-anchor="start" fill="#1f2d3d" font-size="12.5" font-weight="bold">Suspend</text>
+  <rect x="20" y="190" width="118" height="54" rx="5" fill="#fdecea" stroke="#c0392b" stroke-width="1.2"/>
+  <text x="79.0" y="212.5" text-anchor="middle" fill="#1f2d3d" font-weight="bold">Thaw</text>
+  <text x="79.0" y="229.5" text-anchor="middle" fill="#555" font-size="11.5">user space</text>
+  <line x1="158" y1="217" x2="140" y2="217" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="160" y="190" width="118" height="54" rx="5" fill="#e6f4ea" stroke="#2e7d32" stroke-width="1.2"/>
+  <text x="219.0" y="221.0" text-anchor="middle" fill="#1f2d3d" font-weight="bold">complete</text>
+  <line x1="298" y1="217" x2="280" y2="217" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="300" y="190" width="118" height="54" rx="5" fill="#e6f4ea" stroke="#2e7d32" stroke-width="1.2"/>
+  <text x="359.0" y="221.0" text-anchor="middle" fill="#1f2d3d" font-weight="bold">resume</text>
+  <line x1="438" y1="217" x2="420" y2="217" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="440" y="190" width="118" height="54" rx="5" fill="#e6f4ea" stroke="#2e7d32" stroke-width="1.2"/>
+  <text x="499.0" y="221.0" text-anchor="middle" fill="#1f2d3d" font-weight="bold">resume_early</text>
+  <line x1="578" y1="217" x2="560" y2="217" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="580" y="190" width="118" height="54" rx="5" fill="#e6f4ea" stroke="#2e7d32" stroke-width="1.2"/>
+  <text x="639.0" y="221.0" text-anchor="middle" fill="#1f2d3d" font-weight="bold">resume_noirq</text>
+  <path d="M779.0,104 V217 H700" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="773.0" y="168" text-anchor="end" fill="#c0392b" font-size="10.5">sự kiện đánh thức</text>
+  <text x="20" y="270" text-anchor="start" fill="#1f2d3d" font-size="12.5" font-weight="bold">Resume</text>
+  <text x="430" y="140" text-anchor="middle" fill="#1f2d3d" font-size="11">Trong mỗi pha, kernel gọi callback cho mọi thiết bị: thiết bị con trước thiết bị cha khi suspend, ngược lại khi resume</text>
+  <text x="430" y="290" text-anchor="middle" fill="#555" font-size="10.5">Trên hệ thống nhiều core, CPU phụ được tắt sau pha suspend_noirq và bật lại trước pha resume_noirq</text>
+</svg>

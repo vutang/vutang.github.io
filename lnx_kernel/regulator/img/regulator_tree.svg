@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 860 330" font-family="Helvetica, Arial, sans-serif" font-size="13">
+  <title>Cây nguồn: PMIC có BUCK1 3,3 V và LDO2 1,8 đến 3,3 V lấy nguồn từ BUCK1; fixed regulator điều khiển bằng GPIO cũng lấy nguồn từ BUCK1; các consumer xin nguồn theo tên supply; BUCK1 có ba consumer nên bộ đếm enable bằng 3</title>
+  <rect width="860" height="330" fill="#ffffff"/>
+  <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <rect x="10" y="10" width="330" height="250" rx="5" fill="#fafafa" stroke="#ccc" stroke-width="1"/>
+  <text x="175" y="32" text-anchor="middle" fill="#1f2d3d" font-size="12.5" font-weight="bold">PMIC (I2C)</text>
+  <rect x="30" y="50" width="290" height="60" rx="5" fill="#e6f4ea" stroke="#2e7d32" stroke-width="1.2"/>
+  <text x="175.0" y="75.5" text-anchor="middle" fill="#1f2d3d" font-weight="bold">BUCK1: vdd_3v3</text>
+  <text x="175.0" y="92.5" text-anchor="middle" fill="#555" font-size="11.5">3,3 V, use count = 3</text>
+  <rect x="30" y="170" width="290" height="60" rx="5" fill="#e6f4ea" stroke="#2e7d32" stroke-width="1.2"/>
+  <text x="175.0" y="195.5" text-anchor="middle" fill="#1f2d3d" font-weight="bold">LDO2: vdd_sd_io</text>
+  <text x="175.0" y="212.5" text-anchor="middle" fill="#555" font-size="11.5">1,8 V đến 3,3 V, vin-supply = BUCK1</text>
+  <line x1="175" y1="110" x2="175" y2="168" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="182" y="145" text-anchor="start" fill="#555" font-size="10.5">supply</text>
+  <rect x="380" y="250" width="210" height="60" rx="5" fill="#fffbe6" stroke="#b59a2a" stroke-width="1.2"/>
+  <text x="485.0" y="275.5" text-anchor="middle" fill="#1f2d3d" font-weight="bold">regulator-fixed: sensor_3v3</text>
+  <text x="485.0" y="292.5" text-anchor="middle" fill="#555" font-size="11.5">bật bằng GPIO 12</text>
+  <path d="M320,80 H360 V280 H378" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="366" y="240" text-anchor="start" fill="#555" font-size="10.5">supply</text>
+  <rect x="640" y="40" width="200" height="44" rx="5" fill="#fbf1e8" stroke="#c0712b" stroke-width="1.2"/>
+  <text x="740.0" y="66.0" text-anchor="middle" fill="#1f2d3d" font-weight="bold">MMC: vmmc-supply</text>
+  <rect x="640" y="110" width="200" height="44" rx="5" fill="#fbf1e8" stroke="#c0712b" stroke-width="1.2"/>
+  <text x="740.0" y="136.0" text-anchor="middle" fill="#1f2d3d" font-weight="bold">Ethernet PHY: vdd-supply</text>
+  <rect x="640" y="180" width="200" height="44" rx="5" fill="#fbf1e8" stroke="#c0712b" stroke-width="1.2"/>
+  <text x="740.0" y="206.0" text-anchor="middle" fill="#1f2d3d" font-weight="bold">MMC: vqmmc-supply</text>
+  <path d="M320,72 H600 V62 H638" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <path d="M320,88 H610 V132 H638" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="320" y1="200" x2="638" y2="202" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="640" y="258" width="200" height="44" rx="5" fill="#fbf1e8" stroke="#c0712b" stroke-width="1.2"/>
+  <text x="740.0" y="284.0" text-anchor="middle" fill="#1f2d3d" font-weight="bold">Cảm biến: vdd-supply</text>
+  <line x1="590" y1="280" x2="638" y2="280" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="430" y="324" text-anchor="middle" fill="#1f2d3d" font-size="11">Consumer xin nguồn bằng devm_regulator_get(dev, "vdd"); regulator chỉ tắt khi use count về 0</text>
+</svg>

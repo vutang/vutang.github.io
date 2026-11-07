@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 860 330" font-family="Helvetica, Arial, sans-serif" font-size="13">
+  <title>Một chân của SoC nối qua bộ chọn tới một trong các chức năng UART0 TX, SPI1 MOSI hoặc GPIO 10; khối pin config đặt điện trở kéo và dòng ra; thiết bị UART0 có state default chọn chức năng UART và kéo lên, state sleep chuyển chân về GPIO và kéo xuống</title>
+  <rect width="860" height="330" fill="#ffffff"/>
+  <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <rect x="10" y="10" width="560" height="230" rx="5" fill="#fafafa" stroke="#ccc" stroke-width="1"/>
+  <text x="290" y="32" text-anchor="middle" fill="#1f2d3d" font-size="12.5" font-weight="bold">Pin controller trong SoC</text>
+  <rect x="30" y="52" width="130" height="40" rx="5" fill="#fbf1e8" stroke="#c0712b" stroke-width="1.2"/>
+  <text x="95.0" y="76.0" text-anchor="middle" fill="#1f2d3d" font-weight="bold">UART0 TX</text>
+  <line x1="160" y1="72" x2="248" y2="130" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="30" y="110" width="130" height="40" rx="5" fill="#fbf1e8" stroke="#c0712b" stroke-width="1.2"/>
+  <text x="95.0" y="134.0" text-anchor="middle" fill="#1f2d3d" font-weight="bold">SPI1 MOSI</text>
+  <line x1="160" y1="130" x2="248" y2="130" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="30" y="168" width="130" height="40" rx="5" fill="#eef4fb" stroke="#4a78b5" stroke-width="1.2"/>
+  <text x="95.0" y="192.0" text-anchor="middle" fill="#1f2d3d" font-weight="bold">GPIO 10</text>
+  <line x1="160" y1="188" x2="248" y2="130" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <path d="M250,80 L310,105 L310,155 L250,180 Z" fill="#ffffff" stroke="#555" stroke-width="1.4"/>
+  <text x="280" y="134" text-anchor="middle" fill="#1f2d3d" font-size="11.5" font-weight="bold">mux</text>
+  <text x="280" y="200" text-anchor="middle" fill="#555" font-size="10.5">pin mux: chọn chức năng</text>
+  <rect x="350" y="100" width="170" height="60" rx="5" fill="#fffbe6" stroke="#b59a2a" stroke-width="1.2"/>
+  <text x="435.0" y="125.5" text-anchor="middle" fill="#1f2d3d" font-weight="bold">Pin config</text>
+  <text x="435.0" y="142.5" text-anchor="middle" fill="#555" font-size="11.5">kéo lên/xuống, dòng ra</text>
+  <line x1="310" y1="130" x2="348" y2="130" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="600" y="105" width="70" height="50" rx="5" fill="#ffffff" stroke="#555" stroke-width="1.6"/>
+  <text x="635.0" y="125.5" text-anchor="middle" fill="#1f2d3d" font-weight="bold">Chân</text>
+  <text x="635.0" y="142.5" text-anchor="middle" fill="#555" font-size="11.5">(pad)</text>
+  <line x1="520" y1="130" x2="598" y2="130" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="670" y1="130" x2="720" y2="130" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="760" y="134" text-anchor="middle" fill="#555" font-size="11">ra board</text>
+  <text x="290" y="228" text-anchor="middle" fill="#555" font-size="10.5">các thanh ghi IOMUX, MIO tùy hãng</text>
+  <rect x="20" y="260" width="400" height="56" rx="5" fill="#e6f4ea" stroke="#2e7d32" stroke-width="1.2"/>
+  <text x="220.0" y="283.5" text-anchor="middle" fill="#1f2d3d" font-weight="bold">state "default" (pinctrl-0)</text>
+  <text x="220.0" y="300.5" text-anchor="middle" fill="#555" font-size="11.5">function uart0, bias-pull-up, drive-strength 12</text>
+  <rect x="440" y="260" width="400" height="56" rx="5" fill="#eef4fb" stroke="#4a78b5" stroke-width="1.2"/>
+  <text x="640.0" y="283.5" text-anchor="middle" fill="#1f2d3d" font-weight="bold">state "sleep" (pinctrl-1)</text>
+  <text x="640.0" y="300.5" text-anchor="middle" fill="#555" font-size="11.5">chuyển về GPIO, bias-pull-down để giảm dòng rò</text>
+</svg>
