@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 860 300" font-family="Helvetica, Arial, sans-serif" font-size="13">
+  <title>Hai cách tổ chức DMA trong SoC: DMA controller chung (third-party) chép dữ liệu thay cho ngoại vi đơn giản qua đường request; thiết bị bus master (NIC, PCIe, GPU) có DMA engine riêng và tự phát giao dịch lên interconnect</title>
+  <rect width="860" height="300" fill="#ffffff"/>
+  <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <rect x="10" y="10" width="410" height="280" rx="5" fill="#fafafa" stroke="#ccc" stroke-width="1"/>
+  <text x="215" y="32" text-anchor="middle" fill="#1f2d3d" font-size="12.5" font-weight="bold">DMA controller chung (third-party DMA)</text>
+  <rect x="440" y="10" width="410" height="280" rx="5" fill="#fafafa" stroke="#ccc" stroke-width="1"/>
+  <text x="645" y="32" text-anchor="middle" fill="#1f2d3d" font-size="12.5" font-weight="bold">Bus master DMA (first-party)</text>
+  <rect x="30" y="120" width="370" height="34" rx="5" fill="#f7f7f7" stroke="#555" stroke-width="1.2"/>
+  <text x="215.0" y="141.0" text-anchor="middle" fill="#1f2d3d" font-weight="bold">Interconnect (AXI)</text>
+  <rect x="30" y="50" width="100" height="46" rx="5" fill="#eef4fb" stroke="#4a78b5" stroke-width="1.2"/>
+  <text x="80.0" y="77.0" text-anchor="middle" fill="#1f2d3d" font-weight="bold">CPU</text>
+  <rect x="300" y="50" width="100" height="46" rx="5" fill="#ffffff" stroke="#555" stroke-width="1.2"/>
+  <text x="350.0" y="77.0" text-anchor="middle" fill="#1f2d3d" font-weight="bold">DRAM</text>
+  <line x1="80" y1="96" x2="80" y2="118" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="350" y1="118" x2="350" y2="98" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="460" y="120" width="370" height="34" rx="5" fill="#f7f7f7" stroke="#555" stroke-width="1.2"/>
+  <text x="645.0" y="141.0" text-anchor="middle" fill="#1f2d3d" font-weight="bold">Interconnect (AXI)</text>
+  <rect x="460" y="50" width="100" height="46" rx="5" fill="#eef4fb" stroke="#4a78b5" stroke-width="1.2"/>
+  <text x="510.0" y="77.0" text-anchor="middle" fill="#1f2d3d" font-weight="bold">CPU</text>
+  <rect x="730" y="50" width="100" height="46" rx="5" fill="#ffffff" stroke="#555" stroke-width="1.2"/>
+  <text x="780.0" y="77.0" text-anchor="middle" fill="#1f2d3d" font-weight="bold">DRAM</text>
+  <line x1="510" y1="96" x2="510" y2="118" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="780" y1="118" x2="780" y2="98" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="155" y="50" width="120" height="46" rx="5" fill="#e6f4ea" stroke="#2e7d32" stroke-width="1.2"/>
+  <text x="215.0" y="68.5" text-anchor="middle" fill="#1f2d3d" font-weight="bold">DMA controller</text>
+  <text x="215.0" y="85.5" text-anchor="middle" fill="#555" font-size="11.5">AXI master</text>
+  <line x1="215" y1="96" x2="215" y2="118" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="30" y="190" width="110" height="46" rx="5" fill="#fbf1e8" stroke="#c0712b" stroke-width="1.2"/>
+  <text x="85.0" y="208.5" text-anchor="middle" fill="#1f2d3d" font-weight="bold">UART</text>
+  <text x="85.0" y="225.5" text-anchor="middle" fill="#555" font-size="11.5">FIFO</text>
+  <rect x="160" y="190" width="110" height="46" rx="5" fill="#fbf1e8" stroke="#c0712b" stroke-width="1.2"/>
+  <text x="215.0" y="208.5" text-anchor="middle" fill="#1f2d3d" font-weight="bold">SPI</text>
+  <text x="215.0" y="225.5" text-anchor="middle" fill="#555" font-size="11.5">FIFO</text>
+  <rect x="290" y="190" width="110" height="46" rx="5" fill="#fbf1e8" stroke="#c0712b" stroke-width="1.2"/>
+  <text x="345.0" y="208.5" text-anchor="middle" fill="#1f2d3d" font-weight="bold">I2S</text>
+  <text x="345.0" y="225.5" text-anchor="middle" fill="#555" font-size="11.5">FIFO</text>
+  <line x1="85" y1="188" x2="85" y2="156" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="215" y1="188" x2="215" y2="156" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="345" y1="188" x2="345" y2="156" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="85" y1="236" x2="85" y2="252" stroke="#555" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <line x1="215" y1="236" x2="215" y2="252" stroke="#555" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <line x1="345" y1="236" x2="345" y2="252" stroke="#555" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <path d="M85,252 H408 V106 H245 V100" fill="none" stroke="#555" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+  <text x="215" y="276" text-anchor="middle" fill="#555" font-size="10.5">nét đứt: đường request, ngoại vi báo FIFO sẵn sàng</text>
+  <rect x="470" y="190" width="110" height="56" rx="5" fill="#fbf1e8" stroke="#c0712b" stroke-width="1.2"/>
+  <text x="525.0" y="213.5" text-anchor="middle" fill="#1f2d3d" font-weight="bold">NIC</text>
+  <text x="525.0" y="230.5" text-anchor="middle" fill="#555" font-size="11.5">DMA engine riêng</text>
+  <rect x="600" y="190" width="110" height="56" rx="5" fill="#fbf1e8" stroke="#c0712b" stroke-width="1.2"/>
+  <text x="655.0" y="213.5" text-anchor="middle" fill="#1f2d3d" font-weight="bold">PCIe EP</text>
+  <text x="655.0" y="230.5" text-anchor="middle" fill="#555" font-size="11.5">DMA engine riêng</text>
+  <rect x="730" y="190" width="100" height="56" rx="5" fill="#fbf1e8" stroke="#c0712b" stroke-width="1.2"/>
+  <text x="780.0" y="213.5" text-anchor="middle" fill="#1f2d3d" font-weight="bold">GPU, NPU</text>
+  <text x="780.0" y="230.5" text-anchor="middle" fill="#555" font-size="11.5">DMA riêng</text>
+  <line x1="525" y1="188" x2="525" y2="156" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="655" y1="188" x2="655" y2="156" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="780" y1="188" x2="780" y2="156" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="645" y="272" text-anchor="middle" fill="#555" font-size="10.5">thiết bị tự phát giao dịch đọc ghi lên interconnect</text>
+</svg>

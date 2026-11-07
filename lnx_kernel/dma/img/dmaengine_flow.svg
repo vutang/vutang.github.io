@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 860 330" font-family="Helvetica, Arial, sans-serif" font-size="13">
+  <title>dmaengine: driver ngoại vi xin kênh và nộp descriptor qua dmaengine core, driver của DMA controller lập trình phần cứng; DMA controller chép dữ liệu giữa FIFO của ngoại vi và RAM, báo ngắt khi xong, callback được gọi về driver ngoại vi</title>
+  <rect width="860" height="330" fill="#ffffff"/>
+  <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <rect x="20" y="20" width="250" height="120" rx="5" fill="#eef4fb" stroke="#4a78b5" stroke-width="1.2"/>
+  <text x="145" y="42" text-anchor="middle" fill="#1f2d3d" font-size="12.5" font-weight="bold">Driver ngoại vi (client)</text>
+  <text x="35" y="64" text-anchor="start" fill="#1f2d3d" font-size="11">1. dma_request_chan()</text>
+  <text x="35" y="81" text-anchor="start" fill="#1f2d3d" font-size="11">2. dmaengine_slave_config()</text>
+  <text x="35" y="98" text-anchor="start" fill="#1f2d3d" font-size="11">3. dmaengine_prep_slave_single()</text>
+  <text x="35" y="115" text-anchor="start" fill="#1f2d3d" font-size="11">4. dmaengine_submit(), issue_pending</text>
+  <text x="35" y="132" text-anchor="start" fill="#1f2d3d" font-size="11">6. callback khi xong</text>
+  <rect x="320" y="50" width="200" height="60" rx="5" fill="#ffffff" stroke="#555" stroke-width="1.2"/>
+  <text x="420.0" y="75.5" text-anchor="middle" fill="#1f2d3d" font-weight="bold">dmaengine core</text>
+  <text x="420.0" y="92.5" text-anchor="middle" fill="#555" font-size="11.5">kênh, descriptor, cookie</text>
+  <rect x="570" y="20" width="270" height="120" rx="5" fill="#e6f4ea" stroke="#2e7d32" stroke-width="1.2"/>
+  <text x="705" y="42" text-anchor="middle" fill="#1f2d3d" font-size="12.5" font-weight="bold">Driver DMA controller (provider)</text>
+  <text x="585" y="70" text-anchor="start" fill="#1f2d3d" font-size="11">device_prep_slave_sg()</text>
+  <text x="585" y="90" text-anchor="start" fill="#1f2d3d" font-size="11">device_issue_pending()</text>
+  <text x="585" y="110" text-anchor="start" fill="#1f2d3d" font-size="11">xử lý ngắt, gọi callback</text>
+  <line x1="270" y1="80" x2="318" y2="80" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="520" y1="80" x2="568" y2="80" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <path d="M568,120 H545 V128 H272" fill="none" stroke="#555" stroke-width="1.5" stroke-dasharray="5 3" marker-end="url(#arr)"/>
+  <text x="420" y="142" text-anchor="middle" fill="#555" font-size="10.5">5. hoàn tất: callback</text>
+  <text x="14" y="180" text-anchor="start" fill="#888" font-size="11" font-weight="bold">Phần mềm</text>
+  <line x1="10" y1="186" x2="850" y2="186" stroke="#bbb" stroke-width="1" stroke-dasharray="6 4"/>
+  <text x="14" y="204" text-anchor="start" fill="#888" font-size="11" font-weight="bold">Phần cứng</text>
+  <rect x="570" y="214" width="270" height="64" rx="5" fill="#e6f4ea" stroke="#2e7d32" stroke-width="1.2"/>
+  <text x="705.0" y="241.5" text-anchor="middle" fill="#1f2d3d" font-weight="bold">DMA controller</text>
+  <text x="705.0" y="258.5" text-anchor="middle" fill="#555" font-size="11.5">kênh, FIFO, AXI master</text>
+  <rect x="40" y="214" width="200" height="64" rx="5" fill="#fbf1e8" stroke="#c0712b" stroke-width="1.2"/>
+  <text x="140.0" y="241.5" text-anchor="middle" fill="#1f2d3d" font-weight="bold">Ngoại vi (SPI, UART)</text>
+  <text x="140.0" y="258.5" text-anchor="middle" fill="#555" font-size="11.5">FIFO dữ liệu</text>
+  <rect x="330" y="214" width="160" height="64" rx="5" fill="#f7f7f7" stroke="#555" stroke-width="1.2"/>
+  <text x="410.0" y="241.5" text-anchor="middle" fill="#1f2d3d" font-weight="bold">RAM</text>
+  <text x="410.0" y="258.5" text-anchor="middle" fill="#555" font-size="11.5">buffer: dma_addr_t</text>
+  <line x1="705" y1="140" x2="705" y2="212" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="712" y="178" text-anchor="start" fill="#555" font-size="10.5">ghi thanh ghi</text>
+  <line x1="568" y1="246" x2="492" y2="246" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="530" y="240" text-anchor="middle" fill="#555" font-size="10.5">ghi</text>
+  <path d="M140,278 V300 H640 V280" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="390" y="314" text-anchor="middle" fill="#555" font-size="10.5">chiều nhận: DMA controller đọc FIFO khi ngoại vi báo sẵn sàng qua đường request</text>
+</svg>
