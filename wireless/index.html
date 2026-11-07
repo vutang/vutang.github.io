@@ -6307,6 +6307,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#4g-va-5g-trong-cung-mot-mang-nsa-va-sa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4G và 5G trong cùng một mạng: NSA và SA
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#nhung-rang-buoc-ky-thuat-chinh" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -12716,6 +12727,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#4g-va-5g-trong-cung-mot-mang-nsa-va-sa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4G và 5G trong cùng một mạng: NSA và SA
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#nhung-rang-buoc-ky-thuat-chinh" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -12851,7 +12873,7 @@
 
 
 <h1 id="wireless-ran-overview">Wireless / RAN Overview<a class="headerlink" href="#wireless-ran-overview" title="Permanent link">¶</a></h1>
-<p>Trang tổng quan về mạng truy nhập vô tuyến (RAN) của 5G và hướng tới 6G, nhìn từ phía người làm firmware và phần mềm hệ thống: trạm gốc được chia thành những khối nào, các khối nói chuyện với nhau qua giao diện nào, và phần nào đòi hỏi nhiều nhất về thời gian thực, đồng bộ và tính toán. Chi tiết từng chủ đề nằm ở các trang con, xem mục "Bản đồ tài liệu" ở cuối trang.</p>
+<p>Trang tổng quan về mạng truy nhập vô tuyến (RAN) của 5G và hướng tới 6G, nhìn từ phía người làm firmware và phần mềm hệ thống: trạm gốc được chia thành những khối nào, các khối giao tiếp với nhau qua giao diện nào, 4G và 5G cùng tồn tại trên một mạng ra sao, và phần nào đòi hỏi nhiều nhất về thời gian thực, đồng bộ và tính toán. Chi tiết từng chủ đề nằm ở các trang con, xem mục "Bản đồ tài liệu" ở cuối trang.</p>
 <h2 id="pham-vi">Phạm vi<a class="headerlink" href="#pham-vi" title="Permanent link">¶</a></h2>
 <p>Topic này tập trung vào <strong>RAN</strong>, không đi vào 5G Core và không đi sâu vào lý thuyết truyền dẫn vô tuyến.</p>
 <table>
@@ -12913,6 +12935,60 @@
 <li><strong>CU</strong> (Centralized Unit) xử lý các lớp trên (PDCP, SDAP, RRC), ít nhạy với thời gian hơn.</li>
 </ul>
 <p>Mỗi đường nối có yêu cầu độ trễ và băng thông khác nhau, và quyết định "cắt" ở đâu (split) ảnh hưởng trực tiếp đến phần cứng, phần mềm và cách triển khai. Xem <a href="architecture/ran-architecture/">RAN Architecture &amp; Splits</a>.</p>
+<h2 id="4g-va-5g-trong-cung-mot-mang-nsa-va-sa">4G và 5G trong cùng một mạng: NSA và SA<a class="headerlink" href="#4g-va-5g-trong-cung-mot-mang-nsa-va-sa" title="Permanent link">¶</a></h2>
+<p>5G không thay thế 4G ngay lập tức. Release 15 của 3GPP đặc tả hai cách đưa NR vào mạng: <strong>Non-Standalone (NSA)</strong>, đóng băng tháng 12/2017, và <strong>Standalone (SA)</strong>, đóng băng tháng 6/2018, xem <a href="generations/generations/#5g-nr">Các thế hệ mạng di động</a>. Hai cách khác nhau ở chỗ mạng lõi nào được dùng và lớp vô tuyến nào giữ phần điều khiển.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="img/nsa-sa.svg" data-desc-position="bottom"><img alt="So sánh 5G Non-Standalone (EN-DC, option 3x) và 5G Standalone (option 2)" src="img/nsa-sa.svg"></a></p>
+<p><em>Trái: NSA, UE nối đồng thời với eNB và en-gNB, mạng lõi là EPC. Phải: SA, UE chỉ nối với gNB, mạng lõi là 5GC; mạng LTE vẫn phục vụ các UE 4G song song.</em></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>NSA (EN-DC, option 3 và 3x)</th>
+<th>SA (option 2)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mạng lõi</td>
+<td>EPC của 4G</td>
+<td>5GC</td>
+</tr>
+<tr>
+<td>Phần điều khiển (RRC, NAS)</td>
+<td>Qua LTE: eNB là master node, giữ kết nối RRC với UE</td>
+<td>Qua NR: gNB giữ kết nối RRC, UE đăng ký trực tiếp với 5GC</td>
+</tr>
+<tr>
+<td>Dữ liệu</td>
+<td>Đi trên cả LTE và NR (split bearer)</td>
+<td>Đi trên NR</td>
+</tr>
+<tr>
+<td>Điều kiện để dùng 5G</td>
+<td>UE phải nằm trong vùng phủ LTE; NR chỉ được thêm vào như một kết nối phụ</td>
+<td>Chỉ cần vùng phủ NR</td>
+</tr>
+<tr>
+<td>Tính năng phụ thuộc 5GC</td>
+<td>Không có: network slicing, QoS flow, RRC_INACTIVE</td>
+<td>Có đầy đủ</td>
+</tr>
+<tr>
+<td>Ưu điểm triển khai</td>
+<td>Nhanh, tận dụng mạng LTE và EPC sẵn có</td>
+<td>Kiến trúc 5G đầy đủ, không phụ thuộc LTE</td>
+</tr>
+</tbody>
+</table>
+<p>Ngoài hai cấu hình phổ biến trên, 3GPP còn định nghĩa các cấu hình khác như option 4 (NR là master node, LTE là secondary node, mạng lõi 5GC), option 5 (LTE nối với 5GC) và option 7 (LTE là master node, NR là secondary node, mạng lõi 5GC); GSMA phân tích các lộ trình chuyển đổi giữa chúng. Phần lớn nhà mạng đi theo con đường NSA option 3x trước, rồi chuyển sang SA option 2 khi cần các tính năng của 5GC. Theo số liệu ở trang <a href="3gpp/3gpp/#hien-trang-trien-khai">3GPP</a>, NSA vẫn chiếm phần lớn số mạng 5G thương mại.</p>
+<p>Với người làm RAN, khác biệt giữa NSA và SA nằm ở nhiều trang:</p>
+<ul>
+<li>Kiến trúc dual connectivity, master node và secondary node, cách chia bearer: <a href="spectrum/dual-connectivity/">Dual Connectivity</a>.</li>
+<li>Chồng giao thức khi UE nối đồng thời hai node, SRB3: <a href="air-interface/protocol-stack/#cac-node-va-giao-dien">Protocol Stack &amp; States</a>.</li>
+<li>Thủ tục thêm NR leg (secondary node addition) thay cho handover: <a href="air-interface/connected-mobility/#en-dc-them-secondary-node-nr">Connected Mode &amp; Mobility</a>.</li>
+<li>Đăng ký với EPC (attach) so với đăng ký với 5GC (registration): <a href="air-interface/registration-session/">Attach / Registration &amp; Session</a>.</li>
+<li>Dùng chung phổ giữa LTE và NR trong giai đoạn chuyển tiếp: <a href="spectrum/dss-refarming/">DSS và Refarming</a>.</li>
+</ul>
 <h2 id="nhung-rang-buoc-ky-thuat-chinh">Những ràng buộc kỹ thuật chính<a class="headerlink" href="#nhung-rang-buoc-ky-thuat-chinh" title="Permanent link">¶</a></h2>
 <ul>
 <li><strong>Thời gian thực cứng.</strong> Xử lý PHY và MAC theo chu kỳ slot (0,5 ms với subcarrier spacing 30 kHz), trễ một gói fronthaul là mất dữ liệu radio. Xem <a href="fronthaul/open-fronthaul/">Open Fronthaul</a>.</li>
@@ -13005,6 +13081,9 @@
 </ul>
 <h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
 <ul>
+<li>3GPP TS 37.340: NR; Multi-connectivity; Overall description (EN-DC và các kiểu MR-DC).</li>
+<li>3GPP TR 38.801: Study on new radio access technology: Radio access architecture and interfaces (các phương án triển khai và option split).</li>
+<li><a href="https://www.gsma.com/futurenetworks/wp-content/uploads/2018/04/Road-to-5G-Introduction-and-Migration_FINAL.pdf">GSMA: Road to 5G: Introduction and Migration (04/2018)</a>: các option triển khai NSA và SA, ưu nhược điểm và lộ trình chuyển đổi.</li>
 <li><a href="https://www.3gpp.org/">3GPP</a>: đặc tả NR (dãy TS 38.xxx), kiến trúc NG-RAN (TS 38.401), phân tích các option split (TR 38.801).</li>
 <li><a href="https://specifications.o-ran.org/">O-RAN Alliance specifications</a>: O-RAN WG4 (Open Fronthaul), WG7 (white-box hardware).</li>
 <li><a href="https://www.smallcellforum.org/">Small Cell Forum</a>: 5G FAPI giữa MAC và PHY.</li>
@@ -13031,7 +13110,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 7, 2026 05:47:21 UTC">November 7, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 7, 2026 05:51:40 UTC">November 7, 2026</span>
   </span>
 
     
