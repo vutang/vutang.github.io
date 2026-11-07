@@ -12,10 +12,10 @@
         <link rel="canonical" href="https://note.vutang.dev/wireless/architecture/ran-architecture/">
       
       
-        <link rel="prev" href="../../spectrum/dss-refarming/">
+        <link rel="prev" href="../../air-interface/mac-scheduler/">
       
       
-        <link rel="next" href="../../air-interface/protocol-stack/">
+        <link rel="next" href="../ric/">
       
       
         
@@ -6630,6 +6630,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../../oran/wg2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WG2 (Non-RT RIC &amp; A1) (WIP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oran/wg3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WG3 (Near-RT RIC &amp; E2) (WIP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../oran/wg4/" class="md-nav__link">
         
   
@@ -6950,8 +7006,6 @@
                 
   
   
-    
-  
   
   
     
@@ -6967,11 +7021,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6">
         
           
           <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="">
@@ -6981,7 +7035,7 @@
   <span class="md-ellipsis">
     
   
-    Architecture
+    Physical Layer (PHY)
   
 
     
@@ -6992,12 +7046,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_6">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Architecture
+    Physical Layer (PHY)
   
 
           </label>
@@ -7007,44 +7061,17 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    RAN Architecture &amp; Splits
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../phy/ofdm/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    RAN Architecture &amp; Splits
+    OFDM
   
 
     
@@ -7053,114 +7080,146 @@
   
 
       </a>
-      
-        
+    </li>
+  
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+              
+            
+              
+                
   
   
   
+  
+    <li class="md-nav__item">
+      <a href="../../phy/numerology/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
     
   
+    NR Numerology
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-      
-        <li class="md-nav__item">
-  <a href="#cac-khoi-va-giao-dien" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Các khối và giao diện
-      
-    </span>
-  </a>
+
+    
+  </span>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#functional-split-cua-3gpp" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Functional split của 3GPP
-      
-    </span>
-  </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gioi-han-bang-thong-cua-split-8-cpri" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Giới hạn băng thông của split 8 (CPRI)
-      
-    </span>
-  </a>
+
+      </a>
+    </li>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#split-72x-cua-o-ran" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Split 7.2x của O-RAN
-      
-    </span>
-  </a>
+
+              
+            
+              
+                
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sensing-trong-kien-truc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Sensing trong kiến trúc
-      
-    </span>
-  </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#trien-khai" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Triển khai
-      
-    </span>
-  </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#lien-quan" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Liên quan
-      
-    </span>
-  </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tai-lieu-tham-khao" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tài liệu tham khảo
-      
-    </span>
-  </a>
+    <li class="md-nav__item">
+      <a href="../../phy/channel-coding/" class="md-nav__link">
+        
   
-</li>
-      
-    </ul>
   
-</nav>
-      
+  <span class="md-ellipsis">
+    
+  
+    Channel Coding (LDPC, Polar)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phy/physical-channels/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Physical Channels (WIP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phy/reference-signals-csi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference Signals &amp; CSI (WIP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../phy/mimo-beamforming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MIMO &amp; Beamforming (WIP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -7369,6 +7428,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../air-interface/mac-scheduler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MAC Scheduler (WIP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -7381,6 +7468,8 @@
                 
   
   
+    
+  
   
   
     
@@ -7396,11 +7485,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_8">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_8" checked="">
         
           
           <label class="md-nav__link" for="__nav_6_8" id="__nav_6_8_label" tabindex="">
@@ -7410,7 +7499,7 @@
   <span class="md-ellipsis">
     
   
-    Physical Layer (PHY)
+    Architecture &amp; Transport
   
 
     
@@ -7421,12 +7510,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_8_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_8_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_8">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Physical Layer (PHY)
+    Architecture &amp; Transport
   
 
           </label>
@@ -7436,17 +7525,44 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../phy/ofdm/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAN Architecture &amp; Splits
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    OFDM
+    RAN Architecture &amp; Splits
   
 
     
@@ -7455,6 +7571,114 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#cac-khoi-va-giao-dien" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các khối và giao diện
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functional-split-cua-3gpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functional split của 3GPP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gioi-han-bang-thong-cua-split-8-cpri" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Giới hạn băng thông của split 8 (CPRI)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#split-72x-cua-o-ran" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Split 7.2x của O-RAN
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sensing-trong-kien-truc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sensing trong kiến trúc
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trien-khai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Triển khai
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lien-quan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Liên quan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài liệu tham khảo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -7467,14 +7691,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../phy/numerology/" class="md-nav__link">
+      <a href="../ric/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    NR Numerology &amp; Resource Grid
+    RAN Intelligent Controller (WIP)
   
 
     
@@ -7487,97 +7711,6 @@
   
 
               
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../phy/channel-coding/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Channel Coding (LDPC, Polar)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_9">
-        
-          
-          <label class="md-nav__link" for="__nav_6_9" id="__nav_6_9_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Fronthaul &amp; Sync
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_9">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Fronthaul &amp; Sync
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -7666,17 +7799,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_10">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_9">
         
           
-          <label class="md-nav__link" for="__nav_6_10" id="__nav_6_10_label" tabindex="">
+          <label class="md-nav__link" for="__nav_6_9" id="__nav_6_9_label" tabindex="">
             
   
   
   <span class="md-ellipsis">
     
   
-    Radio Unit
+    RAN Equipment
   
 
     
@@ -7687,16 +7820,44 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_10_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_10">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_9">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Radio Unit
+    RAN Equipment
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ru/ru-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RU Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -7726,9 +7887,29 @@
 
               
             
-          </ul>
-        </nav>
-      
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../baseband/du-cu-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DU/CU Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -7762,6 +7943,14 @@
 
               
             
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
               
                 
   
@@ -7785,17 +7974,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_12">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_10">
         
           
-          <label class="md-nav__link" for="__nav_6_12" id="__nav_6_12_label" tabindex="">
+          <label class="md-nav__link" for="__nav_6_10" id="__nav_6_10_label" tabindex="">
             
   
   
   <span class="md-ellipsis">
     
   
-    Non-Terrestrial Networks
+    Emerging Technologies
   
 
     
@@ -7806,12 +7995,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_12_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_12">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_10">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Non-Terrestrial Networks
+    Emerging Technologies
   
 
           </label>
@@ -7845,69 +8034,6 @@
 
               
             
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_13">
-        
-          
-          <label class="md-nav__link" for="__nav_6_13" id="__nav_6_13_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Integrated Sensing &amp; Communication
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_13_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_13">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Integrated Sensing &amp; Communication
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
               
                 
   
@@ -7936,14 +8062,6 @@
 
               
             
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
               
                 
   
@@ -7967,6 +8085,14 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -13026,6 +13152,9 @@
 </table>
 <h2 id="lien-quan">Liên quan<a class="headerlink" href="#lien-quan" title="Permanent link">¶</a></h2>
 <ul>
+<li><a href="../../ru/ru-architecture/">RU Architecture</a>: cấu trúc khối bên trong O-RU, từ Low-PHY tới RF front-end.</li>
+<li><a href="../ric/">RAN Intelligent Controller</a>: thành phần điều khiển RAN qua E2 và A1 trong kiến trúc O-RAN.</li>
+<li><a href="../../baseband/du-cu-architecture/">DU/CU Architecture</a>: phần cứng và nền tảng của O-DU và O-CU.</li>
 <li><a href="../../fronthaul/open-fronthaul/">Open Fronthaul</a>: các plane, đóng gói và nén IQ trên giao diện DU và RU.</li>
 <li><a href="../../oran/wg4/">WG4 (Open Fronthaul)</a>: bộ đặc tả của O-RAN WG4.</li>
 <li><a href="../../air-interface/protocol-stack/">Protocol Stack &amp; States</a>: chồng giao thức nhìn từ phía UE.</li>
@@ -13065,7 +13194,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 5, 2026 06:39:05 UTC">November 5, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 7, 2026 02:12:24 UTC">November 7, 2026</span>
   </span>
 
     
@@ -13114,7 +13243,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
-          <a href="../../spectrum/dss-refarming/" class="md-footer__link md-footer__link--prev" aria-label="Previous: DSS và Refarming">
+          <a href="../../air-interface/mac-scheduler/" class="md-footer__link md-footer__link--prev" aria-label="Previous: MAC Scheduler (WIP)">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -13124,20 +13253,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                DSS và Refarming
+                MAC Scheduler (WIP)
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../air-interface/protocol-stack/" class="md-footer__link md-footer__link--next" aria-label="Next: Protocol Stack &amp; States">
+          <a href="../ric/" class="md-footer__link md-footer__link--next" aria-label="Next: RAN Intelligent Controller (WIP)">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Protocol Stack &amp; States
+                RAN Intelligent Controller (WIP)
               </div>
             </div>
             <div class="md-footer__button md-icon">
