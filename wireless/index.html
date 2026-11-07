@@ -6318,6 +6318,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#cac-mo-hinh-trien-khai-d-ran-c-ran-va-mo-hinh-lai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các mô hình triển khai: D-RAN, C-RAN và mô hình lai
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#nhung-rang-buoc-ky-thuat-chinh" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -7669,6 +7680,34 @@
     
   
     RAN Architecture &amp; Splits
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="architecture/ran-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAN Deployment Models
   
 
     
@@ -12766,6 +12805,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#cac-mo-hinh-trien-khai-d-ran-c-ran-va-mo-hinh-lai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các mô hình triển khai: D-RAN, C-RAN và mô hình lai
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#nhung-rang-buoc-ky-thuat-chinh" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -12901,7 +12951,7 @@
 
 
 <h1 id="wireless-ran-overview">Wireless / RAN Overview<a class="headerlink" href="#wireless-ran-overview" title="Permanent link">¶</a></h1>
-<p>Trang tổng quan về mạng truy nhập vô tuyến (RAN) của 5G và hướng tới 6G, nhìn từ phía người làm firmware và phần mềm hệ thống: trạm gốc được chia thành những khối nào, các khối giao tiếp với nhau qua giao diện nào, 4G và 5G cùng tồn tại trên một mạng ra sao, và phần nào đòi hỏi nhiều nhất về thời gian thực, đồng bộ và tính toán. Chi tiết từng chủ đề nằm ở các trang con, xem mục "Bản đồ tài liệu" ở cuối trang.</p>
+<p>Trang tổng quan về mạng truy nhập vô tuyến (RAN) của 5G và hướng tới 6G, nhìn từ phía người làm firmware và phần mềm hệ thống: trạm gốc được chia thành những khối nào, các khối giao tiếp với nhau qua giao diện nào, 4G và 5G cùng tồn tại trên một mạng ra sao, các khối được đặt ở đâu khi triển khai, và phần nào đòi hỏi nhiều nhất về thời gian thực, đồng bộ và tính toán. Chi tiết từng chủ đề nằm ở các trang con, xem mục "Bản đồ tài liệu" ở cuối trang.</p>
 <h2 id="pham-vi">Phạm vi<a class="headerlink" href="#pham-vi" title="Permanent link">¶</a></h2>
 <p>Topic này tập trung vào <strong>RAN</strong>, không đi vào 5G Core và không đi sâu vào lý thuyết truyền dẫn vô tuyến.</p>
 <table>
@@ -13017,6 +13067,16 @@
 <li>Đăng ký với EPC (attach) so với đăng ký với 5GC (registration): <a href="air-interface/registration-session/">Attach / Registration &amp; Session</a>.</li>
 <li>Dùng chung phổ giữa LTE và NR trong giai đoạn chuyển tiếp: <a href="spectrum/dss-refarming/">DSS và Refarming</a>.</li>
 </ul>
+<h2 id="cac-mo-hinh-trien-khai-d-ran-c-ran-va-mo-hinh-lai">Các mô hình triển khai: D-RAN, C-RAN và mô hình lai<a class="headerlink" href="#cac-mo-hinh-trien-khai-d-ran-c-ran-va-mo-hinh-lai" title="Permanent link">¶</a></h2>
+<p>RU, DU và CU là các khối logic; khi triển khai thật, mỗi khối có thể đặt ở một vị trí khác nhau trong mạng. Vị trí của DU quyết định đoạn truyền dẫn nào phải dài và khó, vì fronthaul giữa RU và DU có yêu cầu độ trễ chặt hơn nhiều so với các đoạn còn lại.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="architecture/img/deployment-models.svg" data-desc-position="bottom"><img alt="Ba mô hình đặt RU, DU, CU theo vị trí trong mạng" src="architecture/img/deployment-models.svg"></a></p>
+<p><em>Distributed RAN đặt đủ các khối tại site; Centralized RAN gom DU của nhiều site về một hub qua fronthaul; mô hình lai giữ DU tại site và gom CU về điểm tập trung qua midhaul F1.</em></p>
+<ul>
+<li><strong>Distributed RAN (D-RAN):</strong> mỗi site có đủ RU, DU và CU, chỉ cần backhaul IP về mạng lõi. Đây là cách phổ biến của 4G, đơn giản về truyền dẫn nhưng không dùng chung được tài nguyên baseband giữa các site.</li>
+<li><strong>Centralized RAN (C-RAN):</strong> site chỉ còn RU, DU của nhiều site được gom về một hub. Hub tiết kiệm tài nguyên và dễ phối hợp giữa các cell, đổi lại mỗi site cần cáp quang fronthaul về hub trong phạm vi cỡ 20 km.</li>
+<li><strong>Mô hình lai:</strong> DU đặt tại site, CU gom về điểm tập trung qua midhaul F1, đoạn chịu được độ trễ cỡ ms nên có thể dài hàng chục tới hàng trăm km. Nhiều mạng 5G chọn cách này.</li>
+</ul>
+<p>Vị trí là một trục độc lập với cách hiện thực: ở mô hình nào, DU và CU cũng có thể chạy trên thiết bị chuyên dụng hoặc dưới dạng phần mềm trên server thông dụng (vRAN, Cloud RAN). Yêu cầu fronthaul và midhaul, bảng so sánh và ví dụ triển khai nằm ở <a href="architecture/ran-deployment/">Các mô hình triển khai RAN</a>.</p>
 <h2 id="nhung-rang-buoc-ky-thuat-chinh">Những ràng buộc kỹ thuật chính<a class="headerlink" href="#nhung-rang-buoc-ky-thuat-chinh" title="Permanent link">¶</a></h2>
 <ul>
 <li><strong>Thời gian thực cứng.</strong> Xử lý PHY và MAC theo chu kỳ slot (0,5 ms với subcarrier spacing 30 kHz), trễ một gói fronthaul là mất dữ liệu radio. Xem <a href="fronthaul/open-fronthaul/">Open Fronthaul</a>.</li>
@@ -13089,6 +13149,7 @@
 <li><a href="air-interface/connected-mobility/">Connected Mode &amp; Mobility</a>: lập lịch và HARQ, đo đạc, handover X2/Xn, EN-DC, release, RRC_INACTIVE, RLF, reselection, paging.</li>
 <li><a href="air-interface/mac-scheduler/">MAC Scheduler</a>: vị trí scheduler trong DU, vòng lặp theo slot qua FAPI, các đầu vào, quan hệ thời gian K0, K1, K2, cấp phát tài nguyên và HARQ, các thuật toán lập lịch, configured grant và SPS, ràng buộc khi hiện thực.</li>
 <li><a href="architecture/ran-architecture/">RAN Architecture &amp; Splits</a>: CU/DU/RU, các giao diện, các option split của 3GPP và vì sao O-RAN chọn 7.2x.</li>
+<li><a href="architecture/ran-deployment/">RAN Deployment Models</a>: ba trục phân loại (vị trí, cách hiện thực, mức độ mở), D-RAN, C-RAN và mô hình lai, yêu cầu fronthaul và midhaul, vRAN và Cloud RAN, bảng so sánh.</li>
 <li><a href="architecture/ric/">RAN Intelligent Controller</a>: Non-RT RIC và Near-RT RIC, vòng điều khiển theo thang thời gian, cấu trúc nền tảng và xApp, E2AP và các service model, A1 và R1, use case, hiện trạng triển khai.</li>
 <li><a href="fronthaul/open-fronthaul/">Open Fronthaul</a>: eCPRI, C-plane, U-plane, nén IQ, M-plane, cửa sổ thời gian.</li>
 <li><a href="sync/sync/">Synchronization</a>: yêu cầu tần số và pha, SyncE, PTP profile cho viễn thông, các cấu hình đồng bộ fronthaul.</li>
@@ -13139,7 +13200,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 7, 2026 06:37:15 UTC">November 7, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 7, 2026 06:51:37 UTC">November 7, 2026</span>
   </span>
 
     
