@@ -26,7 +26,7 @@
     
     
       
-        <title>Reference Signals &amp; CSI (WIP) - Vu Tang's Docs</title>
+        <title>Reference Signals &amp; CSI - Vu Tang's Docs</title>
       
     
     
@@ -72,7 +72,7 @@
     
   
 <meta property="og:type" content="website">
-<meta property="og:title" content="Reference Signals &amp; CSI (WIP) - Vu Tang's Docs">
+<meta property="og:title" content="Reference Signals &amp; CSI - Vu Tang's Docs">
 <meta property="og:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
 <meta property="og:image" content="https://note.vutang.dev/assets/images/social/wireless/phy/reference-signals-csi.png">
 <meta property="og:image:type" content="image/png">
@@ -80,7 +80,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://note.vutang.dev/wireless/phy/reference-signals-csi/">
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:title" content="Reference Signals &amp; CSI (WIP) - Vu Tang's Docs">
+<meta property="twitter:title" content="Reference Signals &amp; CSI - Vu Tang's Docs">
 <meta property="twitter:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
 <meta property="twitter:image" content="https://note.vutang.dev/assets/images/social/wireless/phy/reference-signals-csi.png">
 <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
@@ -145,7 +145,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Reference Signals &amp; CSI (WIP)
+              Reference Signals &amp; CSI
             
           </span>
         </div>
@@ -7157,7 +7157,7 @@
   <span class="md-ellipsis">
     
   
-    Physical Channels (WIP)
+    Physical Channels
   
 
     
@@ -7194,7 +7194,7 @@
   <span class="md-ellipsis">
     
   
-    Reference Signals &amp; CSI (WIP)
+    Reference Signals &amp; CSI
   
 
     
@@ -7212,7 +7212,7 @@
   <span class="md-ellipsis">
     
   
-    Reference Signals &amp; CSI (WIP)
+    Reference Signals &amp; CSI
   
 
     
@@ -7236,6 +7236,144 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#vai-tro-cua-tin-hieu-tham-chieu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vai trò của tín hiệu tham chiếu
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dmrs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DMRS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DMRS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vi-tri-theo-thoi-gian" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vị trí theo thời gian
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vi-tri-theo-tan-so-va-so-port" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vị trí theo tần số và số port
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#csi-rs-va-csi-im" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CSI-RS và CSI-IM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TRS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ptrs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PTRS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#srs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SRS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#khung-bao-cao-csi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Khung báo cáo CSI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cqi-va-bang-mcs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQI và bảng MCS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#link-adaptation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Link adaptation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tac-ong-toi-hien-thuc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tác động tới hiện thực
+      
+    </span>
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#lien-quan" class="md-nav__link">
@@ -12641,6 +12779,144 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#vai-tro-cua-tin-hieu-tham-chieu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vai trò của tín hiệu tham chiếu
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dmrs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DMRS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DMRS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vi-tri-theo-thoi-gian" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vị trí theo thời gian
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vi-tri-theo-tan-so-va-so-port" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vị trí theo tần số và số port
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#csi-rs-va-csi-im" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CSI-RS và CSI-IM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TRS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ptrs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PTRS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#srs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SRS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#khung-bao-cao-csi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Khung báo cáo CSI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cqi-va-bang-mcs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CQI và bảng MCS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#link-adaptation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Link adaptation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tac-ong-toi-hien-thuc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tác động tới hiện thực
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#lien-quan" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -12736,31 +13012,285 @@
 
 
 <h1 id="tin-hieu-tham-chieu-va-csi">Tín hiệu tham chiếu và CSI<a class="headerlink" href="#tin-hieu-tham-chieu-va-csi" title="Permanent link">¶</a></h1>
-<p>Trang này trình bày các tín hiệu tham chiếu của NR và vòng phản hồi thông tin trạng thái kênh (channel state information, CSI). Thứ tự trình bày dự kiến: vai trò của tín hiệu tham chiếu, từng loại tín hiệu (DMRS, CSI-RS, TRS, PTRS, SRS), báo cáo CSI gồm CQI, PMI và RI, rồi cách gNB dùng CSI để chọn MCS và số layer (link adaptation).</p>
-<div class="admonition todo">
-<p class="admonition-title">Trang đang được viết</p>
-<p>Nội dung dự kiến:</p>
+<p>Tín hiệu tham chiếu (reference signal, RS) là các ký hiệu mà phía thu đã biết trước giá trị, được chèn vào lưới tài nguyên để phía thu so sánh với tín hiệu nhận được và suy ra đặc tính của kênh. Thông tin trạng thái kênh (channel state information, CSI) là phần kết quả đo mà UE báo về cho gNB để gNB chọn số layer, precoder và mức điều chế. Trang này trình bày theo thứ tự: vai trò chung của tín hiệu tham chiếu trong NR, từng loại tín hiệu (DMRS, CSI-RS, TRS, PTRS, SRS), khung báo cáo CSI, CQI và bảng MCS, cách gNB điều chỉnh tốc độ truyền theo kênh (link adaptation), rồi tác động tới hiện thực. Bảng so sánh tín hiệu tham chiếu giữa LTE và NR nằm ở <a href="../../air-interface/resource-grid/#tin-hieu-tham-chieu">Frame Structure &amp; Resource Grid</a>.</p>
+<h2 id="vai-tro-cua-tin-hieu-tham-chieu">Vai trò của tín hiệu tham chiếu<a class="headerlink" href="#vai-tro-cua-tin-hieu-tham-chieu" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Mục đích</th>
+<th>Tín hiệu NR</th>
+<th>Phía phát</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ước lượng kênh để giải điều chế</td>
+<td>DMRS (đi kèm PDSCH, PDCCH, PBCH, PUSCH, PUCCH)</td>
+<td>Phía phát dữ liệu</td>
+</tr>
+<tr>
+<td>Đo kênh đường xuống để báo CSI</td>
+<td>CSI-RS, CSI-IM (đo nhiễu)</td>
+<td>gNB</td>
+</tr>
+<tr>
+<td>Theo dõi lệch thời gian và tần số</td>
+<td>TRS (một dạng CSI-RS), SSB</td>
+<td>gNB</td>
+</tr>
+<tr>
+<td>Bù nhiễu pha của bộ dao động</td>
+<td>PTRS</td>
+<td>Phía phát dữ liệu</td>
+</tr>
+<tr>
+<td>Đo kênh đường lên, khai thác tính thuận nghịch kênh</td>
+<td>SRS</td>
+<td>UE</td>
+</tr>
+<tr>
+<td>Quản lý beam</td>
+<td>SSB, CSI-RS, SRS</td>
+<td>Cả hai phía</td>
+</tr>
+<tr>
+<td>Định vị</td>
+<td>PRS (đường xuống), SRS cho định vị (đường lên)</td>
+<td>Cả hai phía</td>
+</tr>
+</tbody>
+</table>
+<p>Khác với LTE, NR không có tín hiệu tham chiếu phát liên tục trên toàn băng như CRS. Ngoài SSB phát định kỳ, mọi tín hiệu tham chiếu khác chỉ được phát khi được cấu hình và chỉ ở những tài nguyên cần thiết. Thiết kế này giảm nhiễu sang cell lân cận, giảm điện năng khi cell ít tải và cho phép mỗi tín hiệu được precode hoặc phát theo beam riêng. Đổi lại, mỗi UE phải được cấu hình đầy đủ để biết tín hiệu nào nằm ở đâu.</p>
+<h2 id="dmrs">DMRS<a class="headerlink" href="#dmrs" title="Permanent link">¶</a></h2>
+<p>DMRS (demodulation reference signal) đi kèm mỗi kênh dữ liệu và điều khiển, chiếm một số resource element bên trong vùng tài nguyên của chính kênh đó. Vì DMRS được precode giống dữ liệu, kênh mà UE ước lượng từ DMRS đã bao gồm precoder, nên UE không cần biết precoder cụ thể. Mỗi layer gắn với một DMRS antenna port, xem <a href="../mimo-beamforming/#layer-antenna-port-va-precoding">MIMO &amp; Beamforming</a>.</p>
+<h3 id="vi-tri-theo-thoi-gian">Vị trí theo thời gian<a class="headerlink" href="#vi-tri-theo-thoi-gian" title="Permanent link">¶</a></h3>
+<p>DMRS đặt sớm trong vùng tài nguyên (front-loaded) để UE ước lượng kênh và bắt đầu giải điều chế ngay, giảm độ trễ xử lý. Vị trí của symbol DMRS đầu tiên phụ thuộc kiểu ánh xạ của PDSCH hoặc PUSCH:</p>
 <ul>
-<li>Vai trò của tín hiệu tham chiếu: ước lượng kênh, đo đạc, theo dõi thời gian và tần số.</li>
-<li>DMRS: type 1 và type 2, front-loaded và additional DMRS, antenna port.</li>
-<li>CSI-RS và TRS: cấu hình, mục đích đo CSI, beam management và di động.</li>
-<li>PTRS: bù nhiễu pha ở FR2.</li>
-<li>SRS: đo kênh đường lên, khai thác tính thuận nghịch kênh ở TDD.</li>
-<li>Báo cáo CSI: CQI, PMI, RI, codebook Type I và Type II, chu kỳ và kích hoạt báo cáo.</li>
-<li>Link adaptation: bảng CQI, bảng MCS, điều chỉnh vòng ngoài theo HARQ ACK/NACK.</li>
+<li><strong>Mapping type A:</strong> dữ liệu bắt đầu ở đầu slot, DMRS đầu tiên nằm ở symbol 2 hoặc 3 của slot (tham số <code>dmrs-TypeA-Position</code> trong MIB).</li>
+<li><strong>Mapping type B:</strong> dữ liệu có thể bắt đầu ở bất kỳ symbol nào (dùng cho mini-slot), DMRS đầu tiên nằm ở symbol đầu của vùng dữ liệu.</li>
 </ul>
-</div>
+<p>DMRS front-loaded có thể dài một symbol (single-symbol) hoặc hai symbol liền nhau (double-symbol). Với UE di chuyển nhanh, kênh thay đổi trong một slot, nên có thể cấu hình thêm tối đa 3 vị trí DMRS bổ sung (additional DMRS) rải trong slot để UE nội suy kênh theo thời gian. Mỗi vị trí bổ sung tăng độ chính xác ước lượng nhưng lấy bớt resource element của dữ liệu.</p>
+<h3 id="vi-tri-theo-tan-so-va-so-port">Vị trí theo tần số và số port<a class="headerlink" href="#vi-tri-theo-tan-so-va-so-port" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/dmrs-config-types.svg" data-desc-position="bottom"><img alt="DMRS configuration type 1 và type 2 trong một resource block" src="../img/dmrs-config-types.svg"></a></p>
+<p><em>Type 1 xếp hai nhóm CDM xen kẽ theo kiểu răng lược; type 2 xếp ba nhóm, mỗi nhóm hai subcarrier liền nhau. Các port trong một nhóm phân biệt bằng mã trực giao.</em></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Configuration type 1</th>
+<th>Configuration type 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cấu trúc</td>
+<td>Hai nhóm CDM, mỗi nhóm chiếm cách một subcarrier (comb 2)</td>
+<td>Ba nhóm CDM, mỗi nhóm hai subcarrier liền nhau, lặp mỗi 6 subcarrier</td>
+</tr>
+<tr>
+<td>Số port tối đa (single-symbol)</td>
+<td>4</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Số port tối đa (double-symbol)</td>
+<td>8</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Đặc điểm</td>
+<td>Mật độ theo tần số cao hơn, ước lượng kênh tốt hơn với kênh chọn lọc tần số</td>
+<td>Nhiều port hơn, phù hợp MU-MIMO nhiều layer</td>
+</tr>
+</tbody>
+</table>
+<p>Các port trong cùng một nhóm CDM (code division multiplexing) dùng chung resource element và được phân biệt bằng mã trực giao: hai mã theo tần số trên hai subcarrier và, với double-symbol, hai mã theo thời gian trên hai symbol. Rel-18 mở rộng số port DMRS (tới 24 với type 2 double-symbol) để tăng số layer MU-MIMO.</p>
+<p>Với CP-OFDM, chuỗi DMRS sinh từ chuỗi giả ngẫu nhiên Gold. Với PUSCH dùng DFT-s-OFDM, DMRS dùng chuỗi có PAPR thấp dựa trên Zadoff-Chu để giữ ưu điểm PAPR thấp của dạng sóng này, xem <a href="../ofdm/#ofdm-o-uong-len-dft-s-ofdm">OFDM</a>.</p>
+<h2 id="csi-rs-va-csi-im">CSI-RS và CSI-IM<a class="headerlink" href="#csi-rs-va-csi-im" title="Permanent link">¶</a></h2>
+<p>CSI-RS (channel state information reference signal) là tín hiệu đường xuống dùng để đo kênh. Một tài nguyên CSI-RS có từ 1 tới 32 port. CSI-RS có ba kiểu theo thời gian:</p>
+<table>
+<thead>
+<tr>
+<th>Kiểu</th>
+<th>Kích hoạt</th>
+<th>Dùng khi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Periodic (định kỳ)</td>
+<td>Cấu hình bằng RRC</td>
+<td>Đo liên tục, ví dụ TRS hoặc đo cho quản lý beam</td>
+</tr>
+<tr>
+<td>Semi-persistent (bán cố định)</td>
+<td>Bật và tắt bằng MAC CE</td>
+<td>Đo trong một khoảng thời gian có giới hạn</td>
+</tr>
+<tr>
+<td>Aperiodic (không định kỳ)</td>
+<td>Kích hoạt bằng DCI</td>
+<td>Đo theo yêu cầu, gắn với một báo cáo CSI không định kỳ</td>
+</tr>
+</tbody>
+</table>
+<p>Cùng một cơ chế CSI-RS được dùng cho nhiều mục đích, phân biệt bằng cấu hình:</p>
+<ul>
+<li><strong>Thu thập CSI:</strong> UE đo CSI-RS nhiều port để chọn rank, precoder và CQI.</li>
+<li><strong>Quản lý beam:</strong> CSI-RS một hoặc hai port, mỗi tài nguyên một beam. Tham số <code>repetition</code> cho biết các tài nguyên trong một tập có phát cùng beam hay không, tương ứng với các thủ tục P-3 và P-2, xem <a href="../mimo-beamforming/#cac-thu-tuc-p-1-p-2-p-3">MIMO &amp; Beamforming</a>.</li>
+<li><strong>Theo dõi thời gian và tần số:</strong> TRS, mô tả ở mục dưới.</li>
+<li><strong>Đo di động lớp 3:</strong> đo RSRP, RSRQ trên CSI-RS thay cho SSB trong một số cấu hình.</li>
+</ul>
+<p>Ngoài CSI-RS có công suất khác 0 (non-zero-power, NZP), NR có <strong>ZP CSI-RS</strong> (zero-power): các resource element mà gNB không phát gì, để PDSCH tránh (rate matching) những vị trí đang dùng cho CSI-RS của cell khác hoặc UE khác. <strong>CSI-IM</strong> (CSI interference measurement) là tập resource element trống dùng để UE đo nhiễu từ cell lân cận, giúp CQI phản ánh đúng SINR.</p>
+<h2 id="trs">TRS<a class="headerlink" href="#trs" title="Permanent link">¶</a></h2>
+<p>TRS (tracking reference signal) là một tập tài nguyên NZP CSI-RS được đánh dấu bằng tham số <code>trs-Info</code>, dùng để UE theo dõi lệch thời gian, lệch tần số, delay spread và Doppler spread. Vai trò này ở LTE do CRS đảm nhận. Ở FR1, một lần phát TRS gồm bốn tài nguyên CSI-RS một port trải trên hai slot liên tiếp, mỗi slot hai symbol cách nhau 4 symbol, mật độ 3 resource element mỗi resource block. Ở FR2 có thêm cấu hình một slot. UE không báo CSI cho TRS; kết quả đo được dùng nội bộ để chỉnh bộ thu.</p>
+<p>TRS thường được dùng làm tín hiệu tham chiếu QCL Type A cho PDSCH và PDCCH: UE dùng các đặc tính Doppler và độ trễ đo trên TRS để cấu hình bộ ước lượng kênh cho dữ liệu, xem <a href="../mimo-beamforming/#chi-inh-beam-tci-state-va-qcl">MIMO &amp; Beamforming</a>.</p>
+<h2 id="ptrs">PTRS<a class="headerlink" href="#ptrs" title="Permanent link">¶</a></h2>
+<p>PTRS (phase tracking reference signal) dùng để ước lượng và bù nhiễu pha (phase noise) của bộ dao động. Nhiễu pha tăng theo tần số sóng mang và làm cả symbol OFDM bị xoay pha chung (common phase error), nên PTRS cần thiết chủ yếu ở FR2 và với điều chế bậc cao.</p>
+<p>PTRS chỉ chiếm một subcarrier trong một số resource block, nhưng lặp lại theo thời gian để theo dõi pha qua từng symbol. Mật độ của PTRS phụ thuộc vào lịch cấp phát:</p>
+<ul>
+<li><strong>Theo thời gian:</strong> MCS càng cao, PTRS càng dày (mỗi 4, 2 hoặc 1 symbol); dưới một ngưỡng MCS thì không phát PTRS.</li>
+<li><strong>Theo tần số:</strong> băng thông cấp phát càng lớn, PTRS càng thưa (mỗi 2 hoặc 4 resource block); dưới một ngưỡng số resource block thì không phát PTRS.</li>
+</ul>
+<p>Các ngưỡng MCS và số resource block được cấu hình bằng RRC. PTRS gắn với một DMRS port và được precode giống port đó.</p>
+<h2 id="srs">SRS<a class="headerlink" href="#srs" title="Permanent link">¶</a></h2>
+<p>SRS (sounding reference signal) là tín hiệu đường lên do UE phát để gNB đo kênh đường lên. Một tài nguyên SRS có 1, 2 hoặc 4 port và chiếm 1, 2 hoặc 4 symbol liền nhau trong 6 symbol cuối của slot (Rel-15); các release sau cho phép nhiều symbol hơn. SRS dùng cấu trúc răng lược theo tần số và có thể nhảy tần để UE ở biên cell, công suất hạn chế, vẫn đo được toàn băng qua nhiều lần phát.</p>
+<p>Mục đích của mỗi tập tài nguyên SRS được cấu hình bằng tham số <code>usage</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Usage</th>
+<th>Mục đích</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>codebook</code></td>
+<td>gNB đo kênh đường lên để chọn precoder (TPMI), rank và MCS cho PUSCH dựa trên codebook</td>
+</tr>
+<tr>
+<td><code>nonCodebook</code></td>
+<td>UE phát các SRS đã tự precode, gNB chọn trong số đó (SRI) cho PUSCH không dựa trên codebook</td>
+</tr>
+<tr>
+<td><code>antennaSwitching</code></td>
+<td>UE lần lượt phát trên các anten thu của mình để gNB ước lượng toàn bộ kênh đường xuống nhờ tính thuận nghịch (TDD)</td>
+</tr>
+<tr>
+<td><code>beamManagement</code></td>
+<td>UE quét các beam phát, chủ yếu ở FR2</td>
+</tr>
+</tbody>
+</table>
+<p>Rel-16 thêm SRS cho định vị. Với massive MIMO ở TDD, SRS dạng <code>antennaSwitching</code> là nguồn thông tin kênh chính để gNB tính precoder đường xuống, xem <a href="../mimo-beamforming/#thong-tin-kenh-cho-precoding">MIMO &amp; Beamforming</a>.</p>
+<h2 id="khung-bao-cao-csi">Khung báo cáo CSI<a class="headerlink" href="#khung-bao-cao-csi" title="Permanent link">¶</a></h2>
+<p>NR cấu hình báo cáo CSI bằng hai loại đối tượng RRC: <code>CSI-ResourceConfig</code> mô tả các tài nguyên đo (NZP CSI-RS, CSI-IM, SSB), và <code>CSI-ReportConfig</code> mô tả báo cáo (đo trên tài nguyên nào, báo nội dung gì, báo khi nào, trên kênh nào).</p>
+<p>Nội dung báo cáo (<code>reportQuantity</code>) gồm các thành phần sau, tùy cấu hình:</p>
+<table>
+<thead>
+<tr>
+<th>Thành phần</th>
+<th>Ý nghĩa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CRI</td>
+<td>Chỉ số tài nguyên CSI-RS được chọn (khi đo nhiều tài nguyên, ví dụ nhiều beam)</td>
+</tr>
+<tr>
+<td>RI</td>
+<td>Rank, số layer UE đề xuất</td>
+</tr>
+<tr>
+<td>PMI</td>
+<td>Chỉ số precoder UE chọn trong codebook</td>
+</tr>
+<tr>
+<td>LI</td>
+<td>Layer có chất lượng tốt nhất, dùng để gán PTRS</td>
+</tr>
+<tr>
+<td>CQI</td>
+<td>Chất lượng kênh, quy về mức điều chế và tỉ lệ mã UE có thể nhận với tỉ lệ lỗi mục tiêu</td>
+</tr>
+<tr>
+<td>L1-RSRP, L1-SINR</td>
+<td>Kết quả đo theo beam, kèm CRI hoặc chỉ số SSB</td>
+</tr>
+</tbody>
+</table>
+<p>Theo thời gian, báo cáo có ba kiểu tương tự CSI-RS: định kỳ (gửi trên PUCCH), bán cố định (PUCCH hoặc PUSCH, bật tắt bằng MAC CE hoặc DCI) và không định kỳ (trên PUSCH, kích hoạt bằng DCI cấp phát đường lên). CQI và PMI có thể báo cho toàn băng (wideband) hoặc theo từng subband, đổi lại số bit báo cáo tăng.</p>
+<p>UE cần thời gian để đo và tính CSI, nên đặc tả quy định một <strong>CSI reference resource</strong>: thời điểm và vùng tài nguyên giả định mà CSI báo về áp dụng cho, cùng với thời gian xử lý tối thiểu giữa tín hiệu đo và báo cáo. Vì vậy CSI mà gNB nhận được luôn trễ hơn kênh thực tế một khoảng, đặc biệt đáng kể với UE di chuyển nhanh.</p>
+<h2 id="cqi-va-bang-mcs">CQI và bảng MCS<a class="headerlink" href="#cqi-va-bang-mcs" title="Permanent link">¶</a></h2>
+<p>CQI là chỉ số 4 bit. Theo định nghĩa của TS 38.214, CQI báo về ứng với tổ hợp điều chế và tỉ lệ mã cao nhất mà UE có thể nhận một transport block với xác suất lỗi không vượt quá mức mục tiêu. NR có nhiều bảng CQI:</p>
+<table>
+<thead>
+<tr>
+<th>Bảng CQI</th>
+<th>Điều chế cao nhất</th>
+<th>Tỉ lệ lỗi mục tiêu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Table 1</td>
+<td>64QAM</td>
+<td>10%</td>
+</tr>
+<tr>
+<td>Table 2</td>
+<td>256QAM</td>
+<td>10%</td>
+</tr>
+<tr>
+<td>Table 3</td>
+<td>64QAM, tỉ lệ mã thấp hơn</td>
+<td>0,001% (10⁻⁵), cho URLLC</td>
+</tr>
+</tbody>
+</table>
+<p>Phía gNB, MCS (modulation and coding scheme) là chỉ số 5 bit trong DCI, chọn từ các bảng MCS tương ứng: bảng 64QAM, bảng 256QAM và bảng 64QAM hiệu suất phổ thấp (low-SE) cho URLLC. Rel-17 bổ sung bảng hỗ trợ 1024QAM. MCS cùng với số resource element dành cho dữ liệu và số layer quyết định kích thước transport block, xem <a href="../physical-channels/">Physical Channels</a>.</p>
+<h2 id="link-adaptation">Link adaptation<a class="headerlink" href="#link-adaptation" title="Permanent link">¶</a></h2>
+<p>Link adaptation là việc gNB chọn rank, precoder và MCS cho mỗi lần truyền dựa trên CSI. Một vòng điển hình:</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant gNB
+    participant UE
+    gNB-&gt;&gt;UE: CSI-RS (và CSI-IM)
+    UE-&gt;&gt;gNB: Báo cáo CSI: RI, PMI, CQI
+    Note over gNB: Chọn rank, precoder, MCS&lt;br/&gt;(CQI cộng hiệu chỉnh vòng ngoài)
+    gNB-&gt;&gt;UE: PDCCH (DCI) và PDSCH
+    UE-&gt;&gt;gNB: HARQ ACK hoặc NACK
+    Note over gNB: Cập nhật hiệu chỉnh vòng ngoài&lt;br/&gt;theo tỉ lệ NACK</code></pre>
+<p>CQI là gợi ý của UE, không phải lệnh. CQI có thể lệch so với kênh thực do trễ báo cáo, do khác biệt giữa bộ thu thực của UE và giả định khi tính CQI, và do nhiễu thay đổi. Vì vậy gNB thường dùng thêm một vòng điều chỉnh ngoài (outer loop link adaptation, OLLA): cộng một độ lệch vào chất lượng kênh ước lượng từ CQI, tăng độ lệch khi nhận ACK và giảm khi nhận NACK, sao cho tỉ lệ lỗi lần truyền đầu tiên hội tụ về mức mục tiêu (thường quanh 10% cho eMBB). Thuật toán OLLA không được 3GPP đặc tả mà do nhà sản xuất hiện thực trong scheduler, xem <a href="../../air-interface/mac-scheduler/">MAC Scheduler</a>.</p>
+<p>Ở đường lên, gNB không cần báo cáo từ UE: gNB đo trực tiếp SRS và DMRS của PUSCH để chọn MCS, precoder và điều khiển công suất cho UE.</p>
+<h2 id="tac-ong-toi-hien-thuc">Tác động tới hiện thực<a class="headerlink" href="#tac-ong-toi-hien-thuc" title="Permanent link">¶</a></h2>
+<ul>
+<li><strong>Chi phí tài nguyên.</strong> Mỗi tín hiệu tham chiếu lấy bớt resource element của dữ liệu. Thêm DMRS bổ sung, CSI-RS hay PTRS đều làm giảm kích thước transport block ở cùng MCS, nên cấu hình tín hiệu tham chiếu là đánh đổi giữa thông lượng và chất lượng ước lượng kênh. Ví dụ tính chi phí DMRS và kênh điều khiển trong một resource block nằm ở <a href="../numerology/#chua-du-lieu-va-tin-hieu-mau">NR Numerology</a>.</li>
+<li><strong>Đồng bộ cấu hình giữa DU và RU.</strong> Ở split 7.2x, RU không tự biết vị trí tín hiệu tham chiếu; DU mô tả từng dải PRB và symbol qua C-plane. Sai cấu hình giữa DU và RU, ví dụ ở vùng ZP CSI-RS hoặc symbol SRS, làm RU phát hoặc thu sai vị trí, xem <a href="../../fronthaul/open-fronthaul/">Open Fronthaul</a>.</li>
+<li><strong>Tải xử lý ở DU.</strong> Ước lượng kênh từ DMRS là bước đầu của chuỗi thu đường lên. Với massive MIMO, xử lý SRS cho hàng chục anten và nhiều UE trong mỗi chu kỳ là một tải tính toán lớn, xem <a href="../../l1/l1-acceleration/">L1 &amp; Acceleration</a>.</li>
+<li><strong>Thời gian của vòng CSI.</strong> Chu kỳ CSI-RS và báo cáo quyết định độ tươi của CSI. Chu kỳ ngắn cho CSI chính xác hơn nhưng tốn tài nguyên đường xuống cho CSI-RS và tài nguyên đường lên cho báo cáo.</li>
+<li><strong>Kiểm tra khi tích hợp.</strong> Khi UE báo CQI thấp bất thường hoặc tỉ lệ NACK cao dù tín hiệu mạnh, các nguyên nhân thường gặp là sai cấu hình TRS hoặc QCL (UE theo dõi sai tần số), sai vị trí CSI-IM (UE đo nhầm nhiễu), hoặc rate matching không khớp giữa PDSCH và CSI-RS.</li>
+</ul>
 <h2 id="lien-quan">Liên quan<a class="headerlink" href="#lien-quan" title="Permanent link">¶</a></h2>
 <ul>
-<li><a href="../../air-interface/resource-grid/#tin-hieu-tham-chieu">Frame Structure &amp; Resource Grid</a>: bảng so sánh tín hiệu tham chiếu LTE và NR.</li>
-<li><a href="../mimo-beamforming/">MIMO &amp; Beamforming</a>: dùng CSI để chọn precoder và beam.</li>
-<li><a href="../physical-channels/">Physical Channels</a>: các kênh mà DMRS đi kèm.</li>
-<li><a href="../../air-interface/mac-scheduler/">MAC Scheduler</a>: scheduler dùng CSI để chọn MCS và tài nguyên.</li>
+<li><a href="../mimo-beamforming/">MIMO &amp; Beamforming</a>: dùng CSI và SRS để chọn precoder, beam và các UE ghép cặp MU-MIMO.</li>
+<li><a href="../../air-interface/resource-grid/#tin-hieu-tham-chieu">Frame Structure &amp; Resource Grid</a>: bảng so sánh tín hiệu tham chiếu LTE và NR, vị trí trên lưới.</li>
+<li><a href="../physical-channels/">Physical Channels</a>: các kênh mà DMRS đi kèm, quan hệ giữa MCS và kích thước transport block.</li>
+<li><a href="../../air-interface/mac-scheduler/">MAC Scheduler</a>: scheduler dùng CSI để chọn MCS và tài nguyên, hiện thực vòng điều chỉnh ngoài.</li>
+<li><a href="../../air-interface/connected-mobility/">Connected Mode &amp; Mobility</a>: lập lịch, HARQ và báo cáo CSI trong trạng thái kết nối.</li>
+<li><a href="../../air-interface/initial-access/">Initial Access</a>: SSB, tín hiệu dùng cho đồng bộ và đo khi chưa có CSI-RS.</li>
+<li><a href="../../l1/l1-acceleration/">L1 &amp; Acceleration</a>: ước lượng kênh và xử lý SRS trong DU.</li>
 </ul>
 <h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
 <ul>
-<li>3GPP TS 38.211: Physical channels and modulation (cấu trúc tín hiệu tham chiếu).</li>
-<li>3GPP TS 38.214: Physical layer procedures for data (báo cáo CSI, bảng MCS và CQI).</li>
+<li>3GPP TS 38.211: Physical channels and modulation (cấu trúc và vị trí DMRS, CSI-RS, PTRS, SRS).</li>
+<li>3GPP TS 38.214: Physical layer procedures for data (khung báo cáo CSI, bảng CQI và MCS, mật độ PTRS, TRS, cấu hình SRS).</li>
+<li>3GPP TS 38.331: Radio Resource Control (<code>CSI-ReportConfig</code>, <code>CSI-ResourceConfig</code>, <code>DMRS-DownlinkConfig</code>, <code>SRS-Config</code>).</li>
+<li><a href="https://itecspec.com/3gpp/38.214/s/5.1.6.3">3GPP TS 38.214 mục 5.1.6.3 (bản trích trên itecspec)</a>: ngưỡng MCS và số resource block quyết định mật độ PTRS.</li>
+<li><a href="https://www.mathworks.com/help/5g/ref/nrpdschdmrsconfig.html">MathWorks: nrPDSCHDMRSConfig</a>: dải antenna port DMRS theo configuration type và số symbol, gồm mở rộng của Rel-18, vị trí bổ sung.</li>
+<li><a href="https://www.mathworks.com/help/5g/ref/nrcqitables.html">MathWorks: nrCQITables</a>: ánh xạ các bảng CQI với các bảng trong TS 38.214.</li>
+<li><a href="https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/10790956">Patent US 10,790,956: time and frequency tracking signals using one-port CSI-RS</a>: mô tả cấu trúc TRS hai slot, bốn tài nguyên, mật độ 3.</li>
 </ul>
 
 
@@ -12784,7 +13314,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 6, 2026 14:19:19 UTC">November 6, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 7, 2026 05:31:02 UTC">November 7, 2026</span>
   </span>
 
     
@@ -12833,7 +13363,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
-          <a href="../physical-channels/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Physical Channels (WIP)">
+          <a href="../physical-channels/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Physical Channels">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -12843,7 +13373,7 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Physical Channels (WIP)
+                Physical Channels
               </div>
             </div>
           </a>

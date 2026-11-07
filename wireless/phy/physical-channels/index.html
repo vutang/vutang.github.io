@@ -26,7 +26,7 @@
     
     
       
-        <title>Physical Channels (WIP) - Vu Tang's Docs</title>
+        <title>Physical Channels - Vu Tang's Docs</title>
       
     
     
@@ -72,7 +72,7 @@
     
   
 <meta property="og:type" content="website">
-<meta property="og:title" content="Physical Channels (WIP) - Vu Tang's Docs">
+<meta property="og:title" content="Physical Channels - Vu Tang's Docs">
 <meta property="og:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
 <meta property="og:image" content="https://note.vutang.dev/assets/images/social/wireless/phy/physical-channels.png">
 <meta property="og:image:type" content="image/png">
@@ -80,7 +80,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://note.vutang.dev/wireless/phy/physical-channels/">
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:title" content="Physical Channels (WIP) - Vu Tang's Docs">
+<meta property="twitter:title" content="Physical Channels - Vu Tang's Docs">
 <meta property="twitter:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
 <meta property="twitter:image" content="https://note.vutang.dev/assets/images/social/wireless/phy/physical-channels.png">
 <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
@@ -145,7 +145,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Physical Channels (WIP)
+              Physical Channels
             
           </span>
         </div>
@@ -7166,7 +7166,7 @@
   <span class="md-ellipsis">
     
   
-    Physical Channels (WIP)
+    Physical Channels
   
 
     
@@ -7184,7 +7184,7 @@
   <span class="md-ellipsis">
     
   
-    Physical Channels (WIP)
+    Physical Channels
   
 
     
@@ -7208,6 +7208,122 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#cac-kenh-vat-ly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các kênh vật lý
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chuoi-xu-ly-pdsch-va-pusch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chuỗi xử lý PDSCH và PUSCH
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kich-thuoc-transport-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kích thước transport block
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pdcch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PDCCH
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PDCCH">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#coreset-va-cau-truc-tai-nguyen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CORESET và cấu trúc tài nguyên
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#search-space-va-blind-decoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Search space và blind decoding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cac-inh-dang-dci" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các định dạng DCI
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pucch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PUCCH
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pbch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PBCH
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tac-ong-toi-hien-thuc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tác động tới hiện thực
+      
+    </span>
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#lien-quan" class="md-nav__link">
@@ -7254,7 +7370,7 @@
   <span class="md-ellipsis">
     
   
-    Reference Signals &amp; CSI (WIP)
+    Reference Signals &amp; CSI
   
 
     
@@ -12641,6 +12757,122 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#cac-kenh-vat-ly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các kênh vật lý
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chuoi-xu-ly-pdsch-va-pusch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chuỗi xử lý PDSCH và PUSCH
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kich-thuoc-transport-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kích thước transport block
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pdcch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PDCCH
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PDCCH">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#coreset-va-cau-truc-tai-nguyen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CORESET và cấu trúc tài nguyên
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#search-space-va-blind-decoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Search space và blind decoding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cac-inh-dang-dci" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các định dạng DCI
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pucch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PUCCH
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pbch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PBCH
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tac-ong-toi-hien-thuc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tác động tới hiện thực
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#lien-quan" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -12711,6 +12943,13 @@
       
       
       
+        <a href="../../../articles/tags/#tag:pucch" class="md-tag">pucch</a>
+      
+    
+      
+      
+      
+      
         <a href="../../../articles/tags/#tag:ran" class="md-tag">ran</a>
       
     
@@ -12722,31 +12961,245 @@
 
 
 <h1 id="kenh-vat-ly-trong-nr">Kênh vật lý trong NR<a class="headerlink" href="#kenh-vat-ly-trong-nr" title="Permanent link">¶</a></h1>
-<p>Trang này trình bày các kênh vật lý của NR và chuỗi xử lý biến một transport block thành các resource element trên lưới tài nguyên. Thứ tự trình bày dự kiến: tổng quan các kênh vật lý đường xuống và đường lên, chuỗi xử lý PDSCH và PUSCH từ CRC tới RE mapping, kênh điều khiển PDCCH với CORESET, search space và DCI format, kênh PUCCH và các format, cuối cùng là tác động của chuỗi xử lý tới hiện thực L1.</p>
-<div class="admonition todo">
-<p class="admonition-title">Trang đang được viết</p>
-<p>Nội dung dự kiến:</p>
+<p>Kênh vật lý là tập resource element trên lưới tài nguyên mang thông tin từ lớp trên hoặc thông tin điều khiển lớp 1. Trang này trình bày các kênh vật lý của NR theo thứ tự: danh sách kênh và vai trò, chuỗi xử lý của kênh dữ liệu PDSCH và PUSCH từ transport block tới resource element, cách xác định kích thước transport block, kênh điều khiển đường xuống PDCCH (CORESET, search space, DCI), kênh điều khiển đường lên PUCCH, kênh quảng bá PBCH, rồi tác động tới hiện thực L1. Ánh xạ giữa kênh logic, kênh truyền tải và kênh vật lý nằm ở <a href="../../air-interface/protocol-stack/#kenh-logic-kenh-truyen-tai-kenh-vat-ly">Protocol Stack &amp; States</a>; vị trí các kênh trên lưới nằm ở <a href="../../air-interface/resource-grid/#kenh-va-tin-hieu-tren-luoi">Frame Structure &amp; Resource Grid</a>.</p>
+<h2 id="cac-kenh-vat-ly">Các kênh vật lý<a class="headerlink" href="#cac-kenh-vat-ly" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Kênh</th>
+<th>Hướng</th>
+<th>Mang gì</th>
+<th>Mã hóa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PDSCH</td>
+<td>Đường xuống</td>
+<td>Dữ liệu người dùng, bản tin RRC, SIB, paging (DL-SCH, PCH)</td>
+<td>LDPC</td>
+</tr>
+<tr>
+<td>PDCCH</td>
+<td>Đường xuống</td>
+<td>DCI: lệnh cấp phát, điều khiển công suất, định dạng slot</td>
+<td>Polar</td>
+</tr>
+<tr>
+<td>PBCH</td>
+<td>Đường xuống</td>
+<td>MIB, nằm trong SSB</td>
+<td>Polar</td>
+</tr>
+<tr>
+<td>PUSCH</td>
+<td>Đường lên</td>
+<td>Dữ liệu người dùng, bản tin RRC (UL-SCH), có thể kèm UCI</td>
+<td>LDPC (UCI: Polar hoặc mã khối ngắn)</td>
+</tr>
+<tr>
+<td>PUCCH</td>
+<td>Đường lên</td>
+<td>UCI: HARQ-ACK, scheduling request (SR), báo cáo CSI</td>
+<td>Mã khối ngắn hoặc Polar tùy số bit</td>
+</tr>
+<tr>
+<td>PRACH</td>
+<td>Đường lên</td>
+<td>Preamble truy nhập ngẫu nhiên</td>
+<td>Không mã hóa, chuỗi Zadoff-Chu</td>
+</tr>
+</tbody>
+</table>
+<p>So với LTE, NR bỏ PCFICH (vị trí CORESET được cấu hình trước) và PHICH (HARQ đường lên điều khiển hoàn toàn bằng DCI, qua bit NDI). Mã hóa kênh LDPC và Polar được trình bày ở <a href="../channel-coding/">Channel Coding</a>; PRACH được trình bày ở <a href="../../air-interface/initial-access/#random-access">Initial Access</a>.</p>
+<h2 id="chuoi-xu-ly-pdsch-va-pusch">Chuỗi xử lý PDSCH và PUSCH<a class="headerlink" href="#chuoi-xu-ly-pdsch-va-pusch" title="Permanent link">¶</a></h2>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/data-channel-chain.svg" data-desc-position="bottom"><img alt="Chuỗi xử lý PDSCH và PUSCH ở máy phát" src="../img/data-channel-chain.svg"></a></p>
+<p><em>Các bước biến một transport block thành tín hiệu OFDM. Đường lên có thêm bước ghép UCI và transform precoding (tùy chọn).</em></p>
+<p>Mỗi slot, MAC chuyển xuống PHY một hoặc hai transport block cho mỗi UE được cấp phát. Chuỗi xử lý ở máy phát gồm các bước sau:</p>
+<ol>
+<li><strong>Mã hóa kênh.</strong> Gắn CRC cho transport block, phân đoạn thành các code block, mã hóa LDPC, rate matching theo số bit kênh cấp phát và phiên bản dư thừa (redundancy version) của lần truyền, rồi ghép các code block thành một chuỗi bit gọi là <strong>codeword</strong>. Chi tiết ở <a href="../channel-coding/#ldpc-cho-kenh-du-lieu">Channel Coding</a>.</li>
+<li><strong>Scrambling.</strong> Nhân chuỗi bit với một chuỗi giả ngẫu nhiên khởi tạo theo RNTI của UE và định danh scrambling (mặc định là cell ID). Scrambling làm nhiễu từ cell khác hoặc UE khác trở nên giống nhiễu ngẫu nhiên đối với bộ giải mã.</li>
+<li><strong>Điều chế.</strong> Nhóm bit thành ký hiệu phức: QPSK, 16QAM, 64QAM, 256QAM, và 1024QAM từ Rel-17 ở đường xuống. Đường lên dùng tới 256QAM, và có thêm π/2-BPSK khi dùng transform precoding để giảm PAPR.</li>
+<li><strong>Layer mapping.</strong> Chia các ký hiệu của codeword thành các layer. Đường xuống dùng một codeword cho 1 tới 4 layer và hai codeword cho 5 tới 8 layer; đường lên dùng một codeword cho tối đa 4 layer.</li>
+<li><strong>Transform precoding (chỉ PUSCH, tùy chọn).</strong> Áp DFT lên các ký hiệu của mỗi symbol trước khi đưa vào OFDM, tạo dạng sóng DFT-s-OFDM có PAPR thấp, phù hợp UE ở biên cell. Khi bật transform precoding, PUSCH chỉ dùng một layer. Xem <a href="../ofdm/#ofdm-o-uong-len-dft-s-ofdm">OFDM</a>.</li>
+<li><strong>Precoding.</strong> Ánh xạ layer lên antenna port. Với PDSCH, precoder do gNB chọn và không báo cho UE, vì UE ước lượng kênh đã precode qua DMRS. Với PUSCH, gNB chỉ định precoder bằng TPMI (codebook) hoặc SRI (non-codebook). Xem <a href="../mimo-beamforming/#layer-antenna-port-va-precoding">MIMO &amp; Beamforming</a>.</li>
+<li><strong>Ánh xạ tài nguyên.</strong> Đặt các ký hiệu lên resource element trong vùng PRB và symbol được cấp phát, bỏ qua các resource element dành cho DMRS, PTRS, CSI-RS, SSB và các vùng rate matching khác. PDSCH cấp phát theo virtual resource block (VRB) rồi ánh xạ sang physical resource block (PRB) theo kiểu không xen kẽ hoặc xen kẽ (interleaved, để phân tập tần số); PUSCH chỉ dùng kiểu không xen kẽ.</li>
+<li><strong>Tạo tín hiệu OFDM.</strong> iFFT và thêm cyclic prefix cho từng symbol của từng antenna port.</li>
+</ol>
+<p>Đường lên có thêm bước <strong>ghép UCI</strong>: khi UE có HARQ-ACK hoặc báo cáo CSI cần gửi trong cùng slot với PUSCH, UCI được mã hóa riêng rồi đặt vào một số resource element của PUSCH thay vì gửi trên PUCCH. Số resource element dành cho UCI được điều chỉnh bằng tham số <code>beta-offset</code>.</p>
+<p>Ở máy thu, các bước diễn ra theo chiều ngược lại, cộng thêm ước lượng kênh từ DMRS, cân bằng và tách các layer, giải điều chế ra giá trị LLR và giải mã LDPC. Đây là phần tốn tài nguyên tính toán nhất của L1, xem <a href="../../l1/l1-acceleration/">L1 &amp; Acceleration</a>.</p>
+<h2 id="kich-thuoc-transport-block">Kích thước transport block<a class="headerlink" href="#kich-thuoc-transport-block" title="Permanent link">¶</a></h2>
+<p>Kích thước transport block (TBS) không được báo trực tiếp trong DCI mà được cả gNB và UE tính ra từ các tham số cấp phát, theo thủ tục ở TS 38.214 mục 5.1.3.2:</p>
+<ol>
+<li>Tính số resource element dành cho dữ liệu trong một PRB: 12 subcarrier nhân số symbol được cấp, trừ số resource element của DMRS và một lượng overhead cấu hình (<code>xOverhead</code>). Giá trị này được giới hạn tối đa 156 resource element mỗi PRB, rồi nhân với số PRB cấp phát.</li>
+<li>Tính số bit thông tin trung gian: số resource element nhân tỉ lệ mã và bậc điều chế (lấy từ chỉ số MCS) nhân số layer.</li>
+<li>Lượng tử hóa số bit trung gian. Nếu nhỏ hơn hoặc bằng 3824 bit, TBS được chọn từ một bảng các giá trị cho phép. Nếu lớn hơn, TBS được tính bằng công thức sao cho chia đều được cho các code block LDPC.</li>
+</ol>
+<p>Vì TBS được tính từ cùng các tham số ở cả hai phía, DCI chỉ cần mang MCS, vùng tài nguyên và số layer. Hệ quả là mọi khác biệt giữa gNB và UE về cách đếm resource element, ví dụ do cấu hình DMRS hay rate matching không khớp, sẽ làm UE giải mã sai toàn bộ transport block.</p>
+<h2 id="pdcch">PDCCH<a class="headerlink" href="#pdcch" title="Permanent link">¶</a></h2>
+<p>PDCCH mang DCI (downlink control information), thông tin điều khiển lớp 1 mà gNB gửi cho UE trong mỗi slot cần thiết.</p>
+<h3 id="coreset-va-cau-truc-tai-nguyen">CORESET và cấu trúc tài nguyên<a class="headerlink" href="#coreset-va-cau-truc-tai-nguyen" title="Permanent link">¶</a></h3>
+<p>PDCCH nằm trong <strong>CORESET</strong> (control resource set), một vùng tài nguyên dài 1 đến 3 symbol và rộng một bội số của 6 resource block, được cấu hình bằng RRC. Khác với LTE, CORESET không phải trải toàn băng và không bắt buộc nằm ở đầu slot. CORESET#0 là CORESET đặc biệt được cấu hình trong MIB, dùng để UE đọc SIB1 khi truy nhập, xem <a href="../../air-interface/initial-access/#mib-va-sib1">Initial Access</a>.</p>
+<p>Bên trong CORESET, tài nguyên được tổ chức theo các cấp:</p>
+<table>
+<thead>
+<tr>
+<th>Đơn vị</th>
+<th>Cấu tạo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>REG (resource element group)</td>
+<td>1 resource block trong 1 symbol, tức 12 resource element, trong đó 3 resource element là DMRS của PDCCH</td>
+</tr>
+<tr>
+<td>REG bundle</td>
+<td>2, 3 hoặc 6 REG liền nhau, đơn vị để ánh xạ có xen kẽ hoặc không xen kẽ</td>
+</tr>
+<tr>
+<td>CCE (control channel element)</td>
+<td>6 REG</td>
+</tr>
+<tr>
+<td>PDCCH candidate</td>
+<td>1, 2, 4, 8 hoặc 16 CCE (aggregation level)</td>
+</tr>
+</tbody>
+</table>
+<p>Aggregation level càng cao thì DCI được mã hóa với tỉ lệ mã càng thấp, phù hợp UE có kênh xấu, nhưng tốn nhiều tài nguyên hơn.</p>
+<h3 id="search-space-va-blind-decoding">Search space và blind decoding<a class="headerlink" href="#search-space-va-blind-decoding" title="Permanent link">¶</a></h3>
+<p>UE không được báo trước PDCCH của mình nằm ở đâu. UE được cấu hình các <strong>search space</strong>, mỗi search space gắn với một CORESET và quy định chu kỳ, các symbol bắt đầu giám sát, các aggregation level và số candidate ở mỗi level. UE thử giải mã từng candidate (blind decoding) và kiểm tra CRC: CRC 24 bit của DCI được che (scramble) bằng RNTI, nên chỉ DCI gửi cho UE đó, hoặc gửi theo RNTI chung mà UE đang theo dõi, mới qua được kiểm tra CRC.</p>
+<table>
+<thead>
+<tr>
+<th>Loại search space</th>
+<th>Dùng cho</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Common search space (CSS)</td>
+<td>DCI chung cho nhiều UE: SIB (SI-RNTI), paging (P-RNTI), random access response (RA-RNTI), điều khiển công suất nhóm, định dạng slot</td>
+</tr>
+<tr>
+<td>UE-specific search space (USS)</td>
+<td>DCI riêng cho một UE, theo C-RNTI</td>
+</tr>
+</tbody>
+</table>
+<p>Để giới hạn độ phức tạp của UE, TS 38.213 quy định số PDCCH candidate tối đa và số CCE không chồng lấn tối đa mà UE phải giám sát trong mỗi slot (Table 10.1-2 và 10.1-3). Hai giới hạn này giảm khi subcarrier spacing tăng, vì slot ngắn hơn. Cấu hình search space vượt giới hạn sẽ làm UE bỏ qua một số candidate, nên scheduler phải tính đến khi đặt PDCCH.</p>
+<h3 id="cac-inh-dang-dci">Các định dạng DCI<a class="headerlink" href="#cac-inh-dang-dci" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Định dạng</th>
+<th>Mục đích</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0_0, 0_1</td>
+<td>Cấp phát PUSCH (0_0 dạng rút gọn, kích thước cố định; 0_1 đầy đủ, theo cấu hình)</td>
+</tr>
+<tr>
+<td>1_0, 1_1</td>
+<td>Cấp phát PDSCH (1_0 rút gọn; 1_1 đầy đủ)</td>
+</tr>
+<tr>
+<td>0_2, 1_2</td>
+<td>Cấp phát PUSCH và PDSCH với kích thước DCI cấu hình được, nhỏ gọn cho URLLC (Rel-16)</td>
+</tr>
+<tr>
+<td>2_0</td>
+<td>Định dạng slot (slot format indicator) cho nhóm UE</td>
+</tr>
+<tr>
+<td>2_1</td>
+<td>Báo vùng tài nguyên bị chiếm (preemption) bởi lưu lượng URLLC</td>
+</tr>
+<tr>
+<td>2_2, 2_3</td>
+<td>Lệnh điều khiển công suất cho PUCCH, PUSCH và SRS theo nhóm UE</td>
+</tr>
+</tbody>
+</table>
+<p>Định dạng rút gọn 0_0 và 1_0 có kích thước không phụ thuộc cấu hình riêng của UE, nên dùng được trong search space chung và trong giai đoạn cấu hình lại RRC. Một DCI cấp phát chứa các trường chính: vùng tài nguyên theo tần số và theo thời gian, MCS, số HARQ process, NDI (dữ liệu mới hay truyền lại), redundancy version, lệnh công suất, và với PDSCH, thời điểm gửi HARQ-ACK. Quan hệ thời gian giữa DCI, dữ liệu và phản hồi (K0, K1, K2) thuộc phần lập lịch, xem <a href="../../air-interface/mac-scheduler/">MAC Scheduler</a>.</p>
+<h2 id="pucch">PUCCH<a class="headerlink" href="#pucch" title="Permanent link">¶</a></h2>
+<p>PUCCH mang UCI (uplink control information) khi UE không có PUSCH trong slot đó. NR có năm định dạng, chia theo độ dài và kích thước UCI:</p>
+<table>
+<thead>
+<tr>
+<th>Định dạng</th>
+<th>Số symbol</th>
+<th>Kích thước UCI</th>
+<th>Ghép nhiều UE trên cùng PRB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1 đến 2 (ngắn)</td>
+<td>1 đến 2 bit</td>
+<td>Có, bằng dịch vòng chuỗi</td>
+</tr>
+<tr>
+<td>1</td>
+<td>4 đến 14 (dài)</td>
+<td>1 đến 2 bit</td>
+<td>Có, bằng dịch vòng và mã trực giao theo thời gian</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1 đến 2 (ngắn)</td>
+<td>Trên 2 bit</td>
+<td>Không</td>
+</tr>
+<tr>
+<td>3</td>
+<td>4 đến 14 (dài)</td>
+<td>Trên 2 bit</td>
+<td>Không</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4 đến 14 (dài)</td>
+<td>Trên 2 bit</td>
+<td>Có, tối đa 4 UE</td>
+</tr>
+</tbody>
+</table>
+<p>Định dạng ngắn cho phép UE gửi HARQ-ACK ngay trong slot nhận dữ liệu, phục vụ độ trễ thấp. Định dạng dài trải năng lượng trên nhiều symbol, phù hợp UE ở biên cell. Định dạng 0 và 1 mang UCI dưới dạng lựa chọn chuỗi hoặc ký hiệu điều chế trực tiếp, không cần mã hóa kênh; định dạng 2, 3, 4 mã hóa UCI bằng mã khối ngắn (dưới 12 bit) hoặc Polar. Định dạng 3 và 4 áp DFT trước OFDM giống PUSCH dùng transform precoding, để giữ PAPR thấp.</p>
+<h2 id="pbch">PBCH<a class="headerlink" href="#pbch" title="Permanent link">¶</a></h2>
+<p>PBCH nằm trong SSB cùng với PSS và SSS, mang MIB: thông tin tối thiểu để UE đọc được SIB1, gồm số khung hệ thống (SFN), subcarrier spacing chung, vị trí CORESET#0 và search space của SIB1, cùng một số bit báo cell có bị cấm truy nhập hay không. PBCH được mã hóa Polar và phát lặp lại theo chu kỳ của SSB trên mỗi beam. Cấu trúc SSB và quá trình đọc MIB được trình bày ở <a href="../../air-interface/initial-access/#mib-va-sib1">Initial Access</a>.</p>
+<h2 id="tac-ong-toi-hien-thuc">Tác động tới hiện thực<a class="headerlink" href="#tac-ong-toi-hien-thuc" title="Permanent link">¶</a></h2>
 <ul>
-<li>Tổng quan kênh vật lý: PBCH, PDCCH, PDSCH, PUCCH, PUSCH, PRACH và ánh xạ với kênh truyền tải.</li>
-<li>Chuỗi xử lý PDSCH: CRC, phân đoạn code block, LDPC, rate matching, scrambling, điều chế, layer mapping, precoding, RE mapping.</li>
-<li>Chuỗi xử lý PUSCH, gồm transform precoding (DFT-s-OFDM) và UCI multiplexing.</li>
-<li>PDCCH: CORESET, search space, aggregation level, DCI format 0_x, 1_x, 2_x, blind decoding.</li>
-<li>PUCCH: format 0 tới 4, nội dung UCI (HARQ-ACK, SR, CSI).</li>
-<li>Kích thước transport block (TBS) và quan hệ với MCS.</li>
+<li><strong>Phân chia giữa DU và RU.</strong> Ở split 7.2x, DU thực hiện chuỗi xử lý tới ánh xạ resource element (và precoding với RU Category A), RU thực hiện iFFT và thêm CP. Fronthaul mang ký hiệu đã điều chế trên từng PRB và symbol, xem <a href="../../architecture/ran-architecture/#split-72x-cua-o-ran">RAN Architecture &amp; Splits</a>.</li>
+<li><strong>Đường găng của PDCCH.</strong> DCI phải được tạo và mã hóa xong trước symbol đầu của CORESET, nên quyết định lập lịch của MAC phải có sớm hơn dữ liệu. Thời gian từ quyết định tới phát là một phần quan trọng của ngân sách thời gian mỗi slot.</li>
+<li><strong>Rate matching chung giữa các kênh.</strong> PDSCH phải tránh chính xác các resource element của SSB, CSI-RS, CORESET và các vùng ZP CSI-RS. Cấu hình không khớp giữa phần mềm gNB và UE làm sai vị trí dữ liệu và làm hỏng giải mã, xem <a href="../reference-signals-csi/#csi-rs-va-csi-im">Reference Signals &amp; CSI</a>.</li>
+<li><strong>Tải ở máy thu đường lên.</strong> Giải mã PUSCH (ước lượng kênh, tách layer, giải mã LDPC) và giải mã PUCCH của nhiều UE trong mỗi slot là tải chính của L1 trong DU. Giải mã LDPC thường được chuyển sang accelerator, xem <a href="../../l1/l1-acceleration/">L1 &amp; Acceleration</a>.</li>
+<li><strong>Giao diện với L2.</strong> Các tham số của từng kênh trong một slot (PDSCH, PDCCH, PUSCH, PUCCH, SSB, CSI-RS) được MAC gửi xuống L1 qua các bản tin FAPI theo slot, xem <a href="../../l1/l1-acceleration/#giao-dien-l1-l2-fapi">L1 &amp; Acceleration</a>.</li>
 </ul>
-</div>
 <h2 id="lien-quan">Liên quan<a class="headerlink" href="#lien-quan" title="Permanent link">¶</a></h2>
 <ul>
-<li><a href="../channel-coding/">Channel Coding (LDPC, Polar)</a>: khâu mã hóa kênh trong chuỗi xử lý.</li>
-<li><a href="../../air-interface/resource-grid/">Frame Structure &amp; Resource Grid</a>: vị trí kênh và tín hiệu trên lưới.</li>
-<li><a href="../reference-signals-csi/">Reference Signals &amp; CSI</a>: DMRS đi kèm mỗi kênh vật lý.</li>
+<li><a href="../channel-coding/">Channel Coding (LDPC, Polar)</a>: CRC, phân đoạn, LDPC, Polar và rate matching.</li>
+<li><a href="../reference-signals-csi/">Reference Signals &amp; CSI</a>: DMRS đi kèm mỗi kênh, CSI-RS và bảng MCS.</li>
+<li><a href="../mimo-beamforming/">MIMO &amp; Beamforming</a>: layer, antenna port và precoding.</li>
+<li><a href="../../air-interface/resource-grid/">Frame Structure &amp; Resource Grid</a>: vị trí kênh và tín hiệu trên lưới, CORESET, cấp phát RBG và RIV.</li>
+<li><a href="../../air-interface/protocol-stack/">Protocol Stack &amp; States</a>: ánh xạ kênh logic, kênh truyền tải và kênh vật lý.</li>
+<li><a href="../../air-interface/initial-access/">Initial Access</a>: SSB, PBCH, CORESET#0 và PRACH.</li>
+<li><a href="../../air-interface/mac-scheduler/">MAC Scheduler</a>: quyết định cấp phát mà DCI mang tới UE.</li>
 <li><a href="../../l1/l1-acceleration/">L1 &amp; Acceleration</a>: hiện thực chuỗi xử lý PHY trong DU.</li>
 </ul>
 <h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
 <ul>
-<li>3GPP TS 38.211: Physical channels and modulation.</li>
-<li>3GPP TS 38.212: Multiplexing and channel coding.</li>
-<li>3GPP TS 38.213 và TS 38.214: thủ tục lớp vật lý cho điều khiển và dữ liệu.</li>
+<li>3GPP TS 38.211: Physical channels and modulation (scrambling, điều chế, layer mapping, transform precoding, precoding, ánh xạ tài nguyên, cấu trúc PDCCH và PUCCH).</li>
+<li>3GPP TS 38.212: Multiplexing and channel coding (mã hóa kênh, ghép UCI, các định dạng DCI).</li>
+<li>3GPP TS 38.213: Physical layer procedures for control (search space, giới hạn blind decoding, chọn định dạng PUCCH).</li>
+<li>3GPP TS 38.214: Physical layer procedures for data (xác định TBS, bảng MCS).</li>
+<li><a href="https://whatthespec.net/sos/spec/nr-38300/5.3.3">3GPP TS 38.300 mục 5.3.3 (bản tóm tắt trên whatthespec)</a>: các định dạng PUCCH và khả năng ghép nhiều UE.</li>
+<li><a href="https://itecspec.com/3gpp/38.213/s/10">3GPP TS 38.213 mục 10 (bản trích trên itecspec)</a>: thủ tục giám sát PDCCH và các bảng giới hạn candidate, CCE.</li>
+<li><a href="https://www.mathworks.com/help/5g/ref/nrtbs.html">MathWorks: nrTBS</a>: hiện thực tham chiếu của thủ tục xác định TBS theo TS 38.214 mục 5.1.3.2.</li>
 </ul>
 
 
@@ -12770,7 +13223,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 6, 2026 14:19:19 UTC">November 6, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 7, 2026 05:36:45 UTC">November 7, 2026</span>
   </span>
 
     
@@ -12836,13 +13289,13 @@
         
         
           
-          <a href="../reference-signals-csi/" class="md-footer__link md-footer__link--next" aria-label="Next: Reference Signals &amp; CSI (WIP)">
+          <a href="../reference-signals-csi/" class="md-footer__link md-footer__link--next" aria-label="Next: Reference Signals &amp; CSI">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Reference Signals &amp; CSI (WIP)
+                Reference Signals &amp; CSI
               </div>
             </div>
             <div class="md-footer__button md-icon">
