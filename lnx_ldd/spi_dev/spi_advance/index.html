@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
+        <meta name="description" content="Mở rộng số chip select của SPI bằng GPIO và dùng driver spi-gpio để tạo bus SPI bằng phần mềm trên các chân GPIO.">
       
       
         <meta name="author" content="Vu Tang">
@@ -26,7 +26,7 @@
     
     
       
-        <title>SPI Subsystem (Advanced) - Vu Tang's Docs</title>
+        <title>SPI nâng cao trong Linux kernel - Vu Tang's Docs</title>
       
     
     
@@ -72,16 +72,16 @@
     
   
 <meta property="og:type" content="website">
-<meta property="og:title" content="SPI Subsystem (Advanced) - Vu Tang's Docs">
-<meta property="og:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
+<meta property="og:title" content="SPI nâng cao trong Linux kernel - Vu Tang's Docs">
+<meta property="og:description" content="Mở rộng số chip select của SPI bằng GPIO và dùng driver spi-gpio để tạo bus SPI bằng phần mềm trên các chân GPIO.">
 <meta property="og:image" content="https://note.vutang.dev/assets/images/social/lnx_ldd/spi_dev/spi_advance.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://note.vutang.dev/lnx_ldd/spi_dev/spi_advance/">
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:title" content="SPI Subsystem (Advanced) - Vu Tang's Docs">
-<meta property="twitter:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
+<meta property="twitter:title" content="SPI nâng cao trong Linux kernel - Vu Tang's Docs">
+<meta property="twitter:description" content="Mở rộng số chip select của SPI bằng GPIO và dùng driver spi-gpio để tạo bus SPI bằng phần mềm trên các chân GPIO.">
 <meta property="twitter:image" content="https://note.vutang.dev/assets/images/social/lnx_ldd/spi_dev/spi_advance.png">
 <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
@@ -112,7 +112,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#advanced-spi" class="md-skip">
+        <a href="#spi-nang-cao" class="md-skip">
           Skip to content
         </a>
       
@@ -145,7 +145,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              SPI Subsystem (Advanced)
+              SPI nâng cao trong Linux kernel
             
           </span>
         </div>
@@ -4848,7 +4848,7 @@
   <span class="md-ellipsis">
     
   
-    Real-time &amp; CPU Isolation
+    Interrupt, Memory &amp; Concurrency
   
 
     
@@ -4861,6 +4861,181 @@
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Interrupt, Memory &amp; Concurrency
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_kernel/interrupt/interrupt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interrupt &amp; Bottom Half
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_kernel/locking/locking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Đồng bộ hóa (Locking)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_kernel/mm/memory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quản lý bộ nhớ trong driver
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_kernel/dma/dma/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DMA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Real-time &amp; CPU Isolation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5013,10 +5188,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5">
         
           
-          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="">
             
   
   
@@ -5034,8 +5209,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5190,10 +5365,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" checked="">
         
           
-          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="">
             
   
   
@@ -5211,8 +5386,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4_5">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5345,10 +5520,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#extend-number-of-cs-signal" class="md-nav__link">
+  <a href="#mo-rong-so-chip-select" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Extend number of CS signal
+        Mở rộng số chip select
       
     </span>
   </a>
@@ -5356,10 +5531,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#spi-gpio" class="md-nav__link">
+  <a href="#spi-bang-gpio-spi-gpio" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SPI GPIO
+        SPI bằng GPIO (spi-gpio)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lien-quan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Liên quan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài liệu tham khảo
       
     </span>
   </a>
@@ -5389,7 +5586,7 @@
   <span class="md-ellipsis">
     
   
-    PCIe (WIP)
+    PCIe
   
 
     
@@ -5462,10 +5659,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7">
         
           
-          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="">
             
   
   
@@ -5483,8 +5680,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_6">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5665,10 +5862,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8">
         
           
-          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="">
             
   
   
@@ -5686,8 +5883,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5756,10 +5953,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_9">
         
           
-          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4_9" id="__nav_4_9_label" tabindex="">
             
   
   
@@ -5777,8 +5974,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_8">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -13299,10 +13496,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#extend-number-of-cs-signal" class="md-nav__link">
+  <a href="#mo-rong-so-chip-select" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Extend number of CS signal
+        Mở rộng số chip select
       
     </span>
   </a>
@@ -13310,10 +13507,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#spi-gpio" class="md-nav__link">
+  <a href="#spi-bang-gpio-spi-gpio" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SPI GPIO
+        SPI bằng GPIO (spi-gpio)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lien-quan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Liên quan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài liệu tham khảo
       
     </span>
   </a>
@@ -13379,9 +13598,149 @@
   
 
 
-<h1 id="advanced-spi">Advanced SPI<a class="headerlink" href="#advanced-spi" title="Permanent link">¶</a></h1>
-<h2 id="extend-number-of-cs-signal">Extend number of CS signal<a class="headerlink" href="#extend-number-of-cs-signal" title="Permanent link">¶</a></h2>
-<h2 id="spi-gpio">SPI GPIO<a class="headerlink" href="#spi-gpio" title="Permanent link">¶</a></h2>
+<h1 id="spi-nang-cao">SPI nâng cao<a class="headerlink" href="#spi-nang-cao" title="Permanent link">¶</a></h1>
+<p>Trang này trình bày hai kỹ thuật dùng khi SPI controller của SoC không đủ đáp ứng thiết kế board: mở rộng số chip select (CS) bằng GPIO, và tạo cả bus SPI bằng phần mềm trên các chân GPIO với driver <code>spi-gpio</code>. Kiến thức nền về <code>spi_device</code>, <code>spi_message</code> và driver controller nằm ở <a href="../spi_dev/">SPI Subsystem</a>, và về GPIO nằm ở <a href="../../gpio/gpio/">GPIO</a>.</p>
+<h2 id="mo-rong-so-chip-select">Mở rộng số chip select<a class="headerlink" href="#mo-rong-so-chip-select" title="Permanent link">¶</a></h2>
+<p>SPI controller thường có số chân CS hạn chế, ví dụ hai hoặc ba. Board có nhiều slave hơn con số này, hoặc cần dùng chân CS không phải chân native của controller, có thể dùng GPIO làm CS. Khi đó SPI core điều khiển mức của chân GPIO thay cho phần cứng CS của controller, nên số slave chỉ bị giới hạn bởi số GPIO.</p>
+<p>Khai báo trong Device Tree bằng property <code>cs-gpios</code> ở node controller:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="o">&amp;</span><span class="nf">spi0</span><span class="cm"> </span><span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="kr">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"okay"</span><span class="p">;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">num-cs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">3</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">cs-gpios</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;&amp;</span><span class="na">gpio0</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="na">GPIO_ACTIVE_LOW</span><span class="o">&gt;</span><span class="p">,</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">               </span><span class="o">&lt;&amp;</span><span class="na">gpio0</span><span class="w"> </span><span class="mi">11</span><span class="w"> </span><span class="na">GPIO_ACTIVE_LOW</span><span class="o">&gt;</span><span class="p">,</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">               </span><span class="o">&lt;&amp;</span><span class="na">gpio1</span><span class="w"> </span><span class="mi">4</span><span class="w">  </span><span class="na">GPIO_ACTIVE_LOW</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="nf">flash</span><span class="o">@</span><span class="mi">0</span><span class="cm"> </span><span class="p">{</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">        </span><span class="kr">compatible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"jedec,spi-nor"</span><span class="p">;</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">        </span><span class="kr">reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">;</span><span class="w">                       </span><span class="cm">/* chỉ số trong cs-gpios */</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">        </span><span class="n">spi-max-frequency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">20000000</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="p">};</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="nf">adc</span><span class="o">@</span><span class="mi">1</span><span class="cm"> </span><span class="p">{</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">        </span><span class="kr">compatible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"ti,ads7950"</span><span class="p">;</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">        </span><span class="kr">reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">        </span><span class="n">spi-max-frequency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">10000000</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="p">};</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span><span class="nf">dac</span><span class="o">@</span><span class="mi">2</span><span class="cm"> </span><span class="p">{</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">        </span><span class="kr">compatible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"ti,dac7512"</span><span class="p">;</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">        </span><span class="kr">reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">        </span><span class="n">spi-max-frequency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">1000000</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">        </span><span class="n">spi-cs-high</span><span class="p">;</span><span class="w">                     </span><span class="cm">/* slave này active-high */</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">    </span><span class="p">};</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="p">};</span>
+</code></pre></div>
+<p>Quy tắc đọc khai báo:</p>
+<ul>
+<li><code>reg</code> của từng slave là <strong>chỉ số</strong> trong danh sách <code>cs-gpios</code>, không phải số GPIO.</li>
+<li>Mức tích cực của CS lấy từ cờ trong <code>cs-gpios</code> (<code>GPIO_ACTIVE_LOW</code> hay <code>GPIO_ACTIVE_HIGH</code>). Property <code>spi-cs-high</code> của node slave cũng đảo cực tính cho slave đó, nên cần xác định chỉ dùng một trong hai cách cho mỗi slave để tránh đảo hai lần. Cách chính xác phụ thuộc phiên bản kernel và cần kiểm tra bằng đo trên tín hiệu thật.</li>
+<li>Controller native vẫn có thể dùng chân CS gốc cho các slave khác: một số bản kernel cho phép xen kẽ mục GPIO và mục CS native trong <code>cs-gpios</code>. Khả năng này phụ thuộc driver của controller.</li>
+<li>Driver của controller phải dùng <code>spi_set_cs()</code> hoặc để SPI core tự điều khiển CS. Một số controller chỉ hỗ trợ CS native vì phải kích CS đồng bộ với khung truyền trong phần cứng, và với các controller này GPIO CS làm tăng độ trễ giữa các byte.</li>
+</ul>
+<p>Điểm cần lưu ý về phần cứng:</p>
+<ul>
+<li>Mỗi lần chuyển transfer, SPI core thao tác GPIO bằng phần mềm nên CS có độ trễ so với CS native. Với tốc độ SPI cao, thời gian từ lúc CS tích cực đến xung clock đầu tiên có thể không đạt yêu cầu setup của slave, cần đo bằng logic analyzer.</li>
+<li>Số slave nhiều hơn nữa có thể dùng bộ giải mã (như 74HC138) hoặc bộ mở rộng GPIO. Cách này phụ thuộc thiết kế board và chưa được kiểm chứng trong trang này.</li>
+</ul>
+<div class="admonition todo">
+<p class="admonition-title">Chưa kiểm chứng</p>
+<ul>
+<li>Hành vi cực tính CS khi kết hợp <code>GPIO_ACTIVE_LOW</code> với <code>spi-cs-high</code> trên từng phiên bản kernel.</li>
+<li>Kết hợp CS native và GPIO CS trong cùng một <code>cs-gpios</code> trên SPI controller của Zynq.</li>
+</ul>
+</div>
+<h2 id="spi-bang-gpio-spi-gpio">SPI bằng GPIO (spi-gpio)<a class="headerlink" href="#spi-bang-gpio-spi-gpio" title="Permanent link">¶</a></h2>
+<p>Khi board không có SPI controller phần cứng còn trống, hoặc chân SPI đã bị dùng cho chức năng khác, có thể tạo <strong>bus SPI bằng phần mềm</strong> (bit-banging) trên các chân GPIO. Driver <code>spi-gpio</code> (<code>drivers/spi/spi-gpio.c</code>) đăng ký một SPI controller ảo, SPI core và driver slave không thay đổi: slave driver vẫn dùng <code>spi_sync()</code> như với controller phần cứng.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nf">spi-gpio</span><span class="cm"> </span><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="kr">compatible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"spi-gpio"</span><span class="p">;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="kr">#address-cells</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="kr">#size-cells</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="n">sck-gpios</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;&amp;</span><span class="na">gpio0</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="na">GPIO_ACTIVE_HIGH</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="n">mosi-gpios</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;&amp;</span><span class="na">gpio0</span><span class="w"> </span><span class="mi">21</span><span class="w"> </span><span class="na">GPIO_ACTIVE_HIGH</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="n">miso-gpios</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;&amp;</span><span class="na">gpio0</span><span class="w"> </span><span class="mi">22</span><span class="w"> </span><span class="na">GPIO_ACTIVE_HIGH</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="n">cs-gpios</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;&amp;</span><span class="na">gpio0</span><span class="w"> </span><span class="mi">23</span><span class="w"> </span><span class="na">GPIO_ACTIVE_LOW</span><span class="o">&gt;</span><span class="p">,</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">                 </span><span class="o">&lt;&amp;</span><span class="na">gpio0</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="na">GPIO_ACTIVE_LOW</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="n">num-chipselects</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="nf">sensor</span><span class="o">@</span><span class="mi">0</span><span class="cm"> </span><span class="p">{</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">        </span><span class="kr">compatible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"ti,tmp121"</span><span class="p">;</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">        </span><span class="kr">reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">        </span><span class="n">spi-max-frequency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">1000000</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">    </span><span class="p">};</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="p">};</span>
+</code></pre></div>
+<p>Các property chính:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Ý nghĩa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sck-gpios</code>, <code>mosi-gpios</code>, <code>miso-gpios</code></td>
+<td>Các chân clock, dữ liệu ra, dữ liệu vào. Có thể bỏ <code>mosi-gpios</code> hoặc <code>miso-gpios</code> khi slave chỉ có một chiều dữ liệu</td>
+</tr>
+<tr>
+<td><code>cs-gpios</code></td>
+<td>Các chân CS, như phần trên</td>
+</tr>
+<tr>
+<td><code>num-chipselects</code></td>
+<td>Số slave</td>
+</tr>
+</tbody>
+</table>
+<p>Đặc điểm cần cân nhắc:</p>
+<table>
+<thead>
+<tr>
+<th>Mặt</th>
+<th>Nhận xét</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tốc độ</td>
+<td>Thấp hơn nhiều so với controller phần cứng, vì mỗi bit cần vài lần truy cập GPIO qua lớp gpiolib. Tốc độ đạt được phụ thuộc SoC và cần đo thực tế</td>
+</tr>
+<tr>
+<td>CPU</td>
+<td>Tốn CPU trong suốt quá trình truyền, vì CPU tự đảo từng chân</td>
+</tr>
+<tr>
+<td>Thời gian</td>
+<td>Bị ảnh hưởng bởi ngắt và preemption, nên xung clock có thể không đều. Slave SPI thông thường chịu được vì clock do master điều khiển, nhưng slave có yêu cầu thời gian chặt thì không</td>
+</tr>
+<tr>
+<td>Mode</td>
+<td>Hỗ trợ các mode SPI 0 đến 3 theo <code>spi-cpol</code> và <code>spi-cpha</code> của slave</td>
+</tr>
+<tr>
+<td>Không DMA</td>
+<td>Không dùng được DMA</td>
+</tr>
+</tbody>
+</table>
+<p><code>spi-gpio</code> phù hợp với thiết bị tốc độ thấp như cảm biến nhiệt độ, ADC chậm, thanh ghi cấu hình, và không phù hợp với flash, màn hình hoặc ADC tốc độ cao.</p>
+<p>Hai lưu ý khi triển khai:</p>
+<ul>
+<li>Các chân GPIO đang dùng cho <code>spi-gpio</code> không được driver khác chiếm. Nếu chân nằm trong nhóm pin mux dùng cho chức năng khác, cần cấu hình pinctrl về chế độ GPIO.</li>
+<li>Mức điện áp của chân GPIO phải tương thích với slave, xem phần thiết kế mạch ở <a href="../../../hw_design/">Hardware Design</a>.</li>
+</ul>
+<h2 id="lien-quan">Liên quan<a class="headerlink" href="#lien-quan" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="../spi_dev/">SPI Subsystem</a>: mô hình <code>spi_device</code>, <code>spi_message</code>, driver controller.</li>
+<li><a href="../../gpio/gpio/">GPIO</a>: gpiolib, mô tả GPIO trong Device Tree.</li>
+<li><a href="../../../lnx_kernel/devicetree/devicetree/">Device Tree</a>: property <code>cs-gpios</code>, <code>#gpio-cells</code> và cách tham chiếu GPIO.</li>
+</ul>
+<h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="https://docs.kernel.org/spi/spi-summary.html">Overview of Linux kernel SPI support - docs.kernel.org</a></li>
+<li>Binding <code>spi-controller.yaml</code> và <code>spi-gpio.yaml</code> trong <code>Documentation/devicetree/bindings/spi/</code> của kernel source.</li>
+</ul>
 
 
 
@@ -13404,7 +13763,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 20, 2026 09:37:50 UTC">October 20, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 7, 2026 14:00:23 UTC">November 7, 2026</span>
   </span>
 
     
@@ -13470,13 +13829,13 @@
         
         
           
-          <a href="../../pcie/pcie/" class="md-footer__link md-footer__link--next" aria-label="Next: PCIe (WIP)">
+          <a href="../../pcie/pcie/" class="md-footer__link md-footer__link--next" aria-label="Next: PCIe">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                PCIe (WIP)
+                PCIe
               </div>
             </div>
             <div class="md-footer__button md-icon">

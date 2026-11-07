@@ -26,7 +26,7 @@
     
     
       
-        <title>PCIe (WIP) - Vu Tang's Docs</title>
+        <title>PCIe - Vu Tang's Docs</title>
       
     
     
@@ -72,7 +72,7 @@
     
   
 <meta property="og:type" content="website">
-<meta property="og:title" content="PCIe (WIP) - Vu Tang's Docs">
+<meta property="og:title" content="PCIe - Vu Tang's Docs">
 <meta property="og:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
 <meta property="og:image" content="https://note.vutang.dev/assets/images/social/lnx_ldd/pcie/pcie.png">
 <meta property="og:image:type" content="image/png">
@@ -80,7 +80,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://note.vutang.dev/lnx_ldd/pcie/pcie/">
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:title" content="PCIe (WIP) - Vu Tang's Docs">
+<meta property="twitter:title" content="PCIe - Vu Tang's Docs">
 <meta property="twitter:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
 <meta property="twitter:image" content="https://note.vutang.dev/assets/images/social/lnx_ldd/pcie/pcie.png">
 <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
@@ -111,6 +111,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#pcie-trong-linux-kernel" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -140,7 +145,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              PCIe (WIP)
+              PCIe
             
           </span>
         </div>
@@ -4843,7 +4848,7 @@
   <span class="md-ellipsis">
     
   
-    Real-time &amp; CPU Isolation
+    Interrupt, Memory &amp; Concurrency
   
 
     
@@ -4856,6 +4861,181 @@
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Interrupt, Memory &amp; Concurrency
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_kernel/interrupt/interrupt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interrupt &amp; Bottom Half
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_kernel/locking/locking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Đồng bộ hóa (Locking)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_kernel/mm/memory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quản lý bộ nhớ trong driver
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_kernel/dma/dma/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DMA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Real-time &amp; CPU Isolation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5008,10 +5188,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5">
         
           
-          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="">
             
   
   
@@ -5029,8 +5209,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5185,10 +5365,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" checked="">
         
           
-          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="">
             
   
   
@@ -5206,8 +5386,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4_5">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5314,6 +5494,26 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PCIe
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -5322,7 +5522,7 @@
   <span class="md-ellipsis">
     
   
-    PCIe (WIP)
+    PCIe
   
 
     
@@ -5331,6 +5531,146 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#mo-hinh-bus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mô hình bus
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumeration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enumeration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#config-space-va-bar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Config space và BAR
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cau-truc-mot-pci_driver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cấu trúc một pci_driver
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ngat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ngắt
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DMA
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dung-thiet-bi-pcie-tu-user-space" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dùng thiết bị PCIe từ user space
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cac-tinh-nang-khac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các tính năng khác
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cong-cu-va-debug" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Công cụ và debug
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lien-quan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Liên quan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài liệu tham khảo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -5396,10 +5736,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7">
         
           
-          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="">
             
   
   
@@ -5417,8 +5757,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_6">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5599,10 +5939,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8">
         
           
-          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="">
             
   
   
@@ -5620,8 +5960,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5690,10 +6030,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_9">
         
           
-          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4_9" id="__nav_4_9_label" tabindex="">
             
   
   
@@ -5711,8 +6051,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_8">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -13223,6 +13563,137 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#mo-hinh-bus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mô hình bus
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumeration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enumeration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#config-space-va-bar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Config space và BAR
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cau-truc-mot-pci_driver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cấu trúc một pci_driver
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ngat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ngắt
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DMA
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dung-thiet-bi-pcie-tu-user-space" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dùng thiết bị PCIe từ user space
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cac-tinh-nang-khac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các tính năng khác
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cong-cu-va-debug" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Công cụ và debug
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lien-quan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Liên quan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài liệu tham khảo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -13242,9 +13713,254 @@
   
 
 
-  <h1>PCIe (WIP)</h1>
-
-<p>Just PCIe</p>
+<hr>
+<p>title: PCIe trong Linux kernel
+description: Cách Linux kernel quản lý bus PCI Express: enumeration, config space, BAR, viết pci_driver, MSI và MSI-X, DMA, và công cụ debug.
+tags:
+  - linux-kernel
+  - driver
+  - pcie
+  - pci
+  - linux-kernel-subsystem</p>
+<hr>
+<h1 id="pcie-trong-linux-kernel">PCIe trong Linux kernel<a class="headerlink" href="#pcie-trong-linux-kernel" title="Permanent link">¶</a></h1>
+<p>PCI Express (PCIe) là bus nối tiếp tốc độ cao nối CPU với thiết bị như NIC, NVMe, GPU, card FPGA và accelerator. Trang này trình bày PCIe từ góc nhìn của kernel và người viết driver, theo thứ tự: mô hình bus, enumeration, config space và BAR, cấu trúc một <code>pci_driver</code>, ngắt (INTx, MSI, MSI-X), DMA, cách dùng từ user space, rồi các công cụ kiểm tra. Giao thức lớp vật lý và lớp truyền của PCIe nằm ngoài phạm vi trang này, form factor card nằm ở <a href="../../../hw_design/form_factor/pcie-cem/">PCIe CEM</a>.</p>
+<h2 id="mo-hinh-bus">Mô hình bus<a class="headerlink" href="#mo-hinh-bus" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Thành phần</th>
+<th>Vai trò</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Root complex</td>
+<td>Nối CPU và bộ nhớ với cây PCIe. Gồm một hoặc nhiều root port</td>
+</tr>
+<tr>
+<td>Switch</td>
+<td>Mở rộng cổng, định tuyến giữa các nhánh</td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td>Thiết bị cuối: NIC, SSD, card FPGA</td>
+</tr>
+<tr>
+<td>Bridge</td>
+<td>Nối bus này với bus khác, kernel biểu diễn root port và cổng switch như PCI-to-PCI bridge</td>
+</tr>
+</tbody>
+</table>
+<p>Một thiết bị trên cây được định danh bằng <strong>bus:device.function</strong> (BDF), ví dụ <code>0000:03:00.0</code> trong đó <code>0000</code> là domain. Một thiết bị vật lý có thể có nhiều function.</p>
+<p>PCIe giữ tương thích phần mềm với PCI: cách enumeration, config space và cấu trúc driver trong kernel dùng chung cho cả hai, nên subsystem trong kernel vẫn tên là PCI (<code>drivers/pci/</code>).</p>
+<h2 id="enumeration">Enumeration<a class="headerlink" href="#enumeration" title="Permanent link">¶</a></h2>
+<p>PCIe là bus tự dò được. Khi boot, kernel (hoặc firmware, tùy nền tảng) quét cây bus, đọc config space của từng thiết bị, gán số bus cho các bridge và cấp địa chỉ cho các BAR. Kết quả là cây thiết bị trong <code>/sys/bus/pci/devices/</code>. Khác với thiết bị platform, không cần mô tả từng endpoint trong Device Tree.</p>
+<p>Phần cần mô tả là <strong>host controller</strong> nối root complex vào SoC. Trên PC dùng ACPI, firmware lo phần này. Trên SoC Arm, host controller (DesignWare, các IP của Xilinx hoặc Rockchip...) là một platform device, khai báo trong Device Tree với <code>compatible</code> của loại controller, vùng thanh ghi, ngắt, PHY, clock và ranges địa chỉ cho cửa sổ bộ nhớ PCIe, xem <a href="../../platform_dev/platform_device/">Platform Device</a> và <a href="../../../lnx_kernel/devicetree/devicetree/">Device Tree</a>.</p>
+<h2 id="config-space-va-bar">Config space và BAR<a class="headerlink" href="#config-space-va-bar" title="Permanent link">¶</a></h2>
+<p>Mỗi function có <strong>configuration space</strong> để kernel nhận diện và cấu hình thiết bị: 256 byte với PCI, mở rộng thành 4 KiB với PCIe.</p>
+<table>
+<thead>
+<tr>
+<th>Trường</th>
+<th>Ý nghĩa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vendor ID, Device ID</td>
+<td>Nhận diện hãng và loại thiết bị, dùng để ghép với driver</td>
+</tr>
+<tr>
+<td>Class code</td>
+<td>Loại thiết bị (storage, network, ...)</td>
+</tr>
+<tr>
+<td>Command register</td>
+<td>Bật truy cập memory, I/O, và quyền bus master (cho phép thiết bị tự khởi tạo DMA)</td>
+</tr>
+<tr>
+<td>BAR (Base Address Register)</td>
+<td>Vùng địa chỉ thiết bị yêu cầu: kích thước và loại (memory hay I/O)</td>
+</tr>
+<tr>
+<td>Capability list</td>
+<td>Danh sách tính năng tùy chọn: MSI, MSI-X, PCIe capability (tốc độ link, AER)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>BAR</strong> cho biết thiết bị cần bao nhiêu vùng địa chỉ và loại nào. Kernel cấp địa chỉ trong không gian vật lý của CPU rồi ghi vào BAR. Driver ánh xạ BAR vào không gian ảo để truy cập thanh ghi của thiết bị, tương tự <code>ioremap()</code> ở trang <a href="../../../lnx_kernel/mm/memory/">Quản lý bộ nhớ trong driver</a>. Card FPGA thường dùng một BAR cho thanh ghi điều khiển và một BAR khác cho cửa sổ bộ nhớ lớn.</p>
+<h2 id="cau-truc-mot-pci_driver">Cấu trúc một pci_driver<a class="headerlink" href="#cau-truc-mot-pci_driver" title="Permanent link">¶</a></h2>
+<p>Driver khai báo bảng ID và các callback, giống mô hình bus, device, driver ở <a href="../../overview/">Linux Device Driver Overview</a>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">pci_device_id</span><span class="w"> </span><span class="n">my_ids</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">PCI_DEVICE</span><span class="p">(</span><span class="mh">0x1234</span><span class="p">,</span><span class="w"> </span><span class="mh">0x5678</span><span class="p">)</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">};</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">MODULE_DEVICE_TABLE</span><span class="p">(</span><span class="n">pci</span><span class="p">,</span><span class="w"> </span><span class="n">my_ids</span><span class="p">);</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">static</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">pci_driver</span><span class="w"> </span><span class="n">my_driver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="p">.</span><span class="n">name</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s">"my_pci"</span><span class="p">,</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="p">.</span><span class="n">id_table</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">my_ids</span><span class="p">,</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="p">.</span><span class="n">probe</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">my_probe</span><span class="p">,</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="p">.</span><span class="n">remove</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">my_remove</span><span class="p">,</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="p">};</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="n">module_pci_driver</span><span class="p">(</span><span class="n">my_driver</span><span class="p">);</span>
+</code></pre></div>
+<p>Trong <code>probe()</code>, trình tự thông thường:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">my_probe</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">pci_dev</span><span class="w"> </span><span class="o">*</span><span class="n">pdev</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">pci_device_id</span><span class="w"> </span><span class="o">*</span><span class="n">id</span><span class="p">)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">{</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">__iomem</span><span class="w"> </span><span class="o">*</span><span class="n">base</span><span class="p">;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pcim_enable_device</span><span class="p">(</span><span class="n">pdev</span><span class="p">);</span><span class="w">          </span><span class="cm">/* bật thiết bị, tự tắt khi gỡ */</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="n">pci_set_master</span><span class="p">(</span><span class="n">pdev</span><span class="p">);</span><span class="w">                    </span><span class="cm">/* cho phép thiết bị làm bus master (DMA) */</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dma_set_mask_and_coherent</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pdev</span><span class="o">-&gt;</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="n">DMA_BIT_MASK</span><span class="p">(</span><span class="mi">64</span><span class="p">));</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span><span class="n">base</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pcim_iomap_region</span><span class="p">(</span><span class="n">pdev</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">"my_pci"</span><span class="p">);</span><span class="w">   </span><span class="cm">/* request và ánh xạ BAR0 */</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">IS_ERR</span><span class="p">(</span><span class="n">base</span><span class="p">))</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">PTR_ERR</span><span class="p">(</span><span class="n">base</span><span class="p">);</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">    </span><span class="cm">/* cấp phát vector ngắt, khởi tạo thiết bị ... */</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="p">}</span>
+</code></pre></div>
+<p>Các hàm <code>pcim_*</code> là biến thể device-managed của <code>pci_*</code>, kernel tự giải phóng khi <code>probe()</code> lỗi hoặc khi gỡ driver. Phiên bản kernel cũ hơn dùng <code>pcim_iomap_regions()</code> và <code>pcim_iomap_table()</code> cho việc ánh xạ BAR, nên khi đọc code driver hiện có cần nhận ra cả hai kiểu.</p>
+<h2 id="ngat">Ngắt<a class="headerlink" href="#ngat" title="Permanent link">¶</a></h2>
+<p>Thiết bị PCIe có ba kiểu báo ngắt:</p>
+<table>
+<thead>
+<tr>
+<th>Kiểu</th>
+<th>Cơ chế</th>
+<th>Đặc điểm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INTx</td>
+<td>Đường ngắt ảo mô phỏng chân ngắt của PCI</td>
+<td>Chia sẻ đường giữa nhiều thiết bị, level-triggered, cần <code>IRQF_SHARED</code></td>
+</tr>
+<tr>
+<td>MSI</td>
+<td>Thiết bị ghi một message vào địa chỉ đặc biệt để tạo ngắt</td>
+<td>Tới 32 vector, không chia sẻ đường ngắt</td>
+</tr>
+<tr>
+<td>MSI-X</td>
+<td>Như MSI, nhưng bảng vector lớn hơn (tới 2048) và mỗi vector có địa chỉ, dữ liệu riêng</td>
+<td>Cho phép mỗi hàng đợi hoặc mỗi core có ngắt riêng</td>
+</tr>
+</tbody>
+</table>
+<p>Driver không cần xử lý từng kiểu riêng. Hàm <code>pci_alloc_irq_vectors()</code> cấp phát số vector yêu cầu, ưu tiên MSI-X, rồi MSI, cuối cùng INTx:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">nvec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pci_alloc_irq_vectors</span><span class="p">(</span><span class="n">pdev</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="n">PCI_IRQ_ALL_TYPES</span><span class="p">);</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nvec</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">nvec</span><span class="p">;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">nvec</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="n">irq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pci_irq_vector</span><span class="p">(</span><span class="n">pdev</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">devm_request_irq</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pdev</span><span class="o">-&gt;</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="n">irq</span><span class="p">,</span><span class="w"> </span><span class="n">my_isr</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">"my_pci"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">md</span><span class="o">-&gt;</span><span class="n">q</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="p">}</span>
+</code></pre></div>
+<p>Mỗi vector MSI-X có thể gắn với một ngắt riêng, nên phân ngắt về từng core theo hàng đợi, xem <a href="../../../lnx_kernel/cpu_isolation/irq_affinity/">IRQ affinity và irqbalance</a>. Cơ chế đăng ký handler và bottom half xem <a href="../../../lnx_kernel/interrupt/interrupt/">Interrupt và bottom half</a>.</p>
+<h2 id="dma">DMA<a class="headerlink" href="#dma" title="Permanent link">¶</a></h2>
+<p>Thiết bị PCIe làm bus master nên tự đọc ghi RAM. Driver dùng DMA API chuẩn của kernel, xem <a href="../../../lnx_kernel/dma/dma/">DMA trong Linux kernel</a>: đặt DMA mask, <code>pci_set_master()</code>, <code>dma_alloc_coherent()</code> cho descriptor ring, <code>dma_map_*()</code> cho dữ liệu. Địa chỉ đưa cho thiết bị là địa chỉ DMA (có thể là địa chỉ của IOMMU), không phải địa chỉ vật lý hay con trỏ ảo.</p>
+<h2 id="dung-thiet-bi-pcie-tu-user-space">Dùng thiết bị PCIe từ user space<a class="headerlink" href="#dung-thiet-bi-pcie-tu-user-space" title="Permanent link">¶</a></h2>
+<p>Không phải thiết bị nào cũng cần driver kernel riêng. Các lựa chọn:</p>
+<table>
+<thead>
+<tr>
+<th>Cách</th>
+<th>Mô tả</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sysfs <code>resource0</code>...</td>
+<td>File <code>/sys/bus/pci/devices/&lt;BDF&gt;/resourceN</code> ánh xạ BAR bằng <code>mmap()</code>, truy cập thanh ghi từ user space để thử nhanh</td>
+</tr>
+<tr>
+<td><code>uio_pci_generic</code></td>
+<td>Driver UIO chung, chỉ chuyển ngắt INTx cho user space, xem <a href="../../../lnx_kernel/kernel_user_space/mmap/">mmap, UIO, dma-buf</a></td>
+</tr>
+<tr>
+<td>VFIO (<code>vfio-pci</code>)</td>
+<td>Đưa thiết bị cho user space hoặc VM với bảo vệ bằng IOMMU, nền tảng của DPDK và gán thiết bị cho VM, xem <a href="../../../lnx_es/dpdk/dpdk/">DPDK</a> và <a href="../../../virtualization/foundations/io/">I/O Virtualization</a></td>
+</tr>
+</tbody>
+</table>
+<p>Quy trình chuyển một thiết bị sang VFIO: tách khỏi driver hiện tại bằng <code>driver_override</code> trong sysfs, gắn <code>vfio-pci</code>.</p>
+<h2 id="cac-tinh-nang-khac">Các tính năng khác<a class="headerlink" href="#cac-tinh-nang-khac" title="Permanent link">¶</a></h2>
+<ul>
+<li><strong>Hotplug</strong>: thêm hoặc gỡ thiết bị khi hệ thống chạy (ExpressCard, U.2, M.2 trên một số nền tảng), qua <code>pciehp</code>.</li>
+<li><strong>AER</strong> (Advanced Error Reporting): báo lỗi PCIe (correctable, uncorrectable) vào log kernel. Driver có thể đăng ký <code>err_handler</code> để xử lý lỗi và phục hồi.</li>
+<li><strong>Power management</strong>: ASPM (bật tiết kiệm điện cho link) và runtime PM.</li>
+<li><strong>SR-IOV</strong>: một thiết bị vật lý trình bày thành nhiều virtual function cho VM, bật qua <code>sriov_numvfs</code> trong sysfs.</li>
+<li><strong>Endpoint framework</strong> (<code>drivers/pci/endpoint/</code>): chạy Linux ở phía endpoint, SoC đóng vai thiết bị PCIe cho máy chủ.</li>
+</ul>
+<h2 id="cong-cu-va-debug">Công cụ và debug<a class="headerlink" href="#cong-cu-va-debug" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Công cụ</th>
+<th>Mục đích</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lspci -tv</code></td>
+<td>Cây thiết bị</td>
+</tr>
+<tr>
+<td><code>lspci -vvv -s &lt;BDF&gt;</code></td>
+<td>Config space, BAR, capability, tốc độ và độ rộng link (<code>LnkSta</code>), driver đang dùng</td>
+</tr>
+<tr>
+<td><code>lspci -nn</code></td>
+<td>Vendor ID và Device ID ở dạng số, để ghép với <code>pci_device_id</code></td>
+</tr>
+<tr>
+<td><code>/sys/bus/pci/devices/&lt;BDF&gt;/</code></td>
+<td><code>vendor</code>, <code>device</code>, <code>resource</code>, <code>driver</code>, <code>current_link_speed</code>, <code>current_link_width</code></td>
+</tr>
+<tr>
+<td><code>setpci</code></td>
+<td>Đọc ghi trực tiếp thanh ghi config space</td>
+</tr>
+<tr>
+<td><code>dmesg \| grep -i pci</code></td>
+<td>Log enumeration, cấp phát BAR, lỗi AER</td>
+</tr>
+</tbody>
+</table>
+<p>Triệu chứng thường gặp:</p>
+<ul>
+<li>Thiết bị không xuất hiện trong <code>lspci</code>: lỗi link training (nguồn, reference clock, cáp), hoặc host controller chưa được bật trong Device Tree.</li>
+<li>Link chạy ở tốc độ hoặc độ rộng thấp hơn mong đợi: xem <code>LnkCap</code> và <code>LnkSta</code>, kiểm tra tín hiệu và khe cắm.</li>
+<li>Lỗi cấp phát BAR (<code>can't assign</code>, <code>no space for</code>): cửa sổ địa chỉ PCIe trong Device Tree (<code>ranges</code>) hoặc cấu hình firmware nhỏ hơn tổng kích thước BAR. Card FPGA với BAR lớn dễ gặp.</li>
+<li>Driver <code>probe()</code> không được gọi: ID không khớp <code>pci_device_id</code>, hoặc driver đã bị gắn sang driver khác.</li>
+</ul>
+<h2 id="lien-quan">Liên quan<a class="headerlink" href="#lien-quan" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="../../../hw_design/form_factor/pcie-cem/">PCIe CEM</a>: form factor và chuẩn cơ khí của card mở rộng.</li>
+<li><a href="../../../lnx_kernel/dma/dma/">DMA trong Linux kernel</a>: DMA của thiết bị bus master.</li>
+<li><a href="../../../lnx_kernel/interrupt/interrupt/">Interrupt và bottom half</a>: xử lý MSI và MSI-X.</li>
+<li><a href="../../../lnx_es/dpdk/dpdk/">DPDK</a>: truy cập NIC PCIe từ user space qua VFIO.</li>
+</ul>
+<h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="https://docs.kernel.org/PCI/index.html">PCI Bus Subsystem - docs.kernel.org</a></li>
+<li><a href="https://docs.kernel.org/PCI/pci.html">How To Write Linux PCI Drivers - docs.kernel.org</a></li>
+<li><a href="https://docs.kernel.org/PCI/msi-howto.html">The MSI Driver Guide HOWTO - docs.kernel.org</a></li>
+<li>Linux Device Drivers, 3rd ed., chương 12 (PCI Drivers). Sách viết cho kernel 2.6.10, API đã thay đổi nhiều.</li>
+</ul>
 
 
 
@@ -13267,7 +13983,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 4, 2020 15:40:43 UTC">February 4, 2020</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 7, 2026 14:00:23 UTC">November 7, 2026</span>
   </span>
 
     

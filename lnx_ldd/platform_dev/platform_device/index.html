@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
+        <meta name="description" content="Platform bus trong Linux device model, cách platform_driver ghép với thiết bị qua Device Tree, lấy resource trong probe() và xử lý deferred probe.">
       
       
         <meta name="author" content="Vu Tang">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Platform Device - Vu Tang's Docs</title>
+        <title>Platform Device và Platform Driver - Vu Tang's Docs</title>
       
     
     
@@ -72,16 +72,16 @@
     
   
 <meta property="og:type" content="website">
-<meta property="og:title" content="Platform Device - Vu Tang's Docs">
-<meta property="og:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
+<meta property="og:title" content="Platform Device và Platform Driver - Vu Tang's Docs">
+<meta property="og:description" content="Platform bus trong Linux device model, cách platform_driver ghép với thiết bị qua Device Tree, lấy resource trong probe() và xử lý deferred probe.">
 <meta property="og:image" content="https://note.vutang.dev/assets/images/social/lnx_ldd/platform_dev/platform_device.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://note.vutang.dev/lnx_ldd/platform_dev/platform_device/">
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:title" content="Platform Device - Vu Tang's Docs">
-<meta property="twitter:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
+<meta property="twitter:title" content="Platform Device và Platform Driver - Vu Tang's Docs">
+<meta property="twitter:description" content="Platform bus trong Linux device model, cách platform_driver ghép với thiết bị qua Device Tree, lấy resource trong probe() và xử lý deferred probe.">
 <meta property="twitter:image" content="https://note.vutang.dev/assets/images/social/lnx_ldd/platform_dev/platform_device.png">
 <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
@@ -145,7 +145,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Platform Device
+              Platform Device và Platform Driver
             
           </span>
         </div>
@@ -4848,7 +4848,7 @@
   <span class="md-ellipsis">
     
   
-    Real-time &amp; CPU Isolation
+    Interrupt, Memory &amp; Concurrency
   
 
     
@@ -4861,6 +4861,181 @@
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Interrupt, Memory &amp; Concurrency
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_kernel/interrupt/interrupt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interrupt &amp; Bottom Half
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_kernel/locking/locking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Đồng bộ hóa (Locking)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_kernel/mm/memory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quản lý bộ nhớ trong driver
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_kernel/dma/dma/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DMA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Real-time &amp; CPU Isolation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5015,10 +5190,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" checked="">
         
           
-          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="">
             
   
   
@@ -5036,8 +5211,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5170,10 +5345,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#platform-device-trong-linux-device-model" class="md-nav__link">
+  <a href="#platform-bus" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Platform device trong Linux Device Model
+        Platform bus
       
     </span>
   </a>
@@ -5181,30 +5356,90 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#giao-tiep-voi-phan-cung" class="md-nav__link">
+  <a href="#ghep-thiet-bi-va-driver" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Giao tiếp với phần cứng
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Giao tiếp với phần cứng">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#struct-resource" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        struct resource
+        Ghép thiết bị và driver
       
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#cau-truc-mot-platform_driver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cấu trúc một platform_driver
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lay-tai-nguyen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lấy tài nguyên
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deferred-probe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deferred probe
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tao-platform-device-khong-qua-device-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tạo platform device không qua Device Tree
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sysfs-va-debug" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sysfs và debug
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lien-quan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Liên quan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài liệu tham khảo
+      
+    </span>
+  </a>
   
 </li>
       
@@ -5276,10 +5511,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6">
         
           
-          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="">
             
   
   
@@ -5297,8 +5532,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_5">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5406,7 +5641,7 @@
   <span class="md-ellipsis">
     
   
-    PCIe (WIP)
+    PCIe
   
 
     
@@ -5479,10 +5714,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7">
         
           
-          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="">
             
   
   
@@ -5500,8 +5735,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_6">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5682,10 +5917,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8">
         
           
-          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="">
             
   
   
@@ -5703,8 +5938,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5773,10 +6008,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_9">
         
           
-          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4_9" id="__nav_4_9_label" tabindex="">
             
   
   
@@ -5794,8 +6029,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_8">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -13316,10 +13551,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#platform-device-trong-linux-device-model" class="md-nav__link">
+  <a href="#platform-bus" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Platform device trong Linux Device Model
+        Platform bus
       
     </span>
   </a>
@@ -13327,30 +13562,90 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#giao-tiep-voi-phan-cung" class="md-nav__link">
+  <a href="#ghep-thiet-bi-va-driver" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Giao tiếp với phần cứng
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Giao tiếp với phần cứng">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#struct-resource" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        struct resource
+        Ghép thiết bị và driver
       
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#cau-truc-mot-platform_driver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cấu trúc một platform_driver
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lay-tai-nguyen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lấy tài nguyên
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deferred-probe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deferred probe
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tao-platform-device-khong-qua-device-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tạo platform device không qua Device Tree
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sysfs-va-debug" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sysfs và debug
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lien-quan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Liên quan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài liệu tham khảo
+      
+    </span>
+  </a>
   
 </li>
       
@@ -13407,23 +13702,190 @@
 
 
 <h1 id="platform-device">Platform Device<a class="headerlink" href="#platform-device" title="Permanent link">¶</a></h1>
-<h2 id="platform-device-trong-linux-device-model">Platform device trong Linux Device Model<a class="headerlink" href="#platform-device-trong-linux-device-model" title="Permanent link">¶</a></h2>
-<p>Platform device là các device đầu tiên được dò tìm và thêm vào hệ thống.
-Đơn giản có thể hiểu các platform device là các thiết bị được quản lý
-trực tiếp trong vùng nhớ của CPU, là các thực thể được nối với system
-bus của CPU. System bus này được gọi là platform bus.</p>
-<h2 id="giao-tiep-voi-phan-cung">Giao tiếp với phần cứng<a class="headerlink" href="#giao-tiep-voi-phan-cung" title="Permanent link">¶</a></h2>
-<p>Giao tiếp với phần cứng trong một hệ nhúng rất đa dạng. Phương pháp giao
-tiếp với phần tử trong hệ nhúng phụ thuộc vào loại thiết bị của phần tử
-đó. Trong phạm vi bài viết này sẽ tương tác với một loại thiết bị:
-platform_device.</p>
-<h3 id="struct-resource">struct resource<a class="headerlink" href="#struct-resource" title="Permanent link">¶</a></h3>
-<p>platform_get_resource thực hiện tìm kiếm tất cả các resource hiện tại
-có trong platform_device. Quá trình tìm kiếm dựa vào loại resource được
-định nghĩa trong linux/ioport.h. Các loại resource cơ bản như:</p>
+<p>Platform device là loại thiết bị phổ biến nhất trong driver cho SoC: các ngoại vi gắn thẳng vào bus của CPU, truy cập bằng địa chỉ bộ nhớ. Trang này trình bày platform bus và cách kernel ghép thiết bị với driver, cấu trúc của một <code>platform_driver</code>, cách lấy tài nguyên (thanh ghi, ngắt, clock) trong <code>probe()</code>, cơ chế deferred probe khi tài nguyên chưa sẵn sàng, và trường hợp tạo device không qua Device Tree. Mô hình bus, device, driver nói chung nằm ở <a href="../../overview/">Linux Device Driver Overview</a>.</p>
+<h2 id="platform-bus">Platform bus<a class="headerlink" href="#platform-bus" title="Permanent link">¶</a></h2>
+<p>Phần lớn bus (PCI, USB) cho phép dò thiết bị: kernel hỏi bus và biết thiết bị nào đang có. Ngoại vi MMIO trên SoC (UART, I2C controller, timer, GPIO controller) không có cơ chế này, nên kernel cần thông tin từ firmware. <strong>Platform bus</strong> là một bus ảo trong kernel, đại diện cho nhóm thiết bị loại này. Mỗi thiết bị là một <code>struct platform_device</code>, mỗi driver là một <code>struct platform_driver</code>.</p>
+<p>Nguồn tạo <code>platform_device</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Nguồn</th>
+<th>Cách hoạt động</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Device Tree</td>
+<td>Kernel duyệt cây lúc boot, tạo <code>platform_device</code> cho mỗi node con của root và của các node bus đơn giản (như <code>simple-bus</code>) có <code>compatible</code>. Cách phổ biến nhất trên hệ nhúng</td>
+</tr>
+<tr>
+<td>ACPI</td>
+<td>Tương tự, dùng trên máy x86 và Arm server</td>
+</tr>
+<tr>
+<td>Code board (legacy)</td>
+<td>Đăng ký trực tiếp bằng <code>platform_device_register()</code> với bảng resource khai báo trong code. Còn thấy ở code cũ</td>
+</tr>
+</tbody>
+</table>
+<p>Thiết bị trên bus khác nằm dưới controller của chính nó (I2C, SPI) được tạo bởi driver của controller, không phải platform bus, xem <a href="../../i2c/i2c/">I2C Subsystem</a> và <a href="../../spi_dev/spi_dev/">SPI Subsystem</a>.</p>
+<h2 id="ghep-thiet-bi-va-driver">Ghép thiết bị và driver<a class="headerlink" href="#ghep-thiet-bi-va-driver" title="Permanent link">¶</a></h2>
+<p>Khi một <code>platform_device</code> hoặc <code>platform_driver</code> được đăng ký, platform bus thử ghép (match) chúng theo thứ tự:</p>
+<ol>
+<li>Bảng <code>of_match_table</code> so với <code>compatible</code> trong node Device Tree.</li>
+<li>Bảng ACPI.</li>
+<li><code>id_table</code> so với tên thiết bị.</li>
+<li>Tên <code>driver.name</code> so với tên thiết bị.</li>
+</ol>
+<p>Khi ghép thành công, kernel gọi <code>probe()</code> của driver. Cơ chế này giống với phần mô tả trong <a href="../../../lnx_kernel/devicetree/devicetree/">Device Tree</a>: <code>compatible</code> là chìa khóa.</p>
+<h2 id="cau-truc-mot-platform_driver">Cấu trúc một platform_driver<a class="headerlink" href="#cau-truc-mot-platform_driver" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">struct</span><span class="w"> </span><span class="nc">my_dev</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">__iomem</span><span class="w"> </span><span class="o">*</span><span class="n">base</span><span class="p">;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">irq</span><span class="p">;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">clk</span><span class="w"> </span><span class="o">*</span><span class="n">clk</span><span class="p">;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">};</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">my_probe</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">platform_device</span><span class="w"> </span><span class="o">*</span><span class="n">pdev</span><span class="p">)</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">{</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">my_dev</span><span class="w"> </span><span class="o">*</span><span class="n">md</span><span class="p">;</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="n">md</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">devm_kzalloc</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pdev</span><span class="o">-&gt;</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">md</span><span class="p">),</span><span class="w"> </span><span class="n">GFP_KERNEL</span><span class="p">);</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">md</span><span class="p">)</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="n">ENOMEM</span><span class="p">;</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="n">md</span><span class="o">-&gt;</span><span class="n">base</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">devm_platform_ioremap_resource</span><span class="p">(</span><span class="n">pdev</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">IS_ERR</span><span class="p">(</span><span class="n">md</span><span class="o">-&gt;</span><span class="n">base</span><span class="p">))</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">PTR_ERR</span><span class="p">(</span><span class="n">md</span><span class="o">-&gt;</span><span class="n">base</span><span class="p">);</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span><span class="n">md</span><span class="o">-&gt;</span><span class="n">irq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">platform_get_irq</span><span class="p">(</span><span class="n">pdev</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">md</span><span class="o">-&gt;</span><span class="n">irq</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">md</span><span class="o">-&gt;</span><span class="n">irq</span><span class="p">;</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">    </span><span class="n">md</span><span class="o">-&gt;</span><span class="n">clk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">devm_clk_get_enabled</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pdev</span><span class="o">-&gt;</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">IS_ERR</span><span class="p">(</span><span class="n">md</span><span class="o">-&gt;</span><span class="n">clk</span><span class="p">))</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">dev_err_probe</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pdev</span><span class="o">-&gt;</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="n">PTR_ERR</span><span class="p">(</span><span class="n">md</span><span class="o">-&gt;</span><span class="n">clk</span><span class="p">),</span><span class="w"> </span><span class="s">"không lấy được clock</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">devm_request_irq</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pdev</span><span class="o">-&gt;</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="n">md</span><span class="o">-&gt;</span><span class="n">irq</span><span class="p">,</span><span class="w"> </span><span class="n">my_isr</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">dev_name</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pdev</span><span class="o">-&gt;</span><span class="n">dev</span><span class="p">),</span><span class="w"> </span><span class="n">md</span><span class="p">);</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">    </span><span class="n">platform_set_drvdata</span><span class="p">(</span><span class="n">pdev</span><span class="p">,</span><span class="w"> </span><span class="n">md</span><span class="p">);</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="p">}</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">my_remove</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">platform_device</span><span class="w"> </span><span class="o">*</span><span class="n">pdev</span><span class="p">)</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="p">{</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">my_dev</span><span class="w"> </span><span class="o">*</span><span class="n">md</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">platform_get_drvdata</span><span class="p">(</span><span class="n">pdev</span><span class="p">);</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">    </span><span class="cm">/* chỉ dọn phần không do devm_* quản lý */</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="p">}</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">of_device_id</span><span class="w"> </span><span class="n">my_of_match</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">compatible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"vendor,my-uart"</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="p">};</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="n">MODULE_DEVICE_TABLE</span><span class="p">(</span><span class="n">of</span><span class="p">,</span><span class="w"> </span><span class="n">my_of_match</span><span class="p">);</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>
+<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="k">static</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">platform_driver</span><span class="w"> </span><span class="n">my_driver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="w">    </span><span class="p">.</span><span class="n">probe</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">my_probe</span><span class="p">,</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="w">    </span><span class="p">.</span><span class="n">remove</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">my_remove</span><span class="p">,</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="w">    </span><span class="p">.</span><span class="n">driver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="w">        </span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"my-uart"</span><span class="p">,</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="w">        </span><span class="p">.</span><span class="n">of_match_table</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">my_of_match</span><span class="p">,</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="p">};</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a><span class="n">module_platform_driver</span><span class="p">(</span><span class="n">my_driver</span><span class="p">);</span>
+</code></pre></div>
+<p><code>module_platform_driver()</code> thay cho cặp <code>module_init()</code> và <code>module_exit()</code> chỉ gọi <code>platform_driver_register()</code> và <code>platform_driver_unregister()</code>. Kiểu trả về của <code>.remove</code> đã thay đổi theo phiên bản kernel (trước đây trả <code>int</code>, kernel mới trả <code>void</code>), nên khi viết driver cần đối chiếu với định nghĩa <code>struct platform_driver</code> của đúng bản kernel đang dùng.</p>
+<p>Hai điểm cần giữ trong <code>probe()</code>:</p>
 <ul>
-<li>IORESOURCE_MEM (memory) </li>
-<li>IORESOURCE_IRQ (interupt)</li>
+<li>Nhận dữ liệu riêng của thiết bị qua <code>platform_set_drvdata()</code> và <code>platform_get_drvdata()</code>, hoặc <code>dev_set_drvdata()</code> trên <code>&amp;pdev-&gt;dev</code>.</li>
+<li>Dùng họ <code>devm_*</code> để kernel tự giải phóng tài nguyên khi <code>probe()</code> lỗi hoặc khi gỡ driver, xem <a href="../../../lnx_kernel/mm/memory/">Quản lý bộ nhớ trong driver</a>.</li>
+</ul>
+<h2 id="lay-tai-nguyen">Lấy tài nguyên<a class="headerlink" href="#lay-tai-nguyen" title="Permanent link">¶</a></h2>
+<p>Thông tin phần cứng nằm trong node Device Tree của thiết bị, kernel chuyển thành danh sách resource gắn với <code>platform_device</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Cần lấy</th>
+<th>Hàm</th>
+<th>Property DT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vùng thanh ghi, đã ánh xạ</td>
+<td><code>devm_platform_ioremap_resource(pdev, n)</code></td>
+<td><code>reg</code></td>
+</tr>
+<tr>
+<td>Vùng thanh ghi, cần địa chỉ vật lý</td>
+<td><code>platform_get_resource(pdev, IORESOURCE_MEM, n)</code></td>
+<td><code>reg</code></td>
+</tr>
+<tr>
+<td>Số ngắt</td>
+<td><code>platform_get_irq(pdev, n)</code>, <code>platform_get_irq_byname()</code></td>
+<td><code>interrupts</code></td>
+</tr>
+<tr>
+<td>Clock</td>
+<td><code>devm_clk_get()</code>, <code>devm_clk_get_enabled()</code></td>
+<td><code>clocks</code>, <code>clock-names</code></td>
+</tr>
+<tr>
+<td>GPIO</td>
+<td><code>devm_gpiod_get()</code></td>
+<td><code>&lt;name&gt;-gpios</code></td>
+</tr>
+<tr>
+<td>Giá trị cấu hình</td>
+<td><code>device_property_read_u32()</code></td>
+<td>Property tùy driver</td>
+</tr>
+<tr>
+<td>Regulator</td>
+<td><code>devm_regulator_get()</code></td>
+<td><code>&lt;name&gt;-supply</code></td>
+</tr>
+</tbody>
+</table>
+<p>Các API này đều theo mô hình xin tài nguyên từ framework tương ứng, xem <a href="../../../lnx_kernel/clk/clk/">Common Clock Framework</a> và <a href="../../gpio/gpio/">GPIO</a>. Dùng <code>device_property_*</code> thay cho <code>of_property_*</code> cho phép cùng một driver chạy được với cả Device Tree và ACPI. Mô tả <code>struct resource</code> và các cờ <code>IORESOURCE_*</code> định nghĩa trong <code>linux/ioport.h</code>.</p>
+<p><code>platform_get_irq()</code> trả số âm khi lỗi, và có thể trả <code>-EPROBE_DEFER</code> khi controller ngắt chưa sẵn sàng; driver cần trả thẳng mã lỗi này lên trên.</p>
+<h2 id="deferred-probe">Deferred probe<a class="headerlink" href="#deferred-probe" title="Permanent link">¶</a></h2>
+<p>Thiết bị có thể phụ thuộc thiết bị khác chưa có mặt. Ví dụ ngoại vi cần một clock mà driver clock chưa được nạp. Khi gặp tình huống đó, <code>probe()</code> trả <code>-EPROBE_DEFER</code>. Kernel đưa thiết bị vào danh sách chờ và thử <code>probe()</code> lại mỗi khi có driver mới đăng ký thành công. Nhờ vậy thứ tự nạp driver không còn là ràng buộc cứng.</p>
+<p>Hàm <code>dev_err_probe()</code> ghi log lỗi nhưng im lặng khi mã lỗi là <code>-EPROBE_DEFER</code>, và lưu lý do hoãn để xem trong <code>/sys/kernel/debug/devices_deferred</code>. Nếu thiết bị nằm mãi trong danh sách này, nguyên nhân thường là driver của tài nguyên phụ thuộc không được build, node bị <code>status = "disabled"</code>, hoặc tên property sai.</p>
+<h2 id="tao-platform-device-khong-qua-device-tree">Tạo platform device không qua Device Tree<a class="headerlink" href="#tao-platform-device-khong-qua-device-tree" title="Permanent link">¶</a></h2>
+<p>Với code không có firmware mô tả, có thể đăng ký trực tiếp:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">static</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">resource</span><span class="w"> </span><span class="n">my_res</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">DEFINE_RES_MEM</span><span class="p">(</span><span class="mh">0x40001000</span><span class="p">,</span><span class="w"> </span><span class="mh">0x100</span><span class="p">),</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">DEFINE_RES_IRQ</span><span class="p">(</span><span class="mi">42</span><span class="p">),</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">};</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">pdev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">platform_device_register_simple</span><span class="p">(</span><span class="s">"my-uart"</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="n">my_res</span><span class="p">,</span><span class="w"> </span><span class="n">ARRAY_SIZE</span><span class="p">(</span><span class="n">my_res</span><span class="p">));</span>
+</code></pre></div>
+<p>Driver khi đó ghép bằng <code>driver.name</code> hoặc <code>id_table</code>. Cách này dùng cho code cũ, thiết bị ảo tạo bởi driver khác (ví dụ MFD), hoặc ví dụ học tập. Với phần cứng thật trên hệ mới, mô tả bằng Device Tree.</p>
+<h2 id="sysfs-va-debug">Sysfs và debug<a class="headerlink" href="#sysfs-va-debug" title="Permanent link">¶</a></h2>
+<ul>
+<li><code>/sys/bus/platform/devices/</code>: danh sách <code>platform_device</code>, tên dạng <code>&lt;địa chỉ&gt;.&lt;tên node&gt;</code> khi tạo từ DT.</li>
+<li><code>/sys/bus/platform/drivers/&lt;driver&gt;/</code>: thiết bị đã gắn với driver, có thể <code>bind</code> hoặc <code>unbind</code> thủ công.</li>
+<li><code>/sys/bus/platform/devices/&lt;dev&gt;/driver</code>: liên kết tới driver đang giữ thiết bị. Thiết bị không có liên kết này nghĩa là chưa ghép được hoặc đang bị hoãn.</li>
+<li><code>/sys/bus/platform/devices/&lt;dev&gt;/of_node</code>: node DT tương ứng.</li>
+<li><code>/sys/kernel/debug/devices_deferred</code>: các thiết bị đang chờ probe lại.</li>
+</ul>
+<p>Thiết bị có trong DT nhưng không xuất hiện ở <code>/sys/bus/platform/devices/</code>: node nằm dưới cha không được kernel duyệt (cha không phải <code>simple-bus</code> hay <code>simple-mfd</code>), hoặc <code>status = "disabled"</code>. Thiết bị có mặt nhưng không có <code>driver</code>: kiểm tra <code>compatible</code>, <code>CONFIG_*</code> của driver, <code>dmesg</code> tìm lỗi <code>probe</code>.</p>
+<h2 id="lien-quan">Liên quan<a class="headerlink" href="#lien-quan" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="../../overview/">Linux Device Driver Overview</a>: mô hình bus, device, driver.</li>
+<li><a href="../../../lnx_kernel/devicetree/devicetree/">Device Tree</a>: khai báo thiết bị và property.</li>
+<li><a href="../../../lnx_kernel/interrupt/interrupt/">Interrupt và bottom half</a>: đăng ký handler với số ngắt lấy từ <code>platform_get_irq()</code>.</li>
+<li><a href="../../../lnx_kernel/mm/memory/">Quản lý bộ nhớ trong driver</a>: ánh xạ thanh ghi và cấp phát <code>devm_*</code>.</li>
+</ul>
+<h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="https://docs.kernel.org/driver-api/driver-model/platform.html">Platform Devices and Drivers - docs.kernel.org</a></li>
+<li><a href="https://docs.kernel.org/driver-api/driver-model/devres.html">Device Resource Management (devres) - docs.kernel.org</a></li>
+<li><a href="https://docs.kernel.org/driver-api/index.html">Linux driver implementer's API guide: driver-api - docs.kernel.org</a></li>
 </ul>
 
 
@@ -13447,7 +13909,7 @@ có trong platform_device. Quá trình tìm kiếm dựa vào loại resource đ
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 21, 2026 02:33:25 UTC">October 21, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 7, 2026 14:00:23 UTC">November 7, 2026</span>
   </span>
 
     

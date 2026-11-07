@@ -4848,7 +4848,7 @@
   <span class="md-ellipsis">
     
   
-    Real-time &amp; CPU Isolation
+    Interrupt, Memory &amp; Concurrency
   
 
     
@@ -4861,6 +4861,181 @@
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Interrupt, Memory &amp; Concurrency
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../interrupt/interrupt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interrupt &amp; Bottom Half
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../locking/locking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Đồng bộ hóa (Locking)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mm/memory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quản lý bộ nhớ trong driver
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dma/dma/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DMA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Real-time &amp; CPU Isolation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5015,10 +5190,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" checked="">
         
           
-          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="">
             
   
   
@@ -5036,8 +5211,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5142,17 +5317,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#device-tree-la-gi" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Device Tree là gì
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#cac-loai-file" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5164,10 +5328,76 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#vi-du-cu-phap" class="md-nav__link">
+  <a href="#cu-phap-node-va-property" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ví dụ cú pháp
+        Cú pháp node và property
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ia-chi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Địa chỉ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ngat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ngắt
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clock-gpio-pinctrl-regulator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clock, GPIO, pinctrl, regulator
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cac-node-ac-biet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các node đặc biệt
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#binding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Binding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overlay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overlay
       
     </span>
   </a>
@@ -5186,10 +5416,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cong-cu-va-debug" class="md-nav__link">
+  <a href="#device-tree-trong-he-thong-build" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Công cụ và debug
+        Device Tree trong hệ thống build
       
     </span>
   </a>
@@ -5197,10 +5427,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#noi-dung-se-bo-sung" class="md-nav__link">
+  <a href="#cong-cu-va-debug" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Nội dung sẽ bổ sung
+        Công cụ và debug
       
     </span>
   </a>
@@ -5325,10 +5555,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6">
         
           
-          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="">
             
   
   
@@ -5346,8 +5576,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_5">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5455,7 +5685,7 @@
   <span class="md-ellipsis">
     
   
-    PCIe (WIP)
+    PCIe
   
 
     
@@ -5528,10 +5758,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7">
         
           
-          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="">
             
   
   
@@ -5549,8 +5779,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_6">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5731,10 +5961,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8">
         
           
-          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="">
             
   
   
@@ -5752,8 +5982,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5822,10 +6052,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_9">
         
           
-          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4_9" id="__nav_4_9_label" tabindex="">
             
   
   
@@ -5843,8 +6073,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_8">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -13365,17 +13595,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#device-tree-la-gi" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Device Tree là gì
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#cac-loai-file" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -13387,10 +13606,76 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#vi-du-cu-phap" class="md-nav__link">
+  <a href="#cu-phap-node-va-property" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ví dụ cú pháp
+        Cú pháp node và property
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ia-chi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Địa chỉ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ngat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ngắt
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clock-gpio-pinctrl-regulator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clock, GPIO, pinctrl, regulator
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cac-node-ac-biet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các node đặc biệt
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#binding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Binding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overlay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overlay
       
     </span>
   </a>
@@ -13409,10 +13694,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cong-cu-va-debug" class="md-nav__link">
+  <a href="#device-tree-trong-he-thong-build" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Công cụ và debug
+        Device Tree trong hệ thống build
       
     </span>
   </a>
@@ -13420,10 +13705,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#noi-dung-se-bo-sung" class="md-nav__link">
+  <a href="#cong-cu-va-debug" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Nội dung sẽ bổ sung
+        Công cụ và debug
       
     </span>
   </a>
@@ -13467,49 +13752,22 @@
                 
                   
 
-  <nav class="md-tags">
-    
-      
-      
-      
-      
-        <a href="../../../articles/tags/#tag:device-model" class="md-tag">device-model</a>
-      
-    
-      
-      
-      
-      
-        <a href="../../../articles/tags/#tag:device-tree" class="md-tag">device-tree</a>
-      
-    
-      
-      
-      
-      
-        <a href="../../../articles/tags/#tag:linux-kernel" class="md-tag">linux-kernel</a>
-      
-    
-  </nav>
-
 
   
   
 
 
+<hr>
+<p>title: Device Tree trong Linux kernel
+description: Device Tree mô tả phần cứng cho Linux kernel: các loại file, cú pháp, address và interrupt, tham chiếu clock, GPIO, pinctrl, binding, overlay, cách driver đọc node và công cụ debug.
+tags:
+  - linux-kernel
+  - device-tree
+  - device-model</p>
+<hr>
 <h1 id="device-tree">Device Tree<a class="headerlink" href="#device-tree" title="Permanent link">¶</a></h1>
-<div class="admonition note">
-<p class="admonition-title">WIP</p>
-<p>Trang này mới ở mức giới thiệu, sẽ được bổ sung chi tiết sau.</p>
-</div>
-<h2 id="device-tree-la-gi">Device Tree là gì<a class="headerlink" href="#device-tree-la-gi" title="Permanent link">¶</a></h2>
-<p>Device Tree (DT) là một cấu trúc dữ liệu dạng cây dùng để <strong>mô tả phần cứng</strong>
-của board cho kernel. Thay vì hard-code thông tin thiết bị (địa chỉ thanh ghi,
-IRQ, clock, GPIO...) trong source kernel, thông tin này được khai báo ở file
-riêng và truyền cho kernel lúc boot. Nhờ đó một kernel image có thể chạy trên
-nhiều board khác nhau, chỉ cần đổi file device tree.</p>
-<p>Device Tree là chuẩn phổ biến trên ARM/ARM64, RISC-V, PowerPC. Trên x86, vai
-trò tương tự thường do ACPI đảm nhiệm.</p>
+<p>Device Tree (DT) là cấu trúc dữ liệu dạng cây dùng để mô tả phần cứng của board cho kernel. Thay vì ghi cứng thông tin thiết bị (địa chỉ thanh ghi, ngắt, clock, GPIO) trong source kernel, thông tin này khai báo ở file riêng và bootloader truyền cho kernel lúc boot. Nhờ đó một kernel image chạy được trên nhiều board, chỉ cần đổi file Device Tree. Trang này trình bày theo thứ tự: các loại file và cách build, cú pháp node và property, quy tắc địa chỉ, ngắt và các tham chiếu tới tài nguyên khác, các node đặc biệt (<code>chosen</code>, <code>aliases</code>, <code>reserved-memory</code>), binding, overlay, cách driver đọc node, rồi công cụ kiểm tra.</p>
+<p>Device Tree là chuẩn phổ biến trên Arm, Arm64, RISC-V, PowerPC. Trên x86, vai trò tương tự thường do ACPI đảm nhiệm.</p>
 <h2 id="cac-loai-file">Các loại file<a class="headerlink" href="#cac-loai-file" title="Permanent link">¶</a></h2>
 <table>
 <thead>
@@ -13533,88 +13791,337 @@ trò tương tự thường do ACPI đảm nhiệm.</p>
 </tr>
 <tr>
 <td><code>.dtbo</code></td>
-<td>Device Tree Overlay, vá thêm vào DT đang có lúc runtime/boot</td>
+<td>Device Tree Overlay, vá thêm vào cây đang có lúc boot hoặc lúc chạy</td>
 </tr>
 </tbody>
 </table>
-<p>Thông thường <code>.dtsi</code> mô tả SoC, còn <code>.dts</code> của board <code>#include</code> SoC đó rồi bật
-hoặc cấu hình các thiết bị cần dùng. Source nằm trong <code>arch/&lt;arch&gt;/boot/dts/</code>,
-binding (tài liệu quy định property) nằm trong
-<code>Documentation/devicetree/bindings/</code>.</p>
-<h2 id="vi-du-cu-phap">Ví dụ cú pháp<a class="headerlink" href="#vi-du-cu-phap" title="Permanent link">¶</a></h2>
+<p>Thông thường <code>.dtsi</code> mô tả SoC, còn <code>.dts</code> của board <code>#include</code> SoC đó rồi bật hoặc cấu hình các thiết bị cần dùng. Source nằm trong <code>arch/&lt;arch&gt;/boot/dts/</code>, tài liệu quy định property (binding) nằm trong <code>Documentation/devicetree/bindings/</code>. Lệnh <code>make dtbs</code> build các DTB trong kernel source.</p>
+<h2 id="cu-phap-node-va-property">Cú pháp node và property<a class="headerlink" href="#cu-phap-node-va-property" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">/dts-v1/</span><span class="p">;</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nf">/</span><span class="cm"> </span><span class="p">{</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="kr">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"My Board"</span><span class="p">;</span>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="kr">compatible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"vendor,my-board"</span><span class="p">;</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="nf">soc</span><span class="cm"> </span><span class="p">{</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">        </span><span class="kr">#address-cells</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">        </span><span class="kr">#size-cells</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">        </span><span class="nl">uart0</span><span class="p">:</span><span class="w"> </span><span class="nf">serial</span><span class="o">@</span><span class="mi">40001000</span><span class="cm"> </span><span class="p">{</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">            </span><span class="kr">compatible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"vendor,my-uart"</span><span class="p">;</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">            </span><span class="kr">reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mh">0x40001000</span><span class="w"> </span><span class="mh">0x100</span><span class="o">&gt;</span><span class="p">;</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">            </span><span class="n">interrupts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">0</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="mi">4</span><span class="o">&gt;</span><span class="p">;</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">            </span><span class="n">clocks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;&amp;</span><span class="na">clk_uart</span><span class="o">&gt;</span><span class="p">;</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">            </span><span class="kr">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"okay"</span><span class="p">;</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">        </span><span class="p">};</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="p">};</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="p">};</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="kr">#address-cells</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="kr">#size-cells</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="nf">soc</span><span class="cm"> </span><span class="p">{</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">        </span><span class="kr">compatible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"simple-bus"</span><span class="p">;</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">        </span><span class="kr">#address-cells</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">        </span><span class="kr">#size-cells</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">        </span><span class="kr">ranges</span><span class="p">;</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">        </span><span class="nl">uart0</span><span class="p">:</span><span class="w"> </span><span class="nf">serial</span><span class="o">@</span><span class="mi">40001000</span><span class="cm"> </span><span class="p">{</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">            </span><span class="kr">compatible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"vendor,my-uart"</span><span class="p">;</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">            </span><span class="kr">reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mh">0x40001000</span><span class="w"> </span><span class="mh">0x100</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">            </span><span class="n">interrupts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">0</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="mi">4</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">            </span><span class="n">clocks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;&amp;</span><span class="na">clk_uart</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">            </span><span class="kr">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"okay"</span><span class="p">;</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">        </span><span class="p">};</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">    </span><span class="p">};</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="p">};</span>
 </code></pre></div>
-<p>Một số property hay gặp:</p>
+<p>Cây gồm các <strong>node</strong> (có tên dạng <code>tên@địa-chỉ</code>), mỗi node chứa <strong>property</strong> là cặp tên và giá trị: số 32 bit trong <code>&lt; &gt;</code>, chuỗi trong dấu nháy kép, danh sách các giá trị cách nhau bằng dấu phẩy. <strong>Label</strong> (<code>uart0:</code>) cho phép node khác tham chiếu bằng <strong>phandle</strong> (<code>&amp;uart0</code>).</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Ý nghĩa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>compatible</code></td>
+<td>Danh sách chuỗi dùng để ghép node với driver, thứ tự từ cụ thể đến chung</td>
+</tr>
+<tr>
+<td><code>reg</code></td>
+<td>Địa chỉ và kích thước vùng thanh ghi</td>
+</tr>
+<tr>
+<td><code>interrupts</code></td>
+<td>Thông tin ngắt, xem phần dưới</td>
+</tr>
+<tr>
+<td><code>clocks</code>, <code>clock-names</code></td>
+<td>Tham chiếu tới clock</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>"okay"</code> bật thiết bị, <code>"disabled"</code> tắt. Thiếu property này nghĩa là bật</td>
+</tr>
+<tr>
+<td><code>phandle</code></td>
+<td>Mã định danh node, trình biên dịch tự sinh từ label</td>
+</tr>
+</tbody>
+</table>
+<p>Cách đặt <code>compatible</code>: dạng <code>"vendor,model"</code>, chuỗi đầu là loại phần cứng cụ thể nhất, các chuỗi sau là loại tương thích. Ví dụ <code>compatible = "xlnx,zynq-uart", "cdns,uart-r1p8"</code> cho phép driver chung của IP Cadence nhận thiết bị khi không có driver riêng cho Zynq.</p>
+<h2 id="ia-chi">Địa chỉ<a class="headerlink" href="#ia-chi" title="Permanent link">¶</a></h2>
+<p>Cách đọc <code>reg</code> phụ thuộc node cha, quy định bởi hai property:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Ý nghĩa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>#address-cells</code></td>
+<td>Số ô 32 bit biểu diễn địa chỉ trong <code>reg</code> của các node con</td>
+</tr>
+<tr>
+<td><code>#size-cells</code></td>
+<td>Số ô 32 bit biểu diễn kích thước</td>
+</tr>
+<tr>
+<td><code>ranges</code></td>
+<td>Ánh xạ địa chỉ của bus con sang địa chỉ của bus cha. <code>ranges;</code> rỗng nghĩa là ánh xạ 1-1</td>
+</tr>
+<tr>
+<td><code>dma-ranges</code></td>
+<td>Tương tự <code>ranges</code>, cho địa chỉ DMA của thiết bị, xem <a href="../../dma/dma/">DMA trong Linux kernel</a></td>
+</tr>
+</tbody>
+</table>
+<p>Trên hệ 64 bit, node gốc và SoC thường đặt <code>#address-cells = &lt;2&gt;</code> và <code>#size-cells = &lt;2&gt;</code>, nên <code>reg = &lt;0x0 0xe0000000 0x0 0x1000&gt;</code> biểu diễn địa chỉ <code>0xe0000000</code> và kích thước <code>0x1000</code>. Một lỗi thường gặp là viết <code>reg</code> theo số ô của cha khác với khai báo, làm địa chỉ bị đọc lệch.</p>
+<h2 id="ngat">Ngắt<a class="headerlink" href="#ngat" title="Permanent link">¶</a></h2>
+<p>Thông tin ngắt dùng ba thành phần:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Vị trí</th>
+<th>Ý nghĩa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>interrupt-controller</code></td>
+<td>Node của interrupt controller</td>
+<td>Đánh dấu node là một interrupt controller</td>
+</tr>
+<tr>
+<td><code>#interrupt-cells</code></td>
+<td>Node của interrupt controller</td>
+<td>Số ô trong mỗi mục của <code>interrupts</code></td>
+</tr>
+<tr>
+<td><code>interrupt-parent</code></td>
+<td>Node thiết bị hoặc node cha</td>
+<td>Controller nhận ngắt của thiết bị. Nếu không khai báo, kế thừa từ node cha</td>
+</tr>
+<tr>
+<td><code>interrupts</code></td>
+<td>Node thiết bị</td>
+<td>Mô tả ngắt, định dạng theo <code>#interrupt-cells</code> của controller</td>
+</tr>
+</tbody>
+</table>
+<p>Với GIC của Arm, <code>#interrupt-cells = &lt;3&gt;</code>, mỗi ngắt gồm loại (0: SPI, 1: PPI), số ngắt, và kiểu kích (4: level cao, 1: cạnh lên). Khi đó <code>interrupts = &lt;0 12 4&gt;</code> nghĩa là SPI số 12, level cao. Cách kernel ánh xạ các giá trị này thành số IRQ xem <a href="../../interrupt/interrupt/">Interrupt và bottom half</a>.</p>
+<h2 id="clock-gpio-pinctrl-regulator">Clock, GPIO, pinctrl, regulator<a class="headerlink" href="#clock-gpio-pinctrl-regulator" title="Permanent link">¶</a></h2>
+<p>Thiết bị tham chiếu tới tài nguyên do node khác cung cấp bằng cặp property theo quy ước chung (<code>&lt;tên&gt;s</code> kèm tên và các tham số cho phép người cung cấp biết cần gì):</p>
+<table>
+<thead>
+<tr>
+<th>Tài nguyên</th>
+<th>Property</th>
+<th>Ví dụ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clock</td>
+<td><code>clocks</code>, <code>clock-names</code></td>
+<td><code>clocks = &lt;&amp;clkc 23&gt;, &lt;&amp;clkc 24&gt;; clock-names = "ref", "pclk";</code></td>
+</tr>
+<tr>
+<td>GPIO</td>
+<td><code>&lt;tên&gt;-gpios</code></td>
+<td><code>reset-gpios = &lt;&amp;gpio0 5 GPIO_ACTIVE_LOW&gt;;</code></td>
+</tr>
+<tr>
+<td>Pin mux</td>
+<td><code>pinctrl-names</code>, <code>pinctrl-0</code></td>
+<td><code>pinctrl-0 = &lt;&amp;uart0_pins&gt;;</code></td>
+</tr>
+<tr>
+<td>Regulator</td>
+<td><code>&lt;tên&gt;-supply</code></td>
+<td><code>vdd-supply = &lt;&amp;reg_3v3&gt;;</code></td>
+</tr>
+<tr>
+<td>Reset</td>
+<td><code>resets</code>, <code>reset-names</code></td>
+<td><code>resets = &lt;&amp;rst 12&gt;;</code></td>
+</tr>
+<tr>
+<td>DMA</td>
+<td><code>dmas</code>, <code>dma-names</code></td>
+<td><code>dmas = &lt;&amp;dmac 0&gt;; dma-names = "rx";</code></td>
+</tr>
+</tbody>
+</table>
+<p>Driver xin tài nguyên bằng tên qua API tương ứng, ví dụ <code>devm_clk_get(dev, "pclk")</code>, xem <a href="../../../lnx_ldd/platform_dev/platform_device/">Platform Device</a>, <a href="../../clk/clk/">Common Clock Framework</a> và <a href="../../../lnx_ldd/gpio/gpio/">GPIO</a>. Với controller cung cấp tài nguyên, ô tham số quy định bởi <code>#clock-cells</code>, <code>#gpio-cells</code>.</p>
+<h2 id="cac-node-ac-biet">Các node đặc biệt<a class="headerlink" href="#cac-node-ac-biet" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th>Nội dung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/chosen</code></td>
+<td>Tham số cấu hình lúc boot: <code>bootargs</code> (kernel command line, xem <a href="../../kernel_cmdline/">Kernel Command Line</a>), <code>stdout-path</code> (console)</td>
+</tr>
+<tr>
+<td><code>/aliases</code></td>
+<td>Tên ngắn trỏ tới node, ví dụ <code>serial0 = &amp;uart0;</code>. Kernel dùng để đánh số thiết bị (<code>ttyS0</code>, <code>mmc0</code>, <code>i2c0</code>)</td>
+</tr>
+<tr>
+<td><code>/memory</code></td>
+<td>Vùng RAM của hệ thống. Bootloader thường điền hoặc cập nhật</td>
+</tr>
+<tr>
+<td><code>/reserved-memory</code></td>
+<td>Vùng RAM dành riêng, kể cả vùng CMA, xem <a href="../../dma/dma/">DMA trong Linux kernel</a></td>
+</tr>
+<tr>
+<td><code>/cpus</code></td>
+<td>Danh sách CPU, cache, và thông tin quản lý nguồn (idle state, OPP)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="binding">Binding<a class="headerlink" href="#binding" title="Permanent link">¶</a></h2>
+<p><strong>Binding</strong> là tài liệu quy định một loại thiết bị dùng những property nào, kiểu giá trị ra sao, property nào bắt buộc. Binding hiện nay viết bằng YAML (DT schema) trong <code>Documentation/devicetree/bindings/</code>, và kiểm tra tự động:</p>
+<table>
+<thead>
+<tr>
+<th>Lệnh</th>
+<th>Kiểm tra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>make dt_binding_check</code></td>
+<td>Bản thân các file schema có hợp lệ</td>
+</tr>
+<tr>
+<td><code>make dtbs_check</code></td>
+<td>Các DTB đã build có tuân thủ schema</td>
+</tr>
+</tbody>
+</table>
+<p>Khi thêm thiết bị mới vào kernel, cần viết binding cùng lúc với driver. Tên property và <code>compatible</code> dùng cho thiết bị cần theo binding đã có thay vì tự đặt, để DTB dùng được với các bản kernel và các thành phần khác (U-Boot, hypervisor) đọc cùng cây.</p>
+<h2 id="overlay">Overlay<a class="headerlink" href="#overlay" title="Permanent link">¶</a></h2>
+<p><strong>Overlay</strong> (<code>.dtbo</code>) là một mảnh Device Tree được áp lên cây đang có, thay vì viết lại cả <code>.dts</code>. Dùng khi một phần phần cứng thay đổi: module mở rộng cắm thêm (cape, mezzanine card), hoặc phần logic của FPGA sau khi nạp bitstream mới.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">/dts-v1/</span><span class="p">;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="cp">/plugin/</span><span class="p">;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="o">&amp;</span><span class="nf">i2c1</span><span class="cm"> </span><span class="p">{</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="kr">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"okay"</span><span class="p">;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="nf">sensor</span><span class="o">@</span><span class="mi">48</span><span class="cm"> </span><span class="p">{</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">        </span><span class="kr">compatible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"ti,tmp102"</span><span class="p">;</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="kr">reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mh">0x48</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="p">};</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="p">};</span>
+</code></pre></div>
+<p>Biên dịch overlay cần thêm cờ để <code>dtc</code> lưu thông tin tham chiếu: base DTB biên dịch với <code>-@</code> (sinh node <code>__symbols__</code>) và overlay dùng <code>/plugin/;</code>. Có hai thời điểm áp overlay:</p>
 <ul>
-<li><code>compatible</code>: chuỗi dùng để <strong>match</strong> node với driver.</li>
-<li><code>reg</code>: địa chỉ và kích thước vùng thanh ghi.</li>
-<li><code>interrupts</code>: thông tin ngắt.</li>
-<li><code>clocks</code>, <code>gpios</code>, <code>pinctrl-*</code>: tham chiếu tới clock, GPIO, pin mux.</li>
-<li><code>status</code>: <code>"okay"</code> hoặc <code>"disabled"</code> để bật/tắt thiết bị.</li>
-<li><em>phandle</em> (<code>&amp;label</code>): tham chiếu tới node khác.</li>
+<li><strong>Lúc boot</strong>: bootloader (U-Boot với <code>fdt apply</code>) gộp overlay vào DTB trước khi truyền cho kernel, hoặc dùng công cụ <code>fdtoverlay</code> để gộp offline.</li>
+<li><strong>Lúc chạy</strong>: kernel nhận overlay qua cơ chế configfs (<code>/sys/kernel/config/device-tree/overlays/</code>) hoặc qua FPGA region. Kernel tạo hoặc gỡ thiết bị tương ứng. Hỗ trợ này phụ thuộc cấu hình kernel (<code>CONFIG_OF_OVERLAY</code>) và không phải driver nào cũng xử lý được việc thiết bị biến mất.</li>
 </ul>
+<p>Overlay dùng trong quy trình FPGA xem <a href="../../../lnx_ldd/fpga/fpga_mgr/">FPGA Manager</a> và <a href="../../../lnx_es/fpga/fpga-linux/">Nạp bitstream FPGA từ Linux (Zynq)</a>.</p>
 <h2 id="device-tree-va-driver">Device Tree và driver<a class="headerlink" href="#device-tree-va-driver" title="Permanent link">¶</a></h2>
 <ol>
-<li>Bootloader (ví dụ U-Boot) nạp <code>.dtb</code> vào RAM và truyền địa chỉ cho kernel.</li>
-<li>Kernel parse DTB, tạo các <code>platform_device</code> (hoặc i2c/spi device tuỳ bus cha)
-   từ các node.</li>
-<li>Driver khai báo bảng <code>of_match_table</code> chứa các chuỗi <code>compatible</code>; khi khớp,
-   kernel gọi <code>probe()</code>.</li>
-<li>Trong <code>probe()</code>, driver đọc property bằng các API <code>of_*</code> hoặc
-   <code>device_property_*</code>.</li>
+<li>Bootloader (ví dụ U-Boot) nạp <code>.dtb</code> vào RAM và truyền địa chỉ cho kernel, xem <a href="../../kernel_boot/">Kernel Boot Process</a>.</li>
+<li>Kernel parse DTB, tạo <code>platform_device</code> (hoặc thiết bị I2C, SPI tùy bus cha) từ các node.</li>
+<li>Driver khai báo bảng <code>of_match_table</code> chứa các chuỗi <code>compatible</code>. Khi khớp, kernel gọi <code>probe()</code>.</li>
+<li>Trong <code>probe()</code>, driver đọc property bằng API <code>of_*</code> hoặc <code>device_property_*</code>.</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">of_device_id</span><span class="w"> </span><span class="n">my_of_match</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">compatible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"vendor,my-uart"</span><span class="w"> </span><span class="p">},</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">};</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">MODULE_DEVICE_TABLE</span><span class="p">(</span><span class="n">of</span><span class="p">,</span><span class="w"> </span><span class="n">my_of_match</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">of_device_id</span><span class="w"> </span><span class="n">my_of_match</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">compatible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"vendor,my-uart"</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">};</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">MODULE_DEVICE_TABLE</span><span class="p">(</span><span class="n">of</span><span class="p">,</span><span class="w"> </span><span class="n">my_of_match</span><span class="p">);</span>
 </code></pre></div>
-<p>Xem thêm: <a href="../../../lnx_ldd/platform_dev/platform_device/">Platform Device</a>,
-<a href="../../../lnx_ldd/overview/">Linux Device Driver Overview</a>.</p>
-<h2 id="cong-cu-va-debug">Công cụ và debug<a class="headerlink" href="#cong-cu-va-debug" title="Permanent link">¶</a></h2>
+<p>Đọc property trong <code>probe()</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">u32</span><span class="w"> </span><span class="n">depth</span><span class="p">;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">device_property_read_u32</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pdev</span><span class="o">-&gt;</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="s">"fifo-depth"</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">depth</span><span class="p">))</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="n">depth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16</span><span class="p">;</span><span class="w">                                  </span><span class="cm">/* giá trị mặc định khi thiếu property */</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">device_property_read_bool</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pdev</span><span class="o">-&gt;</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="s">"big-endian"</span><span class="p">))</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="p">...</span>
+</code></pre></div>
+<p><code>device_property_*</code> dùng được với cả DT và ACPI. Khi cần xử lý cấu trúc phức tạp (duyệt node con, đọc phandle), dùng <code>of_*</code> như <code>for_each_child_of_node()</code>, <code>of_parse_phandle()</code>.</p>
+<p>Thiết bị có thể có thêm <code>compatible</code> mà driver dùng làm khóa chọn cấu hình: trường <code>.data</code> của <code>of_device_id</code> trỏ tới dữ liệu riêng cho từng biến thể, lấy lại bằng <code>device_get_match_data()</code>.</p>
+<h2 id="device-tree-trong-he-thong-build">Device Tree trong hệ thống build<a class="headerlink" href="#device-tree-trong-he-thong-build" title="Permanent link">¶</a></h2>
 <ul>
-<li><code>dtc</code>: compile/decompile giữa <code>.dts</code> và <code>.dtb</code>
-  (<code>dtc -I dtb -O dts file.dtb</code>).</li>
-<li><code>/proc/device-tree</code> hoặc <code>/sys/firmware/devicetree/base</code>: xem DT mà kernel
-  đang dùng.</li>
-<li><code>make dtbs</code>: build device tree trong kernel source.</li>
+<li>Yocto và Petalinux build DTB cùng kernel, và cho phép chèn thêm file <code>.dtsi</code> hoặc bbappend của board, xem <a href="../../../lnx_es/tool_chain/petalinux/ptlnx/">Xilinx Petalinux</a>.</li>
+<li>Porting board tùy biến cần viết <code>.dts</code> riêng dựa trên <code>.dtsi</code> của SoC, xem <a href="../../../lnx_es/bringup/porting-linux/">Porting Linux lên board tùy biến</a>.</li>
 </ul>
-<h2 id="noi-dung-se-bo-sung">Nội dung sẽ bổ sung<a class="headerlink" href="#noi-dung-se-bo-sung" title="Permanent link">¶</a></h2>
+<h2 id="cong-cu-va-debug">Công cụ và debug<a class="headerlink" href="#cong-cu-va-debug" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Công cụ</th>
+<th>Mục đích</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dtc -I dts -O dtb file.dts -o file.dtb</code></td>
+<td>Biên dịch</td>
+</tr>
+<tr>
+<td><code>dtc -I dtb -O dts file.dtb</code></td>
+<td>Giải ngược DTB về DTS</td>
+</tr>
+<tr>
+<td><code>/sys/firmware/devicetree/base</code> (hoặc <code>/proc/device-tree</code>)</td>
+<td>Xem cây mà kernel đang dùng</td>
+</tr>
+<tr>
+<td><code>fdtdump file.dtb</code></td>
+<td>Hiển thị cấu trúc DTB</td>
+</tr>
+<tr>
+<td><code>/sys/bus/platform/devices/&lt;dev&gt;/of_node</code></td>
+<td>Node tương ứng với thiết bị</td>
+</tr>
+<tr>
+<td><code>dmesg</code></td>
+<td>Lỗi parse DT, lỗi <code>probe()</code></td>
+</tr>
+</tbody>
+</table>
+<p>Các lỗi thường gặp:</p>
 <ul>
-<li>Binding và cách viết <code>compatible</code>.</li>
-<li><code>#address-cells</code>, <code>#size-cells</code>, <code>ranges</code>.</li>
-<li>Interrupt, clock, GPIO, pinctrl trong DT.</li>
-<li>Overlay (<code>.dtbo</code>).</li>
-<li>Device Tree trong Yocto/Petalinux.</li>
+<li><code>compatible</code> sai chính tả hoặc không khớp bảng của driver: thiết bị không được ghép.</li>
+<li><code>status = "disabled"</code> trong <code>.dtsi</code> của SoC mà board quên bật.</li>
+<li>Số ô trong <code>reg</code> hoặc <code>interrupts</code> không khớp <code>#address-cells</code>, <code>#interrupt-cells</code>: địa chỉ hoặc ngắt bị đọc lệch.</li>
+<li>Sửa <code>.dts</code> nhưng bootloader nạp DTB cũ từ phân vùng khác: kiểm tra DTB nào được truyền cho kernel.</li>
 </ul>
 <h2 id="lien-quan">Liên quan<a class="headerlink" href="#lien-quan" title="Permanent link">¶</a></h2>
 <ul>
-<li><a href="../../../lnx_ldd/jesd/jesd/">JESD204 trên Linux</a>: khai báo topology JESD204 bằng các thuộc tính riêng trong device tree.</li>
-<li><a href="../../../lnx_ldd/fpga/fpga_mgr/">FPGA Manager</a>: overlay cho FPGA region</li>
-<li><a href="../../../lnx_es/fpga/fpga-linux/">Nạp bitstream FPGA từ Linux (Zynq)</a>: dùng overlay để nạp PL</li>
+<li><a href="../../../lnx_ldd/platform_dev/platform_device/">Platform Device</a>: driver nhận thiết bị từ node DT.</li>
+<li><a href="../../../lnx_ldd/jesd/jesd/">JESD204 trên Linux</a>: khai báo topology JESD204 bằng các property riêng trong Device Tree.</li>
+<li><a href="../../../lnx_ldd/fpga/fpga_mgr/">FPGA Manager</a>: overlay cho FPGA region.</li>
+<li><a href="../../../lnx_es/fpga/fpga-linux/">Nạp bitstream FPGA từ Linux (Zynq)</a>: dùng overlay để nạp phần logic khả trình (PL).</li>
+<li><a href="../../../lnx_ldd/overview/">Linux Device Driver Overview</a>: mô hình bus, device, driver.</li>
 </ul>
 <h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="https://www.devicetree.org/specifications/">Devicetree Specification</a></li>
 <li><a href="https://docs.kernel.org/devicetree/index.html">Open Firmware and Devicetree - docs.kernel.org</a></li>
+<li><a href="https://docs.kernel.org/devicetree/usage-model.html">Linux and the Devicetree: usage model - docs.kernel.org</a></li>
+<li><a href="https://docs.kernel.org/devicetree/overlay-notes.html">Devicetree Overlay Notes - docs.kernel.org</a></li>
+<li><a href="https://docs.kernel.org/devicetree/bindings/writing-schema.html">Writing Devicetree Bindings in json-schema - docs.kernel.org</a></li>
 </ul>
 
 
@@ -13638,7 +14145,7 @@ binding (tài liệu quy định property) nằm trong
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 7, 2026 09:44:07 UTC">November 7, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 7, 2026 14:00:23 UTC">November 7, 2026</span>
   </span>
 
     

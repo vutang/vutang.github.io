@@ -705,7 +705,15 @@
          <lastmod>2026-11-07</lastmod>
     </url>
     <url>
+         <loc>https://note.vutang.dev/lnx_kernel/dma/dma/</loc>
+         <lastmod>2026-11-07</lastmod>
+    </url>
+    <url>
          <loc>https://note.vutang.dev/lnx_kernel/ftrace/ftrace/</loc>
+         <lastmod>2026-11-07</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/lnx_kernel/interrupt/interrupt/</loc>
          <lastmod>2026-11-07</lastmod>
     </url>
     <url>
@@ -762,6 +770,14 @@
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_kernel/kgdb/kgdb_qemu/</loc>
+         <lastmod>2026-11-07</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/lnx_kernel/locking/locking/</loc>
+         <lastmod>2026-11-07</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/lnx_kernel/mm/memory/</loc>
          <lastmod>2026-11-07</lastmod>
     </url>
     <url>
