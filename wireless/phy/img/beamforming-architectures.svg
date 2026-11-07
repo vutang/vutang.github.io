@@ -1,0 +1,114 @@
+<svg role="img" viewBox="0 0 960 400" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+<title>Ba kiến trúc beamforming: số với mỗi anten một RF chain, tương tự với một RF chain và các bộ dịch pha, lai với ít RF chain hơn số anten</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+<rect x="0" y="0" width="960" height="400" rx="8" fill="#ffffff"/>
+<rect x="10" y="10" width="940" height="380" rx="10" fill="#f6f8fb" stroke="#c9d3e3"/>
+<text x="30" y="36" font-size="14" font-weight="700" fill="#1d4278">Kiến trúc beamforming ở máy phát</text>
+<text x="30" y="54" font-size="10.5" fill="#666">Ví dụ 4 anten; mạng dịch pha của kiến trúc lai vẽ theo kiểu nối một phần (partially connected)</text>
+<rect x="20" y="70" width="300" height="250" rx="8" fill="#1d4278" fill-opacity="0.03" stroke="#c9d3e3"/>
+<text x="170" y="90" font-size="12" text-anchor="middle" fill="#1d4278" font-weight="700">Số (digital)</text>
+<rect x="330" y="70" width="300" height="250" rx="8" fill="#1d4278" fill-opacity="0.03" stroke="#c9d3e3"/>
+<text x="480" y="90" font-size="12" text-anchor="middle" fill="#1d4278" font-weight="700">Tương tự (analog)</text>
+<rect x="640" y="70" width="300" height="250" rx="8" fill="#1d4278" fill-opacity="0.03" stroke="#c9d3e3"/>
+<text x="790" y="90" font-size="12" text-anchor="middle" fill="#1d4278" font-weight="700">Lai (hybrid)</text>
+<rect x="32" y="100" width="70" height="180" rx="5" fill="#1d4278" fill-opacity="0.16" stroke="#1d4278" stroke-width="1.3"/>
+<text x="67.0" y="188.0" font-size="10.5" text-anchor="middle" fill="#1d4278" font-weight="700">Baseband</text>
+<text x="67.0" y="201.0" font-size="8.5" text-anchor="middle" fill="#555">precoding số</text>
+<line x1="102" y1="115" x2="140" y2="115" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+<rect x="142" y="100" width="90" height="30" rx="5" fill="#555" fill-opacity="0.16" stroke="#555" stroke-width="1.3"/>
+<text x="187.0" y="119.0" font-size="9.5" text-anchor="middle" fill="#555" font-weight="700">RF chain</text>
+<line x1="232" y1="115" x2="268" y2="115" stroke="#555" stroke-width="1.2"/>
+<line x1="268" y1="115" x2="280" y2="115" stroke="#555" stroke-width="1.2"/>
+<polygon points="280,107 280,123 292,115" fill="none" stroke="#555" stroke-width="1.4" transform="rotate(0)"/>
+<line x1="102" y1="165" x2="140" y2="165" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+<rect x="142" y="150" width="90" height="30" rx="5" fill="#555" fill-opacity="0.16" stroke="#555" stroke-width="1.3"/>
+<text x="187.0" y="169.0" font-size="9.5" text-anchor="middle" fill="#555" font-weight="700">RF chain</text>
+<line x1="232" y1="165" x2="268" y2="165" stroke="#555" stroke-width="1.2"/>
+<line x1="268" y1="165" x2="280" y2="165" stroke="#555" stroke-width="1.2"/>
+<polygon points="280,157 280,173 292,165" fill="none" stroke="#555" stroke-width="1.4" transform="rotate(0)"/>
+<line x1="102" y1="215" x2="140" y2="215" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+<rect x="142" y="200" width="90" height="30" rx="5" fill="#555" fill-opacity="0.16" stroke="#555" stroke-width="1.3"/>
+<text x="187.0" y="219.0" font-size="9.5" text-anchor="middle" fill="#555" font-weight="700">RF chain</text>
+<line x1="232" y1="215" x2="268" y2="215" stroke="#555" stroke-width="1.2"/>
+<line x1="268" y1="215" x2="280" y2="215" stroke="#555" stroke-width="1.2"/>
+<polygon points="280,207 280,223 292,215" fill="none" stroke="#555" stroke-width="1.4" transform="rotate(0)"/>
+<line x1="102" y1="265" x2="140" y2="265" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+<rect x="142" y="250" width="90" height="30" rx="5" fill="#555" fill-opacity="0.16" stroke="#555" stroke-width="1.3"/>
+<text x="187.0" y="269.0" font-size="9.5" text-anchor="middle" fill="#555" font-weight="700">RF chain</text>
+<line x1="232" y1="265" x2="268" y2="265" stroke="#555" stroke-width="1.2"/>
+<line x1="268" y1="265" x2="280" y2="265" stroke="#555" stroke-width="1.2"/>
+<polygon points="280,257 280,273 292,265" fill="none" stroke="#555" stroke-width="1.4" transform="rotate(0)"/>
+<rect x="342" y="100" width="70" height="180" rx="5" fill="#1d4278" fill-opacity="0.16" stroke="#1d4278" stroke-width="1.3"/>
+<text x="377.0" y="188.0" font-size="10.5" text-anchor="middle" fill="#1d4278" font-weight="700">Baseband</text>
+<text x="377.0" y="201.0" font-size="8.5" text-anchor="middle" fill="#555">một luồng</text>
+<line x1="412" y1="190" x2="430" y2="190" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+<rect x="430" y="175" width="70" height="30" rx="5" fill="#555" fill-opacity="0.16" stroke="#555" stroke-width="1.3"/>
+<text x="465.0" y="194.0" font-size="9.5" text-anchor="middle" fill="#555" font-weight="700">RF chain</text>
+<polyline points="500,190 515,190 515,115 530,115" fill="none" stroke="#555" stroke-width="1.2"/>
+<circle cx="540" cy="115" r="9" fill="#a23b72" fill-opacity="0.14" stroke="#a23b72" stroke-width="1.2"/>
+<text x="540" y="118.5" font-size="9" text-anchor="middle" fill="#a23b72" font-weight="700">φ</text>
+<line x1="549" y1="115" x2="578" y2="115" stroke="#555" stroke-width="1.2"/>
+<line x1="578" y1="115" x2="590" y2="115" stroke="#555" stroke-width="1.2"/>
+<polygon points="590,107 590,123 602,115" fill="none" stroke="#555" stroke-width="1.4" transform="rotate(0)"/>
+<polyline points="500,190 515,190 515,165 530,165" fill="none" stroke="#555" stroke-width="1.2"/>
+<circle cx="540" cy="165" r="9" fill="#a23b72" fill-opacity="0.14" stroke="#a23b72" stroke-width="1.2"/>
+<text x="540" y="168.5" font-size="9" text-anchor="middle" fill="#a23b72" font-weight="700">φ</text>
+<line x1="549" y1="165" x2="578" y2="165" stroke="#555" stroke-width="1.2"/>
+<line x1="578" y1="165" x2="590" y2="165" stroke="#555" stroke-width="1.2"/>
+<polygon points="590,157 590,173 602,165" fill="none" stroke="#555" stroke-width="1.4" transform="rotate(0)"/>
+<polyline points="500,190 515,190 515,215 530,215" fill="none" stroke="#555" stroke-width="1.2"/>
+<circle cx="540" cy="215" r="9" fill="#a23b72" fill-opacity="0.14" stroke="#a23b72" stroke-width="1.2"/>
+<text x="540" y="218.5" font-size="9" text-anchor="middle" fill="#a23b72" font-weight="700">φ</text>
+<line x1="549" y1="215" x2="578" y2="215" stroke="#555" stroke-width="1.2"/>
+<line x1="578" y1="215" x2="590" y2="215" stroke="#555" stroke-width="1.2"/>
+<polygon points="590,207 590,223 602,215" fill="none" stroke="#555" stroke-width="1.4" transform="rotate(0)"/>
+<polyline points="500,190 515,190 515,265 530,265" fill="none" stroke="#555" stroke-width="1.2"/>
+<circle cx="540" cy="265" r="9" fill="#a23b72" fill-opacity="0.14" stroke="#a23b72" stroke-width="1.2"/>
+<text x="540" y="268.5" font-size="9" text-anchor="middle" fill="#a23b72" font-weight="700">φ</text>
+<line x1="549" y1="265" x2="578" y2="265" stroke="#555" stroke-width="1.2"/>
+<line x1="578" y1="265" x2="590" y2="265" stroke="#555" stroke-width="1.2"/>
+<polygon points="590,257 590,273 602,265" fill="none" stroke="#555" stroke-width="1.4" transform="rotate(0)"/>
+<rect x="652" y="100" width="70" height="180" rx="5" fill="#1d4278" fill-opacity="0.16" stroke="#1d4278" stroke-width="1.3"/>
+<text x="687.0" y="188.0" font-size="10.5" text-anchor="middle" fill="#1d4278" font-weight="700">Baseband</text>
+<text x="687.0" y="201.0" font-size="8.5" text-anchor="middle" fill="#555">precoding số</text>
+<line x1="722" y1="135" x2="740" y2="135" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+<rect x="740" y="120" width="70" height="30" rx="5" fill="#555" fill-opacity="0.16" stroke="#555" stroke-width="1.3"/>
+<text x="775.0" y="139.0" font-size="9.5" text-anchor="middle" fill="#555" font-weight="700">RF chain</text>
+<polyline points="810,135 825,135 825,115 840,115" fill="none" stroke="#555" stroke-width="1.2"/>
+<circle cx="850" cy="115" r="9" fill="#a23b72" fill-opacity="0.14" stroke="#a23b72" stroke-width="1.2"/>
+<text x="850" y="118.5" font-size="9" text-anchor="middle" fill="#a23b72" font-weight="700">φ</text>
+<line x1="859" y1="115" x2="888" y2="115" stroke="#555" stroke-width="1.2"/>
+<line x1="888" y1="115" x2="900" y2="115" stroke="#555" stroke-width="1.2"/>
+<polygon points="900,107 900,123 912,115" fill="none" stroke="#555" stroke-width="1.4" transform="rotate(0)"/>
+<polyline points="810,135 825,135 825,165 840,165" fill="none" stroke="#555" stroke-width="1.2"/>
+<circle cx="850" cy="165" r="9" fill="#a23b72" fill-opacity="0.14" stroke="#a23b72" stroke-width="1.2"/>
+<text x="850" y="168.5" font-size="9" text-anchor="middle" fill="#a23b72" font-weight="700">φ</text>
+<line x1="859" y1="165" x2="888" y2="165" stroke="#555" stroke-width="1.2"/>
+<line x1="888" y1="165" x2="900" y2="165" stroke="#555" stroke-width="1.2"/>
+<polygon points="900,157 900,173 912,165" fill="none" stroke="#555" stroke-width="1.4" transform="rotate(0)"/>
+<line x1="722" y1="235" x2="740" y2="235" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+<rect x="740" y="220" width="70" height="30" rx="5" fill="#555" fill-opacity="0.16" stroke="#555" stroke-width="1.3"/>
+<text x="775.0" y="239.0" font-size="9.5" text-anchor="middle" fill="#555" font-weight="700">RF chain</text>
+<polyline points="810,235 825,235 825,215 840,215" fill="none" stroke="#555" stroke-width="1.2"/>
+<circle cx="850" cy="215" r="9" fill="#a23b72" fill-opacity="0.14" stroke="#a23b72" stroke-width="1.2"/>
+<text x="850" y="218.5" font-size="9" text-anchor="middle" fill="#a23b72" font-weight="700">φ</text>
+<line x1="859" y1="215" x2="888" y2="215" stroke="#555" stroke-width="1.2"/>
+<line x1="888" y1="215" x2="900" y2="215" stroke="#555" stroke-width="1.2"/>
+<polygon points="900,207 900,223 912,215" fill="none" stroke="#555" stroke-width="1.4" transform="rotate(0)"/>
+<polyline points="810,235 825,235 825,265 840,265" fill="none" stroke="#555" stroke-width="1.2"/>
+<circle cx="850" cy="265" r="9" fill="#a23b72" fill-opacity="0.14" stroke="#a23b72" stroke-width="1.2"/>
+<text x="850" y="268.5" font-size="9" text-anchor="middle" fill="#a23b72" font-weight="700">φ</text>
+<line x1="859" y1="265" x2="888" y2="265" stroke="#555" stroke-width="1.2"/>
+<line x1="888" y1="265" x2="900" y2="265" stroke="#555" stroke-width="1.2"/>
+<polygon points="900,257 900,273 912,265" fill="none" stroke="#555" stroke-width="1.4" transform="rotate(0)"/>
+<text x="170" y="344" font-size="9.5" text-anchor="middle" fill="#555">Mỗi anten một RF chain (DAC, mixer)</text>
+<text x="170" y="359" font-size="9.5" text-anchor="middle" fill="#555">Linh hoạt nhất: beam riêng theo PRB, MU-MIMO</text>
+<text x="170" y="374" font-size="9.5" text-anchor="middle" fill="#555">Phần cứng và điện năng tăng theo số anten</text>
+<text x="480" y="344" font-size="9.5" text-anchor="middle" fill="#555">Một RF chain, beam tạo bằng bộ dịch pha</text>
+<text x="480" y="359" font-size="9.5" text-anchor="middle" fill="#555">Một beam cho toàn băng tại mỗi thời điểm</text>
+<text x="480" y="374" font-size="9.5" text-anchor="middle" fill="#555">Ít phần cứng; thường gặp ở FR2</text>
+<text x="790" y="344" font-size="9.5" text-anchor="middle" fill="#555">Ít RF chain hơn số anten</text>
+<text x="790" y="359" font-size="9.5" text-anchor="middle" fill="#555">Precoding số cho vài luồng, beam tương tự</text>
+<text x="790" y="374" font-size="9.5" text-anchor="middle" fill="#555">theo nhóm anten; dung hòa hai hướng</text>
+<text x="940" y="335" font-size="9" text-anchor="end" fill="#a23b72">φ: bộ dịch pha</text>
+</svg>

@@ -1,0 +1,46 @@
+<svg role="img" viewBox="0 0 960 360" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+<title>Ba thủ tục quản lý beam P-1, P-2, P-3: quét beam rộng, gNB tinh chỉnh beam phát, UE tinh chỉnh beam thu</title>
+<rect x="0" y="0" width="960" height="360" rx="8" fill="#ffffff"/>
+<rect x="10" y="10" width="940" height="340" rx="10" fill="#f6f8fb" stroke="#c9d3e3"/>
+<text x="30" y="36" font-size="14" font-weight="700" fill="#1d4278">Quản lý beam đường xuống: P-1, P-2, P-3</text>
+<text x="30" y="54" font-size="10.5" fill="#666">Beam đậm là beam được chọn hoặc giữ cố định; beam nhạt là các beam được quét</text>
+<rect x="20" y="70" width="300" height="220" rx="8" fill="#1d4278" fill-opacity="0.03" stroke="#c9d3e3"/>
+<text x="170" y="90" font-size="12" text-anchor="middle" fill="#1d4278" font-weight="700">P-1: quét beam ban đầu</text>
+<rect x="330" y="70" width="300" height="220" rx="8" fill="#1d4278" fill-opacity="0.03" stroke="#c9d3e3"/>
+<text x="480" y="90" font-size="12" text-anchor="middle" fill="#1d4278" font-weight="700">P-2: gNB tinh chỉnh beam phát</text>
+<rect x="640" y="70" width="300" height="220" rx="8" fill="#1d4278" fill-opacity="0.03" stroke="#c9d3e3"/>
+<text x="790" y="90" font-size="12" text-anchor="middle" fill="#1d4278" font-weight="700">P-3: UE tinh chỉnh beam thu</text>
+<path d="M70,185 L196.9,138.8 A135,135 0 0 0 173.4,98.2 Z" fill="#1d4278" fill-opacity="0.08" stroke="#1d4278" stroke-opacity="0.24" stroke-width="1.2"/>
+<path d="M70,185 L205.0,185.0 A135,135 0 0 0 196.9,138.8 Z" fill="#1d4278" fill-opacity="0.3" stroke="#1d4278" stroke-opacity="0.90" stroke-width="1.2"/>
+<path d="M70,185 L196.9,231.2 A135,135 0 0 0 205.0,185.0 Z" fill="#1d4278" fill-opacity="0.08" stroke="#1d4278" stroke-opacity="0.24" stroke-width="1.2"/>
+<path d="M70,185 L173.4,271.8 A135,135 0 0 0 196.9,231.2 Z" fill="#1d4278" fill-opacity="0.08" stroke="#1d4278" stroke-opacity="0.24" stroke-width="1.2"/>
+<path d="M257.1134730723195,152.00684624328323 L234.2,119.2 A40,40 0 0 0 218.5,141.7 Z" fill="#b7791f" fill-opacity="0.08" stroke="#b7791f" stroke-opacity="0.24" stroke-width="1.2"/>
+<path d="M257.1134730723195,152.00684624328323 L217.7,145.1 A40,40 0 0 0 222.5,172.0 Z" fill="#b7791f" fill-opacity="0.3" stroke="#b7791f" stroke-opacity="0.90" stroke-width="1.2"/>
+<path d="M257.1134730723195,152.00684624328323 L224.3,174.9 A40,40 0 0 0 246.8,190.6 Z" fill="#b7791f" fill-opacity="0.08" stroke="#b7791f" stroke-opacity="0.24" stroke-width="1.2"/>
+<rect x="56" y="163" width="14" height="44" rx="3" fill="#1d4278" fill-opacity="0.25" stroke="#1d4278" stroke-width="1.3"/>
+<text x="63" y="223" font-size="9.5" text-anchor="middle" fill="#1d4278" font-weight="700">gNB</text>
+<rect x="250.1134730723195" y="140.00684624328323" width="14" height="24" rx="3" fill="#b7791f" fill-opacity="0.25" stroke="#b7791f" stroke-width="1.3"/>
+<text x="257.1134730723195" y="180.00684624328323" font-size="9.5" text-anchor="middle" fill="#b7791f" font-weight="700">UE</text>
+<path d="M380,185 L550.5,145.6 A175,175 0 0 0 545.5,128.0 Z" fill="#1d4278" fill-opacity="0.1" stroke="#1d4278" stroke-opacity="0.30" stroke-width="1.2"/>
+<path d="M380,185 L553.7,163.7 A175,175 0 0 0 550.5,145.6 Z" fill="#1d4278" fill-opacity="0.35" stroke="#1d4278" stroke-opacity="1.00" stroke-width="1.2"/>
+<path d="M380,185 L555.0,181.9 A175,175 0 0 0 553.7,163.7 Z" fill="#1d4278" fill-opacity="0.1" stroke="#1d4278" stroke-opacity="0.30" stroke-width="1.2"/>
+<path d="M567.1134730723195,152.00684624328323 L527.7,145.1 A40,40 0 0 0 532.5,172.0 Z" fill="#b7791f" fill-opacity="0.3" stroke="#b7791f" stroke-opacity="0.90" stroke-width="1.2"/>
+<rect x="366" y="163" width="14" height="44" rx="3" fill="#1d4278" fill-opacity="0.25" stroke="#1d4278" stroke-width="1.3"/>
+<text x="373" y="223" font-size="9.5" text-anchor="middle" fill="#1d4278" font-weight="700">gNB</text>
+<rect x="560.1134730723195" y="140.00684624328323" width="14" height="24" rx="3" fill="#b7791f" fill-opacity="0.25" stroke="#b7791f" stroke-width="1.3"/>
+<text x="567.1134730723195" y="180.00684624328323" font-size="9.5" text-anchor="middle" fill="#b7791f" font-weight="700">UE</text>
+<path d="M690,185 L863.7,163.7 A175,175 0 0 0 860.5,145.6 Z" fill="#1d4278" fill-opacity="0.35" stroke="#1d4278" stroke-opacity="1.00" stroke-width="1.2"/>
+<path d="M877.1134730723195,152.00684624328323 L818.0,141.6 A60,60 0 0 0 817.2,154.1 Z" fill="#b7791f" fill-opacity="0.1" stroke="#b7791f" stroke-opacity="0.30" stroke-width="1.2"/>
+<path d="M877.1134730723195,152.00684624328323 L817.3,156.2 A60,60 0 0 0 819.4,168.5 Z" fill="#b7791f" fill-opacity="0.35" stroke="#b7791f" stroke-opacity="1.00" stroke-width="1.2"/>
+<path d="M877.1134730723195,152.00684624328323 L820.1,170.5 A60,60 0 0 0 825.2,182.0 Z" fill="#b7791f" fill-opacity="0.1" stroke="#b7791f" stroke-opacity="0.30" stroke-width="1.2"/>
+<rect x="676" y="163" width="14" height="44" rx="3" fill="#1d4278" fill-opacity="0.25" stroke="#1d4278" stroke-width="1.3"/>
+<text x="683" y="223" font-size="9.5" text-anchor="middle" fill="#1d4278" font-weight="700">gNB</text>
+<rect x="870.1134730723195" y="140.00684624328323" width="14" height="24" rx="3" fill="#b7791f" fill-opacity="0.25" stroke="#b7791f" stroke-width="1.3"/>
+<text x="877.1134730723195" y="180.00684624328323" font-size="9.5" text-anchor="middle" fill="#b7791f" font-weight="700">UE</text>
+<text x="170" y="312" font-size="9.5" text-anchor="middle" fill="#555">gNB quét các beam rộng (mỗi SSB một beam),</text>
+<text x="170" y="327" font-size="9.5" text-anchor="middle" fill="#555">UE thử các beam thu và chọn cặp beam tốt nhất</text>
+<text x="480" y="312" font-size="9.5" text-anchor="middle" fill="#555">gNB quét các beam hẹp quanh hướng đã chọn</text>
+<text x="480" y="327" font-size="9.5" text-anchor="middle" fill="#555">(CSI-RS), UE giữ beam thu và báo L1-RSRP</text>
+<text x="790" y="312" font-size="9.5" text-anchor="middle" fill="#555">gNB giữ beam phát (CSI-RS lặp lại),</text>
+<text x="790" y="327" font-size="9.5" text-anchor="middle" fill="#555">UE quét các beam thu hẹp để chọn beam tốt nhất</text>
+</svg>

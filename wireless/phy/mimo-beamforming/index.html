@@ -26,7 +26,7 @@
     
     
       
-        <title>MIMO &amp; Beamforming (WIP) - Vu Tang's Docs</title>
+        <title>MIMO &amp; Beamforming - Vu Tang's Docs</title>
       
     
     
@@ -72,7 +72,7 @@
     
   
 <meta property="og:type" content="website">
-<meta property="og:title" content="MIMO &amp; Beamforming (WIP) - Vu Tang's Docs">
+<meta property="og:title" content="MIMO &amp; Beamforming - Vu Tang's Docs">
 <meta property="og:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
 <meta property="og:image" content="https://note.vutang.dev/assets/images/social/wireless/phy/mimo-beamforming.png">
 <meta property="og:image:type" content="image/png">
@@ -80,7 +80,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://note.vutang.dev/wireless/phy/mimo-beamforming/">
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:title" content="MIMO &amp; Beamforming (WIP) - Vu Tang's Docs">
+<meta property="twitter:title" content="MIMO &amp; Beamforming - Vu Tang's Docs">
 <meta property="twitter:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
 <meta property="twitter:image" content="https://note.vutang.dev/assets/images/social/wireless/phy/mimo-beamforming.png">
 <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
@@ -145,7 +145,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              MIMO &amp; Beamforming (WIP)
+              MIMO &amp; Beamforming
             
           </span>
         </div>
@@ -7222,7 +7222,7 @@
   <span class="md-ellipsis">
     
   
-    MIMO &amp; Beamforming (WIP)
+    MIMO &amp; Beamforming
   
 
     
@@ -7240,7 +7240,7 @@
   <span class="md-ellipsis">
     
   
-    MIMO &amp; Beamforming (WIP)
+    MIMO &amp; Beamforming
   
 
     
@@ -7264,6 +7264,144 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#loi-ich-cua-nhieu-anten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lợi ích của nhiều anten
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#layer-antenna-port-va-precoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layer, antenna port và precoding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#su-mimo-va-mu-mimo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SU-MIMO và MU-MIMO
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thong-tin-kenh-cho-precoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thông tin kênh cho precoding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#massive-mimo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Massive MIMO
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kien-truc-beamforming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kiến trúc beamforming
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quan-ly-beam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quản lý beam
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quản lý beam">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quet-beam-khi-truy-nhap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quét beam khi truy nhập
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cac-thu-tuc-p-1-p-2-p-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các thủ tục P-1, P-2, P-3
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chi-inh-beam-tci-state-va-qcl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chỉ định beam: TCI state và QCL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phat-hien-loi-beam-va-khoi-phuc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phát hiện lỗi beam và khôi phục
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tac-ong-toi-hien-thuc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tác động tới hiện thực
+      
+    </span>
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#lien-quan" class="md-nav__link">
@@ -12641,6 +12779,144 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#loi-ich-cua-nhieu-anten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lợi ích của nhiều anten
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#layer-antenna-port-va-precoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layer, antenna port và precoding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#su-mimo-va-mu-mimo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SU-MIMO và MU-MIMO
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thong-tin-kenh-cho-precoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thông tin kênh cho precoding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#massive-mimo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Massive MIMO
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kien-truc-beamforming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kiến trúc beamforming
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quan-ly-beam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quản lý beam
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quản lý beam">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quet-beam-khi-truy-nhap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quét beam khi truy nhập
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cac-thu-tuc-p-1-p-2-p-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các thủ tục P-1, P-2, P-3
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chi-inh-beam-tci-state-va-qcl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chỉ định beam: TCI state và QCL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phat-hien-loi-beam-va-khoi-phuc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phát hiện lỗi beam và khôi phục
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tac-ong-toi-hien-thuc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tác động tới hiện thực
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#lien-quan" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -12729,32 +13005,236 @@
 
 
 <h1 id="mimo-va-beamforming">MIMO và beamforming<a class="headerlink" href="#mimo-va-beamforming" title="Permanent link">¶</a></h1>
-<p>Trang này trình bày cách NR dùng nhiều anten ở trạm gốc và UE để tăng dung lượng và vùng phủ. Thứ tự trình bày dự kiến: các lợi ích của nhiều anten (diversity, spatial multiplexing, beamforming), precoding và codebook, massive MIMO, các kiến trúc beamforming tương tự, số và lai, quản lý beam trong NR, rồi tác động tới RU, fronthaul và DU.</p>
-<div class="admonition todo">
-<p class="admonition-title">Trang đang được viết</p>
-<p>Nội dung dự kiến:</p>
+<p>MIMO (multiple-input multiple-output, nhiều anten ở cả phía phát và phía thu) là nhóm kỹ thuật dùng nhiều anten để tăng độ tin cậy, tăng tốc độ hoặc tập trung năng lượng về phía người dùng. NR dùng MIMO ở mọi dải tần, từ vài anten ở băng thấp tới mảng hàng chục nhánh ở mid-band và mảng hàng trăm phần tử ở mmWave. Trang này trình bày theo thứ tự: ba lợi ích của nhiều anten, các khái niệm layer, antenna port và precoding, SU-MIMO và MU-MIMO, cách gNB có được thông tin kênh để chọn precoder, massive MIMO, các kiến trúc beamforming số, tương tự và lai, quản lý beam trong NR, rồi tác động tới RU, fronthaul và DU.</p>
+<h2 id="loi-ich-cua-nhieu-anten">Lợi ích của nhiều anten<a class="headerlink" href="#loi-ich-cua-nhieu-anten" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Lợi ích</th>
+<th>Nguyên lý</th>
+<th>Khi nào có ích</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Diversity (phân tập)</td>
+<td>Cùng một dữ liệu đi qua nhiều đường độc lập; khả năng tất cả các đường cùng suy giảm sâu thấp hơn nhiều so với một đường</td>
+<td>Kênh fading mạnh, cần độ tin cậy</td>
+</tr>
+<tr>
+<td>Spatial multiplexing (ghép kênh không gian)</td>
+<td>Nhiều luồng dữ liệu khác nhau được phát đồng thời trên cùng tài nguyên thời gian và tần số, tách ra nhờ khác biệt về không gian của kênh</td>
+<td>SNR cao, kênh có nhiều đường truyền khác nhau (rank cao)</td>
+</tr>
+<tr>
+<td>Beamforming và array gain</td>
+<td>Các anten phát cùng tín hiệu với pha và biên độ được điều chỉnh để cộng đồng pha theo một hướng</td>
+<td>SNR thấp, biên cell, băng tần cao có suy hao lớn</td>
+</tr>
+</tbody>
+</table>
+<p>Ba lợi ích này cạnh tranh với nhau trên cùng số anten. Ở SNR thấp, dồn anten để tạo một beam mạnh có lợi hơn chia thành nhiều luồng yếu; ở SNR cao và kênh giàu đa đường, ghép nhiều luồng cho tốc độ cao hơn. Số luồng mà kênh hỗ trợ tại một thời điểm gọi là <strong>rank</strong> của kênh, và gNB chọn số luồng phát dựa trên rank mà UE báo về.</p>
+<h2 id="layer-antenna-port-va-precoding">Layer, antenna port và precoding<a class="headerlink" href="#layer-antenna-port-va-precoding" title="Permanent link">¶</a></h2>
+<p>Trong chuỗi xử lý PHY của NR (xem <a href="../../l1/l1-acceleration/#chuoi-xu-ly-phy">L1 &amp; Acceleration</a>), dữ liệu sau điều chế được chia thành các <strong>layer</strong>, mỗi layer là một luồng ký hiệu độc lập. Bước <strong>precoding</strong> nhân vector các layer với một ma trận (precoder) để ánh xạ chúng lên các <strong>antenna port</strong>.</p>
+<p><strong>Antenna port</strong> là khái niệm logic, không phải anten vật lý. TS 38.211 định nghĩa antenna port qua tín hiệu tham chiếu: kênh mà một ký hiệu trên một port đi qua có thể suy ra từ kênh của ký hiệu khác trên cùng port. Với PDSCH, mỗi layer gắn với một DMRS port, nên UE ước lượng kênh hiệu dụng của từng layer (gồm cả precoder) từ DMRS mà không cần biết precoder cụ thể. Ánh xạ từ antenna port xuống các phần tử anten vật lý (đôi khi gọi là antenna virtualization) do nhà sản xuất thiết bị quyết định và không được đặc tả.</p>
+<p>Giới hạn số layer của NR cho một UE (SU-MIMO) là 8 layer ở đường xuống và 4 layer ở đường lên. Với đường xuống, khi số layer lớn hơn 4, dữ liệu được chia thành hai codeword (hai transport block, mỗi cái có MCS và HARQ riêng).</p>
+<h2 id="su-mimo-va-mu-mimo">SU-MIMO và MU-MIMO<a class="headerlink" href="#su-mimo-va-mu-mimo" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>SU-MIMO</th>
+<th>MU-MIMO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Đối tượng</td>
+<td>Nhiều layer cho một UE</td>
+<td>Các layer của nhiều UE trên cùng tài nguyên thời gian và tần số</td>
+</tr>
+<tr>
+<td>Giới hạn</td>
+<td>Số anten thu của UE (thường 2 hoặc 4 ở UE di động) và rank của kênh</td>
+<td>Số anten của gNB và mức độ tách biệt không gian giữa các UE</td>
+</tr>
+<tr>
+<td>Điều kiện</td>
+<td>SNR cao, kênh giàu đa đường</td>
+<td>Các UE ở các hướng đủ khác nhau để beam của UE này ít gây nhiễu cho UE kia</td>
+</tr>
+</tbody>
+</table>
+<p>MU-MIMO cho phép gNB có nhiều anten tận dụng hết số anten của mình, kể cả khi mỗi UE chỉ nhận được vài layer. Tổng số layer trong MU-MIMO bị giới hạn bởi số DMRS port trực giao: DMRS type 2 với cấu hình hai symbol cho tối đa 12 port trực giao. Việc chọn các UE ghép cặp (MU-MIMO pairing) là nhiệm vụ của scheduler, xem <a href="../../air-interface/mac-scheduler/">MAC Scheduler</a>.</p>
+<h2 id="thong-tin-kenh-cho-precoding">Thông tin kênh cho precoding<a class="headerlink" href="#thong-tin-kenh-cho-precoding" title="Permanent link">¶</a></h2>
+<p>Để chọn precoder, gNB cần biết kênh từ các anten của mình tới UE. NR có hai cách:</p>
+<table>
+<thead>
+<tr>
+<th>Cách</th>
+<th>Cơ chế</th>
+<th>Dùng ở</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Phản hồi dựa trên codebook</td>
+<td>gNB phát CSI-RS, UE ước lượng kênh rồi chọn precoder phù hợp nhất trong một codebook đã định nghĩa, báo chỉ số precoder (PMI) cùng rank (RI) và chất lượng kênh (CQI)</td>
+<td>FDD và TDD</td>
+</tr>
+<tr>
+<td>Tính thuận nghịch kênh (reciprocity)</td>
+<td>UE phát SRS, gNB ước lượng kênh đường lên và dùng làm kênh đường xuống, vì hai chiều dùng chung tần số</td>
+<td>TDD</td>
+</tr>
+</tbody>
+</table>
+<p>Với tính thuận nghịch, gNB có thông tin kênh chi tiết hơn codebook, nhưng chỉ đúng khi các nhánh thu và phát của cả gNB lẫn UE được hiệu chỉnh, và UE phải phát SRS trên đủ số anten. Đây là lý do massive MIMO ở mid-band TDD thường dựa vào SRS.</p>
+<p>NR định nghĩa nhiều loại codebook với độ phân giải và chi phí phản hồi khác nhau:</p>
+<table>
+<thead>
+<tr>
+<th>Codebook</th>
+<th>Release</th>
+<th>Đặc điểm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type I (single-panel, multi-panel)</td>
+<td>Rel-15</td>
+<td>Chọn một beam (hoặc một tổ hợp đơn giản) từ một tập beam DFT; phản hồi ít bit, độ phân giải thấp</td>
+</tr>
+<tr>
+<td>Type II</td>
+<td>Rel-15</td>
+<td>Kết hợp tuyến tính nhiều beam với hệ số biên độ và pha; mô tả kênh chi tiết hơn, phù hợp MU-MIMO, nhưng phản hồi nhiều bit</td>
+</tr>
+<tr>
+<td>Enhanced Type II (eType II)</td>
+<td>Rel-16</td>
+<td>Nén thêm theo miền tần số để giảm số bit phản hồi so với Type II</td>
+</tr>
+<tr>
+<td>Further enhanced Type II port selection</td>
+<td>Rel-17</td>
+<td>Tận dụng một phần tính thuận nghịch: gNB precode CSI-RS theo thông tin từ đường lên, UE chỉ chọn port và hệ số</td>
+</tr>
+<tr>
+<td>Mở rộng cho coherent joint transmission</td>
+<td>Rel-18</td>
+<td>Tinh chỉnh Type II cho trường hợp nhiều điểm phát (TRP) cùng precode một cách đồng pha</td>
+</tr>
+</tbody>
+</table>
+<p>Ở đường lên, PUSCH có hai chế độ: <strong>codebook-based</strong>, gNB chỉ định precoder cho UE qua chỉ số TPMI trong DCI, và <strong>non-codebook</strong>, UE tự tính precoder từ kênh đường xuống rồi gNB chọn trong các SRS đã được precode qua chỉ số SRI. Chi tiết các tín hiệu tham chiếu và nội dung báo cáo CSI nằm ở <a href="../reference-signals-csi/">Reference Signals &amp; CSI</a>.</p>
+<h2 id="massive-mimo">Massive MIMO<a class="headerlink" href="#massive-mimo" title="Permanent link">¶</a></h2>
+<p>Massive MIMO là cấu hình gNB có số nhánh thu phát lớn hơn nhiều so với số layer phục vụ cho mỗi UE, ở mid-band thường là 32T32R hoặc 64T64R với mảng anten hai chiều. Mảng hai chiều cho phép điều hướng beam theo cả phương ngang và phương đứng, phục vụ người dùng ở các tầng khác nhau của tòa nhà. Số nhánh lớn tạo array gain bù suy hao ở băng 3,5 GHz và cho phép MU-MIMO với nhiều UE cùng lúc.</p>
+<p>Massive MIMO ở mid-band phần lớn dùng TDD và dựa vào SRS, vì với hàng chục port, phản hồi codebook phải rất chi tiết mới mô tả được kênh. Phần cứng của massive MIMO là Active Antenna Unit (AAU), RU và mảng anten chung một vỏ, có cơ chế hiệu chỉnh biên độ và pha giữa các nhánh, xem <a href="../../ru/ru-architecture/#anten">Kiến trúc Radio Unit</a>.</p>
+<h2 id="kien-truc-beamforming">Kiến trúc beamforming<a class="headerlink" href="#kien-truc-beamforming" title="Permanent link">¶</a></h2>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/beamforming-architectures.svg" data-desc-position="bottom"><img alt="Ba kiến trúc beamforming: số, tương tự và lai" src="../img/beamforming-architectures.svg"></a></p>
+<p><em>Kiến trúc số dùng mỗi anten một RF chain; kiến trúc tương tự dùng một RF chain và các bộ dịch pha; kiến trúc lai dùng ít RF chain hơn số anten, mỗi RF chain điều khiển một nhóm anten qua bộ dịch pha.</em></p>
+<table>
+<thead>
+<tr>
+<th>Kiến trúc</th>
+<th>Beam được tạo ở đâu</th>
+<th>Ưu điểm</th>
+<th>Hạn chế</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Số (digital)</td>
+<td>Trong miền số, trước DAC; mỗi anten (hoặc mỗi nhóm anten cố định) một RF chain</td>
+<td>Beam riêng cho từng PRB và từng UE, hỗ trợ MU-MIMO đầy đủ</td>
+<td>Số RF chain, bộ chuyển đổi và điện năng tăng theo số nhánh</td>
+</tr>
+<tr>
+<td>Tương tự (analog)</td>
+<td>Sau DAC, bằng bộ dịch pha trên từng phần tử anten</td>
+<td>Ít RF chain, rẻ và tiết kiệm điện với mảng lớn</td>
+<td>Tại mỗi thời điểm chỉ có một beam cho toàn băng thông; phải quét beam theo thời gian</td>
+</tr>
+<tr>
+<td>Lai (hybrid)</td>
+<td>Precoding số cho vài luồng, kết hợp beam tương tự trên các nhóm anten</td>
+<td>Dung hòa giữa số luồng và chi phí phần cứng</td>
+<td>Thiết kế và thuật toán phức tạp hơn; độ linh hoạt thấp hơn kiến trúc số</td>
+</tr>
+</tbody>
+</table>
+<p>Theo các khảo sát về massive MIMO, lý do chính để dùng kiến trúc lai là chi phí và điện năng của việc có một RF chain cho mỗi phần tử anten khi mảng rất lớn. Tuy vậy, so sánh điện năng giữa các kiến trúc phụ thuộc vào số anten, số bit của ADC và băng thông; với một số cấu hình, kiến trúc số có điện năng tương đương hoặc thấp hơn.</p>
+<p>Trong thực tế, RU massive MIMO ở FR1 với 32 hoặc 64 nhánh thường dùng beamforming số trên các nhánh, mỗi nhánh nối với một nhóm phần tử anten cố định. Thiết bị FR2 có hàng trăm phần tử anten nên thường dùng beamforming tương tự hoặc lai, và đây là lý do NR có các thủ tục quét và quản lý beam theo thời gian.</p>
+<h2 id="quan-ly-beam">Quản lý beam<a class="headerlink" href="#quan-ly-beam" title="Permanent link">¶</a></h2>
+<p>Quản lý beam (beam management) là tập thủ tục giúp gNB và UE tìm và duy trì cặp beam phát và thu tốt nhất. Các thủ tục này quan trọng nhất ở FR2, nơi beam hẹp và dễ bị che chắn, nhưng cũng được dùng ở FR1.</p>
+<h3 id="quet-beam-khi-truy-nhap">Quét beam khi truy nhập<a class="headerlink" href="#quet-beam-khi-truy-nhap" title="Permanent link">¶</a></h3>
+<p>Khi UE chưa kết nối, gNB phát chuỗi SSB theo nhiều hướng, mỗi SSB một beam với chỉ số riêng. UE đo các SSB, chọn SSB mạnh nhất, và phát preamble ở RACH occasion gắn với SSB đó, nhờ vậy gNB biết beam nào phục vụ UE ngay từ bước random access. Số SSB tối đa trong một burst (L_max) tăng theo dải tần, lên tới 64 ở FR2. Chi tiết nằm ở <a href="../../air-interface/initial-access/#do-cell-va-ong-bo">Initial Access</a>.</p>
+<h3 id="cac-thu-tuc-p-1-p-2-p-3">Các thủ tục P-1, P-2, P-3<a class="headerlink" href="#cac-thu-tuc-p-1-p-2-p-3" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/beam-management.svg" data-desc-position="bottom"><img alt="Ba thủ tục quản lý beam P-1, P-2, P-3" src="../img/beam-management.svg"></a></p>
+<p><em>P-1 chọn cặp beam ban đầu bằng beam rộng; P-2 tinh chỉnh beam phát của gNB; P-3 tinh chỉnh beam thu của UE.</em></p>
+<p>Giai đoạn nghiên cứu NR (TR 38.802) mô tả quản lý beam đường xuống bằng ba thủ tục. P-1 cho UE đo các beam phát của gNB (thường là SSB) để chọn cặp beam phát và thu ban đầu. P-2 cho gNB quét một tập beam hẹp hơn quanh hướng đã chọn (thường bằng CSI-RS), UE giữ beam thu và báo beam tốt nhất. P-3 cho gNB giữ cố định beam phát bằng CSI-RS lặp lại, để UE thử các beam thu của mình. Ba thủ tục này không phải là tên bản tin trong đặc tả, mà là cách mô tả các cấu hình đo khác nhau của CSI-RS và SSB.</p>
+<p>UE báo kết quả bằng <strong>L1-RSRP</strong> (công suất thu tín hiệu tham chiếu đo ở lớp vật lý) kèm chỉ số SSB hoặc CSI-RS tương ứng. Rel-16 bổ sung báo cáo L1-SINR.</p>
+<h3 id="chi-inh-beam-tci-state-va-qcl">Chỉ định beam: TCI state và QCL<a class="headerlink" href="#chi-inh-beam-tci-state-va-qcl" title="Permanent link">¶</a></h3>
+<p>gNB cho UE biết phải dùng beam thu nào cho một kênh bằng <strong>TCI state</strong> (transmission configuration indication). Mỗi TCI state chỉ tới một hoặc hai tín hiệu tham chiếu (SSB hoặc CSI-RS) cùng loại quan hệ <strong>QCL</strong> (quasi co-location, đồng vị trí giả định) với chúng. Hai tín hiệu được coi là QCL nếu một số đặc tính của kênh đo trên tín hiệu này có thể dùng cho tín hiệu kia:</p>
+<table>
+<thead>
+<tr>
+<th>Loại QCL</th>
+<th>Đặc tính dùng chung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type A</td>
+<td>Doppler shift, Doppler spread, average delay, delay spread</td>
+</tr>
+<tr>
+<td>Type B</td>
+<td>Doppler shift, Doppler spread</td>
+</tr>
+<tr>
+<td>Type C</td>
+<td>Doppler shift, average delay</td>
+</tr>
+<tr>
+<td>Type D</td>
+<td>Tham số thu theo không gian (spatial Rx parameter), tức beam thu</td>
+</tr>
+</tbody>
+</table>
+<p>QCL Type D là cơ chế chỉ định beam: khi TCI state của PDSCH nói rằng PDSCH là QCL Type D với một CSI-RS nào đó, UE dùng beam thu mà nó đã dùng tốt nhất cho CSI-RS đó. Danh sách TCI state được cấu hình bằng RRC, kích hoạt bằng MAC CE và chọn bằng DCI.</p>
+<h3 id="phat-hien-loi-beam-va-khoi-phuc">Phát hiện lỗi beam và khôi phục<a class="headerlink" href="#phat-hien-loi-beam-va-khoi-phuc" title="Permanent link">¶</a></h3>
+<p>Khi chất lượng các beam phục vụ PDCCH giảm dưới ngưỡng cấu hình trong một số lần đo, UE xác định lỗi beam (beam failure), chọn một beam ứng viên mới từ các SSB hoặc CSI-RS được cấu hình, và báo cho gNB qua random access hoặc qua PUCCH và MAC CE. Thủ tục này nhanh hơn nhiều so với phát hiện lỗi liên kết vô tuyến (RLF) và tái thiết lập RRC, xem <a href="../../air-interface/connected-mobility/#loi-lien-ket-va-tai-thiet-lap">Connected Mode &amp; Mobility</a>.</p>
+<h2 id="tac-ong-toi-hien-thuc">Tác động tới hiện thực<a class="headerlink" href="#tac-ong-toi-hien-thuc" title="Permanent link">¶</a></h2>
 <ul>
-<li>Lợi ích của nhiều anten: diversity, spatial multiplexing, array gain.</li>
-<li>SU-MIMO và MU-MIMO, layer và antenna port.</li>
-<li>Precoding: codebook Type I và Type II, non-codebook dựa trên SRS.</li>
-<li>Massive MIMO: 32T32R, 64T64R, tính thuận nghịch kênh ở TDD.</li>
-<li>Beamforming tương tự, số và lai; lựa chọn theo dải tần FR1 và FR2.</li>
-<li>Beam management: SSB beam sweep, các thủ tục P1, P2, P3, beam failure recovery.</li>
-<li>Tác động tới hiện thực: Category A và B của RU, băng thông fronthaul, tải MIMO detection ở DU.</li>
+<li><strong>Vị trí precoding và băng thông fronthaul.</strong> Với RU Category A, precoding nằm ở DU, nên fronthaul mang tín hiệu đã precode và số luồng tăng theo số antenna port. Với RU Category B, precoding nằm ở RU, fronthaul chỉ mang các layer, phù hợp massive MIMO. Xem <a href="../../architecture/ran-architecture/#split-72x-cua-o-ran">Split 7.2x của O-RAN</a>.</li>
+<li><strong>Truyền trọng số beam qua fronthaul.</strong> C-plane của Open Fronthaul cho RU biết beam nào áp dụng cho từng dải PRB và symbol, bằng chỉ số beam định nghĩa trước hoặc bằng trọng số beamforming gửi kèm, xem <a href="../../fronthaul/open-fronthaul/#c-plane">Open Fronthaul</a>. Với beamforming dựa trên SRS, trọng số thay đổi theo từng UE và từng slot, làm tăng lưu lượng C-plane.</li>
+<li><strong>Tải tính toán ở DU.</strong> Ước lượng kênh, cân bằng và tách các layer (MIMO detection) ở đường lên là một trong những khâu nặng nhất của L1, và tăng nhanh theo số layer và số anten, xem <a href="../../l1/l1-acceleration/#nhung-khau-nang-nhat">L1 &amp; Acceleration</a>. Tính precoder từ SRS cho MU-MIMO cũng là phép toán ma trận lớn.</li>
+<li><strong>Hiệu chỉnh.</strong> Beamforming dựa trên tính thuận nghịch chỉ đúng khi các nhánh thu và phát của RU được hiệu chỉnh định kỳ về biên độ và pha.</li>
+<li><strong>Lập lịch.</strong> Chọn rank, precoder, beam và các UE ghép cặp MU-MIMO là quyết định của scheduler trong mỗi slot, dựa trên CSI và SRS mới nhất.</li>
 </ul>
-</div>
 <h2 id="lien-quan">Liên quan<a class="headerlink" href="#lien-quan" title="Permanent link">¶</a></h2>
 <ul>
-<li><a href="../reference-signals-csi/">Reference Signals &amp; CSI</a>: CSI-RS, SRS và báo cáo PMI, RI làm đầu vào cho precoding.</li>
+<li><a href="../reference-signals-csi/">Reference Signals &amp; CSI</a>: CSI-RS, SRS và báo cáo PMI, RI, CQI làm đầu vào cho precoding.</li>
 <li><a href="../../ru/ru-architecture/">Kiến trúc Radio Unit</a>: AAU massive MIMO và hiệu chỉnh giữa các nhánh.</li>
 <li><a href="../../architecture/ran-architecture/#split-72x-cua-o-ran">RAN Architecture &amp; Splits</a>: vị trí precoding ở RU Category A và B.</li>
+<li><a href="../../fronthaul/open-fronthaul/">Open Fronthaul</a>: C-plane mang thông tin beamforming cho RU.</li>
+<li><a href="../../air-interface/initial-access/">Initial Access</a>: quét beam bằng SSB và ánh xạ SSB với RACH occasion.</li>
+<li><a href="../../air-interface/connected-mobility/">Connected Mode &amp; Mobility</a>: đo đạc theo beam và beam failure recovery trong trạng thái kết nối.</li>
 <li><a href="../../l1/l1-acceleration/">L1 &amp; Acceleration</a>: MIMO detection, một trong các khâu nặng nhất của L1.</li>
+<li><a href="../../air-interface/mac-scheduler/">MAC Scheduler</a>: chọn rank, precoder và ghép cặp MU-MIMO trong mỗi slot.</li>
 </ul>
 <h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
 <ul>
-<li>3GPP TS 38.214: Physical layer procedures for data (codebook, báo cáo CSI).</li>
-<li>3GPP TS 38.213: Physical layer procedures for control (beam management, beam failure recovery).</li>
-<li>3GPP TS 38.211: Physical channels and modulation (antenna port, precoding).</li>
+<li>3GPP TS 38.211: Physical channels and modulation (antenna port, layer mapping, precoding, DMRS).</li>
+<li>3GPP TS 38.214: Physical layer procedures for data (codebook Type I và Type II, báo cáo CSI, QCL và TCI state, PUSCH codebook và non-codebook).</li>
+<li>3GPP TS 38.213: Physical layer procedures for control (beam failure recovery).</li>
+<li>3GPP TR 38.802: Study on New Radio access technology; Physical layer aspects (các thủ tục P-1, P-2, P-3).</li>
+<li><a href="https://www.itecspec.com/3gpp/21.915/s/5.5.4.4">3GPP TR 21.915 (Release 15 description), mục MIMO</a>: số layer tối đa cho SU-MIMO và MU-MIMO.</li>
+<li><a href="https://3gpp.org/FTP/tsg_ran/WG1_RL1/TSGR1_109-e/Inbox/drafts/9.1.2/ROUND%201/DRAFT%20R1-2203889%20Rel-18%20MIMO%20CSI%20Round%201%20-%20V00_Mod.docx">3GPP RAN1 #109-e, R1-2203889: Rel-18 MIMO CSI</a>: tóm tắt các codebook Type II qua Rel-15, Rel-16, Rel-17 và phạm vi CJT của Rel-18.</li>
+<li><a href="https://arxiv.org/pdf/1609.05078">A. F. Molisch et al., Hybrid Beamforming for Massive MIMO: A Survey</a>: lý do và các cấu trúc của beamforming lai.</li>
+<li><a href="https://arxiv.org/pdf/1604.05151">W. B. Abbas, M. Zorzi, Towards an Appropriate Receiver Beamforming Scheme for Millimeter Wave Communication: A Power Consumption Based Comparison</a>: so sánh điện năng giữa beamforming số, tương tự và lai.</li>
 </ul>
 
 
@@ -12778,7 +13258,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 6, 2026 14:19:19 UTC">November 6, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 7, 2026 05:17:16 UTC">November 7, 2026</span>
   </span>
 
     
