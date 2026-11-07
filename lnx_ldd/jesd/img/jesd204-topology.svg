@@ -1,0 +1,69 @@
+<svg role="img" viewBox="0 0 960 470" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+<title>Hệ thống JESD204 trên FPGA SoC: clock chip cấp device clock và SYSREF; converter nối với FPGA qua các lane nối tiếp; trong FPGA có PHY, link layer và transport layer; mỗi khối có một driver Linux, các driver phối hợp qua JESD204 FSM framework theo topology khai báo trong device tree</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker><marker id="p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a23b72"/></marker></defs>
+<rect x="0" y="0" width="960" height="470" rx="8" fill="#ffffff"/>
+<rect x="10" y="10" width="940" height="450" rx="10" fill="#f6f8fb" stroke="#c9d3e3"/>
+<text x="30" y="38" font-size="15" font-weight="700" fill="#1d4278">JESD204 trên FPGA SoC: phần cứng và driver Linux</text>
+<text x="30" y="57" font-size="10.5" fill="#666">Ví dụ đường thu (ADC); đường phát (DAC) đối xứng. Tên driver theo cây kernel của Analog Devices.</text>
+<text x="30" y="92" font-size="11.5" text-anchor="start" fill="#1d4278" font-weight="700">Phần cứng</text>
+<text x="30" y="312" font-size="11.5" text-anchor="start" fill="#1d4278" font-weight="700">Driver Linux</text>
+<rect x="40" y="110" width="150" height="60" rx="6" fill="#a23b72" fill-opacity="0.15" stroke="#a23b72" stroke-width="1.4"/>
+<text x="115.0" y="137.0" font-size="10.5" text-anchor="middle" fill="#a23b72" font-weight="700">Clock chip</text>
+<text x="115.0" y="151.0" font-size="8.8" text-anchor="middle" fill="#555">device clock, SYSREF</text>
+<rect x="250" y="190" width="150" height="64" rx="6" fill="#b7791f" fill-opacity="0.15" stroke="#b7791f" stroke-width="1.4"/>
+<text x="325.0" y="219.0" font-size="10.5" text-anchor="middle" fill="#b7791f" font-weight="700">Converter</text>
+<text x="325.0" y="233.0" font-size="8.8" text-anchor="middle" fill="#555">ADC trong transceiver</text>
+<rect x="460" y="100" width="470" height="170" rx="8" fill="#1d4278" fill-opacity="0.04" stroke="#1d4278" stroke-dasharray="5 4"/>
+<text x="695" y="118" font-size="10.5" text-anchor="middle" fill="#1d4278" font-weight="700">FPGA (hoặc FPGA SoC)</text>
+<rect x="475" y="190" width="130" height="64" rx="6" fill="#555" fill-opacity="0.12" stroke="#555" stroke-width="1.4"/>
+<text x="540.0" y="219.0" font-size="10.5" text-anchor="middle" fill="#555" font-weight="700">PHY</text>
+<text x="540.0" y="233.0" font-size="8.8" text-anchor="middle" fill="#555">GT transceiver, PLL</text>
+<rect x="625" y="190" width="130" height="64" rx="6" fill="#1d4278" fill-opacity="0.15" stroke="#1d4278" stroke-width="1.4"/>
+<text x="690.0" y="219.0" font-size="10.5" text-anchor="middle" fill="#1d4278" font-weight="700">Link layer</text>
+<text x="690.0" y="233.0" font-size="8.8" text-anchor="middle" fill="#555">CGS, ILAS, LMFC</text>
+<rect x="775" y="190" width="140" height="64" rx="6" fill="#2f5d9e" fill-opacity="0.15" stroke="#2f5d9e" stroke-width="1.4"/>
+<text x="845.0" y="219.0" font-size="10.5" text-anchor="middle" fill="#2f5d9e" font-weight="700">Transport layer</text>
+<text x="845.0" y="233.0" font-size="8.8" text-anchor="middle" fill="#555">ghép, tách mẫu</text>
+<text x="845" y="150" font-size="9" text-anchor="middle" fill="#555">tới DMA / xử lý số</text>
+<line x1="845" y1="190" x2="845" y2="158" stroke="#555" stroke-width="1.4" marker-end="url(#a)"/>
+<line x1="400" y1="210" x2="473" y2="210" stroke="#b7791f" stroke-width="1.8" marker-end="url(#a)"/>
+<line x1="400" y1="218" x2="473" y2="218" stroke="#b7791f" stroke-width="1.8" marker-end="url(#a)"/>
+<line x1="400" y1="226" x2="473" y2="226" stroke="#b7791f" stroke-width="1.8" marker-end="url(#a)"/>
+<line x1="400" y1="234" x2="473" y2="234" stroke="#b7791f" stroke-width="1.8" marker-end="url(#a)"/>
+<text x="430" y="204" font-size="9" text-anchor="middle" fill="#b7791f" font-weight="700">L lane</text>
+<line x1="605" y1="222" x2="623" y2="222" stroke="#555" stroke-width="1.4" marker-end="url(#a)"/>
+<line x1="755" y1="222" x2="773" y2="222" stroke="#555" stroke-width="1.4" marker-end="url(#a)"/>
+<line x1="190" y1="140" x2="325" y2="188" stroke="#a23b72" stroke-width="1.3" marker-end="url(#p)"/>
+<polyline points="190,128 540,128 540,188" fill="none" stroke="#a23b72" stroke-width="1.3" marker-end="url(#p)"/>
+<text x="355" y="122" font-size="9" text-anchor="middle" fill="#a23b72" font-weight="700">device clock + SYSREF</text>
+<polyline points="540,128 690,128 690,188" fill="none" stroke="#a23b72" stroke-width="1.3" marker-end="url(#p)"/>
+<rect x="40" y="370" width="890" height="34" rx="6" fill="#1d4278" fill-opacity="0.1" stroke="#1d4278"/>
+<text x="485" y="392" font-size="10" text-anchor="middle" fill="#1d4278" font-weight="700">JESD204 FSM framework: chạy các trạng thái theo thứ tự trên mọi driver của topology, phát SYSREF, phân phối tham số link</text>
+<rect x="40" y="318" width="150" height="40" rx="6" fill="#a23b72" fill-opacity="0.12" stroke="#a23b72" stroke-width="1.4"/>
+<text x="115.0" y="335.0" font-size="10" text-anchor="middle" fill="#a23b72" font-weight="700">Driver clock chip</text>
+<text x="115.0" y="349.0" font-size="8.8" text-anchor="middle" fill="#555">CCF, SPI</text>
+<line x1="115.0" y1="358" x2="115.0" y2="368" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+<rect x="250" y="318" width="150" height="40" rx="6" fill="#b7791f" fill-opacity="0.12" stroke="#b7791f" stroke-width="1.4"/>
+<text x="325.0" y="335.0" font-size="10" text-anchor="middle" fill="#b7791f" font-weight="700">Driver converter</text>
+<text x="325.0" y="349.0" font-size="8.8" text-anchor="middle" fill="#555">IIO, SPI</text>
+<line x1="325.0" y1="358" x2="325.0" y2="368" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+<rect x="475" y="318" width="130" height="40" rx="6" fill="#555" fill-opacity="0.12" stroke="#555" stroke-width="1.4"/>
+<text x="540.0" y="335.0" font-size="10" text-anchor="middle" fill="#555" font-weight="700">axi_adxcvr</text>
+<text x="540.0" y="349.0" font-size="8.8" text-anchor="middle" fill="#555">PHY</text>
+<line x1="540.0" y1="358" x2="540.0" y2="368" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+<rect x="625" y="318" width="130" height="40" rx="6" fill="#1d4278" fill-opacity="0.12" stroke="#1d4278" stroke-width="1.4"/>
+<text x="690.0" y="335.0" font-size="10" text-anchor="middle" fill="#1d4278" font-weight="700">axi_jesd204_rx</text>
+<text x="690.0" y="349.0" font-size="8.8" text-anchor="middle" fill="#555">link layer</text>
+<line x1="690.0" y1="358" x2="690.0" y2="368" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+<rect x="775" y="318" width="140" height="40" rx="6" fill="#2f5d9e" fill-opacity="0.12" stroke="#2f5d9e" stroke-width="1.4"/>
+<text x="845.0" y="335.0" font-size="10" text-anchor="middle" fill="#2f5d9e" font-weight="700">Driver transport</text>
+<text x="845.0" y="349.0" font-size="8.8" text-anchor="middle" fill="#555">IIO, DMA</text>
+<line x1="845.0" y1="358" x2="845.0" y2="368" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+<line x1="115.0" y1="170" x2="115.0" y2="316" stroke="#c9d3e3" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="325.0" y1="254" x2="325.0" y2="316" stroke="#c9d3e3" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="540.0" y1="254" x2="540.0" y2="316" stroke="#c9d3e3" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="690.0" y1="254" x2="690.0" y2="316" stroke="#c9d3e3" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="845.0" y1="254" x2="845.0" y2="316" stroke="#c9d3e3" stroke-width="1.2" stroke-dasharray="3 3"/>
+<text x="485" y="428" font-size="9.5" text-anchor="middle" fill="#555">Topology (thiết bị nào nối với thiết bị nào, link nào) khai báo trong device tree bằng jesd204-device, jesd204-top-device, jesd204-inputs</text>
+<text x="485" y="444" font-size="9.5" text-anchor="middle" fill="#555">Driver converter thường là top device: nó nắm tham số của link (L, M, F, S, K...) và framework phát các tham số này tới các driver còn lại</text>
+</svg>

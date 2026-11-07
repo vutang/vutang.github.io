@@ -26,7 +26,7 @@
     
     
       
-        <title>JESD (WIP) - Vu Tang's Docs</title>
+        <title>JESD204 - Vu Tang's Docs</title>
       
     
     
@@ -72,7 +72,7 @@
     
   
 <meta property="og:type" content="website">
-<meta property="og:title" content="JESD (WIP) - Vu Tang's Docs">
+<meta property="og:title" content="JESD204 - Vu Tang's Docs">
 <meta property="og:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
 <meta property="og:image" content="https://note.vutang.dev/assets/images/social/lnx_ldd/jesd/jesd.png">
 <meta property="og:image:type" content="image/png">
@@ -80,7 +80,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://note.vutang.dev/lnx_ldd/jesd/jesd/">
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:title" content="JESD (WIP) - Vu Tang's Docs">
+<meta property="twitter:title" content="JESD204 - Vu Tang's Docs">
 <meta property="twitter:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
 <meta property="twitter:image" content="https://note.vutang.dev/assets/images/social/lnx_ldd/jesd/jesd.png">
 <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
@@ -111,6 +111,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#jesd204-tren-linux" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -140,7 +145,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              JESD (WIP)
+              JESD204
             
           </span>
         </div>
@@ -4435,7 +4440,7 @@
   <span class="md-ellipsis">
     
   
-    CPU Isolation
+    Real-time &amp; CPU Isolation
   
 
     
@@ -4451,11 +4456,39 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    CPU Isolation
+    Real-time &amp; CPU Isolation
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_kernel/cpu_isolation/preempt_rt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Real-time Linux (PREEMPT_RT)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -4906,6 +4939,26 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JESD204
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -4914,7 +4967,7 @@
   <span class="md-ellipsis">
     
   
-    JESD (WIP)
+    JESD204
   
 
     
@@ -4923,6 +4976,185 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#phien-ban-va-subclass" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phiên bản và subclass
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tham-so-cua-link" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tham số của link
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thiet-lap-link" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thiết lập link
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cau-truc-phan-cung-tren-fpga-soc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cấu trúc phần cứng trên FPGA SoC
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ho-tro-trong-kernel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hỗ trợ trong kernel
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jesd204-fsm-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JESD204 FSM framework
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="JESD204 FSM framework">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bai-toan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bài toán
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cac-trang-thai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các trạng thái
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#giao-dien-cho-driver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Giao diện cho driver
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#khai-bao-topology-trong-device-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Khai báo topology trong device tree
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thu-tu-khoi-ong-va-quan-he-voi-clock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thứ tự khởi động và quan hệ với clock
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#go-loi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gỡ lỗi
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lien-quan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Liên quan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài liệu tham khảo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -12703,6 +12935,176 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#phien-ban-va-subclass" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phiên bản và subclass
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tham-so-cua-link" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tham số của link
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thiet-lap-link" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thiết lập link
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cau-truc-phan-cung-tren-fpga-soc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cấu trúc phần cứng trên FPGA SoC
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ho-tro-trong-kernel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hỗ trợ trong kernel
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jesd204-fsm-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        JESD204 FSM framework
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="JESD204 FSM framework">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bai-toan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bài toán
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cac-trang-thai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các trạng thái
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#giao-dien-cho-driver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Giao diện cho driver
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#khai-bao-topology-trong-device-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Khai báo topology trong device tree
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thu-tu-khoi-ong-va-quan-he-voi-clock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thứ tự khởi động và quan hệ với clock
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#go-loi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gỡ lỗi
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lien-quan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Liên quan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài liệu tham khảo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -12717,14 +13119,411 @@
                 
                   
 
+  <nav class="md-tags">
+    
+      
+      
+      
+      
+        <a href="../../../articles/tags/#tag:adc" class="md-tag">adc</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../articles/tags/#tag:dac" class="md-tag">dac</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../articles/tags/#tag:device-tree" class="md-tag">device-tree</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../articles/tags/#tag:fpga" class="md-tag">fpga</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../articles/tags/#tag:jesd204" class="md-tag">jesd204</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../articles/tags/#tag:linux-driver" class="md-tag">linux-driver</a>
+      
+    
+  </nav>
+
 
   
   
 
 
-  <h1>JESD (WIP)</h1>
-
-
+<h1 id="jesd204-tren-linux">JESD204 trên Linux<a class="headerlink" href="#jesd204-tren-linux" title="Permanent link">¶</a></h1>
+<p>JESD204 là chuẩn giao tiếp nối tiếp tốc độ cao của JEDEC giữa bộ chuyển đổi dữ liệu (ADC, DAC, RF transceiver) và thiết bị logic (FPGA, ASIC). Trang này trình bày JESD204 từ góc nhìn của người viết và tích hợp driver Linux, theo thứ tự: các phiên bản và subclass của chuẩn, tham số của một link, quá trình thiết lập link, cấu trúc phần cứng trên FPGA SoC, tình trạng hỗ trợ trong kernel, framework JESD204 FSM của Analog Devices và cách khai báo trong device tree, thứ tự khởi động, rồi cách gỡ lỗi. Vai trò của JESD204 trong Radio Unit (nối khối xử lý số với transceiver, yêu cầu độ trễ xác định cho beamforming) nằm ở <a href="../../../wireless/ru/ru-architecture/#giao-dien-jesd204">Kiến trúc Radio Unit</a>; mã hóa đường truyền 8b/10b và 64b/66b nằm ở <a href="../../../computer_arch/io/line-coding/">Line Coding</a>.</p>
+<h2 id="phien-ban-va-subclass">Phiên bản và subclass<a class="headerlink" href="#phien-ban-va-subclass" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Phiên bản</th>
+<th>Tốc độ lane tối đa</th>
+<th>Mã hóa</th>
+<th>Điểm mới</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JESD204B</td>
+<td>12,5 Gbps</td>
+<td>8b/10b</td>
+<td>Thêm cơ chế độ trễ xác định (deterministic latency) qua subclass 1 và 2</td>
+</tr>
+<tr>
+<td>JESD204C</td>
+<td>32 Gbps</td>
+<td>8b/10b, 64b/66b, 64b/80b</td>
+<td>Tốc độ cao hơn, mã hóa 64 bit hiệu suất cao hơn, sync header thay cho chuỗi đồng bộ bằng ký tự</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Subclass</strong> quy định cách đạt độ trễ xác định, tức độ trễ của link giống nhau sau mỗi lần khởi động và giống nhau giữa các link:</p>
+<table>
+<thead>
+<tr>
+<th>Subclass</th>
+<th>Cơ chế</th>
+<th>Độ trễ xác định</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Không có tín hiệu căn thời gian chung</td>
+<td>Không</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Tín hiệu <strong>SYSREF</strong> phát cùng nguồn với device clock, dùng để căn bộ đếm khung của mọi thiết bị</td>
+<td>Có; dạng phổ biến nhất</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Dùng tín hiệu <code>SYNC~</code> để căn thời gian</td>
+<td>Có, nhưng giới hạn ở tốc độ thấp hơn</td>
+</tr>
+</tbody>
+</table>
+<p>Với mã hóa 64 bit của JESD204C, chỉ có subclass 0 và 1.</p>
+<h2 id="tham-so-cua-link">Tham số của link<a class="headerlink" href="#tham-so-cua-link" title="Permanent link">¶</a></h2>
+<p>Một link JESD204 được mô tả bằng một bộ tham số mà cả hai đầu phải cấu hình giống nhau:</p>
+<table>
+<thead>
+<tr>
+<th>Ký hiệu</th>
+<th>Ý nghĩa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L</td>
+<td>Số lane của link</td>
+</tr>
+<tr>
+<td>M</td>
+<td>Số converter (ví dụ mỗi nhánh I hoặc Q của một ADC phức tính là một converter)</td>
+</tr>
+<tr>
+<td>F</td>
+<td>Số octet mỗi frame trên mỗi lane</td>
+</tr>
+<tr>
+<td>S</td>
+<td>Số mẫu mỗi converter trong một frame</td>
+</tr>
+<tr>
+<td>K</td>
+<td>Số frame trong một multiframe (8b/10b)</td>
+</tr>
+<tr>
+<td>E</td>
+<td>Số multiblock trong một extended multiblock (64b/66b)</td>
+</tr>
+<tr>
+<td>N</td>
+<td>Độ phân giải của converter (số bit có nghĩa)</td>
+</tr>
+<tr>
+<td>N'</td>
+<td>Số bit dành cho mỗi mẫu khi đóng gói, gồm cả bit điều khiển và bit đệm</td>
+</tr>
+<tr>
+<td>CS, CF</td>
+<td>Số bit điều khiển mỗi mẫu, số word điều khiển mỗi frame</td>
+</tr>
+<tr>
+<td>HD</td>
+<td>Chế độ mật độ cao: một mẫu có thể trải trên nhiều lane</td>
+</tr>
+<tr>
+<td>SCR</td>
+<td>Bật hoặc tắt scrambling</td>
+</tr>
+</tbody>
+</table>
+<p>Với mã hóa 8b/10b, tốc độ mỗi lane bằng tốc độ lấy mẫu × M × N' × 10/8 ÷ L. Ví dụ minh họa: tốc độ lấy mẫu 245,76 Msps, M = 4, N' = 16, L = 4 cho tốc độ lane 4,9152 Gbps. Lane rate phải nằm trong dải hỗ trợ của cả converter lẫn transceiver của FPGA, và quyết định tần số tham chiếu cần cấp cho PLL của transceiver.</p>
+<h2 id="thiet-lap-link">Thiết lập link<a class="headerlink" href="#thiet-lap-link" title="Permanent link">¶</a></h2>
+<p>Với mã hóa 8b/10b, link đi qua ba pha:</p>
+<ol>
+<li><strong>Đồng bộ code group (CGS).</strong> Phía thu kéo tín hiệu <code>SYNC~</code> xuống để yêu cầu đồng bộ; phía phát gửi liên tục ký tự K28.5 cho tới khi phía thu khóa được ranh giới ký tự trên mọi lane.</li>
+<li><strong>Căn lane ban đầu (ILAS).</strong> Sau khi <code>SYNC~</code> được nhả, tại ranh giới multiframe kế tiếp, phía phát gửi chuỗi căn lane gồm bốn multiframe, trong đó có dữ liệu cấu hình của link (L, M, F, S, K...). Phía thu dùng chuỗi này để bù lệch thời gian giữa các lane và kiểm tra cấu hình; cấu hình không khớp sẽ làm link dừng ở pha này.</li>
+<li><strong>Dữ liệu.</strong> Link chuyển sang truyền mẫu của converter.</li>
+</ol>
+<p>Ở subclass 1, cả hai đầu dùng SYSREF để căn <strong>bộ đếm multiframe cục bộ</strong> (local multiframe clock, LMFC), chu kỳ bằng F × K octet. Vì mọi thiết bị cùng căn theo SYSREF lấy mẫu bởi cùng một device clock, ranh giới multiframe trùng nhau ở mọi nơi, và độ trễ từ converter tới logic được cố định sau mỗi lần khởi động. Với mã hóa 64b/66b của JESD204C, đồng bộ dựa trên sync header và extended multiblock, SYSREF căn bộ đếm extended multiblock cục bộ (LEMC) thay cho LMFC.</p>
+<p>SYSREF phải được lấy mẫu đúng cạnh của device clock ở mọi thiết bị; vi phạm thời gian setup và hold của SYSREF là nguyên nhân phổ biến làm độ trễ thay đổi sau mỗi lần khởi động dù link vẫn lên.</p>
+<h2 id="cau-truc-phan-cung-tren-fpga-soc">Cấu trúc phần cứng trên FPGA SoC<a class="headerlink" href="#cau-truc-phan-cung-tren-fpga-soc" title="Permanent link">¶</a></h2>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/jesd204-topology.svg" data-desc-position="bottom"><img alt="Hệ thống JESD204 trên FPGA SoC: phần cứng và driver Linux" src="../img/jesd204-topology.svg"></a></p>
+<p><em>Mỗi khối phần cứng có một driver Linux; các driver phối hợp qua JESD204 FSM framework theo topology khai báo trong device tree.</em></p>
+<p>Một hệ thống JESD204 điển hình gồm:</p>
+<table>
+<thead>
+<tr>
+<th>Khối</th>
+<th>Vai trò</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clock chip</td>
+<td>Tạo device clock cho converter và FPGA, tạo SYSREF; thường là chip clock synthesizer hoặc jitter cleaner có ngõ ra SYSREF, xem <a href="../../../lnx_es/clock_synth/clock-synth/">Clock synthesizer và jitter cleaner</a></td>
+</tr>
+<tr>
+<td>Converter</td>
+<td>ADC, DAC hoặc RF transceiver; được cấu hình qua SPI</td>
+</tr>
+<tr>
+<td>PHY</td>
+<td>Transceiver nối tiếp tốc độ cao của FPGA (GT), có PLL riêng tạo clock theo lane rate</td>
+</tr>
+<tr>
+<td>Link layer</td>
+<td>Hiện thực CGS, ILAS, LMFC hoặc LEMC, scrambling, phát hiện lỗi</td>
+</tr>
+<tr>
+<td>Transport layer</td>
+<td>Ghép các mẫu của nhiều converter thành frame (phía phát) hoặc tách ra (phía thu), nối với DMA hoặc khối xử lý số</td>
+</tr>
+</tbody>
+</table>
+<p>Cách chia ba lớp PHY, link layer, transport layer theo đúng mô hình của chuẩn. Trên Radio Unit, transport layer nối với DFE và Low-PHY, xem <a href="../../../wireless/ru/ru-architecture/">Kiến trúc Radio Unit</a>.</p>
+<h2 id="ho-tro-trong-kernel">Hỗ trợ trong kernel<a class="headerlink" href="#ho-tro-trong-kernel" title="Permanent link">¶</a></h2>
+<p>Kernel mainline hiện <strong>không có subsystem JESD204</strong>. Driver cho các khối JESD204 do nhà cung cấp converter và FPGA duy trì trong cây kernel riêng của họ. Trong số đó, Analog Devices có bộ driver đầy đủ nhất trong cây kernel <code>analogdevicesinc/linux</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Khối</th>
+<th>Driver trong cây kernel của Analog Devices</th>
+<th>Kiểu driver</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clock chip</td>
+<td>Driver cho các chip clock của hãng</td>
+<td>Common Clock Framework, giao tiếp SPI</td>
+</tr>
+<tr>
+<td>Converter</td>
+<td>Driver cho từng dòng ADC, DAC, transceiver</td>
+<td>IIO, giao tiếp SPI</td>
+</tr>
+<tr>
+<td>PHY</td>
+<td><code>axi_adxcvr</code></td>
+<td>Platform driver cho IP transceiver của Analog Devices trên FPGA AMD</td>
+</tr>
+<tr>
+<td>Link layer</td>
+<td><code>axi_jesd204_rx</code>, <code>axi_jesd204_tx</code></td>
+<td>Platform driver cho IP link layer</td>
+</tr>
+<tr>
+<td>Điều phối</td>
+<td>JESD204 FSM framework (<code>drivers/jesd204/</code>)</td>
+<td>Framework dùng chung</td>
+</tr>
+</tbody>
+</table>
+<p>Khi dùng các IP và driver này, cần build kernel từ cây của Analog Devices hoặc đưa các driver cần thiết vào cây kernel của dự án, ví dụ qua layer Yocto hoặc dự án Petalinux, xem <a href="../../../lnx_es/tool_chain/petalinux/ptlnx/">Xilinx Petalinux</a> và <a href="../../../lnx_es/tool_chain/yocto/yocto/">Yocto</a>.</p>
+<h2 id="jesd204-fsm-framework">JESD204 FSM framework<a class="headerlink" href="#jesd204-fsm-framework" title="Permanent link">¶</a></h2>
+<h3 id="bai-toan">Bài toán<a class="headerlink" href="#bai-toan" title="Permanent link">¶</a></h3>
+<p>Một link JESD204 chỉ lên được khi nhiều driver độc lập (clock chip, converter, PHY, link layer) thực hiện đúng thứ tự: clock phải ổn định trước khi PLL của PHY khóa, SYSREF phải được phát sau khi mọi thiết bị đã sẵn sàng căn LMFC, converter chỉ bắt đầu gửi dữ liệu khi link layer đã chờ CGS. Với nhiều link hoặc nhiều chip cần đồng bộ với nhau, việc tự sắp thứ tự probe của driver không đủ tin cậy. Framework JESD204 FSM giải quyết bằng một máy trạng thái chung: mỗi driver đăng ký các hàm callback cho những trạng thái nó quan tâm, framework chạy từng trạng thái trên toàn bộ topology rồi mới chuyển sang trạng thái kế tiếp.</p>
+<h3 id="cac-trang-thai">Các trạng thái<a class="headerlink" href="#cac-trang-thai" title="Permanent link">¶</a></h3>
+<p>Theo <code>include/linux/jesd204/jesd204.h</code> trong cây kernel của Analog Devices, các thao tác được gọi theo thứ tự:</p>
+<table>
+<thead>
+<tr>
+<th>Nhóm</th>
+<th>Trạng thái</th>
+<th>Việc thường làm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Khởi tạo</td>
+<td><code>DEVICE_INIT</code>, <code>LINK_INIT</code>, <code>LINK_SUPPORTED</code>, <code>LINK_PRE_SETUP</code></td>
+<td>Đọc cấu hình, kiểm tra tham số link có được hỗ trợ không, tính lane rate và clock cần thiết</td>
+</tr>
+<tr>
+<td>Đồng bộ clock</td>
+<td><code>CLK_SYNC_STAGE1</code> tới <code>CLK_SYNC_STAGE4</code></td>
+<td>Các bước đồng bộ clock và SYSREF giữa nhiều chip</td>
+</tr>
+<tr>
+<td>Thiết lập link</td>
+<td><code>LINK_SETUP</code>, các bước tùy chọn <code>OPT_SETUP_STAGE1</code> tới <code>STAGE5</code></td>
+<td>Cấu hình PHY và link layer theo tham số link</td>
+</tr>
+<tr>
+<td>Bật link</td>
+<td><code>CLOCKS_ENABLE</code>, <code>LINK_ENABLE</code>, <code>LINK_RUNNING</code></td>
+<td>Bật clock, bật link, chờ link chạy</td>
+</tr>
+<tr>
+<td>Sau khi chạy</td>
+<td><code>OPT_POST_SETUP_STAGE1</code> tới <code>STAGE3</code>, <code>OPT_POST_RUNNING_STAGE</code></td>
+<td>Hiệu chỉnh sau khi link đã lên, kiểm tra trạng thái</td>
+</tr>
+</tbody>
+</table>
+<p>Mỗi callback có thể được gọi theo từng thiết bị (<code>per_device</code>) hoặc theo từng link (<code>per_link</code>), và có thể yêu cầu framework phát SYSREF sau khi trạng thái hoàn tất (<code>post_state_sysref</code>). Khi gỡ link, framework chạy ngược các trạng thái với lý do <code>UNINIT</code>.</p>
+<h3 id="giao-dien-cho-driver">Giao diện cho driver<a class="headerlink" href="#giao-dien-cho-driver" title="Permanent link">¶</a></h3>
+<p>Một driver tham gia framework khai báo một <code>struct jesd204_dev_data</code>, gồm mảng <code>state_ops</code> ánh xạ từng trạng thái tới callback, số link tối đa, số lần thử lại, và hàm callback để phát SYSREF nếu thiết bị là nguồn SYSREF. Driver đăng ký bằng <code>devm_jesd204_dev_register()</code>, và thiết bị đứng đầu topology khởi động máy trạng thái bằng <code>jesd204_fsm_start()</code>.</p>
+<p>Tham số của link nằm trong <code>struct jesd204_link</code>: số lane, số converter, octet mỗi frame, frame mỗi multiframe, số multiblock trong extended multiblock, số bit mỗi mẫu, độ phân giải, phiên bản JESD, kiểu mã hóa, subclass, scrambling, chế độ mật độ cao, danh sách lane ID và cấu hình SYSREF. Thiết bị đứng đầu topology (thường là driver converter) điền các tham số này, và framework phát chúng tới mọi thiết bị khác trên link.</p>
+<h3 id="khai-bao-topology-trong-device-tree">Khai báo topology trong device tree<a class="headerlink" href="#khai-bao-topology-trong-device-tree" title="Permanent link">¶</a></h3>
+<p>Topology được khai báo trong device tree bằng các thuộc tính riêng của framework:</p>
+<table>
+<thead>
+<tr>
+<th>Thuộc tính</th>
+<th>Ý nghĩa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>jesd204-device</code></td>
+<td>Đánh dấu node tham gia topology JESD204</td>
+</tr>
+<tr>
+<td><code>#jesd204-cells</code></td>
+<td>Số tham số đi kèm mỗi tham chiếu <code>jesd204-inputs</code></td>
+</tr>
+<tr>
+<td><code>jesd204-top-device = &lt;ID&gt;</code></td>
+<td>Đánh dấu thiết bị đứng đầu một topology, ID phân biệt các topology</td>
+</tr>
+<tr>
+<td><code>jesd204-link-ids</code></td>
+<td>Danh sách link do top device quản lý, theo thứ tự</td>
+</tr>
+<tr>
+<td><code>jesd204-inputs</code></td>
+<td>Tham chiếu tới thiết bị đứng ngay trước nó trên đường link, kèm tham số</td>
+</tr>
+</tbody>
+</table>
+<p>Ví dụ rút gọn theo tài liệu driver AD9172 của Analog Devices, với DAC là top device và nhận dữ liệu từ transport layer trên FPGA:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">dac</span><span class="o">@</span><span class="mi">0</span><span class="cm"> </span><span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="kr">compatible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"adi,ad9172"</span><span class="p">;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="cm">/* ... cấu hình SPI, clock ... */</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">jesd204-device</span><span class="p">;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="o">#</span><span class="n">jesd204-cells</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="n">jesd204-top-device</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="n">jesd204-link-ids</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="n">jesd204-inputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;&amp;</span><span class="na">axi_ad9172_core</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="p">};</span>
+</code></pre></div>
+<p>Các node của transport layer, link layer, PHY và clock chip cũng có <code>jesd204-device</code> và trỏ tới node đứng trước chúng bằng <code>jesd204-inputs</code>, tạo thành một chuỗi mà framework duyệt được. Cách viết device tree nói chung nằm ở <a href="../../../lnx_kernel/devicetree/devicetree/">Device Tree</a>.</p>
+<h2 id="thu-tu-khoi-ong-va-quan-he-voi-clock">Thứ tự khởi động và quan hệ với clock<a class="headerlink" href="#thu-tu-khoi-ong-va-quan-he-voi-clock" title="Permanent link">¶</a></h2>
+<p>Dù có hay không dùng framework, thứ tự đưa một link JESD204 lên luôn theo cùng logic:</p>
+<ol>
+<li>Clock chip được cấu hình và khóa pha; device clock và clock tham chiếu cho PLL của FPGA ổn định. Phía kernel, clock chip thường là provider của Common Clock Framework, xem <a href="../../../lnx_kernel/clk/clk/">Common Clock Framework</a>.</li>
+<li>Converter được cấu hình qua SPI với tham số link, xem <a href="../../spi_dev/spi_dev/">SPI Subsystem</a>.</li>
+<li>PLL của transceiver FPGA khóa theo lane rate.</li>
+<li>SYSREF được phát để căn LMFC hoặc LEMC ở mọi thiết bị (subclass 1).</li>
+<li>Link layer bật, link đi qua CGS và ILAS, chuyển sang truyền dữ liệu.</li>
+<li>Transport layer và DMA bắt đầu chuyển mẫu tới ứng dụng.</li>
+</ol>
+<p>Trên một Radio Unit, các bước này nằm trong chuỗi khởi động lớn hơn: clock khóa pha theo đồng bộ PTP và SyncE trước, rồi tới JESD204, hiệu chỉnh transceiver, và cuối cùng mới bật đường phát, xem <a href="../../../wireless/ru/rf-transceiver/#tac-ong-toi-firmware">RF Transceiver và RF front-end</a>.</p>
+<h2 id="go-loi">Gỡ lỗi<a class="headerlink" href="#go-loi" title="Permanent link">¶</a></h2>
+<p>Driver link layer của Analog Devices xuất trạng thái qua sysfs: link có lên không, tần số link clock và device clock đo được so với giá trị mong đợi, kiểu mã hóa. Hướng dẫn gỡ lỗi của hãng khuyên đọc trạng thái này (công cụ <code>jesd_status</code>, hoặc file <code>status</code> của thiết bị <code>axi-jesd</code> trong <code>/sys/bus/platform/devices/</code>) trước khi đi sâu hơn. Driver PHY có thêm giao diện đọc ghi thanh ghi của IP để kiểm tra trực tiếp.</p>
+<table>
+<thead>
+<tr>
+<th>Triệu chứng</th>
+<th>Nguyên nhân thường gặp</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Không thấy thiết bị JESD204 khi boot</td>
+<td>Địa chỉ của IP trong device tree không khớp với thiết kế FPGA</td>
+</tr>
+<tr>
+<td>PLL của transceiver không khóa</td>
+<td>Thiếu hoặc sai tần số clock tham chiếu từ clock chip</td>
+</tr>
+<tr>
+<td>Link kẹt ở CGS</td>
+<td>Lane rate không khớp giữa hai đầu, sai ánh xạ lane hoặc đảo cực tính lane trên mạch in, tín hiệu <code>SYNC~</code> không tới</td>
+</tr>
+<tr>
+<td>Link kẹt ở ILAS</td>
+<td>Tham số link (L, M, F, S, K...) cấu hình khác nhau ở hai đầu</td>
+</tr>
+<tr>
+<td>Link lên nhưng độ trễ thay đổi sau mỗi lần khởi động</td>
+<td>SYSREF bị lấy mẫu sai cạnh do vi phạm setup và hold, hoặc subclass không phải 1</td>
+</tr>
+<tr>
+<td>Link chạy nhưng dữ liệu sai</td>
+<td>Sai ánh xạ mẫu ở transport layer, sai định dạng N' hoặc thứ tự I/Q</td>
+</tr>
+</tbody>
+</table>
+<p>Đường mạch của các lane là cặp vi sai tốc độ cao; lỗi về layout như lệch chiều dài hay đảo cực tính chỉ lộ ra khi link không lên, xem <a href="../../../hw_design/pcb/differential-pair/">Differential Pair</a>.</p>
+<h2 id="lien-quan">Liên quan<a class="headerlink" href="#lien-quan" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="../../../wireless/ru/ru-architecture/#giao-dien-jesd204">Kiến trúc Radio Unit</a> (Wireless): vai trò của JESD204 trong RU, yêu cầu độ trễ xác định cho beamforming.</li>
+<li><a href="../../../wireless/ru/rf-transceiver/">RF Transceiver và RF front-end</a> (Wireless): transceiver tích hợp ở đầu kia của link, thứ tự khởi động RU.</li>
+<li><a href="../../../computer_arch/io/line-coding/">Line Coding</a> (Chip &amp; SoC): mã hóa 8b/10b và 64b/66b.</li>
+<li><a href="../../../lnx_es/clock_synth/clock-synth/">Clock synthesizer và jitter cleaner</a> (Embedded): chip tạo device clock và SYSREF.</li>
+<li><a href="../../../lnx_kernel/clk/clk/">Common Clock Framework</a>, <a href="../../spi_dev/spi_dev/">SPI Subsystem</a>, <a href="../../../lnx_kernel/devicetree/devicetree/">Device Tree</a>: các framework mà driver JESD204 dựa vào.</li>
+<li><a href="../../../lnx_es/tool_chain/petalinux/ptlnx/">Xilinx Petalinux</a> (Embedded): build Linux cho FPGA SoC.</li>
+<li><a href="../../../hw_design/pcb/differential-pair/">Differential Pair</a> (Hardware Design): layout cặp vi sai cho các lane tốc độ cao.</li>
+</ul>
+<h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
+<ul>
+<li>JEDEC JESD204B (2011) và JESD204C (2017): Serial Interface for Data Converters.</li>
+<li><a href="https://analogdevicesinc.github.io/linux/drivers/jesd204/jesd204-fsm-framework.html">Analog Devices Linux: JESD204 (FSM) framework</a>: mục đích, callback theo trạng thái, các thuộc tính device tree.</li>
+<li><a href="https://github.com/analogdevicesinc/linux/blob/main/include/linux/jesd204/jesd204.h">Cây kernel của Analog Devices: <code>include/linux/jesd204/jesd204.h</code></a> và <a href="https://github.com/analogdevicesinc/linux/tree/main/drivers/jesd204"><code>drivers/jesd204/</code></a>: danh sách trạng thái, <code>struct jesd204_link</code>, <code>struct jesd204_dev_data</code>, API đăng ký.</li>
+<li><a href="https://analogdevicesinc.github.io/linux/drivers/jesd204/axi_jesd204_tx.html">Analog Devices Linux: AXI JESD204 TX</a>, <a href="https://wiki.analog.com/resources/tools-software/linux-drivers/jesd204/axi_jesd204_rx">AXI JESD204 RX</a>, <a href="https://analogdevicesinc.github.io/linux/drivers/jesd204/axi_adxcvr.html">AXI ADXCVR</a>: driver link layer và PHY, thuộc tính sysfs.</li>
+<li><a href="https://wiki.analog.com/resources/tools-software/linux-drivers/iio-dds/ad9172">Analog Devices wiki: AD9172 Linux driver</a>: ví dụ device tree với JESD204 FSM.</li>
+<li><a href="https://analogdevicesinc.github.io/hdl/library/jesd204/troubleshoot/troubleshoot_jesd204_tx.html">Analog Devices HDL: Troubleshooting JESD204 TX</a>: quy trình và các lỗi thường gặp.</li>
+<li><a href="https://ez.analog.com/ez-blogs/b/engineering-mind/posts/jesd204-bring-up-from-link-up-to-data-integrity">Analog Devices: JESD204 bring-up, from link-up to data integrity</a>: CGS, ILAS, các ký tự điều khiển, SYSREF.</li>
+<li><a href="https://www.intel.com/content/www/us/en/docs/programmable/683530/current.html">Intel: JESD204B FPGA IP Design Example User Guide</a>: định nghĩa tham số link, công thức lane rate và chu kỳ LMFC.</li>
+<li><a href="https://analogdevicesinc.github.io/pyadi-jif/defs.html">Analog Devices pyadi-jif: JESD204 definitions</a>: định nghĩa K, N, Np và chu kỳ LMFC.</li>
+</ul>
 
 
 
@@ -12747,7 +13546,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 7, 2019 08:38:56 UTC">May 7, 2019</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 7, 2026 07:31:48 UTC">November 7, 2026</span>
   </span>
 
     

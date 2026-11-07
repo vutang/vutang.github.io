@@ -4429,7 +4429,7 @@
   <span class="md-ellipsis">
     
   
-    CPU Isolation
+    Real-time &amp; CPU Isolation
   
 
     
@@ -4445,11 +4445,39 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    CPU Isolation
+    Real-time &amp; CPU Isolation
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lnx_kernel/cpu_isolation/preempt_rt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Real-time Linux (PREEMPT_RT)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -4893,7 +4921,7 @@
   <span class="md-ellipsis">
     
   
-    JESD (WIP)
+    JESD204
   
 
     
@@ -7934,6 +7962,17 @@
     <span class="md-ellipsis">
       
         Điều khiển và quản lý
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phan-mem-nhung-tren-ru" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phần mềm nhúng trên RU
       
     </span>
   </a>
@@ -13193,6 +13232,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#phan-mem-nhung-tren-ru" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phần mềm nhúng trên RU
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#nguon-va-tan-nhiet" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -13323,7 +13373,7 @@
 
 
 <h1 id="kien-truc-radio-unit">Kiến trúc Radio Unit<a class="headerlink" href="#kien-truc-radio-unit" title="Permanent link">¶</a></h1>
-<p>Radio Unit (RU) là phần của trạm gốc nằm sát anten, chuyển dữ liệu số từ fronthaul thành sóng vô tuyến và ngược lại. Trang này trình bày RU ở góc độ chức năng và cấu trúc khối, theo thứ tự: vị trí của RU trong gNB, sơ đồ khối tổng thể, từng nhóm khối (xử lý số, transceiver, RF front-end), các khối hỗ trợ (clock, điều khiển, nguồn), cách phân loại RU, nền tảng phần cứng thường dùng và các thông số đọc được trong datasheet. Hai khối xử lý số quan trọng nhất của đường phát là CFR và DPD được trình bày riêng ở <a href="../dfe-cfr-dpd/">DFE: CFR và DPD</a>.</p>
+<p>Radio Unit (RU) là phần của trạm gốc nằm sát anten, chuyển dữ liệu số từ fronthaul thành sóng vô tuyến và ngược lại. Trang này trình bày RU ở góc độ chức năng và cấu trúc khối, theo thứ tự: vị trí của RU trong gNB, sơ đồ khối tổng thể, từng nhóm khối (xử lý số, transceiver, RF front-end), các khối hỗ trợ (clock, điều khiển, phần mềm nhúng, nguồn), cách phân loại RU, nền tảng phần cứng thường dùng và các thông số đọc được trong datasheet. Hai khối xử lý số quan trọng nhất của đường phát là CFR và DPD được trình bày riêng ở <a href="../dfe-cfr-dpd/">DFE: CFR và DPD</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Về nguồn</p>
 <p>Trang này mô tả cấu trúc chung, tổng hợp từ đặc tả O-RAN, 3GPP và tài liệu của các nhà cung cấp linh kiện nêu ở cuối trang. Thiết kế cụ thể của từng RU thương mại (phân chia khối, linh kiện, thuật toán) khác nhau giữa các nhà sản xuất và thường không được công bố.</p>
@@ -13444,6 +13494,55 @@
 <h3 id="ieu-khien-va-quan-ly">Điều khiển và quản lý<a class="headerlink" href="#ieu-khien-va-quan-ly" title="Permanent link">¶</a></h3>
 <p>RU có một CPU nhúng, thường là lõi Arm trong SoC hoặc FPGA SoC, chạy Linux và phần mềm quản lý. Phần mềm này hiện thực M-plane (NETCONF/YANG): nhận cấu hình từ DU hoặc hệ thống quản lý, báo khả năng của RU, cập nhật phần mềm, báo lỗi và cảnh báo, xem <a href="../../fronthaul/open-fronthaul/#m-plane">M-plane</a>. Bên dưới, phần mềm điều khiển khởi tạo transceiver, thiết lập link JESD204, chạy hiệu chỉnh và quản lý DPD (trong một số transceiver, phần này chạy trên lõi xử lý riêng của chip), giám sát nhiệt độ và công suất.</p>
 <p>Thứ tự khởi động điển hình của phần cứng là: clock khóa pha, link JESD204 lên, transceiver được hiệu chỉnh, sau đó mới bật đường phát, và RU chỉ phát khi đã đồng bộ PTP đạt yêu cầu. Thứ tự này mang tính tổng quát; trình tự cụ thể do thiết kế của từng RU và từng transceiver quy định.</p>
+<h3 id="phan-mem-nhung-tren-ru">Phần mềm nhúng trên RU<a class="headerlink" href="#phan-mem-nhung-tren-ru" title="Permanent link">¶</a></h3>
+<p>Nhìn từ phía phần mềm, CPU của RU là một hệ Linux nhúng. Bảng dưới xếp các lớp phần mềm từ dưới lên và chỉ tới trang trình bày từng lớp ở các tab Embedded và Linux Kernel:</p>
+<table>
+<thead>
+<tr>
+<th>Lớp</th>
+<th>Nội dung trên RU</th>
+<th>Trang liên quan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nền tảng và boot</td>
+<td>FPGA SoC (ví dụ dòng Zynq) hoặc SoC có lõi Arm; bootloader nạp bitstream FPGA và kernel</td>
+<td><a href="../../../projects/zynq/zynq/">Zynq</a>, <a href="../../../lnx_es/bootloader/u-boot/">U-Boot</a></td>
+</tr>
+<tr>
+<td>Build hệ thống</td>
+<td>Build kernel, rootfs và ứng dụng cho FPGA SoC</td>
+<td><a href="../../../lnx_es/tool_chain/petalinux/ptlnx/">Xilinx Petalinux</a>, <a href="../../../lnx_es/tool_chain/yocto/yocto/">Yocto</a></td>
+</tr>
+<tr>
+<td>Mô tả phần cứng</td>
+<td>Khai báo IP trên FPGA, transceiver, clock chip, cảm biến</td>
+<td><a href="../../../lnx_kernel/devicetree/devicetree/">Device Tree</a></td>
+</tr>
+<tr>
+<td>Driver</td>
+<td>Cấu hình transceiver và clock chip qua SPI, module SFP và cảm biến nhiệt qua I2C, cây clock, link JESD204</td>
+<td><a href="../../../lnx_ldd/spi_dev/spi_dev/">SPI Subsystem</a>, <a href="../../../lnx_ldd/i2c/i2c/">I2C Subsystem</a>, <a href="../../../lnx_kernel/clk/clk/">Common Clock Framework</a>, <a href="../../../lnx_ldd/jesd/jesd/">JESD204 trên Linux</a></td>
+</tr>
+<tr>
+<td>Clock và đồng bộ</td>
+<td>Khôi phục tần số từ SyncE, PTP client, DPLL lọc nhiễu pha, bộ dao động giữ thời gian khi mất đồng bộ</td>
+<td><a href="../../../lnx_es/linuxptp/linuxptp/">Linux PTP</a>, <a href="../../../lnx_es/dpll/dpll/">DPLL và đồng bộ mạng</a>, <a href="../../../lnx_es/oscillator/oscillator/">Thạch anh và bộ dao động</a></td>
+</tr>
+<tr>
+<td>Ứng dụng</td>
+<td>M-plane (NETCONF/YANG), điều khiển transceiver, hiệu chỉnh, giám sát, cảnh báo</td>
+<td><a href="../../fronthaul/open-fronthaul/#m-plane">Open Fronthaul</a></td>
+</tr>
+<tr>
+<td>Cập nhật</td>
+<td>Cập nhật phần mềm RU do M-plane khởi tạo</td>
+<td><a href="../../../lnx_es/iot/device_mgmt/ota/">OTA Update</a></td>
+</tr>
+</tbody>
+</table>
+<p>Vì phần xử lý theo symbol nằm trong khối xử lý số (FPGA, ASIC hoặc transceiver), CPU của RU chủ yếu làm việc điều khiển và quản lý, nên yêu cầu real-time đối với Linux trên RU thấp hơn nhiều so với DU, nơi L1 và L2 chạy trên CPU với deadline theo slot.</p>
 <h3 id="nguon-va-tan-nhiet">Nguồn và tản nhiệt<a class="headerlink" href="#nguon-va-tan-nhiet" title="Permanent link">¶</a></h3>
 <p>Thiết bị viễn thông thường dùng nguồn -48 V DC (giao diện nguồn được quy định trong ETSI EN 300 132-2), RU chuyển đổi thành các rail nguồn cho mạch số, transceiver và PA. Phần lớn RU ngoài trời được tản nhiệt thụ động qua vỏ nhôm có cánh tản nhiệt. Vì PA tiêu thụ phần lớn điện năng, nhiệt độ của PA ảnh hưởng trực tiếp tới hiệu suất và độ tuyến tính, nên DPD phải theo dõi được thay đổi đặc tính PA theo nhiệt.</p>
 <h2 id="phan-loai-ru">Phân loại RU<a class="headerlink" href="#phan-loai-ru" title="Permanent link">¶</a></h2>
@@ -13563,6 +13662,8 @@
 <p>Khi so sánh hai RU, cần chú ý điều kiện đo của từng thông số. Ví dụ điện năng tiêu thụ ở 100% tải và ở 30% tải khác nhau nhiều, và IBW chỉ có ý nghĩa cùng với số sóng mang và OBW.</p>
 <h2 id="lien-quan">Liên quan<a class="headerlink" href="#lien-quan" title="Permanent link">¶</a></h2>
 <ul>
+<li><a href="../../../lnx_ldd/jesd/jesd/">JESD204 trên Linux</a> (Linux Kernel): driver và framework để đưa link JESD204 lên trên FPGA SoC.</li>
+<li><a href="../../../lnx_es/dpll/dpll/">DPLL và đồng bộ mạng</a> (Embedded): DPLL khôi phục và lọc clock từ SyncE, PTP trong RU.</li>
 <li><a href="../rf-transceiver/">RF Transceiver và RF front-end</a>: trộn tần, ba kiến trúc thu phát, khiếm khuyết RF, ngân sách nhiễu và hiệu chỉnh trong transceiver.</li>
 <li><a href="../../baseband/du-cu-architecture/">Kiến trúc DU và CU</a>: phần cứng baseband phía bên kia của fronthaul.</li>
 <li><a href="../dfe-cfr-dpd/">DFE: CFR và DPD</a>: hai khối xử lý số quan trọng nhất của đường phát trong RU.</li>
@@ -13612,7 +13713,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 7, 2026 06:37:15 UTC">November 7, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 7, 2026 07:31:48 UTC">November 7, 2026</span>
   </span>
 
     
