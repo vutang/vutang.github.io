@@ -26,7 +26,7 @@
     
     
       
-        <title>MAC Scheduler (WIP) - Vu Tang's Docs</title>
+        <title>MAC Scheduler - Vu Tang's Docs</title>
       
     
     
@@ -72,7 +72,7 @@
     
   
 <meta property="og:type" content="website">
-<meta property="og:title" content="MAC Scheduler (WIP) - Vu Tang's Docs">
+<meta property="og:title" content="MAC Scheduler - Vu Tang's Docs">
 <meta property="og:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
 <meta property="og:image" content="https://note.vutang.dev/assets/images/social/wireless/air-interface/mac-scheduler.png">
 <meta property="og:image:type" content="image/png">
@@ -80,7 +80,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://note.vutang.dev/wireless/air-interface/mac-scheduler/">
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:title" content="MAC Scheduler (WIP) - Vu Tang's Docs">
+<meta property="twitter:title" content="MAC Scheduler - Vu Tang's Docs">
 <meta property="twitter:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
 <meta property="twitter:image" content="https://note.vutang.dev/assets/images/social/wireless/air-interface/mac-scheduler.png">
 <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
@@ -145,7 +145,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              MAC Scheduler (WIP)
+              MAC Scheduler
             
           </span>
         </div>
@@ -7453,7 +7453,7 @@
   <span class="md-ellipsis">
     
   
-    MAC Scheduler (WIP)
+    MAC Scheduler
   
 
     
@@ -7471,7 +7471,7 @@
   <span class="md-ellipsis">
     
   
-    MAC Scheduler (WIP)
+    MAC Scheduler
   
 
     
@@ -7495,6 +7495,105 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#vi-tri-cua-scheduler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vị trí của scheduler
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vong-lap-theo-slot-va-giao-dien-voi-l1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vòng lặp theo slot và giao diện với L1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#au-vao-cua-scheduler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Đầu vào của scheduler
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quan-he-thoi-gian-k0-k1-k2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quan hệ thời gian K0, K1, K2
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cap-phat-tai-nguyen-va-harq" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cấp phát tài nguyên và HARQ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thuat-toan-lap-lich" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thuật toán lập lịch
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cap-phat-khong-can-yeu-cau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cấp phát không cần yêu cầu
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chuc-nang-uong-len-i-kem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chức năng đường lên đi kèm
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rang-buoc-khi-hien-thuc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ràng buộc khi hiện thực
+      
+    </span>
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#lien-quan" class="md-nav__link">
@@ -12641,6 +12740,105 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#vi-tri-cua-scheduler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vị trí của scheduler
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vong-lap-theo-slot-va-giao-dien-voi-l1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vòng lặp theo slot và giao diện với L1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#au-vao-cua-scheduler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Đầu vào của scheduler
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quan-he-thoi-gian-k0-k1-k2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quan hệ thời gian K0, K1, K2
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cap-phat-tai-nguyen-va-harq" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cấp phát tài nguyên và HARQ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thuat-toan-lap-lich" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thuật toán lập lịch
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cap-phat-khong-can-yeu-cau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cấp phát không cần yêu cầu
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chuc-nang-uong-len-i-kem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chức năng đường lên đi kèm
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rang-buoc-khi-hien-thuc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ràng buộc khi hiện thực
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#lien-quan" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -12722,34 +12920,257 @@
 
 
 <h1 id="mac-scheduler">MAC Scheduler<a class="headerlink" href="#mac-scheduler" title="Permanent link">¶</a></h1>
-<p>Trang này trình bày scheduler của lớp MAC trong DU, khối quyết định mỗi slot UE nào được cấp tài nguyên nào với MCS nào. Thứ tự trình bày dự kiến: vị trí của scheduler trong DU và vòng lặp theo slot, đầu vào của scheduler (CSI, BSR, SR, HARQ, QoS), cấp phát tài nguyên đường xuống và đường lên, các thuật toán lập lịch, timing advance và điều khiển công suất, rồi các ràng buộc khi hiện thực trong phần mềm DU.</p>
-<div class="admonition todo">
-<p class="admonition-title">Trang đang được viết</p>
-<p>Nội dung dự kiến:</p>
+<p>Scheduler là khối trong lớp MAC của gNB-DU quyết định, cho mỗi cell và mỗi slot, UE nào được truyền, trên tài nguyên nào, với số layer, precoder và MCS nào. Mọi tài nguyên vô tuyến ở trạng thái kết nối đều do scheduler cấp, nên scheduler quyết định phần lớn thông lượng, độ trễ và tính công bằng mà người dùng cảm nhận. 3GPP đặc tả tín hiệu và thủ tục mà scheduler dùng (DCI, HARQ, BSR, CSI) nhưng không đặc tả thuật toán lập lịch; thuật toán là phần mềm riêng của nhà sản xuất. Trang này trình bày theo thứ tự: vị trí của scheduler trong DU, vòng lặp theo slot và giao diện với L1, các đầu vào, quan hệ thời gian K0, K1, K2, cấp phát tài nguyên và HARQ, các thuật toán lập lịch, cơ chế cấp phát không cần yêu cầu, các chức năng đường lên đi kèm, rồi các ràng buộc khi hiện thực. Luồng bản tin SR, BSR và HARQ giữa UE và gNB được trình bày ở <a href="../connected-mobility/#lap-lich-va-truyen-du-lieu">Connected Mode &amp; Mobility</a>.</p>
+<h2 id="vi-tri-cua-scheduler">Vị trí của scheduler<a class="headerlink" href="#vi-tri-cua-scheduler" title="Permanent link">¶</a></h2>
+<p>Scheduler nằm trong MAC của DU, giữa RLC phía trên và L1 phía dưới. Phía trên, scheduler biết lượng dữ liệu đang chờ trong từng kênh logic của từng UE ở đường xuống, và lấy dữ liệu từ RLC khi tạo transport block. Phía dưới, scheduler gửi cho L1 mô tả đầy đủ những gì cần phát và thu trong mỗi slot, rồi nhận lại kết quả giải mã và các phép đo.</p>
+<p>Thông thường mỗi cell có một instance scheduler, gồm hai phần đường xuống và đường lên chạy song song. Khi có carrier aggregation hoặc dual connectivity, các scheduler của nhiều cell phải phối hợp với nhau, ví dụ để chia dữ liệu của một UE giữa các sóng mang. Bản thân CU không lập lịch theo slot; CU chỉ quyết định thiết lập bearer, QoS flow và chính sách, xem <a href="../../baseband/du-cu-architecture/#phan-chia-chuc-nang-va-yeu-cau-thoi-gian">Kiến trúc DU và CU</a>.</p>
+<h2 id="vong-lap-theo-slot-va-giao-dien-voi-l1">Vòng lặp theo slot và giao diện với L1<a class="headerlink" href="#vong-lap-theo-slot-va-giao-dien-voi-l1" title="Permanent link">¶</a></h2>
+<p>Giữa MAC và L1, phần lớn hệ thống dùng 5G FAPI của Small Cell Forum (SCF222). FAPI chia thành phần cấu hình (P5, ví dụ cấu hình cell, bắt đầu và dừng L1) và phần dữ liệu theo slot (P7). Các bản tin P7 chính:</p>
+<table>
+<thead>
+<tr>
+<th>Bản tin</th>
+<th>Hướng</th>
+<th>Nội dung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SLOT.indication</code></td>
+<td>L1 → MAC</td>
+<td>Báo slot mới bắt đầu, là nhịp của toàn bộ vòng lặp</td>
+</tr>
+<tr>
+<td><code>DL_TTI.request</code></td>
+<td>MAC → L1</td>
+<td>Những gì phát ở đường xuống trong slot: PDCCH, PDSCH, SSB, CSI-RS</td>
+</tr>
+<tr>
+<td><code>TX_Data.request</code></td>
+<td>MAC → L1</td>
+<td>Nội dung các transport block của PDSCH</td>
+</tr>
+<tr>
+<td><code>UL_TTI.request</code></td>
+<td>MAC → L1</td>
+<td>Những gì cần thu ở đường lên: PUSCH, PUCCH, PRACH, SRS</td>
+</tr>
+<tr>
+<td><code>UL_DCI.request</code></td>
+<td>MAC → L1</td>
+<td>PDCCH mang DCI cấp phát đường lên</td>
+</tr>
+<tr>
+<td><code>RX_Data.indication</code>, <code>CRC.indication</code></td>
+<td>L1 → MAC</td>
+<td>Dữ liệu PUSCH đã giải mã và kết quả kiểm tra CRC</td>
+</tr>
+<tr>
+<td><code>UCI.indication</code></td>
+<td>L1 → MAC</td>
+<td>HARQ-ACK, SR và báo cáo CSI giải được từ PUCCH hoặc PUSCH</td>
+</tr>
+<tr>
+<td><code>SRS.indication</code>, <code>RACH.indication</code></td>
+<td>L1 → MAC</td>
+<td>Kết quả đo SRS và preamble phát hiện được</td>
+</tr>
+</tbody>
+</table>
+<p>Mỗi khi nhận <code>SLOT.indication</code>, scheduler phải xử lý các kết quả mới nhận, ra quyết định cho slot sắp tới và gửi đủ các bản tin request trước hạn chót của L1. Hạn chót này là ràng buộc cứng: theo tài liệu của NVIDIA Aerial, nếu <code>DL_TTI.request</code> hoặc <code>TX_Data.request</code> đến muộn, L1 bỏ toàn bộ hoặc một phần slot đó của cell; nếu <code>UL_TTI.request</code> đến muộn, PUSCH của slot đó không được xử lý. Vì vậy thời gian chạy của scheduler phải ổn định, không chỉ nhanh ở trung bình.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant L1
+    participant MAC as MAC scheduler
+    participant RLC
+    L1-&gt;&gt;MAC: SLOT.indication (slot n)
+    L1-&gt;&gt;MAC: CRC / UCI / SRS.indication từ các slot trước
+    Note over MAC: Cập nhật HARQ, CSI, BSR&lt;br/&gt;Chọn UE, tài nguyên, MCS
+    MAC-&gt;&gt;RLC: Yêu cầu dữ liệu theo kích thước TB
+    RLC--&gt;&gt;MAC: RLC PDU
+    MAC-&gt;&gt;L1: DL_TTI.request, UL_DCI.request
+    MAC-&gt;&gt;L1: TX_Data.request
+    MAC-&gt;&gt;L1: UL_TTI.request (cho slot đường lên sắp tới)</code></pre>
+<h2 id="au-vao-cua-scheduler">Đầu vào của scheduler<a class="headerlink" href="#au-vao-cua-scheduler" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Đầu vào</th>
+<th>Nguồn</th>
+<th>Dùng để</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lượng dữ liệu chờ ở đường xuống</td>
+<td>RLC của DU</td>
+<td>Biết UE nào có dữ liệu, bao nhiêu, thuộc kênh logic nào</td>
+</tr>
+<tr>
+<td>Buffer status report (BSR)</td>
+<td>UE, qua MAC CE trên PUSCH</td>
+<td>Biết lượng dữ liệu chờ ở UE theo 8 nhóm kênh logic</td>
+</tr>
+<tr>
+<td>Scheduling request (SR)</td>
+<td>UE, trên PUCCH</td>
+<td>Biết UE có dữ liệu mới nhưng chưa có grant</td>
+</tr>
+<tr>
+<td>Báo cáo CSI (CQI, PMI, RI)</td>
+<td>UE, trên PUCCH hoặc PUSCH</td>
+<td>Chọn MCS, rank và precoder ở đường xuống</td>
+</tr>
+<tr>
+<td>Phản hồi HARQ</td>
+<td>UE (đường xuống), kết quả CRC của L1 (đường lên)</td>
+<td>Quyết định truyền lại và hiệu chỉnh link adaptation</td>
+</tr>
+<tr>
+<td>Đo SRS, DMRS đường lên</td>
+<td>L1</td>
+<td>Chọn MCS, precoder đường lên; precoder đường xuống theo tính thuận nghịch</td>
+</tr>
+<tr>
+<td>Power headroom report (PHR)</td>
+<td>UE, qua MAC CE</td>
+<td>Biết UE còn bao nhiêu công suất, giới hạn số PRB đường lên cấp được</td>
+</tr>
+<tr>
+<td>Tham số QoS</td>
+<td>Cấu hình từ CU (5QI, ưu tiên, GBR, ngân sách độ trễ)</td>
+<td>Xếp thứ tự ưu tiên giữa các luồng và UE</td>
+</tr>
+<tr>
+<td>Trạng thái DRX, BWP, khả năng UE</td>
+<td>Cấu hình RRC, thông tin khả năng của UE</td>
+<td>Chỉ lập lịch khi UE đang nghe PDCCH, trong BWP đang hoạt động, trong giới hạn khả năng</td>
+</tr>
+</tbody>
+</table>
+<p>Các tham số QoS được ánh xạ từ 5QI (5G QoS identifier). TS 23.501 định nghĩa mỗi 5QI chuẩn một tập đặc tính: loại tài nguyên (GBR, non-GBR hoặc delay-critical GBR), mức ưu tiên, ngân sách độ trễ gói (packet delay budget) và tỉ lệ lỗi gói. Scheduler dùng các đặc tính này để quyết định UE nào được phục vụ trước, nhưng cách dùng cụ thể do nhà sản xuất quyết định.</p>
+<h2 id="quan-he-thoi-gian-k0-k1-k2">Quan hệ thời gian K0, K1, K2<a class="headerlink" href="#quan-he-thoi-gian-k0-k1-k2" title="Permanent link">¶</a></h2>
+<p>DCI, dữ liệu và phản hồi không nhất thiết nằm trong cùng một slot. NR dùng ba khoảng lệch tính theo slot:</p>
 <ul>
-<li>Vị trí của scheduler: giữa RLC và L1, giao tiếp L1 qua FAPI, deadline theo slot.</li>
-<li>Đầu vào: báo cáo CSI, buffer status report (BSR), scheduling request (SR), phản hồi HARQ, yêu cầu QoS (5QI).</li>
-<li>Cấp phát đường xuống và đường lên: DCI, cấp phát miền tần số và miền thời gian (TDRA), K0, K1, K2.</li>
-<li>Thuật toán lập lịch: round robin, proportional fair, lập lịch theo QoS, MU-MIMO pairing.</li>
-<li>Configured grant và semi-persistent scheduling.</li>
-<li>Timing advance và điều khiển công suất đường lên.</li>
-<li>Hiện thực: phân chia thread, giới hạn thời gian tính toán mỗi slot, tương tác với RIC.</li>
+<li><strong>K0:</strong> từ slot chứa DCI cấp phát PDSCH tới slot chứa PDSCH.</li>
+<li><strong>K1:</strong> từ slot chứa PDSCH tới slot UE gửi HARQ-ACK, báo trong DCI.</li>
+<li><strong>K2:</strong> từ slot chứa DCI cấp phát PUSCH tới slot chứa PUSCH.</li>
 </ul>
-</div>
+<p>K0 và K2 được chọn từ bảng phân bổ miền thời gian (time domain resource allocation, TDRA) cấu hình bằng RRC, cùng với symbol bắt đầu và độ dài của dữ liệu. K1 được chọn từ một tập giá trị cấu hình. Các giá trị K phải đủ lớn để UE có thời gian xử lý: TS 38.214 quy định thời gian tối thiểu từ cuối PDSCH tới HARQ-ACK (N1) và từ cuối DCI tới PUSCH (N2), tính theo số symbol và phụ thuộc subcarrier spacing và khả năng xử lý của UE.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/k0-k1-k2-tdd.svg" data-desc-position="bottom"><img alt="Quan hệ thời gian K0, K1, K2 trên mẫu TDD DDDSU" src="../img/k0-k1-k2-tdd.svg"></a></p>
+<p><em>Với TDD, HARQ-ACK và PUSCH chỉ đặt được vào slot đường lên, nên K1 và K2 phụ thuộc vị trí của slot trong mẫu TDD.</em></p>
+<p>Với TDD, mẫu slot giới hạn trực tiếp các giá trị K. Ở ví dụ DDDSU, PDSCH của ba slot đường xuống đều phải báo HARQ-ACK ở cùng một slot đường lên, nên scheduler phải gộp nhiều bit HARQ-ACK vào một lần báo (HARQ-ACK codebook) và dành đủ tài nguyên PUCCH cho slot đó. Tương tự, mọi grant đường lên đều nhắm vào số ít slot U, nên tài nguyên PDCCH ở các slot D trước đó phải đủ cho cả DCI đường xuống lẫn đường lên. Mẫu TDD được trình bày ở <a href="../resource-grid/#song-cong-fdd-va-tdd">Frame Structure &amp; Resource Grid</a>.</p>
+<h2 id="cap-phat-tai-nguyen-va-harq">Cấp phát tài nguyên và HARQ<a class="headerlink" href="#cap-phat-tai-nguyen-va-harq" title="Permanent link">¶</a></h2>
+<p>Một quyết định lập lịch cho một UE gồm các thành phần:</p>
+<ul>
+<li><strong>Miền tần số:</strong> các PRB trong BWP đang hoạt động, cấp theo kiểu bitmap RBG (type 0) hoặc khối PRB liên tục (type 1), xem <a href="../resource-grid/#y-nghia-voi-phan-mem-va-firmware">Frame Structure &amp; Resource Grid</a>.</li>
+<li><strong>Miền thời gian:</strong> một dòng trong bảng TDRA (K0 hoặc K2, symbol bắt đầu, số symbol).</li>
+<li><strong>Link adaptation:</strong> MCS, số layer, precoder, dựa trên CSI và vòng hiệu chỉnh ngoài, xem <a href="../../phy/reference-signals-csi/#link-adaptation">Reference Signals &amp; CSI</a>.</li>
+<li><strong>PDCCH:</strong> một candidate còn trống trong search space của UE với aggregation level đủ cho chất lượng kênh. Nếu không còn CCE trống, UE không thể được lập lịch trong slot đó dù còn PRB, nên dung lượng PDCCH là một giới hạn thực tế của số UE mỗi slot, xem <a href="../../phy/physical-channels/#pdcch">Physical Channels</a>.</li>
+<li><strong>HARQ:</strong> số HARQ process, bit NDI và redundancy version.</li>
+</ul>
+<p>Mỗi UE có nhiều HARQ process song song trên mỗi cell, tối đa 16 ở Rel-15 và tới 32 theo khả năng UE ở một số cấu hình của các release sau. Nhờ nhiều process, scheduler có thể truyền dữ liệu mới trong khi chờ HARQ-ACK của các lần truyền trước. HARQ của NR là bất đồng bộ ở cả hai chiều: lần truyền lại có thể ở bất kỳ slot nào, với tài nguyên và MCS khác lần đầu, và được nhận diện qua số HARQ process cùng bit NDI không đổi. Thông thường scheduler ưu tiên các lần truyền lại trước dữ liệu mới, vì dữ liệu chờ truyền lại đã chiếm bộ đệm và đang trễ.</p>
+<h2 id="thuat-toan-lap-lich">Thuật toán lập lịch<a class="headerlink" href="#thuat-toan-lap-lich" title="Permanent link">¶</a></h2>
+<p>Bài toán lập lịch là chia tài nguyên hữu hạn của mỗi slot cho các UE sao cho cân bằng giữa thông lượng tổng, công bằng giữa người dùng và yêu cầu QoS. Các chiến lược cơ bản:</p>
+<table>
+<thead>
+<tr>
+<th>Chiến lược</th>
+<th>Nguyên tắc</th>
+<th>Đặc điểm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Round robin</td>
+<td>Lần lượt phục vụ các UE có dữ liệu</td>
+<td>Công bằng về thời gian, không tận dụng chất lượng kênh, thông lượng tổng thấp</td>
+</tr>
+<tr>
+<td>Max C/I (max throughput)</td>
+<td>Chọn UE có tốc độ khả dụng cao nhất</td>
+<td>Thông lượng tổng cao nhất, UE ở biên cell gần như không được phục vụ</td>
+</tr>
+<tr>
+<td>Proportional fair (PF)</td>
+<td>Chọn UE có tỉ số giữa tốc độ khả dụng hiện tại và thông lượng trung bình quá khứ lớn nhất</td>
+<td>Tận dụng lúc kênh của từng UE tốt hơn mức thường lệ của chính nó, vẫn đảm bảo UE nào cũng được phục vụ</td>
+</tr>
+<tr>
+<td>Theo QoS</td>
+<td>Thêm trọng số theo mức ưu tiên, thời gian chờ so với ngân sách độ trễ, mức GBR còn thiếu</td>
+<td>Bảo đảm các luồng có yêu cầu độ trễ hoặc tốc độ tối thiểu</td>
+</tr>
+</tbody>
+</table>
+<p>Với PF, thông lượng trung bình của mỗi UE thường được cập nhật bằng trung bình trượt hàm mũ: mỗi slot, giá trị cũ giảm theo một hệ số quên, và chỉ UE được lập lịch được cộng thêm lượng dữ liệu vừa nhận. Hằng số thời gian của trung bình quyết định đánh đổi: hằng số dài cho thông lượng tổng cao hơn nhưng một UE có thể phải chờ lâu hơn khi kênh của nó xấu.</p>
+<p>Scheduler thực tế thường kết hợp các chiến lược theo hai bước. Bước miền thời gian chọn tập UE ứng viên cho slot theo thứ tự: truyền lại HARQ, bản tin báo hiệu (SRB), các luồng có ràng buộc độ trễ, rồi dữ liệu thường theo trọng số PF có điều chỉnh QoS. Bước miền tần số chia PRB cho các UE đã chọn, có thể ưu tiên vùng PRB mà CQI theo subband của từng UE tốt nhất. Với massive MIMO, scheduler còn chọn các UE ghép cặp MU-MIMO sao cho kênh của chúng đủ tách biệt về không gian, xem <a href="../../phy/mimo-beamforming/#su-mimo-va-mu-mimo">MIMO &amp; Beamforming</a>. Thứ tự và trọng số cụ thể khác nhau giữa các nhà sản xuất và thường là tham số tinh chỉnh khi triển khai.</p>
+<h2 id="cap-phat-khong-can-yeu-cau">Cấp phát không cần yêu cầu<a class="headerlink" href="#cap-phat-khong-can-yeu-cau" title="Permanent link">¶</a></h2>
+<p>Với lưu lượng đều đặn hoặc cần độ trễ thấp, vòng SR, grant, BSR tốn vài slot cho mỗi gói. NR có các cơ chế cấp phát trước:</p>
+<table>
+<thead>
+<tr>
+<th>Cơ chế</th>
+<th>Hướng</th>
+<th>Cách hoạt động</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Configured grant type 1</td>
+<td>Đường lên</td>
+<td>Tài nguyên định kỳ cấu hình hoàn toàn bằng RRC, UE dùng ngay khi có dữ liệu</td>
+</tr>
+<tr>
+<td>Configured grant type 2</td>
+<td>Đường lên</td>
+<td>Chu kỳ cấu hình bằng RRC, tài nguyên và MCS được kích hoạt hoặc giải phóng bằng DCI</td>
+</tr>
+<tr>
+<td>Semi-persistent scheduling (SPS)</td>
+<td>Đường xuống</td>
+<td>Chu kỳ cấu hình bằng RRC, kích hoạt bằng DCI, gNB phát PDSCH định kỳ không cần DCI mỗi lần</td>
+</tr>
+</tbody>
+</table>
+<p>Với scheduler, các tài nguyên này phải được dành trước trong mỗi chu kỳ, nên làm giảm tài nguyên cho lập lịch động khi UE không có dữ liệu. Các cơ chế cho URLLC khác như mini-slot và preemption (DCI 2_1) được trình bày ở <a href="../../generations/5g-usage-scenarios/#tinh-nang-nr-cho-urllc">Kịch bản sử dụng 5G</a>.</p>
+<h2 id="chuc-nang-uong-len-i-kem">Chức năng đường lên đi kèm<a class="headerlink" href="#chuc-nang-uong-len-i-kem" title="Permanent link">¶</a></h2>
+<p>Ngoài cấp phát, MAC của gNB còn duy trì các điều kiện để đường lên của UE thu được:</p>
+<ul>
+<li><strong>Timing advance.</strong> gNB đo độ lệch thời gian của tín hiệu UE (từ PUSCH, PUCCH, SRS) và gửi lệnh timing advance qua MAC CE để UE phát sớm hơn, sao cho tín hiệu của mọi UE đến gNB thẳng hàng với khung thời gian. UE coi như mất đồng bộ đường lên khi bộ đếm <code>timeAlignmentTimer</code> hết hạn mà không nhận được lệnh mới.</li>
+<li><strong>Điều khiển công suất.</strong> Công suất PUSCH, PUCCH và SRS gồm phần vòng hở, UE tự tính từ suy hao đường truyền, và phần vòng kín, gNB điều chỉnh bằng lệnh TPC trong DCI cấp phát hoặc DCI nhóm 2_2, 2_3. Báo cáo PHR cho scheduler biết nếu cấp thêm PRB thì UE có đủ công suất hay không.</li>
+<li><strong>DRX.</strong> Scheduler chỉ gửi DCI cho UE trong thời gian UE đang thức theo cấu hình DRX, và việc lập lịch cho UE sẽ kéo dài thời gian thức qua <code>drx-InactivityTimer</code>.</li>
+</ul>
+<p>Các cơ chế này được tóm tắt ở <a href="../connected-mobility/#nhung-co-che-khac-o-connected">Connected Mode &amp; Mobility</a>.</p>
+<h2 id="rang-buoc-khi-hien-thuc">Ràng buộc khi hiện thực<a class="headerlink" href="#rang-buoc-khi-hien-thuc" title="Permanent link">¶</a></h2>
+<ul>
+<li><strong>Ngân sách thời gian.</strong> Ở subcarrier spacing 30 kHz, mỗi slot dài 0,5 ms, và quyết định cho mỗi slot phải xong trước hạn chót của L1. Số UE được xét và số UE được lập lịch mỗi slot thường bị giới hạn để giữ thời gian chạy trong ngân sách.</li>
+<li><strong>Thời gian chạy ổn định.</strong> Scheduler thường chạy trên core CPU được cô lập, tránh cấp phát bộ nhớ động và khóa dùng chung trong đường xử lý theo slot, vì một lần chạy vượt hạn chót làm mất cả slot của cell, xem <a href="../../baseband/du-cu-architecture/#so-o-khoi-cua-du-tren-server">Kiến trúc DU và CU</a>.</li>
+<li><strong>Song song hóa.</strong> Nhiều cell trên một DU thường được xử lý trên các thread riêng; đường xuống và đường lên của một cell có thể tách thread nhưng phải dùng chung trạng thái HARQ và tài nguyên PDCCH.</li>
+<li><strong>Tương tác với RIC.</strong> Trong kiến trúc O-RAN, Near-RT RIC có thể điều chỉnh tham số của scheduler (trọng số ưu tiên, chia tài nguyên giữa các slice) qua giao diện E2 ở thang thời gian từ 10 ms trở lên. Quyết định theo từng slot vẫn nằm trong DU, xem <a href="../../architecture/ric/">RAN Intelligent Controller</a>.</li>
+<li><strong>Đo lường và kiểm thử.</strong> Chất lượng scheduler được đánh giá qua thông lượng cell và từng UE, phân bố thông lượng (đặc biệt UE ở biên cell), tỉ lệ lỗi lần truyền đầu, độ trễ gói theo từng 5QI, mức sử dụng PRB và PDCCH. Các chỉ số này cần được theo dõi theo từng slot khi gỡ lỗi, vì giá trị trung bình che mất các slot bị bỏ lỡ hạn chót.</li>
+</ul>
 <h2 id="lien-quan">Liên quan<a class="headerlink" href="#lien-quan" title="Permanent link">¶</a></h2>
 <ul>
-<li><a href="../connected-mobility/#lap-lich-va-truyen-du-lieu">Connected Mode &amp; Mobility</a>: tổng quan lập lịch và HARQ ở trạng thái kết nối.</li>
-<li><a href="../protocol-stack/">Protocol Stack &amp; States</a>: vị trí lớp MAC trong chồng giao thức.</li>
-<li><a href="../../phy/reference-signals-csi/">Reference Signals &amp; CSI</a>: CSI làm đầu vào cho link adaptation.</li>
-<li><a href="../../baseband/du-cu-architecture/">Kiến trúc DU và CU</a>: scheduler chạy trên DU cùng L1.</li>
+<li><a href="../connected-mobility/#lap-lich-va-truyen-du-lieu">Connected Mode &amp; Mobility</a>: luồng DCI, HARQ, SR và BSR giữa UE và gNB, các cơ chế ở trạng thái kết nối.</li>
+<li><a href="../protocol-stack/">Protocol Stack &amp; States</a>: vị trí lớp MAC trong chồng giao thức, kênh logic và kênh truyền tải.</li>
+<li><a href="../../phy/physical-channels/">Physical Channels</a>: PDCCH, các định dạng DCI, PUCCH và cách xác định kích thước transport block.</li>
+<li><a href="../../phy/reference-signals-csi/">Reference Signals &amp; CSI</a>: CSI làm đầu vào cho link adaptation, bảng CQI và MCS.</li>
+<li><a href="../../phy/mimo-beamforming/">MIMO &amp; Beamforming</a>: chọn rank, precoder và ghép cặp MU-MIMO.</li>
+<li><a href="../../baseband/du-cu-architecture/">Kiến trúc DU và CU</a>: scheduler chạy trên DU cùng L1, cách phân core.</li>
 <li><a href="../../architecture/ric/">RAN Intelligent Controller</a>: vòng điều khiển near-real-time có thể điều chỉnh tham số của scheduler qua E2.</li>
 <li><a href="../../l1/l1-acceleration/#giao-dien-l1-l2-fapi">L1 &amp; Acceleration</a>: giao diện FAPI giữa L2 và L1.</li>
+<li><a href="../../generations/5g-usage-scenarios/">Kịch bản sử dụng 5G</a>: yêu cầu của eMBB, URLLC, mMTC và network slicing đối với lập lịch.</li>
 </ul>
 <h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
 <ul>
-<li>3GPP TS 38.321: Medium Access Control (MAC) protocol specification.</li>
-<li>3GPP TS 38.214: Physical layer procedures for data (cấp phát tài nguyên, MCS).</li>
-<li><a href="https://www.smallcellforum.org/">Small Cell Forum: 5G FAPI</a>.</li>
+<li>3GPP TS 38.321: Medium Access Control (MAC) protocol specification (HARQ, BSR, SR, PHR, timing advance, configured grant, SPS, DRX).</li>
+<li>3GPP TS 38.214: Physical layer procedures for data (TDRA, K0, K2, thời gian xử lý N1 và N2, số HARQ process).</li>
+<li>3GPP TS 38.213: Physical layer procedures for control (K1, HARQ-ACK codebook, điều khiển công suất).</li>
+<li><a href="https://www.itecspec.com/3gpp/23.501/s/5.7.4">3GPP TS 23.501 mục 5.7.4 (bản trích trên itecspec)</a>: ánh xạ 5QI chuẩn sang các đặc tính QoS.</li>
+<li><a href="https://smallcellforum.org/?p=23175">Small Cell Forum: 5G FAPI PHY API specification (SCF222)</a>: giao diện giữa MAC và L1.</li>
+<li><a href="https://docs.nvidia.com/aerial/cuda-accelerated-ran/aerial_cubb/aerial_cuphy/release_notes/scf_fapi_support.html">NVIDIA Aerial: SCF FAPI support</a>: các bản tin P5 và P7 được hỗ trợ, xử lý khi bản tin đến muộn.</li>
+<li><a href="https://arxiv.org/pdf/1404.2759">Survey on Scheduling and Radio Resources Allocation in LTE (arXiv 1404.2759)</a>: khảo sát các thuật toán lập lịch, gồm proportional fair và đánh đổi giữa thông lượng và công bằng.</li>
+<li><a href="https://www.eurecom.edu/publication/2142/download/cm-gesbda-080201.pdf">EURECOM: proportional fair scheduling, công thức trung bình trượt và hằng số thời gian</a>.</li>
 </ul>
 
 
@@ -12773,7 +13194,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 7, 2026 02:12:24 UTC">November 7, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 7, 2026 05:47:21 UTC">November 7, 2026</span>
   </span>
 
     
