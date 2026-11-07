@@ -7696,6 +7696,56 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Cách hiện thực baseband">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vran-va-cloud-ran" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vRAN và Cloud RAN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cac-thanh-phan-nen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các thành phần nền
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thach-thuc-khi-chay-du-tren-nen-cloud-native" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thách thức khi chạy DU trên nền cloud-native
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ran-tren-cloud-cong-cong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RAN trên cloud công cộng
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -12910,6 +12960,56 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Cách hiện thực baseband">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vran-va-cloud-ran" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vRAN và Cloud RAN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cac-thanh-phan-nen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các thành phần nền
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thach-thuc-khi-chay-du-tren-nen-cloud-native" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thách thức khi chạy DU trên nền cloud-native
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ran-tren-cloud-cong-cong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RAN trên cloud công cộng
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -13023,7 +13123,7 @@
 
 
 <h1 id="cac-mo-hinh-trien-khai-ran">Các mô hình triển khai RAN<a class="headerlink" href="#cac-mo-hinh-trien-khai-ran" title="Permanent link">¶</a></h1>
-<p>Cùng một kiến trúc logic gồm RU, DU và CU có thể được triển khai vật lý theo nhiều cách. Các tên gọi thường gặp như Distributed RAN, Centralized RAN, vRAN, Cloud RAN hay Open RAN thực ra trả lời những câu hỏi khác nhau, và một mạng thực tế là tổ hợp của nhiều lựa chọn. Trang này trình bày theo thứ tự: ba trục độc lập để phân loại một mô hình triển khai, các mô hình đặt baseband (D-RAN, C-RAN và mô hình lai), yêu cầu đối với fronthaul và midhaul ở từng mô hình, các cách hiện thực baseband (thiết bị chuyên dụng, vRAN, Cloud RAN), bảng so sánh, rồi một số ví dụ triển khai. Các khối và functional split nằm ở <a href="../ran-architecture/">RAN Architecture &amp; Splits</a>; phần cứng của DU và CU nằm ở <a href="../../baseband/du-cu-architecture/">Kiến trúc DU và CU</a>.</p>
+<p>Cùng một kiến trúc logic gồm RU, DU và CU có thể được triển khai vật lý theo nhiều cách. Các tên gọi thường gặp như Distributed RAN, Centralized RAN, vRAN, Cloud RAN hay Open RAN thực ra trả lời những câu hỏi khác nhau, và một mạng thực tế là tổ hợp của nhiều lựa chọn. Trang này trình bày theo thứ tự: ba trục độc lập để phân loại một mô hình triển khai, các mô hình đặt baseband (D-RAN, C-RAN và mô hình lai), yêu cầu đối với fronthaul và midhaul ở từng mô hình, các cách hiện thực baseband (thiết bị chuyên dụng, vRAN, Cloud RAN) cùng hạ tầng và thách thức của Cloud RAN, bảng so sánh, rồi một số ví dụ triển khai. Các khối và functional split nằm ở <a href="../ran-architecture/">RAN Architecture &amp; Splits</a>; phần cứng của DU và CU nằm ở <a href="../../baseband/du-cu-architecture/">Kiến trúc DU và CU</a>.</p>
 <h2 id="ba-truc-phan-loai">Ba trục phân loại<a class="headerlink" href="#ba-truc-phan-loai" title="Permanent link">¶</a></h2>
 <table>
 <thead>
@@ -13126,7 +13226,91 @@
 </tr>
 </tbody>
 </table>
-<p>Cách hiện thực độc lập với vị trí: vRAN có thể đặt tại site (D-RAN) hoặc ở hub (C-RAN). Tuy vậy, hai hướng thường đi cùng nhau, vì hub tập trung là nơi phù hợp để đặt cụm server và tận dụng khả năng gom tài nguyên của phần mềm. Cấu trúc server DU và các nền tảng phần cứng được trình bày ở <a href="../../baseband/du-cu-architecture/#nen-tang-phan-cung">Kiến trúc DU và CU</a>; việc chạy DU trong máy ảo và tinh chỉnh real-time thuộc tab Virtualization, xem <a href="../../../virtualization/realtime/vran/">vRAN trên VM</a>.</p>
+<p>Cách hiện thực độc lập với vị trí: vRAN có thể đặt tại site (D-RAN) hoặc ở hub (C-RAN). Tuy vậy, hai hướng thường đi cùng nhau, vì hub tập trung là nơi phù hợp để đặt cụm server và tận dụng khả năng gom tài nguyên của phần mềm. Cấu trúc server DU và các nền tảng phần cứng được trình bày ở <a href="../../baseband/du-cu-architecture/#nen-tang-phan-cung">Kiến trúc DU và CU</a>.</p>
+<h3 id="vran-va-cloud-ran">vRAN và Cloud RAN<a class="headerlink" href="#vran-va-cloud-ran" title="Permanent link">¶</a></h3>
+<p>Ranh giới giữa vRAN và Cloud RAN không được định nghĩa chặt trong đặc tả; hai tên gọi thường được dùng lẫn cho nhau. Theo cách dùng phổ biến, vRAN nhấn mạnh việc ảo hóa chức năng RAN để chạy trên server thông dụng, còn Cloud RAN nhấn mạnh thêm cách xây dựng và vận hành phần mềm theo kiểu cloud-native:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>vRAN (dạng máy ảo)</th>
+<th>Cloud RAN (cloud-native)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Đơn vị đóng gói</td>
+<td>Máy ảo, mỗi máy ảo có hệ điều hành riêng</td>
+<td>Container dùng chung kernel của host</td>
+</tr>
+<tr>
+<td>Kiến trúc phần mềm</td>
+<td>Một hoặc vài khối lớn cho mỗi network function</td>
+<td>Chia thành nhiều thành phần nhỏ (microservice) có thể mở rộng riêng</td>
+</tr>
+<tr>
+<td>Điều phối</td>
+<td>Hệ thống quản lý theo chuẩn ETSI NFV</td>
+<td>Kubernetes và các công cụ trong hệ sinh thái của nó</td>
+</tr>
+<tr>
+<td>Cập nhật</td>
+<td>Thay cả máy ảo, thường cần dừng dịch vụ</td>
+<td>Cập nhật từng phần (rolling update), tự động hóa qua quy trình CI/CD</td>
+</tr>
+<tr>
+<td>Giao diện O2dms của O-RAN</td>
+<td>Profile ETSI NFV</td>
+<td>Profile Kubernetes</td>
+</tr>
+</tbody>
+</table>
+<p>Trong thực tế, một mạng có thể dùng cả hai: theo một số tài liệu triển khai, vRAN thường kết hợp máy ảo và container vì mức độ trưởng thành của cơ chế tăng tốc và cách ly real-time ở hai môi trường khác nhau. Với CU, vốn không có ràng buộc theo slot, chuyển sang cloud-native tương đối thuận lợi; với DU, các ràng buộc real-time ở mục dưới là thách thức chính.</p>
+<h3 id="cac-thanh-phan-nen">Các thành phần nền<a class="headerlink" href="#cac-thanh-phan-nen" title="Permanent link">¶</a></h3>
+<p>O-RAN WG6 đặc tả hạ tầng chung cho các network function của RAN chạy trên cloud:</p>
+<table>
+<thead>
+<tr>
+<th>Thành phần</th>
+<th>Vai trò</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O-Cloud</td>
+<td>Hạ tầng gồm server, switch, accelerator và phần mềm quản lý, chạy O-CU, O-DU, Near-RT RIC</td>
+</tr>
+<tr>
+<td>IMS và DMS</td>
+<td>Dịch vụ quản lý hạ tầng (kiểm kê, giám sát, cấp phát) và dịch vụ triển khai, quản lý vòng đời network function</td>
+</tr>
+<tr>
+<td>Giao diện O2</td>
+<td>Giữa SMO và O-Cloud: O2ims cho hạ tầng, O2dms cho triển khai network function</td>
+</tr>
+<tr>
+<td>Acceleration Abstraction Layer (AAL)</td>
+<td>Giao diện chuẩn để phần mềm O-DU dùng accelerator mà không phụ thuộc nhà cung cấp</td>
+</tr>
+<tr>
+<td>O-Cloud Notification API</td>
+<td>Cho O-DU đăng ký nhận sự kiện của hạ tầng, quan trọng nhất là trạng thái đồng bộ PTP</td>
+</tr>
+</tbody>
+</table>
+<p>Chi tiết nằm ở <a href="../../oran/wg6/">WG6: Cloudification and Orchestration</a>.</p>
+<h3 id="thach-thuc-khi-chay-du-tren-nen-cloud-native">Thách thức khi chạy DU trên nền cloud-native<a class="headerlink" href="#thach-thuc-khi-chay-du-tren-nen-cloud-native" title="Permanent link">¶</a></h3>
+<p>Nền tảng cloud được thiết kế cho ứng dụng chịu được trễ và chia sẻ tài nguyên linh hoạt, trong khi DU cần độ trễ ổn định ở mức µs và phần cứng đặc thù. Các điểm phải xử lý:</p>
+<ul>
+<li><strong>Cách ly CPU và real-time.</strong> Core chạy L1 và L2 phải được cấp riêng cho container của DU, cô lập khỏi tải khác và khỏi ngắt, trên kernel real-time, với bộ nhớ huge page và đặt đúng NUMA node.</li>
+<li><strong>Packet I/O cho fronthaul.</strong> Container của DU cần truy cập trực tiếp NIC qua SR-IOV và xử lý gói bằng DPDK, không qua network stack thông thường của container.</li>
+<li><strong>Đồng bộ thời gian.</strong> PTP chạy ở host phải được phân phối tới DU, và DU phải biết trạng thái khóa đồng bộ để ngừng phát khi mất đồng bộ, qua O-Cloud Notification API.</li>
+<li><strong>Accelerator.</strong> Card FEC hoặc GPU phải được cấp cho đúng container, và phần mềm DU nên dùng giao diện trừu tượng (AAL, DPDK BBDev) để không bị gắn với một loại phần cứng.</li>
+<li><strong>Cập nhật không gián đoạn.</strong> Cập nhật phần mềm DU làm mất các cell nó phục vụ; muốn cập nhật từng phần như ứng dụng cloud cần cơ chế chuyển cell hoặc chạy song song phiên bản cũ và mới.</li>
+</ul>
+<p>Các nền tảng container cho Cloud RAN cung cấp các thành phần tự động hóa những cấu hình này, ví dụ quản lý PTP, SR-IOV và cô lập CPU dưới dạng operator của Kubernetes. Cách cấu hình cụ thể (cô lập CPU, SR-IOV, DPDK, PTP trong môi trường ảo hóa) thuộc tab Virtualization, xem <a href="../../../virtualization/realtime/vran/">vRAN trên VM</a>, <a href="../../../virtualization/realtime/rt-kvm/">Real-time KVM tuning</a> và <a href="../../../lnx_kernel/cpu_isolation/isolcpus/">isolcpus</a>.</p>
+<h3 id="ran-tren-cloud-cong-cong">RAN trên cloud công cộng<a class="headerlink" href="#ran-tren-cloud-cong-cong" title="Permanent link">¶</a></h3>
+<p>Một biến thể của Cloud RAN là chạy chức năng RAN trên hạ tầng của nhà cung cấp cloud công cộng thay vì cloud riêng của nhà mạng. Ví dụ được nhắc tới nhiều nhất là DISH Wireless (Mỹ), công bố hợp tác với AWS năm 2021: theo kế hoạch công bố, CU và một phần mạng lõi chạy ở AWS Local Zones (cụm hạ tầng AWS ở các đô thị lớn), DU chạy trên AWS Outposts (phần cứng AWS đặt tại địa điểm của nhà mạng), workload dạng container được quản lý bằng Amazon EKS, và một phần xử lý DU chạy trên CPU Arm Graviton2. Cách bố trí này khớp với mô hình lai ở trên: DU ở far edge gần site, CU ở edge của cloud. Các thay đổi sau đó của DISH về phổ tần và mô hình kinh doanh được ghi ở <a href="../../oran/oran-alliance/#hien-trang-trien-khai">O-RAN Alliance</a>.</p>
 <h2 id="so-sanh-cac-mo-hinh-at-baseband">So sánh các mô hình đặt baseband<a class="headerlink" href="#so-sanh-cac-mo-hinh-at-baseband" title="Permanent link">¶</a></h2>
 <table>
 <thead>
@@ -13201,6 +13385,11 @@
 </ul>
 <h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
 <ul>
+<li><a href="https://docs.aws.amazon.com/whitepapers/latest/open-radio-access-network-architecture-on-aws/open-radio-access-network-architecture-on-aws.html">AWS: Open Radio Access Network Architecture on AWS (whitepaper)</a>: đặt CU ở edge và DU ở far edge với AWS Outposts và Amazon EKS Anywhere.</li>
+<li><a href="https://www.lightreading.com/service-provider-cloud/dishs-5g-network-architect-explains-new-amazon-deal/d/d-id/768933">Light Reading: Dish's 5G network architect explains the new Amazon deal (2021)</a>: CU ở Local Zones, DU trên Outposts, Graviton2 và FlexRAN.</li>
+<li><a href="https://rcrwireless.com/20210421/telco-cloud/dish-to-build-its-5g-network-on-aws-cloud">RCR Wireless: Dish to build its 5G network on AWS cloud (2021)</a>.</li>
+<li><a href="https://networkbuilders.intel.com/docs/networkbuilders/how-intel-altiostar-and-red-hat-are-driving-5g-open-cloud-ran.pdf">Intel, Altiostar, Red Hat: Driving 5G open Cloud RAN</a>: yêu cầu real-time kernel, NUMA, SR-IOV và các operator quản lý PTP, SR-IOV, cô lập CPU trên nền tảng container.</li>
+<li><a href="https://arxiv.org/pdf/2510.07843">Accelerating vRAN and O-RAN with SIMD: Architectural Perspectives and Performance Evaluation (arXiv 2510.07843)</a>: container so với máy ảo cho vRAN, Kubernetes là nền tảng điều phối phổ biến.</li>
 <li>3GPP TS 38.401: NG-RAN; Architecture description (gNB-CU, gNB-DU, tách CU-CP và CU-UP).</li>
 <li>3GPP TR 38.801: Study on new radio access technology: Radio access architecture and interfaces (Annex A: yêu cầu độ trễ và băng thông theo option split).</li>
 <li>CPRI Forum, Requirements for the eCPRI Transport Network V1.2 (2018): các lớp độ trễ của fronthaul.</li>
@@ -13231,7 +13420,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 7, 2026 06:47:03 UTC">November 7, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 7, 2026 07:01:46 UTC">November 7, 2026</span>
   </span>
 
     
