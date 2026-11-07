@@ -1,0 +1,109 @@
+<svg role="img" viewBox="0 0 960 470" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+<title>Ba kiến trúc máy thu: superheterodyne với mixer và lọc trung tần, zero-IF với mixer I/Q trực tiếp về băng gốc, RF sampling với ADC tốc độ cao và trộn tần bằng số</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+<rect x="0" y="0" width="960" height="470" rx="8" fill="#ffffff"/>
+<rect x="10" y="10" width="940" height="450" rx="10" fill="#f6f8fb" stroke="#c9d3e3"/>
+<text x="30" y="36" font-size="14" font-weight="700" fill="#1d4278">Ba kiến trúc máy thu</text>
+<text x="30" y="54" font-size="10.5" fill="#666">Đường phát có cấu trúc đối xứng: DAC, trộn tần lên, khuếch đại; chỉ vẽ một nhánh anten</text>
+<polygon points="40,106 60,106 50,122" fill="none" stroke="#555" stroke-width="1.4"/><line x1="50" y1="122" x2="50" y2="128" stroke="#555" stroke-width="1.2"/><line x1="50" y1="128" x2="62" y2="128" stroke="#555" stroke-width="1.2"/>
+<line x1="62" y1="128" x2="80" y2="128" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+<rect x="82" y="110" width="70" height="36" rx="5" fill="#b7791f" fill-opacity="0.15" stroke="#b7791f" stroke-width="1.3"/>
+<text x="117.0" y="132.0" font-size="10" text-anchor="middle" fill="#b7791f" font-weight="700">LNA</text>
+<line x1="152" y1="128" x2="170" y2="128" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+<rect x="172" y="110" width="80" height="36" rx="5" fill="#555" fill-opacity="0.15" stroke="#555" stroke-width="1.3"/>
+<text x="212.0" y="126.0" font-size="10" text-anchor="middle" fill="#555" font-weight="700">Lọc RF</text>
+<text x="212.0" y="138.0" font-size="8.5" text-anchor="middle" fill="#555">chặn ảnh</text>
+<line x1="252" y1="128" x2="272" y2="128" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+<circle cx="287" cy="128" r="13" fill="#a23b72" fill-opacity="0.12" stroke="#a23b72" stroke-width="1.4"/>
+<line x1="278" y1="119" x2="296" y2="137" stroke="#a23b72" stroke-width="1.4"/><line x1="278" y1="137" x2="296" y2="119" stroke="#a23b72" stroke-width="1.4"/>
+<line x1="287" y1="163" x2="287" y2="143" stroke="#a23b72" stroke-width="1.2" marker-end="url(#a)"/>
+<text x="287" y="175" font-size="9" text-anchor="middle" fill="#a23b72" font-weight="700">LO1</text>
+<line x1="300" y1="128" x2="320" y2="128" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+<rect x="322" y="110" width="90" height="36" rx="5" fill="#555" fill-opacity="0.15" stroke="#555" stroke-width="1.3"/>
+<text x="367.0" y="126.0" font-size="10" text-anchor="middle" fill="#555" font-weight="700">Lọc IF</text>
+<text x="367.0" y="138.0" font-size="8.5" text-anchor="middle" fill="#555">chọn kênh</text>
+<line x1="412" y1="128" x2="432" y2="128" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+<rect x="434" y="110" width="70" height="36" rx="5" fill="#b7791f" fill-opacity="0.15" stroke="#b7791f" stroke-width="1.3"/>
+<text x="469.0" y="132.0" font-size="10" text-anchor="middle" fill="#b7791f" font-weight="700">VGA</text>
+<line x1="504" y1="128" x2="524" y2="128" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+<rect x="526" y="110" width="90" height="36" rx="5" fill="#1d4278" fill-opacity="0.15" stroke="#1d4278" stroke-width="1.3"/>
+<text x="571.0" y="126.0" font-size="10" text-anchor="middle" fill="#1d4278" font-weight="700">ADC</text>
+<text x="571.0" y="138.0" font-size="8.5" text-anchor="middle" fill="#555">lấy mẫu ở IF</text>
+<line x1="616" y1="128" x2="636" y2="128" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+<rect x="638" y="110" width="130" height="36" rx="5" fill="#2f5d9e" fill-opacity="0.15" stroke="#2f5d9e" stroke-width="1.3"/>
+<text x="703.0" y="126.0" font-size="10" text-anchor="middle" fill="#2f5d9e" font-weight="700">DDC số</text>
+<text x="703.0" y="138.0" font-size="8.5" text-anchor="middle" fill="#555">NCO, lọc, decimate</text>
+<line x1="768" y1="128" x2="788" y2="128" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+<rect x="790" y="110" width="120" height="36" rx="5" fill="#2f5d9e" fill-opacity="0.15" stroke="#2f5d9e" stroke-width="1.3"/>
+<text x="850.0" y="126.0" font-size="10" text-anchor="middle" fill="#2f5d9e" font-weight="700">IQ băng gốc</text>
+<text x="850.0" y="138.0" font-size="8.5" text-anchor="middle" fill="#555">tới DFE / Low-PHY</text>
+<text x="30" y="82" font-size="12" font-weight="700" fill="#1d4278">Superheterodyne (lấy mẫu ở trung tần)</text>
+<text x="930" y="82" font-size="9.5" text-anchor="end" fill="#666">Cần lọc chặn tần số ảnh; nhiều tầng, chất lượng tốt</text>
+<polygon points="40,258 60,258 50,274" fill="none" stroke="#555" stroke-width="1.4"/><line x1="50" y1="274" x2="50" y2="280" stroke="#555" stroke-width="1.2"/><line x1="50" y1="280" x2="62" y2="280" stroke="#555" stroke-width="1.2"/>
+<line x1="62" y1="280" x2="80" y2="280" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+<rect x="82" y="262" width="70" height="36" rx="5" fill="#b7791f" fill-opacity="0.15" stroke="#b7791f" stroke-width="1.3"/>
+<text x="117" y="284" font-size="10" text-anchor="middle" fill="#b7791f" font-weight="700">LNA</text>
+<polyline points="152,280 168,280 168,258 272,258" fill="none" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+<polyline points="168,280 168,302 272,302" fill="none" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+<circle cx="287" cy="258" r="13" fill="#a23b72" fill-opacity="0.12" stroke="#a23b72" stroke-width="1.4"/>
+<line x1="278" y1="249" x2="296" y2="267" stroke="#a23b72" stroke-width="1.4"/><line x1="278" y1="267" x2="296" y2="249" stroke="#a23b72" stroke-width="1.4"/>
+<circle cx="287" cy="302" r="13" fill="#a23b72" fill-opacity="0.12" stroke="#a23b72" stroke-width="1.4"/>
+<line x1="278" y1="293" x2="296" y2="311" stroke="#a23b72" stroke-width="1.4"/><line x1="278" y1="311" x2="296" y2="293" stroke="#a23b72" stroke-width="1.4"/>
+<rect x="246" y="274" width="44" height="14" rx="3" fill="#a23b72" fill-opacity="0.1" stroke="#a23b72"/>
+<text x="268" y="284" font-size="8" text-anchor="middle" fill="#a23b72" font-weight="700">LO, 90°</text>
+<line x1="290" y1="281" x2="300" y2="281" stroke="#a23b72" stroke-width="1"/>
+<line x1="300" y1="258" x2="320" y2="258" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+<rect x="322" y="244" width="90" height="28" rx="5" fill="#555" fill-opacity="0.15" stroke="#555" stroke-width="1.3"/>
+<text x="367.0" y="262.0" font-size="10" text-anchor="middle" fill="#555" font-weight="700">LPF I</text>
+<line x1="412" y1="258" x2="432" y2="258" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+<rect x="434" y="244" width="70" height="28" rx="5" fill="#b7791f" fill-opacity="0.15" stroke="#b7791f" stroke-width="1.3"/>
+<text x="469.0" y="262.0" font-size="10" text-anchor="middle" fill="#b7791f" font-weight="700">VGA</text>
+<line x1="504" y1="258" x2="524" y2="258" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+<rect x="526" y="244" width="90" height="28" rx="5" fill="#1d4278" fill-opacity="0.15" stroke="#1d4278" stroke-width="1.3"/>
+<text x="571.0" y="262.0" font-size="10" text-anchor="middle" fill="#1d4278" font-weight="700">ADC I</text>
+<line x1="616" y1="258" x2="636" y2="258" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+<line x1="300" y1="302" x2="320" y2="302" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+<rect x="322" y="288" width="90" height="28" rx="5" fill="#555" fill-opacity="0.15" stroke="#555" stroke-width="1.3"/>
+<text x="367.0" y="306.0" font-size="10" text-anchor="middle" fill="#555" font-weight="700">LPF Q</text>
+<line x1="412" y1="302" x2="432" y2="302" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+<rect x="434" y="288" width="70" height="28" rx="5" fill="#b7791f" fill-opacity="0.15" stroke="#b7791f" stroke-width="1.3"/>
+<text x="469.0" y="306.0" font-size="10" text-anchor="middle" fill="#b7791f" font-weight="700">VGA</text>
+<line x1="504" y1="302" x2="524" y2="302" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+<rect x="526" y="288" width="90" height="28" rx="5" fill="#1d4278" fill-opacity="0.15" stroke="#1d4278" stroke-width="1.3"/>
+<text x="571.0" y="306.0" font-size="10" text-anchor="middle" fill="#1d4278" font-weight="700">ADC Q</text>
+<line x1="616" y1="302" x2="636" y2="302" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+<rect x="638" y="244" width="130" height="72" rx="5" fill="#2f5d9e" fill-opacity="0.15" stroke="#2f5d9e" stroke-width="1.3"/>
+<text x="703.0" y="278.0" font-size="10" text-anchor="middle" fill="#2f5d9e" font-weight="700">Hiệu chỉnh số</text>
+<text x="703.0" y="290.0" font-size="8.5" text-anchor="middle" fill="#555">DC, QEC</text>
+<line x1="768" y1="280" x2="788" y2="280" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+<rect x="790" y="262" width="120" height="36" rx="5" fill="#2f5d9e" fill-opacity="0.15" stroke="#2f5d9e" stroke-width="1.3"/>
+<text x="850.0" y="278.0" font-size="10" text-anchor="middle" fill="#2f5d9e" font-weight="700">IQ băng gốc</text>
+<text x="850.0" y="290.0" font-size="8.5" text-anchor="middle" fill="#555">tới DFE / Low-PHY</text>
+<text x="30" y="212" font-size="12" font-weight="700" fill="#1d4278">Zero-IF (direct conversion)</text>
+<text x="930" y="212" font-size="9.5" text-anchor="end" fill="#666">LO bằng tần số sóng mang; phải bù rò LO, DC và mất cân bằng I/Q</text>
+<polygon points="40,376 60,376 50,392" fill="none" stroke="#555" stroke-width="1.4"/><line x1="50" y1="392" x2="50" y2="398" stroke="#555" stroke-width="1.2"/><line x1="50" y1="398" x2="62" y2="398" stroke="#555" stroke-width="1.2"/>
+<line x1="62" y1="398" x2="80" y2="398" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+<rect x="82" y="380" width="70" height="36" rx="5" fill="#b7791f" fill-opacity="0.15" stroke="#b7791f" stroke-width="1.3"/>
+<text x="117.0" y="402.0" font-size="10" text-anchor="middle" fill="#b7791f" font-weight="700">LNA</text>
+<line x1="152" y1="398" x2="170" y2="398" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+<rect x="172" y="380" width="100" height="36" rx="5" fill="#555" fill-opacity="0.15" stroke="#555" stroke-width="1.3"/>
+<text x="222.0" y="396.0" font-size="10" text-anchor="middle" fill="#555" font-weight="700">Lọc RF</text>
+<text x="222.0" y="408.0" font-size="8.5" text-anchor="middle" fill="#555">chống chồng phổ</text>
+<line x1="272" y1="398" x2="292" y2="398" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+<rect x="294" y="380" width="70" height="36" rx="5" fill="#b7791f" fill-opacity="0.15" stroke="#b7791f" stroke-width="1.3"/>
+<text x="329.0" y="402.0" font-size="10" text-anchor="middle" fill="#b7791f" font-weight="700">Driver</text>
+<line x1="364" y1="398" x2="384" y2="398" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+<rect x="386" y="380" width="150" height="36" rx="5" fill="#1d4278" fill-opacity="0.15" stroke="#1d4278" stroke-width="1.3"/>
+<text x="461.0" y="396.0" font-size="10" text-anchor="middle" fill="#1d4278" font-weight="700">ADC tốc độ GSPS</text>
+<text x="461.0" y="408.0" font-size="8.5" text-anchor="middle" fill="#555">lấy mẫu trực tiếp ở RF</text>
+<line x1="536" y1="398" x2="556" y2="398" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+<rect x="558" y="380" width="210" height="36" rx="5" fill="#2f5d9e" fill-opacity="0.15" stroke="#2f5d9e" stroke-width="1.3"/>
+<text x="663.0" y="396.0" font-size="10" text-anchor="middle" fill="#2f5d9e" font-weight="700">Trộn tần số (NCO) và DDC</text>
+<text x="663.0" y="408.0" font-size="8.5" text-anchor="middle" fill="#555">thay cho mixer tương tự</text>
+<line x1="768" y1="398" x2="788" y2="398" stroke="#555" stroke-width="1.2" marker-end="url(#a)"/>
+<rect x="790" y="380" width="120" height="36" rx="5" fill="#2f5d9e" fill-opacity="0.15" stroke="#2f5d9e" stroke-width="1.3"/>
+<text x="850.0" y="396.0" font-size="10" text-anchor="middle" fill="#2f5d9e" font-weight="700">IQ băng gốc</text>
+<text x="850.0" y="408.0" font-size="8.5" text-anchor="middle" fill="#555">tới DFE / Low-PHY</text>
+<text x="30" y="352" font-size="12" font-weight="700" fill="#1d4278">RF sampling (direct RF sampling)</text>
+<text x="930" y="352" font-size="9.5" text-anchor="end" fill="#666">Bỏ mixer tương tự; nhạy với jitter của clock lấy mẫu</text>
+</svg>

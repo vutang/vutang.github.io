@@ -15,7 +15,7 @@
         <link rel="prev" href="../../sync/sync/">
       
       
-        <link rel="next" href="../dfe-cfr-dpd/">
+        <link rel="next" href="../rf-transceiver/">
       
       
         
@@ -8027,6 +8027,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../rf-transceiver/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RF Transceiver &amp; Front-end
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../dfe-cfr-dpd/" class="md-nav__link">
         
   
@@ -13225,34 +13253,7 @@
 <p>Khối lượng tính toán của Low-PHY tăng theo số nhánh anten và băng thông. Với RU massive MIMO, beamforming số trên hàng chục nhánh là phần tốn tài nguyên nhất của khối xử lý số trong RU.</p>
 <h2 id="transceiver-va-bo-chuyen-oi-du-lieu">Transceiver và bộ chuyển đổi dữ liệu<a class="headerlink" href="#transceiver-va-bo-chuyen-oi-du-lieu" title="Permanent link">¶</a></h2>
 <h3 id="kien-truc-thu-phat">Kiến trúc thu phát<a class="headerlink" href="#kien-truc-thu-phat" title="Permanent link">¶</a></h3>
-<p>Có ba cách chính để chuyển giữa tín hiệu số băng gốc và tín hiệu RF:</p>
-<table>
-<thead>
-<tr>
-<th>Kiến trúc</th>
-<th>Nguyên lý</th>
-<th>Đặc điểm</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Superheterodyne (đổi tần qua trung tần)</td>
-<td>Đổi tần qua một hoặc nhiều tần số trung gian (IF), lấy mẫu ở IF</td>
-<td>Kiến trúc lâu đời, chất lượng tốt nhưng cần nhiều tầng trộn và bộ lọc, tốn diện tích và chi phí</td>
-</tr>
-<tr>
-<td>Zero-IF (direct conversion)</td>
-<td>Trộn trực tiếp giữa băng gốc I/Q và RF bằng một bộ dao động nội (LO)</td>
-<td>Ít linh kiện, dễ tích hợp nhiều nhánh trên một chip; phải hiệu chỉnh rò LO và mất cân bằng I/Q</td>
-</tr>
-<tr>
-<td>Direct RF sampling</td>
-<td>ADC và DAC tốc độ GSPS lấy mẫu trực tiếp ở tần số RF, trộn tần thực hiện bằng số</td>
-<td>Bỏ được tầng trộn tương tự, linh hoạt về băng tần; phải xử lý spur do ghép xen (interleaving) và jitter của clock, điện năng phần RF có thể cao hơn zero-IF</td>
-</tr>
-</tbody>
-</table>
-<p>Phần lớn RU FR1 hiện nay dùng RF transceiver tích hợp kiểu zero-IF hoặc bộ chuyển đổi RF sampling, thay vì superheterodyne. Bài viết của Analog Devices nêu ở cuối trang so sánh chi tiết hai kiến trúc zero-IF và RF sampling.</p>
+<p>Có ba kiến trúc chính để chuyển giữa tín hiệu số băng gốc và tín hiệu RF: superheterodyne (đổi tần qua trung tần), zero-IF (trộn trực tiếp giữa băng gốc I/Q và RF bằng bộ dao động nội) và direct RF sampling (ADC và DAC tốc độ GSPS lấy mẫu trực tiếp ở RF, trộn tần bằng số). Phần lớn RU FR1 hiện nay dùng RF transceiver tích hợp kiểu zero-IF hoặc bộ chuyển đổi RF sampling, thay vì superheterodyne. Nguyên lý trộn tần, so sánh ba kiến trúc, các khiếm khuyết RF và cách hiệu chỉnh nằm ở <a href="../rf-transceiver/">RF Transceiver và RF front-end</a>.</p>
 <h3 id="rf-transceiver-tich-hop">RF transceiver tích hợp<a class="headerlink" href="#rf-transceiver-tich-hop" title="Permanent link">¶</a></h3>
 <p>Một RF transceiver tích hợp gom trên một chip nhiều nhánh DAC và ADC, bộ trộn, bộ tổng hợp LO, bộ lọc băng gốc và các bộ thu quan sát (observation receiver, ORx) phục vụ DPD. Một số dòng tích hợp luôn DFE (DUC/DDC, CFR, DPD), giảm khối lượng logic cần hiện thực trên FPGA. Hai ví dụ:</p>
 <table>
@@ -13310,7 +13311,7 @@
 </table>
 <p>Bộ lọc băng ở phía anten giới hạn phát xạ ngoài băng của đường phát và chặn tín hiệu ngoài băng ở đường thu. Bộ lọc, cùng với DPD, quyết định RU có đạt các yêu cầu phát xạ ngoài ý muốn và chặn nhiễu (blocking) của 3GPP hay không, xem <a href="../../spectrum/rf-requirements/">RF Requirements</a>.</p>
 <h3 id="lna-va-uong-thu">LNA và đường thu<a class="headerlink" href="#lna-va-uong-thu" title="Permanent link">¶</a></h3>
-<p>LNA (low-noise amplifier, bộ khuếch đại tạp âm thấp) là tầng khuếch đại đầu tiên của đường thu, quyết định phần lớn hệ số tạp âm (noise figure) và do đó độ nhạy thu của RU. Ở TDD, LNA phải được bảo vệ khỏi công suất phát rò qua chuyển mạch, nên thường có mạch hạn biên hoặc được tắt trong thời gian phát.</p>
+<p>LNA (low-noise amplifier, bộ khuếch đại tạp âm thấp) là tầng khuếch đại đầu tiên của đường thu, quyết định phần lớn hệ số tạp âm (noise figure) và do đó độ nhạy thu của RU. Cách tính độ nhạy thu từ hệ số tạp âm nằm ở <a href="../rf-transceiver/#ngan-sach-nhieu-o-uong-thu">RF Transceiver và RF front-end</a>. Ở TDD, LNA phải được bảo vệ khỏi công suất phát rò qua chuyển mạch, nên thường có mạch hạn biên hoặc được tắt trong thời gian phát.</p>
 <h3 id="anten">Anten<a class="headerlink" href="#anten" title="Permanent link">¶</a></h3>
 <p>Có hai cách ghép RU với anten:</p>
 <ul>
@@ -13443,6 +13444,7 @@
 <p>Khi so sánh hai RU, cần chú ý điều kiện đo của từng thông số. Ví dụ điện năng tiêu thụ ở 100% tải và ở 30% tải khác nhau nhiều, và IBW chỉ có ý nghĩa cùng với số sóng mang và OBW.</p>
 <h2 id="lien-quan">Liên quan<a class="headerlink" href="#lien-quan" title="Permanent link">¶</a></h2>
 <ul>
+<li><a href="../rf-transceiver/">RF Transceiver và RF front-end</a>: trộn tần, ba kiến trúc thu phát, khiếm khuyết RF, ngân sách nhiễu và hiệu chỉnh trong transceiver.</li>
 <li><a href="../../baseband/du-cu-architecture/">Kiến trúc DU và CU</a>: phần cứng baseband phía bên kia của fronthaul.</li>
 <li><a href="../dfe-cfr-dpd/">DFE: CFR và DPD</a>: hai khối xử lý số quan trọng nhất của đường phát trong RU.</li>
 <li><a href="../../architecture/ran-architecture/">RAN Architecture &amp; Splits</a>: vị trí RU trong gNB, split 7.2x, Category A và B.</li>
@@ -13491,7 +13493,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 6, 2026 14:19:19 UTC">November 6, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 7, 2026 06:37:15 UTC">November 7, 2026</span>
   </span>
 
     
@@ -13557,13 +13559,13 @@
         
         
           
-          <a href="../dfe-cfr-dpd/" class="md-footer__link md-footer__link--next" aria-label="Next: DFE: CFR &amp; DPD">
+          <a href="../rf-transceiver/" class="md-footer__link md-footer__link--next" aria-label="Next: RF Transceiver &amp; Front-end">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                DFE: CFR &amp; DPD
+                RF Transceiver &amp; Front-end
               </div>
             </div>
             <div class="md-footer__button md-icon">
