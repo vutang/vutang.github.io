@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 860 330" font-family="Helvetica, Arial, sans-serif" font-size="13">
+  <title>IRQ domain nối tầng: cảm biến nối vào chân GPIO, GPIO controller có irqchip và domain riêng ánh xạ hwirq 5 sang virq 61, đường ngắt của GPIO controller và của UART đi vào GIC, GIC ánh xạ hwirq của chúng sang virq; driver chỉ dùng số virq</title>
+  <rect width="860" height="330" fill="#ffffff"/>
+  <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <rect x="20" y="40" width="130" height="56" rx="5" fill="#f7f7f7" stroke="#555" stroke-width="1.2"/>
+  <text x="85.0" y="63.5" text-anchor="middle" fill="#1f2d3d" font-weight="bold">Cảm biến</text>
+  <text x="85.0" y="80.5" text-anchor="middle" fill="#555" font-size="11.5">nối chân GPIO 5</text>
+  <rect x="20" y="186" width="130" height="56" rx="5" fill="#f7f7f7" stroke="#555" stroke-width="1.2"/>
+  <text x="85.0" y="209.5" text-anchor="middle" fill="#1f2d3d" font-weight="bold">UART</text>
+  <text x="85.0" y="226.5" text-anchor="middle" fill="#555" font-size="11.5">ngoại vi SoC</text>
+  <rect x="210" y="20" width="210" height="96" rx="5" fill="#fffbe6" stroke="#b59a2a" stroke-width="1.2"/>
+  <text x="315.0" y="55.0" text-anchor="middle" fill="#1f2d3d" font-weight="bold">GPIO controller</text>
+  <text x="315.0" y="72.0" text-anchor="middle" fill="#555" font-size="11.5">irqchip + irq_domain</text>
+  <text x="315.0" y="89.0" text-anchor="middle" fill="#555" font-size="11.5">hwirq 5 → virq 61</text>
+  <rect x="480" y="20" width="220" height="222" rx="5" fill="#eef4fb" stroke="#4a78b5" stroke-width="1.2"/>
+  <text x="590" y="52" text-anchor="middle" fill="#1f2d3d" font-size="13" font-weight="bold">GIC</text>
+  <text x="590" y="70" text-anchor="middle" fill="#555" font-size="11.5">irqchip + irq_domain</text>
+  <rect x="495" y="96" width="190" height="40" rx="5" fill="#ffffff" stroke="#4a78b5" stroke-width="1.2"/>
+  <text x="590.0" y="120.0" text-anchor="middle" fill="#1f2d3d" font-weight="bold">hwirq 52 → virq 40</text>
+  <text x="590" y="152" text-anchor="middle" fill="#555" font-size="10.5">handler của virq 40 là chained handler</text>
+  <text x="590" y="166" text-anchor="middle" fill="#555" font-size="10.5">của GPIO controller, gọi tiếp virq 61</text>
+  <rect x="495" y="180" width="190" height="40" rx="5" fill="#ffffff" stroke="#4a78b5" stroke-width="1.2"/>
+  <text x="590.0" y="204.0" text-anchor="middle" fill="#1f2d3d" font-weight="bold">hwirq 59 → virq 25</text>
+  <rect x="760" y="100" width="80" height="70" rx="5" fill="#f7f7f7" stroke="#555" stroke-width="1.2"/>
+  <text x="800.0" y="130.5" text-anchor="middle" fill="#1f2d3d" font-weight="bold">CPU</text>
+  <text x="800.0" y="147.5" text-anchor="middle" fill="#555" font-size="11.5">core</text>
+  <line x1="150" y1="68" x2="208" y2="68" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="179" y="60" text-anchor="middle" fill="#555" font-size="11">chân 5</text>
+  <path d="M420,68 H450 V116 H493" fill="none" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="150" y1="214" x2="493" y2="200" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="700" y1="135" x2="758" y2="135" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="20" y="266" width="820" height="46" rx="5" fill="#f7f7f7" stroke="#555" stroke-width="1.2"/>
+  <text x="430" y="285" text-anchor="middle" fill="#1f2d3d" font-size="12">Driver chỉ dùng số virq: request_irq(61, ...) cho cảm biến, request_irq(25, ...) cho UART</text>
+  <text x="430" y="302" text-anchor="middle" fill="#555" font-size="11">virq là số ở cột đầu của /proc/interrupts; số hwirq và virq trong hình chỉ để minh họa</text>
+</svg>
