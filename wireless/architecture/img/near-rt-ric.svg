@@ -1,0 +1,71 @@
+<svg role="img" viewBox="0 0 960 470" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+<title>Cấu trúc Near-RT RIC: các xApp chạy trên nền tảng gồm terminations cho E2, A1, O1, quản lý subscription, cơ sở dữ liệu dùng chung, giải quyết xung đột, hạ tầng messaging; phía trên là SMO và Non-RT RIC, phía dưới là các E2 node O-CU-CP, O-CU-UP, O-DU</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+<rect x="0" y="0" width="960" height="470" rx="8" fill="#ffffff"/>
+<rect x="10" y="10" width="940" height="450" rx="10" fill="#f6f8fb" stroke="#c9d3e3"/>
+<text x="30" y="36" font-size="14" font-weight="700" fill="#1d4278">Cấu trúc Near-RT RIC và vị trí trong kiến trúc O-RAN</text>
+<text x="30" y="54" font-size="10.5" fill="#666">Sơ đồ đơn giản hóa theo mô tả kiến trúc của O-RAN WG3; tên và ranh giới các thành phần khác nhau giữa các hiện thực</text>
+<rect x="30" y="68" width="900" height="58" rx="8" fill="#a23b72" fill-opacity="0.06" stroke="#a23b72" stroke-dasharray="5 4"/>
+<text x="46" y="88" font-size="11.5" fill="#a23b72" font-weight="700">SMO</text>
+<rect x="320" y="76" width="220" height="42" rx="6" fill="#a23b72" fill-opacity="0.15" stroke="#a23b72" stroke-width="1.4"/>
+<text x="430.0" y="94.0" font-size="10.5" text-anchor="middle" fill="#a23b72" font-weight="700">Non-RT RIC + rApp</text>
+<text x="430.0" y="108.0" font-size="9" text-anchor="middle" fill="#555">chính sách, model, thông tin bổ trợ</text>
+<rect x="600" y="76" width="200" height="42" rx="6" fill="#a23b72" fill-opacity="0.15" stroke="#a23b72" stroke-width="1.4"/>
+<text x="700.0" y="94.0" font-size="10.5" text-anchor="middle" fill="#a23b72" font-weight="700">Quản lý (OAM)</text>
+<text x="700.0" y="108.0" font-size="9" text-anchor="middle" fill="#555">cấu hình, lỗi, hiệu năng</text>
+<rect x="30" y="160" width="900" height="190" rx="8" fill="#1d4278" fill-opacity="0.05" stroke="#1d4278" stroke-dasharray="5 4"/>
+<rect x="140" y="172" width="140" height="40" rx="6" fill="#b7791f" fill-opacity="0.15" stroke="#b7791f" stroke-width="1.4"/>
+<rect x="295" y="172" width="140" height="40" rx="6" fill="#b7791f" fill-opacity="0.15" stroke="#b7791f" stroke-width="1.4"/>
+<rect x="450" y="172" width="140" height="40" rx="6" fill="#b7791f" fill-opacity="0.15" stroke="#b7791f" stroke-width="1.4"/>
+<rect x="605" y="172" width="140" height="40" rx="6" fill="#b7791f" fill-opacity="0.15" stroke="#b7791f" stroke-width="1.4"/>
+<rect x="760" y="172" width="140" height="40" rx="6" fill="#b7791f" fill-opacity="0.15" stroke="#b7791f" stroke-width="1.4"/>
+<rect x="50" y="222" width="860" height="22" rx="4" fill="#2f5d9e" fill-opacity="0.12" stroke="#2f5d9e"/>
+<text x="520" y="237" font-size="9.5" text-anchor="middle" fill="#2f5d9e" font-weight="700">API cho xApp và hạ tầng messaging giữa các thành phần</text>
+<rect x="50" y="254" width="114" height="48" rx="6" fill="#555" fill-opacity="0.12" stroke="#555" stroke-width="1.4"/>
+<text x="107.0" y="282.0" font-size="9.5" text-anchor="middle" fill="#555" font-weight="700">E2 termination</text>
+<rect x="174" y="254" width="114" height="48" rx="6" fill="#555" fill-opacity="0.12" stroke="#555" stroke-width="1.4"/>
+<text x="231.0" y="282.0" font-size="9.5" text-anchor="middle" fill="#555" font-weight="700">A1 termination</text>
+<rect x="298" y="254" width="114" height="48" rx="6" fill="#555" fill-opacity="0.12" stroke="#555" stroke-width="1.4"/>
+<text x="355.0" y="282.0" font-size="9.5" text-anchor="middle" fill="#555" font-weight="700">O1 termination</text>
+<rect x="422" y="254" width="114" height="48" rx="6" fill="#555" fill-opacity="0.12" stroke="#555" stroke-width="1.4"/>
+<text x="479.0" y="275.0" font-size="9.5" text-anchor="middle" fill="#555" font-weight="700">Quản lý</text>
+<text x="479.0" y="289.0" font-size="9" text-anchor="middle" fill="#555">subscription</text>
+<rect x="546" y="254" width="114" height="48" rx="6" fill="#555" fill-opacity="0.12" stroke="#555" stroke-width="1.4"/>
+<text x="603.0" y="275.0" font-size="9.5" text-anchor="middle" fill="#555" font-weight="700">Cơ sở dữ liệu</text>
+<text x="603.0" y="289.0" font-size="9" text-anchor="middle" fill="#555">dùng chung (SDL)</text>
+<rect x="670" y="254" width="114" height="48" rx="6" fill="#555" fill-opacity="0.12" stroke="#555" stroke-width="1.4"/>
+<text x="727.0" y="275.0" font-size="9.5" text-anchor="middle" fill="#555" font-weight="700">Giải quyết</text>
+<text x="727.0" y="289.0" font-size="9" text-anchor="middle" fill="#555">xung đột</text>
+<rect x="794" y="254" width="114" height="48" rx="6" fill="#555" fill-opacity="0.12" stroke="#555" stroke-width="1.4"/>
+<text x="851.0" y="275.0" font-size="9.5" text-anchor="middle" fill="#555" font-weight="700">Quản lý</text>
+<text x="851.0" y="289.0" font-size="9" text-anchor="middle" fill="#555">vòng đời xApp</text>
+<text x="520" y="326" font-size="9.5" text-anchor="middle" fill="#666">Nền tảng cũng cung cấp bảo mật, đăng ký dịch vụ, logging và hỗ trợ AI/ML cho xApp</text>
+<line x1="430" y1="118" x2="430" y2="160" stroke="#555" stroke-width="1.4" marker-end="url(#a)" marker-start="url(#a)"/>
+<text x="438" y="144" font-size="10" fill="#555" font-weight="700">A1</text>
+<line x1="700" y1="118" x2="700" y2="160" stroke="#555" stroke-width="1.4" marker-end="url(#a)" marker-start="url(#a)"/>
+<text x="708" y="144" font-size="10" fill="#555" font-weight="700">O1</text>
+<rect x="170" y="392" width="160" height="46" rx="6" fill="#1d4278" fill-opacity="0.15" stroke="#1d4278" stroke-width="1.4"/>
+<text x="250.0" y="412.0" font-size="11" text-anchor="middle" fill="#1d4278" font-weight="700">O-CU-CP</text>
+<text x="250.0" y="426.0" font-size="9" text-anchor="middle" fill="#555">E2 node</text>
+<line x1="250" y1="350" x2="250" y2="392" stroke="#555" stroke-width="1.4" marker-end="url(#a)" marker-start="url(#a)"/>
+<rect x="400" y="392" width="160" height="46" rx="6" fill="#1d4278" fill-opacity="0.15" stroke="#1d4278" stroke-width="1.4"/>
+<text x="480.0" y="412.0" font-size="11" text-anchor="middle" fill="#1d4278" font-weight="700">O-CU-UP</text>
+<text x="480.0" y="426.0" font-size="9" text-anchor="middle" fill="#555">E2 node</text>
+<line x1="480" y1="350" x2="480" y2="392" stroke="#555" stroke-width="1.4" marker-end="url(#a)" marker-start="url(#a)"/>
+<rect x="630" y="392" width="160" height="46" rx="6" fill="#1d4278" fill-opacity="0.15" stroke="#1d4278" stroke-width="1.4"/>
+<text x="710.0" y="412.0" font-size="11" text-anchor="middle" fill="#1d4278" font-weight="700">O-DU</text>
+<text x="710.0" y="426.0" font-size="9" text-anchor="middle" fill="#555">E2 node</text>
+<line x1="710" y1="350" x2="710" y2="392" stroke="#555" stroke-width="1.4" marker-end="url(#a)" marker-start="url(#a)"/>
+<text x="830" y="378" font-size="10" fill="#555" font-weight="700">E2</text>
+<text x="830" y="392" font-size="9" fill="#666">(SCTP, E2AP)</text>
+<text x="210" y="189" font-size="10.5" text-anchor="middle" fill="#b7791f" font-weight="700">xApp</text>
+<text x="210" y="203" font-size="9" text-anchor="middle" fill="#555">traffic steering</text>
+<text x="365" y="189" font-size="10.5" text-anchor="middle" fill="#b7791f" font-weight="700">xApp</text>
+<text x="365" y="203" font-size="9" text-anchor="middle" fill="#555">QoS, slicing</text>
+<text x="520" y="189" font-size="10.5" text-anchor="middle" fill="#b7791f" font-weight="700">xApp</text>
+<text x="520" y="203" font-size="9" text-anchor="middle" fill="#555">năng lượng</text>
+<text x="675" y="189" font-size="10.5" text-anchor="middle" fill="#b7791f" font-weight="700">xApp</text>
+<text x="675" y="203" font-size="9" text-anchor="middle" fill="#555">phát hiện bất thường</text>
+<text x="830" y="189" font-size="10.5" text-anchor="middle" fill="#b7791f" font-weight="700">xApp</text>
+<text x="830" y="203" font-size="9" text-anchor="middle" fill="#555">...</text>
+</svg>

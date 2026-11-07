@@ -26,7 +26,7 @@
     
     
       
-        <title>RAN Intelligent Controller (WIP) - Vu Tang's Docs</title>
+        <title>RAN Intelligent Controller - Vu Tang's Docs</title>
       
     
     
@@ -72,7 +72,7 @@
     
   
 <meta property="og:type" content="website">
-<meta property="og:title" content="RAN Intelligent Controller (WIP) - Vu Tang's Docs">
+<meta property="og:title" content="RAN Intelligent Controller - Vu Tang's Docs">
 <meta property="og:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
 <meta property="og:image" content="https://note.vutang.dev/assets/images/social/wireless/architecture/ric.png">
 <meta property="og:image:type" content="image/png">
@@ -80,7 +80,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://note.vutang.dev/wireless/architecture/ric/">
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:title" content="RAN Intelligent Controller (WIP) - Vu Tang's Docs">
+<meta property="twitter:title" content="RAN Intelligent Controller - Vu Tang's Docs">
 <meta property="twitter:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
 <meta property="twitter:image" content="https://note.vutang.dev/assets/images/social/wireless/architecture/ric.png">
 <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
@@ -145,7 +145,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              RAN Intelligent Controller (WIP)
+              RAN Intelligent Controller
             
           </span>
         </div>
@@ -6637,7 +6637,7 @@
   <span class="md-ellipsis">
     
   
-    WG2 (Non-RT RIC &amp; A1) (WIP)
+    WG2 (Non-RT RIC &amp; A1)
   
 
     
@@ -6665,7 +6665,7 @@
   <span class="md-ellipsis">
     
   
-    WG3 (Near-RT RIC &amp; E2) (WIP)
+    WG3 (Near-RT RIC &amp; E2)
   
 
     
@@ -7572,7 +7572,7 @@
   <span class="md-ellipsis">
     
   
-    RAN Intelligent Controller (WIP)
+    RAN Intelligent Controller
   
 
     
@@ -7590,7 +7590,7 @@
   <span class="md-ellipsis">
     
   
-    RAN Intelligent Controller (WIP)
+    RAN Intelligent Controller
   
 
     
@@ -7614,6 +7614,128 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#hai-loai-ric-va-vong-ieu-khien" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hai loại RIC và vòng điều khiển
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#near-rt-ric" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Near-RT RIC
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Near-RT RIC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cau-truc-nen-tang" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cấu trúc nền tảng
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#giao-dien-e2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Giao diện E2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cac-e2-service-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các E2 service model
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#non-rt-ric" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Non-RT RIC
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Non-RT RIC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#giao-dien-a1-va-r1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Giao diện A1 và R1
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-case-tieu-bieu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use case tiêu biểu
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ranh-gioi-giua-ric-va-e2-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ranh giới giữa RIC và E2 node
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hien-trang-trien-khai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hiện trạng triển khai
+      
+    </span>
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#lien-quan" class="md-nav__link">
@@ -12641,6 +12763,128 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#hai-loai-ric-va-vong-ieu-khien" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hai loại RIC và vòng điều khiển
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#near-rt-ric" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Near-RT RIC
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Near-RT RIC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cau-truc-nen-tang" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cấu trúc nền tảng
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#giao-dien-e2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Giao diện E2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cac-e2-service-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các E2 service model
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#non-rt-ric" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Non-RT RIC
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Non-RT RIC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#giao-dien-a1-va-r1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Giao diện A1 và R1
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-case-tieu-bieu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use case tiêu biểu
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ranh-gioi-giua-ric-va-e2-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ranh giới giữa RIC và E2 node
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hien-trang-trien-khai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hiện trạng triển khai
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#lien-quan" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -12736,40 +12980,283 @@
 
 
 <h1 id="ran-intelligent-controller">RAN Intelligent Controller<a class="headerlink" href="#ran-intelligent-controller" title="Permanent link">¶</a></h1>
-<p>RAN Intelligent Controller (RIC) là thành phần mà O-RAN thêm vào kiến trúc RAN để tối ưu và điều khiển RAN bằng các ứng dụng tách khỏi phần mềm của gNB. Trang này trình bày RIC ở góc độ chức năng, theo thứ tự dự kiến: vị trí của Non-RT RIC và Near-RT RIC trong kiến trúc O-RAN, các vòng điều khiển theo thang thời gian, cấu trúc nền tảng Near-RT RIC và xApp, giao diện E2 với E2AP và các service model, cấu trúc Non-RT RIC và rApp trong SMO, giao diện A1 và R1, các use case tiêu biểu, rồi hiện trạng triển khai. Danh mục đặc tả của hai working group phụ trách nằm ở <a href="../../oran/wg2/">WG2</a> và <a href="../../oran/wg3/">WG3</a>.</p>
-<div class="admonition todo">
-<p class="admonition-title">Trang đang được viết</p>
-<p>Nội dung dự kiến:</p>
+<p>RAN Intelligent Controller (RIC) là thành phần mà O-RAN thêm vào kiến trúc RAN để tối ưu và điều khiển RAN bằng các ứng dụng chạy tách khỏi phần mềm của gNB. Trước đây, các chức năng như cân bằng tải, điều khiển handover hay tiết kiệm năng lượng nằm trong phần mềm của nhà cung cấp trạm gốc hoặc trong hệ thống SON (self-organizing network, mạng tự tổ chức) riêng. RIC mở các chức năng này qua giao diện chuẩn để nhà mạng hoặc bên thứ ba viết ứng dụng điều khiển RAN. Trang này trình bày RIC ở góc độ chức năng, theo thứ tự: hai loại RIC và vòng điều khiển, cấu trúc nền tảng Near-RT RIC và xApp, giao diện E2 với E2AP và các service model, Non-RT RIC và rApp, giao diện A1 và R1, các use case tiêu biểu, ranh giới giữa RIC và scheduler, rồi hiện trạng triển khai. Danh mục đặc tả nằm ở <a href="../../oran/wg2/">WG2</a> và <a href="../../oran/wg3/">WG3</a>; vị trí của RIC trong kiến trúc tổng thể nằm ở <a href="../../oran/wg1/#thanh-phan-cua-kien-truc-o-ran">WG1</a>.</p>
+<h2 id="hai-loai-ric-va-vong-ieu-khien">Hai loại RIC và vòng điều khiển<a class="headerlink" href="#hai-loai-ric-va-vong-ieu-khien" title="Permanent link">¶</a></h2>
+<p>O-RAN chia việc điều khiển RAN thành các vòng theo thang thời gian phản hồi, mỗi vòng do một thành phần đảm nhận:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Non-RT RIC</th>
+<th>Near-RT RIC</th>
+<th>Trong E2 node (O-DU, O-CU)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Thang thời gian</td>
+<td>Từ 1 s trở lên</td>
+<td>Khoảng 10 ms tới 1 s</td>
+<td>Dưới 10 ms</td>
+</tr>
+<tr>
+<td>Vị trí</td>
+<td>Trong SMO</td>
+<td>Giữa SMO và E2 node, thường ở điểm tập trung hoặc edge</td>
+<td>Tại DU, CU</td>
+</tr>
+<tr>
+<td>Ứng dụng</td>
+<td>rApp</td>
+<td>xApp</td>
+<td>Phần mềm của nhà cung cấp gNB</td>
+</tr>
+<tr>
+<td>Giao diện xuống</td>
+<td>A1 tới Near-RT RIC, O1 tới E2 node</td>
+<td>E2 tới O-CU, O-DU</td>
+<td></td>
+</tr>
+<tr>
+<td>Ví dụ</td>
+<td>Huấn luyện model, chính sách tối ưu theo giờ hoặc theo ngày</td>
+<td>Điều hướng lưu lượng, điều khiển handover, chia tài nguyên giữa slice</td>
+<td>Lập lịch theo slot, HARQ, link adaptation</td>
+</tr>
+</tbody>
+</table>
+<p>Vòng dưới 10 ms không thuộc RIC vì quyết định theo slot (0,5 ms ở subcarrier spacing 30 kHz) không thể đi qua một giao diện mạng rồi quay lại kịp. Vì vậy RIC không thay scheduler; RIC điều chỉnh tham số và chính sách mà scheduler và các chức năng khác trong E2 node dùng khi tự ra quyết định.</p>
+<h2 id="near-rt-ric">Near-RT RIC<a class="headerlink" href="#near-rt-ric" title="Permanent link">¶</a></h2>
+<h3 id="cau-truc-nen-tang">Cấu trúc nền tảng<a class="headerlink" href="#cau-truc-nen-tang" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/near-rt-ric.svg" data-desc-position="bottom"><img alt="Cấu trúc Near-RT RIC và vị trí trong kiến trúc O-RAN" src="../img/near-rt-ric.svg"></a></p>
+<p><em>Near-RT RIC gồm nền tảng chung và các xApp chạy trên đó. Nền tảng kết thúc các giao diện E2, A1, O1 và cung cấp dịch vụ chung cho xApp.</em></p>
+<p>Near-RT RIC gồm một nền tảng (platform) và các xApp. Nền tảng đảm nhận những việc mà mọi xApp đều cần, để xApp chỉ chứa logic điều khiển:</p>
+<table>
+<thead>
+<tr>
+<th>Thành phần</th>
+<th>Vai trò</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kết thúc giao diện (E2, A1, O1)</td>
+<td>Giữ kết nối với các E2 node, với Non-RT RIC và với hệ thống quản lý</td>
+</tr>
+<tr>
+<td>Quản lý subscription</td>
+<td>Gộp các yêu cầu đăng ký dữ liệu của nhiều xApp tới cùng một E2 node, phân phối bản tin trả về cho đúng xApp</td>
+</tr>
+<tr>
+<td>Cơ sở dữ liệu dùng chung (shared data layer, SDL)</td>
+<td>Lưu trạng thái của RAN và của UE để các xApp đọc và ghi, tránh mỗi xApp tự thu thập lại</td>
+</tr>
+<tr>
+<td>Giải quyết xung đột (conflict mitigation)</td>
+<td>Phát hiện và xử lý khi nhiều xApp muốn điều khiển cùng một tham số theo hướng khác nhau</td>
+</tr>
+<tr>
+<td>Quản lý vòng đời xApp</td>
+<td>Triển khai, cập nhật, gỡ xApp, thường là container trên nền tảng cloud-native</td>
+</tr>
+<tr>
+<td>Hạ tầng messaging và API cho xApp</td>
+<td>Kênh trao đổi bản tin giữa các thành phần, API để xApp dùng dịch vụ của nền tảng</td>
+</tr>
+</tbody>
+</table>
+<p>Mỗi xApp là một ứng dụng độc lập, thường được đóng gói dưới dạng container. xApp đăng ký nhận dữ liệu từ E2 node qua nền tảng, phân tích (có thể dùng model AI/ML), rồi gửi lệnh điều khiển hoặc chính sách ngược lại E2 node. Việc chạy Near-RT RIC trên Kubernetes và các vấn đề hạ tầng thuộc tab Virtualization.</p>
+<h3 id="giao-dien-e2">Giao diện E2<a class="headerlink" href="#giao-dien-e2" title="Permanent link">¶</a></h3>
+<p>E2 nối Near-RT RIC với các <strong>E2 node</strong>: O-CU-CP, O-CU-UP và O-DU (cùng eNB theo profile O-RAN). E2 chạy trên SCTP, và giao thức ứng dụng là <strong>E2AP</strong>, mã hóa ASN.1.</p>
+<p>Mỗi E2 node khai báo với RIC các <strong>RAN function</strong> mà nó cho phép điều khiển hoặc quan sát. Mỗi RAN function được mô tả theo một <strong>E2 service model (E2SM)</strong>: E2AP chỉ là "phong bì" vận chuyển, còn nội dung (đo gì, điều khiển tham số nào) do service model định nghĩa. Cách chia này cho phép thêm khả năng điều khiển mới bằng một service model mới mà không phải sửa E2AP.</p>
+<p>Trên mỗi RAN function, RIC dùng các dịch vụ sau:</p>
+<table>
+<thead>
+<tr>
+<th>Dịch vụ RIC</th>
+<th>Hướng</th>
+<th>Ý nghĩa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>REPORT</td>
+<td>E2 node → RIC</td>
+<td>E2 node gửi số liệu hoặc sự kiện khi điều kiện kích hoạt xảy ra, không chờ phản hồi</td>
+</tr>
+<tr>
+<td>INSERT</td>
+<td>E2 node → RIC</td>
+<td>E2 node gửi thông tin và tạm dừng một thủ tục, chờ RIC quyết định</td>
+</tr>
+<tr>
+<td>CONTROL</td>
+<td>RIC → E2 node</td>
+<td>RIC yêu cầu E2 node thực hiện hoặc tiếp tục một hành động</td>
+</tr>
+<tr>
+<td>POLICY</td>
+<td>RIC → E2 node</td>
+<td>RIC cài một chính sách để E2 node tự áp dụng khi điều kiện xảy ra</td>
+</tr>
+</tbody>
+</table>
+<p>Các thủ tục E2AP chia thành hai nhóm. Nhóm <strong>thủ tục toàn cục</strong> quản lý kết nối: E2 Setup (E2 node khai báo danh sách RAN function và cấu hình của mình), Reset, Error Indication và cập nhật cấu hình. Nhóm <strong>thủ tục chức năng của RIC</strong> phục vụ xApp: RIC Subscription (đăng ký nhận REPORT, INSERT hoặc cài POLICY), RIC Indication (E2 node gửi kết quả REPORT, INSERT) và RIC Control (RIC gửi lệnh).</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant N as E2 node (O-DU, O-CU)
+    participant R as Near-RT RIC
+    participant X as xApp
+    N-&gt;&gt;R: E2 Setup Request (danh sách RAN function)
+    R--&gt;&gt;N: E2 Setup Response
+    X-&gt;&gt;R: Đăng ký dữ liệu qua nền tảng
+    R-&gt;&gt;N: RIC Subscription Request (sự kiện kích hoạt, hành động)
+    N--&gt;&gt;R: RIC Subscription Response
+    loop Khi điều kiện kích hoạt xảy ra
+        N-&gt;&gt;R: RIC Indication (REPORT: số liệu)
+        R-&gt;&gt;X: Chuyển số liệu cho xApp
+    end
+    X-&gt;&gt;R: Quyết định điều khiển
+    R-&gt;&gt;N: RIC Control Request
+    N--&gt;&gt;R: RIC Control Acknowledge</code></pre>
+<h3 id="cac-e2-service-model">Các E2 service model<a class="headerlink" href="#cac-e2-service-model" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Service model</th>
+<th>Viết tắt</th>
+<th>Nội dung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Key Performance Measurement</td>
+<td>E2SM-KPM</td>
+<td>Báo số liệu hiệu năng theo cell, theo slice hoặc theo nhóm UE; định nghĩa phép đo dựa trên TS 28.552 của 3GPP</td>
+</tr>
+<tr>
+<td>RAN Control</td>
+<td>E2SM-RC</td>
+<td>Điều khiển các chức năng RAN theo từng UE hoặc từng cell, ví dụ handover, cấu hình bearer, tham số lập lịch theo slice</td>
+</tr>
+<tr>
+<td>Network Interface</td>
+<td>E2SM-NI</td>
+<td>Cho RIC theo dõi hoặc can thiệp vào bản tin trên các giao diện 3GPP như X2, Xn, F1, NG</td>
+</tr>
+<tr>
+<td>Cell Configuration and Control</td>
+<td>E2SM-CCC</td>
+<td>Đọc và thay đổi cấu hình ở mức node và mức cell, ví dụ tỉ lệ tài nguyên dành cho slice</td>
+</tr>
+</tbody>
+</table>
+<p>KPM và RC là hai service model được dùng nhiều nhất: KPM cho xApp dữ liệu đầu vào, RC cho xApp cách tác động. Một xApp tối ưu thường đăng ký KPM để theo dõi và dùng RC hoặc CCC để điều khiển.</p>
+<h2 id="non-rt-ric">Non-RT RIC<a class="headerlink" href="#non-rt-ric" title="Permanent link">¶</a></h2>
+<p>Non-RT RIC nằm trong SMO và gồm một framework cùng các <strong>rApp</strong>. Framework cung cấp cho rApp quyền truy cập dữ liệu và dịch vụ của SMO: số liệu hiệu năng và cấu hình thu qua O1, thông tin bên ngoài RAN (bản đồ, sự kiện, dữ liệu thời tiết), và khả năng gửi chính sách xuống Near-RT RIC qua A1 hoặc thay đổi cấu hình qua O1.</p>
+<p>Ba vai trò chính của Non-RT RIC:</p>
 <ul>
-<li>Vị trí trong kiến trúc: Non-RT RIC trong SMO, Near-RT RIC giữa SMO và E2 node (O-CU, O-DU).</li>
-<li>Vòng điều khiển: non-real-time (từ 1 s trở lên), near-real-time (10 ms tới 1 s), real-time (dưới 10 ms, nằm trong DU).</li>
-<li>Nền tảng Near-RT RIC: database chung (SDL), quản lý subscription, E2 termination, conflict mitigation, xApp lifecycle.</li>
-<li>Giao diện E2: thủ tục E2AP (setup, subscription, indication, control), E2 node và RAN function.</li>
-<li>Các E2 service model: KPM (số liệu), RC (điều khiển RAN), NI, CCC.</li>
-<li>Non-RT RIC và rApp: framework trong SMO, giao diện R1, quan hệ với O1.</li>
-<li>Giao diện A1: policy, enrichment information, quản lý model ML.</li>
-<li>Use case: traffic steering, tối ưu năng lượng, QoS cho slice, phát hiện bất thường.</li>
-<li>Hiện trạng: các nền tảng RIC thương mại và mã nguồn mở (O-RAN SC), mức độ triển khai thực tế.</li>
+<li><strong>Tạo chính sách</strong> cho Near-RT RIC, dựa trên phân tích dữ liệu dài hạn, ví dụ mục tiêu chất lượng cho từng slice hoặc ưu tiên lưu lượng theo vùng.</li>
+<li><strong>Quản lý vòng đời model AI/ML</strong>: thu thập dữ liệu, huấn luyện, đánh giá, triển khai model xuống Near-RT RIC hoặc E2 node, theo dõi chất lượng và huấn luyện lại. WG2 mô tả quy trình này trong một báo cáo kỹ thuật riêng về AI/ML workflow.</li>
+<li><strong>Tối ưu không cần thời gian thực</strong>, thực hiện trực tiếp qua O1: ví dụ thay đổi tham số anten, bật tắt cell theo lịch.</li>
 </ul>
-</div>
+<h3 id="giao-dien-a1-va-r1">Giao diện A1 và R1<a class="headerlink" href="#giao-dien-a1-va-r1" title="Permanent link">¶</a></h3>
+<p><strong>A1</strong> nối Non-RT RIC với Near-RT RIC. A1 dùng REST trên HTTP với nội dung JSON, và gồm ba dịch vụ:</p>
+<table>
+<thead>
+<tr>
+<th>Dịch vụ</th>
+<th>Viết tắt</th>
+<th>Nội dung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Policy management</td>
+<td>A1-P</td>
+<td>Tạo, sửa, xóa và truy vấn chính sách trên Near-RT RIC. Mỗi chính sách thuộc một policy type, mô tả bằng JSON schema, gồm phạm vi áp dụng (ví dụ một UE, một slice, một cell) và các câu lệnh mục tiêu</td>
+</tr>
+<tr>
+<td>Enrichment information</td>
+<td>A1-EI</td>
+<td>Cung cấp thông tin bổ trợ từ bên ngoài RAN cho xApp, ví dụ dự báo lưu lượng hoặc vị trí</td>
+</tr>
+<tr>
+<td>ML model management</td>
+<td>A1-ML</td>
+<td>Quản lý model ML dùng trong Near-RT RIC</td>
+</tr>
+</tbody>
+</table>
+<p>Chính sách A1 là chỉ dẫn mức mục tiêu, không phải lệnh điều khiển trực tiếp: Near-RT RIC và các xApp quyết định cách đạt mục tiêu qua E2, và báo lại cho Non-RT RIC chính sách có đang được tuân thủ hay không.</p>
+<p><strong>R1</strong> là giao diện giữa rApp và framework của Non-RT RIC. R1 không nối hai thiết bị mà là tập API, cho phép rApp của nhiều nhà cung cấp chạy trên cùng một Non-RT RIC: đăng ký và tìm dịch vụ, truy cập dữ liệu, gửi chính sách A1, dùng dịch vụ AI/ML.</p>
+<h2 id="use-case-tieu-bieu">Use case tiêu biểu<a class="headerlink" href="#use-case-tieu-bieu" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Use case</th>
+<th>Vòng điều khiển</th>
+<th>Cách hoạt động</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Traffic steering</td>
+<td>Near-RT, có chính sách từ Non-RT</td>
+<td>Theo dõi tải và chất lượng theo cell (KPM), điều hướng UE giữa các cell hoặc sóng mang bằng điều khiển handover (RC), theo mục tiêu do chính sách A1 đặt ra</td>
+</tr>
+<tr>
+<td>QoS và slicing</td>
+<td>Near-RT</td>
+<td>Theo dõi hiệu năng theo slice, điều chỉnh tỉ lệ tài nguyên PRB dành cho từng slice (RC hoặc CCC) để giữ SLA</td>
+</tr>
+<tr>
+<td>Tiết kiệm năng lượng</td>
+<td>Non-RT và Near-RT</td>
+<td>Dự báo tải, tắt bớt sóng mang hoặc cell vào giờ thấp điểm, tắt bớt nhánh anten của massive MIMO</td>
+</tr>
+<tr>
+<td>Phát hiện bất thường</td>
+<td>Near-RT hoặc Non-RT</td>
+<td>Phát hiện cell suy giảm hoặc nhiễu bất thường từ số liệu KPM, cảnh báo hoặc kích hoạt hành động khắc phục</td>
+</tr>
+<tr>
+<td>Tối ưu tham số vùng phủ</td>
+<td>Non-RT</td>
+<td>Điều chỉnh độ nghiêng anten, công suất, tham số handover qua O1 dựa trên dữ liệu dài hạn</td>
+</tr>
+</tbody>
+</table>
+<p>Một xApp và một rApp thường phối hợp: rApp đặt mục tiêu và cung cấp model, xApp thực thi trong vòng near-real-time. Nhiều xApp cùng tác động lên một tham số (ví dụ tham số handover cho cả traffic steering lẫn tiết kiệm năng lượng) là nguồn xung đột mà nền tảng Near-RT RIC phải giải quyết.</p>
+<h2 id="ranh-gioi-giua-ric-va-e2-node">Ranh giới giữa RIC và E2 node<a class="headerlink" href="#ranh-gioi-giua-ric-va-e2-node" title="Permanent link">¶</a></h2>
+<p>Khả năng của RIC bị giới hạn bởi những gì E2 node cho phép qua service model. Nếu O-DU không hỗ trợ RC cho một tham số lập lịch, không xApp nào điều khiển được tham số đó. Ngược lại, nếu RIC đưa ra quyết định sai, E2 node vẫn phải bảo vệ hoạt động của chính nó, ví dụ bằng cách giới hạn phạm vi giá trị được chấp nhận.</p>
+<p>Với người làm phần mềm DU và CU, hỗ trợ E2 nghĩa là: hiện thực E2AP và các service model cần thiết, xuất số liệu theo định nghĩa của KPM với tần suất đủ cao mà không làm chậm đường xử lý theo slot, và cho phép tham số do RIC đặt có hiệu lực an toàn ở ranh giới slot. Việc E2 node chấp nhận lệnh từ ứng dụng của bên thứ ba cũng mở ra bề mặt tấn công mới, xem <a href="../../oran/wg11/">WG11: Security</a>.</p>
+<h2 id="hien-trang-trien-khai">Hiện trạng triển khai<a class="headerlink" href="#hien-trang-trien-khai" title="Permanent link">¶</a></h2>
+<p>O-RAN Software Community (O-RAN SC), dự án mã nguồn mở do O-RAN Alliance và Linux Foundation đồng sáng lập, cung cấp hiện thực tham chiếu cho cả Near-RT RIC và Non-RT RIC. Nhiều nhà cung cấp RAN và nhà cung cấp phần mềm có sản phẩm RIC thương mại.</p>
+<p>Mức độ triển khai thực tế chậm hơn kỳ vọng ban đầu. Một khảo sát của Analysys Mason từng ghi nhận khoảng 31% nhà mạng dự định triển khai Near-RT RIC trước 2023 và thêm 31% trước 2026, đồng thời cảnh báo các mốc này có thể lạc quan. Các phân tích thị trường gần đây cho thấy các hợp đồng thương mại chủ yếu xoay quanh SMO, Non-RT RIC và rApp, trong khi xApp phần lớn vẫn ở giai đoạn thử nghiệm. Một số nhà mạng, ví dụ BT theo Fierce Network, cho rằng chưa có xApp nào trở thành ứng dụng chuẩn mực. Một khác biệt kỹ thuật giữa hai loại ứng dụng: rApp làm việc qua O1 và dữ liệu quản lý vốn đã có ở mọi mạng, còn xApp chỉ làm được những gì E2 node của từng nhà cung cấp gNB hỗ trợ qua service model.</p>
 <h2 id="lien-quan">Liên quan<a class="headerlink" href="#lien-quan" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="../../oran/wg1/">WG1: Use Cases and Overall Architecture</a>: thành phần, giao diện và vòng điều khiển ở mức kiến trúc tổng thể.</li>
 <li><a href="../../oran/wg2/">WG2: Non-RT RIC and A1</a>: bộ đặc tả cho Non-RT RIC, A1 và R1.</li>
-<li><a href="../../oran/wg3/">WG3: Near-RT RIC and E2</a>: bộ đặc tả cho Near-RT RIC và E2.</li>
+<li><a href="../../oran/wg3/">WG3: Near-RT RIC and E2</a>: bộ đặc tả cho Near-RT RIC, E2AP và các E2 service model.</li>
+<li><a href="../../oran/wg6/">WG6: Cloudification and Orchestration</a>: O-Cloud, môi trường chạy Near-RT RIC và các network function.</li>
 <li><a href="../ran-architecture/">RAN Architecture &amp; Splits</a>: các khối CU, DU, RU mà RIC điều khiển qua E2.</li>
 <li><a href="../../air-interface/mac-scheduler/">MAC Scheduler</a>: vòng điều khiển real-time trong DU, nằm dưới vòng near-real-time của RIC.</li>
-<li><a href="../../generations/5g-usage-scenarios/#network-slicing">5G Usage Scenarios &amp; Slicing</a>: điều khiển chính sách slicing ở RAN qua RIC.</li>
+<li><a href="../../generations/5g-usage-scenarios/#network-slicing">5G Usage Scenarios &amp; Slicing</a>: network slicing, một trong các use case chính của RIC.</li>
 <li><a href="../../oran/wg11/">WG11: Security</a>: bề mặt tấn công từ xApp, rApp và các giao diện E2, A1.</li>
 </ul>
 <h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
 <ul>
 <li>O-RAN.WG1.OAD: O-RAN Architecture Description.</li>
 <li>O-RAN.WG3.RICARCH: Near-RT RIC Architecture.</li>
-<li>O-RAN.WG3.E2AP và O-RAN.WG3.E2SM: giao thức E2 và các service model.</li>
-<li>O-RAN.WG2.Non-RT-RIC-ARCH: Non-RT RIC Architecture.</li>
-<li>O-RAN.WG2.A1GAP, A1AP: giao diện A1.</li>
-<li><a href="https://o-ran-sc.org/">O-RAN Software Community</a>: mã nguồn mở cho Near-RT RIC và Non-RT RIC.</li>
+<li>O-RAN.WG3.E2GAP, E2AP, E2SM, E2SM-KPM, E2SM-RC, E2SM-NI, E2SM-CCC: giao diện E2 và các service model.</li>
+<li>O-RAN.WG2: Non-RT RIC Architecture, A1 General Aspects and Principles, A1 Application Protocol, A1 Type Definitions, R1, AI/ML workflow description.</li>
+<li><a href="https://www.parallelwireless.com/blog/o-ran-alliance-workgroup-2-and-workgroup-3-specifications-and-other-deliverables/">Parallel Wireless: O-RAN Alliance Workgroup 2 and Workgroup 3, Specifications and Other Deliverables</a>: tóm tắt các đặc tả của WG2 và WG3.</li>
+<li><a href="https://arxiv.org/pdf/2202.01032">M. Polese et al., Understanding O-RAN: Architecture, Interfaces, Algorithms, Security, and Research Challenges</a>: tổng quan kiến trúc, E2, A1, RIC và AI/ML trong O-RAN.</li>
+<li><a href="https://docs.o-ran-sc.org/projects/o-ran-sc-ric-plt-submgr/en/latest/user-guide.html">O-RAN SC: Subscription Manager user guide</a>: hiện thực tham chiếu của quản lý subscription E2.</li>
+<li><a href="https://docs.o-ran-sc.org/projects/o-ran-sc-nonrtric-plt-a1policymanagementservice/en/m-release/_sources/overview.rst.txt">O-RAN SC: A1 Policy Management Service</a>: quản lý chính sách A1 theo policy type.</li>
+<li><a href="https://www.blackduck.com/fuzz-testing/defensics/protocols/e2ap-e2-node.html">Black Duck Defensics: O-RAN E2AP E2 Node test suite</a>: E2 chạy trên SCTP, các phiên bản E2AP và E2SM được kiểm thử.</li>
+<li><a href="https://www.analysysmason.com/research/content/perspectives/near-rt-ric-rma07/perspective-pdf">Analysys Mason: Near-RT RIC perspective</a>: khảo sát kế hoạch triển khai Near-RT RIC của nhà mạng.</li>
+<li><a href="https://www.fierce-network.com/tech/bt-says-no-prizes-yet-gold-standard-ric-xapps">Fierce Network: BT says no prizes yet for "gold standard" RIC xApps</a>: góc nhìn nhà mạng về mức độ trưởng thành của xApp.</li>
 </ul>
 
 
@@ -12793,7 +13280,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 7, 2026 02:12:24 UTC">November 7, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 7, 2026 06:19:10 UTC">November 7, 2026</span>
   </span>
 
     
