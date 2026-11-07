@@ -409,6 +409,14 @@
          <lastmod>2026-11-07</lastmod>
     </url>
     <url>
+         <loc>https://note.vutang.dev/lnx_es/bringup/boot-log/</loc>
+         <lastmod>2026-11-07</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/lnx_es/bringup/porting-linux/</loc>
+         <lastmod>2026-11-07</lastmod>
+    </url>
+    <url>
          <loc>https://note.vutang.dev/lnx_es/clock_synth/clock-synth/</loc>
          <lastmod>2026-11-07</lastmod>
     </url>
@@ -542,6 +550,10 @@
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/linux_system/rootfs/</loc>
+         <lastmod>2026-11-07</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/lnx_es/linux_system/serial-console/</loc>
          <lastmod>2026-11-07</lastmod>
     </url>
     <url>
