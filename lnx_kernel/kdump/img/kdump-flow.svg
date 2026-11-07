@@ -1,0 +1,59 @@
+<svg role="img" viewBox="0 0 860 316" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+  <title>Luồng kdump: kernel chính reserve vùng crashkernel lúc boot, nạp capture kernel bằng kexec -p, khi panic kexec boot capture kernel, capture kernel đọc RAM cũ qua /proc/vmcore, makedumpfile ghi file dump, sau đó reboot và phân tích bằng crash hoặc gdb</title>
+  <rect x="0" y="0" width="860" height="316" rx="8" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker>
+  </defs>
+  <rect x="8" y="12" width="844" height="128" rx="10" fill="#eaf1fb" fill-opacity="0.45" stroke="#2f5d9e" stroke-width="1.2" stroke-dasharray="6 4"/>
+  <text x="18" y="28" font-size="11" font-weight="700" fill="#1d4278">Khi hệ thống còn khỏe</text>
+  <rect x="8" y="168" width="844" height="128" rx="10" fill="#fdecea" fill-opacity="0.45" stroke="#c62828" stroke-width="1.2" stroke-dasharray="6 4"/>
+  <text x="18" y="184" font-size="11" font-weight="700" fill="#8e1c1c">Sau khi panic</text>
+  <rect x="18" y="40" width="185" height="84" rx="8" fill="#eaf1fb" stroke="#2f5d9e" stroke-width="1.5"/>
+  <text x="110.5" y="63.1" font-size="11.5" font-weight="700" text-anchor="middle" fill="#1d4278">1. Boot kernel chính</text>
+  <text x="110.5" y="78.6" font-size="10.5" text-anchor="middle" fill="#222">tham số crashkernel=</text>
+  <text x="110.5" y="94.1" font-size="10.5" text-anchor="middle" fill="#222">loại một vùng RAM khỏi</text>
+  <text x="110.5" y="109.6" font-size="10.5" text-anchor="middle" fill="#222">kernel chính</text>
+  <rect x="231" y="40" width="185" height="84" rx="8" fill="#eaf1fb" stroke="#2f5d9e" stroke-width="1.5"/>
+  <text x="323.5" y="63.1" font-size="11.5" font-weight="700" text-anchor="middle" fill="#1d4278">2. Nạp capture kernel</text>
+  <text x="323.5" y="78.6" font-size="10.5" text-anchor="middle" fill="#222">kexec -p nạp capture</text>
+  <text x="323.5" y="94.1" font-size="10.5" text-anchor="middle" fill="#222">kernel, initramfs, DTB</text>
+  <text x="323.5" y="109.6" font-size="10.5" text-anchor="middle" fill="#222">vào vùng đã reserve</text>
+  <rect x="444" y="40" width="185" height="84" rx="8" fill="#f1f1f1" stroke="#777777" stroke-width="1.5"/>
+  <text x="536.5" y="63.1" font-size="11.5" font-weight="700" text-anchor="middle" fill="#333333">3. Vận hành</text>
+  <text x="536.5" y="78.6" font-size="10.5" text-anchor="middle" fill="#222">RAM của kernel chính</text>
+  <text x="536.5" y="94.1" font-size="10.5" text-anchor="middle" fill="#222">được giữ nguyên</text>
+  <text x="536.5" y="109.6" font-size="10.5" text-anchor="middle" fill="#222">khi sự cố xảy ra</text>
+  <rect x="657" y="40" width="185" height="84" rx="8" fill="#fdecea" stroke="#c62828" stroke-width="1.5"/>
+  <text x="749.5" y="63.1" font-size="11.5" font-weight="700" text-anchor="middle" fill="#8e1c1c">4. Sự cố</text>
+  <text x="749.5" y="78.6" font-size="10.5" text-anchor="middle" fill="#222">panic(), sysrq c, hoặc</text>
+  <text x="749.5" y="94.1" font-size="10.5" text-anchor="middle" fill="#222">detector treo được</text>
+  <text x="749.5" y="109.6" font-size="10.5" text-anchor="middle" fill="#222">cấu hình gọi panic</text>
+  <rect x="657" y="196" width="185" height="84" rx="8" fill="#fdf0e2" stroke="#c46a12" stroke-width="1.5"/>
+  <text x="749.5" y="219.1" font-size="11.5" font-weight="700" text-anchor="middle" fill="#7a3f06">5. Boot capture kernel</text>
+  <text x="749.5" y="234.6" font-size="10.5" text-anchor="middle" fill="#222">kexec nhảy thẳng vào</text>
+  <text x="749.5" y="250.1" font-size="10.5" text-anchor="middle" fill="#222">capture kernel, không</text>
+  <text x="749.5" y="265.6" font-size="10.5" text-anchor="middle" fill="#222">qua bootloader</text>
+  <rect x="444" y="196" width="185" height="84" rx="8" fill="#fdf0e2" stroke="#c46a12" stroke-width="1.5"/>
+  <text x="536.5" y="219.1" font-size="11.5" font-weight="700" text-anchor="middle" fill="#7a3f06">6. /proc/vmcore</text>
+  <text x="536.5" y="234.6" font-size="10.5" text-anchor="middle" fill="#222">RAM kernel cũ hiện ra</text>
+  <text x="536.5" y="250.1" font-size="10.5" text-anchor="middle" fill="#222">dưới dạng file ELF</text>
+  <text x="536.5" y="265.6" font-size="10.5" text-anchor="middle" fill="#222">chỉ đọc</text>
+  <rect x="231" y="196" width="185" height="84" rx="8" fill="#e6f4ea" stroke="#2e7d32" stroke-width="1.5"/>
+  <text x="323.5" y="219.1" font-size="11.5" font-weight="700" text-anchor="middle" fill="#1b5e20">7. makedumpfile</text>
+  <text x="323.5" y="234.6" font-size="10.5" text-anchor="middle" fill="#222">lọc page, giữ dữ liệu</text>
+  <text x="323.5" y="250.1" font-size="10.5" text-anchor="middle" fill="#222">kernel (-d 31), ghi</text>
+  <text x="323.5" y="265.6" font-size="10.5" text-anchor="middle" fill="#222">file dump ra đĩa</text>
+  <rect x="18" y="196" width="185" height="84" rx="8" fill="#e6f4ea" stroke="#2e7d32" stroke-width="1.5"/>
+  <text x="110.5" y="219.1" font-size="11.5" font-weight="700" text-anchor="middle" fill="#1b5e20">8. Phân tích</text>
+  <text x="110.5" y="234.6" font-size="10.5" text-anchor="middle" fill="#222">crash hoặc gdb với</text>
+  <text x="110.5" y="250.1" font-size="10.5" text-anchor="middle" fill="#222">vmlinux có debug info</text>
+  <text x="110.5" y="265.6" font-size="10.5" text-anchor="middle" fill="#222">đọc file dump</text>
+  <line x1="203" y1="82.0" x2="231" y2="82.0" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+  <line x1="657" y1="238.0" x2="629" y2="238.0" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+  <line x1="416" y1="82.0" x2="444" y2="82.0" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+  <line x1="444" y1="238.0" x2="416" y2="238.0" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+  <line x1="629" y1="82.0" x2="657" y2="82.0" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+  <line x1="231" y1="238.0" x2="203" y2="238.0" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+  <line x1="749.5" y1="124" x2="749.5" y2="196" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="757.5" y="158" font-size="10" text-anchor="start" fill="#444">panic</text>
+</svg>

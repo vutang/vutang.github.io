@@ -1,0 +1,47 @@
+<svg role="img" viewBox="0 0 860 338" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+  <title>Ba thời điểm nạp bitstream vào PL của Zynq: FSBL nạp bitstream có trong BOOT.BIN, U-Boot nạp bằng lệnh fpga, Linux nạp bằng FPGA Manager sau khi kernel chạy</title>
+  <rect x="0" y="0" width="860" height="338" rx="8" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker>
+  </defs>
+  <rect x="8" y="12" width="844" height="112" rx="10" fill="#f1f1f1" fill-opacity="0.45" stroke="#777777" stroke-width="1.2" stroke-dasharray="6 4"/>
+  <text x="18" y="28" font-size="11" font-weight="700" fill="#333333">Chuỗi boot của PS</text>
+  <rect x="24" y="40" width="170" height="64" rx="8" fill="#f1f1f1" stroke="#777777" stroke-width="1.5"/>
+  <text x="109.0" y="68.5" font-size="12" font-weight="700" text-anchor="middle" fill="#333333">BootROM</text>
+  <text x="109.0" y="84.5" font-size="11" text-anchor="middle" fill="#222">trong chip, nạp FSBL</text>
+  <rect x="238" y="40" width="170" height="64" rx="8" fill="#eaf1fb" stroke="#2f5d9e" stroke-width="1.5"/>
+  <text x="323.0" y="68.5" font-size="12" font-weight="700" text-anchor="middle" fill="#1d4278">FSBL</text>
+  <text x="323.0" y="84.5" font-size="11" text-anchor="middle" fill="#222">đọc BOOT.BIN</text>
+  <rect x="452" y="40" width="170" height="64" rx="8" fill="#eaf1fb" stroke="#2f5d9e" stroke-width="1.5"/>
+  <text x="537.0" y="68.5" font-size="12" font-weight="700" text-anchor="middle" fill="#1d4278">U-Boot</text>
+  <text x="537.0" y="84.5" font-size="11" text-anchor="middle" fill="#222">chạy trong DDR</text>
+  <rect x="666" y="40" width="170" height="64" rx="8" fill="#eaf1fb" stroke="#2f5d9e" stroke-width="1.5"/>
+  <text x="751.0" y="68.5" font-size="12" font-weight="700" text-anchor="middle" fill="#1d4278">Linux</text>
+  <text x="751.0" y="84.5" font-size="11" text-anchor="middle" fill="#222">kernel và rootfs</text>
+  <line x1="194" y1="72.0" x2="238" y2="72.0" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+  <line x1="408" y1="72.0" x2="452" y2="72.0" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+  <line x1="622" y1="72.0" x2="666" y2="72.0" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+  <rect x="8" y="148" width="844" height="172" rx="10" fill="#f1f1f1" fill-opacity="0.45" stroke="#777777" stroke-width="1.2" stroke-dasharray="6 4"/>
+  <text x="18" y="164" font-size="11" font-weight="700" fill="#333333">Thời điểm nạp PL</text>
+  <rect x="225" y="176" width="196" height="116" rx="8" fill="#e6f4ea" stroke="#2e7d32" stroke-width="1.5"/>
+  <text x="323.0" y="215.1" font-size="12" font-weight="700" text-anchor="middle" fill="#1b5e20">A. FSBL</text>
+  <text x="323.0" y="230.6" font-size="10.5" text-anchor="middle" fill="#222">bitstream là partition</text>
+  <text x="323.0" y="246.1" font-size="10.5" text-anchor="middle" fill="#222">trong BOOT.BIN</text>
+  <text x="323.0" y="261.6" font-size="10.5" text-anchor="middle" fill="#222">PL sẵn sàng khi U-Boot chạy</text>
+  <rect x="439" y="176" width="196" height="116" rx="8" fill="#e6f4ea" stroke="#2e7d32" stroke-width="1.5"/>
+  <text x="537.0" y="215.1" font-size="12" font-weight="700" text-anchor="middle" fill="#1b5e20">B. U-Boot</text>
+  <text x="537.0" y="230.6" font-size="10.5" text-anchor="middle" fill="#222">fatload rồi fpga loadb</text>
+  <text x="537.0" y="246.1" font-size="10.5" text-anchor="middle" fill="#222">nạp trước khi vào kernel</text>
+  <text x="537.0" y="261.6" font-size="10.5" text-anchor="middle" fill="#222">PL sẵn sàng khi kernel boot</text>
+  <rect x="653" y="176" width="196" height="116" rx="8" fill="#fdf0e2" stroke="#c46a12" stroke-width="1.5"/>
+  <text x="751.0" y="215.1" font-size="12" font-weight="700" text-anchor="middle" fill="#7a3f06">C. Linux</text>
+  <text x="751.0" y="230.6" font-size="10.5" text-anchor="middle" fill="#222">FPGA Manager: sysfs,</text>
+  <text x="751.0" y="246.1" font-size="10.5" text-anchor="middle" fill="#222">fpgautil, device tree overlay</text>
+  <text x="751.0" y="261.6" font-size="10.5" text-anchor="middle" fill="#222">nạp và thay lúc đang chạy</text>
+  <line x1="323.0" y1="176" x2="323.0" y2="104" stroke="#555" stroke-width="1.5" stroke-dasharray="5 3" marker-end="url(#a)"/>
+  <line x1="537.0" y1="176" x2="537.0" y2="104" stroke="#555" stroke-width="1.5" stroke-dasharray="5 3" marker-end="url(#a)"/>
+  <line x1="751.0" y1="176" x2="751.0" y2="104" stroke="#555" stroke-width="1.5" stroke-dasharray="5 3" marker-end="url(#a)"/>
+  <text x="116" y="244" font-size="10" font-weight="400" text-anchor="middle" fill="#555" font-style="italic">Chọn A hoặc B khi PL cần có</text>
+  <text x="116" y="259" font-size="10" font-weight="400" text-anchor="middle" fill="#555" font-style="italic">trước kernel. Chọn C khi cần</text>
+  <text x="116" y="274" font-size="10" font-weight="400" text-anchor="middle" fill="#555" font-style="italic">đổi thiết kế mà không reboot.</text>
+</svg>

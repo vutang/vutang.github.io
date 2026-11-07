@@ -417,6 +417,10 @@
          <lastmod>2026-11-07</lastmod>
     </url>
     <url>
+         <loc>https://note.vutang.dev/lnx_es/debug/userspace-debug/</loc>
+         <lastmod>2026-11-07</lastmod>
+    </url>
+    <url>
          <loc>https://note.vutang.dev/lnx_es/dpdk/dpdk/</loc>
          <lastmod>2026-11-07</lastmod>
     </url>
@@ -438,6 +442,10 @@
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/eeprom/eeprom/</loc>
+         <lastmod>2026-11-07</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/lnx_es/fpga/fpga-linux/</loc>
          <lastmod>2026-11-07</lastmod>
     </url>
     <url>
@@ -530,6 +538,10 @@
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_es/linux_system/init/</loc>
+         <lastmod>2026-11-07</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/lnx_es/linux_system/rootfs/</loc>
          <lastmod>2026-11-07</lastmod>
     </url>
     <url>
@@ -689,6 +701,10 @@
          <lastmod>2026-11-07</lastmod>
     </url>
     <url>
+         <loc>https://note.vutang.dev/lnx_kernel/kdump/kdump/</loc>
+         <lastmod>2026-11-07</lastmod>
+    </url>
+    <url>
          <loc>https://note.vutang.dev/lnx_kernel/kernel_user_space/</loc>
          <lastmod>2026-11-07</lastmod>
     </url>
@@ -758,6 +774,10 @@
     </url>
     <url>
          <loc>https://note.vutang.dev/lnx_ldd/audio/linux_audio/</loc>
+         <lastmod>2026-11-07</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/lnx_ldd/fpga/fpga_mgr/</loc>
          <lastmod>2026-11-07</lastmod>
     </url>
     <url>

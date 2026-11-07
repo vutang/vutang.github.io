@@ -1,0 +1,41 @@
+<svg role="img" viewBox="0 0 860 380" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+  <title>Debug user space trên board: gdb cross trên host kết nối tới gdbserver trên board qua TCP hoặc SSH, và phân tích core file sao chép từ board về host</title>
+  <rect x="0" y="0" width="860" height="380" rx="8" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker>
+  </defs>
+  <rect x="16" y="14" width="340" height="352" rx="10" fill="#eaf1fb" fill-opacity="0.45" stroke="#2f5d9e" stroke-width="1.2" stroke-dasharray="6 4"/>
+  <text x="26" y="30" font-size="11" font-weight="700" fill="#1d4278">Máy host</text>
+  <rect x="504" y="14" width="340" height="352" rx="10" fill="#fdf0e2" fill-opacity="0.45" stroke="#c46a12" stroke-width="1.2" stroke-dasharray="6 4"/>
+  <text x="514" y="30" font-size="11" font-weight="700" fill="#7a3f06">Board</text>
+  <rect x="36" y="48" width="300" height="62" rx="8" fill="#eaf1fb" stroke="#2f5d9e" stroke-width="1.5"/>
+  <text x="186.0" y="75.5" font-size="12" font-weight="700" text-anchor="middle" fill="#1d4278">&lt;target&gt;-gdb</text>
+  <text x="186.0" y="91.5" font-size="11" text-anchor="middle" fill="#222">công cụ cross, biết ABI của target</text>
+  <rect x="36" y="150" width="300" height="62" rx="8" fill="#f1f1f1" stroke="#777777" stroke-width="1.5"/>
+  <text x="186.0" y="169.5" font-size="12" font-weight="700" text-anchor="middle" fill="#333333">Binary có symbol và sysroot</text>
+  <text x="186.0" y="185.5" font-size="11" text-anchor="middle" fill="#222">binary chưa strip, cùng bản build với board</text>
+  <text x="186.0" y="201.5" font-size="11" text-anchor="middle" fill="#222">thư viện của target (set sysroot)</text>
+  <rect x="36" y="252" width="300" height="62" rx="8" fill="#fff8dc" stroke="#b58900" stroke-width="1.5"/>
+  <text x="186.0" y="271.5" font-size="12" font-weight="700" text-anchor="middle" fill="#6b5200">Core file (bản sao)</text>
+  <text x="186.0" y="287.5" font-size="11" text-anchor="middle" fill="#222">gdb &lt;binary&gt; &lt;core&gt;</text>
+  <text x="186.0" y="303.5" font-size="11" text-anchor="middle" fill="#222">bt, thread apply all bt</text>
+  <rect x="524" y="48" width="300" height="62" rx="8" fill="#fdf0e2" stroke="#c46a12" stroke-width="1.5"/>
+  <text x="674.0" y="75.5" font-size="12" font-weight="700" text-anchor="middle" fill="#7a3f06">gdbserver</text>
+  <text x="674.0" y="91.5" font-size="11" text-anchor="middle" fill="#222">nhận lệnh từ gdb, điều khiển qua ptrace</text>
+  <rect x="524" y="150" width="300" height="62" rx="8" fill="#fdf0e2" stroke="#c46a12" stroke-width="1.5"/>
+  <text x="674.0" y="177.5" font-size="12" font-weight="700" text-anchor="middle" fill="#7a3f06">Ứng dụng</text>
+  <text x="674.0" y="193.5" font-size="11" text-anchor="middle" fill="#222">binary đã strip, không cần symbol</text>
+  <rect x="524" y="252" width="300" height="62" rx="8" fill="#fff8dc" stroke="#b58900" stroke-width="1.5"/>
+  <text x="674.0" y="271.5" font-size="12" font-weight="700" text-anchor="middle" fill="#6b5200">Core file</text>
+  <text x="674.0" y="287.5" font-size="11" text-anchor="middle" fill="#222">/data/cores/core.&lt;tên&gt;.&lt;pid&gt;.&lt;thời gian&gt;</text>
+  <text x="674.0" y="303.5" font-size="11" text-anchor="middle" fill="#222">do kernel ghi khi tiến trình crash</text>
+  <line x1="336" y1="79" x2="524" y2="79" stroke="#555" stroke-width="1.5" marker-end="url(#a)" marker-start="url(#a)"/>
+  <text x="430" y="72" font-size="10" text-anchor="middle" fill="#444">target remote</text>
+  <text x="430" y="96" font-size="10" font-weight="400" text-anchor="middle" fill="#555" font-style="italic">TCP hoặc SSH</text>
+  <line x1="674" y1="110" x2="674" y2="150" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="686" y="134" font-size="10" text-anchor="start" fill="#444">ptrace</text>
+  <line x1="674" y1="212" x2="674" y2="252" stroke="#555" stroke-width="1.5" stroke-dasharray="5 3" marker-end="url(#a)"/>
+  <text x="686" y="236" font-size="10" text-anchor="start" fill="#444">crash (SIGSEGV...)</text>
+  <line x1="524" y1="283" x2="336" y2="283" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="430" y="276" font-size="10" text-anchor="middle" fill="#444">scp</text>
+</svg>
