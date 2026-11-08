@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 860 300" font-family="Helvetica, Arial, sans-serif" font-size="13">
+  <title>Phạm vi không preempt được trong mã kernel theo từng mô hình: PREEMPT_NONE gần như toàn bộ đường đi trong kernel, PREEMPT_VOLUNTARY thêm các điểm preempt tường minh, PREEMPT chỉ còn vùng giữ spinlock và tắt ngắt, PREEMPT_RT chỉ còn raw_spinlock, entry code, scheduler và xử lý ngắt mức thấp</title>
+  <rect width="860" height="300" fill="#ffffff"/>
+  <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <text x="20" y="26" text-anchor="start" fill="#1f2d3d" font-size="11.5" font-weight="bold">Một đường đi qua mã kernel (system call, ngắt, softirq) trên cùng trục thời gian</text>
+  <text x="20" y="67" text-anchor="start" fill="#1f2d3d" font-size="11.5" font-weight="bold">PREEMPT_NONE</text>
+  <rect x="170.0" y="50" width="403.2" height="26" rx="4" fill="#fdecea" stroke="#c0392b" stroke-width="1.2"/>
+  <text x="20" y="115" text-anchor="start" fill="#1f2d3d" font-size="11.5" font-weight="bold">PREEMPT_VOLUNTARY</text>
+  <rect x="170.0" y="98" width="93.6" height="26" rx="4" fill="#fdecea" stroke="#c0392b" stroke-width="1.2"/>
+  <rect x="266.48" y="94" width="4" height="34" fill="#2e7d32"/>
+  <rect x="269.36" y="98" width="108.0" height="26" rx="4" fill="#fdecea" stroke="#c0392b" stroke-width="1.2"/>
+  <rect x="380.24" y="94" width="4" height="34" fill="#2e7d32"/>
+  <rect x="383.12" y="98" width="190.07999999999998" height="26" rx="4" fill="#fdecea" stroke="#c0392b" stroke-width="1.2"/>
+  <text x="20" y="163" text-anchor="start" fill="#1f2d3d" font-size="11.5" font-weight="bold">PREEMPT</text>
+  <rect x="170.0" y="146" width="28.799999999999997" height="26" rx="4" fill="#e6f4ea" stroke="#2e7d32" stroke-width="1.2"/>
+  <rect x="198.8" y="146" width="86.39999999999999" height="26" rx="4" fill="#fdecea" stroke="#c0392b" stroke-width="1.2"/>
+  <rect x="285.2" y="146" width="79.2" height="26" rx="4" fill="#e6f4ea" stroke="#2e7d32" stroke-width="1.2"/>
+  <rect x="364.4" y="146" width="122.39999999999999" height="26" rx="4" fill="#fdecea" stroke="#c0392b" stroke-width="1.2"/>
+  <rect x="486.8" y="146" width="86.39999999999999" height="26" rx="4" fill="#e6f4ea" stroke="#2e7d32" stroke-width="1.2"/>
+  <text x="20" y="211" text-anchor="start" fill="#1f2d3d" font-size="11.5" font-weight="bold">PREEMPT_RT</text>
+  <rect x="170.0" y="194" width="28.799999999999997" height="26" rx="4" fill="#e6f4ea" stroke="#2e7d32" stroke-width="1.2"/>
+  <rect x="198.8" y="194" width="10.08" height="26" rx="4" fill="#fdecea" stroke="#c0392b" stroke-width="1.2"/>
+  <rect x="208.88" y="194" width="155.51999999999998" height="26" rx="4" fill="#e6f4ea" stroke="#2e7d32" stroke-width="1.2"/>
+  <rect x="364.4" y="194" width="7.199999999999999" height="26" rx="4" fill="#fdecea" stroke="#c0392b" stroke-width="1.2"/>
+  <rect x="371.6" y="194" width="201.6" height="26" rx="4" fill="#e6f4ea" stroke="#2e7d32" stroke-width="1.2"/>
+  <text x="590" y="60" text-anchor="start" fill="#555" font-size="10.5">chỉ đổi task khi mã tự gọi schedule()</text>
+  <text x="590" y="74" text-anchor="start" fill="#555" font-size="10.5">hoặc khi trở về user space</text>
+  <text x="590" y="108" text-anchor="start" fill="#555" font-size="10.5">thêm các điểm preempt tường minh</text>
+  <text x="590" y="122" text-anchor="start" fill="#555" font-size="10.5">trong mã kernel</text>
+  <text x="590" y="156" text-anchor="start" fill="#555" font-size="10.5">đỏ: giữ spinlock_t, tắt preempt</text>
+  <text x="590" y="170" text-anchor="start" fill="#555" font-size="10.5">hoặc tắt ngắt, softirq</text>
+  <text x="590" y="204" text-anchor="start" fill="#555" font-size="10.5">đỏ: raw_spinlock_t, entry code,</text>
+  <text x="590" y="218" text-anchor="start" fill="#555" font-size="10.5">scheduler, ngắt mức thấp</text>
+  <rect x="20" y="248" width="18" height="14" rx="4" fill="#fdecea" stroke="#c0392b" stroke-width="1"/>
+  <text x="44" y="259" text-anchor="start" fill="#555" font-size="11">không preempt được</text>
+  <rect x="200" y="248" width="18" height="14" rx="4" fill="#e6f4ea" stroke="#2e7d32" stroke-width="1"/>
+  <text x="224" y="259" text-anchor="start" fill="#555" font-size="11">preempt được</text>
+  <rect x="340" y="246" width="4" height="18" fill="#2e7d32"/>
+  <text x="352" y="259" text-anchor="start" fill="#555" font-size="11">điểm preempt tường minh</text>
+  <text x="430" y="288" text-anchor="middle" fill="#555" font-size="10.5">Hình minh họa tỉ lệ tương đối, không theo số đo. PREEMPT_LAZY gần với PREEMPT nhưng hoãn preempt task thường</text>
+</svg>

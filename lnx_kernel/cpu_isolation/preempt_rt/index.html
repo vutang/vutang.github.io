@@ -14602,12 +14602,29 @@
 </tr>
 </tbody>
 </table>
+<p>Hình dưới so sánh phạm vi không preempt được trên cùng một đường đi qua mã kernel ở các mô hình chính.</p>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/preempt_models.svg" data-desc-position="bottom"><img alt="Phạm vi không preempt được (đỏ) thu hẹp dần từ PREEMPT_NONE tới PREEMPT_RT." src="../img/preempt_models.svg"></a></p>
+<figcaption>Phạm vi không preempt được (đỏ) thu hẹp dần từ PREEMPT_NONE tới PREEMPT_RT.</figcaption>
+</figure>
 <p>Các mô hình có sẵn phụ thuộc kiến trúc và phiên bản kernel. PREEMPT_RT được đưa vào mainline ở Linux 6.12 (2024) cho x86, ARM64 và RISC-V; trước đó nó tồn tại dưới dạng bộ patch ngoài cây mã nguồn trong nhiều năm. Tùy chọn này yêu cầu bật <code>CONFIG_EXPERT</code>.</p>
 <h2 id="ba-co-che-chinh">Ba cơ chế chính<a class="headerlink" href="#ba-co-che-chinh" title="Permanent link">¶</a></h2>
 <p>Theo tài liệu kernel, PREEMPT_RT đưa phần lớn ngữ cảnh thực thi của kernel về dưới quyền điều khiển của scheduler bằng ba cơ chế. Chỉ còn một số đường mã rất thấp như entry code, scheduler và phần xử lý ngắt mức thấp là không preempt được.</p>
 <p><strong>Spinlock có thể ngủ (sleeping spinlock).</strong> Ở kernel thường, lấy một <code>spinlock_t</code> nghĩa là tắt preemption rồi quay vòng chờ khóa, nên trong suốt thời gian giữ khóa không task nào khác chạy được trên core đó. Ở PREEMPT_RT, <code>spinlock_t</code> được hiện thực bằng <code>rtmutex</code>: task chờ khóa không quay vòng mà tắt việc di chuyển sang core khác (migration), nhường quyền ưu tiên cho task đang giữ khóa, rồi ngủ cho tới khi khóa được trả. Vì không tắt preemption, một task ưu tiên cao hơn vẫn chạy được trong lúc khóa đang bị giữ. Các đoạn thật sự không được preempt (scheduler, timer, xử lý ngắt mức thấp) dùng <code>raw_spinlock_t</code>, giữ nguyên ngữ nghĩa cũ.</p>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/rt_wakeup_latency.svg" data-desc-position="bottom"><img alt="Task real-time được đánh thức khi task thấp đang giữ spinlock_t: kernel thường phải chờ khóa được trả, PREEMPT_RT preempt được ngay." src="../img/rt_wakeup_latency.svg"></a></p>
+<figcaption>Task real-time được đánh thức khi task thấp đang giữ spinlock_t: kernel thường phải chờ khóa được trả, PREEMPT_RT preempt được ngay.</figcaption>
+</figure>
 <p><strong>Kế thừa ưu tiên (priority inheritance).</strong> Khi task A có ưu tiên real-time phải chờ khóa đang bị task B ưu tiên thấp giữ, B tạm thời nhận chính sách và mức ưu tiên của A để chạy nhanh xong đoạn găng và trả khóa. Không có cơ chế này, B có thể bị một task trung bình chiếm CPU, khiến A chờ không giới hạn (đảo ngược ưu tiên, priority inversion).</p>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/priority_inheritance.svg" data-desc-position="bottom"><img alt="Task ưu tiên cao H (task A ở đoạn trên), trung bình M và thấp L (task B): đảo ngược ưu tiên khi không có kế thừa ưu tiên, và cách rtmutex giới hạn thời gian chờ của H." src="../img/priority_inheritance.svg"></a></p>
+<figcaption>Task ưu tiên cao H (task A ở đoạn trên), trung bình M và thấp L (task B): đảo ngược ưu tiên khi không có kế thừa ưu tiên, và cách rtmutex giới hạn thời gian chờ của H.</figcaption>
+</figure>
 <p><strong>Ngắt chạy trong thread (threaded interrupt).</strong> Mọi ngắt bị ép chạy trong thread, trừ các ngắt đăng ký với cờ <code>IRQF_NO_THREAD</code>, <code>IRQF_PERCPU</code> hoặc <code>IRQF_ONESHOT</code>. Phần xử lý trong ngữ cảnh ngắt chỉ đánh thức thread tương ứng; phần việc chính chạy trong thread do scheduler quản lý, mặc định với chính sách <code>SCHED_FIFO</code> ưu tiên 50. Trong lúc thread chưa xử lý xong, nguồn ngắt được che ở bộ điều khiển ngắt. Nhờ đó một task real-time có ưu tiên cao hơn 50 có thể chạy trước cả phần xử lý ngắt của thiết bị khác.</p>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/rt_threaded_irq.svg" data-desc-position="bottom"><img alt="Ngắt cứng chỉ đánh thức thread irq; thread irq được xếp lịch cùng các task real-time theo mức ưu tiên." src="../img/rt_threaded_irq.svg"></a></p>
+<figcaption>Ngắt cứng chỉ đánh thức thread irq; thread irq được xếp lịch cùng các task real-time theo mức ưu tiên.</figcaption>
+</figure>
 <h2 id="iem-khac-biet-khi-viet-ma-cho-kernel-real-time">Điểm khác biệt khi viết mã cho kernel real-time<a class="headerlink" href="#iem-khac-biet-khi-viet-ma-cho-kernel-real-time" title="Permanent link">¶</a></h2>
 <p>Các cơ chế trên làm thay đổi một số giả định quen thuộc của người viết driver:</p>
 <table>
@@ -14837,7 +14854,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 7, 2026 12:01:29 UTC">November 7, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 8, 2026 10:10:40 UTC">November 8, 2026</span>
   </span>
 
     

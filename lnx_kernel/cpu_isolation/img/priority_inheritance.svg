@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 860 330" font-family="Helvetica, Arial, sans-serif" font-size="13">
+  <title>Đảo ngược ưu tiên: task L giữ khóa, task H chờ khóa, task M ưu tiên trung bình chiếm CPU của L nên H chờ không giới hạn; với kế thừa ưu tiên, L nhận ưu tiên của H, M không chen vào được, L trả khóa sớm và H chạy</title>
+  <rect width="860" height="330" fill="#ffffff"/>
+  <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <text x="20" y="30" text-anchor="start" fill="#1f2d3d" font-size="12.5" font-weight="bold">Không kế thừa ưu tiên: H chờ không giới hạn</text>
+  <text x="20" y="60" text-anchor="start" fill="#1f2d3d" font-size="11">H (cao)</text>
+  <line x1="120" y1="72" x2="840" y2="72" stroke="#e2e2e2" stroke-width="1"/>
+  <text x="20" y="94" text-anchor="start" fill="#1f2d3d" font-size="11">M (trung bình)</text>
+  <line x1="120" y1="106" x2="840" y2="106" stroke="#e2e2e2" stroke-width="1"/>
+  <text x="20" y="128" text-anchor="start" fill="#1f2d3d" font-size="11">L (thấp)</text>
+  <line x1="120" y1="140" x2="840" y2="140" stroke="#e2e2e2" stroke-width="1"/>
+  <text x="20" y="180" text-anchor="start" fill="#1f2d3d" font-size="12.5" font-weight="bold">Kế thừa ưu tiên (rtmutex): L chạy với ưu tiên của H</text>
+  <text x="20" y="210" text-anchor="start" fill="#1f2d3d" font-size="11">H (cao)</text>
+  <line x1="120" y1="222" x2="840" y2="222" stroke="#e2e2e2" stroke-width="1"/>
+  <text x="20" y="244" text-anchor="start" fill="#1f2d3d" font-size="11">M (trung bình)</text>
+  <line x1="120" y1="256" x2="840" y2="256" stroke="#e2e2e2" stroke-width="1"/>
+  <text x="20" y="278" text-anchor="start" fill="#1f2d3d" font-size="11">L (thấp)</text>
+  <line x1="120" y1="290" x2="840" y2="290" stroke="#e2e2e2" stroke-width="1"/>
+  <rect x="130" y="116" width="90" height="24" rx="4" fill="#fbf1e8" stroke="#c0712b" stroke-width="1.2"/>
+  <text x="175.0" y="132.0" text-anchor="middle" fill="#1f2d3d" font-size="10.5">L lấy khóa</text>
+  <rect x="220" y="48" width="50" height="24" rx="4" fill="#e6f4ea" stroke="#2e7d32" stroke-width="1.2"/>
+  <text x="245.0" y="64.0" text-anchor="middle" fill="#1f2d3d" font-size="10.5">H</text>
+  <rect x="270" y="48" width="470" height="24" rx="4" fill="#f0f0f0" stroke="#888" stroke-width="1.2"/>
+  <text x="505.0" y="64.0" text-anchor="middle" fill="#1f2d3d" font-size="10.5">H chờ khóa</text>
+  <rect x="270" y="116" width="40" height="24" rx="4" fill="#fbf1e8" stroke="#c0712b" stroke-width="1.2"/>
+  <text x="290.0" y="132.0" text-anchor="middle" fill="#1f2d3d" font-size="10.5">L</text>
+  <rect x="310" y="82" width="360" height="24" rx="4" fill="#eef4fb" stroke="#4a78b5" stroke-width="1.2"/>
+  <text x="490.0" y="98.0" text-anchor="middle" fill="#1f2d3d" font-size="10.5">M chạy, L không được chạy</text>
+  <rect x="670" y="116" width="70" height="24" rx="4" fill="#fbf1e8" stroke="#c0712b" stroke-width="1.2"/>
+  <text x="705.0" y="132.0" text-anchor="middle" fill="#1f2d3d" font-size="10.5">L trả khóa</text>
+  <rect x="740" y="48" width="90" height="24" rx="4" fill="#e6f4ea" stroke="#2e7d32" stroke-width="1.2"/>
+  <text x="785.0" y="64.0" text-anchor="middle" fill="#1f2d3d" font-size="10.5">H chạy</text>
+  <rect x="130" y="266" width="90" height="24" rx="4" fill="#fbf1e8" stroke="#c0712b" stroke-width="1.2"/>
+  <text x="175.0" y="282.0" text-anchor="middle" fill="#1f2d3d" font-size="10.5">L lấy khóa</text>
+  <rect x="220" y="198" width="50" height="24" rx="4" fill="#e6f4ea" stroke="#2e7d32" stroke-width="1.2"/>
+  <text x="245.0" y="214.0" text-anchor="middle" fill="#1f2d3d" font-size="10.5">H</text>
+  <rect x="270" y="198" width="110" height="24" rx="4" fill="#f0f0f0" stroke="#888" stroke-width="1.2"/>
+  <text x="325.0" y="214.0" text-anchor="middle" fill="#1f2d3d" font-size="10.5">H chờ</text>
+  <rect x="270" y="266" width="110" height="24" rx="4" fill="#fdecea" stroke="#c0392b" stroke-width="1.2"/>
+  <text x="325.0" y="282.0" text-anchor="middle" fill="#1f2d3d" font-size="10.5">L, ưu tiên của H</text>
+  <rect x="380" y="198" width="150" height="24" rx="4" fill="#e6f4ea" stroke="#2e7d32" stroke-width="1.2"/>
+  <text x="455.0" y="214.0" text-anchor="middle" fill="#1f2d3d" font-size="10.5">H chạy</text>
+  <rect x="530" y="232" width="200" height="24" rx="4" fill="#eef4fb" stroke="#4a78b5" stroke-width="1.2"/>
+  <text x="630.0" y="248.0" text-anchor="middle" fill="#1f2d3d" font-size="10.5">M chạy sau</text>
+  <line x1="300" y1="150" x2="300" y2="150" stroke="#555" stroke-width="1.5"/>
+  <text x="430" y="322" text-anchor="middle" fill="#1f2d3d" font-size="11">Thời gian H phải chờ chỉ còn bằng thời gian L giữ khóa, không phụ thuộc task M</text>
+</svg>

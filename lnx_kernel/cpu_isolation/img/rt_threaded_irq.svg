@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 860 320" font-family="Helvetica, Arial, sans-serif" font-size="13">
+  <title>PREEMPT_RT: phần ngắt cứng chỉ đánh thức thread irq; thread irq mặc định là SCHED_FIFO ưu tiên 50; ứng dụng real-time ưu tiên 80 chạy trước thread irq của thiết bị khác, còn task SCHED_OTHER chạy sau mọi task real-time</title>
+  <rect width="860" height="320" fill="#ffffff"/>
+  <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <rect x="20" y="30" width="210" height="64" rx="5" fill="#fdecea" stroke="#c0392b" stroke-width="1.2"/>
+  <text x="125.0" y="57.5" text-anchor="middle" fill="#1f2d3d" font-weight="bold">Ngắt cứng</text>
+  <text x="125.0" y="74.5" text-anchor="middle" fill="#555" font-size="11.5">chỉ ack và đánh thức thread</text>
+  <text x="125" y="116" text-anchor="middle" fill="#555" font-size="10.5">ngữ cảnh ngắt, luôn chạy trước</text>
+  <line x1="230" y1="70" x2="416" y2="166" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="250" y="112" text-anchor="start" fill="#555" font-size="10.5" font-style="italic">wake</text>
+  <line x1="320" y1="30" x2="320" y2="290" stroke="#555" stroke-width="1.5" marker-start="url(#arr)"/>
+  <text x="330" y="40" text-anchor="start" fill="#888" font-size="10.5">ưu tiên cao</text>
+  <text x="330" y="290" text-anchor="start" fill="#888" font-size="10.5">ưu tiên thấp</text>
+  <rect x="420" y="34" width="420" height="50" rx="5" fill="#e6f4ea" stroke="#2e7d32" stroke-width="1.2"/>
+  <text x="630.0" y="54.5" text-anchor="middle" fill="#1f2d3d" font-weight="bold">Ứng dụng RT: SCHED_FIFO 80</text>
+  <text x="630.0" y="71.5" text-anchor="middle" fill="#555" font-size="11.5">vòng điều khiển, thread xử lý theo slot</text>
+  <line x1="322" y1="60" x2="418" y2="60" stroke="#bbb" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="420" y="154" width="420" height="50" rx="5" fill="#fbf1e8" stroke="#c0712b" stroke-width="1.2"/>
+  <text x="630.0" y="174.5" text-anchor="middle" fill="#1f2d3d" font-weight="bold">irq/NN-eth0, irq/NN-mmc0: SCHED_FIFO 50</text>
+  <text x="630.0" y="191.5" text-anchor="middle" fill="#555" font-size="11.5">phần việc chính của handler ngắt</text>
+  <line x1="322" y1="180" x2="418" y2="180" stroke="#bbb" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="420" y="224" width="420" height="50" rx="5" fill="#f0f0f0" stroke="#888" stroke-width="1.2"/>
+  <text x="630.0" y="244.5" text-anchor="middle" fill="#1f2d3d" font-weight="bold">Task SCHED_OTHER</text>
+  <text x="630.0" y="261.5" text-anchor="middle" fill="#555" font-size="11.5">shell, dịch vụ, ứng dụng thường</text>
+  <line x1="322" y1="250" x2="418" y2="250" stroke="#bbb" stroke-width="1" stroke-dasharray="3 3"/>
+  <text x="630" y="112" text-anchor="middle" fill="#1f2d3d" font-size="10.5">ứng dụng RT phụ thuộc thiết bị nào thì cần</text>
+  <text x="630" y="127" text-anchor="middle" fill="#1f2d3d" font-size="10.5">xem lại ưu tiên của thread irq tương ứng</text>
+  <text x="430" y="312" text-anchor="middle" fill="#555" font-size="10.5">Ngắt đăng ký với IRQF_NO_THREAD, IRQF_PERCPU, IRQF_ONESHOT không bị ép chạy trong thread</text>
+</svg>
