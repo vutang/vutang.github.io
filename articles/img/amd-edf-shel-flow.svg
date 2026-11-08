@@ -1,0 +1,22 @@
+<svg role="img" aria-label="SDT là điểm trung tâm của SHEL flow" viewBox="0 0 760 450" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif" font-size="13">
+  <rect width="760" height="450" rx="6" fill="#ffffff"/>
+  <defs><marker id="shel-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6b7280"/></marker></defs>
+  <text x="24" y="34" font-size="15" font-weight="600" fill="#111827">SDT là điểm trung tâm: từ đó sinh ra machine config và device tree</text>
+  <path d="M160 100H200" fill="none" stroke="#6b7280" stroke-width="1.25" marker-end="url(#shel-arrow)"/>
+  <path d="M340 100H380" fill="none" stroke="#6b7280" stroke-width="1.25" marker-end="url(#shel-arrow)"/>
+  <path d="M450 126V150H300V174" fill="none" stroke="#6b7280" stroke-width="1.25" marker-end="url(#shel-arrow)"/>
+  <path d="M450 126V150H580V174" fill="none" stroke="#6b7280" stroke-width="1.25" marker-end="url(#shel-arrow)"/>
+  <path d="M300 226V274" fill="none" stroke="#6b7280" stroke-width="1.25" marker-end="url(#shel-arrow)"/>
+  <path d="M580 226V274" fill="none" stroke="#6b7280" stroke-width="1.25" marker-end="url(#shel-arrow)"/>
+  <path d="M300 326V374" fill="none" stroke="#6b7280" stroke-width="1.25" marker-end="url(#shel-arrow)"/>
+  <path d="M580 326V374" fill="none" stroke="#6b7280" stroke-width="1.25" marker-end="url(#shel-arrow)"/>
+  <rect x="20" y="74" width="140" height="52" rx="8" fill="none" stroke="#6b7280" stroke-width="1.25"/><text x="90" y="96" text-anchor="middle" font-weight="600" fill="#111827">Vivado</text><text x="90" y="113" text-anchor="middle" font-size="11.5" fill="#4b5563">xuất file XSA</text>
+  <rect x="200" y="74" width="140" height="52" rx="8" fill="none" stroke="#6b7280" stroke-width="1.25"/><text x="270" y="96" text-anchor="middle" font-weight="600" fill="#111827">SDTgen</text><text x="270" y="113" text-anchor="middle" font-size="11.5" fill="#4b5563">dựa trên XSCT</text>
+  <rect x="380" y="74" width="140" height="52" rx="8" fill="#2563eb" fill-opacity=".12" stroke="#2563eb" stroke-width="2"/><text x="450" y="96" text-anchor="middle" font-weight="600" fill="#111827">SDT</text><text x="450" y="113" text-anchor="middle" font-size="11.5" fill="#4b5563">System Device Tree</text>
+  <rect x="220" y="174" width="160" height="52" rx="8" fill="none" stroke="#6b7280" stroke-width="1.25"/><text x="300" y="196" text-anchor="middle" font-weight="600" fill="#111827">gen-machine-conf</text><text x="300" y="213" text-anchor="middle" font-size="11.5" fill="#4b5563">parse-sdt</text>
+  <rect x="500" y="174" width="160" height="52" rx="8" fill="none" stroke="#6b7280" stroke-width="1.25"/><text x="580" y="196" text-anchor="middle" font-weight="600" fill="#111827">Lopper</text><text x="580" y="213" text-anchor="middle" font-size="11.5" fill="#4b5563">sinh DT theo domain</text>
+  <rect x="210" y="274" width="180" height="52" rx="8" fill="none" stroke="#6b7280" stroke-width="1.25"/><text x="300" y="296" text-anchor="middle" font-weight="600" fill="#111827">Machine config</text><text x="300" y="313" text-anchor="middle" font-size="11.5" fill="#4b5563">machine/&lt;target&gt;.conf</text>
+  <rect x="490" y="274" width="180" height="52" rx="8" fill="none" stroke="#6b7280" stroke-width="1.25"/><text x="580" y="296" text-anchor="middle" font-weight="600" fill="#111827">Device tree</text><text x="580" y="313" text-anchor="middle" font-size="11.5" fill="#4b5563">theo từng domain</text>
+  <rect x="290" y="374" width="320" height="52" rx="8" fill="none" stroke="#6b7280" stroke-width="1.25"/><text x="450" y="396" text-anchor="middle" font-weight="600" fill="#111827">Yocto build (bitbake)</text><text x="450" y="413" text-anchor="middle" font-size="11.5" fill="#4b5563">meta-amd-adaptive-socs + meta-user</text>
+  <text x="536" y="96" font-size="11.5" fill="#4b5563"><tspan x="536" dy="0">gồm pl.dtsi mô tả</tspan><tspan x="536" dy="16">các IP trong PL</tspan></text>
+</svg>
