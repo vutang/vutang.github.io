@@ -1,0 +1,23 @@
+<svg role="img" viewBox="0 0 960 300" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+  <title>Eye diagram: mắt đóng khi chưa equalization và mắt mở sau equalization</title>
+  <rect x="0" y="0" width="960" height="300" rx="8" fill="#ffffff"/>
+  <text x="20" y="28" font-size="14" font-weight="700" fill="#1d4278">Eye diagram tại bên thu (minh họa định tính)</text>
+  <g transform="translate(40,60)">
+    <rect width="400" height="190" fill="#f4f6f9" stroke="#999"/>
+    <path d="M0,20 C100,20 100,170 200,170 C300,170 300,20 400,20" fill="none" stroke="#1d4278" stroke-width="2"/>
+    <path d="M0,170 C100,170 100,20 200,20 C300,20 300,170 400,170" fill="none" stroke="#1d4278" stroke-width="2"/>
+    <path d="M0,50 C100,50 100,140 200,140 C300,140 300,50 400,50" fill="none" stroke="#1d4278" stroke-width="2"/>
+    <path d="M0,140 C100,140 100,50 200,50 C300,50 300,140 400,140" fill="none" stroke="#1d4278" stroke-width="2"/>
+    <ellipse cx="200" cy="95" rx="30" ry="4" fill="#c0392b"/>
+    <text x="200" y="215" font-size="12" text-anchor="middle" font-weight="700" fill="#111">Trước equalization: mắt gần đóng</text>
+  </g>
+  <g transform="translate(520,60)">
+    <rect width="400" height="190" fill="#f4f6f9" stroke="#999"/>
+    <path d="M0,20 C70,20 90,170 200,170 C310,170 330,20 400,20" fill="none" stroke="#1d4278" stroke-width="2"/>
+    <path d="M0,170 C70,170 90,20 200,20 C310,20 330,170 400,170" fill="none" stroke="#1d4278" stroke-width="2"/>
+    <path d="M0,20 L400,20 M0,170 L400,170" stroke="#1d4278" stroke-width="2" fill="none"/>
+    <rect x="125" y="45" width="150" height="100" rx="30" fill="#ffffff" stroke="#2e7d32" stroke-width="1.5"/>
+    <text x="200" y="215" font-size="12" text-anchor="middle" font-weight="700" fill="#111">Sau equalization: mắt mở</text>
+  </g>
+  <text x="480" y="285" font-size="11" text-anchor="middle" fill="#555">Trục ngang: một unit interval (UI). Trục dọc: biên độ. Vùng trống giữa mắt là biên còn lại cho nhiễu và jitter.</text>
+</svg>

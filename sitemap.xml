@@ -185,6 +185,14 @@
          <lastmod>2026-11-08</lastmod>
     </url>
     <url>
+         <loc>https://note.vutang.dev/computer_arch/io/pcie/</loc>
+         <lastmod>2026-11-08</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/computer_arch/io/serdes/</loc>
+         <lastmod>2026-11-08</lastmod>
+    </url>
+    <url>
          <loc>https://note.vutang.dev/computer_arch/isa/arm/</loc>
          <lastmod>2026-11-08</lastmod>
     </url>
@@ -354,6 +362,10 @@
     </url>
     <url>
          <loc>https://note.vutang.dev/ic_design/fpga/x_ipcore/xipcore/</loc>
+         <lastmod>2026-11-08</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/ic_design/rtl/cdc/</loc>
          <lastmod>2026-11-08</lastmod>
     </url>
     <url>

@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Kiểm chứng thiết kế phần cứng chạy đúng đặc tả trước khi đưa lên FPGA hoặc tape-out.">
+        <meta name="description" content="Kiểm chứng RTL trước khi lên FPGA hoặc tape-out: testbench, self-checking, constrained-random, coverage, UVM, assertion SVA, formal và co-simulation với firmware.">
       
       
         <meta name="author" content="Vu Tang">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Verification Overview - Vu Tang's Docs</title>
+        <title>Verification: kiểm chứng thiết kế phần cứng - Vu Tang's Docs</title>
       
     
     
@@ -72,16 +72,16 @@
     
   
 <meta property="og:type" content="website">
-<meta property="og:title" content="Verification Overview - Vu Tang's Docs">
-<meta property="og:description" content="Kiểm chứng thiết kế phần cứng chạy đúng đặc tả trước khi đưa lên FPGA hoặc tape-out.">
+<meta property="og:title" content="Verification: kiểm chứng thiết kế phần cứng - Vu Tang's Docs">
+<meta property="og:description" content="Kiểm chứng RTL trước khi lên FPGA hoặc tape-out: testbench, self-checking, constrained-random, coverage, UVM, assertion SVA, formal và co-simulation với firmware.">
 <meta property="og:image" content="https://note.vutang.dev/assets/images/social/ic_design/verification/verification.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://note.vutang.dev/ic_design/verification/verification/">
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:title" content="Verification Overview - Vu Tang's Docs">
-<meta property="twitter:description" content="Kiểm chứng thiết kế phần cứng chạy đúng đặc tả trước khi đưa lên FPGA hoặc tape-out.">
+<meta property="twitter:title" content="Verification: kiểm chứng thiết kế phần cứng - Vu Tang's Docs">
+<meta property="twitter:description" content="Kiểm chứng RTL trước khi lên FPGA hoặc tape-out: testbench, self-checking, constrained-random, coverage, UVM, assertion SVA, formal và co-simulation với firmware.">
 <meta property="twitter:image" content="https://note.vutang.dev/assets/images/social/ic_design/verification/verification.png">
 <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
@@ -145,7 +145,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Verification Overview
+              Verification: kiểm chứng thiết kế phần cứng
             
           </span>
         </div>
@@ -12210,6 +12210,62 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computer_arch/io/serdes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SerDes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computer_arch/io/pcie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PCIe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -12535,6 +12591,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rtl/cdc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clock domain crossing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -12808,10 +12892,109 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#se-viet" class="md-nav__link">
+  <a href="#muc-tieu-va-cac-cap-kiem-chung" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sẽ viết
+        Mục tiêu và các cấp kiểm chứng
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testbench-va-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testbench và simulation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#self-checking-va-reference-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Self-checking và reference model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constrained-random-va-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constrained-random và coverage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uvm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UVM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assertion-va-formal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Assertion và formal
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiem-chung-cung-firmware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kiểm chứng cùng firmware
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thuc-hanh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thực hành
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lien-quan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Liên quan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài liệu tham khảo
       
     </span>
   </a>
@@ -14135,10 +14318,109 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#se-viet" class="md-nav__link">
+  <a href="#muc-tieu-va-cac-cap-kiem-chung" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sẽ viết
+        Mục tiêu và các cấp kiểm chứng
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testbench-va-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testbench và simulation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#self-checking-va-reference-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Self-checking và reference model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constrained-random-va-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constrained-random và coverage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uvm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UVM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assertion-va-formal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Assertion và formal
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiem-chung-cung-firmware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kiểm chứng cùng firmware
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thuc-hanh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thực hành
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lien-quan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Liên quan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài liệu tham khảo
       
     </span>
   </a>
@@ -14160,24 +14442,244 @@
                 
                   
 
+  <nav class="md-tags">
+    
+      
+      
+      
+      
+        <a href="../../../articles/tags/#tag:ic-design" class="md-tag">ic-design</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../articles/tags/#tag:systemverilog" class="md-tag">systemverilog</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../articles/tags/#tag:uvm" class="md-tag">uvm</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../articles/tags/#tag:verification" class="md-tag">verification</a>
+      
+    
+  </nav>
+
 
   
   
 
 
 <h1 id="verification">Verification<a class="headerlink" href="#verification" title="Permanent link">¶</a></h1>
-<p>Kiểm chứng thiết kế chạy đúng đặc tả trước khi đưa lên FPGA hoặc tape-out.</p>
-<div class="admonition note">
-<p class="admonition-title">Stub</p>
-<p>Trang giới thiệu, nội dung chi tiết sẽ bổ sung sau.</p>
-</div>
-<h2 id="se-viet">Sẽ viết<a class="headerlink" href="#se-viet" title="Permanent link">¶</a></h2>
+<p>Verification là quá trình chứng minh thiết kế RTL làm đúng theo đặc tả trước khi nạp lên FPGA hoặc gửi đi chế tạo (tape-out). Với ASIC, lỗi phát hiện sau tape-out rất tốn kém hoặc không sửa được, nên verification thường chiếm phần lớn công sức của dự án, thường được cho là ngang hoặc hơn phần thiết kế. Trang này trình bày theo thứ tự: mục tiêu và các cấp kiểm chứng, testbench và simulation, kiểm tra tự động (self-checking), constrained-random và coverage, UVM, assertion và formal, kiểm chứng cùng firmware, rồi các điểm thực hành. Nền tảng ngôn ngữ ở <a href="../../rtl/rtl/">RTL / HDL</a>.</p>
+<h2 id="muc-tieu-va-cac-cap-kiem-chung">Mục tiêu và các cấp kiểm chứng<a class="headerlink" href="#muc-tieu-va-cac-cap-kiem-chung" title="Permanent link">¶</a></h2>
+<p>Verification trả lời hai câu hỏi: thiết kế có làm đúng điều đặc tả yêu cầu không, và đã kiểm tra đủ các tình huống chưa. Câu hỏi sau khó hơn, vì không gian trạng thái của thiết kế lớn hơn nhiều so với số trường hợp kiểm tra được.</p>
+<table>
+<thead>
+<tr>
+<th>Cấp</th>
+<th>Đối tượng</th>
+<th>Mục đích</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Module / unit</td>
+<td>Một khối nhỏ (FIFO, bộ giải mã, FSM)</td>
+<td>Kiểm tra chi tiết, độ phủ cao, nhiều lỗi bắt được sớm</td>
+</tr>
+<tr>
+<td>Subsystem</td>
+<td>Nhiều khối nối với nhau (DMA kèm bus)</td>
+<td>Kiểm tra giao diện và tương tác giữa các khối</td>
+</tr>
+<tr>
+<td>Hệ thống / SoC</td>
+<td>Toàn chip, thường kèm CPU model chạy firmware</td>
+<td>Kiểm tra luồng chạy thật, khởi động, ngắt, ngoại vi</td>
+</tr>
+<tr>
+<td>Trên FPGA</td>
+<td>Thiết kế chạy trên chip thật</td>
+<td>Tốc độ nhanh hơn simulation nhiều bậc, chạy phần mềm thật, nhưng quan sát tín hiệu hạn chế</td>
+</tr>
+</tbody>
+</table>
+<p>Lỗi tìm ra ở cấp thấp thì rẻ để sửa và dễ cô lập, còn lỗi chỉ lộ ra ở cấp hệ thống khó chẩn đoán. Cần kiểm chứng ở nhiều cấp, không chỉ ở cấp toàn chip.</p>
+<h2 id="testbench-va-simulation">Testbench và simulation<a class="headerlink" href="#testbench-va-simulation" title="Permanent link">¶</a></h2>
+<p>Testbench là mã (không synthesize) bao quanh thiết kế cần kiểm tra (DUT, device under test): tạo clock và reset, đưa kích thích vào đầu vào, quan sát đầu ra. Simulator (ví dụ Verilator, Icarus Verilog, hoặc các simulator thương mại và simulator đi kèm Vivado) thực thi RTL và testbench theo từng sự kiện hoặc từng chu kỳ.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">module</span><span class="w"> </span><span class="n">tb</span><span class="p">;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="kt">logic</span><span class="w"> </span><span class="n">clk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">rst</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="kt">logic</span><span class="w"> </span><span class="p">[</span><span class="mi">7</span><span class="o">:</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="n">din</span><span class="p">,</span><span class="w"> </span><span class="n">dout</span><span class="p">;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="k">always</span><span class="w"> </span><span class="p">#</span><span class="mi">5</span><span class="w"> </span><span class="n">clk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">~</span><span class="n">clk</span><span class="p">;</span><span class="w">          </span><span class="c1">// clock 100 MHz</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="n">my_dut</span><span class="w"> </span><span class="n">dut</span><span class="w"> </span><span class="p">(.</span><span class="n">clk</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">rst</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">din</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">dout</span><span class="p">);</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="k">initial</span><span class="w"> </span><span class="k">begin</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">        </span><span class="k">repeat</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="p">);</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">        </span><span class="n">rst</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">        </span><span class="n">din</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">8'h5A</span><span class="p">;</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">        </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="p">);</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">        </span><span class="p">#</span><span class="mi">1</span><span class="w"> </span><span class="k">assert</span><span class="w"> </span><span class="p">(</span><span class="n">dout</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">8'h5A</span><span class="p">)</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">$</span><span class="n">error</span><span class="p">(</span><span class="s">"dout sai: %h"</span><span class="p">,</span><span class="w"> </span><span class="n">dout</span><span class="p">);</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">        </span><span class="p">$</span><span class="n">finish</span><span class="p">;</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="k">endmodule</span>
+</code></pre></div>
+<p>Hai cách quan sát kết quả:</p>
 <ul>
-<li>Testbench và simulation (self-checking, waveform)</li>
-<li>Constrained-random và coverage</li>
-<li>UVM tổng quan</li>
-<li>Assertion (SVA) và formal verification</li>
-<li>Co-simulation với phần mềm/firmware</li>
+<li><strong>Waveform:</strong> xem dạng sóng trong công cụ để tìm lỗi bằng mắt. Cần khi debug nhưng không mở rộng được cho nhiều test.</li>
+<li><strong>Tự động kiểm tra:</strong> testbench tự so sánh đầu ra với giá trị mong đợi và báo pass hoặc fail.</li>
+</ul>
+<h2 id="self-checking-va-reference-model">Self-checking và reference model<a class="headerlink" href="#self-checking-va-reference-model" title="Permanent link">¶</a></h2>
+<p>Testbench tự kiểm tra gồm ba phần: sinh kích thích, mô hình tham chiếu (reference model) tính đầu ra đúng, và <strong>scoreboard</strong> so sánh đầu ra thật của DUT với đầu ra của mô hình. Mô hình tham chiếu có thể viết bằng SystemVerilog, C/C++ hoặc Python, miễn đủ trừu tượng để độc lập với RTL, nếu không lỗi hiểu sai đặc tả sẽ lặp lại ở cả hai. Test chạy được thành regression: bộ test chạy tự động sau mỗi thay đổi, trả kết quả pass hoặc fail mà không cần người xem waveform.</p>
+<h2 id="constrained-random-va-coverage">Constrained-random và coverage<a class="headerlink" href="#constrained-random-va-coverage" title="Permanent link">¶</a></h2>
+<p>Viết tay từng kịch bản chỉ phủ các trường hợp người viết nghĩ tới. <strong>Constrained-random</strong> sinh kích thích ngẫu nhiên trong các ràng buộc hợp lệ, nên chạm cả những tổ hợp không ai nghĩ tới.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">class</span><span class="w"> </span><span class="nc">packet</span><span class="p">;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="k">rand</span><span class="w"> </span><span class="kt">bit</span><span class="w"> </span><span class="p">[</span><span class="mi">7</span><span class="o">:</span><span class="mi">0</span><span class="p">]</span><span class="w">  </span><span class="n">len</span><span class="p">;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="k">rand</span><span class="w"> </span><span class="kt">bit</span><span class="w"> </span><span class="p">[</span><span class="mi">31</span><span class="o">:</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="n">addr</span><span class="p">;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="k">constraint</span><span class="w"> </span><span class="n">c_len</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="n">len</span><span class="w"> </span><span class="ow">inside</span><span class="w"> </span><span class="p">{[</span><span class="mi">1</span><span class="o">:</span><span class="mi">64</span><span class="p">]};</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="k">constraint</span><span class="w"> </span><span class="n">c_addr</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">addr</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mb">2'b00</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w">   </span><span class="c1">// địa chỉ căn 4 byte</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="kd">endclass</span>
+</code></pre></div>
+<p>Ngẫu nhiên không đảm bảo phủ hết, nên cần đo bằng <strong>coverage</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Loại coverage</th>
+<th>Đo gì</th>
+<th>Công dụng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Code coverage</td>
+<td>Dòng, nhánh, điều kiện, FSM, toggle của RTL đã được thực thi</td>
+<td>Tìm phần code chưa được chạy tới</td>
+</tr>
+<tr>
+<td>Functional coverage</td>
+<td>Các tình huống chức năng do người viết định nghĩa (covergroup) đã xảy ra chưa</td>
+<td>Đo độ phủ theo đặc tả</td>
+</tr>
+</tbody>
+</table>
+<p>Code coverage cao không có nghĩa kiểm chứng đủ, vì không nói gì về việc kết quả đã được kiểm tra đúng hay chưa. Functional coverage đo điều đã được kích thích, còn scoreboard và assertion mới đo điều đã được kiểm tra, nên cần cả hai. Quy trình thường là chạy random, xem hố trống trong coverage, rồi bổ sung ràng buộc hoặc test có hướng đích cho các hố đó cho tới khi đạt mục tiêu.</p>
+<h2 id="uvm">UVM<a class="headerlink" href="#uvm" title="Permanent link">¶</a></h2>
+<p>UVM (Universal Verification Methodology) là thư viện lớp SystemVerilog và quy ước tổ chức testbench có cấu trúc, chuẩn hóa thành IEEE 1800.2. Mục tiêu là testbench tái sử dụng được giữa các dự án. Các thành phần:</p>
+<table>
+<thead>
+<tr>
+<th>Thành phần</th>
+<th>Vai trò</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Transaction (sequence item)</td>
+<td>Gói dữ liệu trừu tượng ở mức giao dịch, như một lần đọc ghi bus</td>
+</tr>
+<tr>
+<td>Sequence</td>
+<td>Chuỗi giao dịch kịch bản, có thể random</td>
+</tr>
+<tr>
+<td>Driver</td>
+<td>Biến transaction thành tín hiệu trên giao diện của DUT</td>
+</tr>
+<tr>
+<td>Monitor</td>
+<td>Quan sát tín hiệu giao diện và dựng lại transaction, không điều khiển</td>
+</tr>
+<tr>
+<td>Agent</td>
+<td>Gom driver, monitor, sequencer cho một giao diện</td>
+</tr>
+<tr>
+<td>Scoreboard</td>
+<td>So sánh đầu ra DUT với mô hình tham chiếu</td>
+</tr>
+<tr>
+<td>Environment, test</td>
+<td>Ghép các agent và scoreboard, chọn kịch bản chạy</td>
+</tr>
+</tbody>
+</table>
+<p>UVM phù hợp với dự án ASIC và IP lớn, có nhiều giao diện và cần tái sử dụng agent. Với thiết kế FPGA nhỏ, testbench SystemVerilog thuần hoặc cocotb thường đủ và ít overhead hơn.</p>
+<h2 id="assertion-va-formal">Assertion và formal<a class="headerlink" href="#assertion-va-formal" title="Permanent link">¶</a></h2>
+<p><strong>Assertion</strong> là phát biểu về hành vi đúng của thiết kế, tự động kiểm tra trong simulation. SystemVerilog Assertions (SVA) mô tả quan hệ theo thời gian:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// Sau khi req lên 1, ack phải lên trong 1 đến 4 chu kỳ</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">property</span><span class="w"> </span><span class="n">p_req_ack</span><span class="p">;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="p">)</span><span class="w"> </span><span class="k">disable</span><span class="w"> </span><span class="k">iff</span><span class="w"> </span><span class="p">(</span><span class="n">rst</span><span class="p">)</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="n">req</span><span class="w"> </span><span class="o">|-&gt;</span><span class="w"> </span><span class="p">##[</span><span class="mi">1</span><span class="o">:</span><span class="mi">4</span><span class="p">]</span><span class="w"> </span><span class="n">ack</span><span class="p">;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">endproperty</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="k">assert</span><span class="w"> </span><span class="k">property</span><span class="w"> </span><span class="p">(</span><span class="n">p_req_ack</span><span class="p">)</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">$</span><span class="n">error</span><span class="p">(</span><span class="s">"ack không đến"</span><span class="p">);</span>
+</code></pre></div>
+<p>Assertion đặt cạnh RTL bắt lỗi ngay tại nơi xảy ra, thay vì chờ lỗi lan ra đầu ra. Cùng assertion đó dùng được cho <strong>formal verification</strong>: công cụ chứng minh toán học rằng thuộc tính đúng với mọi chuỗi đầu vào, hoặc đưa ra phản ví dụ. Formal không cần testbench và loại bỏ được lỗi ở góc hiếm, nhưng gặp giới hạn khi không gian trạng thái lớn, nên thường áp dụng cho khối điều khiển, giao thức, FSM, arbiter, hơn là cho toàn chip.</p>
+<h2 id="kiem-chung-cung-firmware">Kiểm chứng cùng firmware<a class="headerlink" href="#kiem-chung-cung-firmware" title="Permanent link">¶</a></h2>
+<p>Với SoC, nhiều lỗi nằm ở tương tác giữa phần cứng và phần mềm: thanh ghi sai địa chỉ, ngắt không đến, thứ tự khởi tạo sai. Các cách kiểm chứng:</p>
+<table>
+<thead>
+<tr>
+<th>Cách</th>
+<th>Mô tả</th>
+<th>Ưu và nhược</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Co-simulation</td>
+<td>CPU model (ISS hoặc RTL) chạy firmware trong simulator cùng RTL của phần còn lại</td>
+<td>Quan sát được mọi tín hiệu, nhưng rất chậm, chỉ chạy được đoạn boot ngắn</td>
+</tr>
+<tr>
+<td>Emulation</td>
+<td>Thiết kế nạp vào phần cứng chuyên dụng chạy nhanh hơn simulation nhiều bậc</td>
+<td>Chạy được OS, tốn kém</td>
+</tr>
+<tr>
+<td>FPGA prototype</td>
+<td>Thiết kế SoC nạp lên FPGA lớn</td>
+<td>Gần tốc độ thật, chạy được phần mềm lớn, khó quan sát</td>
+</tr>
+<tr>
+<td>Mô hình ảo (virtual platform)</td>
+<td>Mô hình phần mềm của SoC (ví dụ QEMU) để phát triển phần mềm trước khi có chip</td>
+<td>Rất nhanh, nhưng không chính xác tới từng chu kỳ</td>
+</tr>
+</tbody>
+</table>
+<p>Phát triển driver và firmware thường bắt đầu trên mô hình ảo, rồi chuyển sang FPGA prototype và cuối cùng là chip thật, xem <a href="../../../lnx_es/bringup/porting-linux/">Porting Linux lên board tùy biến</a> cho giai đoạn có phần cứng.</p>
+<h2 id="thuc-hanh">Thực hành<a class="headerlink" href="#thuc-hanh" title="Permanent link">¶</a></h2>
+<ul>
+<li>Viết kế hoạch kiểm chứng (verification plan) từ đặc tả: liệt kê tính năng, kịch bản và coverage tương ứng, trước khi viết testbench.</li>
+<li>Đưa kiểm tra vào regression tự động, chạy trên mỗi thay đổi, thu coverage gộp từ nhiều test.</li>
+<li>Kiểm tra cả trường hợp lỗi và biên: reset giữa chừng, đầu vào ngoài phạm vi, back-pressure kéo dài, tràn FIFO.</li>
+<li>Với CDC, cần công cụ chuyên dụng vì simulation không bắt được metastability, xem <a href="../../rtl/cdc/">Clock domain crossing</a>.</li>
+<li>Với thiết kế trên FPGA, simulation đúng chưa đủ: timing phải đạt ở <a href="../../timing_analysis/timing_analysis/">Static Timing Analysis</a> và có thể cần debug bằng ILA, xem <a href="../../fpga/fpga/">FPGA</a>.</li>
+</ul>
+<h2 id="lien-quan">Liên quan<a class="headerlink" href="#lien-quan" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="../../rtl/rtl/">RTL / HDL</a>: viết thiết kế để dễ kiểm chứng và dễ synthesize.</li>
+<li><a href="../../fpga/fpga/">FPGA</a>: kiểm chứng trên phần cứng bằng ILA, VIO.</li>
+<li><a href="../../timing_analysis/timing_analysis/">Static Timing Analysis</a>: kiểm tra timing, bổ sung cho kiểm tra chức năng.</li>
+<li><a href="../../../lnx_es/bringup/porting-linux/">Porting Linux lên board tùy biến</a> (Embedded): giai đoạn chạy firmware và Linux trên phần cứng thật.</li>
+</ul>
+<h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
+<ul>
+<li>IEEE Std 1800-2023, SystemVerilog, các mục về constrained-random, covergroup và assertion. <a href="https://standards.ieee.org/">IEEE Standards Association</a></li>
+<li>IEEE Std 1800.2-2020, Standard for Universal Verification Methodology Language Reference Manual. <a href="https://standards.ieee.org/">IEEE Standards Association</a></li>
+<li>Accellera, UVM (IEEE 1800.2) reference implementation và tài liệu. <a href="https://www.accellera.org/downloads/standards/uvm">accellera.org</a></li>
+<li>Chris Spear, Greg Tumbush, <em>SystemVerilog for Verification</em>, 3rd edition, Springer, 2012.</li>
+<li>Harry Foster, "Wilson Research Group Functional Verification Study", Siemens EDA: khảo sát định kỳ về thời gian và nhân lực dành cho verification.</li>
 </ul>
 
 
@@ -14201,7 +14703,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 7, 2026 07:35:13 UTC">November 7, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 8, 2026 02:47:55 UTC">November 8, 2026</span>
   </span>
 
     

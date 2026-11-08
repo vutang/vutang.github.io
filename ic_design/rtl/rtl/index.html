@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Mô tả phần cứng ở mức Register Transfer Level bằng Verilog, SystemVerilog, VHDL, làm đầu vào cho synthesis.">
+        <meta name="description" content="Viết RTL synthesizable bằng Verilog và SystemVerilog: logic tổ hợp và tuần tự, blocking và non-blocking, FSM, pipeline, reset và các lỗi thường gặp.">
       
       
         <meta name="author" content="Vu Tang">
@@ -15,7 +15,7 @@
         <link rel="prev" href="../../">
       
       
-        <link rel="next" href="../../fpga/fpga/">
+        <link rel="next" href="../cdc/">
       
       
         
@@ -26,7 +26,7 @@
     
     
       
-        <title>RTL / HDL Overview - Vu Tang's Docs</title>
+        <title>RTL / HDL: mô tả phần cứng ở mức Register Transfer - Vu Tang's Docs</title>
       
     
     
@@ -72,16 +72,16 @@
     
   
 <meta property="og:type" content="website">
-<meta property="og:title" content="RTL / HDL Overview - Vu Tang's Docs">
-<meta property="og:description" content="Mô tả phần cứng ở mức Register Transfer Level bằng Verilog, SystemVerilog, VHDL, làm đầu vào cho synthesis.">
+<meta property="og:title" content="RTL / HDL: mô tả phần cứng ở mức Register Transfer - Vu Tang's Docs">
+<meta property="og:description" content="Viết RTL synthesizable bằng Verilog và SystemVerilog: logic tổ hợp và tuần tự, blocking và non-blocking, FSM, pipeline, reset và các lỗi thường gặp.">
 <meta property="og:image" content="https://note.vutang.dev/assets/images/social/ic_design/rtl/rtl.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://note.vutang.dev/ic_design/rtl/rtl/">
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:title" content="RTL / HDL Overview - Vu Tang's Docs">
-<meta property="twitter:description" content="Mô tả phần cứng ở mức Register Transfer Level bằng Verilog, SystemVerilog, VHDL, làm đầu vào cho synthesis.">
+<meta property="twitter:title" content="RTL / HDL: mô tả phần cứng ở mức Register Transfer - Vu Tang's Docs">
+<meta property="twitter:description" content="Viết RTL synthesizable bằng Verilog và SystemVerilog: logic tổ hợp và tuần tự, blocking và non-blocking, FSM, pipeline, reset và các lỗi thường gặp.">
 <meta property="twitter:image" content="https://note.vutang.dev/assets/images/social/ic_design/rtl/rtl.png">
 <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
@@ -145,7 +145,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              RTL / HDL Overview
+              RTL / HDL: mô tả phần cứng ở mức Register Transfer
             
           </span>
         </div>
@@ -12210,6 +12210,62 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computer_arch/io/serdes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SerDes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computer_arch/io/pcie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PCIe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -12576,10 +12632,98 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#se-viet" class="md-nav__link">
+  <a href="#mo-ta-phan-cung-khac-voi-lap-trinh" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sẽ viết
+        Mô tả phần cứng khác với lập trình
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logic-to-hop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logic tổ hợp
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logic-tuan-tu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logic tuần tự
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#blocking-va-non-blocking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Blocking và non-blocking
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#may-trang-thai-huu-han-fsm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Máy trạng thái hữu hạn (FSM)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipeline-o-muc-rtl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pipeline ở mức RTL
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reset
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cac-loi-thuong-gap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các lỗi thường gặp
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quy-trinh-tu-rtl-en-phan-cung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quy trình từ RTL đến phần cứng
       
     </span>
   </a>
@@ -12597,10 +12741,49 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài liệu tham khảo
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cdc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clock domain crossing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -14146,10 +14329,98 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#se-viet" class="md-nav__link">
+  <a href="#mo-ta-phan-cung-khac-voi-lap-trinh" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sẽ viết
+        Mô tả phần cứng khác với lập trình
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logic-to-hop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logic tổ hợp
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logic-tuan-tu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logic tuần tự
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#blocking-va-non-blocking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Blocking và non-blocking
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#may-trang-thai-huu-han-fsm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Máy trạng thái hữu hạn (FSM)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipeline-o-muc-rtl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pipeline ở mức RTL
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reset
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cac-loi-thuong-gap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các lỗi thường gặp
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quy-trinh-tu-rtl-en-phan-cung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quy trình từ RTL đến phần cứng
       
     </span>
   </a>
@@ -14161,6 +14432,17 @@
     <span class="md-ellipsis">
       
         Liên quan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài liệu tham khảo
       
     </span>
   </a>
@@ -14182,29 +14464,255 @@
                 
                   
 
+  <nav class="md-tags">
+    
+      
+      
+      
+      
+        <a href="../../../articles/tags/#tag:ic-design" class="md-tag">ic-design</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../articles/tags/#tag:rtl" class="md-tag">rtl</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../articles/tags/#tag:systemverilog" class="md-tag">systemverilog</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../articles/tags/#tag:verilog" class="md-tag">verilog</a>
+      
+    
+  </nav>
+
 
   
   
 
 
 <h1 id="rtl-hdl">RTL / HDL<a class="headerlink" href="#rtl-hdl" title="Permanent link">¶</a></h1>
-<p>Mô tả phần cứng ở mức Register Transfer Level bằng ngôn ngữ mô tả phần cứng (Verilog, SystemVerilog, VHDL), làm đầu vào cho synthesis.</p>
-<div class="admonition note">
-<p class="admonition-title">Stub</p>
-<p>Trang giới thiệu, nội dung chi tiết sẽ bổ sung sau.</p>
-</div>
-<h2 id="se-viet">Sẽ viết<a class="headerlink" href="#se-viet" title="Permanent link">¶</a></h2>
+<p>RTL (Register Transfer Level) là mức mô tả phần cứng trong đó thiết kế được viết dưới dạng các thanh ghi (register) và logic tổ hợp biến đổi dữ liệu giữa chúng theo từng chu kỳ clock. Ngôn ngữ mô tả phần cứng (HDL) gồm Verilog, SystemVerilog và VHDL. Công cụ synthesis đọc RTL và tạo netlist cổng logic, trên FPGA là LUT và flip-flop, trên ASIC là standard cell. Trang này trình bày RTL theo thứ tự: tư duy mô tả phần cứng, logic tổ hợp, logic tuần tự, blocking và non-blocking, FSM, pipeline, reset, rồi các lỗi thường gặp. Phần các tín hiệu đi giữa hai clock được trình bày ở <a href="../cdc/">Clock domain crossing</a>.</p>
+<h2 id="mo-ta-phan-cung-khac-voi-lap-trinh">Mô tả phần cứng khác với lập trình<a class="headerlink" href="#mo-ta-phan-cung-khac-voi-lap-trinh" title="Permanent link">¶</a></h2>
+<p>Code HDL không chạy tuần tự như chương trình phần mềm. Mỗi khối <code>assign</code> hoặc <code>always</code> mô tả một mạch tồn tại song song với các khối khác, và tất cả hoạt động đồng thời. Hai hệ quả:</p>
 <ul>
-<li>Combinational vs sequential logic, clock và reset</li>
-<li>Verilog/SystemVerilog: cú pháp synthesizable, các lỗi thường gặp (latch, blocking vs non-blocking)</li>
-<li>FSM, datapath, pipeline ở mức RTL</li>
-<li>Clock domain crossing (CDC)</li>
-<li>Synthesis flow cơ bản</li>
+<li>Một HDL dùng cho synthesis chỉ là tập con của ngôn ngữ, gọi là phần synthesizable. Các cấu trúc như <code>initial</code> có độ trễ <code>#</code>, vòng lặp có số lần không xác định, hay <code>$display</code> chỉ dùng cho simulation.</li>
+<li>Khi viết, cần hình dung trước mạch kết quả (flip-flop, mux, bộ cộng) và chọn cú pháp tạo ra đúng mạch đó, thay vì viết thuật toán rồi chờ công cụ suy ra.</li>
 </ul>
+<p>SystemVerilog (IEEE 1800) là tập mở rộng của Verilog (IEEE 1364) và là lựa chọn mặc định cho thiết kế mới, kể cả phần testbench, xem <a href="../../verification/verification/">Verification</a>. Các ví dụ dưới đây dùng SystemVerilog.</p>
+<h2 id="logic-to-hop">Logic tổ hợp<a class="headerlink" href="#logic-to-hop" title="Permanent link">¶</a></h2>
+<p>Logic tổ hợp có đầu ra chỉ phụ thuộc đầu vào hiện tại, không có trạng thái. Hai cách viết:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// Phép gán liên tục</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">assign</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1">// Khối always_comb: mọi đầu ra phải được gán ở mọi nhánh</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">always_comb</span><span class="w"> </span><span class="k">begin</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sel</span><span class="p">)</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="k">else</span><span class="w">     </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="k">end</span>
+</code></pre></div>
+<p><code>always_comb</code> của SystemVerilog tự suy ra danh sách độ nhạy và báo lỗi nếu mô tả tạo ra latch ngoài ý muốn, nên nên dùng thay cho <code>always @(*)</code>. Trong khối tổ hợp dùng phép gán blocking (<code>=</code>).</p>
+<h2 id="logic-tuan-tu">Logic tuần tự<a class="headerlink" href="#logic-tuan-tu" title="Permanent link">¶</a></h2>
+<p>Logic tuần tự có trạng thái, cập nhật tại cạnh của clock. Phần tử cơ bản là flip-flop:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">always_ff</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rst</span><span class="p">)</span><span class="w"> </span><span class="n">q</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="m">'0</span><span class="p">;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">en</span><span class="p">)</span><span class="w"> </span><span class="n">q</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">d</span><span class="p">;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">end</span>
+</code></pre></div>
+<p>Trong khối tuần tự dùng phép gán non-blocking (<code>&lt;=</code>). Chu kỳ clock trở thành đơn vị thời gian: mọi giá trị đọc ở một cạnh clock là giá trị ngay trước cạnh, mọi giá trị ghi có hiệu lực ngay sau cạnh. Quy ước này làm thiết kế dự đoán được và là cơ sở để phân tích timing, xem <a href="../../timing_analysis/timing_analysis/">Static Timing Analysis</a>.</p>
+<h2 id="blocking-va-non-blocking">Blocking và non-blocking<a class="headerlink" href="#blocking-va-non-blocking" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Blocking <code>=</code></th>
+<th>Non-blocking <code>&lt;=</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hành vi trong simulation</td>
+<td>Cập nhật ngay, câu lệnh sau thấy giá trị mới</td>
+<td>Lên lịch cập nhật cuối bước thời gian, các câu lệnh trong cùng bước thấy giá trị cũ</td>
+</tr>
+<tr>
+<td>Dùng trong</td>
+<td><code>always_comb</code>, biến tạm trong khối</td>
+<td><code>always_ff</code></td>
+</tr>
+<tr>
+<td>Mạch suy ra</td>
+<td>Logic tổ hợp</td>
+<td>Flip-flop</td>
+</tr>
+</tbody>
+</table>
+<p>Trộn hai kiểu gán trong khối tuần tự dẫn tới race condition khi simulate và mạch khác với ý định. Ví dụ chuỗi dịch hai tầng chỉ đúng khi dùng <code>&lt;=</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">always_ff</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">q1</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">d</span><span class="p">;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="n">q2</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">q1</span><span class="p">;</span><span class="w">   </span><span class="c1">// q2 nhận giá trị cũ của q1: hai flip-flop nối tiếp</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">end</span>
+</code></pre></div>
+<p>Nếu viết <code>q1 = d; q2 = q1;</code> thì <code>q2</code> nhận giá trị mới của <code>q1</code> và thực tế chỉ còn một tầng. Quy tắc này được trình bày ở Cummings (2000), mục tham khảo.</p>
+<h2 id="may-trang-thai-huu-han-fsm">Máy trạng thái hữu hạn (FSM)<a class="headerlink" href="#may-trang-thai-huu-han-fsm" title="Permanent link">¶</a></h2>
+<p>FSM là cấu trúc điều khiển phổ biến nhất trong RTL. Cách viết thường dùng gồm hai phần: một khối tuần tự giữ trạng thái và một khối tổ hợp tính trạng thái kế tiếp và đầu ra.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">typedef</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="kt">logic</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="n">IDLE</span><span class="p">,</span><span class="w"> </span><span class="n">RUN</span><span class="p">,</span><span class="w"> </span><span class="n">DONE</span><span class="p">}</span><span class="w"> </span><span class="n">state_t</span><span class="p">;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">state_t</span><span class="w"> </span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">next</span><span class="p">;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">always_ff</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rst</span><span class="p">)</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">IDLE</span><span class="p">;</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="k">else</span><span class="w">     </span><span class="n">state</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">next</span><span class="p">;</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="k">end</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="k">always_comb</span><span class="w"> </span><span class="k">begin</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">    </span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">state</span><span class="p">;</span><span class="w">            </span><span class="c1">// giá trị mặc định tránh latch</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="n">done</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">1'b0</span><span class="p">;</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">        </span><span class="nl">IDLE:</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">start</span><span class="p">)</span><span class="w"> </span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RUN</span><span class="p">;</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">        </span><span class="nl">RUN:</span><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">finish</span><span class="p">)</span><span class="w"> </span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DONE</span><span class="p">;</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">        </span><span class="nl">DONE:</span><span class="w"> </span><span class="k">begin</span><span class="w"> </span><span class="n">done</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">1'b1</span><span class="p">;</span><span class="w"> </span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IDLE</span><span class="p">;</span><span class="w"> </span><span class="k">end</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">        </span><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IDLE</span><span class="p">;</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">    </span><span class="k">endcase</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="k">end</span>
+</code></pre></div>
+<p>Hai kiểu FSM khác nhau ở đầu ra:</p>
+<table>
+<thead>
+<tr>
+<th>Kiểu</th>
+<th>Đầu ra phụ thuộc</th>
+<th>Đặc điểm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Moore</td>
+<td>Chỉ trạng thái hiện tại</td>
+<td>Đầu ra ổn định cả chu kỳ, dễ timing</td>
+</tr>
+<tr>
+<td>Mealy</td>
+<td>Trạng thái và đầu vào hiện tại</td>
+<td>Phản ứng nhanh hơn một chu kỳ, đầu ra có thể thay đổi theo đầu vào giữa chu kỳ</td>
+</tr>
+</tbody>
+</table>
+<p>Gán giá trị mặc định cho mọi đầu ra ở đầu khối <code>always_comb</code> và có nhánh <code>default</code> là cách tránh latch. Việc mã hóa trạng thái (nhị phân, one-hot, gray) thường để công cụ synthesis chọn; one-hot phổ biến trên FPGA vì flip-flop sẵn có và logic giải mã đơn giản.</p>
+<h2 id="pipeline-o-muc-rtl">Pipeline ở mức RTL<a class="headerlink" href="#pipeline-o-muc-rtl" title="Permanent link">¶</a></h2>
+<p>Khi đường logic tổ hợp giữa hai thanh ghi quá dài so với chu kỳ clock, cách xử lý thường dùng là chèn thêm thanh ghi để chia đường thành nhiều tầng. Tần số clock tối đa tăng, đổi lại độ trễ (latency) tăng thêm số tầng và tốn thêm flip-flop. Throughput vẫn là một kết quả mỗi chu kỳ khi pipeline đầy. Khái niệm tương tự với pipeline của CPU, xem <a href="../../../computer_arch/microarch/pipeline/">Pipeline</a>. Khi pipeline có tín hiệu điều khiển như valid, ready, cần giữ các tín hiệu này thẳng hàng với dữ liệu qua các tầng. Giao thức handshake <code>valid/ready</code> của AXI-Stream là cách chuẩn để có back-pressure, xem <a href="../../../computer_arch/soc/soc/">SoC / System</a>.</p>
+<h2 id="reset">Reset<a class="headerlink" href="#reset" title="Permanent link">¶</a></h2>
+<p>Reset đưa các thanh ghi về trạng thái đã biết. Hai kiểu:</p>
+<table>
+<thead>
+<tr>
+<th>Kiểu</th>
+<th>Cách viết</th>
+<th>Đặc điểm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Đồng bộ</td>
+<td><code>always_ff @(posedge clk)</code> kiểm tra <code>rst</code></td>
+<td>Reset chỉ có hiệu lực tại cạnh clock, cần clock đang chạy, thêm một mức logic ở đầu vào D</td>
+</tr>
+<tr>
+<td>Bất đồng bộ</td>
+<td><code>always_ff @(posedge clk or posedge rst)</code></td>
+<td>Reset có hiệu lực ngay, không cần clock, dùng chân reset riêng của flip-flop</td>
+</tr>
+</tbody>
+</table>
+<p>Reset bất đồng bộ có nguy cơ khi nhả reset: nếu tín hiệu nhả reset đổi gần cạnh clock, flip-flop có thể rơi vào metastability. Thực hành thường gặp là <strong>assert bất đồng bộ, deassert đồng bộ</strong>: reset được đồng bộ vào clock của miền bằng một bộ đồng bộ hai flip-flop trước khi phân phối. Vấn đề này và các reset giữa nhiều miền clock được nói thêm ở <a href="../cdc/">Clock domain crossing</a>. Trên FPGA, tài liệu của Xilinx khuyến nghị ưu tiên reset đồng bộ và chỉ reset những thanh ghi thật sự cần, vì reset nhiều tín hiệu làm tăng fanout và khó đạt timing.</p>
+<h2 id="cac-loi-thuong-gap">Các lỗi thường gặp<a class="headerlink" href="#cac-loi-thuong-gap" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Lỗi</th>
+<th>Nguyên nhân</th>
+<th>Hậu quả</th>
+<th>Cách tránh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Latch ngoài ý muốn</td>
+<td>Khối tổ hợp không gán đầu ra ở mọi nhánh (<code>if</code> thiếu <code>else</code>, <code>case</code> thiếu <code>default</code>)</td>
+<td>Synthesis suy ra latch, timing khó kiểm soát</td>
+<td>Gán mặc định đầu khối, dùng <code>always_comb</code></td>
+</tr>
+<tr>
+<td>Trộn blocking và non-blocking</td>
+<td>Dùng <code>=</code> trong khối tuần tự hoặc <code>&lt;=</code> trong khối tổ hợp</td>
+<td>Race khi simulate, mạch khác ý định</td>
+<td>Quy tắc ở mục trên</td>
+</tr>
+<tr>
+<td>Danh sách độ nhạy thiếu (Verilog cũ)</td>
+<td>Viết <code>always @(a)</code> mà dùng cả <code>b</code></td>
+<td>Simulation khác với mạch đã synthesize</td>
+<td>Dùng <code>always_comb</code> hoặc <code>always @(*)</code></td>
+</tr>
+<tr>
+<td>Nhiều driver cho một tín hiệu</td>
+<td>Hai khối <code>always</code> cùng gán một biến</td>
+<td>Lỗi synthesis hoặc xung đột</td>
+<td>Mỗi tín hiệu do đúng một khối điều khiển</td>
+</tr>
+<tr>
+<td>Độ rộng bit không khớp</td>
+<td>Gán giữa các vector khác độ rộng</td>
+<td>Cắt hoặc mở rộng bit không chủ ý</td>
+<td>Khai báo độ rộng rõ ràng, bật cảnh báo lint</td>
+</tr>
+<tr>
+<td>Tín hiệu không xác định (<code>x</code>) lan truyền</td>
+<td>Thanh ghi không reset đưa <code>x</code> vào logic</td>
+<td>Simulation cho kết quả sai</td>
+<td>Reset các thanh ghi điều khiển, kiểm tra bằng assertion</td>
+</tr>
+<tr>
+<td>Cấu trúc chỉ dùng cho simulation</td>
+<td><code>#delay</code>, <code>initial</code> phức tạp trong thiết kế</td>
+<td>Synthesis bỏ qua hoặc lỗi, mạch không như simulate</td>
+<td>Tách code thiết kế khỏi testbench</td>
+</tr>
+</tbody>
+</table>
+<p>Công cụ lint (kiểm tra tĩnh code, ví dụ Verilator ở chế độ lint hoặc công cụ trong các flow thương mại) phát hiện phần lớn các lỗi này trước khi simulate.</p>
+<h2 id="quy-trinh-tu-rtl-en-phan-cung">Quy trình từ RTL đến phần cứng<a class="headerlink" href="#quy-trinh-tu-rtl-en-phan-cung" title="Permanent link">¶</a></h2>
+<ol>
+<li><strong>Simulation RTL:</strong> chạy testbench kiểm tra chức năng, xem <a href="../../verification/verification/">Verification</a>.</li>
+<li><strong>Synthesis:</strong> biến RTL thành netlist cổng logic theo thư viện của FPGA hoặc ASIC.</li>
+<li><strong>Implementation:</strong> đặt (placement) và đi dây (routing). Trên FPGA do Vivado hoặc công cụ tương đương thực hiện, xem <a href="../../fpga/fpga/">FPGA</a>.</li>
+<li><strong>Phân tích timing:</strong> kiểm tra setup và hold sau đặt và đi dây, xem <a href="../../timing_analysis/timing_analysis/">Static Timing Analysis</a>.</li>
+<li><strong>Tạo bitstream</strong> (FPGA) hoặc tiếp tục sang các bước vật lý và tape-out (ASIC).</li>
+</ol>
 <h2 id="lien-quan">Liên quan<a class="headerlink" href="#lien-quan" title="Permanent link">¶</a></h2>
 <ul>
-<li>Kiểm tra timing sau synthesis: <a href="../../timing_analysis/timing_analysis/">Static Timing Analysis</a>.</li>
-<li>Kiểm chứng thiết kế: <a href="../../verification/verification/">Verification</a>.</li>
+<li><a href="../cdc/">Clock domain crossing</a>: truyền tín hiệu giữa các miền clock.</li>
+<li><a href="../../timing_analysis/timing_analysis/">Static Timing Analysis</a>: kiểm tra timing của thiết kế đã synthesize.</li>
+<li><a href="../../fpga/fpga/">FPGA</a> và <a href="../../verification/verification/">Verification</a>: hiện thực trên FPGA và kiểm chứng.</li>
+<li><a href="../../../computer_arch/microarch/pipeline/">Pipeline</a> (Computer Architecture): khái niệm pipeline ở mức CPU.</li>
+<li><a href="../../../lnx_es/fpga/fpga-linux/">Nạp bitstream FPGA từ Linux (Zynq)</a> (Embedded): đưa thiết kế đã synthesize lên board.</li>
+</ul>
+<h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
+<ul>
+<li>IEEE Std 1800-2023, SystemVerilog: Unified Hardware Design, Specification, and Verification Language. <a href="https://standards.ieee.org/">IEEE Standards Association</a></li>
+<li>IEEE Std 1364-2005, Verilog Hardware Description Language.</li>
+<li>Clifford E. Cummings, "Nonblocking Assignments in Verilog Synthesis, Coding Styles That Kill!", SNUG 2000. <a href="http://www.sunburst-design.com/papers/">sunburst-design.com</a></li>
+<li>Clifford E. Cummings, "Synthesis and Scripting Techniques for Designing Multi-Asynchronous Clock Designs", SNUG 2001, và "Asynchronous &amp; Synchronous Reset Design Techniques", SNUG 2002. <a href="http://www.sunburst-design.com/papers/">sunburst-design.com</a></li>
+<li>AMD (Xilinx), Vivado Design Suite User Guide: Synthesis (UG901) và UltraFast Design Methodology Guide (UG949), mục về reset. <a href="https://docs.amd.com/">AMD Documentation</a></li>
 </ul>
 
 
@@ -14228,7 +14736,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 7, 2026 07:35:13 UTC">November 7, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 8, 2026 02:47:55 UTC">November 8, 2026</span>
   </span>
 
     
@@ -14294,13 +14802,13 @@
         
         
           
-          <a href="../../fpga/fpga/" class="md-footer__link md-footer__link--next" aria-label="Next: Overview">
+          <a href="../cdc/" class="md-footer__link md-footer__link--next" aria-label="Next: Clock domain crossing">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Overview
+                Clock domain crossing
               </div>
             </div>
             <div class="md-footer__button md-icon">

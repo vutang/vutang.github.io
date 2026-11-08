@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Hiện thực thiết kế RTL trên FPGA: kiến trúc tài nguyên, flow công cụ và IP core.">
+        <meta name="description" content="Tài nguyên cơ bản của FPGA (LUT, flip-flop, BRAM, DSP, clocking), flow Vivado từ RTL đến bitstream, constraint và debug bằng ILA và VIO.">
       
       
         <meta name="author" content="Vu Tang">
@@ -12,7 +12,7 @@
         <link rel="canonical" href="https://note.vutang.dev/ic_design/fpga/fpga/">
       
       
-        <link rel="prev" href="../../rtl/rtl/">
+        <link rel="prev" href="../../rtl/cdc/">
       
       
         <link rel="next" href="../x_ipcore/xipcore/">
@@ -26,7 +26,7 @@
     
     
       
-        <title>FPGA Overview - Vu Tang's Docs</title>
+        <title>FPGA: kiến trúc tài nguyên và flow thiết kế - Vu Tang's Docs</title>
       
     
     
@@ -72,16 +72,16 @@
     
   
 <meta property="og:type" content="website">
-<meta property="og:title" content="FPGA Overview - Vu Tang's Docs">
-<meta property="og:description" content="Hiện thực thiết kế RTL trên FPGA: kiến trúc tài nguyên, flow công cụ và IP core.">
+<meta property="og:title" content="FPGA: kiến trúc tài nguyên và flow thiết kế - Vu Tang's Docs">
+<meta property="og:description" content="Tài nguyên cơ bản của FPGA (LUT, flip-flop, BRAM, DSP, clocking), flow Vivado từ RTL đến bitstream, constraint và debug bằng ILA và VIO.">
 <meta property="og:image" content="https://note.vutang.dev/assets/images/social/ic_design/fpga/fpga.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://note.vutang.dev/ic_design/fpga/fpga/">
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:title" content="FPGA Overview - Vu Tang's Docs">
-<meta property="twitter:description" content="Hiện thực thiết kế RTL trên FPGA: kiến trúc tài nguyên, flow công cụ và IP core.">
+<meta property="twitter:title" content="FPGA: kiến trúc tài nguyên và flow thiết kế - Vu Tang's Docs">
+<meta property="twitter:description" content="Tài nguyên cơ bản của FPGA (LUT, flip-flop, BRAM, DSP, clocking), flow Vivado từ RTL đến bitstream, constraint và debug bằng ILA và VIO.">
 <meta property="twitter:image" content="https://note.vutang.dev/assets/images/social/ic_design/fpga/fpga.png">
 <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
@@ -145,7 +145,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              FPGA Overview
+              FPGA: kiến trúc tài nguyên và flow thiết kế
             
           </span>
         </div>
@@ -12210,6 +12210,62 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computer_arch/io/serdes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SerDes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../computer_arch/io/pcie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PCIe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -12535,6 +12591,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rtl/cdc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clock domain crossing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -12664,10 +12748,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#noi-dung" class="md-nav__link">
+  <a href="#fpga-so-voi-asic" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Nội dung
+        FPGA so với ASIC
       
     </span>
   </a>
@@ -12675,10 +12759,93 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#se-viet" class="md-nav__link">
+  <a href="#tai-nguyen-ben-trong-fpga" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sẽ viết
+        Tài nguyên bên trong FPGA
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flow-thiet-ke-voi-vivado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flow thiết kế với Vivado
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Flow thiết kế với Vivado">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#block-design-va-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Block design và IP
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constraint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constraint
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debug-tren-phan-cung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Debug trên phần cứng
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fpga-trong-he-thong-co-soc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FPGA trong hệ thống có SoC
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lien-quan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Liên quan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài liệu tham khảo
       
     </span>
   </a>
@@ -14146,10 +14313,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#noi-dung" class="md-nav__link">
+  <a href="#fpga-so-voi-asic" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Nội dung
+        FPGA so với ASIC
       
     </span>
   </a>
@@ -14157,10 +14324,93 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#se-viet" class="md-nav__link">
+  <a href="#tai-nguyen-ben-trong-fpga" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sẽ viết
+        Tài nguyên bên trong FPGA
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flow-thiet-ke-voi-vivado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flow thiết kế với Vivado
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Flow thiết kế với Vivado">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#block-design-va-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Block design và IP
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constraint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constraint
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debug-tren-phan-cung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Debug trên phần cứng
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fpga-trong-he-thong-co-soc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FPGA trong hệ thống có SoC
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lien-quan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Liên quan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài liệu tham khảo
       
     </span>
   </a>
@@ -14182,27 +14432,266 @@
                 
                   
 
+  <nav class="md-tags">
+    
+      
+      
+      
+      
+        <a href="../../../articles/tags/#tag:fpga" class="md-tag">fpga</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../articles/tags/#tag:ic-design" class="md-tag">ic-design</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../articles/tags/#tag:vivado" class="md-tag">vivado</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../articles/tags/#tag:xilinx" class="md-tag">xilinx</a>
+      
+    
+  </nav>
+
 
   
   
 
 
 <h1 id="fpga">FPGA<a class="headerlink" href="#fpga" title="Permanent link">¶</a></h1>
-<p>Hiện thực thiết kế RTL trên FPGA: kiến trúc tài nguyên, flow công cụ và các IP core.</p>
-<div class="admonition note">
-<p class="admonition-title">Stub</p>
-<p>Trang giới thiệu, nội dung chi tiết sẽ bổ sung sau.</p>
-</div>
-<h2 id="noi-dung">Nội dung<a class="headerlink" href="#noi-dung" title="Permanent link">¶</a></h2>
+<p>FPGA (Field-Programmable Gate Array) là chip chứa các khối logic và mạng đi dây có thể lập trình lại sau khi sản xuất, nên cùng một chip hiện thực được nhiều mạch số khác nhau. Trang này trình bày FPGA theo thứ tự: so sánh với ASIC, tài nguyên bên trong, flow thiết kế từ RTL đến bitstream, constraint, debug trên phần cứng, rồi FPGA trong hệ thống có SoC. Các ví dụ lấy từ dòng Xilinx (nay thuộc AMD) và công cụ Vivado, vì các trang khác trong site dùng Zynq.</p>
+<h2 id="fpga-so-voi-asic">FPGA so với ASIC<a class="headerlink" href="#fpga-so-voi-asic" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>FPGA</th>
+<th>ASIC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chi phí ban đầu</td>
+<td>Thấp, không phải làm mask</td>
+<td>Cao (mask, tape-out)</td>
+</tr>
+<tr>
+<td>Chi phí mỗi chip khi sản lượng lớn</td>
+<td>Cao</td>
+<td>Thấp</td>
+</tr>
+<tr>
+<td>Thời gian đưa ra sản phẩm</td>
+<td>Ngắn</td>
+<td>Dài</td>
+</tr>
+<tr>
+<td>Thay đổi thiết kế sau khi giao</td>
+<td>Nạp lại bitstream</td>
+<td>Không thể, phải làm lại chip</td>
+</tr>
+<tr>
+<td>Tần số và công suất</td>
+<td>Thấp hơn và tiêu thụ nhiều hơn cho cùng chức năng</td>
+<td>Tối ưu hơn</td>
+</tr>
+<tr>
+<td>Vai trò thường gặp</td>
+<td>Nguyên mẫu, sản phẩm sản lượng thấp, xử lý tín hiệu và giao tiếp linh hoạt</td>
+<td>Sản phẩm sản lượng lớn, yêu cầu công suất và giá thấp</td>
+</tr>
+</tbody>
+</table>
+<p>FPGA hay được dùng để kiểm chứng thiết kế sẽ làm ASIC (prototyping) và làm accelerator trong hệ thống như trạm gốc 5G, xem <a href="../../../wireless/l1/l1-acceleration/">L1 &amp; Acceleration</a>.</p>
+<h2 id="tai-nguyen-ben-trong-fpga">Tài nguyên bên trong FPGA<a class="headerlink" href="#tai-nguyen-ben-trong-fpga" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Tài nguyên</th>
+<th>Chức năng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LUT (look-up table)</td>
+<td>Bảng tra nhỏ hiện thực một hàm logic bất kỳ của vài biến đầu vào (dòng Xilinx hiện nay dùng LUT 6 đầu vào)</td>
+</tr>
+<tr>
+<td>Flip-flop (FF)</td>
+<td>Phần tử nhớ một bit, đi cùng LUT trong cùng khối logic</td>
+</tr>
+<tr>
+<td>CLB / slice</td>
+<td>Khối logic gom LUT, flip-flop, mạch carry cho phép cộng nhanh và mux</td>
+</tr>
+<tr>
+<td>Block RAM (BRAM)</td>
+<td>Bộ nhớ dung lượng vài chục kbit trên chip, hỗ trợ dual-port, dùng cho buffer và FIFO</td>
+</tr>
+<tr>
+<td>Distributed RAM</td>
+<td>Dùng LUT làm bộ nhớ nhỏ, đọc không đồng bộ</td>
+</tr>
+<tr>
+<td>DSP slice</td>
+<td>Khối nhân-cộng cố định tốc độ cao, dùng cho lọc FIR, FFT, nhân ma trận</td>
+</tr>
+<tr>
+<td>Clocking (MMCM, PLL, BUFG)</td>
+<td>Tạo, chia, dịch pha clock và phân phối qua mạng clock toàn cục có độ lệch thấp</td>
+</tr>
+<tr>
+<td>I/O (IOB) và SerDes (GT)</td>
+<td>Chân vào ra có chuẩn điện thay đổi được, và transceiver tốc độ cao cho PCIe, Ethernet, JESD, xem <a href="../../../computer_arch/io/serdes/">SerDes</a></td>
+</tr>
+<tr>
+<td>Đi dây (routing)</td>
+<td>Mạng chuyển mạch có thể lập trình nối các khối, quyết định phần lớn độ trễ</td>
+</tr>
+</tbody>
+</table>
+<p>Số lượng từng loại tài nguyên là chỉ tiêu chính khi chọn chip, và báo cáo utilization sau implementation cho biết thiết kế dùng bao nhiêu. Một số dòng còn tích hợp sẵn lõi cứng như CPU Arm (Zynq), bộ điều khiển bộ nhớ, PCIe hay Ethernet MAC.</p>
+<p>Cấu hình FPGA lưu trong SRAM của chip, nên mất khi tắt nguồn và phải nạp lại từ flash ngoài khi cấp nguồn, hoặc từ bộ xử lý trên cùng chip.</p>
+<h2 id="flow-thiet-ke-voi-vivado">Flow thiết kế với Vivado<a class="headerlink" href="#flow-thiet-ke-voi-vivado" title="Permanent link">¶</a></h2>
+<pre class="mermaid"><code>flowchart LR
+    A[RTL và IP] --&gt; B[Synthesis]
+    B --&gt; C[Implementation: placement và routing]
+    C --&gt; D[Phân tích timing]
+    D --&gt; E[Tạo bitstream]
+    E --&gt; F[Nạp và debug trên board]
+    X[Constraint XDC] --&gt; B
+    X --&gt; C</code></pre>
+<table>
+<thead>
+<tr>
+<th>Bước</th>
+<th>Công việc</th>
+<th>Kết quả</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Synthesis</td>
+<td>Biến RTL thành netlist LUT, flip-flop, BRAM, DSP</td>
+<td>Netlist, báo cáo utilization sơ bộ</td>
+</tr>
+<tr>
+<td>Implementation</td>
+<td>Tối ưu (opt), đặt khối lên chip (place), đi dây (route)</td>
+<td>Thiết kế đã đặt và đi dây, báo cáo timing</td>
+</tr>
+<tr>
+<td>Timing analysis</td>
+<td>Kiểm tra setup, hold theo constraint, xem <a href="../../timing_analysis/timing_analysis/">Static Timing Analysis</a></td>
+<td>Slack từng đường</td>
+</tr>
+<tr>
+<td>Bitstream</td>
+<td>Tạo file cấu hình</td>
+<td>File <code>.bit</code></td>
+</tr>
+<tr>
+<td>Nạp</td>
+<td>Cấu hình qua JTAG hoặc từ flash, từ Linux trên Zynq</td>
+<td>Mạch chạy trên chip</td>
+</tr>
+</tbody>
+</table>
+<p>Vivado hỗ trợ hai kiểu làm việc: <strong>project mode</strong> với giao diện đồ họa quản lý file, và <strong>non-project mode</strong> chạy bằng script Tcl, phù hợp cho CI và build lặp lại. Cả hai dùng chung lõi công cụ.</p>
+<h3 id="block-design-va-ip">Block design và IP<a class="headerlink" href="#block-design-va-ip" title="Permanent link">¶</a></h3>
+<p>Ngoài viết RTL, Vivado cho ghép các IP core (có sẵn của hãng hoặc tự đóng gói) trong <strong>block design</strong> và nối chúng qua giao diện AXI. IP là khối thiết kế đóng gói sẵn: bộ nhớ, clock wizard, DMA, Ethernet, PCIe, hay bộ xử lý. Ví dụ cấu hình lại Clocking Wizard khi đang chạy nằm ở <a href="../x_ipcore/xipcore/">Xilinx IPCore</a>. Giao diện AXI và các thành phần bus được nói ở <a href="../../../computer_arch/soc/soc/">SoC / System</a>.</p>
+<h2 id="constraint">Constraint<a class="headerlink" href="#constraint" title="Permanent link">¶</a></h2>
+<p>Constraint là các ràng buộc công cụ cần để đặt và đi dây đúng, viết ở file XDC (dạng lệnh Tcl):</p>
+<table>
+<thead>
+<tr>
+<th>Loại</th>
+<th>Ví dụ</th>
+<th>Công dụng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vị trí chân và chuẩn điện</td>
+<td><code>set_property PACKAGE_PIN</code>, <code>IOSTANDARD</code></td>
+<td>Gán tín hiệu ra chân vật lý và mức điện áp</td>
+</tr>
+<tr>
+<td>Clock</td>
+<td><code>create_clock</code></td>
+<td>Khai báo chu kỳ clock đầu vào để STA biết yêu cầu</td>
+</tr>
+<tr>
+<td>Quan hệ clock</td>
+<td><code>set_clock_groups</code>, <code>set_false_path</code></td>
+<td>Khai báo clock bất đồng bộ, đường không cần kiểm tra</td>
+</tr>
+<tr>
+<td>I/O delay</td>
+<td><code>set_input_delay</code>, <code>set_output_delay</code></td>
+<td>Mô tả timing của thiết bị ngoài</td>
+</tr>
+<tr>
+<td>Vị trí khối</td>
+<td><code>LOC</code>, <code>PBLOCK</code></td>
+<td>Cố định vị trí để đạt timing hoặc tách vùng</td>
+</tr>
+</tbody>
+</table>
+<p>Thiếu constraint clock khiến công cụ không phân tích timing cho đường đó, và thiết kế có thể "pass" mà chạy sai trên chip. Chi tiết về cách đọc timing report và sửa vi phạm setup, hold nằm ở <a href="../../timing_analysis/timing_analysis/">Static Timing Analysis</a>.</p>
+<h2 id="debug-tren-phan-cung">Debug trên phần cứng<a class="headerlink" href="#debug-tren-phan-cung" title="Permanent link">¶</a></h2>
+<p>Khi simulation đúng mà chạy trên chip sai, cần quan sát tín hiệu bên trong FPGA. Vivado cung cấp các IP debug chèn vào thiết kế:</p>
+<table>
+<thead>
+<tr>
+<th>Công cụ</th>
+<th>Công dụng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ILA (Integrated Logic Analyzer)</td>
+<td>Bắt mẫu các tín hiệu bên trong khi chạy, theo điều kiện trigger, lưu vào BRAM rồi xem dạng sóng trong Vivado qua JTAG</td>
+</tr>
+<tr>
+<td>VIO (Virtual Input/Output)</td>
+<td>Đọc và ghi tín hiệu từ máy tính trong lúc chạy, thay cho nút bấm và LED</td>
+</tr>
+<tr>
+<td>JTAG-to-AXI master</td>
+<td>Đọc ghi thanh ghi AXI từ máy tính để kiểm tra IP mà không cần CPU</td>
+</tr>
+</tbody>
+</table>
+<p>ILA và VIO tốn tài nguyên BRAM và LUT, và độ sâu bắt mẫu bị giới hạn bởi BRAM còn lại. Cần đặt ILA trên tín hiệu cùng clock và chọn trigger hẹp để bắt đúng sự kiện.</p>
+<h2 id="fpga-trong-he-thong-co-soc">FPGA trong hệ thống có SoC<a class="headerlink" href="#fpga-trong-he-thong-co-soc" title="Permanent link">¶</a></h2>
+<p>Dòng Zynq ghép bộ xử lý Arm (Processing System, PS) với phần logic lập trình (Programmable Logic, PL) trên một chip. PS chạy Linux và điều khiển PL qua giao diện AXI. Cách nạp bitstream và quản lý PL từ Linux nằm ở tab Embedded, xem <a href="../../../lnx_es/fpga/fpga-linux/">Nạp bitstream FPGA từ Linux (Zynq)</a>, và framework FPGA Manager ở phía kernel xem <a href="../../../lnx_ldd/fpga/fpga_mgr/">FPGA Manager</a>. Board Zynq cụ thể xem <a href="../../../projects/zynq/zynq/">Zynq Overview</a>.</p>
+<h2 id="lien-quan">Liên quan<a class="headerlink" href="#lien-quan" title="Permanent link">¶</a></h2>
 <ul>
-<li><a href="../x_ipcore/xipcore/">Xilinx IPCore</a>: sử dụng IP core Xilinx, ví dụ cấu hình Clocking Wizard động qua AXI4-Lite.</li>
+<li><a href="../../rtl/rtl/">RTL / HDL</a> và <a href="../../rtl/cdc/">Clock domain crossing</a>: viết RTL cho FPGA.</li>
+<li><a href="../../timing_analysis/timing_analysis/">Static Timing Analysis</a>: phân tích và sửa timing.</li>
+<li><a href="../x_ipcore/xipcore/">Xilinx IPCore</a>: ví dụ cấu hình Clocking Wizard.</li>
+<li><a href="../../verification/verification/">Verification</a>: kiểm chứng trước khi nạp lên chip.</li>
+<li><a href="../../../lnx_es/fpga/fpga-linux/">Nạp bitstream FPGA từ Linux (Zynq)</a> (Embedded): tích hợp PL vào image Linux.</li>
+<li><a href="../../../wireless/l1/l1-acceleration/">L1 &amp; Acceleration</a> (Wireless / RAN): FPGA làm accelerator cho RAN.</li>
 </ul>
-<h2 id="se-viet">Sẽ viết<a class="headerlink" href="#se-viet" title="Permanent link">¶</a></h2>
+<h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
 <ul>
-<li>Tài nguyên FPGA: LUT, FF, BRAM, DSP, clocking</li>
-<li>Flow Vivado: synthesis, implementation, bitstream</li>
-<li>Constraint (XDC) và timing closure, xem <a href="../../timing_analysis/timing_analysis/">Static Timing Analysis</a></li>
-<li>Debug: ILA, VIO</li>
+<li>AMD (Xilinx), 7 Series FPGAs Configurable Logic Block User Guide (UG474) và UltraScale Architecture Configurable Logic Block User Guide (UG574). <a href="https://docs.amd.com/">AMD Documentation</a></li>
+<li>AMD (Xilinx), Vivado Design Suite User Guide: Design Flows Overview (UG892) và Using Constraints (UG903). <a href="https://docs.amd.com/">AMD Documentation</a></li>
+<li>AMD (Xilinx), Vivado Design Suite User Guide: Programming and Debugging (UG908), mục ILA và VIO.</li>
+<li>Wikipedia: <a href="https://en.wikipedia.org/wiki/Field-programmable_gate_array">Field-programmable gate array</a>.</li>
 </ul>
 
 
@@ -14226,7 +14715,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 7, 2026 07:35:13 UTC">November 7, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 8, 2026 02:47:55 UTC">November 8, 2026</span>
   </span>
 
     
@@ -14275,7 +14764,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
-          <a href="../../rtl/rtl/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview">
+          <a href="../../rtl/cdc/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Clock domain crossing">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -14285,7 +14774,7 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Overview
+                Clock domain crossing
               </div>
             </div>
           </a>

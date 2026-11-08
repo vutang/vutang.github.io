@@ -1,0 +1,30 @@
+<svg role="img" viewBox="0 0 960 330" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+  <title>Cấu trúc cây của PCIe: Root Complex, Switch, Endpoint</title>
+  <rect x="0" y="0" width="960" height="330" rx="8" fill="#ffffff"/>
+  <text x="20" y="28" font-size="14" font-weight="700" fill="#1d4278">Topology PCIe: các liên kết điểm-điểm</text>
+  <g stroke="#555" stroke-width="1.6" fill="none">
+    <line x1="480" y1="118" x2="480" y2="150"/>
+    <line x1="480" y1="150" x2="200" y2="150"/><line x1="200" y1="150" x2="200" y2="190"/>
+    <line x1="480" y1="150" x2="760" y2="150"/><line x1="760" y1="150" x2="760" y2="190"/>
+    <line x1="480" y1="150" x2="480" y2="190"/>
+    <line x1="760" y1="250" x2="640" y2="250"/><line x1="640" y1="250" x2="640" y2="270"/>
+    <line x1="760" y1="250" x2="880" y2="250"/><line x1="880" y1="250" x2="880" y2="270"/>
+    <line x1="760" y1="250" x2="760" y2="270"/>
+  </g>
+  <rect x="300" y="56" width="360" height="62" rx="6" fill="#e8f0fb" stroke="#1d4278" stroke-width="1.2"/>
+  <text x="480" y="82" font-size="13" text-anchor="middle" font-weight="700" fill="#111">Root Complex (trong CPU/SoC)</text>
+  <text x="480" y="102" font-size="10.5" text-anchor="middle" fill="#444">Root port, nối với CPU và bộ nhớ</text>
+  <rect x="120" y="190" width="160" height="48" rx="6" fill="#eef7ee" stroke="#1d4278" stroke-width="1.2"/>
+  <text x="200" y="219" font-size="12" text-anchor="middle" font-weight="700" fill="#111">Endpoint (NVMe)</text>
+  <rect x="400" y="190" width="160" height="48" rx="6" fill="#eef7ee" stroke="#1d4278" stroke-width="1.2"/>
+  <text x="480" y="219" font-size="12" text-anchor="middle" font-weight="700" fill="#111">Endpoint (NIC)</text>
+  <rect x="660" y="190" width="200" height="60" rx="6" fill="#fdf1e3" stroke="#1d4278" stroke-width="1.2"/>
+  <text x="760" y="216" font-size="12" text-anchor="middle" font-weight="700" fill="#111">Switch</text>
+  <text x="760" y="234" font-size="10.5" text-anchor="middle" fill="#444">upstream port + downstream port</text>
+  <rect x="580" y="270" width="120" height="40" rx="6" fill="#eef7ee" stroke="#1d4278" stroke-width="1.2"/>
+  <text x="640" y="295" font-size="12" text-anchor="middle" font-weight="700" fill="#111">Endpoint</text>
+  <rect x="700" y="270" width="120" height="40" rx="6" fill="#eef7ee" stroke="#1d4278" stroke-width="1.2"/>
+  <text x="760" y="295" font-size="12" text-anchor="middle" font-weight="700" fill="#111">Endpoint</text>
+  <rect x="820" y="270" width="120" height="40" rx="6" fill="#eef7ee" stroke="#1d4278" stroke-width="1.2"/>
+  <text x="880" y="295" font-size="12" text-anchor="middle" font-weight="700" fill="#111">Endpoint</text>
+</svg>
