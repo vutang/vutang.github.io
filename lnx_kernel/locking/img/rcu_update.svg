@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 880 510" font-family="Helvetica, Arial, sans-serif" font-size="13">
+  <title>Read-Copy-Update trên danh sách liên kết: sao chép node B thành B' và sửa trên bản sao, đổi con trỏ của A sang B' bằng rcu_assign_pointer, rồi chờ hết grace period mới giải phóng B</title>
+  <rect width="880" height="510" fill="#ffffff"/>
+  <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker><marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c0392b"/></marker><marker id="arrG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2e7d32"/></marker><marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4a78b5"/></marker><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#e2e2e2" stroke-width="2"/></pattern></defs>
+  <rect x="10" y="15" width="860" height="155" rx="5" fill="#fafafa" stroke="#ccc" stroke-width="1"/>
+  <text x="22" y="37" text-anchor="start" fill="#1f2d3d" font-size="13.5" font-weight="bold">1. Copy</text>
+  <text x="120" y="37" text-anchor="start" fill="#555" font-size="12">Sao chép B thành B', sửa trên bản sao. Reader vẫn đi qua B</text>
+  <text x="30" y="83" text-anchor="start" fill="#555" font-size="12" font-family="Menlo, Consolas, monospace">head</text>
+  <line x1="70" y1="78" x2="138" y2="78" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="140" y="60" width="70" height="36" rx="5" fill="#ffffff" stroke="#4a78b5" stroke-width="1.2"/>
+  <text x="175" y="83" text-anchor="middle" fill="#1f2d3d" font-weight="bold">A</text>
+  <rect x="300" y="60" width="70" height="36" rx="5" fill="#ffffff" stroke="#4a78b5" stroke-width="1.2"/>
+  <text x="335" y="83" text-anchor="middle" fill="#1f2d3d" font-weight="bold">B</text>
+  <rect x="460" y="60" width="70" height="36" rx="5" fill="#ffffff" stroke="#4a78b5" stroke-width="1.2"/>
+  <text x="495" y="83" text-anchor="middle" fill="#1f2d3d" font-weight="bold">C</text>
+  <rect x="300" y="105" width="70" height="36" rx="5" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.2"/>
+  <text x="335" y="128" text-anchor="middle" fill="#1f2d3d" font-weight="bold">B'</text>
+  <line x1="210" y1="78" x2="298" y2="78" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="370" y1="78" x2="458" y2="78" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="370" y1="123" x2="458" y2="90" stroke="#2e7d32" stroke-width="1.5" marker-end="url(#arrG)"/>
+  <text x="480" y="139" text-anchor="start" fill="#2e7d32" font-size="11">B'-&gt;next = C, dữ liệu đã sửa</text>
+  <rect x="10" y="180" width="860" height="155" rx="5" fill="#fafafa" stroke="#ccc" stroke-width="1"/>
+  <text x="22" y="202" text-anchor="start" fill="#1f2d3d" font-size="13.5" font-weight="bold">2. Update</text>
+  <text x="120" y="202" text-anchor="start" fill="#555" font-size="12">rcu_assign_pointer(A-&gt;next, B'). Reader mới đi qua B', reader cũ còn ở B</text>
+  <text x="30" y="248" text-anchor="start" fill="#555" font-size="12" font-family="Menlo, Consolas, monospace">head</text>
+  <line x1="70" y1="243" x2="138" y2="243" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="140" y="225" width="70" height="36" rx="5" fill="#ffffff" stroke="#4a78b5" stroke-width="1.2"/>
+  <text x="175" y="248" text-anchor="middle" fill="#1f2d3d" font-weight="bold">A</text>
+  <rect x="300" y="225" width="70" height="36" rx="5" fill="#ffffff" stroke="#4a78b5" stroke-width="1.2"/>
+  <text x="335" y="248" text-anchor="middle" fill="#1f2d3d" font-weight="bold">B</text>
+  <rect x="460" y="225" width="70" height="36" rx="5" fill="#ffffff" stroke="#4a78b5" stroke-width="1.2"/>
+  <text x="495" y="248" text-anchor="middle" fill="#1f2d3d" font-weight="bold">C</text>
+  <rect x="300" y="270" width="70" height="36" rx="5" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.2"/>
+  <text x="335" y="293" text-anchor="middle" fill="#1f2d3d" font-weight="bold">B'</text>
+  <line x1="210" y1="249" x2="298" y2="284" stroke="#2e7d32" stroke-width="2" marker-end="url(#arrG)"/>
+  <text x="150" y="302" text-anchor="start" fill="#2e7d32" font-size="11">con trỏ mới</text>
+  <line x1="370" y1="243" x2="458" y2="243" stroke="#999" stroke-width="1.5" marker-end="url(#arr)" stroke-dasharray="4 3"/>
+  <line x1="370" y1="288" x2="458" y2="255" stroke="#2e7d32" stroke-width="1.5" marker-end="url(#arrG)"/>
+  <text x="560" y="237" text-anchor="start" fill="#555" font-size="11">reader cũ còn ở B vẫn đi tiếp tới C,</text>
+  <text x="560" y="253" text-anchor="start" fill="#555" font-size="11">nên B chưa được giải phóng</text>
+  <rect x="10" y="345" width="860" height="155" rx="5" fill="#fafafa" stroke="#ccc" stroke-width="1"/>
+  <text x="22" y="367" text-anchor="start" fill="#1f2d3d" font-size="13.5" font-weight="bold">3. Reclaim</text>
+  <text x="120" y="367" text-anchor="start" fill="#555" font-size="12">Sau grace period, không còn reader nào giữ B: kfree(B)</text>
+  <text x="30" y="413" text-anchor="start" fill="#555" font-size="12" font-family="Menlo, Consolas, monospace">head</text>
+  <line x1="70" y1="408" x2="138" y2="408" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="140" y="390" width="70" height="36" rx="5" fill="#ffffff" stroke="#4a78b5" stroke-width="1.2"/>
+  <text x="175" y="413" text-anchor="middle" fill="#1f2d3d" font-weight="bold">A</text>
+  <rect x="300" y="390" width="70" height="36" rx="5" fill="#f2f2f2" stroke="#aaa" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <text x="335" y="413" text-anchor="middle" fill="#999" font-weight="bold">B</text>
+  <text x="380" y="413" text-anchor="start" fill="#999" font-size="11">đã giải phóng</text>
+  <rect x="460" y="390" width="70" height="36" rx="5" fill="#ffffff" stroke="#4a78b5" stroke-width="1.2"/>
+  <text x="495" y="413" text-anchor="middle" fill="#1f2d3d" font-weight="bold">C</text>
+  <rect x="300" y="435" width="70" height="36" rx="5" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.2"/>
+  <text x="335" y="458" text-anchor="middle" fill="#1f2d3d" font-weight="bold">B'</text>
+  <line x1="210" y1="414" x2="298" y2="449" stroke="#2e7d32" stroke-width="2" marker-end="url(#arrG)"/>
+  <line x1="370" y1="453" x2="458" y2="420" stroke="#2e7d32" stroke-width="1.5" marker-end="url(#arrG)"/>
+</svg>

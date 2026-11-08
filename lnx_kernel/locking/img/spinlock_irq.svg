@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 880 420" font-family="Helvetica, Arial, sans-serif" font-size="13">
+  <title>Trên cùng một core: với spin_lock(), handler ngắt xen vào và chờ lock mà chính code bị ngắt đang giữ nên quay vòng mãi; với spin_lock_irqsave(), ngắt bị hoãn đến khi nhả lock nên handler lấy được lock bình thường</title>
+  <rect width="880" height="420" fill="#ffffff"/>
+  <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker><marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c0392b"/></marker><marker id="arrG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2e7d32"/></marker><marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4a78b5"/></marker><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#e2e2e2" stroke-width="2"/></pattern></defs>
+  <rect x="10" y="15" width="860" height="180" rx="5" fill="#fafafa" stroke="#ccc" stroke-width="1"/>
+  <text x="22" y="37" text-anchor="start" fill="#1f2d3d" font-size="13.5" font-weight="bold" font-family="Menlo, Consolas, monospace">spin_lock()  (sai khi lock dùng chung với handler ngắt)</text>
+  <text x="22" y="85" text-anchor="start" fill="#1f2d3d" font-size="12" font-weight="bold">Process context</text>
+  <text x="22" y="151" text-anchor="start" fill="#1f2d3d" font-size="12" font-weight="bold">Handler ngắt</text>
+  <line x1="150" y1="183" x2="850" y2="183" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="850" y="177" text-anchor="end" fill="#555" font-size="11">thời gian (một core)</text>
+  <rect x="170" y="65" width="150" height="32" rx="5" fill="#eef4fb" stroke="#4a78b5" stroke-width="1.2"/>
+  <text x="245" y="86" text-anchor="middle" fill="#1f2d3d" font-size="11.5">spin_lock(): giữ lock</text>
+  <rect x="320" y="65" width="520" height="32" rx="5" fill="url(#hatch)" stroke="#999" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <text x="580" y="86" text-anchor="middle" fill="#555" font-size="11.5">bị ngắt, không chạy tiếp được nên không bao giờ nhả lock</text>
+  <line x1="320" y1="45" x2="320" y2="127" stroke="#c0392b" stroke-width="2" marker-end="url(#arrR)"/>
+  <text x="327" y="55" text-anchor="start" fill="#c0392b" font-size="11">ngắt tới</text>
+  <rect x="320" y="131" width="520" height="32" rx="5" fill="#fdecea" stroke="#c0392b" stroke-width="1.2"/>
+  <text x="580" y="152" text-anchor="middle" fill="#c0392b" font-size="11.5" font-weight="bold">spin_lock(): lock đang bị giữ, quay vòng chờ mãi (deadlock)</text>
+  <rect x="10" y="220" width="860" height="180" rx="5" fill="#fafafa" stroke="#ccc" stroke-width="1"/>
+  <text x="22" y="242" text-anchor="start" fill="#1f2d3d" font-size="13.5" font-weight="bold" font-family="Menlo, Consolas, monospace">spin_lock_irqsave()</text>
+  <text x="22" y="290" text-anchor="start" fill="#1f2d3d" font-size="12" font-weight="bold">Process context</text>
+  <text x="22" y="356" text-anchor="start" fill="#1f2d3d" font-size="12" font-weight="bold">Handler ngắt</text>
+  <line x1="150" y1="388" x2="850" y2="388" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="850" y="382" text-anchor="end" fill="#555" font-size="11">thời gian (một core)</text>
+  <rect x="170" y="270" width="330" height="32" rx="5" fill="#eef4fb" stroke="#4a78b5" stroke-width="1.2"/>
+  <text x="335" y="291" text-anchor="middle" fill="#1f2d3d" font-size="11.5">spin_lock_irqsave(): giữ lock, ngắt tắt</text>
+  <text x="512" y="291" text-anchor="start" fill="#555" font-size="11">nhả lock, bật lại ngắt</text>
+  <line x1="500" y1="266" x2="500" y2="370" stroke="#555" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="320" y1="316" x2="320" y2="332" stroke="#c0392b" stroke-width="2"/>
+  <line x1="320" y1="332" x2="496" y2="332" stroke="#c0392b" stroke-width="1.5" marker-end="url(#arrR)" stroke-dasharray="4 3"/>
+  <text x="327" y="327" text-anchor="start" fill="#c0392b" font-size="11">ngắt tới, bị hoãn</text>
+  <rect x="500" y="336" width="220" height="32" rx="5" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.2"/>
+  <text x="610" y="357" text-anchor="middle" fill="#2e7d32" font-size="11.5" font-weight="bold">lấy lock, xử lý, nhả lock</text>
+  <rect x="720" y="270" width="120" height="32" rx="5" fill="#eef4fb" stroke="#4a78b5" stroke-width="1.2"/>
+  <text x="780" y="291" text-anchor="middle" fill="#1f2d3d" font-size="11.5">chạy tiếp</text>
+</svg>

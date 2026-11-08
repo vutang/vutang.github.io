@@ -14641,6 +14641,10 @@ tags:
 </tbody>
 </table>
 <p>Nếu code process context lấy spinlock mà không tắt ngắt, rồi handler ngắt trên cùng core lấy lại spinlock đó thì xảy ra deadlock. Đây là lý do cần biến thể <code>_irqsave</code> khi lock dùng chung với handler ngắt, xem <a href="../../interrupt/interrupt/">Interrupt và bottom half</a>.</p>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/spinlock_irq.svg" data-desc-position="bottom"><img alt="Trên cùng một core: với spin_lock(), handler ngắt chờ lock mà chính code bị ngắt đang giữ nên quay vòng mãi. Với spin_lock_irqsave(), ngắt bị hoãn đến khi nhả lock." src="../img/spinlock_irq.svg"></a></p>
+<figcaption>Trên cùng một core: với spin_lock(), handler ngắt chờ lock mà chính code bị ngắt đang giữ nên quay vòng mãi. Với spin_lock_irqsave(), ngắt bị hoãn đến khi nhả lock.</figcaption>
+</figure>
 <p><code>rwlock_t</code> cho nhiều reader hoặc một writer, nhưng thường không đáng dùng: reader vẫn ghi vào cache line của lock nên không mở rộng tốt trên nhiều core. Tài liệu kernel khuyến nghị dùng RCU hoặc seqlock cho trường hợp đọc nhiều.</p>
 <h2 id="mutex">Mutex<a class="headerlink" href="#mutex" title="Permanent link">¶</a></h2>
 <p><code>struct mutex</code> là lock cho phép ngủ. Task không lấy được lock sẽ bị đưa vào hàng đợi và nhường CPU. Mutex dùng cho đoạn găng dài hoặc đoạn găng có gọi hàm có thể ngủ (cấp phát <code>GFP_KERNEL</code>, truy cập bus I2C hoặc SPI, <code>copy_to_user()</code>).</p>
@@ -14673,6 +14677,14 @@ tags:
 <p>Writer không bị reader chặn, nhưng reader có thể phải lặp. Seqlock không dùng được cho dữ liệu chứa con trỏ mà reader dereference, vì con trỏ có thể bị giải phóng giữa chừng. Trường hợp đó dùng RCU.</p>
 <h2 id="rcu">RCU<a class="headerlink" href="#rcu" title="Permanent link">¶</a></h2>
 <p>RCU (Read-Copy-Update) là cơ chế tối ưu cho dữ liệu đọc rất nhiều, ghi ít. Reader không lấy lock nào và không bị writer chặn. Writer không sửa tại chỗ mà tạo bản sao mới, thay con trỏ bằng một thao tác atomic, rồi chờ cho đến khi mọi reader đang đọc bản cũ kết thúc (grace period) mới giải phóng bản cũ.</p>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/rcu_update.svg" data-desc-position="bottom"><img alt="Ba bước Read-Copy-Update trên danh sách liên kết: sao chép và sửa node trên bản sao, đổi con trỏ bằng rcu_assign_pointer(), giải phóng node cũ sau grace period." src="../img/rcu_update.svg"></a></p>
+<figcaption>Ba bước Read-Copy-Update trên danh sách liên kết: sao chép và sửa node trên bản sao, đổi con trỏ bằng rcu_assign_pointer(), giải phóng node cũ sau grace period.</figcaption>
+</figure>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/rcu_grace_period.svg" data-desc-position="bottom"><img alt="Grace period: synchronize_rcu() chờ mọi reader bắt đầu trước khi công bố con trỏ mới kết thúc. Reader bắt đầu sau chỉ thấy bản mới nên không cần chờ." src="../img/rcu_grace_period.svg"></a></p>
+<figcaption>Grace period: synchronize_rcu() chờ mọi reader bắt đầu trước khi công bố con trỏ mới kết thúc. Reader bắt đầu sau chỉ thấy bản mới nên không cần chờ.</figcaption>
+</figure>
 <table>
 <thead>
 <tr>
@@ -14782,6 +14794,10 @@ tags:
 <li><strong>Lock không bảo vệ mọi đường truy cập</strong>: chỉ một đường quên lock là đủ gây race, và lỗi thường chỉ lộ ra khi tải cao.</li>
 <li><strong>Giải phóng đối tượng khi còn bị tham chiếu</strong>: cần bộ đếm tham chiếu (<code>kref</code>, <code>refcount_t</code>) hoặc RCU, không chỉ lock.</li>
 </ul>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/abba_deadlock.svg" data-desc-position="bottom"><img alt="Deadlock ABBA: CPU0 giữ lock A và chờ lock B, CPU1 giữ lock B và chờ lock A. Lockdep phát hiện thứ tự lấy lock này kể cả khi deadlock chưa xảy ra." src="../img/abba_deadlock.svg"></a></p>
+<figcaption>Deadlock ABBA: CPU0 giữ lock A và chờ lock B, CPU1 giữ lock B và chờ lock A. Lockdep phát hiện thứ tự lấy lock này kể cả khi deadlock chưa xảy ra.</figcaption>
+</figure>
 <h2 id="phat-hien-loi-ong-bo-hoa">Phát hiện lỗi đồng bộ hóa<a class="headerlink" href="#phat-hien-loi-ong-bo-hoa" title="Permanent link">¶</a></h2>
 <p>Kernel có sẵn công cụ kiểm tra khi build với các tùy chọn debug:</p>
 <table>
@@ -14853,7 +14869,7 @@ tags:
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 7, 2026 14:00:23 UTC">November 7, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 8, 2026 03:29:22 UTC">November 8, 2026</span>
   </span>
 
     
