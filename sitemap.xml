@@ -313,6 +313,10 @@
          <lastmod>2026-11-08</lastmod>
     </url>
     <url>
+         <loc>https://note.vutang.dev/embedded_security/testing/sast/</loc>
+         <lastmod>2026-11-08</lastmod>
+    </url>
+    <url>
          <loc>https://note.vutang.dev/embedded_security/testing/wstg/</loc>
          <lastmod>2026-11-08</lastmod>
     </url>
@@ -1050,6 +1054,10 @@
     </url>
     <url>
          <loc>https://note.vutang.dev/programming/sql/mysql/</loc>
+         <lastmod>2026-11-08</lastmod>
+    </url>
+    <url>
+         <loc>https://note.vutang.dev/programming/static_analysis/static-analysis/</loc>
          <lastmod>2026-11-08</lastmod>
     </url>
     <url>
