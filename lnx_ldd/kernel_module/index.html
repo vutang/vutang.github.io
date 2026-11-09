@@ -12,10 +12,10 @@
         <link rel="canonical" href="https://note.vutang.dev/lnx_ldd/kernel_module/">
       
       
-        <link rel="prev" href="../../lnx_kernel/kernel_user_space/lab/">
+        <link rel="prev" href="../../lnx_kernel/build/kbuild/">
       
       
-        <link rel="next" href="../overview/">
+        <link rel="next" href="../../lnx_kernel/kernel_data_structure/">
       
       
         
@@ -4307,7 +4307,7 @@
   <span class="md-ellipsis">
     
   
-    Core &amp; Internals
+    Kernel Basics
   
 
     
@@ -4323,7 +4323,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Core &amp; Internals
+    Kernel Basics
   
 
           </label>
@@ -4344,34 +4344,6 @@
     
   
     Kernel Release Process
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../lnx_kernel/kernel_data_structure/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Kernel Data Structure
   
 
     
@@ -4447,6 +4419,231 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../lnx_kernel/build/kbuild/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kernel Build (Kconfig, Kbuild) (WIP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kernel Module
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kernel Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#kernel-module-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kernel Module Information
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Kernel Module Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inh-nghia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Định nghĩa
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module_init-module_exit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        module_init &amp; module_exit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-hello-world" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ví dụ: hello world
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compile-a-kernel-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compile a kernel module
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in-log-trong-kernel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        In log trong kernel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nap-va-go-lkm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nạp và gỡ LKM
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tham khảo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lnx_kernel/kernel_data_structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kernel Data Structure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
     
@@ -4461,10 +4658,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_5">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_7">
         
           
-          <label class="md-nav__link" for="__nav_4_2_5" id="__nav_4_2_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_2_7" id="__nav_4_2_7_label" tabindex="0">
             
   
   
@@ -4482,8 +4679,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_2_5">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_7">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -4781,175 +4978,6 @@
 
               
             
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Kernel Module
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Kernel Module
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-      
-        <li class="md-nav__item">
-  <a href="#kernel-module-information" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Kernel Module Information
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Kernel Module Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#inh-nghia" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Định nghĩa
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#module_init-module_exit" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        module_init &amp; module_exit
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#vi-du-hello-world" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ví dụ: hello world
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#compile-a-kernel-module" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Compile a kernel module
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#in-log-trong-kernel" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        In log trong kernel
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nap-va-go-lkm" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Nạp và gỡ LKM
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tham-khao" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tham khảo
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -5028,6 +5056,34 @@
     
   
     Linux Device Driver Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lnx_kernel/driver_core/driver_core/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Driver Core (kobject, sysfs, devres) (WIP)
   
 
     
@@ -6079,6 +6135,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lnx_kernel/time/time/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Timer &amp; Delay (WIP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -6701,7 +6785,7 @@
   <span class="md-ellipsis">
     
   
-    Real-time &amp; CPU Isolation
+    Kernel Internals
   
 
     
@@ -6714,6 +6798,209 @@
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_9_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Kernel Internals
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lnx_kernel/process/process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Process &amp; Thread (WIP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lnx_kernel/sched/sched/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scheduler (WIP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lnx_kernel/mm/vm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Virtual Memory (WIP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lnx_kernel/vfs/vfs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VFS &amp; Page Cache (WIP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lnx_kernel/security/security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security Subsystem (WIP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_10">
+        
+          
+          <label class="md-nav__link" for="__nav_4_10" id="__nav_4_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Real-time &amp; CPU Isolation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_10">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -14726,7 +15013,7 @@ module được nạp, thông tin về module cũng xuất hiện trong sysfs t�
       <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
-          <a href="../../lnx_kernel/kernel_user_space/lab/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Lab">
+          <a href="../../lnx_kernel/build/kbuild/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Kernel Build (Kconfig, Kbuild) (WIP)">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -14736,20 +15023,20 @@ module được nạp, thông tin về module cũng xuất hiện trong sysfs t�
                 Previous
               </span>
               <div class="md-ellipsis">
-                Lab
+                Kernel Build (Kconfig, Kbuild) (WIP)
               </div>
             </div>
           </a>
         
         
           
-          <a href="../overview/" class="md-footer__link md-footer__link--next" aria-label="Next: Linux Device Driver Overview">
+          <a href="../../lnx_kernel/kernel_data_structure/" class="md-footer__link md-footer__link--next" aria-label="Next: Kernel Data Structure">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Linux Device Driver Overview
+                Kernel Data Structure
               </div>
             </div>
             <div class="md-footer__button md-icon">
