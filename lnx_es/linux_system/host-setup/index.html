@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
+        <meta name="description" content="Sổ ghi nhanh các tiện ích trên máy host dùng khi làm việc với board nhúng: TFTP server, thao tác với SD card và image, tiện ích desktop.">
       
       
         <meta name="author" content="Vu Tang">
@@ -12,10 +12,10 @@
         <link rel="canonical" href="https://note.vutang.dev/lnx_es/linux_system/host-setup/">
       
       
-        <link rel="prev" href="../init/">
+        <link rel="prev" href="../serial-console/">
       
       
-        <link rel="next" href="../serial-console/">
+        <link rel="next" href="../../hw_platform/">
       
       
         
@@ -26,7 +26,7 @@
     
     
       
-        <title>Môi trường phát triển trên host - Vu Tang's Docs</title>
+        <title>Tiện ích trên host - Vu Tang's Docs</title>
       
     
     
@@ -72,16 +72,16 @@
     
   
 <meta property="og:type" content="website">
-<meta property="og:title" content="Môi trường phát triển trên host - Vu Tang's Docs">
-<meta property="og:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
+<meta property="og:title" content="Tiện ích trên host - Vu Tang's Docs">
+<meta property="og:description" content="Sổ ghi nhanh các tiện ích trên máy host dùng khi làm việc với board nhúng: TFTP server, thao tác với SD card và image, tiện ích desktop.">
 <meta property="og:image" content="https://note.vutang.dev/assets/images/social/lnx_es/linux_system/host-setup.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://note.vutang.dev/lnx_es/linux_system/host-setup/">
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:title" content="Môi trường phát triển trên host - Vu Tang's Docs">
-<meta property="twitter:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
+<meta property="twitter:title" content="Tiện ích trên host - Vu Tang's Docs">
+<meta property="twitter:description" content="Sổ ghi nhanh các tiện ích trên máy host dùng khi làm việc với board nhúng: TFTP server, thao tác với SD card và image, tiện ích desktop.">
 <meta property="twitter:image" content="https://note.vutang.dev/assets/images/social/lnx_es/linux_system/host-setup.png">
 <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
@@ -112,7 +112,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#moi-truong-phat-trien-tren-host" class="md-skip">
+        <a href="#tien-ich-tren-host" class="md-skip">
           Skip to content
         </a>
       
@@ -145,7 +145,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Môi trường phát triển trên host
+              Tiện ích trên host
             
           </span>
         </div>
@@ -816,6 +816,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../serial-console/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Serial console
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -835,7 +863,7 @@
   <span class="md-ellipsis">
     
   
-    Môi trường phát triển trên host
+    Tiện ích trên host
   
 
     
@@ -853,7 +881,7 @@
   <span class="md-ellipsis">
     
   
-    Môi trường phát triển trên host
+    Tiện ích trên host
   
 
     
@@ -879,44 +907,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#nap-image-qua-mang" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nạp image qua mạng
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Nạp image qua mạng">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#tftp-server" class="md-nav__link">
     <span class="md-ellipsis">
       
-        TFTP Server
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="TFTP Server">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cai-tftp-server" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cài TFTP server
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cau-hinh-tftp-server" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cấu hình TFTP server
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#kiem-tra-tftp-server" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Kiểm tra TFTP server
+        TFTP server
       
     </span>
   </a>
@@ -929,22 +935,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sd-card" class="md-nav__link">
+  <a href="#sd-card-va-image" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SD card
+        SD card và image
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="SD card">
+    <nav class="md-nav" aria-label="SD card và image">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#mount-lai-sd-card-e-bo-trang-thai-chi-oc" class="md-nav__link">
+  <a href="#mount-lai-sd-card-o-che-o-oc-ghi" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Mount lại SD card để bỏ trạng thái chỉ đọc
+        Mount lại SD card ở chế độ đọc ghi
       
     </span>
   </a>
@@ -952,10 +958,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#backup-image-sd-card" class="md-nav__link">
+  <a href="#backup-va-khoi-phuc-image-sd-card" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Backup image SD card
+        Backup và khôi phục image SD card
       
     </span>
   </a>
@@ -968,22 +974,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tien-ich-tren-desktop" class="md-nav__link">
+  <a href="#tien-ich-desktop" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Tiện ích trên desktop
+        Tiện ích desktop
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Tiện ích trên desktop">
+    <nav class="md-nav" aria-label="Tiện ích desktop">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#copy-noi-dung-ra-clipboard-xclip" class="md-nav__link">
+  <a href="#copy-noi-dung-file-ra-clipboard-xclip" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Copy nội dung ra clipboard (xclip)
+        Copy nội dung file ra clipboard (xclip)
       
     </span>
   </a>
@@ -991,10 +997,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#dung-google-drive-tren-ubuntu" class="md-nav__link">
+  <a href="#google-drive-tren-ubuntu" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Dùng Google Drive trên Ubuntu
+        Google Drive trên Ubuntu
       
     </span>
   </a>
@@ -1003,6 +1009,28 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lien-quan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Liên quan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài liệu tham khảo
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1010,34 +1038,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../serial-console/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Serial console
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -15031,44 +15031,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#nap-image-qua-mang" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nạp image qua mạng
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Nạp image qua mạng">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#tftp-server" class="md-nav__link">
     <span class="md-ellipsis">
       
-        TFTP Server
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="TFTP Server">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cai-tftp-server" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cài TFTP server
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cau-hinh-tftp-server" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cấu hình TFTP server
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#kiem-tra-tftp-server" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Kiểm tra TFTP server
+        TFTP server
       
     </span>
   </a>
@@ -15081,22 +15059,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sd-card" class="md-nav__link">
+  <a href="#sd-card-va-image" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SD card
+        SD card và image
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="SD card">
+    <nav class="md-nav" aria-label="SD card và image">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#mount-lai-sd-card-e-bo-trang-thai-chi-oc" class="md-nav__link">
+  <a href="#mount-lai-sd-card-o-che-o-oc-ghi" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Mount lại SD card để bỏ trạng thái chỉ đọc
+        Mount lại SD card ở chế độ đọc ghi
       
     </span>
   </a>
@@ -15104,10 +15082,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#backup-image-sd-card" class="md-nav__link">
+  <a href="#backup-va-khoi-phuc-image-sd-card" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Backup image SD card
+        Backup và khôi phục image SD card
       
     </span>
   </a>
@@ -15120,22 +15098,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tien-ich-tren-desktop" class="md-nav__link">
+  <a href="#tien-ich-desktop" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Tiện ích trên desktop
+        Tiện ích desktop
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Tiện ích trên desktop">
+    <nav class="md-nav" aria-label="Tiện ích desktop">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#copy-noi-dung-ra-clipboard-xclip" class="md-nav__link">
+  <a href="#copy-noi-dung-file-ra-clipboard-xclip" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Copy nội dung ra clipboard (xclip)
+        Copy nội dung file ra clipboard (xclip)
       
     </span>
   </a>
@@ -15143,10 +15121,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#dung-google-drive-tren-ubuntu" class="md-nav__link">
+  <a href="#google-drive-tren-ubuntu" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Dùng Google Drive trên Ubuntu
+        Google Drive trên Ubuntu
       
     </span>
   </a>
@@ -15155,6 +15133,28 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lien-quan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Liên quan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài liệu tham khảo
+      
+    </span>
+  </a>
   
 </li>
       
@@ -15203,73 +15203,92 @@
   
 
 
-<h1 id="moi-truong-phat-trien-tren-host">Môi trường phát triển trên host<a class="headerlink" href="#moi-truong-phat-trien-tren-host" title="Permanent link">¶</a></h1>
-<p>Các thiết lập trên máy host (thường là Ubuntu) để làm việc với board: TFTP server để nạp image qua mạng, thao tác với SD card, và một số tiện ích trên desktop.</p>
-<h2 id="tftp-server">TFTP Server<a class="headerlink" href="#tftp-server" title="Permanent link">¶</a></h2>
-<p>Trivial File Transfer Protocol (TFTP) là giao thức truyền file đơn giản theo kiểu lockstep, cho phép client lấy file từ máy từ xa hoặc đẩy file lên máy từ xa (<a href="https://en.wikipedia.org/wiki/Trivial_File_Transfer_Protocol">Wikipedia</a>). TFTP dùng UDP làm giao thức vận chuyển.</p>
-<h3 id="cai-tftp-server">Cài TFTP server<a class="headerlink" href="#cai-tftp-server" title="Permanent link">¶</a></h3>
-<p>Trên Ubuntu, cài các gói sau:</p>
-<p><code>sudo apt-get install xinetd tftpd tftp</code></p>
+<h1 id="tien-ich-tren-host">Tiện ích trên host<a class="headerlink" href="#tien-ich-tren-host" title="Permanent link">¶</a></h1>
+<p>Trang này ghi nhanh các công cụ và thao tác trên máy host (thường là Ubuntu) dùng trong quá trình làm việc với board: TFTP server để nạp image qua mạng, thao tác với SD card và image, và một số tiện ích trên desktop. Mỗi mục gồm mục đích, lệnh và lưu ý nếu có.</p>
+<p>Trang chỉ nhận các mục ngắn, đủ trình bày trong vài lệnh. Khi một mục phát triển thành một chủ đề đầy đủ, mục đó được tách thành trang riêng và để lại link ở đây, như <a href="../serial-console/">Serial console</a> và <a href="../ssh/">SSH</a>.</p>
+<h2 id="nap-image-qua-mang">Nạp image qua mạng<a class="headerlink" href="#nap-image-qua-mang" title="Permanent link">¶</a></h2>
+<h3 id="tftp-server">TFTP server<a class="headerlink" href="#tftp-server" title="Permanent link">¶</a></h3>
+<p>Trivial File Transfer Protocol (TFTP) là giao thức truyền file đơn giản theo kiểu lockstep, cho phép client lấy file từ máy từ xa hoặc đẩy file lên máy từ xa [1]. TFTP dùng UDP làm giao thức vận chuyển. Trong công việc nhúng, TFTP server trên host thường dùng để U-Boot nạp kernel và DTB qua mạng, tránh phải ghi lại SD card sau mỗi lần build.</p>
+<p><strong>Cài đặt.</strong> Trên Ubuntu, cài các gói sau:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>xinetd<span class="w"> </span>tftpd<span class="w"> </span>tftp
+</code></pre></div>
 <p>Trên thiết bị nhúng thường không cần build riêng: BusyBox có sẵn applet <code>tftp</code> (client) và <code>tftpd</code> (server), bật trong menuconfig của BusyBox. Với Yocto, có thể dùng recipe <code>tftp-hpa</code> trong layer meta-networking.</p>
-<h3 id="cau-hinh-tftp-server">Cấu hình TFTP server<a class="headerlink" href="#cau-hinh-tftp-server" title="Permanent link">¶</a></h3>
-<p>Tạo file <code>/etc/xinetd.d/tftp</code> với nội dung:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>service tftp
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>{
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>protocol        = udp
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>port            = 69
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>socket_type     = dgram
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>wait            = yes
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>user            = nobody
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>server          = /usr/sbin/in.tftpd
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>server_args     = /tftpboot
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>disable         = no
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>}
+<p><strong>Cấu hình.</strong> Tạo file <code>/etc/xinetd.d/tftp</code> với nội dung:</p>
+<div class="highlight"><span class="filename">/etc/xinetd.d/tftp</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>service tftp
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>{
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>protocol        = udp
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>port            = 69
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>socket_type     = dgram
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>wait            = yes
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>user            = nobody
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>server          = /usr/sbin/in.tftpd
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>server_args     = /tftpboot
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>disable         = no
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>}
 </code></pre></div>
-<p>Tạo thư mục <code>/tftpboot</code>. Tên thư mục phải khớp với giá trị <code>server_args</code> ở trên, thường là <code>tftpboot</code>:
-</p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo mkdir /tftpboot
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo chmod -R 777 /tftpboot
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>sudo chown -R nobody /tftpboot
+<p>Tạo thư mục <code>/tftpboot</code>. Tên thư mục phải khớp với giá trị <code>server_args</code> ở trên, thường là <code>tftpboot</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>mkdir<span class="w"> </span>/tftpboot
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span><span class="m">777</span><span class="w"> </span>/tftpboot
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>nobody<span class="w"> </span>/tftpboot
 </code></pre></div>
-Khởi động lại dịch vụ xinetd:<p></p>
+<p>Quyền <code>777</code> cho phép mọi người dùng trên host ghi vào thư mục, chỉ phù hợp với máy host trong mạng lab.</p>
+<p>Khởi động lại dịch vụ xinetd:</p>
 <ul>
-<li>Hệ thống mới:</li>
+<li>Hệ thống mới: <code>sudo service xinetd restart</code></li>
+<li>Hệ thống cũ: <code>sudo /etc/init.d/xinetd restart</code></li>
 </ul>
-<p><code>sudo service xinetd restart</code></p>
-<ul>
-<li>Hệ thống cũ:</li>
-</ul>
-<p><code>sudo /etc/init.d/xinetd restart</code></p>
-<h3 id="kiem-tra-tftp-server">Kiểm tra TFTP server<a class="headerlink" href="#kiem-tra-tftp-server" title="Permanent link">¶</a></h3>
-<p>Tạo file <code>test</code> có nội dung bất kỳ trong thư mục <code>/tftpboot</code> của TFTP server. Lấy địa chỉ IP của server bằng lệnh <code>ifconfig</code>.</p>
-<p>Trên một máy khác (client cần lấy file), chạy các lệnh sau:
-</p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>tftp 192.168.1.2 # tftp server ip
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>tftp&gt; get test
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>Sent 159 bytes in 0.0 seconds
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>tftp&gt; quit
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>cat test
-</code></pre></div><p></p>
-<h2 id="sd-card">SD card<a class="headerlink" href="#sd-card" title="Permanent link">¶</a></h2>
-<h3 id="mount-lai-sd-card-e-bo-trang-thai-chi-oc">Mount lại SD card để bỏ trạng thái chỉ đọc<a class="headerlink" href="#mount-lai-sd-card-e-bo-trang-thai-chi-oc" title="Permanent link">¶</a></h3>
+<p><strong>Kiểm tra.</strong> Tạo file <code>test</code> có nội dung bất kỳ trong thư mục <code>/tftpboot</code> của TFTP server. Lấy địa chỉ IP của server bằng lệnh <code>ifconfig</code> (hoặc <code>ip addr</code> trên hệ thống không còn gói net-tools). Trên một máy khác (client cần lấy file), chạy các lệnh sau:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>tftp 192.168.1.2 # tftp server ip
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>tftp&gt; get test
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>Sent 159 bytes in 0.0 seconds
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>tftp&gt; quit
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>cat test
+</code></pre></div>
+<p><strong>Dùng từ U-Boot.</strong> Đặt <code>serverip</code> là địa chỉ của host, <code>ipaddr</code> là địa chỉ của board, rồi nạp file bằng lệnh <code>tftpboot</code>, ví dụ <code>tftpboot ${kernel_addr_r} zImage</code>. Các biến môi trường và lệnh mạng của U-Boot xem trang <a href="../../bootloader/u-boot/">U-Boot</a>.</p>
+<h2 id="sd-card-va-image">SD card và image<a class="headerlink" href="#sd-card-va-image" title="Permanent link">¶</a></h2>
+<h3 id="mount-lai-sd-card-o-che-o-oc-ghi">Mount lại SD card ở chế độ đọc ghi<a class="headerlink" href="#mount-lai-sd-card-o-che-o-oc-ghi" title="Permanent link">¶</a></h3>
 <p>Đôi khi SD card bị mount ở chế độ chỉ đọc, nên không sửa được dữ liệu trên thẻ. Cách khắc phục là mount lại thẻ ở chế độ đọc ghi:</p>
 <ul>
 <li>Liệt kê các ổ đĩa bằng <code>sudo fdisk -l</code>.</li>
 <li>Mount lại SD card: <code>sudo mount /dev/sdc -o remount,rw</code></li>
 </ul>
-<h3 id="backup-image-sd-card">Backup image SD card<a class="headerlink" href="#backup-image-sd-card" title="Permanent link">¶</a></h3>
-<p>Cách 1: dòng lệnh</p>
-<p>Tham khảo: <a href="https://stackoverflow.com/questions/19355036/how-to-create-an-img-image-of-a-disc-sd-card-without-including-free-space">https://stackoverflow.com/questions/19355036/how-to-create-an-img-image-of-a-disc-sd-card-without-including-free-space</a></p>
+<p>Lệnh <code>remount</code> áp dụng cho phân vùng đang được mount, nên tên thiết bị thường là một phân vùng như <code>/dev/sdc1</code> chứ không phải cả thẻ <code>/dev/sdc</code>; <code>lsblk</code> cho biết phân vùng nào đang mount ở đâu. Nếu thẻ vẫn chỉ đọc, kiểm tra công tắc khóa ghi trên thẻ hoặc adapter.</p>
+<h3 id="backup-va-khoi-phuc-image-sd-card">Backup và khôi phục image SD card<a class="headerlink" href="#backup-va-khoi-phuc-image-sd-card" title="Permanent link">¶</a></h3>
+<p>Sao lưu toàn bộ SD card thành một file nén, để khôi phục board về một trạng thái đã biết.</p>
+<p><strong>Cách 1: dòng lệnh.</strong> Tham khảo: <a href="https://stackoverflow.com/questions/19355036/how-to-create-an-img-image-of-a-disc-sd-card-without-including-free-space">https://stackoverflow.com/questions/19355036/how-to-create-an-img-image-of-a-disc-sd-card-without-including-free-space</a> [2].</p>
 <p>Backup:</p>
-<p><code>sudo dd if=/dev/mmcblk0 | gzip &gt; /tmp/sdimage_backup.img.gz</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo<span class="w"> </span>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/mmcblk0<span class="w"> </span><span class="p">|</span><span class="w"> </span>gzip<span class="w"> </span>&gt;<span class="w"> </span>/tmp/sdimage_backup.img.gz
+</code></pre></div>
 <p>Khôi phục:</p>
-<p><code>cat backup.img.gz | gunzip | dd of=/dev/sdb</code></p>
-<p>Cách 2: tiện ích <code>Disks</code> trên Ubuntu.</p>
-<h2 id="tien-ich-tren-desktop">Tiện ích trên desktop<a class="headerlink" href="#tien-ich-tren-desktop" title="Permanent link">¶</a></h2>
-<h3 id="copy-noi-dung-ra-clipboard-xclip">Copy nội dung ra clipboard (xclip)<a class="headerlink" href="#copy-noi-dung-ra-clipboard-xclip" title="Permanent link">¶</a></h3>
-<p><code>cat "filename.txt" | xclip -selection clipboard</code></p>
-<h3 id="dung-google-drive-tren-ubuntu">Dùng Google Drive trên Ubuntu<a class="headerlink" href="#dung-google-drive-tren-ubuntu" title="Permanent link">¶</a></h3>
-<p><a href="https://linuxconfig.org/google-drive-on-ubuntu-18-04-bionic-beaver-linux">https://linuxconfig.org/google-drive-on-ubuntu-18-04-bionic-beaver-linux</a></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>cat<span class="w"> </span>backup.img.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>gunzip<span class="w"> </span><span class="p">|</span><span class="w"> </span>dd<span class="w"> </span><span class="nv">of</span><span class="o">=</span>/dev/sdb
+</code></pre></div>
+<p>Lưu ý khi dùng hai lệnh trên:</p>
+<ul>
+<li>Tên thiết bị phụ thuộc cách thẻ được nối vào host: <code>/dev/mmcblkN</code> với khe đọc thẻ tích hợp, <code>/dev/sdX</code> với đầu đọc USB. Kiểm tra bằng <code>lsblk</code> trước khi chạy, vì <code>dd</code> ghi nhầm vào ổ của host sẽ xóa dữ liệu trên ổ đó.</li>
+<li>Lệnh khôi phục ghi trực tiếp vào thiết bị nên cần chạy với quyền root (<code>sudo dd ...</code>). Thêm <code>bs=4M</code> giúp <code>dd</code> đọc ghi theo khối lớn và nhanh hơn, <code>status=progress</code> hiện tiến độ; chạy <code>sync</code> sau khi ghi xong rồi mới rút thẻ.</li>
+<li>Backup bằng <code>dd</code> chép cả vùng trống, nên file trước khi nén có kích thước bằng dung lượng thẻ. Câu hỏi trong link tham khảo bàn về cách tạo image không chứa vùng trống.</li>
+</ul>
+<p><strong>Cách 2: tiện ích <code>Disks</code> trên Ubuntu.</strong></p>
+<h2 id="tien-ich-desktop">Tiện ích desktop<a class="headerlink" href="#tien-ich-desktop" title="Permanent link">¶</a></h2>
+<h3 id="copy-noi-dung-file-ra-clipboard-xclip">Copy nội dung file ra clipboard (xclip)<a class="headerlink" href="#copy-noi-dung-file-ra-clipboard-xclip" title="Permanent link">¶</a></h3>
+<p>Chép nội dung một file vào clipboard để dán sang ứng dụng khác, ví dụ dán log hoặc cấu hình vào trình duyệt:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>cat<span class="w"> </span><span class="s2">"filename.txt"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xclip<span class="w"> </span>-selection<span class="w"> </span>clipboard
+</code></pre></div>
+<h3 id="google-drive-tren-ubuntu">Google Drive trên Ubuntu<a class="headerlink" href="#google-drive-tren-ubuntu" title="Permanent link">¶</a></h3>
+<p>Hướng dẫn truy cập Google Drive từ Ubuntu 18.04: <a href="https://linuxconfig.org/google-drive-on-ubuntu-18-04-bionic-beaver-linux">https://linuxconfig.org/google-drive-on-ubuntu-18-04-bionic-beaver-linux</a> [3].</p>
+<h2 id="lien-quan">Liên quan<a class="headerlink" href="#lien-quan" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="../serial-console/">Serial console</a>: nối UART với host, picocom và tio.</li>
+<li><a href="../ssh/">SSH</a>: đăng nhập bằng key, chạy lệnh từ xa, truyền file.</li>
+<li><a href="../../bootloader/u-boot/">U-Boot</a>: biến môi trường mạng và lệnh <code>tftpboot</code>.</li>
+<li><a href="../../bringup/porting-linux/">Porting Linux lên board tùy biến</a>: dùng TFTP để thử kernel và DTB mới trong quá trình port board.</li>
+</ul>
+<h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
+<p>[1] - <a href="https://en.wikipedia.org/wiki/Trivial_File_Transfer_Protocol">Trivial File Transfer Protocol</a> - Wikipedia</p>
+<p>[2] - <a href="https://stackoverflow.com/questions/19355036/how-to-create-an-img-image-of-a-disc-sd-card-without-including-free-space">How to create an img image of a disc (sd card) without including free space?</a> - stackoverflow.com</p>
+<p>[3] - <a href="https://linuxconfig.org/google-drive-on-ubuntu-18-04-bionic-beaver-linux">Google Drive on Ubuntu 18.04 Bionic Beaver Linux</a> - linuxconfig.org</p>
 
 
 
@@ -15292,7 +15311,7 @@ Khởi động lại dịch vụ xinetd:<p></p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 30, 2026 05:12:26 UTC">October 30, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 9, 2026 07:46:32 UTC">November 9, 2026</span>
   </span>
 
     
@@ -15341,7 +15360,7 @@ Khởi động lại dịch vụ xinetd:<p></p>
       <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
-          <a href="../init/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Init system (WIP)">
+          <a href="../serial-console/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Serial console">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -15351,20 +15370,20 @@ Khởi động lại dịch vụ xinetd:<p></p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Init system (WIP)
+                Serial console
               </div>
             </div>
           </a>
         
         
           
-          <a href="../serial-console/" class="md-footer__link md-footer__link--next" aria-label="Next: Serial console">
+          <a href="../../hw_platform/" class="md-footer__link md-footer__link--next" aria-label="Next: HW Platforms">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Serial console
+                HW Platforms
               </div>
             </div>
             <div class="md-footer__button md-icon">
