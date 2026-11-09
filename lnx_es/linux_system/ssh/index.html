@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
+        <meta name="description" content="Dùng SSH client khi làm việc với board nhúng: OpenSSH và Dropbear, đăng nhập bằng key, ~/.ssh/config, host key của board, chạy lệnh từ xa, tự cung cấp mật khẩu, truyền file, port forwarding và jump host.">
       
       
         <meta name="author" content="Vu Tang">
@@ -73,7 +73,7 @@
   
 <meta property="og:type" content="website">
 <meta property="og:title" content="SSH: điều khiển từ xa - Vu Tang's Docs">
-<meta property="og:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
+<meta property="og:description" content="Dùng SSH client khi làm việc với board nhúng: OpenSSH và Dropbear, đăng nhập bằng key, ~/.ssh/config, host key của board, chạy lệnh từ xa, tự cung cấp mật khẩu, truyền file, port forwarding và jump host.">
 <meta property="og:image" content="https://note.vutang.dev/assets/images/social/lnx_es/linux_system/ssh.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
@@ -81,7 +81,7 @@
 <meta property="og:url" content="https://note.vutang.dev/lnx_es/linux_system/ssh/">
 <meta property="twitter:card" content="summary_large_image">
 <meta property="twitter:title" content="SSH: điều khiển từ xa - Vu Tang's Docs">
-<meta property="twitter:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
+<meta property="twitter:description" content="Dùng SSH client khi làm việc với board nhúng: OpenSSH và Dropbear, đăng nhập bằng key, ~/.ssh/config, host key của board, chạy lệnh từ xa, tự cung cấp mật khẩu, truyền file, port forwarding và jump host.">
 <meta property="twitter:image" content="https://note.vutang.dev/assets/images/social/lnx_es/linux_system/ssh.png">
 <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
@@ -823,10 +823,87 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#tuy-chon-nang-cao" class="md-nav__link">
+  <a href="#ssh-server-tren-board" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Tùy chọn nâng cao
+        SSH server trên board
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ang-nhap-bang-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Đăng nhập bằng key
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cau-hinh-client-trong-sshconfig" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cấu hình client trong ~/.ssh/config
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#host-key-cua-board" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Host key của board
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chay-lenh-va-script-tu-xa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chạy lệnh và script từ xa
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tu-cung-cap-mat-khau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tự cung cấp mật khẩu
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#truyen-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Truyền file
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#port-forwarding-va-jump-host" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Port forwarding và jump host
       
     </span>
   </a>
@@ -838,6 +915,17 @@
     <span class="md-ellipsis">
       
         Ví dụ lệnh
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lien-quan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Liên quan
       
     </span>
   </a>
@@ -14936,10 +15024,87 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#tuy-chon-nang-cao" class="md-nav__link">
+  <a href="#ssh-server-tren-board" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Tùy chọn nâng cao
+        SSH server trên board
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ang-nhap-bang-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Đăng nhập bằng key
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cau-hinh-client-trong-sshconfig" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cấu hình client trong ~/.ssh/config
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#host-key-cua-board" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Host key của board
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chay-lenh-va-script-tu-xa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chạy lệnh và script từ xa
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tu-cung-cap-mat-khau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tự cung cấp mật khẩu
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#truyen-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Truyền file
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#port-forwarding-va-jump-host" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Port forwarding và jump host
       
     </span>
   </a>
@@ -14951,6 +15116,17 @@
     <span class="md-ellipsis">
       
         Ví dụ lệnh
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lien-quan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Liên quan
       
     </span>
   </a>
@@ -15014,36 +15190,124 @@
 
 
 <h1 id="ssh-ieu-khien-tu-xa">SSH: điều khiển từ xa<a class="headerlink" href="#ssh-ieu-khien-tu-xa" title="Permanent link">¶</a></h1>
-<p>Các mẹo dùng SSH client khi làm việc với board và máy từ xa. Giao thức, thuật toán và cách hardening SSH server trên thiết bị nằm ở trang <a href="../../../embedded_security/ssh/ssh/">SSH</a> (tab Security).</p>
 <p>Secure Shell (SSH) là <strong>giao thức mạng có mã hóa</strong>, dùng để vận hành dịch vụ mạng an toàn trên một mạng không an toàn. Ứng dụng phổ biến nhất là <strong>đăng nhập dòng lệnh từ xa</strong> và <strong>chạy lệnh từ xa</strong>, nhưng SSH có thể bảo vệ bất kỳ dịch vụ mạng nào.</p>
-<h2 id="tuy-chon-nang-cao">Tùy chọn nâng cao<a class="headerlink" href="#tuy-chon-nang-cao" title="Permanent link">¶</a></h2>
+<p>Trang này ghi chú cách dùng SSH client khi làm việc với board và máy từ xa, theo thứ tự: SSH server thường gặp trên board, đăng nhập bằng key, file cấu hình của client, xử lý host key của board, chạy lệnh và script từ xa, tự cung cấp mật khẩu, truyền file, port forwarding và jump host. Giao thức, thuật toán và cách hardening SSH server trên thiết bị nằm ở trang <a href="../../../embedded_security/ssh/ssh/">SSH</a> (tab Security).</p>
+<h2 id="ssh-server-tren-board">SSH server trên board<a class="headerlink" href="#ssh-server-tren-board" title="Permanent link">¶</a></h2>
+<p>Board Linux nhúng thường chạy một trong hai SSH server:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>OpenSSH</th>
+<th>Dropbear</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Đối tượng</td>
+<td>Máy chủ, desktop, board có đủ tài nguyên</td>
+<td>Board có ít dung lượng flash và RAM</td>
+</tr>
+<tr>
+<td>Client đi kèm</td>
+<td><code>ssh</code>, <code>scp</code>, <code>sftp</code></td>
+<td><code>dbclient</code>; <code>scp</code> có thể build riêng từ mã nguồn của Dropbear [7]</td>
+</tr>
+<tr>
+<td>File key được phép đăng nhập</td>
+<td><code>~/.ssh/authorized_keys</code></td>
+<td><code>~/.ssh/authorized_keys</code>, cùng định dạng với OpenSSH [7]</td>
+</tr>
+<tr>
+<td>SFTP server</td>
+<td>Có sẵn <code>sftp-server</code></td>
+<td>Không đi kèm; muốn hỗ trợ SFTP phải cài thêm <code>sftp-server</code> của OpenSSH [8]</td>
+</tr>
+</tbody>
+</table>
+<p>Điểm khác biệt về SFTP ảnh hưởng tới việc chép file bằng <code>scp</code>, xem mục <a href="#truyen-file">Truyền file</a>.</p>
+<h2 id="ang-nhap-bang-key">Đăng nhập bằng key<a class="headerlink" href="#ang-nhap-bang-key" title="Permanent link">¶</a></h2>
+<p>Đăng nhập bằng cặp khóa công khai (public key) an toàn hơn mật khẩu và không cần nhập mật khẩu mỗi lần. Các bước trên máy host:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w">            </span><span class="c1"># tạo cặp khóa ~/.ssh/id_ed25519 và id_ed25519.pub</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>ssh-copy-id<span class="w"> </span>root@10.61.61.195<span class="w">    </span><span class="c1"># thêm public key vào authorized_keys trên board</span>
+</code></pre></div>
+<p><code>ssh-copy-id</code> dùng các key có sẵn trên máy local để cho phép đăng nhập vào máy từ xa [5]. Khi board không có sẵn các công cụ mà <code>ssh-copy-id</code> cần, có thể thêm key thủ công:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>cat<span class="w"> </span>~/.ssh/id_ed25519.pub<span class="w"> </span><span class="p">|</span><span class="w"> </span>ssh<span class="w"> </span>root@10.61.61.195<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="s1">'mkdir -p ~/.ssh &amp;&amp; cat &gt;&gt; ~/.ssh/authorized_keys &amp;&amp; chmod 700 ~/.ssh &amp;&amp; chmod 600 ~/.ssh/authorized_keys'</span>
+</code></pre></div>
+<p>Thư mục <code>~/.ssh</code> và file key trên board chỉ được để chủ sở hữu có quyền ghi; nếu không, server từ chối dùng key [7]. Với image build sẵn, public key có thể được đưa thẳng vào rootfs qua rootfs overlay của Buildroot hoặc một recipe của Yocto, để board đăng nhập được ngay sau khi nạp.</p>
+<h2 id="cau-hinh-client-trong-sshconfig">Cấu hình client trong ~/.ssh/config<a class="headerlink" href="#cau-hinh-client-trong-sshconfig" title="Permanent link">¶</a></h2>
+<p>Tùy chọn dùng thường xuyên nên đặt trong <code>~/.ssh/config</code> thay vì gõ lại trên dòng lệnh. Mỗi khối <code>Host</code> áp dụng cho các host khớp với mẫu:</p>
+<div class="highlight"><span class="filename">~/.ssh/config</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Host board
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    HostName 10.61.61.195
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    User root
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    IdentityFile ~/.ssh/id_ed25519
+</code></pre></div>
+<p>Sau đó chỉ cần <code>ssh board</code>, <code>scp file board:/tmp/</code>. Danh sách đầy đủ các tùy chọn nằm trong man page <code>ssh_config(5)</code> [3].</p>
+<h2 id="host-key-cua-board">Host key của board<a class="headerlink" href="#host-key-cua-board" title="Permanent link">¶</a></h2>
+<p>Mỗi SSH server có một host key. Lần đầu kết nối, client lưu host key của server vào <code>~/.ssh/known_hosts</code>; các lần sau, nếu host key khác đi, client từ chối kết nối để chống tấn công man-in-the-middle (MITM) [3]. Với board, host key thường được tạo lại mỗi lần nạp lại rootfs, nên cùng một địa chỉ IP sẽ có host key mới và client báo lỗi.</p>
+<p>Có hai tùy chọn để bỏ qua kiểm tra này:</p>
 <ul>
 <li>Tắt kiểm tra host key: <code>ssh -o StrictHostKeyChecking=no</code></li>
-<li>Chuyển file known hosts (<code>~/.ssh/known_hosts</code>) sang <code>/dev/null</code>:
-    <code>ssh -o UserKnownHostsFile=/dev/null</code></li>
-<li>Chạy script trên máy từ xa:</li>
+<li>Chuyển file known hosts (<code>~/.ssh/known_hosts</code>) sang <code>/dev/null</code>: <code>ssh -o UserKnownHostsFile=/dev/null</code></li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>    ssh user@host &lt;&lt;'ENDSSH'  
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>        #commands to run on remote host  
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    ENDSSH
+<p>Hai tùy chọn thường dùng cùng nhau: client không kiểm tra host key và cũng không ghi host key của board vào <code>known_hosts</code>. Cách này bỏ đi lớp bảo vệ chống MITM, nên chỉ dùng trong mạng lab và chỉ áp dụng cho dải địa chỉ của board, không đặt cho mọi host:</p>
+<div class="highlight"><span class="filename">~/.ssh/config</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Host 10.61.61.*
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    StrictHostKeyChecking no
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    UserKnownHostsFile /dev/null
 </code></pre></div>
-<blockquote>
-<p>Ví dụ: <code>ssh root@10.61.61.195 "echo 1 &gt; ~/test"</code> đăng nhập vào máy <code>root@10.61.61.195</code> rồi chạy lệnh <code>"echo 1 &gt; ~/test"</code>.</p>
-</blockquote>
-<ul>
-<li>Tự cung cấp mật khẩu cho ssh:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>    echo "#!/bin/sh" &gt;&gt; /tmp/genpass.sh
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    echo "echo $pass" &gt;&gt; /tmp/genpass.sh
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    export SSH_ASKPASS="/tmp/genpass.sh" &amp;&amp; export DISPLAY=
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    setsid ssh root@10.61.61.195
-</code></pre></div></li>
-</ul>
-<p><code>setsid</code> chạy chương trình trong một session mới, tách khỏi terminal điều khiển. Khi không có terminal điều khiển, <code>ssh</code> lấy mật khẩu bằng chương trình khai trong <code>SSH_ASKPASS</code> thay vì hỏi trên terminal; đó là lý do script trên dùng <code>setsid</code>. OpenSSH từ bản 8.4 có thêm biến <code>SSH_ASKPASS_REQUIRE=force</code> để dùng <code>SSH_ASKPASS</code> mà không cần <code>setsid</code>.</p>
+<p>Giá trị <code>StrictHostKeyChecking accept-new</code> là lựa chọn trung gian: tự thêm host key của host mới, nhưng vẫn từ chối khi host key của host đã biết thay đổi [3]. Khi chỉ một board được nạp lại, có thể xóa host key cũ của địa chỉ đó bằng <code>ssh-keygen -R 10.61.61.195</code> [4].</p>
+<h2 id="chay-lenh-va-script-tu-xa">Chạy lệnh và script từ xa<a class="headerlink" href="#chay-lenh-va-script-tu-xa" title="Permanent link">¶</a></h2>
+<p>Thêm lệnh vào cuối lệnh <code>ssh</code> để chạy lệnh đó trên máy từ xa. Ví dụ: <code>ssh root@10.61.61.195 "echo 1 &gt; ~/test"</code> đăng nhập vào máy <code>root@10.61.61.195</code> rồi chạy lệnh <code>"echo 1 &gt; ~/test"</code>.</p>
+<p>Chạy một đoạn script trên máy từ xa bằng here document:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ssh<span class="w"> </span>user@host<span class="w"> </span><span class="s">&lt;&lt;'ENDSSH'</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="s">    # các lệnh chạy trên máy từ xa</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="s">ENDSSH</span>
+</code></pre></div>
+<p>Dấu nháy quanh <code>'ENDSSH'</code> ngăn shell trên máy local thay thế biến và lệnh trong đoạn script, nên toàn bộ nội dung được gửi nguyên văn sang máy từ xa.</p>
+<h2 id="tu-cung-cap-mat-khau">Tự cung cấp mật khẩu<a class="headerlink" href="#tu-cung-cap-mat-khau" title="Permanent link">¶</a></h2>
+<p>Khi board chưa có key, có thể cho <code>ssh</code> tự lấy mật khẩu từ một script:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"#!/bin/sh"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/tmp/genpass.sh
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"echo </span><span class="nv">$pass</span><span class="s2">"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/tmp/genpass.sh
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">SSH_ASKPASS</span><span class="o">=</span><span class="s2">"/tmp/genpass.sh"</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">DISPLAY</span><span class="o">=</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>setsid<span class="w"> </span>ssh<span class="w"> </span>root@10.61.61.195
+</code></pre></div>
+<p><code>setsid</code> chạy chương trình trong một session mới, tách khỏi terminal điều khiển. Khi không có terminal điều khiển, <code>ssh</code> lấy mật khẩu bằng chương trình khai trong <code>SSH_ASKPASS</code> thay vì hỏi trên terminal; đó là lý do script trên dùng <code>setsid</code>. OpenSSH từ bản 8.4 có thêm biến <code>SSH_ASKPASS_REQUIRE=force</code> để dùng <code>SSH_ASKPASS</code> mà không cần <code>setsid</code>: với giá trị <code>force</code>, chương trình askpass được dùng cho mọi lần nhập mật khẩu, bất kể <code>DISPLAY</code> có được đặt hay không [2].</p>
+<p>Script trên lưu mật khẩu dạng rõ trong <code>/tmp/genpass.sh</code>, và file này cần được tạo với quyền chỉ chủ sở hữu đọc được, rồi xóa sau khi dùng. Khi có thể, nên chuyển sang <a href="#ang-nhap-bang-key">đăng nhập bằng key</a>.</p>
 <p>Xem thêm <a href="https://www.exratione.com/2014/08/bash-script-ssh-automation-without-a-password-prompt/">Bash Script SSH Automation Without a Password Prompt</a>.</p>
+<h2 id="truyen-file">Truyền file<a class="headerlink" href="#truyen-file" title="Permanent link">¶</a></h2>
+<p><code>scp</code> chép file qua SSH, cú pháp giống <code>cp</code> với đường dẫn từ xa dạng <code>host:đường_dẫn</code>. Từ OpenSSH 9.0, <code>scp</code> mặc định dùng giao thức SFTP thay cho giao thức SCP cũ [6]. Board chạy Dropbear mà không cài <code>sftp-server</code> không hỗ trợ SFTP, khi đó cần tùy chọn <code>-O</code> để dùng giao thức SCP cũ [6][8]:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>scp<span class="w"> </span>-O<span class="w"> </span>app<span class="w"> </span>root@10.61.61.195:/usr/bin/
+</code></pre></div>
+<p>Với giao thức SCP cũ, ký tự đặc biệt trong đường dẫn từ xa được shell trên máy từ xa diễn giải, nên cần đặt trong dấu nháy cẩn thận [6].</p>
+<p><code>rsync</code> qua SSH chỉ chép phần thay đổi, thuận tiện khi đồng bộ cả một thư mục build sang board nhiều lần, nhưng cần có <code>rsync</code> trên cả host lẫn board.</p>
+<h2 id="port-forwarding-va-jump-host">Port forwarding và jump host<a class="headerlink" href="#port-forwarding-va-jump-host" title="Permanent link">¶</a></h2>
+<p><strong>Local port forwarding</strong> (<code>-L</code>) chuyển một cổng trên máy local tới một cổng phía máy từ xa qua kết nối SSH [1]. Cách này hữu ích khi board chỉ mở cổng SSH ra ngoài, ví dụ để kết nối gdb trên host tới <code>gdbserver</code> đang lắng nghe trên board (xem <a href="../../debug/userspace-debug/">Debug ứng dụng user space</a>):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ssh<span class="w"> </span>-L<span class="w"> </span><span class="m">2345</span>:localhost:2345<span class="w"> </span>root@10.61.61.195<span class="w">   </span><span class="c1"># cổng 2345 trên host chuyển tới cổng 2345 trên board</span>
+</code></pre></div>
+<p><strong>Jump host</strong> (<code>-J</code>) dùng khi board nằm trong một mạng chỉ truy cập được qua một máy trung gian: <code>ssh</code> kết nối tới máy trung gian trước, rồi từ đó mở kết nối tới board [1]:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ssh<span class="w"> </span>-J<span class="w"> </span>user@gateway<span class="w"> </span>root@10.61.61.195
+</code></pre></div>
+<p>Trong <code>~/.ssh/config</code>, tùy chọn tương ứng là <code>ProxyJump</code> [3].</p>
 <h2 id="vi-du-lenh">Ví dụ lệnh<a class="headerlink" href="#vi-du-lenh" title="Permanent link">¶</a></h2>
+<p>Lệnh dưới đây kết hợp các tùy chọn ở trên: giới hạn thời gian chạy 20 giây bằng <code>timeout</code>, chạy trong session mới bằng <code>setsid</code> để dùng <code>SSH_ASKPASS</code>, và bỏ qua kiểm tra host key:</p>
 <p><code>timeout 20 setsid ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null</code></p>
+<h2 id="lien-quan">Liên quan<a class="headerlink" href="#lien-quan" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="../../../embedded_security/ssh/ssh/">SSH</a> (Security): kiến trúc giao thức, thuật toán, hardening SSH server trên thiết bị.</li>
+<li><a href="../serial-console/">Serial console</a>: kênh truy cập board khi chưa có mạng hoặc SSH chưa chạy.</li>
+<li><a href="../../debug/userspace-debug/">Debug ứng dụng user space</a>: gdbserver, có thể dùng kèm port forwarding.</li>
+<li><a href="../host-setup/">Môi trường phát triển trên host</a>: TFTP server và thao tác với SD card.</li>
+</ul>
 <h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
-<p>Các tùy chọn cấu hình SSH xem tại <a href="https://linux.die.net/man/5/ssh_config">https://linux.die.net/man/5/ssh_config</a>.</p>
+<p>[1] - <a href="https://github.com/openssh/openssh-portable/blob/master/ssh.1">ssh(1)</a> - man page trong source tree OpenSSH portable</p>
+<p>[2] - <a href="https://github.com/openssh/openssh-portable/blob/master/ssh.1">ssh(1), mục ENVIRONMENT</a> - biến <code>SSH_ASKPASS</code> và <code>SSH_ASKPASS_REQUIRE</code></p>
+<p>[3] - <a href="https://github.com/openssh/openssh-portable/blob/master/ssh_config.5">ssh_config(5)</a> - man page trong source tree OpenSSH portable. Bản trên die.net: <a href="https://linux.die.net/man/5/ssh_config">https://linux.die.net/man/5/ssh_config</a></p>
+<p>[4] - <a href="https://github.com/openssh/openssh-portable/blob/master/ssh-keygen.1">ssh-keygen(1)</a> - man page trong source tree OpenSSH portable</p>
+<p>[5] - <a href="https://github.com/openssh/openssh-portable/blob/master/contrib/ssh-copy-id.1">ssh-copy-id(1)</a> - man page trong source tree OpenSSH portable</p>
+<p>[6] - <a href="https://github.com/openssh/openssh-portable/blob/master/scp.1">scp(1)</a> - man page trong source tree OpenSSH portable, tùy chọn <code>-O</code> và mục HISTORY</p>
+<p>[7] - <a href="https://github.com/mkj/dropbear/blob/master/README.md">Dropbear README</a> - github.com/mkj/dropbear</p>
+<p>[8] - <a href="https://github.com/mkj/dropbear/blob/master/src/default_options.h">default_options.h</a> - Dropbear, ghi chú về <code>SFTPSERVER_PATH</code></p>
 
 
 
@@ -15066,7 +15330,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 30, 2026 07:53:16 UTC">October 30, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 9, 2026 07:26:27 UTC">November 9, 2026</span>
   </span>
 
     
