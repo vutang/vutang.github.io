@@ -26,7 +26,7 @@
     
     
       
-        <title>Init system (WIP) - Vu Tang's Docs</title>
+        <title>Init system - Vu Tang's Docs</title>
       
     
     
@@ -72,7 +72,7 @@
     
   
 <meta property="og:type" content="website">
-<meta property="og:title" content="Init system (WIP) - Vu Tang's Docs">
+<meta property="og:title" content="Init system - Vu Tang's Docs">
 <meta property="og:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
 <meta property="og:image" content="https://note.vutang.dev/assets/images/social/lnx_es/linux_system/init.png">
 <meta property="og:image:type" content="image/png">
@@ -80,7 +80,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://note.vutang.dev/lnx_es/linux_system/init/">
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:title" content="Init system (WIP) - Vu Tang's Docs">
+<meta property="twitter:title" content="Init system - Vu Tang's Docs">
 <meta property="twitter:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
 <meta property="twitter:image" content="https://note.vutang.dev/assets/images/social/lnx_es/linux_system/init.png">
 <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
@@ -145,7 +145,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Init system (WIP)
+              Init system
             
           </span>
         </div>
@@ -807,7 +807,7 @@
   <span class="md-ellipsis">
     
   
-    Init system (WIP)
+    Init system
   
 
     
@@ -825,7 +825,7 @@
   <span class="md-ellipsis">
     
   
-    Init system (WIP)
+    Init system
   
 
     
@@ -912,6 +912,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#busybox-init" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BusyBox init
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BusyBox init">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file-inittab-cua-busybox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File inittab của BusyBox
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#script-khoi-ong-trong-buildroot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Script khởi động trong Buildroot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#giam-sat-dich-vu-bang-respawn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Giám sát dịch vụ bằng respawn
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#sysv-init-va-update-rcd" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -919,6 +969,56 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="SysV init và update-rc.d">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#runlevel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Runlevel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-inittab-cua-sysv-init" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File inittab của SysV init
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thu-muc-initd-va-rcnd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thư mục init.d và rcN.d
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-rcd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        update-rc.d
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -15152,6 +15252,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#busybox-init" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BusyBox init
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BusyBox init">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file-inittab-cua-busybox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File inittab của BusyBox
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#script-khoi-ong-trong-buildroot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Script khởi động trong Buildroot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#giam-sat-dich-vu-bang-respawn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Giám sát dịch vụ bằng respawn
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#sysv-init-va-update-rcd" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -15159,6 +15309,56 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="SysV init và update-rc.d">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#runlevel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Runlevel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-inittab-cua-sysv-init" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File inittab của SysV init
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thu-muc-initd-va-rcnd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thư mục init.d và rcN.d
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-rcd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        update-rc.d
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -15323,6 +15523,13 @@
         <a href="../../../articles/tags/#tag:systemd" class="md-tag">systemd</a>
       
     
+      
+      
+      
+      
+        <a href="../../../articles/tags/#tag:sysvinit" class="md-tag">sysvinit</a>
+      
+    
   </nav>
 
 
@@ -15331,11 +15538,7 @@
 
 
 <h1 id="init-system">Init system<a class="headerlink" href="#init-system" title="Permanent link">¶</a></h1>
-<p>Init là process đầu tiên ở user space (PID 1), do kernel chạy sau khi mount rootfs. Init khởi động các dịch vụ và quản lý chúng trong suốt thời gian hệ thống chạy. Trang này trình bày vai trò chung của init, sau đó là tổng quan các init system đang được dùng và cách chọn init khi build image, cuối cùng đi vào chi tiết SysV init và systemd.</p>
-<div class="admonition todo">
-<p class="admonition-title">Todo</p>
-<p>Bổ sung mục BusyBox init (<code>/etc/inittab</code> của BusyBox, script trong <code>/etc/init.d/</code>).</p>
-</div>
+<p>Init là process đầu tiên ở user space (PID 1), do kernel chạy sau khi mount rootfs. Init khởi động các dịch vụ và quản lý chúng trong suốt thời gian hệ thống chạy. Trang này trình bày vai trò chung của init, sau đó là tổng quan các init system đang được dùng và cách chọn init khi build image, cuối cùng đi vào chi tiết ba init thường gặp trên hệ nhúng: BusyBox init, SysV init và systemd.</p>
 <h2 id="vai-tro-cua-init">Vai trò của init<a class="headerlink" href="#vai-tro-cua-init" title="Permanent link">¶</a></h2>
 <p>Sau khi mount root filesystem, kernel chạy chương trình được chỉ định bằng tham số <code>init=</code> trên kernel command line. Nếu không có tham số này, kernel lần lượt thử <code>/sbin/init</code>, <code>/etc/init</code>, <code>/bin/init</code> và <code>/bin/sh</code>. Chi tiết phía kernel nằm ở trang <a href="../../../lnx_kernel/kernel_boot/">Linux Kernel Boot Process</a>.</p>
 <p>PID 1 có vị trí đặc biệt so với các process khác. Khi một process cha kết thúc, các process con của nó (orphan) được gán lại cho init, và init có trách nhiệm thu hồi trạng thái kết thúc của chúng để không để lại zombie process. Nếu PID 1 kết thúc, kernel panic, vì vậy init không được phép thoát trong suốt thời gian hệ thống chạy.</p>
@@ -15412,8 +15615,247 @@
 <h3 id="lua-chon-init-khi-build-image">Lựa chọn init khi build image<a class="headerlink" href="#lua-chon-init-khi-build-image" title="Permanent link">¶</a></h3>
 <p>Buildroot cho chọn init trong menu cấu hình: BusyBox init (mặc định), SysV init, OpenRC, systemd, hoặc không dùng init nào để tự cung cấp. Yocto chọn init qua biến <code>INIT_MANAGER</code> với các giá trị <code>systemd</code>, <code>sysvinit</code>, <code>mdev-busybox</code> và <code>none</code>.</p>
 <p>Với rootfs nhỏ và ít dịch vụ, BusyBox init đủ dùng và gần như không tốn thêm dung lượng vì nằm sẵn trong binary BusyBox. Khi hệ thống có nhiều dịch vụ phụ thuộc nhau, cần tự khởi động lại dịch vụ lỗi hoặc cần quản lý watchdog, systemd hoặc một init có giám sát phù hợp hơn, đổi lại rootfs lớn hơn.</p>
+<h2 id="busybox-init">BusyBox init<a class="headerlink" href="#busybox-init" title="Permanent link">¶</a></h2>
+<p>BusyBox init là applet <code>init</code> nằm sẵn trong binary BusyBox. Init này đọc cấu hình từ <code>/etc/inittab</code>, chạy các lệnh khởi động theo thứ tự, rồi giữ một số process luôn chạy. BusyBox init không hỗ trợ runlevel.</p>
+<h3 id="file-inittab-cua-busybox">File inittab của BusyBox<a class="headerlink" href="#file-inittab-cua-busybox" title="Permanent link">¶</a></h3>
+<p>Mỗi dòng trong <code>/etc/inittab</code> có bốn trường, cùng hình thức với SysV init nhưng ý nghĩa khác ở hai trường đầu:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>&lt;id&gt;:&lt;runlevels&gt;:&lt;action&gt;:&lt;process&gt;
+</code></pre></div>
+<ul>
+<li><code>&lt;id&gt;</code> là tên tty điều khiển của process, được nối vào sau <code>/dev/</code>. Để trống thì process dùng stdin và stdout của init, tức là console.</li>
+<li><code>&lt;runlevels&gt;</code> bị bỏ qua hoàn toàn.</li>
+<li><code>&lt;action&gt;</code> quyết định thời điểm chạy và cách init xử lý process.</li>
+<li><code>&lt;process&gt;</code> là lệnh cần chạy.</li>
+</ul>
+<p>Các action được xử lý theo thứ tự sau:</p>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Thời điểm và cách chạy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sysinit</code></td>
+<td>Chạy đầu tiên, init chờ từng lệnh kết thúc</td>
+</tr>
+<tr>
+<td><code>wait</code></td>
+<td>Chạy sau <code>sysinit</code>, init chờ kết thúc</td>
+</tr>
+<tr>
+<td><code>once</code></td>
+<td>Chạy tiếp theo, init không chờ</td>
+</tr>
+<tr>
+<td><code>respawn</code></td>
+<td>Chạy sau cùng, init chạy lại process mỗi khi nó kết thúc</td>
+</tr>
+<tr>
+<td><code>askfirst</code></td>
+<td>Giống <code>respawn</code>, nhưng in dòng "Please press Enter to activate this console" và chờ nhấn Enter trước khi chạy</td>
+</tr>
+<tr>
+<td><code>ctrlaltdel</code></td>
+<td>Chạy khi init nhận <code>SIGINT</code>, tín hiệu kernel gửi khi nhấn Ctrl-Alt-Del</td>
+</tr>
+<tr>
+<td><code>shutdown</code></td>
+<td>Chạy khi halt, reboot hoặc poweroff</td>
+</tr>
+<tr>
+<td><code>restart</code></td>
+<td>Chương trình thay thế init khi init nhận <code>SIGQUIT</code>, chạy sau các lệnh <code>shutdown</code></td>
+</tr>
+</tbody>
+</table>
+<p>BusyBox init vẫn chạy được khi không có file <code>inittab</code>. Khi đó init dùng cấu hình mặc định: chạy <code>/etc/init.d/rcS</code> ở bước <code>sysinit</code>, mở shell kiểu <code>askfirst</code> trên console và tty2 đến tty4, chạy <code>reboot</code> khi nhấn Ctrl-Alt-Del, chạy <code>umount -a -r</code> và <code>swapoff -a</code> khi tắt máy.</p>
+<p>Init phản ứng với một số signal: <code>SIGHUP</code> yêu cầu đọc lại <code>/etc/inittab</code>, <code>SIGUSR1</code> là halt, <code>SIGUSR2</code> là poweroff và <code>SIGTERM</code> là reboot. Các lệnh <code>halt</code>, <code>poweroff</code> và <code>reboot</code> của BusyBox dùng cơ chế này để yêu cầu init tắt hệ thống.</p>
+<h3 id="script-khoi-ong-trong-buildroot">Script khởi động trong Buildroot<a class="headerlink" href="#script-khoi-ong-trong-buildroot" title="Permanent link">¶</a></h3>
+<p>Buildroot cung cấp sẵn một <code>inittab</code> cho BusyBox init. Phần chính của file này mount các filesystem, rồi gọi <code>/etc/init.d/rcS</code> ở bước <code>sysinit</code> và <code>/etc/init.d/rcK</code> ở bước <code>shutdown</code>:</p>
+<div class="highlight"><span class="filename">/etc/inittab (Buildroot, rút gọn)</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>::sysinit:/bin/mount -t proc proc /proc
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>::sysinit:/bin/mount -o remount,rw /
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>::sysinit:/bin/mount -a
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>::sysinit:/bin/hostname -F /etc/hostname
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a># now run any rc scripts
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>::sysinit:/etc/init.d/rcS
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a># Put a getty on the serial port
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>ttyS0::respawn:/sbin/getty -L ttyS0 115200 vt100
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a># Stuff to do before rebooting
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>::shutdown:/etc/init.d/rcK
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>::shutdown:/bin/umount -a -r
+</code></pre></div>
+<p>Script <code>rcS</code> chạy lần lượt mọi file khớp mẫu <code>/etc/init.d/S??*</code> theo thứ tự tên, với tham số <code>start</code>. Script <code>rcK</code> chạy các file đó theo thứ tự ngược lại, với tham số <code>stop</code>. File có đuôi <code>.sh</code> được source trong shell hiện tại thay vì chạy thành process riêng. Vì vậy, thứ tự khởi động dịch vụ được quyết định bằng hai chữ số trong tên file, ví dụ <code>S40network</code> chạy trước <code>S50sshd</code>.</p>
+<p>Một script khởi động cho daemon tự viết có dạng:</p>
+<div class="highlight"><span class="filename">/etc/init.d/S60sensord</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="ch">#!/bin/sh</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nv">DAEMON</span><span class="o">=</span>/usr/bin/sensord
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nv">PIDFILE</span><span class="o">=</span>/var/run/sensord.pid
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="k">case</span><span class="w"> </span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="w"> </span><span class="k">in</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>start<span class="o">)</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span>start-stop-daemon<span class="w"> </span>-S<span class="w"> </span>-q<span class="w"> </span>-b<span class="w"> </span>-m<span class="w"> </span>-p<span class="w"> </span><span class="s2">"</span><span class="nv">$PIDFILE</span><span class="s2">"</span><span class="w"> </span>-x<span class="w"> </span><span class="s2">"</span><span class="nv">$DAEMON</span><span class="s2">"</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="p">;;</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>stop<span class="o">)</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span>start-stop-daemon<span class="w"> </span>-K<span class="w"> </span>-q<span class="w"> </span>-p<span class="w"> </span><span class="s2">"</span><span class="nv">$PIDFILE</span><span class="s2">"</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="p">;;</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>restart<span class="o">)</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="s2">"</span><span class="nv">$0</span><span class="s2">"</span><span class="w"> </span>stop
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="s2">"</span><span class="nv">$0</span><span class="s2">"</span><span class="w"> </span>start
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="p">;;</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>*<span class="o">)</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Usage: </span><span class="nv">$0</span><span class="s2"> {start|stop|restart}"</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">    </span><span class="p">;;</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="k">esac</span>
+</code></pre></div>
+<p>Trong lệnh <code>start-stop-daemon</code>, <code>-S</code> là khởi động và <code>-K</code> là dừng, <code>-b</code> đưa process xuống chạy nền, <code>-m</code> cùng <code>-p</code> ghi PID vào file để dùng khi dừng.</p>
+<h3 id="giam-sat-dich-vu-bang-respawn">Giám sát dịch vụ bằng respawn<a class="headerlink" href="#giam-sat-dich-vu-bang-respawn" title="Permanent link">¶</a></h3>
+<p>Daemon khởi động từ script trong <code>/etc/init.d/</code> không được init theo dõi. Khi cần init tự chạy lại một daemon, có thể khai báo daemon đó bằng action <code>respawn</code> ngay trong <code>inittab</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>::respawn:/usr/bin/sensord
+</code></pre></div>
+<p>Với cách này, daemon phải chạy ở foreground, không tự fork xuống nền, vì init coi process đã kết thúc ngay khi process ban đầu thoát. BusyBox init không có giới hạn số lần chạy lại hay khai báo phụ thuộc giữa các dịch vụ, nên cách này chỉ phù hợp với một vài dịch vụ đơn giản. Getty trên serial console cũng được khai báo bằng <code>respawn</code>, xem trang <a href="../serial-console/#ang-nhap-qua-serial-console">Serial console</a>.</p>
 <h2 id="sysv-init-va-update-rcd">SysV init và update-rc.d<a class="headerlink" href="#sysv-init-va-update-rcd" title="Permanent link">¶</a></h2>
-<p><a href="http://wiki.linuxquestions.org/wiki/Update-rc.d">Update-rc.d</a> - wiki.linuxquestions.org</p>
+<p>SysV init là init truyền thống của Linux, do gói sysvinit cung cấp. Khác với BusyBox init, SysV init tổ chức việc khởi động theo runlevel và dùng các symlink trong <code>/etc/rcN.d/</code> để quyết định dịch vụ nào chạy ở runlevel nào.</p>
+<h3 id="runlevel">Runlevel<a class="headerlink" href="#runlevel" title="Permanent link">¶</a></h3>
+<p>Runlevel là một cấu hình phần mềm của hệ thống, quy định nhóm process nào được chạy. SysV init có các runlevel 0 đến 6 và S:</p>
+<table>
+<thead>
+<tr>
+<th>Runlevel</th>
+<th>Ý nghĩa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S</td>
+<td>Khởi tạo hệ thống lúc boot</td>
+</tr>
+<tr>
+<td>0</td>
+<td>Dừng hệ thống (halt)</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Chế độ một người dùng (single-user)</td>
+</tr>
+<tr>
+<td>2 đến 5</td>
+<td>Chế độ nhiều người dùng (multi-user)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Khởi động lại</td>
+</tr>
+</tbody>
+</table>
+<p>Runlevel mặc định sau khi boot do dòng <code>initdefault</code> trong <code>/etc/inittab</code> chỉ định. Lệnh <code>telinit &lt;N&gt;</code> yêu cầu init chuyển sang runlevel khác trong lúc hệ thống đang chạy.</p>
+<h3 id="file-inittab-cua-sysv-init">File inittab của SysV init<a class="headerlink" href="#file-inittab-cua-sysv-init" title="Permanent link">¶</a></h3>
+<p>Mỗi dòng trong <code>/etc/inittab</code> có dạng <code>id:runlevels:action:process</code>. Ở đây <code>id</code> là một định danh duy nhất của dòng, còn <code>runlevels</code> liệt kê các runlevel mà dòng đó có hiệu lực. Ví dụ dưới đây lấy từ <code>inittab</code> của OpenEmbedded-Core:</p>
+<div class="highlight"><span class="filename">/etc/inittab</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>id:5:initdefault:
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>si::sysinit:/etc/init.d/rcS
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>l0:0:wait:/etc/init.d/rc 0
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>l1:1:wait:/etc/init.d/rc 1
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>l2:2:wait:/etc/init.d/rc 2
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>l3:3:wait:/etc/init.d/rc 3
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>l4:4:wait:/etc/init.d/rc 4
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>l5:5:wait:/etc/init.d/rc 5
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>l6:6:wait:/etc/init.d/rc 6
+</code></pre></div>
+<p>Các action thường gặp:</p>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Ý nghĩa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>initdefault</code></td>
+<td>Chỉ định runlevel vào sau khi boot; trường <code>process</code> bị bỏ qua</td>
+</tr>
+<tr>
+<td><code>sysinit</code></td>
+<td>Chạy lúc boot, trước các dòng <code>boot</code> và <code>bootwait</code>; trường <code>runlevels</code> bị bỏ qua</td>
+</tr>
+<tr>
+<td><code>wait</code></td>
+<td>Chạy một lần khi vào runlevel, init chờ process kết thúc</td>
+</tr>
+<tr>
+<td><code>once</code></td>
+<td>Chạy một lần khi vào runlevel, init không chờ</td>
+</tr>
+<tr>
+<td><code>respawn</code></td>
+<td>Chạy lại process mỗi khi nó kết thúc, thường dùng cho getty</td>
+</tr>
+<tr>
+<td><code>ctrlaltdel</code></td>
+<td>Chạy khi nhấn Ctrl-Alt-Del</td>
+</tr>
+</tbody>
+</table>
+<p>Khi đổi runlevel, các process không được khai báo cho runlevel mới bị kết thúc, trước tiên bằng <code>SIGTERM</code>, sau đó bằng <code>SIGKILL</code>.</p>
+<h3 id="thu-muc-initd-va-rcnd">Thư mục init.d và rcN.d<a class="headerlink" href="#thu-muc-initd-va-rcnd" title="Permanent link">¶</a></h3>
+<p>Script của từng dịch vụ đặt trong <code>/etc/init.d/</code> và nhận tham số <code>start</code> hoặc <code>stop</code>, cùng dạng với script ở mục <a href="#script-khoi-ong-trong-buildroot">Script khởi động trong Buildroot</a>. Mỗi runlevel <code>N</code> có một thư mục <code>/etc/rcN.d/</code> chứa các symlink trỏ tới script trong <code>/etc/init.d/</code>, đặt tên theo quy ước:</p>
+<ul>
+<li><code>S&lt;NN&gt;&lt;tên&gt;</code>: chạy script với tham số <code>start</code> khi vào runlevel.</li>
+<li><code>K&lt;NN&gt;&lt;tên&gt;</code>: chạy script với tham số <code>stop</code> khi vào runlevel.</li>
+</ul>
+<p>Khi vào runlevel <code>N</code>, script <code>/etc/init.d/rc N</code> chạy các symlink <code>K</code> trước rồi tới các symlink <code>S</code>, mỗi nhóm theo thứ tự tên. Hai chữ số <code>NN</code> vì vậy quyết định thứ tự khởi động và dừng. Ví dụ <code>/etc/rc5.d/S90crond</code> khởi động <code>crond</code> gần cuối quá trình vào runlevel 5, còn <code>/etc/rc6.d/K60crond</code> dừng <code>crond</code> khi reboot.</p>
+<h3 id="update-rcd">update-rc.d<a class="headerlink" href="#update-rcd" title="Permanent link">¶</a></h3>
+<p><code>update-rc.d</code> là công cụ tạo và xóa các symlink trong <code>/etc/rcN.d/</code>, thay cho việc tạo symlink bằng tay. Hướng dẫn sử dụng: <a href="http://wiki.linuxquestions.org/wiki/Update-rc.d">Update-rc.d</a> - wiki.linuxquestions.org.</p>
+<p>Trên Debian và Ubuntu, <code>update-rc.d</code> thuộc gói init-system-helpers. Bản 1.66 có các dạng lệnh sau:</p>
+<table>
+<thead>
+<tr>
+<th>Lệnh</th>
+<th>Tác dụng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>update-rc.d &lt;tên&gt; defaults</code></td>
+<td>Tạo symlink theo runlevel khai báo trong chính script</td>
+</tr>
+<tr>
+<td><code>update-rc.d &lt;tên&gt; defaults-disabled</code></td>
+<td>Như <code>defaults</code>, nhưng dịch vụ ở trạng thái tắt</td>
+</tr>
+<tr>
+<td><code>update-rc.d &lt;tên&gt; enable</code> hoặc <code>disable</code></td>
+<td>Bật hoặc tắt dịch vụ</td>
+</tr>
+<tr>
+<td><code>update-rc.d [-f] &lt;tên&gt; remove</code></td>
+<td>Xóa các symlink của dịch vụ</td>
+</tr>
+</tbody>
+</table>
+<p>Với <code>defaults</code>, <code>update-rc.d</code> của Debian đọc runlevel từ hai dòng <code>Default-Start</code> và <code>Default-Stop</code> trong phần chú thích đầu script (LSB header):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">### BEGIN INIT INFO</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1"># Provides:          sensord</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1"># Required-Start:    $remote_fs $syslog</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Required-Stop:     $remote_fs $syslog</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1"># Default-Start:     2 3 4 5</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="c1"># Default-Stop:      0 1 6</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># Short-Description: Sensor daemon</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="c1">### END INIT INFO</span>
+</code></pre></div>
+<p>Yocto có một bản <code>update-rc.d</code> riêng, viết bằng shell, và class <code>update-rc.d</code> để recipe khai báo script khởi động. Recipe đặt tên script trong <code>INITSCRIPT_NAME</code> và tham số trong <code>INITSCRIPT_PARAMS</code>; giá trị mặc định của tham số là <code>defaults</code>. Class này thêm lệnh gọi <code>update-rc.d</code> vào script postinst và prerm của package. Ví dụ từ recipe <code>cronie</code> của OpenEmbedded-Core:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">inherit</span><span class="w"> </span><span class="s">update-rc.d</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nv">INITSCRIPT_NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"crond"</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nv">INITSCRIPT_PARAMS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"start 90 2 3 4 5 . stop 60 0 1 6 ."</span>
+</code></pre></div>
+<p>Tham số trên tạo symlink <code>S90crond</code> trong các runlevel 2 đến 5 và <code>K60crond</code> trong các runlevel 0, 1 và 6. Cú pháp <code>start &lt;NN&gt; &lt;runlevel...&gt; .</code> có hiệu lực với bản <code>update-rc.d</code> trong Yocto. Bản của Debian (1.66) vẫn nhận <code>start</code> và <code>stop</code> nhưng bỏ qua các tham số đi kèm và tạo symlink theo <code>Default-Start</code>, <code>Default-Stop</code> trong LSB header.</p>
 <h2 id="systemd">systemd<a class="headerlink" href="#systemd" title="Permanent link">¶</a></h2>
 <p>systemd là trình quản lý hệ thống và dịch vụ (system and service manager), chạy với vai trò PID 1. Lennart Poettering giới thiệu systemd năm 2010 với mục tiêu khởi động dịch vụ song song nhiều nhất có thể, thay vì chạy tuần tự từng script như SysV init. Trên hệ thống dùng systemd, <code>/sbin/init</code> thường là symlink tới binary systemd, nên kernel vẫn tìm thấy init theo đường dẫn mặc định.</p>
 <p>Ngoài PID 1, dự án systemd gồm nhiều thành phần khác như <code>systemd-journald</code> (thu thập log), <code>systemd-udevd</code> (quản lý device node) và <code>systemd-networkd</code> (cấu hình mạng). Các thành phần này có thể bật hoặc tắt khi build, nên một image nhúng không nhất thiết phải chứa toàn bộ.</p>
@@ -15532,17 +15974,17 @@
 <p>Có thể chọn target khác cho một lần boot bằng tham số <code>systemd.unit=</code> trên kernel command line, ví dụ <code>systemd.unit=rescue.target</code> để vào chế độ sửa lỗi.</p>
 <h3 id="unit-file-cho-mot-dich-vu">Unit file cho một dịch vụ<a class="headerlink" href="#unit-file-cho-mot-dich-vu" title="Permanent link">¶</a></h3>
 <p>Ví dụ sau là unit file cho một daemon tự viết trên board, đặt tại <code>/etc/systemd/system/sensord.service</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">[Unit]</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="na">Description</span><span class="o">=</span><span class="s">Sensor daemon</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="na">After</span><span class="o">=</span><span class="s">network.target</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">[Service]</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="na">Type</span><span class="o">=</span><span class="s">simple</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="na">ExecStart</span><span class="o">=</span><span class="s">/usr/bin/sensord</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="na">Restart</span><span class="o">=</span><span class="s">on-failure</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="k">[Install]</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">[Unit]</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="na">Description</span><span class="o">=</span><span class="s">Sensor daemon</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="na">After</span><span class="o">=</span><span class="s">network.target</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="k">[Service]</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="na">Type</span><span class="o">=</span><span class="s">simple</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="na">ExecStart</span><span class="o">=</span><span class="s">/usr/bin/sensord</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="na">Restart</span><span class="o">=</span><span class="s">on-failure</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="k">[Install]</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
 </code></pre></div>
 <p>Mục <code>[Unit]</code> chứa mô tả và quan hệ với các unit khác. Mục <code>[Service]</code> mô tả cách chạy process: <code>Type=simple</code> coi dịch vụ đã khởi động ngay khi process được tạo, còn <code>Restart=on-failure</code> yêu cầu systemd chạy lại process khi nó thoát với mã lỗi hoặc bị signal kết thúc. Mục <code>[Install]</code> chỉ được dùng bởi <code>systemctl enable</code>: lệnh này tạo symlink tới unit file trong <code>/etc/systemd/system/multi-user.target.wants/</code>, nhờ đó dịch vụ được kéo theo khi hệ thống boot tới <code>multi-user.target</code>.</p>
 <h3 id="lenh-thuong-dung">Lệnh thường dùng<a class="headerlink" href="#lenh-thuong-dung" title="Permanent link">¶</a></h3>
@@ -15610,6 +16052,8 @@
 <li><a href="../../../lnx_kernel/kernel_cmdline/">Kernel Command Line</a> (Linux Kernel): tham số <code>init=</code> và các tham số truyền cho init.</li>
 <li><a href="../../../virtualization/container/docker/">Docker</a> (Virtualization): process đầu tiên trong container.</li>
 <li><a href="../../tool_chain/buildroot/buildroot-package/">Buildroot package</a> (Embedded): cài unit file của systemd khi đóng gói phần mềm.</li>
+<li><a href="../serial-console/">Serial console</a>: getty trên cổng serial với BusyBox init và systemd.</li>
+<li><a href="../rootfs/">Root filesystem cho thiết bị</a>: rootfs chỉ đọc và các filesystem init cần mount.</li>
 </ul>
 <h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
 <ul>
@@ -15618,6 +16062,14 @@
 <li><a href="https://man7.org/linux/man-pages/man2/prctl.2.html">prctl(2)</a>, mục <code>PR_SET_CHILD_SUBREAPER</code>: orphan process được gán lại cho init.</li>
 <li><a href="https://buildroot.org/downloads/manual/manual.html">Buildroot user manual</a>, mục "Init system": các init Buildroot hỗ trợ và init mặc định.</li>
 <li><a href="https://docs.yoctoproject.org/ref-manual/variables.html#term-INIT_MANAGER">Yocto Project Reference Manual: INIT_MANAGER</a>.</li>
+<li><a href="https://github.com/mirror/busybox/blob/master/examples/inittab">BusyBox examples/inittab</a>: cú pháp <code>inittab</code> của BusyBox, các action và cấu hình mặc định khi không có <code>inittab</code>.</li>
+<li><a href="https://github.com/mirror/busybox/blob/master/init/init.c">BusyBox init/init.c</a>: xử lý signal của BusyBox init.</li>
+<li><a href="https://github.com/buildroot/buildroot/blob/master/package/busybox/inittab">Buildroot package/busybox/inittab</a> và <a href="https://github.com/buildroot/buildroot/tree/master/package/initscripts/init.d">package/initscripts/init.d</a>: <code>inittab</code>, <code>rcS</code> và <code>rcK</code> của Buildroot.</li>
+<li><a href="https://github.com/slicer69/sysvinit/blob/main/man/init.8">sysvinit: init(8)</a> và <a href="https://github.com/slicer69/sysvinit/blob/main/man/inittab.5">inittab(5)</a>: runlevel, <code>telinit</code>, cú pháp <code>inittab</code> của SysV init.</li>
+<li><a href="https://github.com/openembedded/openembedded-core/blob/master/meta/recipes-core/sysvinit/sysvinit-inittab/inittab">OpenEmbedded-Core: sysvinit-inittab</a> và <a href="https://github.com/openembedded/openembedded-core/blob/master/meta/recipes-core/sysvinit/sysvinit/rc">script rc</a>: <code>inittab</code> mẫu và cách chạy symlink <code>K</code>, <code>S</code>.</li>
+<li><code>update-rc.d</code> của gói init-system-helpers 1.66 (Ubuntu): thông báo hướng dẫn sử dụng của lệnh và mã nguồn script <code>/usr/sbin/update-rc.d</code>.</li>
+<li><a href="https://github.com/philb/update-rc.d/blob/master/update-rc.d">update-rc.d</a>: bản <code>update-rc.d</code> viết bằng shell mà Yocto dùng, cú pháp <code>start|stop NN runlvl ... .</code>.</li>
+<li><a href="https://github.com/openembedded/openembedded-core/blob/master/meta/classes-recipe/update-rc.d.bbclass">OpenEmbedded-Core: update-rc.d.bbclass</a> và <a href="https://github.com/openembedded/openembedded-core/tree/master/meta/recipes-extended/cronie">recipe cronie</a>: <code>INITSCRIPT_NAME</code>, <code>INITSCRIPT_PARAMS</code>.</li>
 <li><a href="https://github.com/OpenRC/openrc">OpenRC</a>, README và tài liệu <code>supervise-daemon</code>.</li>
 <li><a href="https://smarden.org/runit/">runit</a> và <a href="https://skarnet.org/software/s6/">s6</a>, trang chủ dự án.</li>
 <li><a href="https://github.com/just-containers/s6-overlay">s6-overlay</a>.</li>
@@ -15656,7 +16108,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 4, 2026 04:44:05 UTC">November 4, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 10, 2026 00:13:06 UTC">November 10, 2026</span>
   </span>
 
     
