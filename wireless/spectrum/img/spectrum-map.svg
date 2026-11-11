@@ -25,8 +25,16 @@
 <text x="14" y="182" font-size="12" font-weight="700" fill="#333">NR FR1</text>
 <rect x="140.9" y="168" width="26.0" height="20" rx="3" fill="#b7791f"/>
 <text x="153.9" y="163" font-size="10.5" font-weight="700" text-anchor="middle" fill="#b7791f">n28</text>
+<rect x="184.8" y="168" width="17.0" height="20" rx="3" fill="#b7791f"/>
+<text x="193.3" y="151" font-size="10.5" font-weight="700" text-anchor="middle" fill="#b7791f">n8</text>
+<rect x="314.5" y="168" width="18.5" height="20" rx="3" fill="#b7791f"/>
+<text x="323.7" y="163" font-size="10.5" font-weight="700" text-anchor="middle" fill="#b7791f">n3</text>
+<rect x="337.1" y="168" width="23.9" height="20" rx="3" fill="#b7791f"/>
+<text x="349.1" y="151" font-size="10.5" font-weight="700" text-anchor="middle" fill="#b7791f">n1</text>
+<rect x="372.4" y="168" width="8.3" height="20" rx="3" fill="#b7791f"/>
+<text x="376.5" y="163" font-size="10.5" font-weight="700" text-anchor="middle" fill="#b7791f">n40</text>
 <rect x="388.3" y="168" width="14.6" height="20" rx="3" fill="#b7791f"/>
-<text x="395.6" y="163" font-size="10.5" font-weight="700" text-anchor="middle" fill="#b7791f">n41</text>
+<text x="395.6" y="151" font-size="10.5" font-weight="700" text-anchor="middle" fill="#b7791f">n41</text>
 <rect x="442.9" y="168" width="27.5" height="20" rx="3" fill="#b7791f"/>
 <text x="456.6" y="163" font-size="10.5" font-weight="700" text-anchor="middle" fill="#b7791f">n78</text>
 <rect x="499.0" y="168" width="25.0" height="20" rx="3" fill="#b7791f"/>
@@ -43,6 +51,8 @@
 <text x="14" y="276" font-size="12" font-weight="700" fill="#333">NR FR2</text>
 <rect x="832.3" y="262" width="24.6" height="20" rx="3" fill="#b7791f"/>
 <text x="844.6" y="257" font-size="10.5" font-weight="700" text-anchor="middle" fill="#b7791f">n258</text>
+<rect x="856.8" y="262" width="5.9" height="20" rx="3" fill="#b7791f"/>
+<text x="859.8" y="245" font-size="10.5" font-weight="700" text-anchor="middle" fill="#b7791f">n261</text>
 <rect x="914.8" y="262" width="15.2" height="20" rx="3" fill="#b7791f"/>
 <text x="915.0" y="257" font-size="10.5" font-weight="700" text-anchor="middle" fill="#b7791f">n260</text>
 <rect x="849.6" y="304" width="20.9" height="20" rx="3" fill="#b7791f"/>
