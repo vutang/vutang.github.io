@@ -1,4 +1,4 @@
-<svg role="img" viewBox="0 0 960 380" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+<svg role="img" viewBox="0 0 960 407.79" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
   <title>So sánh đồng hồ không đồng bộ, đồng bộ tần số và đồng bộ pha so với đồng hồ tham chiếu</title>
   <rect x="0" y="0" width="960" height="380" rx="8" fill="#ffffff"/>
   <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#7a5a00"/></marker><marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#b42318"/></marker></defs>
@@ -49,4 +49,5 @@
   <text x="865" y="189" font-size="10.5" font-weight="700" text-anchor="middle" fill="#b42318">lệch tăng</text>
   <text x="480" y="352" font-size="10.5" text-anchor="middle" fill="#333">Mỗi xung là một mốc thời gian của đồng hồ (ví dụ 1PPS). Đường nét đứt là mốc của đồng hồ tham chiếu.</text>
   <text x="480" y="368" font-size="10.5" text-anchor="middle" fill="#333">FDD chỉ cần đồng bộ tần số, TDD cần thêm đồng bộ pha để các trạm chuyển uplink/downlink cùng lúc.</text>
+<text id="wm" x="948.88" y="399.45" text-anchor="end" font-size="13.89" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
 </svg>

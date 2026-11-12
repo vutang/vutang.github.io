@@ -1,4 +1,4 @@
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 40 730 125' role='img' aria-label='Bản đồ lựa chọn silicon: Ericsson gần ASIC, Samsung ở CPU đa dụng, Nokia hướng tới GPU' font-family='system-ui,sans-serif'>
+<svg xmlns='http://www.w3.org/2000/svg' viewBox="0 40 730 146.13" role='img' aria-label='Bản đồ lựa chọn silicon: Ericsson gần ASIC, Samsung ở CPU đa dụng, Nokia hướng tới GPU' font-family='system-ui,sans-serif'>
 <defs>
 <linearGradient id='g' x1='0' x2='1'><stop offset='0' stop-color='#c2412d'/><stop offset='.5' stop-color='#d98a1f'/><stop offset='1' stop-color='#2e8b57'/></linearGradient>
 <marker id='a2' markerWidth='7' markerHeight='7' refX='6' refY='3.5' orient='auto'><path d='M0 0 L7 3.5 L0 7 z' fill='#1b2430'/></marker>
@@ -25,4 +25,5 @@
 <text x='515' y='137' font-size='8.2' fill='#1b2430'>NVIDIA đầu tư 1 tỷ USD, làm L1 tương thích GPU</text>
 <text x='515' y='149' font-size='8.2' fill='#1b2430'>Marvell vẫn là đối tác L1 chính hiện tại</text>
 <path d='M515 107 L515 80' stroke='#1b2430' stroke-width='1.5' marker-end='url(#a2)'/>
+<text id="wm" x="721.55" y="179.79" text-anchor="end" font-size="10.57" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
 </svg>

@@ -1,4 +1,4 @@
-<svg font-family='IBM Plex Sans,Segoe UI,Roboto,Arial,sans-serif' aria-label="Dòng thời gian các thế hệ Octeon" role="img" viewBox="0 0 714 150" xmlns="http://www.w3.org/2000/svg">
+<svg font-family='IBM Plex Sans,Segoe UI,Roboto,Arial,sans-serif' aria-label="Dòng thời gian các thế hệ Octeon" role="img" viewBox="0 0 714 170.67" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="714" height="150" rx="6" style="fill:#FFFFFF;stroke:#DDD8CD"/>
       <text x="16" y="19" font-size="9.5" font-weight="800" style="fill:#1B1B1A">Các thế hệ Octeon dùng lõi Arm</text>
       
@@ -80,4 +80,5 @@
         <text x="564" y="113" font-size="7.6" font-weight="800" text-anchor="middle" style="fill:#1B1B1A">Fusion thế hệ sau?</text>
         <text x="564" y="124" font-size="6.8" text-anchor="middle" style="fill:#4A4945">chưa có thông tin công khai</text>
       </g>
-    </svg>
+    <text id="wm" x="705.73" y="164.47" text-anchor="end" font-size="10.33" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
+</svg>

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="900" height="730" viewBox="0 0 900 730">
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="756.05" viewBox="0 0 900 756.05">
 <defs>
 <marker id="arrow3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
 <path d="M2 1L8 5L2 9" fill="none" stroke="#888780" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -40,4 +40,5 @@
 <rect x="200" y="620" width="500" height="90" rx="12" fill="#EEEDFE" stroke="#534AB7" stroke-width="1.5"/>
 <text x="450" y="657" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#26215C" text-anchor="middle">5. Điều chỉnh &amp; tổng hợp lên cấp cao hơn</text>
 <text x="450" y="683" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#3C3489" text-anchor="middle">Criticality · Asset Group · Site Risk Score</text>
+<text id="wm" x="889.58" y="748.24" text-anchor="end" font-size="13.03" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
 </svg>

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 860 330" font-family="Helvetica, Arial, sans-serif" font-size="13">
+<svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 860 354.89" font-family="Helvetica, Arial, sans-serif" font-size="13">
   <title>Đảo ngược ưu tiên: task L giữ khóa, task H chờ khóa, task M ưu tiên trung bình chiếm CPU của L nên H chờ không giới hạn; với kế thừa ưu tiên, L nhận ưu tiên của H, M không chen vào được, L trả khóa sớm và H chạy</title>
   <rect width="860" height="330" fill="#ffffff"/>
   <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
@@ -44,4 +44,5 @@
   <text x="630.0" y="248.0" text-anchor="middle" fill="#1f2d3d" font-size="10.5">M chạy sau</text>
   <line x1="300" y1="150" x2="300" y2="150" stroke="#555" stroke-width="1.5"/>
   <text x="430" y="322" text-anchor="middle" fill="#1f2d3d" font-size="11">Thời gian H phải chờ chỉ còn bằng thời gian L giữ khóa, không phụ thuộc task M</text>
+<text id="wm" x="850.04" y="347.43" text-anchor="end" font-size="12.45" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
 </svg>

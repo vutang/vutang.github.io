@@ -1,4 +1,4 @@
-<svg role="img" viewBox="0 0 800 330" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+<svg role="img" viewBox="0 0 800 353.16" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
   <title>Chiều dài edge connector và số chân của card PCIe x1, x4, x8 và x16, vẽ theo cùng tỉ lệ; key notch ở cùng vị trí trên mọi độ rộng</title>
   <rect x="0" y="0" width="800" height="330" rx="8" fill="#ffffff"/>
   <text x="400" y="28" font-size="14" font-weight="700" fill="#333333" text-anchor="middle">Edge connector theo độ rộng link (cùng tỉ lệ)</text>
@@ -28,4 +28,5 @@
   <text x="183" y="313" font-size="10" fill="#555555" text-anchor="middle">tín hiệu sideband</text>
   <text x="450" y="300" font-size="10" fill="#555555" text-anchor="middle">đoạn dài: các cặp vi sai TX/RX của từng lane và clock tham chiếu,</text>
   <text x="450" y="313" font-size="10" fill="#555555" text-anchor="middle">kéo dài thêm khi số lane tăng</text>
+<text id="wm" x="790.74" y="346.21" text-anchor="end" font-size="11.58" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
 </svg>

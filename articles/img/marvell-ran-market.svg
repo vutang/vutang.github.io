@@ -1,4 +1,4 @@
-<svg font-family='IBM Plex Sans,Segoe UI,Roboto,Arial,sans-serif' aria-label="Thị trường RAN và lựa chọn silicon của các nhà cung cấp" role="img" viewBox="0 0 714 176" xmlns="http://www.w3.org/2000/svg">
+<svg font-family='IBM Plex Sans,Segoe UI,Roboto,Arial,sans-serif' aria-label="Thị trường RAN và lựa chọn silicon của các nhà cung cấp" role="img" viewBox="0 0 714 196.67" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="714" height="176" rx="6" style="fill:#FFFFFF;stroke:#DDD8CD"/>
       
       <text x="14" y="19" font-size="9" font-weight="800" style="fill:#1B1B1A">Thị trường RAN toàn cầu</text>
@@ -65,4 +65,5 @@
         <rect x="400" y="157" width="16" height="9" rx="4.5" stroke-dasharray="3 2" style="fill:#FFFFFF;stroke:#0E5A66"/><text x="421" y="164.5">thăm dò, phát triển hoặc chưa quyết</text>
         <rect x="560" y="157" width="16" height="9" rx="4.5" stroke-dasharray="3 2" style="fill:#FFFFFF;stroke:#A23B12"/><text x="581" y="164.5">đang được thay thế dần</text>
       </g>
-    </svg>
+    <text id="wm" x="705.73" y="190.47" text-anchor="end" font-size="10.33" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
+</svg>

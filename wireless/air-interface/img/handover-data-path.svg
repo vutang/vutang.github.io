@@ -1,4 +1,4 @@
-<svg role="img" viewBox="0 0 960 330" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+<svg role="img" viewBox="0 0 960 357.79" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
   <title>User plane path before, during and after an X2/Xn handover</title>
   <rect x="0" y="0" width="960" height="330" rx="8" fill="#ffffff"/>
   <defs>
@@ -54,4 +54,5 @@
   <text x="798" y="306" font-size="10" text-anchor="middle" fill="#555">core moves the tunnel to target,</text>
   <text x="798" y="319.5" font-size="10" text-anchor="middle" fill="#555">end marker on the old path</text>
   <line x1="642" y1="50" x2="642" y2="320" stroke="#cbd5e1" stroke-width="1"/>
+<text id="wm" x="948.88" y="349.45" text-anchor="end" font-size="13.89" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
 </svg>

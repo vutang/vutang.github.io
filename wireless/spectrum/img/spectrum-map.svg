@@ -1,4 +1,4 @@
-<svg role="img" viewBox="0 0 960 430" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+<svg role="img" viewBox="0 0 960 457.79" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
 <title>Bản đồ phổ tần di động theo thang log: low-band, mid-band, mmWave và các band LTE, NR, 5G Việt Nam</title>
 <rect x="0" y="0" width="960" height="430" rx="8" fill="#ffffff"/>
 <rect x="110.0" y="52" width="99.7" height="318" fill="#eaf3ea"/>
@@ -89,4 +89,5 @@
 <line x1="930.0" y1="372" x2="930.0" y2="378" stroke="#555"/>
 <text x="930.0" y="392" font-size="10" text-anchor="middle" fill="#444">40</text>
 <text x="520.0" y="414" font-size="11" text-anchor="middle" fill="#444">Tần số (GHz), thang logarit</text>
+<text id="wm" x="948.88" y="449.45" text-anchor="end" font-size="13.89" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
 </svg>

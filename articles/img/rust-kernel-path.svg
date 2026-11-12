@@ -1,4 +1,4 @@
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='-10 -10 350 292' role='img' aria-label='Sơ đồ đường đi của driver Rust qua kernel crate và bindings xuống lõi nhân C, cạnh đường gọi thẳng của driver C' font-family='system-ui,sans-serif'>
+<svg xmlns='http://www.w3.org/2000/svg' viewBox="-10 -10 350 302.13" role='img' aria-label='Sơ đồ đường đi của driver Rust qua kernel crate và bindings xuống lõi nhân C, cạnh đường gọi thẳng của driver C' font-family='system-ui,sans-serif'>
 <defs><marker id='ar' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='6' markerHeight='6' orient='auto-start-reverse'><path d='M0,0 L10,5 L0,10 z' fill='#5d5a53'/></marker></defs>
 <rect x='-10' y='-10' width='350' height='292' rx='6' fill='#ffffff'/>
 <text x='95' y='13' text-anchor='middle' font-size='9' font-weight='800' fill='#b7410e' letter-spacing='1'>ĐƯỜNG CỦA RUST</text>
@@ -26,4 +26,5 @@
 <rect x='10' y='218' width='312' height='44' rx='7' fill='#24364d'/>
 <text x='166' y='236' text-anchor='middle' font-size='10.5' font-weight='800' fill='#ffffff'>Lõi nhân Linux (C)</text>
 <text x='166' y='251' text-anchor='middle' font-size='8.5' fill='#ffffff' opacity='.8'>DMA mapping · driver core · DRM · block · net · …</text>
+<text id="wm" x="335.95" y="289.09" text-anchor="end" font-size="5.07" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
 </svg>

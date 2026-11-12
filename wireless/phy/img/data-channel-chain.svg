@@ -1,4 +1,4 @@
-<svg role="img" viewBox="0 0 960 380" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+<svg role="img" viewBox="0 0 960 407.79" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
 <title>Chuỗi xử lý PDSCH và PUSCH của NR: mã hóa kênh, scrambling, điều chế, layer mapping, transform precoding ở đường lên, precoding, ánh xạ tài nguyên và tạo tín hiệu OFDM</title>
 <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
 <rect x="0" y="0" width="960" height="380" rx="8" fill="#ffffff"/>
@@ -95,4 +95,5 @@
 <rect x="630" y="318" width="14" height="14" rx="3" fill="#a23b72" fill-opacity="0.14" stroke="#a23b72"/>
 <text x="650" y="329" font-size="9.5" fill="#555">Tạo tín hiệu miền thời gian</text>
 <text x="30" y="352" font-size="9.5" fill="#666">Ở split 7.2x, iFFT và thêm CP nằm ở RU; precoding nằm ở DU (RU Category A) hoặc ở RU (Category B).</text>
+<text id="wm" x="948.88" y="399.45" text-anchor="end" font-size="13.89" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
 </svg>

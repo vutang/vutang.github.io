@@ -1,4 +1,4 @@
-<svg role="img" viewBox="0 0 960 470" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+<svg role="img" viewBox="0 0 960 497.79" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
 <title>Hệ thống JESD204 trên FPGA SoC: clock chip cấp device clock và SYSREF; converter nối với FPGA qua các lane nối tiếp; trong FPGA có PHY, link layer và transport layer; mỗi khối có một driver Linux, các driver phối hợp qua JESD204 FSM framework theo topology khai báo trong device tree</title>
 <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker><marker id="p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a23b72"/></marker></defs>
 <rect x="0" y="0" width="960" height="470" rx="8" fill="#ffffff"/>
@@ -66,4 +66,5 @@
 <line x1="845.0" y1="254" x2="845.0" y2="316" stroke="#c9d3e3" stroke-width="1.2" stroke-dasharray="3 3"/>
 <text x="485" y="428" font-size="9.5" text-anchor="middle" fill="#555">Topology (thiết bị nào nối với thiết bị nào, link nào) khai báo trong device tree bằng jesd204-device, jesd204-top-device, jesd204-inputs</text>
 <text x="485" y="444" font-size="9.5" text-anchor="middle" fill="#555">Driver converter thường là top device: nó nắm tham số của link (L, M, F, S, K...) và framework phát các tham số này tới các driver còn lại</text>
+<text id="wm" x="948.88" y="489.45" text-anchor="end" font-size="13.89" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
 </svg>

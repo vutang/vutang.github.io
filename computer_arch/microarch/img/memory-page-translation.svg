@@ -1,4 +1,4 @@
-<svg role="img" viewBox="0 0 660 340" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+<svg role="img" viewBox="0 0 660 359.11" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
   <title>Dịch địa chỉ ảo sang vật lý với page table 3 cấp (kiểu RISC-V Sv39) và đường tắt qua TLB</title>
   <defs>
     <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#444"/></marker>
@@ -50,4 +50,5 @@
   <path d="M 585 166 V 250 H 240" fill="none" stroke="#b5483a" stroke-width="1.6" stroke-dasharray="4 3" marker-end="url(#ar)"/>
   <text x="578" y="200" font-size="10" text-anchor="end" fill="#b5483a">TLB hit: có PPN</text>
   <text x="578" y="214" font-size="10" text-anchor="end" fill="#b5483a">ngay, bỏ page walk</text>
+<text id="wm" x="652.36" y="353.37" text-anchor="end" font-size="9.55" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
 </svg>

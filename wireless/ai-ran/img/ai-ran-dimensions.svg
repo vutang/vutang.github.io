@@ -1,4 +1,4 @@
-<svg role="img" viewBox="0 0 960 500" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+<svg role="img" viewBox="0 0 960 527.79" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
 <title>Ba hướng của AI-RAN: AI cho RAN với model ở SMO và Non-RT RIC, Near-RT RIC, gNB và UE theo thang thời gian; AI và RAN dùng chung hạ tầng tính toán; AI trên RAN với ứng dụng AI ở biên mạng</title>
 <rect x="0" y="0" width="960" height="500" rx="8" fill="#ffffff"/>
 <rect x="10" y="10" width="940" height="480" rx="10" fill="#f6f8fb" stroke="#c9d3e3"/>
@@ -58,4 +58,5 @@
 <text x="753" y="418" font-size="9" text-anchor="middle" fill="#555">Độ trễ thấp nhờ xử lý gần người dùng: phân tích video,</text>
 <text x="753" y="432" font-size="9" text-anchor="middle" fill="#555">điều khiển robot, ứng dụng AI tạo sinh;</text>
 <text x="753" y="446" font-size="9" text-anchor="middle" fill="#555">RAN cung cấp kết nối và có thể ưu tiên QoS cho các luồng này.</text>
+<text id="wm" x="948.88" y="519.45" text-anchor="end" font-size="13.89" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
 </svg>

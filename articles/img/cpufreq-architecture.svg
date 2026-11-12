@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-8 -8 730 166" role="img" aria-labelledby="t d" font-family="system-ui,sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-8 -8 730 187.13" role="img" aria-labelledby="t d" font-family="system-ui,sans-serif">
 <title id="t">Kiến trúc ba lớp của cpufreq</title>
 <desc id="d">Scheduler, sysfs và thermal/PM QoS đi vào cpufreq core gồm governor và policy; core gửi tần số đích hoặc min/max cộng EPP xuống scaling driver (x86 pstate, cpufreq-dt, driver dựa trên firmware); driver điều khiển phần cứng.</desc>
 <style>
@@ -38,4 +38,5 @@
 <text class="a-s" x="662" y="94" font-size="8.5">Regulator</text>
 <text class="a-s" x="662" y="116" font-size="8.5">SMU / SCP</text>
 </g>
+<text id="wm" x="713.55" y="172.79" text-anchor="end" font-size="10.57" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
 </svg>

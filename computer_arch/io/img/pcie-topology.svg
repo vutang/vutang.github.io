@@ -1,4 +1,4 @@
-<svg role="img" viewBox="0 0 960 330" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+<svg role="img" viewBox="0 0 960 357.79" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
   <title>Cấu trúc cây của PCIe: Root Complex, Switch, Endpoint</title>
   <rect x="0" y="0" width="960" height="330" rx="8" fill="#ffffff"/>
   <text x="20" y="28" font-size="14" font-weight="700" fill="#1d4278">Topology PCIe: các liên kết điểm-điểm</text>
@@ -27,4 +27,5 @@
   <text x="760" y="295" font-size="12" text-anchor="middle" font-weight="700" fill="#111">Endpoint</text>
   <rect x="820" y="270" width="120" height="40" rx="6" fill="#eef7ee" stroke="#1d4278" stroke-width="1.2"/>
   <text x="880" y="295" font-size="12" text-anchor="middle" font-weight="700" fill="#111">Endpoint</text>
+<text id="wm" x="948.88" y="349.45" text-anchor="end" font-size="13.89" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
 </svg>

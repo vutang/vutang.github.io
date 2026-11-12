@@ -1,4 +1,4 @@
-<svg role="img" viewBox="0 0 960 400" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+<svg role="img" viewBox="0 0 960 427.79" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
   <title>Phổ của các subcarrier OFDM: mỗi subcarrier đặt đỉnh đúng tại điểm các subcarrier khác bằng 0</title>
   <rect x="0" y="0" width="960" height="400" rx="8" fill="#ffffff"/>
   <text x="20" y="28" font-size="14" font-weight="700" fill="#1d4278">Các subcarrier OFDM chồng lên nhau nhưng không làm nhiễu nhau</text>
@@ -26,4 +26,5 @@
   <text x="449.5" y="84" font-size="12" fill="#333">Đỉnh của f3</text>
   <text x="480" y="352" font-size="12" text-anchor="middle" fill="#333">Tại tần số f3 (đường nét đứng), mọi subcarrier khác đều bằng 0 (các vòng tròn trắng),</text>
   <text x="480" y="370" font-size="12" text-anchor="middle" fill="#333">nên bộ thu đọc được riêng f3 mà không lẫn dữ liệu của các subcarrier bên cạnh.</text>
+<text id="wm" x="948.88" y="419.45" text-anchor="end" font-size="13.89" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
 </svg>

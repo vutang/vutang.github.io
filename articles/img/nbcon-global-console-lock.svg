@@ -1,4 +1,4 @@
-<svg role='img' viewBox="-10 -10 360 148" xmlns="http://www.w3.org/2000/svg"
+<svg role='img' viewBox="-10 -10 360 158.42" xmlns="http://www.w3.org/2000/svg"
            font-family="DejaVu Sans, sans-serif"><rect x="-10" y="-10" width="360" height="148" rx="6" fill="#ffffff"/>
         <defs>
           <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto">
@@ -33,4 +33,5 @@
               fill="none" stroke="#b8312f" stroke-width="1.3"/>
         <text x="170" y="106" font-size="8.2" text-anchor="middle" fill="#444">in lần lượt từng console, giữ khóa suốt quá trình</text>
         <text x="170" y="119" font-size="8.2" text-anchor="middle" fill="#b8312f" font-weight="700">→ tổng thời gian = Σ thời gian các console</text>
-      </svg>
+      <text id="wm" x="345.83" y="145.29" text-anchor="end" font-size="5.21" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
+</svg>

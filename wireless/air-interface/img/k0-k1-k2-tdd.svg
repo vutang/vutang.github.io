@@ -1,4 +1,4 @@
-<svg role="img" viewBox="0 0 960 400" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+<svg role="img" viewBox="0 0 960 427.79" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
 <title>Quan hệ thời gian K0, K1, K2 trên mẫu TDD DDDSU ở subcarrier spacing 30 kHz: PDSCH ở slot 0 đến 2 với K0 bằng 0, HARQ-ACK gộp ở slot uplink 4, DCI cấp phát đường lên ở slot 1 cho PUSCH ở slot 4</title>
 <defs><marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1d4278"/></marker><marker id="o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#b7791f"/></marker></defs>
 <rect x="0" y="0" width="960" height="400" rx="8" fill="#ffffff"/>
@@ -61,4 +61,5 @@
 <rect x="680" y="348" width="14" height="14" rx="3" fill="#555" fill-opacity="0.35" stroke="#555"/>
 <text x="700" y="359" font-size="9.5" fill="#555">Special slot (S)</text>
 <text x="30" y="380" font-size="9.5" fill="#666">Mũi tên xanh: thời điểm gửi HARQ-ACK. HARQ-ACK của ba slot PDSCH được gộp vào slot uplink gần nhất, nên K1 khác nhau cho từng PDSCH.</text>
+<text id="wm" x="948.88" y="419.45" text-anchor="end" font-size="13.89" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
 </svg>

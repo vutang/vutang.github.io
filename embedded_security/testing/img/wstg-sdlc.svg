@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="430" viewBox="0 0 1200 430" font-family="Arial, Helvetica, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="464.74" viewBox="0 0 1200 464.74" font-family="Arial, Helvetica, sans-serif">
 <defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#888780" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
 <rect width="1200" height="430" fill="#ffffff"/>
 <text x="600.0" y="38" font-size="24" font-weight="700" fill="#1c1c1a" text-anchor="middle">Khung kiểm thử của WSTG theo vòng đời phát triển</text>
@@ -33,4 +33,5 @@
 <text x="833" y="325" font-size="13" font-weight="700" fill="#712B13" text-anchor="middle">Chương 4: 97 test case</text>
 <line x1="833" y1="280" x2="833" y2="296" stroke="#D85A30" stroke-width="1.8"/>
 <text x="600" y="385" font-size="14" font-style="italic" fill="#5F5E5A" text-anchor="middle">Penetration test chỉ là một phần ở giai đoạn 4; WSTG khuyến nghị kiểm thử ở mọi giai đoạn.</text>
+<text id="wm" x="1186.11" y="454.32" text-anchor="end" font-size="17.37" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
 </svg>

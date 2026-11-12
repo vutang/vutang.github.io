@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="900" height="640" viewBox="0 0 900 640">
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="666.05" viewBox="0 0 900 666.05">
 <defs>
 <marker id="arrow2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
 <path d="M2 1L8 5L2 9" fill="none" stroke="#888780" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -33,4 +33,5 @@
 <rect x="200" y="515" width="500" height="90" rx="12" fill="#F1EFE8" stroke="#888780" stroke-width="1.5"/>
 <text x="450" y="552" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#2C2C2A" text-anchor="middle">4. Ghi nhận kết quả</text>
 <text x="450" y="578" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#5F5E5A" text-anchor="middle">Gửi về Security Console</text>
+<text id="wm" x="889.58" y="658.24" text-anchor="end" font-size="13.03" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
 </svg>

@@ -1,4 +1,4 @@
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 760 340' role='img' aria-label='Từ 2020 đến 2030, luôn có ít nhất một bản LTS còn được hỗ trợ' font-family='system-ui,sans-serif' font-size='13'>
+<svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 760 362" role='img' aria-label='Từ 2020 đến 2030, luôn có ít nhất một bản LTS còn được hỗ trợ' font-family='system-ui,sans-serif' font-size='13'>
 <rect x='0' y='0' width='760' height='340' rx='6' fill='#ffffff'/>
 <text x='24' y='28' font-size='15' font-weight='600' fill='#1f2933'>Từ 2020 đến 2030, luôn có ít nhất một bản LTS còn được hỗ trợ</text>
 <text x='24' y='48' font-size='11.5' fill='#5b6675'>Thời gian hỗ trợ của từng bản LTS; Blacksail 6.1 đặt cạnh để so sánh</text>
@@ -31,4 +31,5 @@
 <text x='24' y='300' font-size='11.5' fill='#5b6675'>11/2026 đến 4/2027</text>
 <text x='24' y='285' font-weight='400' fill='#1f2933'>Blacksail 6.1</text>
 <text x='551.1' y='292' font-size='11.5' fill='#5b6675'>không phải LTS</text>
+<text id="wm" x="751.2" y="355.4" text-anchor="end" font-size="11" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
 </svg>

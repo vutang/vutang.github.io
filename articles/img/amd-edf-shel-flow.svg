@@ -1,4 +1,4 @@
-<svg role="img" aria-label="SDT là điểm trung tâm của SHEL flow" viewBox="0 0 760 450" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif" font-size="13">
+<svg role="img" aria-label="SDT là điểm trung tâm của SHEL flow" viewBox="0 0 760 472" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif" font-size="13">
   <rect width="760" height="450" rx="6" fill="#ffffff"/>
   <defs><marker id="shel-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6b7280"/></marker></defs>
   <text x="24" y="34" font-size="15" font-weight="600" fill="#111827">SDT là điểm trung tâm: từ đó sinh ra machine config và device tree</text>
@@ -19,4 +19,5 @@
   <rect x="490" y="274" width="180" height="52" rx="8" fill="none" stroke="#6b7280" stroke-width="1.25"/><text x="580" y="296" text-anchor="middle" font-weight="600" fill="#111827">Device tree</text><text x="580" y="313" text-anchor="middle" font-size="11.5" fill="#4b5563">theo từng domain</text>
   <rect x="290" y="374" width="320" height="52" rx="8" fill="none" stroke="#6b7280" stroke-width="1.25"/><text x="450" y="396" text-anchor="middle" font-weight="600" fill="#111827">Yocto build (bitbake)</text><text x="450" y="413" text-anchor="middle" font-size="11.5" fill="#4b5563">meta-amd-adaptive-socs + meta-user</text>
   <text x="536" y="96" font-size="11.5" fill="#4b5563"><tspan x="536" dy="0">gồm pl.dtsi mô tả</tspan><tspan x="536" dy="16">các IP trong PL</tspan></text>
+<text id="wm" x="751.2" y="465.4" text-anchor="end" font-size="11" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
 </svg>

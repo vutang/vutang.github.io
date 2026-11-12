@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 880 510" font-family="Helvetica, Arial, sans-serif" font-size="13">
+<svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 880 535.47" font-family="Helvetica, Arial, sans-serif" font-size="13">
   <title>Read-Copy-Update trên danh sách liên kết: sao chép node B thành B' và sửa trên bản sao, đổi con trỏ của A sang B' bằng rcu_assign_pointer, rồi chờ hết grace period mới giải phóng B</title>
   <rect width="880" height="510" fill="#ffffff"/>
   <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker><marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c0392b"/></marker><marker id="arrG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2e7d32"/></marker><marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4a78b5"/></marker><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#e2e2e2" stroke-width="2"/></pattern></defs>
@@ -54,4 +54,5 @@
   <text x="335" y="458" text-anchor="middle" fill="#1f2d3d" font-weight="bold">B'</text>
   <line x1="210" y1="414" x2="298" y2="449" stroke="#2e7d32" stroke-width="2" marker-end="url(#arrG)"/>
   <line x1="370" y1="453" x2="458" y2="420" stroke="#2e7d32" stroke-width="1.5" marker-end="url(#arrG)"/>
+<text id="wm" x="869.81" y="527.83" text-anchor="end" font-size="12.74" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
 </svg>

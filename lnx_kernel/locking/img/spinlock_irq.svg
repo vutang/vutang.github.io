@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 880 420" font-family="Helvetica, Arial, sans-serif" font-size="13">
+<svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 880 445.47" font-family="Helvetica, Arial, sans-serif" font-size="13">
   <title>Trên cùng một core: với spin_lock(), handler ngắt xen vào và chờ lock mà chính code bị ngắt đang giữ nên quay vòng mãi; với spin_lock_irqsave(), ngắt bị hoãn đến khi nhả lock nên handler lấy được lock bình thường</title>
   <rect width="880" height="420" fill="#ffffff"/>
   <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker><marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c0392b"/></marker><marker id="arrG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2e7d32"/></marker><marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4a78b5"/></marker><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="#e2e2e2" stroke-width="2"/></pattern></defs>
@@ -33,4 +33,5 @@
   <text x="610" y="357" text-anchor="middle" fill="#2e7d32" font-size="11.5" font-weight="bold">lấy lock, xử lý, nhả lock</text>
   <rect x="720" y="270" width="120" height="32" rx="5" fill="#eef4fb" stroke="#4a78b5" stroke-width="1.2"/>
   <text x="780" y="291" text-anchor="middle" fill="#1f2d3d" font-size="11.5">chạy tiếp</text>
+<text id="wm" x="869.81" y="437.83" text-anchor="end" font-size="12.74" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
 </svg>

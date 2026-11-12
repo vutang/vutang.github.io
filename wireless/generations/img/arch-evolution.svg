@@ -1,4 +1,4 @@
-<svg role="img" viewBox="0 0 960 490" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+<svg role="img" viewBox="0 0 960 517.79" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
   <title>Kiến trúc mạng di động qua các thế hệ 2G, 3G, 4G và 5G: thiết bị đầu cuối, các nút của mạng truy nhập vô tuyến và các nút chính của mạng lõi</title>
   <rect x="0" y="0" width="960" height="490" rx="8" fill="#ffffff"/>
   <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker></defs>
@@ -97,4 +97,5 @@
   <line x1="505" y1="407" x2="628" y2="407" stroke="#475569" stroke-width="2.5" marker-end="url(#ar)"/>
   <text x="568" y="400" font-size="9" text-anchor="middle" fill="#555">NG</text>
   <text x="480" y="478" font-size="10" text-anchor="middle" fill="#555">Nét đứt trong RAN: giao diện giữa các trạm cùng cấp. 2G, 3G có bộ điều khiển tập trung (BSC, RNC); từ 4G chức năng này nằm trong trạm gốc.</text>
+<text id="wm" x="948.88" y="509.45" text-anchor="end" font-size="13.89" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
 </svg>

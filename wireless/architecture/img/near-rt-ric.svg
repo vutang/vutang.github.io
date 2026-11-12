@@ -1,4 +1,4 @@
-<svg role="img" viewBox="0 0 960 470" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+<svg role="img" viewBox="0 0 960 497.79" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
 <title>Cấu trúc Near-RT RIC: các xApp chạy trên nền tảng gồm terminations cho E2, A1, O1, quản lý subscription, cơ sở dữ liệu dùng chung, giải quyết xung đột, hạ tầng messaging; phía trên là SMO và Non-RT RIC, phía dưới là các E2 node O-CU-CP, O-CU-UP, O-DU</title>
 <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
 <rect x="0" y="0" width="960" height="470" rx="8" fill="#ffffff"/>
@@ -68,4 +68,5 @@
 <text x="675" y="203" font-size="9" text-anchor="middle" fill="#555">phát hiện bất thường</text>
 <text x="830" y="189" font-size="10.5" text-anchor="middle" fill="#b7791f" font-weight="700">xApp</text>
 <text x="830" y="203" font-size="9" text-anchor="middle" fill="#555">...</text>
+<text id="wm" x="948.88" y="489.45" text-anchor="end" font-size="13.89" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
 </svg>

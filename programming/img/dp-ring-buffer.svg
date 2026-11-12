@@ -1,4 +1,4 @@
-<svg role="img" viewBox="0 0 700 225" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+<svg role="img" viewBox="0 0 700 245.26" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
   <title>Ring buffer SPSC: producer ghi ở head, consumer đọc ở tail</title>
   <rect x="0" y="0" width="700" height="225" rx="8" fill="#ffffff"/>
   <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker><marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b42318"/></marker></defs>
@@ -40,4 +40,5 @@
   <line x1="518" y1="95" x2="554" y2="95" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/>
   <path d="M497.0,162 C497.0,205 203.0,205 203.0,166" fill="none" stroke="#555" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#a)"/>
   <text x="350" y="214" font-size="9" text-anchor="middle" fill="#555">quay vòng về 0 nhờ &amp; MASK</text>
+<text id="wm" x="691.89" y="239.18" text-anchor="end" font-size="10.13" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
 </svg>
