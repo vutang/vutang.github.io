@@ -22,7 +22,7 @@
 <text x="360" y="306" font-size="11" fill="#333">Băng thông đến 100 MHz</text>
 <text x="360" y="324" font-size="11" fill="#333">Vai trò: lớp dung lượng chính</text>
 <rect x="650" y="20" width="280" height="320" rx="10" fill="#fff1e0" stroke="#b7791f" stroke-width="1.3"/>
-<text x="790" y="48" font-size="15" font-weight="700" text-anchor="middle" fill="#b7791f">mmWave</text>
+<text x="790" y="48" font-size="15" font-weight="700" text-anchor="middle" fill="#6e4508">mmWave</text>
 <text x="790" y="66" font-size="11" text-anchor="middle" fill="#555">&gt; 24 GHz</text>
 <circle cx="790" cy="156" r="24" fill="#b7791f" fill-opacity="0.18" stroke="#b7791f" stroke-width="1.5"/>
 <circle cx="790" cy="156" r="4" fill="#b7791f"/>

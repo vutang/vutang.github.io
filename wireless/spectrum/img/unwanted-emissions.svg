@@ -16,7 +16,7 @@
 
 <!-- OBUE region -->
 <rect x="140" y="96" width="680" height="164" fill="#b7791f" fill-opacity="0.08"/>
-<text x="480" y="114" font-size="11" font-weight="700" text-anchor="middle" fill="#b7791f">Operating band unwanted emissions: từ biên carrier tới Δf_OBUE ngoài band</text>
+<text x="480" y="114" font-size="11" font-weight="700" text-anchor="middle" fill="#6e4508">Operating band unwanted emissions: từ biên carrier tới Δf_OBUE ngoài band</text>
 
 <!-- adjacent channels -->
 <rect x="270" y="170" width="140" height="90" fill="#2c7a4b" fill-opacity="0.14" stroke="#2c7a4b" stroke-dasharray="5 3"/>

@@ -19,21 +19,21 @@
 <text x="514" y="180" font-size="11" fill="#444" transform="rotate(-90 514 180)" text-anchor="middle">Tần số</text>
 <text x="740" y="322" font-size="11" text-anchor="middle" fill="#444">Thời gian</text>
 <rect x="575" y="140" width="33" height="70" rx="3" fill="#b7791f" fill-opacity="0.3" stroke="#b7791f"/>
-<text x="591.5" y="181" font-size="13" font-weight="700" text-anchor="middle" fill="#b7791f">D</text>
+<text x="591.5" y="181" font-size="13" font-weight="700" text-anchor="middle" fill="#6e4508">D</text>
 <rect x="610" y="140" width="33" height="70" rx="3" fill="#b7791f" fill-opacity="0.3" stroke="#b7791f"/>
-<text x="626.5" y="181" font-size="13" font-weight="700" text-anchor="middle" fill="#b7791f">D</text>
+<text x="626.5" y="181" font-size="13" font-weight="700" text-anchor="middle" fill="#6e4508">D</text>
 <rect x="645" y="140" width="33" height="70" rx="3" fill="#b7791f" fill-opacity="0.3" stroke="#b7791f"/>
-<text x="661.5" y="181" font-size="13" font-weight="700" text-anchor="middle" fill="#b7791f">D</text>
+<text x="661.5" y="181" font-size="13" font-weight="700" text-anchor="middle" fill="#6e4508">D</text>
 <rect x="680" y="140" width="33" height="70" rx="3" fill="#888" fill-opacity="0.3" stroke="#888"/>
 <text x="696.5" y="181" font-size="13" font-weight="700" text-anchor="middle" fill="#888">S</text>
 <rect x="715" y="140" width="33" height="70" rx="3" fill="#2f5d9e" fill-opacity="0.3" stroke="#2f5d9e"/>
 <text x="731.5" y="181" font-size="13" font-weight="700" text-anchor="middle" fill="#2f5d9e">U</text>
 <rect x="750" y="140" width="33" height="70" rx="3" fill="#b7791f" fill-opacity="0.3" stroke="#b7791f"/>
-<text x="766.5" y="181" font-size="13" font-weight="700" text-anchor="middle" fill="#b7791f">D</text>
+<text x="766.5" y="181" font-size="13" font-weight="700" text-anchor="middle" fill="#6e4508">D</text>
 <rect x="785" y="140" width="33" height="70" rx="3" fill="#b7791f" fill-opacity="0.3" stroke="#b7791f"/>
-<text x="801.5" y="181" font-size="13" font-weight="700" text-anchor="middle" fill="#b7791f">D</text>
+<text x="801.5" y="181" font-size="13" font-weight="700" text-anchor="middle" fill="#6e4508">D</text>
 <rect x="820" y="140" width="33" height="70" rx="3" fill="#b7791f" fill-opacity="0.3" stroke="#b7791f"/>
-<text x="836.5" y="181" font-size="13" font-weight="700" text-anchor="middle" fill="#b7791f">D</text>
+<text x="836.5" y="181" font-size="13" font-weight="700" text-anchor="middle" fill="#6e4508">D</text>
 <rect x="855" y="140" width="33" height="70" rx="3" fill="#888" fill-opacity="0.3" stroke="#888"/>
 <text x="871.5" y="181" font-size="13" font-weight="700" text-anchor="middle" fill="#888">S</text>
 <rect x="890" y="140" width="33" height="70" rx="3" fill="#2f5d9e" fill-opacity="0.3" stroke="#2f5d9e"/>

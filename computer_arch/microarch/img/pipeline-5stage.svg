@@ -16,7 +16,7 @@
   <text x="198.0" y="152" font-size="10.5" text-anchor="middle" fill="#111">Giải mã lệnh</text>
   <text x="198.0" y="167" font-size="10.5" text-anchor="middle" fill="#111">Đọc thanh ghi</text>
   <rect x="276" y="90" width="100" height="92" rx="6" fill="#fbeccb" stroke="#b07d12" stroke-width="1.6"/>
-  <text x="326.0" y="112" font-size="15" text-anchor="middle" fill="#b07d12" font-weight="bold">EX</text>
+  <text x="326.0" y="112" font-size="15" text-anchor="middle" fill="#6e4508" font-weight="bold">EX</text>
   <text x="326.0" y="130" font-size="9.5" text-anchor="middle" fill="#444">Execute</text>
   <text x="326.0" y="152" font-size="10.5" text-anchor="middle" fill="#111">ALU</text>
   <text x="326.0" y="167" font-size="10.5" text-anchor="middle" fill="#111">So sánh nhánh</text>

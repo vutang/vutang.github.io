@@ -8,8 +8,8 @@
 <path d="M140 290 L160 110 H400 L420 230 Q520 250 640 262 L780 270 L780 290 Z" fill="#2f5d9e" fill-opacity="0.22" stroke="#2f5d9e" stroke-width="1.4"/>
 <text x="280" y="150" font-size="12" text-anchor="middle" fill="#2f5d9e" font-weight="700">Tín hiệu phát A</text>
 <path d="M160 280 L320 274 Q420 262 500 230 L520 120 H760 L780 290" fill="none" stroke="#b7791f" stroke-width="2" stroke-dasharray="7 4"/>
-<text x="640" y="150" font-size="12" text-anchor="middle" fill="#b7791f" font-weight="700">Đáp ứng bộ lọc thu B</text>
-<text x="640" y="90" font-size="11" text-anchor="middle" fill="#b7791f">Kênh của B</text>
+<text x="640" y="150" font-size="12" text-anchor="middle" fill="#6e4508" font-weight="700">Đáp ứng bộ lọc thu B</text>
+<text x="640" y="90" font-size="11" text-anchor="middle" fill="#6e4508">Kênh của B</text>
 <text x="280" y="100" font-size="11" text-anchor="middle" fill="#2f5d9e">Kênh của A</text>
 <circle cx="640" cy="240" r="10" fill="#ffffff" stroke="#a23b72" stroke-width="1.6"/>
 <text x="640" y="244" font-size="11" text-anchor="middle" fill="#a23b72" font-weight="700">1</text>

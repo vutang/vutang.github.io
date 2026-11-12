@@ -11,15 +11,15 @@
   <text x="85.0" y="134" font-size="10.5" text-anchor="middle" fill="#111">Not-taken</text>
   <text x="85.0" y="70" font-size="10.5" text-anchor="middle" fill="#b5483a" font-weight="bold">đoán: Not-taken</text>
   <rect x="192" y="80" width="110" height="64" rx="8" fill="#fbeccb" stroke="#b07d12" stroke-width="1.6"/>
-  <text x="247.0" y="102" font-size="14" text-anchor="middle" fill="#b07d12" font-weight="bold">01</text>
+  <text x="247.0" y="102" font-size="14" text-anchor="middle" fill="#6e4508" font-weight="bold">01</text>
   <text x="247.0" y="120" font-size="10.5" text-anchor="middle" fill="#111">Weakly</text>
   <text x="247.0" y="134" font-size="10.5" text-anchor="middle" fill="#111">Not-taken</text>
-  <text x="247.0" y="70" font-size="10.5" text-anchor="middle" fill="#b07d12" font-weight="bold">đoán: Not-taken</text>
+  <text x="247.0" y="70" font-size="10.5" text-anchor="middle" fill="#6e4508" font-weight="bold">đoán: Not-taken</text>
   <rect x="354" y="80" width="110" height="64" rx="8" fill="#fbeccb" stroke="#b07d12" stroke-width="1.6"/>
-  <text x="409.0" y="102" font-size="14" text-anchor="middle" fill="#b07d12" font-weight="bold">10</text>
+  <text x="409.0" y="102" font-size="14" text-anchor="middle" fill="#6e4508" font-weight="bold">10</text>
   <text x="409.0" y="120" font-size="10.5" text-anchor="middle" fill="#111">Weakly</text>
   <text x="409.0" y="134" font-size="10.5" text-anchor="middle" fill="#111">Taken</text>
-  <text x="409.0" y="70" font-size="10.5" text-anchor="middle" fill="#b07d12" font-weight="bold">đoán: Taken</text>
+  <text x="409.0" y="70" font-size="10.5" text-anchor="middle" fill="#6e4508" font-weight="bold">đoán: Taken</text>
   <rect x="516" y="80" width="110" height="64" rx="8" fill="#d5ecd9" stroke="#2e7d4f" stroke-width="1.6"/>
   <text x="571.0" y="102" font-size="14" text-anchor="middle" fill="#2e7d4f" font-weight="bold">11</text>
   <text x="571.0" y="120" font-size="10.5" text-anchor="middle" fill="#111">Strongly</text>

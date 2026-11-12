@@ -5,7 +5,7 @@
 <text x="40" y="42" font-size="14" font-weight="700" fill="#1d4278">Vị trí của DFE trong chuỗi phát và thu của RU</text>
 <text x="40" y="60" font-size="10.5" fill="#666">Sơ đồ khối đơn giản hóa cho một nhánh anten</text>
 <rect x="150" y="66" width="440" height="200" rx="8" fill="#b7791f" fill-opacity="0.06" stroke="#b7791f" stroke-dasharray="5 4"/>
-<text x="370" y="82" font-size="11.5" text-anchor="middle" fill="#b7791f" font-weight="700">Digital front-end (DFE)</text>
+<text x="370" y="82" font-size="11.5" text-anchor="middle" fill="#6e4508" font-weight="700">Digital front-end (DFE)</text>
 <rect x="40" y="100" width="95" height="48" rx="6" fill="#1d4278" fill-opacity="0.16" stroke="#1d4278" stroke-width="1.5"/>
 <text x="87.5" y="122.0" font-size="11.5" text-anchor="middle" fill="#1d4278" font-weight="700">Low-PHY</text>
 <text x="87.5" y="137.0" font-size="9.5" text-anchor="middle" fill="#555">iFFT, CP</text>
@@ -15,7 +15,7 @@
 <rect x="285" y="100" width="80" height="48" rx="6" fill="#1d4278" fill-opacity="0.16" stroke="#1d4278" stroke-width="1.5"/>
 <text x="325.0" y="128.0" font-size="11.5" text-anchor="middle" fill="#1d4278" font-weight="700">CFR</text>
 <rect x="395" y="100" width="80" height="48" rx="6" fill="#b7791f" fill-opacity="0.16" stroke="#b7791f" stroke-width="1.5"/>
-<text x="435.0" y="128.0" font-size="11.5" text-anchor="middle" fill="#b7791f" font-weight="700">DPD</text>
+<text x="435.0" y="128.0" font-size="11.5" text-anchor="middle" fill="#6e4508" font-weight="700">DPD</text>
 <rect x="505" y="100" width="70" height="48" rx="6" fill="#555" fill-opacity="0.16" stroke="#555" stroke-width="1.5"/>
 <text x="540.0" y="128.0" font-size="11.5" text-anchor="middle" fill="#555" font-weight="700">DAC</text>
 <rect x="615" y="100" width="95" height="48" rx="6" fill="#555" fill-opacity="0.16" stroke="#555" stroke-width="1.5"/>
