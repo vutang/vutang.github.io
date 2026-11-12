@@ -1,4 +1,5 @@
 <svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 760 398" role='img' aria-label='Successor dừng CPU cũ trước, chặn DMA, rồi mới nhận RAM' font-family='system-ui,sans-serif' font-size='13'>
+<rect x='0' y='0' width='760' height='376' rx='8' fill='#ffffff'/>
 <defs><marker id='tk-arrow' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='6' markerHeight='6' orient='auto-start-reverse'><path d='M0 0L10 5L0 10z' fill='#90a4ae'/></marker></defs>
 <text x='24' y='30' font-size='15' font-weight='600' fill='#455a64'>Successor dừng CPU cũ trước, chặn DMA, rồi mới nhận RAM</text>
 <text x='24' y='52' font-size='11.5' fill='#2c3a42'>Trình tự takeover của kmorphd; từ lúc phát hiện đến khi successor chạy khoảng 1 giây theo README</text>

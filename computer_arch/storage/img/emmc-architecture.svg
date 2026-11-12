@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 362" font-family="sans-serif" font-size="13">
+<rect x="0" y="0" width="760" height="340" rx="8" fill="#ffffff"/>
   <text x="380" y="20" text-anchor="middle" font-size="14" font-weight="bold" fill="currentColor">Kiến trúc bên trong eMMC</text>
   <rect x="20" y="50" width="120" height="240" rx="8" fill="#455a64"/>
   <text x="80" y="160" text-anchor="middle" fill="#fff">Host SoC</text>

@@ -1,4 +1,5 @@
 <svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 760 498" role='img' aria-label='Trọng tâm O-RAN dịch từ mở interface sang AI, O-Cloud và bảo mật' font-family='system-ui,sans-serif' font-size='13'>
+<rect x='0' y='0' width='760' height='476' rx='8' fill='#ffffff'/>
 <text x='24' y='30' font-size='15' font-weight='600' fill='#455a64'>Trọng tâm O-RAN dịch từ mở interface sang AI, O-Cloud và bảo mật</text>
 <text x='24' y='50' font-size='11.5' fill='#2c3a42'>Các release R001 đến R006, từ cũ đến mới (không theo tỉ lệ thời gian)</text>
 <line x1='168' x2='168' y1='102' y2='422' stroke='#90a4ae' stroke-width='1.25'/>
