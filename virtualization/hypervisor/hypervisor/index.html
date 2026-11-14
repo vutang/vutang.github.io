@@ -12,10 +12,10 @@
         <link rel="canonical" href="https://note.vutang.dev/virtualization/hypervisor/hypervisor/">
       
       
-        <link rel="prev" href="../../foundations/io/">
+        <link rel="prev" href="../kvm-qemu/">
       
       
-        <link rel="next" href="../kvm-qemu/">
+        <link rel="next" href="../libvirt/">
       
       
         
@@ -26,7 +26,7 @@
     
     
       
-        <title>Hypervisor &amp; Hyper-V - Vu Tang's Docs</title>
+        <title>Hyper-V - Vu Tang's Docs</title>
       
     
     
@@ -72,7 +72,7 @@
     
   
 <meta property="og:type" content="website">
-<meta property="og:title" content="Hypervisor &amp; Hyper-V - Vu Tang's Docs">
+<meta property="og:title" content="Hyper-V - Vu Tang's Docs">
 <meta property="og:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
 <meta property="og:image" content="https://note.vutang.dev/assets/images/social/virtualization/hypervisor/hypervisor.png">
 <meta property="og:image:type" content="image/png">
@@ -80,7 +80,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://note.vutang.dev/virtualization/hypervisor/hypervisor/">
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:title" content="Hypervisor &amp; Hyper-V - Vu Tang's Docs">
+<meta property="twitter:title" content="Hyper-V - Vu Tang's Docs">
 <meta property="twitter:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
 <meta property="twitter:image" content="https://note.vutang.dev/assets/images/social/virtualization/hypervisor/hypervisor.png">
 <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
@@ -112,7 +112,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#hypervisor-hyper-v" class="md-skip">
+        <a href="#hyper-v" class="md-skip">
           Skip to content
         </a>
       
@@ -145,7 +145,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Hypervisor &amp; Hyper-V
+              Hyper-V
             
           </span>
         </div>
@@ -7183,34 +7183,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundations/vt-x/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Intel VT-x
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../foundations/memory/" class="md-nav__link">
         
   
@@ -7255,6 +7227,94 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_4">
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_4" id="__nav_5_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware Extensions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hardware Extensions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundations/vt-x/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Intel VT-x
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -7329,6 +7389,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../kvm-qemu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KVM &amp; QEMU
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -7348,7 +7436,7 @@
   <span class="md-ellipsis">
     
   
-    Hypervisor &amp; Hyper-V
+    Hyper-V
   
 
     
@@ -7366,7 +7454,7 @@
   <span class="md-ellipsis">
     
   
-    Hypervisor &amp; Hyper-V
+    Hyper-V
   
 
     
@@ -7392,21 +7480,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#hyper-v-la-gi-dung-o-au" class="md-nav__link">
+  <a href="#pham-vi-su-dung" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Hyper-V là gì, dùng ở đâu
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cac-loai-hypervisor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Các loại hypervisor
+        Phạm vi sử dụng
       
     </span>
   </a>
@@ -7447,10 +7524,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#hypervisor-nap-vao-au-va-tach-biet-os-the-nao" class="md-nav__link">
+  <a href="#vi-tri-nap-hypervisor-va-co-che-tach-biet-voi-os" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Hypervisor nạp vào đâu và tách biệt OS thế nào
+        Vị trí nạp hypervisor và cơ chế tách biệt với OS
       
     </span>
   </a>
@@ -7469,10 +7546,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#nguon" class="md-nav__link">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Nguồn
+        Tài liệu tham khảo
       
     </span>
   </a>
@@ -7483,34 +7560,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../kvm-qemu/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    KVM &amp; QEMU
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -7936,14 +7985,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../embedded/docker-build-env/" class="md-nav__link">
+      <a href="../../embedded/qemu-kvm-vs-tcg/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Docker cho môi trường build
+    QEMU: KVM và TCG
   
 
     
@@ -7992,14 +8041,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../embedded/qemu-kvm-vs-tcg/" class="md-nav__link">
+      <a href="../../embedded/docker-build-env/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    QEMU: KVM và TCG
+    Docker cho môi trường build
   
 
     
@@ -15129,21 +15178,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#hyper-v-la-gi-dung-o-au" class="md-nav__link">
+  <a href="#pham-vi-su-dung" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Hyper-V là gì, dùng ở đâu
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cac-loai-hypervisor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Các loại hypervisor
+        Phạm vi sử dụng
       
     </span>
   </a>
@@ -15184,10 +15222,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#hypervisor-nap-vao-au-va-tach-biet-os-the-nao" class="md-nav__link">
+  <a href="#vi-tri-nap-hypervisor-va-co-che-tach-biet-voi-os" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Hypervisor nạp vào đâu và tách biệt OS thế nào
+        Vị trí nạp hypervisor và cơ chế tách biệt với OS
       
     </span>
   </a>
@@ -15206,10 +15244,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#nguon" class="md-nav__link">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Nguồn
+        Tài liệu tham khảo
       
     </span>
   </a>
@@ -15268,10 +15306,10 @@
   
 
 
-<h1 id="hypervisor-hyper-v">Hypervisor &amp; Hyper-V<a class="headerlink" href="#hypervisor-hyper-v" title="Permanent link">¶</a></h1>
-<p>Xem <a href="../../">Virtualization Overview</a> để có bức tranh chung về VM và container. Cơ chế ảo hóa CPU, bộ nhớ, I/O nằm ở nhóm <a href="../../foundations/cpu/">Nền tảng</a>; hypervisor khác xem <a href="../kvm-qemu/">KVM &amp; QEMU</a> và <a href="../partitioning/">Partitioning hypervisor</a>.</p>
-<p>Bối cảnh: Microsoft đóng góp driver pvIOMMU cho Linux guest trên Hyper-V, xem bài <a href="../../../articles/2026/10/13/pviommu-hyperv-linux-guest/">pvIOMMU: Hyper-V đưa DMA protection vào Linux guest</a>.</p>
-<h2 id="hyper-v-la-gi-dung-o-au">Hyper-V là gì, dùng ở đâu<a class="headerlink" href="#hyper-v-la-gi-dung-o-au" title="Permanent link">¶</a></h2>
+<h1 id="hyper-v">Hyper-V<a class="headerlink" href="#hyper-v" title="Permanent link">¶</a></h1>
+<p>Trang này trình bày Hyper-V, hypervisor của Microsoft, theo thứ tự: phạm vi sử dụng, kiến trúc, các cách Linux tương tác với Hyper-V, driver mshv khi Linux làm root partition, cách hypervisor tách biệt với OS và trình tự boot khi Linux là root. Phân loại hypervisor (Type 1, Type 2) nằm ở <a href="../../#cac-loai-hypervisor">Virtualization Overview</a>, cơ chế ảo hóa CPU, bộ nhớ, I/O nằm ở nhóm <a href="../../foundations/cpu/">Nền tảng</a>, các hypervisor khác xem <a href="../kvm-qemu/">KVM &amp; QEMU</a> và <a href="../partitioning/">Partitioning hypervisor</a>.</p>
+<p>Microsoft đóng góp driver pvIOMMU cho Linux guest trên Hyper-V, xem bài <a href="../../../articles/2026/10/13/pviommu-hyperv-linux-guest/">pvIOMMU: Hyper-V đưa DMA protection vào Linux guest</a>.</p>
+<h2 id="pham-vi-su-dung">Phạm vi sử dụng<a class="headerlink" href="#pham-vi-su-dung" title="Permanent link">¶</a></h2>
 <p>Hyper-V là hypervisor loại 1 (bare-metal) của Microsoft, chạy trực tiếp trên phần cứng và dùng ảo hóa phần cứng (Intel VT-x, AMD-V) để cô lập các VM.</p>
 <ul>
 <li><strong>Microsoft Azure:</strong> nền tảng ảo hóa bên dưới của hầu hết VM trên Azure.</li>
@@ -15280,33 +15318,6 @@
 <li><strong>Windows Sandbox, Docker Desktop</strong> và các lớp ảo hóa tương tự.</li>
 <li><strong>Bảo mật Windows:</strong> VBS, Credential Guard dùng hypervisor để cô lập.</li>
 <li><strong>Hạ tầng doanh nghiệp:</strong> private cloud, VDI, Azure Stack HCI.</li>
-</ul>
-<h2 id="cac-loai-hypervisor">Các loại hypervisor<a class="headerlink" href="#cac-loai-hypervisor" title="Permanent link">¶</a></h2>
-<table>
-<thead>
-<tr>
-<th>Loại</th>
-<th>Đặc điểm</th>
-<th>Ví dụ</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Type 1 (bare-metal)</td>
-<td>Chạy trực tiếp trên phần cứng, hiệu năng và cô lập tốt, dùng cho server và cloud</td>
-<td>ESXi, Hyper-V, Xen, KVM, Proxmox</td>
-</tr>
-<tr>
-<td>Type 2 (hosted)</td>
-<td>Chạy như ứng dụng trên OS có sẵn, thêm một lớp overhead, tiện cho desktop và học tập</td>
-<td>VirtualBox, VMware Workstation/Fusion, Parallels</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>Ranh giới mờ: KVM là module trong kernel Linux nên vừa giống Type 1 vừa giống Type 2 (thường xếp Type 1). Hyper-V cài trên Windows vẫn là Type 1, vì khi bật thì Windows host trở thành một VM (root partition) chạy trên hypervisor.</li>
-<li>Phân loại theo kỹ thuật: full virtualization, para-virtualization (hypercall, virtio, VMBus), hardware-assisted (mặc định hiện nay).</li>
-<li>Container (<a href="../../container/docker/">Docker</a>, LXC) dùng chung kernel host nên không phải hypervisor. Kata Containers và Firecracker chạy mỗi container trong một micro-VM.</li>
 </ul>
 <h2 id="kien-truc-hyper-v">Kiến trúc Hyper-V<a class="headerlink" href="#kien-truc-hyper-v" title="Permanent link">¶</a></h2>
 <p>Hyper-V theo kiểu microkernelized hypervisor: hypervisor giữ rất ít chức năng, phần còn lại đẩy lên root partition.</p>
@@ -15366,7 +15377,7 @@
 <p class="admonition-title">Todo</p>
 <p>Phần cấu trúc chi tiết (partition, vCPU, memory region) chưa được đọc trực tiếp trong source; cần xem <code>mshv_root_main.c</code> và tài liệu mshv của Cloud Hypervisor nếu muốn chính xác. Version kernel cụ thể khi <code>mshv_root</code> vào mainline cũng cần kiểm tra lại.</p>
 </div>
-<h2 id="hypervisor-nap-vao-au-va-tach-biet-os-the-nao">Hypervisor nạp vào đâu và tách biệt OS thế nào<a class="headerlink" href="#hypervisor-nap-vao-au-va-tach-biet-os-the-nao" title="Permanent link">¶</a></h2>
+<h2 id="vi-tri-nap-hypervisor-va-co-che-tach-biet-voi-os">Vị trí nạp hypervisor và cơ chế tách biệt với OS<a class="headerlink" href="#vi-tri-nap-hypervisor-va-co-che-tach-biet-voi-os" title="Permanent link">¶</a></h2>
 <ul>
 <li><strong>Không có vùng chip riêng:</strong> hypervisor được nạp vào RAM thường, nhưng chạy ở mức đặc quyền CPU riêng. Bootloader (trên Windows là winload/hvloader) nạp binary vào RAM và bật chế độ ảo hóa trước khi nạp kernel OS. Với Linux root, quy trình tương tự nhưng chi tiết loader cần kiểm tra lại.</li>
 <li><strong>Mức đặc quyền:</strong> trên x86 là chế độ root của VT-x hoặc host mode của AMD-V ("ring -1"), trên ARM64 là EL2. OS (kể cả root partition) bị đưa xuống chế độ guest (non-root).</li>
@@ -15388,7 +15399,7 @@
 <li>Hypervisor không chạy liên tục như một tiến trình mà chỉ chiếm CPU khi có sự kiện (hypercall, VM exit, ngắt, lập lịch VM). Phần lớn thời gian Linux chạy trực tiếp trên CPU với tốc độ gần native, nhưng hypervisor vẫn quyết định Linux thấy RAM, core và thiết bị nào.</li>
 <li>Linux root không biết hoàn toàn về phần cứng thật, và việc tạo VM phải qua hypercall (vai trò của <code>mshv_root</code>). Root partition đặc quyền hơn các VM con nhưng vẫn không vượt quyền hypervisor.</li>
 </ul>
-<h2 id="nguon">Nguồn<a class="headerlink" href="#nguon" title="Permanent link">¶</a></h2>
+<h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
 <p>Tổng hợp từ cuộc trao đổi ngày 13/10/2026 và các tài liệu sau:</p>
 <ul>
 <li><a href="https://lkml.iu.edu/hypermail/linux/kernel/2503.1/09685.html">LKML: PATCH v6 00/10 Introduce /dev/mshv root partition driver</a></li>
@@ -15417,7 +15428,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="October 22, 2026 11:47:51 UTC">October 22, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 14, 2026 10:59:32 UTC">November 14, 2026</span>
   </span>
 
     
@@ -15466,7 +15477,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
-          <a href="../../foundations/io/" class="md-footer__link md-footer__link--prev" aria-label="Previous: I/O Virtualization">
+          <a href="../kvm-qemu/" class="md-footer__link md-footer__link--prev" aria-label="Previous: KVM &amp; QEMU">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -15476,20 +15487,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                I/O Virtualization
+                KVM &amp; QEMU
               </div>
             </div>
           </a>
         
         
           
-          <a href="../kvm-qemu/" class="md-footer__link md-footer__link--next" aria-label="Next: KVM &amp; QEMU">
+          <a href="../libvirt/" class="md-footer__link md-footer__link--next" aria-label="Next: libvirt">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                KVM &amp; QEMU
+                libvirt
               </div>
             </div>
             <div class="md-footer__button md-icon">

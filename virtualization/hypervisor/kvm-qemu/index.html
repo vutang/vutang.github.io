@@ -12,10 +12,10 @@
         <link rel="canonical" href="https://note.vutang.dev/virtualization/hypervisor/kvm-qemu/">
       
       
-        <link rel="prev" href="../hypervisor/">
+        <link rel="prev" href="../../foundations/vt-x/">
       
       
-        <link rel="next" href="../libvirt/">
+        <link rel="next" href="../hypervisor/">
       
       
         
@@ -7183,34 +7183,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../foundations/vt-x/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Intel VT-x
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../foundations/memory/" class="md-nav__link">
         
   
@@ -7255,6 +7227,94 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_4">
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_4" id="__nav_5_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware Extensions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hardware Extensions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../foundations/vt-x/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Intel VT-x
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -7324,34 +7384,6 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../hypervisor/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Hypervisor &amp; Hyper-V
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -7486,10 +7518,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#oc-them" class="md-nav__link">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Đọc thêm
+        Tài liệu tham khảo
       
     </span>
   </a>
@@ -7500,6 +7532,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hypervisor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hyper-V
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -7925,14 +7985,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../embedded/docker-build-env/" class="md-nav__link">
+      <a href="../../embedded/qemu-kvm-vs-tcg/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Docker cho môi trường build
+    QEMU: KVM và TCG
   
 
     
@@ -7981,14 +8041,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../embedded/qemu-kvm-vs-tcg/" class="md-nav__link">
+      <a href="../../embedded/docker-build-env/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    QEMU: KVM và TCG
+    Docker cho môi trường build
   
 
     
@@ -15184,10 +15244,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#oc-them" class="md-nav__link">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Đọc thêm
+        Tài liệu tham khảo
       
     </span>
   </a>
@@ -15277,7 +15337,7 @@
 </table>
 <p>KVM không tự tạo được VM hoàn chỉnh vì thiếu thiết bị, nên cần một VMM (Virtual Machine Monitor) ở userspace. QEMU là VMM phổ biến nhất, ngoài ra có Firecracker, Cloud Hypervisor, crosvm (xem <a href="../../sandbox/sandbox/">Sandbox &amp; micro-VM</a>).</p>
 <h2 id="cach-kvm-hoat-ong">Cách KVM hoạt động<a class="headerlink" href="#cach-kvm-hoat-ong" title="Permanent link">¶</a></h2>
-<p>Userspace nói chuyện với KVM qua các ioctl trên <code>/dev/kvm</code>:</p>
+<p>Userspace giao tiếp với KVM qua các ioctl trên <code>/dev/kvm</code>:</p>
 <ol>
 <li><code>KVM_CREATE_VM</code>: tạo VM, nhận về một file descriptor.</li>
 <li><code>KVM_SET_USER_MEMORY_REGION</code>: gán một vùng nhớ của tiến trình QEMU làm RAM của guest (GPA sang vùng nhớ đó).</li>
@@ -15325,7 +15385,7 @@
 <li>Phát triển driver virtio, kiểm thử device tree, boot flow với QEMU, kết hợp với <a href="../../../lnx_kernel/devicetree/devicetree/">Device Tree</a>.</li>
 <li>Một số SoC (ví dụ nhiều dòng ARM64) chạy được KVM thật, dùng làm hypervisor cho Linux guest cạnh RTOS, nhưng nếu cần cô lập cứng và real-time hơn thì xem <a href="../partitioning/">Partitioning hypervisor</a>.</li>
 </ul>
-<h2 id="oc-them">Đọc thêm<a class="headerlink" href="#oc-them" title="Permanent link">¶</a></h2>
+<h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="https://docs.kernel.org/virt/kvm/api.html">KVM API (kernel.org)</a></li>
 <li><a href="https://www.qemu.org/docs/master/">QEMU documentation</a></li>
@@ -15353,7 +15413,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 14, 2026 10:05:37 UTC">November 14, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 14, 2026 10:59:32 UTC">November 14, 2026</span>
   </span>
 
     
@@ -15402,7 +15462,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
-          <a href="../hypervisor/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Hypervisor &amp; Hyper-V">
+          <a href="../../foundations/vt-x/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Intel VT-x">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -15412,20 +15472,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Hypervisor &amp; Hyper-V
+                Intel VT-x
               </div>
             </div>
           </a>
         
         
           
-          <a href="../libvirt/" class="md-footer__link md-footer__link--next" aria-label="Next: libvirt">
+          <a href="../hypervisor/" class="md-footer__link md-footer__link--next" aria-label="Next: Hyper-V">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                libvirt
+                Hyper-V
               </div>
             </div>
             <div class="md-footer__button md-icon">
