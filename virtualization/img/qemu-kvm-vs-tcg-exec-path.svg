@@ -1,0 +1,82 @@
+<svg role="img" viewBox="0 0 760 522" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+  <title>With KVM, guest instructions run directly on the host CPU and only VM exits return to the hypervisor; with TCG, QEMU looks up or translates each block of guest code into host code, caches it, and the translated code adds a software TLB lookup on every memory access and calls C helpers, even when the guest and host ISA are the same</title>
+  <defs>
+    <marker id="ep-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2c3a42"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="760" height="500" rx="8" fill="#ffffff"/>
+  <text x="24" y="30" font-size="15" font-weight="700" fill="#1f2d3d">Where guest instructions run</text>
+
+  <!-- Lane A: KVM -->
+  <rect x="16" y="44" width="728" height="128" rx="6" fill="#f4f7fb" stroke="#d5dbe3"/>
+  <text x="32" y="66" font-size="14" font-weight="700" fill="#2f5d9e">KVM: the CPU runs guest code, the hypervisor only handles exits</text>
+
+  <rect x="32" y="82" width="170" height="52" rx="6" fill="#ffffff" stroke="#2c3a42" stroke-width="1.5"/>
+  <text x="117" y="104" font-size="13" font-weight="700" text-anchor="middle" fill="#1f2d3d">Guest instructions</text>
+  <text x="117" y="123" font-size="13" text-anchor="middle" fill="#2c3a42">(x86-64)</text>
+
+  <rect x="262" y="82" width="220" height="52" rx="6" fill="#d3e3f7" stroke="#2f5d9e" stroke-width="2"/>
+  <text x="372" y="104" font-size="13" font-weight="700" text-anchor="middle" fill="#1f2d3d">Host CPU, guest mode</text>
+  <text x="372" y="123" font-size="13" text-anchor="middle" fill="#1f2d3d">executes them as they are</text>
+
+  <rect x="542" y="82" width="186" height="52" rx="6" fill="#ffffff" stroke="#2c3a42" stroke-width="1.5"/>
+  <text x="635" y="104" font-size="13" font-weight="700" text-anchor="middle" fill="#1f2d3d">KVM + QEMU</text>
+  <text x="635" y="123" font-size="13" text-anchor="middle" fill="#2c3a42">I/O, interrupts, ...</text>
+
+  <line x1="202" y1="108" x2="260" y2="108" stroke="#2c3a42" stroke-width="1.5" marker-end="url(#ep-arrow)"/>
+  <line x1="482" y1="98" x2="540" y2="98" stroke="#2c3a42" stroke-width="1.5" marker-end="url(#ep-arrow)"/>
+  <text x="512" y="92" font-size="13" text-anchor="middle" fill="#2c3a42">exit</text>
+  <line x1="542" y1="120" x2="484" y2="120" stroke="#2c3a42" stroke-width="1.5" marker-end="url(#ep-arrow)"/>
+  <text x="512" y="139" font-size="13" text-anchor="middle" fill="#2c3a42">entry</text>
+
+  <!-- Lane B: TCG -->
+  <rect x="16" y="186" width="728" height="300" rx="6" fill="#f4f7fb" stroke="#d5dbe3"/>
+  <text x="32" y="208" font-size="14" font-weight="700" fill="#2c3a42">TCG: QEMU translates guest code, then runs what it generated</text>
+
+  <rect x="32" y="224" width="170" height="52" rx="6" fill="#ffffff" stroke="#2c3a42" stroke-width="1.5"/>
+  <text x="117" y="246" font-size="13" font-weight="700" text-anchor="middle" fill="#1f2d3d">Guest instructions</text>
+  <text x="117" y="265" font-size="13" text-anchor="middle" fill="#2c3a42">x86-64 or aarch64</text>
+
+  <rect x="262" y="224" width="220" height="52" rx="6" fill="#ffffff" stroke="#2c3a42" stroke-width="1.5"/>
+  <text x="372" y="246" font-size="13" font-weight="700" text-anchor="middle" fill="#1f2d3d">Main loop</text>
+  <text x="372" y="265" font-size="13" text-anchor="middle" fill="#2c3a42">find block by guest PC</text>
+
+  <rect x="542" y="224" width="186" height="52" rx="6" fill="#ffffff" stroke="#2c3a42" stroke-width="1.5"/>
+  <text x="635" y="246" font-size="13" font-weight="700" text-anchor="middle" fill="#1f2d3d">Translator</text>
+  <text x="635" y="265" font-size="13" text-anchor="middle" fill="#2c3a42">guest → TCG ops → host</text>
+
+  <rect x="542" y="310" width="186" height="52" rx="6" fill="#ffffff" stroke="#2c3a42" stroke-width="1.5"/>
+  <text x="635" y="332" font-size="13" font-weight="700" text-anchor="middle" fill="#1f2d3d">TB cache</text>
+  <text x="635" y="351" font-size="13" text-anchor="middle" fill="#2c3a42">translated blocks</text>
+
+  <rect x="262" y="310" width="220" height="52" rx="6" fill="#ffffff" stroke="#a23b72" stroke-width="2"/>
+  <text x="372" y="332" font-size="13" font-weight="700" text-anchor="middle" fill="#1f2d3d">Run translated block</text>
+  <text x="372" y="351" font-size="13" text-anchor="middle" fill="#1f2d3d">on the host CPU</text>
+
+  <!-- arrows lane B -->
+  <line x1="202" y1="240" x2="260" y2="240" stroke="#2c3a42" stroke-width="1.5" marker-end="url(#ep-arrow)"/>
+  <line x1="482" y1="250" x2="540" y2="250" stroke="#2c3a42" stroke-width="1.5" marker-end="url(#ep-arrow)"/>
+  <text x="512" y="244" font-size="13" text-anchor="middle" fill="#2c3a42">miss</text>
+  <line x1="635" y1="276" x2="635" y2="308" stroke="#2c3a42" stroke-width="1.5" marker-end="url(#ep-arrow)"/>
+  <line x1="542" y1="336" x2="484" y2="336" stroke="#2c3a42" stroke-width="1.5" marker-end="url(#ep-arrow)"/>
+  <line x1="372" y1="276" x2="372" y2="308" stroke="#2c3a42" stroke-width="1.5" marker-end="url(#ep-arrow)"/>
+  <text x="380" y="297" font-size="13" fill="#2c3a42">hit</text>
+  <!-- back to main loop at the end of a block -->
+  <polyline points="262,346 232,346 232,264 260,264" fill="none" stroke="#2c3a42" stroke-width="1.5" marker-end="url(#ep-arrow)"/>
+  <text x="224" y="310" font-size="13" text-anchor="end" fill="#2c3a42">end of block</text>
+  <text x="372" y="382" font-size="13" text-anchor="middle" fill="#2c3a42">chained jump if the next block is on the same page</text>
+
+  <!-- extra work inside translated code -->
+  <text x="32" y="408" font-size="13" font-weight="700" fill="#a23b72">Extra work inside every translated block, also when guest and host ISA match:</text>
+  <rect x="32" y="418" width="226" height="52" rx="6" fill="#ffffff" stroke="#a23b72" stroke-width="1.5"/>
+  <text x="145" y="440" font-size="13" font-weight="700" text-anchor="middle" fill="#1f2d3d">Every load and store</text>
+  <text x="145" y="459" font-size="13" text-anchor="middle" fill="#2c3a42">software TLB lookup</text>
+  <rect x="267" y="418" width="226" height="52" rx="6" fill="#ffffff" stroke="#a23b72" stroke-width="1.5"/>
+  <text x="380" y="440" font-size="13" font-weight="700" text-anchor="middle" fill="#1f2d3d">TLB miss or MMIO</text>
+  <text x="380" y="459" font-size="13" text-anchor="middle" fill="#2c3a42">C code: page walk, device</text>
+  <rect x="502" y="418" width="226" height="52" rx="6" fill="#ffffff" stroke="#a23b72" stroke-width="1.5"/>
+  <text x="615" y="440" font-size="13" font-weight="700" text-anchor="middle" fill="#1f2d3d">Complex instruction</text>
+  <text x="615" y="459" font-size="13" text-anchor="middle" fill="#2c3a42">call to a C helper</text>
+<text id="wm" x="751.2" y="515.4" text-anchor="end" font-size="11" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
+</svg>
