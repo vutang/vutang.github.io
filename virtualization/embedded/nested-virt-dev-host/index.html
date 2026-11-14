@@ -15476,13 +15476,20 @@
 <p>Điều kiện đi kèm:</p>
 <ul>
 <li>CPU host phải có VT-x và đã bật VT-x trong firmware.</li>
-<li>VirtualBox đủ mới để có tùy chọn nested (chưa kiểm chứng phiên bản tối thiểu, xem mục todo bên dưới).</li>
+<li>Phiên bản VirtualBox: nested virtualization có từ VirtualBox 6.0.0 cho CPU AMD, và từ 6.1.0 cho CPU Intel từ thế hệ Core i thứ 5 (Broadwell) trở lên.</li>
 <li>Trên host Windows, nếu Hyper-V hoặc các tính năng dựa trên nó (WSL2, Memory Integrity) đang chạy, VirtualBox có thể dùng Hyper-V làm backend và nested VT-x không hoạt động như mong đợi.</li>
 </ul>
-<div class="admonition todo">
-<p class="admonition-title">Todo</p>
-<p>Chưa ghi được hệ điều hành của host vật lý và cách đã bật trên máy này (giao diện hay <code>VBoxManage</code>), cũng như phiên bản VirtualBox. Cần bổ sung ba thông tin này, vì điều kiện ở mục trên phụ thuộc chúng.</p>
-</div>
+<p>Kiểm tra cấu hình từ phía host bằng <code>showvminfo</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>VBoxManage<span class="w"> </span>showvminfo<span class="w"> </span><span class="s2">"&lt;tên VM&gt;"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-iE<span class="w"> </span><span class="s2">"nested|paravirt"</span>
+</code></pre></div>
+<p>Máy dùng trong trang này có host chạy Ubuntu 20.04.6 (kernel 5.15), VirtualBox 7.1.12, CPU Intel Core i9-7980XE (Skylake-X, mới hơn Broadwell). Host là Linux nên không bị ảnh hưởng bởi Hyper-V. Kết quả <code>showvminfo</code> của VM dev:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Nested VT-x/AMD-V:           enabled
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Nested Paging:               enabled
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>Paravirt. Provider:          Default
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>Effective Paravirt. Prov.:   KVM
+</code></pre></div>
+<p>Từ bên trong VM, phiên bản VirtualBox đọc được qua bảng DMI type 11 bằng <code>sudo dmidecode -t 11</code> (dòng <code>vboxVer_7.1.12</code>). Hệ điều hành của host thì guest không thấy được.</p>
+<p>Sau khi bật và kiểm tra xong, nên tạo một snapshot của VM để quay lại trạng thái này khi thử nghiệm làm hỏng guest.</p>
 <h2 id="chuan-bi-trong-vm-dev">Chuẩn bị trong VM dev<a class="headerlink" href="#chuan-bi-trong-vm-dev" title="Permanent link">¶</a></h2>
 <p>Sau khi VM khởi động lại với nested VT-x đã bật, KVM có sẵn mà không cần cài thêm kernel module. Phần còn lại:</p>
 <ul>
@@ -15545,14 +15552,14 @@
 </div>
 <h3 id="xac-nhan-bang-qemu-monitor">Xác nhận bằng QEMU monitor<a class="headerlink" href="#xac-nhan-bang-qemu-monitor" title="Permanent link">¶</a></h3>
 <p>Chạy một VM tối giản với bộ tăng tốc KVM, dừng ngay khi khởi tạo (<code>-S</code>) và hỏi trạng thái qua monitor:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'info kvm\ninfo cpus\nquit\n'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>qemu-system-x86_64<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span>-accel<span class="w"> </span>kvm<span class="w"> </span>-machine<span class="w"> </span>q35<span class="w"> </span>-cpu<span class="w"> </span>host<span class="w"> </span>-smp<span class="w"> </span><span class="m">2</span><span class="w"> </span>-m<span class="w"> </span><span class="m">256</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span>-display<span class="w"> </span>none<span class="w"> </span>-S<span class="w"> </span>-monitor<span class="w"> </span>stdio
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">'info kvm\ninfo cpus\nquit\n'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>qemu-system-x86_64<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span>-accel<span class="w"> </span>kvm<span class="w"> </span>-machine<span class="w"> </span>q35<span class="w"> </span>-cpu<span class="w"> </span>host<span class="w"> </span>-smp<span class="w"> </span><span class="m">2</span><span class="w"> </span>-m<span class="w"> </span><span class="m">256</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span>-display<span class="w"> </span>none<span class="w"> </span>-S<span class="w"> </span>-monitor<span class="w"> </span>stdio
 </code></pre></div>
 <p>Kết quả trên máy dev, với QEMU 8.2.2:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>kvm support: enabled
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>* CPU #0: thread_id=1452
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>  CPU #1: thread_id=1453
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>kvm support: enabled
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>* CPU #0: thread_id=1452
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>  CPU #1: thread_id=1453
 </code></pre></div>
 <p>Dòng <code>kvm support: enabled</code> xác nhận QEMU dùng được KVM. Mỗi vCPU của guest ứng với một thread của tiến trình QEMU trên VM dev.</p>
 <div class="admonition todo">
@@ -15571,17 +15578,17 @@
 <li>Mỗi cấu hình chạy 5 lần hợp lệ, lấy trung vị.</li>
 </ul>
 <p>Phần tham số khác nhau giữa ba cấu hình:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># x86-64 + KVM</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>qemu-system-x86_64<span class="w"> </span>-accel<span class="w"> </span>kvm<span class="w"> </span>-cpu<span class="w"> </span>host<span class="w"> </span>-M<span class="w"> </span>q35<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span>-kernel<span class="w"> </span>vmlinuz-virt<span class="w"> </span>-initrd<span class="w"> </span>initramfs-virt<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span>-append<span class="w"> </span><span class="s2">"console=ttyS0 rdinit=/bin/sh quiet panic=-1"</span><span class="w"> </span>...
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># x86-64 + TCG</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>qemu-system-x86_64<span class="w"> </span>-accel<span class="w"> </span>tcg<span class="w"> </span>-cpu<span class="w"> </span>max<span class="w"> </span>-M<span class="w"> </span>q35<span class="w"> </span>...
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># aarch64 + TCG</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>qemu-system-aarch64<span class="w"> </span>-accel<span class="w"> </span>tcg<span class="w"> </span>-cpu<span class="w"> </span>max,pauth-impdef<span class="o">=</span>on<span class="w"> </span>-M<span class="w"> </span>virt<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span>-append<span class="w"> </span><span class="s2">"console=ttyAMA0 rdinit=/bin/sh quiet panic=-1"</span><span class="w"> </span>...
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="c1"># chung cho cả ba</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>...<span class="w"> </span>-smp<span class="w"> </span><span class="m">2</span><span class="w"> </span>-m<span class="w"> </span>1G<span class="w"> </span>-nographic<span class="w"> </span>-no-reboot<span class="w"> </span>-nodefaults<span class="w"> </span>-serial<span class="w"> </span>stdio
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># x86-64 + KVM</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>qemu-system-x86_64<span class="w"> </span>-accel<span class="w"> </span>kvm<span class="w"> </span>-cpu<span class="w"> </span>host<span class="w"> </span>-M<span class="w"> </span>q35<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span>-kernel<span class="w"> </span>vmlinuz-virt<span class="w"> </span>-initrd<span class="w"> </span>initramfs-virt<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span>-append<span class="w"> </span><span class="s2">"console=ttyS0 rdinit=/bin/sh quiet panic=-1"</span><span class="w"> </span>...
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># x86-64 + TCG</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>qemu-system-x86_64<span class="w"> </span>-accel<span class="w"> </span>tcg<span class="w"> </span>-cpu<span class="w"> </span>max<span class="w"> </span>-M<span class="w"> </span>q35<span class="w"> </span>...
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># aarch64 + TCG</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>qemu-system-aarch64<span class="w"> </span>-accel<span class="w"> </span>tcg<span class="w"> </span>-cpu<span class="w"> </span>max,pauth-impdef<span class="o">=</span>on<span class="w"> </span>-M<span class="w"> </span>virt<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span>-append<span class="w"> </span><span class="s2">"console=ttyAMA0 rdinit=/bin/sh quiet panic=-1"</span><span class="w"> </span>...
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1"># chung cho cả ba</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>...<span class="w"> </span>-smp<span class="w"> </span><span class="m">2</span><span class="w"> </span>-m<span class="w"> </span>1G<span class="w"> </span>-nographic<span class="w"> </span>-no-reboot<span class="w"> </span>-nodefaults<span class="w"> </span>-serial<span class="w"> </span>stdio
 </code></pre></div>
 <p>Với guest aarch64, <code>pauth-impdef=on</code> chọn thuật toán pointer authentication do QEMU tự định nghĩa thay cho thuật toán chuẩn của Arm, nhằm giảm chi phí giả lập. Ảnh hưởng của tùy chọn này lên kết quả chưa được đo riêng.</p>
 <h3 id="ket-qua">Kết quả<a class="headerlink" href="#ket-qua" title="Permanent link">¶</a></h3>
@@ -15672,6 +15679,8 @@
 <h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="https://www.virtualbox.org/manual/ch08.html#vboxmanage-modifyvm">VirtualBox Manual – VBoxManage modifyvm (tùy chọn <code>--nested-hw-virt</code>)</a></li>
+<li><a href="https://www.virtualbox.org/wiki/Changelog-6.0">VirtualBox 6.0 Changelog</a> (6.0.0: nested hardware virtualization trên CPU AMD)</li>
+<li><a href="https://www.virtualbox.org/wiki/Changelog-6.1">VirtualBox 6.1 Changelog</a> (6.1.0: nested hardware virtualization trên CPU Intel, từ Broadwell)</li>
 <li><a href="https://docs.kernel.org/virt/kvm/x86/running-nested-guests.html">docs.kernel.org – Running nested guests with KVM</a></li>
 <li><a href="https://www.qemu.org/docs/master/system/introduction.html">QEMU documentation – KVM accelerator</a></li>
 <li><a href="https://www.qemu.org/docs/master/system/arm/cpu-features.html">QEMU documentation – A-profile CPU architecture support (pointer authentication)</a></li>
@@ -15699,7 +15708,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 14, 2026 08:27:24 UTC">November 14, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 14, 2026 08:59:20 UTC">November 14, 2026</span>
   </span>
 
     
