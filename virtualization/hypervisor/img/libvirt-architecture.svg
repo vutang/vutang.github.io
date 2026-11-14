@@ -45,8 +45,8 @@
 
   <!-- QEMU layer -->
   <rect x="20" y="276" width="500" height="50" rx="6" fill="#f6e6ef" stroke="#a23b72" stroke-width="1.5"/>
-  <text x="270" y="297" font-size="14" font-weight="700" text-anchor="middle" fill="#1f2d3d">One QEMU process per VM (guest RAM, vCPU threads, virtio devices)</text>
-  <text x="270" y="316" font-size="13" text-anchor="middle" fill="#2c3a42">VM 1, VM 2, ... each isolated by sVirt (SELinux or AppArmor)</text>
+  <text x="270" y="297" font-size="14" font-weight="700" text-anchor="middle" fill="#1f2d3d">One QEMU process per VM</text>
+  <text x="270" y="316" font-size="13" text-anchor="middle" fill="#2c3a42">Each VM isolated by sVirt (SELinux or AppArmor)</text>
   <rect x="540" y="276" width="200" height="50" rx="6" fill="#eef3ee" stroke="#2e7d4f"/>
   <text x="640" y="297" font-size="13" font-weight="700" text-anchor="middle" fill="#1f2d3d">Other drivers</text>
   <text x="640" y="316" font-size="13" text-anchor="middle" fill="#2c3a42">LXC, Xen, Cloud Hypervisor</text>
