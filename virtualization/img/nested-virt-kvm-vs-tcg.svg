@@ -1,0 +1,41 @@
+<svg role="img" viewBox="0 0 760 322" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+  <title>The same CPU workload takes 1.52 s with KVM, 11.00 s with x86-64 TCG and 14.04 s with aarch64 TCG, median of five runs on the dev VM</title>
+  <rect x="0" y="0" width="760" height="300" rx="8" fill="#ffffff"/>
+  <text x="24" y="30" font-size="15" font-weight="700" fill="#1f2d3d">Same CPU workload: TCG is about 7x slower than KVM</text>
+  <text x="24" y="52" font-size="13" fill="#2c3a42">Bar = median of 5 runs, dot = each run, measured on the host clock</text>
+  <line x1="230.0" y1="76" x2="230.0" y2="258" stroke="#d5dbe3" stroke-width="1"/>
+  <text x="230.0" y="280" font-size="13" text-anchor="middle" fill="#2c3a42">0 s</text>
+  <line x1="333.5" y1="76" x2="333.5" y2="258" stroke="#d5dbe3" stroke-width="1"/>
+  <text x="333.5" y="280" font-size="13" text-anchor="middle" fill="#2c3a42">4 s</text>
+  <line x1="437.1" y1="76" x2="437.1" y2="258" stroke="#d5dbe3" stroke-width="1"/>
+  <text x="437.1" y="280" font-size="13" text-anchor="middle" fill="#2c3a42">8 s</text>
+  <line x1="540.6" y1="76" x2="540.6" y2="258" stroke="#d5dbe3" stroke-width="1"/>
+  <text x="540.6" y="280" font-size="13" text-anchor="middle" fill="#2c3a42">12 s</text>
+  <line x1="644.1" y1="76" x2="644.1" y2="258" stroke="#d5dbe3" stroke-width="1"/>
+  <text x="644.1" y="280" font-size="13" text-anchor="middle" fill="#2c3a42">16 s</text>
+  <text x="24" y="113" font-size="13" font-weight="700" fill="#1f2d3d">x86-64 + KVM</text>
+  <rect x="230.0" y="94" width="39.3" height="28" rx="3" fill="#2f5d9e" fill-opacity="0.85"/>
+  <circle cx="269.1" cy="108" r="3.5" fill="#1f2d3d" fill-opacity="0.8"/>
+  <circle cx="269.9" cy="108" r="3.5" fill="#1f2d3d" fill-opacity="0.8"/>
+  <circle cx="270.6" cy="108" r="3.5" fill="#1f2d3d" fill-opacity="0.8"/>
+  <circle cx="269.1" cy="108" r="3.5" fill="#1f2d3d" fill-opacity="0.8"/>
+  <circle cx="269.3" cy="108" r="3.5" fill="#1f2d3d" fill-opacity="0.8"/>
+  <text x="282.6" y="113" font-size="13" font-weight="700" fill="#1f2d3d">1.52 s · 1.0x</text>
+  <text x="24" y="173" font-size="13" font-weight="400" fill="#1f2d3d">x86-64 + TCG</text>
+  <rect x="230.0" y="154" width="284.7" height="28" rx="3" fill="#78909c" fill-opacity="0.45"/>
+  <circle cx="514.7" cy="168" r="3.5" fill="#1f2d3d" fill-opacity="0.8"/>
+  <circle cx="526.6" cy="168" r="3.5" fill="#1f2d3d" fill-opacity="0.8"/>
+  <circle cx="506.2" cy="168" r="3.5" fill="#1f2d3d" fill-opacity="0.8"/>
+  <circle cx="502.5" cy="168" r="3.5" fill="#1f2d3d" fill-opacity="0.8"/>
+  <circle cx="515.5" cy="168" r="3.5" fill="#1f2d3d" fill-opacity="0.8"/>
+  <text x="538.6" y="173" font-size="13" font-weight="400" fill="#1f2d3d">11.00 s · 7.2x</text>
+  <text x="24" y="233" font-size="13" font-weight="400" fill="#1f2d3d">aarch64 + TCG</text>
+  <rect x="230.0" y="214" width="363.4" height="28" rx="3" fill="#78909c" fill-opacity="0.45"/>
+  <circle cx="601.7" cy="228" r="3.5" fill="#1f2d3d" fill-opacity="0.8"/>
+  <circle cx="557.2" cy="228" r="3.5" fill="#1f2d3d" fill-opacity="0.8"/>
+  <circle cx="593.4" cy="228" r="3.5" fill="#1f2d3d" fill-opacity="0.8"/>
+  <circle cx="600.9" cy="228" r="3.5" fill="#1f2d3d" fill-opacity="0.8"/>
+  <circle cx="562.8" cy="228" r="3.5" fill="#1f2d3d" fill-opacity="0.8"/>
+  <text x="613.7" y="233" font-size="13" font-weight="400" fill="#1f2d3d">14.04 s · 9.2x</text>
+<text id="wm" x="751.2" y="315.4" text-anchor="end" font-size="11" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
+</svg>
