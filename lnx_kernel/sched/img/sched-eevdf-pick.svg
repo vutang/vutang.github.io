@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 402" role="img" font-family="Helvetica, Arial, sans-serif" font-size="14">
+<rect x="0" y="0" width="760" height="380" rx="8" fill="#ffffff"/>
+<title>EEVDF picks, among tasks whose vruntime is not ahead of the weighted average V, the one with the earliest virtual deadline.</title>
+<text x="380" y="28" text-anchor="middle" font-weight="bold" fill="#1f2d3d" font-size="15">EEVDF: eligible (v ≤ V), then earliest virtual deadline</text>
+<rect x="150.0" y="48" width="200.0" height="230" fill="#e9f5ee"/>
+<text x="250.0" y="66" text-anchor="middle" fill="#2e7d4f" font-size="13">eligible: lag ≥ 0</text>
+<text x="520.0" y="66" text-anchor="middle" fill="#c0392b" font-size="13">not eligible: lag &lt; 0</text>
+<text x="20" y="105" font-weight="bold" fill="#1f2d3d" font-size="15">Task A</text>
+<line x1="190.0" y1="100" x2="550.0" y2="100" stroke="#90a4ae" stroke-width="4"/>
+<circle cx="190.0" cy="100" r="6" fill="#ffffff" stroke="#1f2d3d" stroke-width="2"/>
+<line x1="550.0" y1="90" x2="550.0" y2="110" stroke="#1f2d3d" stroke-width="2"/>
+<text x="558.0" y="105" fill="#1f2d3d" font-size="13">vd=30</text>
+<text x="20" y="150" font-weight="bold" fill="#1f2d3d" font-size="15">Task B</text>
+<line x1="270.0" y1="145" x2="430.0" y2="145" stroke="#2e7d4f" stroke-width="6"/>
+<circle cx="270.0" cy="145" r="6" fill="#ffffff" stroke="#1f2d3d" stroke-width="2"/>
+<line x1="430.0" y1="135" x2="430.0" y2="155" stroke="#1f2d3d" stroke-width="2"/>
+<text x="438.0" y="150" fill="#1f2d3d" font-size="13">vd=24</text>
+<text x="492.0" y="150" fill="#2e7d4f" font-weight="bold" font-size="13">picked</text>
+<text x="20" y="195" font-weight="bold" fill="#1f2d3d" font-size="15">Task C</text>
+<line x1="370.0" y1="190" x2="420.0" y2="190" stroke="#90a4ae" stroke-width="4"/>
+<circle cx="370.0" cy="190" r="6" fill="#ffffff" stroke="#1f2d3d" stroke-width="2"/>
+<line x1="420.0" y1="180" x2="420.0" y2="200" stroke="#1f2d3d" stroke-width="2"/>
+<text x="428.0" y="195" fill="#1f2d3d" font-size="13">vd=23.5</text>
+<text x="20" y="240" font-weight="bold" fill="#1f2d3d" font-size="15">Task D</text>
+<line x1="470.0" y1="235" x2="630.0" y2="235" stroke="#90a4ae" stroke-width="4"/>
+<circle cx="470.0" cy="235" r="6" fill="#ffffff" stroke="#1f2d3d" stroke-width="2"/>
+<line x1="630.0" y1="225" x2="630.0" y2="245" stroke="#1f2d3d" stroke-width="2"/>
+<text x="638.0" y="240" fill="#1f2d3d" font-size="13">vd=34</text>
+<line x1="350.0" y1="48" x2="350.0" y2="278" stroke="#1f2d3d" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="350.0" y="296" text-anchor="middle" fill="#1f2d3d" font-weight="bold" font-size="13">V = 20</text>
+<line x1="150.0" y1="278" x2="690.0" y2="278" stroke="#455a64" stroke-width="1.5"/>
+<line x1="150.0" y1="278" x2="150.0" y2="284" stroke="#455a64"/>
+<text x="150.0" y="296" text-anchor="middle" fill="#2c3a42" font-size="13">10</text>
+<line x1="250.0" y1="278" x2="250.0" y2="284" stroke="#455a64"/>
+<text x="250.0" y="296" text-anchor="middle" fill="#2c3a42" font-size="13">15</text>
+<line x1="350.0" y1="278" x2="350.0" y2="284" stroke="#455a64"/>
+<line x1="450.0" y1="278" x2="450.0" y2="284" stroke="#455a64"/>
+<text x="450.0" y="296" text-anchor="middle" fill="#2c3a42" font-size="13">25</text>
+<line x1="550.0" y1="278" x2="550.0" y2="284" stroke="#455a64"/>
+<text x="550.0" y="296" text-anchor="middle" fill="#2c3a42" font-size="13">30</text>
+<line x1="650.0" y1="278" x2="650.0" y2="284" stroke="#455a64"/>
+<text x="690.0" y="296" text-anchor="end" fill="#2c3a42" font-size="13">virtual time</text>
+<circle cx="40" cy="326" r="6" fill="#ffffff" stroke="#1f2d3d" stroke-width="2"/>
+<text x="54" y="331" fill="#1f2d3d" font-size="13">vruntime v of the task</text>
+<line x1="250" y1="316" x2="250" y2="336" stroke="#1f2d3d" stroke-width="2"/>
+<text x="260" y="331" fill="#1f2d3d" font-size="13">virtual deadline vd = v + slice / weight</text>
+<text x="20" y="360" fill="#2c3a42" font-size="13">C has the earliest deadline but is not eligible; B is the eligible task with the earliest deadline.</text>
+<text id="wm" x="751.2" y="395.4" text-anchor="end" font-size="11" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
+</svg>

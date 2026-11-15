@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Bộ lập lịch của Linux kernel: scheduling class, lập lịch cho task thường, chính sách real-time, SCHED_DEADLINE và cân bằng tải giữa các CPU (chưa viết).">
+        <meta name="description" content="Bộ lập lịch của Linux kernel: scheduling class, runqueue, thời điểm lập lịch lại, EEVDF cho task thường, real-time và deadline class, cân bằng tải giữa các CPU.">
       
       
         <meta name="author" content="Vu Tang">
@@ -73,7 +73,7 @@
   
 <meta property="og:type" content="website">
 <meta property="og:title" content="Scheduler - Vu Tang's Docs">
-<meta property="og:description" content="Bộ lập lịch của Linux kernel: scheduling class, lập lịch cho task thường, chính sách real-time, SCHED_DEADLINE và cân bằng tải giữa các CPU (chưa viết).">
+<meta property="og:description" content="Bộ lập lịch của Linux kernel: scheduling class, runqueue, thời điểm lập lịch lại, EEVDF cho task thường, real-time và deadline class, cân bằng tải giữa các CPU.">
 <meta property="og:image" content="https://note.vutang.dev/assets/images/social/lnx_kernel/sched/sched.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
@@ -81,7 +81,7 @@
 <meta property="og:url" content="https://note.vutang.dev/lnx_kernel/sched/sched/">
 <meta property="twitter:card" content="summary_large_image">
 <meta property="twitter:title" content="Scheduler - Vu Tang's Docs">
-<meta property="twitter:description" content="Bộ lập lịch của Linux kernel: scheduling class, lập lịch cho task thường, chính sách real-time, SCHED_DEADLINE và cân bằng tải giữa các CPU (chưa viết).">
+<meta property="twitter:description" content="Bộ lập lịch của Linux kernel: scheduling class, runqueue, thời điểm lập lịch lại, EEVDF cho task thường, real-time và deadline class, cân bằng tải giữa các CPU.">
 <meta property="twitter:image" content="https://note.vutang.dev/assets/images/social/lnx_kernel/sched/sched.png">
 <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
@@ -6763,7 +6763,7 @@
   <span class="md-ellipsis">
     
   
-    Scheduler (WIP)
+    Scheduler
   
 
     
@@ -6781,7 +6781,7 @@
   <span class="md-ellipsis">
     
   
-    Scheduler (WIP)
+    Scheduler
   
 
     
@@ -6807,10 +6807,192 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#oi-tuong-uoc-lap-lich" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Đối tượng được lập lịch
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scheduling-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scheduling class
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#runqueue-theo-tung-cpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Runqueue theo từng CPU
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thoi-iem-lap-lich-lai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thời điểm lập lịch lại
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preemption" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preemption
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lap-lich-task-thuong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lập lịch task thường
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lập lịch task thường">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#trong-so-va-nice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trọng số và nice
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vruntime" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vruntime
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eevdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EEVDF
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sched_batch-va-sched_idle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SCHED_BATCH và SCHED_IDLE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#real-time-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Real-time class
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deadline-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deadline class
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#can-bang-tai-giua-cac-cpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cân bằng tải giữa các CPU
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sched_ext" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sched_ext
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cac-moc-phien-ban" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các mốc phiên bản
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#lien-quan" class="md-nav__link">
     <span class="md-ellipsis">
       
         Liên quan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài liệu tham khảo
       
     </span>
   </a>
@@ -15152,10 +15334,192 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#oi-tuong-uoc-lap-lich" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Đối tượng được lập lịch
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scheduling-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scheduling class
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#runqueue-theo-tung-cpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Runqueue theo từng CPU
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thoi-iem-lap-lich-lai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thời điểm lập lịch lại
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preemption" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preemption
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lap-lich-task-thuong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lập lịch task thường
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lập lịch task thường">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#trong-so-va-nice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trọng số và nice
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vruntime" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vruntime
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eevdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EEVDF
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sched_batch-va-sched_idle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SCHED_BATCH và SCHED_IDLE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#real-time-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Real-time class
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deadline-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deadline class
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#can-bang-tai-giua-cac-cpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cân bằng tải giữa các CPU
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sched_ext" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sched_ext
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cac-moc-phien-ban" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các mốc phiên bản
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#lien-quan" class="md-nav__link">
     <span class="md-ellipsis">
       
         Liên quan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài liệu tham khảo
       
     </span>
   </a>
@@ -15208,16 +15572,271 @@
 
 
 <h1 id="scheduler">Scheduler<a class="headerlink" href="#scheduler" title="Permanent link">¶</a></h1>
-<div class="admonition todo">
-<p class="admonition-title">Trang chưa viết</p>
-<p>Trang này trình bày cơ chế lập lịch của kernel. Nội dung dự kiến: mô hình scheduling class và thứ tự ưu tiên giữa các class, lập lịch cho task thường (CFS và EEVDF, nice value), chính sách real-time <code>SCHED_FIFO</code> và <code>SCHED_RR</code>, <code>SCHED_DEADLINE</code>, preemption và các mô hình preemption của kernel, runqueue theo từng CPU và cân bằng tải, CPU affinity.</p>
-</div>
+<p>Scheduler (bộ lập lịch) là phần kernel quyết định task nào được chạy trên mỗi CPU và chạy trong bao lâu. Trang này trình bày cơ chế ở mức khái niệm, theo thứ tự: đối tượng được lập lịch, mô hình scheduling class, runqueue theo từng CPU, thời điểm kernel lập lịch lại và preemption, thuật toán EEVDF cho task thường, real-time class và deadline class, cân bằng tải giữa các CPU, và cuối cùng là sched_ext. Nội dung mô tả theo Linux 6.18, bản LTS mới nhất tại thời điểm viết. Cách đặt chính sách lập lịch từ ứng dụng được trình bày ở <a href="../../../programming/lnx/rt-app/">Ứng dụng real-time trên Linux</a>.</p>
+<h2 id="oi-tuong-uoc-lap-lich">Đối tượng được lập lịch<a class="headerlink" href="#oi-tuong-uoc-lap-lich" title="Permanent link">¶</a></h2>
+<p>Đơn vị mà scheduler làm việc là task, biểu diễn bằng <code>task_struct</code>. Kernel không phân biệt process và thread ở mức lập lịch: mỗi thread của một process là một task riêng, và kernel thread cũng là task. Chi tiết về <code>task_struct</code> và cách tạo task nằm ở <a href="../../process/process/">Process và thread trong kernel</a>.</p>
+<p>Tại mỗi thời điểm, một task ở một trong hai nhóm trạng thái chính. Task sẵn sàng chạy (runnable) đang chạy hoặc đang chờ tới lượt trên CPU. Task ngủ (sleeping) đang chờ một sự kiện như I/O hoàn tất, lock được nhả hoặc timer hết hạn, và không tham gia lập lịch cho tới khi được đánh thức (wakeup). Scheduler chỉ chọn giữa các task runnable.</p>
+<p>Mỗi task mang một chính sách lập lịch (scheduling policy) và các tham số đi kèm: giá trị nice cho task thường, mức ưu tiên 1 tới 99 cho task real-time, hoặc bộ ba runtime, deadline, period cho task deadline. Chính sách quyết định task thuộc scheduling class nào.</p>
+<h2 id="scheduling-class">Scheduling class<a class="headerlink" href="#scheduling-class" title="Permanent link">¶</a></h2>
+<p>Scheduler được chia thành các scheduling class. Mỗi class là một bộ lập lịch riêng với cấu trúc dữ liệu và thuật toán riêng, cài đặt chung một tập thao tác (<code>struct sched_class</code>): thêm task vào hàng đợi, bỏ task khỏi hàng đợi, chọn task kế tiếp, xử lý tick, kiểm tra một task mới đánh thức có cần preempt task đang chạy hay không. Phần lõi của scheduler (<code>kernel/sched/core.c</code>) không biết thuật toán của từng class, chỉ gọi các thao tác này.</p>
+<p>Các class có thứ tự ưu tiên cố định. Khi cần chọn task kế tiếp, lõi scheduler hỏi lần lượt từng class từ cao xuống thấp và chạy task đầu tiên tìm được. Thứ tự này được cố định lúc link kernel: các đối tượng class được đặt liên tiếp trong một section của image, nên việc so sánh ưu tiên giữa hai class chỉ là so sánh địa chỉ.</p>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/sched-class-order.svg" data-desc-position="bottom"><img alt="Six scheduling classes in priority order: stop, deadline, rt, fair, ext and idle, with the policies each one serves." src="../img/sched-class-order.svg"></a></p>
+<figcaption>Thứ tự ưu tiên của các scheduling class trong Linux 6.18.</figcaption>
+</figure>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Chính sách</th>
+<th>Vai trò</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stop</td>
+<td>(chỉ dùng trong kernel)</td>
+<td>Task <code>migration/N</code> dừng CPU để di chuyển task hoặc thực hiện thao tác cần chiếm toàn bộ CPU; không user space nào dùng được</td>
+</tr>
+<tr>
+<td>deadline</td>
+<td><code>SCHED_DEADLINE</code></td>
+<td>Task định kỳ có ràng buộc thời gian, lập lịch theo deadline</td>
+</tr>
+<tr>
+<td>rt</td>
+<td><code>SCHED_FIFO</code>, <code>SCHED_RR</code></td>
+<td>Task real-time ưu tiên cố định</td>
+</tr>
+<tr>
+<td>fair</td>
+<td><code>SCHED_NORMAL</code> (còn gọi <code>SCHED_OTHER</code>), <code>SCHED_BATCH</code>, <code>SCHED_IDLE</code></td>
+<td>Task thường, chia CPU theo trọng số</td>
+</tr>
+<tr>
+<td>ext</td>
+<td><code>SCHED_EXT</code></td>
+<td>Thuật toán lập lịch do chương trình BPF cung cấp, chỉ hoạt động khi đã nạp BPF scheduler</td>
+</tr>
+<tr>
+<td>idle</td>
+<td>(chỉ dùng trong kernel)</td>
+<td>Task idle của mỗi CPU, chạy khi không còn task nào khác</td>
+</tr>
+</tbody>
+</table>
+<p>Hệ quả trực tiếp của mô hình này là một task real-time luôn chạy trước mọi task thường trên cùng CPU, bất kể task thường đã chờ bao lâu. Cơ chế chống task thường bị bỏ đói (starvation) được trình bày ở mục <a href="#real-time-class">Real-time class</a>.</p>
+<h2 id="runqueue-theo-tung-cpu">Runqueue theo từng CPU<a class="headerlink" href="#runqueue-theo-tung-cpu" title="Permanent link">¶</a></h2>
+<p>Mỗi CPU có một runqueue riêng (<code>struct rq</code>) chứa các task runnable đang được gán cho CPU đó. Bên trong runqueue có hàng đợi con cho từng class: <code>cfs_rq</code> cho fair class, <code>rt_rq</code> cho rt class, <code>dl_rq</code> cho deadline class. Mỗi task runnable nằm trên đúng một runqueue tại một thời điểm.</p>
+<p>Thiết kế mỗi CPU một runqueue giúp các CPU lập lịch độc lập: mỗi runqueue có lock riêng, và thao tác chọn task chỉ cần khóa runqueue của CPU hiện tại. Đổi lại, kernel phải chủ động di chuyển task giữa các runqueue để giữ tải cân bằng, được trình bày ở mục <a href="#can-bang-tai-giua-cac-cpu">Cân bằng tải giữa các CPU</a>.</p>
+<h2 id="thoi-iem-lap-lich-lai">Thời điểm lập lịch lại<a class="headerlink" href="#thoi-iem-lap-lich-lai" title="Permanent link">¶</a></h2>
+<p>Việc lập lịch lại diễn ra theo hai bước tách rời. Bước thứ nhất là quyết định cần lập lịch lại: kernel đặt cờ <code>TIF_NEED_RESCHED</code> trên task đang chạy. Bước thứ hai là thực sự đổi task: hàm <code>schedule()</code> được gọi tại một điểm an toàn, chọn task kế tiếp và chuyển ngữ cảnh.</p>
+<p>Cờ cần lập lịch lại được đặt trong các trường hợp sau:</p>
+<ul>
+<li>Tại tick định kỳ, class của task đang chạy kiểm tra task đã dùng hết phần thời gian được cấp hay chưa.</li>
+<li>Khi một task được đánh thức, class của nó kiểm tra task mới có nên chạy trước task hiện tại hay không, ví dụ task real-time thức dậy trên CPU đang chạy task thường.</li>
+<li>Khi tham số lập lịch của task thay đổi, hoặc khi cân bằng tải chuyển task sang CPU này.</li>
+</ul>
+<p>Task cũng có thể gọi <code>schedule()</code> trực tiếp mà không qua cờ, khi nó tự chuyển sang trạng thái ngủ để chờ sự kiện. Trường hợp này gọi là chuyển ngữ cảnh tự nguyện (voluntary context switch). Trường hợp task rời CPU khi vẫn còn runnable, gồm cả khi bị preempt và khi tự nhường CPU bằng <code>sched_yield()</code>, được kernel đếm là chuyển ngữ cảnh không tự nguyện (involuntary context switch). Hai bộ đếm tương ứng có trong <code>/proc/&lt;pid&gt;/status</code> (<code>voluntary_ctxt_switches</code>, <code>nonvoluntary_ctxt_switches</code>).</p>
+<p>Sơ đồ dưới minh họa trường hợp một ngắt đánh thức task real-time trong khi CPU đang chạy task thường ở user space.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant N as Task thường (user space)
+    participant K as Kernel
+    participant R as Task RT
+    N-&gt;&gt;K: Ngắt phần cứng
+    K-&gt;&gt;K: Handler đánh thức task RT (try_to_wake_up)
+    K-&gt;&gt;K: rt class: task RT ưu tiên cao hơn, đặt TIF_NEED_RESCHED
+    K-&gt;&gt;K: Thoát ngắt, thấy cờ, gọi schedule()
+    K-&gt;&gt;R: context_switch() sang task RT
+    R-&gt;&gt;K: Task RT xong việc, ngủ lại, gọi schedule()
+    K-&gt;&gt;N: Chọn lại task thường, quay về user space</code></pre>
+<p>Chuyển ngữ cảnh (context switch) gồm hai phần: đổi không gian địa chỉ sang của task mới (bỏ qua khi task mới là kernel thread hoặc cùng process), và đổi trạng thái thanh ghi cùng kernel stack. Chi phí trực tiếp của thao tác này nhỏ, nhưng chi phí gián tiếp do cache và TLB phải nạp lại dữ liệu của task mới có thể lớn hơn nhiều.</p>
+<h2 id="preemption">Preemption<a class="headerlink" href="#preemption" title="Permanent link">¶</a></h2>
+<p>Điểm mà <code>schedule()</code> được gọi sau khi cờ đã đặt phụ thuộc vào task đang chạy ở đâu. Khi task ở user space, kernel luôn có thể lấy CPU tại lần về user space kế tiếp, sau một ngắt hoặc system call. Khi task đang chạy mã kernel, việc lấy CPU giữa chừng gọi là kernel preemption và phụ thuộc mô hình preemption được chọn.</p>
+<p>Kernel theo dõi khả năng preempt bằng bộ đếm <code>preempt_count</code> của từng task. Bộ đếm khác 0 khi task giữ spinlock, đang trong ngữ cảnh ngắt hoặc đã tắt preemption tường minh bằng <code>preempt_disable()</code>. Trong các mô hình cho phép kernel preemption, kernel kiểm tra cờ cần lập lịch lại mỗi khi bộ đếm trở về 0 và khi thoát ngắt về mã kernel.</p>
+<p>Bảng các mô hình preemption (<code>PREEMPT_NONE</code>, <code>PREEMPT_VOLUNTARY</code>, <code>PREEMPT</code>, <code>PREEMPT_LAZY</code>, <code>PREEMPT_RT</code>) và phạm vi không preempt được của từng mô hình nằm ở <a href="../../cpu_isolation/preempt_rt/#cac-mo-hinh-preemption">Real-time Linux (PREEMPT_RT)</a>. Hai điểm liên quan tới scheduler cần bổ sung:</p>
+<ul>
+<li>Với <code>CONFIG_PREEMPT_DYNAMIC</code>, mô hình được chọn lúc boot bằng tham số <code>preempt=</code> (<code>none</code>, <code>voluntary</code>, <code>full</code>, <code>lazy</code>) và đổi được lúc chạy qua debugfs <code>/sys/kernel/debug/sched/preempt</code>.</li>
+<li>Mô hình lazy (từ Linux 6.13) dùng một cờ riêng cho task thường: yêu cầu preempt task fair được hoãn tới tick kế tiếp hoặc lần về user space, còn yêu cầu từ task RT và deadline vẫn được xử lý ngay như preempt đầy đủ.</li>
+</ul>
+<h2 id="lap-lich-task-thuong">Lập lịch task thường<a class="headerlink" href="#lap-lich-task-thuong" title="Permanent link">¶</a></h2>
+<p>Fair class phục vụ phần lớn task trong hệ thống. Mục tiêu của nó là chia thời gian CPU giữa các task runnable theo tỷ lệ trọng số, đồng thời giữ độ trễ (thời gian chờ tới lượt) ở mức chấp nhận được. Mục này trình bày trọng số, khái niệm vruntime chung cho cả CFS và EEVDF, rồi cách EEVDF chọn task.</p>
+<h3 id="trong-so-va-nice">Trọng số và nice<a class="headerlink" href="#trong-so-va-nice" title="Permanent link">¶</a></h3>
+<p>Mỗi task thường có giá trị nice từ -20 (ưu tiên cao nhất) tới 19 (thấp nhất), mặc định 0. Kernel đổi nice thành trọng số (weight) qua bảng <code>sched_prio_to_weight</code>: nice 0 ứng với 1024, và mỗi bậc nice chênh nhau khoảng 1,25 lần. Bảng được thiết kế để mỗi bậc nice làm thay đổi khoảng 10% thời gian CPU mà task nhận được khi cạnh tranh với task khác.</p>
+<table>
+<thead>
+<tr>
+<th>Nice</th>
+<th>-10</th>
+<th>-5</th>
+<th>0</th>
+<th>5</th>
+<th>10</th>
+<th>19</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Weight</td>
+<td>9548</td>
+<td>3121</td>
+<td>1024</td>
+<td>335</td>
+<td>110</td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
+<p>Phần CPU mà một task nhận được bằng trọng số của nó chia cho tổng trọng số các task runnable trên cùng runqueue. Hai task nice 0 và nice 5 cùng chạy liên tục trên một CPU nhận lần lượt khoảng 1024 / 1359 ≈ 75% và 335 / 1359 ≈ 25% thời gian CPU.</p>
+<h3 id="vruntime">vruntime<a class="headerlink" href="#vruntime" title="Permanent link">¶</a></h3>
+<p>Để biết task nào đang được nhận ít hơn phần của mình, fair class tính cho mỗi task một virtual runtime (vruntime): thời gian chạy thực tế được chia theo trọng số. Khi task chạy được <span class="arithmatex">\(\Delta t\)</span>, vruntime của nó tăng thêm:</p>
+<div class="arithmatex">\[
+\Delta v = \Delta t \cdot \frac{1024}{w}
+\]</div>
+<p>Task nice 0 có vruntime tăng đúng bằng thời gian thực. Task có trọng số lớn hơn có vruntime tăng chậm hơn, nên được chạy lâu hơn trước khi bị coi là đã dùng đủ phần.</p>
+<p>Completely Fair Scheduler (CFS), fair class mặc định từ Linux 2.6.23, dùng trực tiếp đại lượng này: các task runnable được xếp trong một cây đỏ đen (red-black tree) theo vruntime, và CFS luôn chọn task có vruntime nhỏ nhất. Hạn chế của CFS là chỉ có một tham số (trọng số) quyết định cả tỷ lệ CPU lẫn thời điểm được chạy. Một task cần phản hồi nhanh nhưng dùng ít CPU không có cách nào yêu cầu được chạy sớm hơn mà không tăng luôn phần CPU, nên CFS phải dựa vào nhiều heuristic để xử lý các task loại này.</p>
+<h3 id="eevdf">EEVDF<a class="headerlink" href="#eevdf" title="Permanent link">¶</a></h3>
+<p>Earliest Eligible Virtual Deadline First (EEVDF) là thuật toán được công bố năm 1995, được đưa vào Linux từ 6.6 để thay CFS làm thuật toán của fair class. EEVDF giữ khái niệm trọng số và vruntime, nhưng tách quyết định chọn task thành hai tiêu chí: task có đang được nợ thời gian CPU hay không, và task cần được chạy gấp tới mức nào.</p>
+<p><strong>Lag và thời gian ảo trung bình.</strong> Gọi <span class="arithmatex">\(V\)</span> là trung bình có trọng số của vruntime các task trên runqueue:</p>
+<div class="arithmatex">\[
+V = \frac{\sum_i w_i \, v_i}{\sum_i w_i}
+\]</div>
+<p><span class="arithmatex">\(V\)</span> đại diện cho vị trí mà mọi task sẽ cùng đạt được trên một CPU lý tưởng chia đều thời gian theo trọng số. Lag của task <span class="arithmatex">\(i\)</span> đo độ chênh giữa phần CPU lý tưởng và phần thực nhận:</p>
+<div class="arithmatex">\[
+\text{lag}_i = w_i \, (V - v_i)
+\]</div>
+<p>Lag dương nghĩa là task đang được nợ thời gian CPU, lag âm nghĩa là task đã chạy quá phần. Tổng lag của mọi task trên runqueue bằng 0.</p>
+<p><strong>Eligible.</strong> Task có lag lớn hơn hoặc bằng 0, tức <span class="arithmatex">\(v_i \le V\)</span>, được coi là đủ điều kiện (eligible). Chỉ task eligible mới được chọn.</p>
+<p><strong>Virtual deadline.</strong> Mỗi task yêu cầu được chạy một lát thời gian (slice) <span class="arithmatex">\(r_i\)</span>. Virtual deadline của task là thời điểm ảo mà task cần nhận xong lát đó:</p>
+<div class="arithmatex">\[
+vd_i = v_i + \frac{r_i}{w_i}
+\]</div>
+<p>(trong mã, <span class="arithmatex">\(r_i / w_i\)</span> cũng được chuẩn hóa theo trọng số 1024 như vruntime). Task có slice ngắn có deadline gần hơn.</p>
+<p><strong>Quy tắc chọn.</strong> Trong các task eligible, EEVDF chọn task có virtual deadline sớm nhất. Kernel thực hiện việc này với độ phức tạp <span class="arithmatex">\(O(\log n)\)</span> trên cây đỏ đen được sắp theo deadline, mỗi nút lưu thêm vruntime nhỏ nhất trong cây con của nó để loại nhanh các nhánh không có task eligible.</p>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/sched-eevdf-pick.svg" data-desc-position="bottom"><img alt="Four tasks on a virtual time axis with the weighted average V at 20: tasks A and B are eligible, C and D are not; B is picked because it has the earliest virtual deadline among eligible tasks, although C has an earlier deadline." src="../img/sched-eevdf-pick.svg"></a></p>
+<figcaption>Task C có deadline sớm nhất nhưng chưa eligible; EEVDF chọn B.</figcaption>
+</figure>
+<p>Ví dụ trong hình cho thấy vai trò của từng tiêu chí. Task A đã chạy ít nhất (vruntime nhỏ nhất) nên CFS sẽ chọn A. EEVDF không chọn A vì deadline của A xa hơn B: B yêu cầu slice ngắn hơn nên cần được phục vụ sớm hơn. Task C có deadline sớm nhất nhưng đã chạy vượt phần (<span class="arithmatex">\(v &gt; V\)</span>), nên phải chờ cho tới khi <span class="arithmatex">\(V\)</span> tăng lên.</p>
+<p><strong>Slice.</strong> Slice mặc định lấy từ <code>sysctl_sched_base_slice</code>, giá trị gốc 0,7 ms nhân với hệ số <span class="arithmatex">\(1 + \log_2(\min(n_{cpu}, 8))\)</span>. Hệ thống 1 CPU có slice 0,7 ms, hệ thống từ 8 CPU trở lên có slice 2,8 ms. Giá trị hiện tại xem và chỉnh được qua debugfs <code>/sys/kernel/debug/sched/base_slice_ns</code>. Từ phía ứng dụng, một task thường có thể yêu cầu slice riêng bằng trường <code>sched_runtime</code> của <code>sched_setattr()</code>; kernel giới hạn giá trị này trong khoảng 0,1 ms tới 100 ms. Slice ngắn hơn cho deadline gần hơn, nên task được chạy sớm hơn sau khi thức dậy, nhưng không làm tăng tổng phần CPU, vốn chỉ do trọng số quyết định.</p>
+<p><strong>Preemption khi wakeup.</strong> Khi một task thức dậy, nếu nó eligible và có deadline sớm hơn task đang chạy, fair class đặt cờ cần lập lịch lại. Đây là cơ chế giúp task có slice ngắn phản hồi nhanh.</p>
+<p><strong>Task ngủ và lag.</strong> Khi task rời runqueue để ngủ, lag của nó được lưu lại và dùng để đặt vị trí khi task quay lại. Nếu bỏ qua lag, một task đã chạy vượt phần có thể ngủ một lúc ngắn để xóa lag âm của mình. Để tránh điều này, task có lag âm khi đi ngủ được giữ lại trên runqueue ở trạng thái chờ gỡ (delayed dequeue) cho tới khi lag của nó trở về 0, sau đó mới thực sự bị gỡ.</p>
+<p>So sánh hai thuật toán:</p>
+<table>
+<thead>
+<tr>
+<th>Tiêu chí</th>
+<th>CFS</th>
+<th>EEVDF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tiêu chí chọn task</td>
+<td>vruntime nhỏ nhất</td>
+<td>Trong các task có <span class="arithmatex">\(v \le V\)</span>, virtual deadline sớm nhất</td>
+</tr>
+<tr>
+<td>Tham số của task</td>
+<td>Trọng số (nice)</td>
+<td>Trọng số (nice) và slice</td>
+</tr>
+<tr>
+<td>Yêu cầu độ trễ thấp</td>
+<td>Dựa vào heuristic cho task vừa thức dậy</td>
+<td>Khai báo slice ngắn qua <code>sched_setattr()</code></td>
+</tr>
+<tr>
+<td>Task ngủ ngắn để lấy lại ưu tiên</td>
+<td>Giới hạn bằng heuristic khi đặt lại vruntime</td>
+<td>Lag được lưu qua lúc ngủ, lag âm phải trả hết</td>
+</tr>
+<tr>
+<td>Có mặt trong mainline</td>
+<td>2.6.23 tới trước 6.6</td>
+<td>Từ 6.6, hoàn tất chuyển đổi ở 6.12</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sched_batch-va-sched_idle">SCHED_BATCH và SCHED_IDLE<a class="headerlink" href="#sched_batch-va-sched_idle" title="Permanent link">¶</a></h3>
+<p>Hai chính sách còn lại của fair class dùng chung thuật toán trên. <code>SCHED_BATCH</code> dành cho task tính toán không tương tác: task loại này không preempt task khác khi thức dậy, giảm số lần chuyển ngữ cảnh. <code>SCHED_IDLE</code> dành cho công việc nền có ưu tiên thấp nhất, dùng trọng số rất nhỏ (thấp hơn cả nice 19). Task <code>SCHED_IDLE</code> vẫn thuộc fair class, khác với task idle của idle class.</p>
+<h2 id="real-time-class">Real-time class<a class="headerlink" href="#real-time-class" title="Permanent link">¶</a></h2>
+<p>Rt class phục vụ hai chính sách <code>SCHED_FIFO</code> và <code>SCHED_RR</code>. Task có mức ưu tiên cố định từ 1 tới 99, số lớn hơn ưu tiên cao hơn. Mỗi runqueue giữ một danh sách task cho mỗi mức ưu tiên và một bitmap đánh dấu mức nào có task. Việc chọn task chỉ cần tìm bit cao nhất trong bitmap rồi lấy task đầu danh sách, nên thời gian chọn không phụ thuộc số task.</p>
+<p>Task <code>SCHED_FIFO</code> chạy cho tới khi tự ngủ, tự nhường CPU, hoặc bị task ưu tiên cao hơn preempt; không có giới hạn thời gian. Task <code>SCHED_RR</code> hoạt động giống vậy nhưng có lát thời gian (mặc định 100 ms, chỉnh qua <code>/proc/sys/kernel/sched_rr_timeslice_ms</code>); hết lát thì task được đưa về cuối danh sách cùng mức ưu tiên. Lát thời gian chỉ có tác dụng giữa các task cùng mức ưu tiên.</p>
+<p>Trên hệ nhiều CPU, rt class cố gắng để các task RT ưu tiên cao nhất luôn được chạy ở đâu đó trong hệ thống. Khi một CPU có nhiều hơn một task RT runnable, nó đẩy (push) task dư sang CPU đang chạy task ưu tiên thấp hơn; khi một CPU hạ xuống mức ưu tiên thấp hơn, nó kéo (pull) task RT đang chờ ở CPU khác về. Cơ chế này hoạt động riêng, không qua cân bằng tải của fair class.</p>
+<p>Một task RT chạy vòng lặp không ngủ có thể chiếm CPU vô thời hạn và bỏ đói mọi task thường. Từ Linux 6.12, cơ chế bảo vệ mặc định là fair server: mỗi CPU có một deadline server, tức một thực thể của deadline class được dành để chạy task fair. Trong Linux 6.18, fair server mặc định được cấp 50 ms trong mỗi chu kỳ 1 s, và chỉ kích hoạt khi task fair trên CPU đó bị bỏ đói. Tham số của từng CPU nằm trong debugfs <code>/sys/kernel/debug/sched/fair_server/cpuN/{runtime,period}</code>. Cơ chế RT throttling cũ (<code>sched_rt_runtime_us</code>, <code>sched_rt_period_us</code>) vẫn còn trong mã nhưng phần thực thi giới hạn chỉ có khi bật <code>CONFIG_RT_GROUP_SCHED</code>.</p>
+<h2 id="deadline-class">Deadline class<a class="headerlink" href="#deadline-class" title="Permanent link">¶</a></h2>
+<p>Deadline class phục vụ chính sách <code>SCHED_DEADLINE</code>, có trong mainline từ Linux 3.14. Mỗi task khai báo ba tham số: runtime (thời gian CPU cần trong mỗi chu kỳ), deadline (thời hạn hoàn thành tính từ đầu chu kỳ) và period (chu kỳ), với runtime ≤ deadline ≤ period.</p>
+<p>Thuật toán gồm hai phần. Earliest Deadline First (EDF) chọn task có deadline tuyệt đối sớm nhất. Constant Bandwidth Server (CBS) theo dõi runtime đã dùng: task chạy hết runtime của chu kỳ hiện tại thì bị tạm dừng (throttled) cho tới chu kỳ sau. Nhờ CBS, một task deadline chạy quá dự kiến không ảnh hưởng tới phần CPU đã cam kết cho các task deadline khác.</p>
+<p>Kernel kiểm soát nhận task (admission control): khi một task xin chuyển sang <code>SCHED_DEADLINE</code>, kernel cộng băng thông runtime / period của nó vào tổng băng thông đã cấp, và từ chối với lỗi <code>EBUSY</code> nếu tổng vượt giới hạn cho phép. Vì deadline class đứng trên rt class, kiểm soát nhận task là điều kiện để task deadline không chiếm toàn bộ CPU.</p>
+<p>Bảng so sánh ba chính sách real-time từ góc nhìn ứng dụng nằm ở <a href="../../cpu_isolation/preempt_rt/#chinh-sach-lap-lich-real-time">Real-time Linux (PREEMPT_RT)</a>.</p>
+<h2 id="can-bang-tai-giua-cac-cpu">Cân bằng tải giữa các CPU<a class="headerlink" href="#can-bang-tai-giua-cac-cpu" title="Permanent link">¶</a></h2>
+<p>Vì mỗi CPU có runqueue riêng, kernel phải chủ động phân phối task để không có CPU quá tải trong khi CPU khác rảnh. Việc này do fair class đảm nhiệm cho task thường; task RT và deadline có cơ chế push và pull riêng.</p>
+<p>Kernel mô tả cấu trúc phần cứng bằng cây scheduler domain. Mỗi domain là một nhóm CPU cần được cân bằng với nhau, chia thành các sched group; cân bằng tải trong một domain là so sánh và di chuyển tải giữa các group của nó. Các mức domain thường gặp, từ thấp lên cao: các luồng phần cứng của cùng một core (SMT), các core chia sẻ cache cấp cuối (MC), toàn bộ package, và các NUMA node. Di chuyển task ở mức thấp rẻ hơn vì cache còn dữ liệu chung, nên mức thấp được cân bằng thường xuyên hơn mức cao.</p>
+<p>Cân bằng tải diễn ra trong ba tình huống:</p>
+<ul>
+<li>Định kỳ: tick kích hoạt softirq <code>SCHED_SOFTIRQ</code> để kiểm tra từng mức domain đã tới hạn cân bằng hay chưa, tìm group và runqueue bận nhất, rồi kéo task về.</li>
+<li>Khi CPU sắp rảnh (newidle balance): trước khi chuyển sang idle, CPU thử kéo task từ CPU khác.</li>
+<li>Khi task thức dậy hoặc được tạo: kernel chọn CPU đặt task, ưu tiên CPU đang rảnh và gần với CPU cũ của task để tận dụng cache.</li>
+</ul>
+<p>CPU affinity giới hạn tập CPU mà task được chạy, đặt bằng <code>sched_setaffinity()</code> hoặc lệnh <code>taskset</code>. Cân bằng tải tôn trọng affinity: task không bao giờ bị di chuyển ra ngoài tập CPU cho phép. Ở mức hệ thống, có thể loại một số CPU khỏi scheduler domain để cân bằng tải không đưa task thường vào đó, xem <a href="../../cpu_isolation/isolcpus/">isolcpus và cô lập scheduler domain</a>.</p>
+<h2 id="sched_ext">sched_ext<a class="headerlink" href="#sched_ext" title="Permanent link">¶</a></h2>
+<p>sched_ext (ext class, từ Linux 6.12) cho phép cài đặt thuật toán lập lịch bằng chương trình BPF nạp từ user space, thay vì sửa và build lại kernel. Class này chỉ hoạt động khi đã nạp một BPF scheduler; khi đó, tùy chế độ, nó nhận các task đặt chính sách <code>SCHED_EXT</code> hoặc toàn bộ task fair. Nếu BPF scheduler gặp lỗi hoặc để task chờ quá lâu, kernel gỡ nó và đưa các task về fair class. Lý do ra đời, các scheduler có sẵn và so sánh với EEVDF được phân tích trong bài <a href="../../../articles/2026/11/02/sched-ext-bpf-scheduler/">Điều chỉnh scheduler Linux ở userspace: sched_ext</a>.</p>
+<h2 id="cac-moc-phien-ban">Các mốc phiên bản<a class="headerlink" href="#cac-moc-phien-ban" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Phiên bản</th>
+<th>Thay đổi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2.6.23</td>
+<td>CFS trở thành bộ lập lịch cho task thường</td>
+</tr>
+<tr>
+<td>3.14</td>
+<td>Thêm <code>SCHED_DEADLINE</code></td>
+</tr>
+<tr>
+<td>6.6</td>
+<td>EEVDF bắt đầu thay CFS</td>
+</tr>
+<tr>
+<td>6.12</td>
+<td>Hoàn tất chuyển sang EEVDF, thêm deadline server (fair server), thêm sched_ext</td>
+</tr>
+<tr>
+<td>6.13</td>
+<td>Thêm mô hình preemption lazy</td>
+</tr>
+</tbody>
+</table>
 <h2 id="lien-quan">Liên quan<a class="headerlink" href="#lien-quan" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="../../process/process/">Process và thread trong kernel</a>: task là đối tượng được lập lịch.</li>
-<li><a href="../../cpu_isolation/preempt_rt/">Real-time Linux (PREEMPT_RT)</a>: áp dụng chính sách real-time.</li>
+<li><a href="../../cpu_isolation/preempt_rt/">Real-time Linux (PREEMPT_RT)</a>: các mô hình preemption và áp dụng chính sách real-time.</li>
 <li><a href="../../cpu_isolation/isolcpus/">isolcpus</a>: loại CPU khỏi cân bằng tải.</li>
+<li><a href="../../cpu_isolation/nohz_full/">nohz_full</a>: tắt tick định kỳ trên CPU chỉ chạy một task.</li>
 <li><a href="../../../programming/lnx/rt-app/">Ứng dụng real-time trên Linux</a> (Programming): đặt chính sách lập lịch từ user space.</li>
+<li><a href="../../../articles/2026/11/02/sched-ext-bpf-scheduler/">sched_ext, BPF scheduler</a> (article): thuật toán lập lịch nạp bằng BPF.</li>
+</ul>
+<h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="https://docs.kernel.org/scheduler/sched-eevdf.html">Kernel docs: EEVDF Scheduler (<code>Documentation/scheduler/sched-eevdf.rst</code>)</a></li>
+<li><a href="https://docs.kernel.org/scheduler/sched-design-CFS.html">Kernel docs: CFS Scheduler (<code>Documentation/scheduler/sched-design-CFS.rst</code>)</a></li>
+<li><a href="https://docs.kernel.org/scheduler/sched-domains.html">Kernel docs: Scheduler Domains</a></li>
+<li><a href="https://docs.kernel.org/scheduler/sched-deadline.html">Kernel docs: Deadline Task Scheduling</a></li>
+<li><a href="https://docs.kernel.org/scheduler/sched-rt-group.html">Kernel docs: Real-Time group scheduling</a></li>
+<li><a href="https://docs.kernel.org/scheduler/sched-ext.html">Kernel docs: Extensible Scheduler Class</a></li>
+<li><a href="https://docs.kernel.org/scheduler/sched-nice-design.html">Kernel docs: Scheduler Nice Design</a></li>
+<li>Mã nguồn Linux 6.18: <a href="https://github.com/torvalds/linux/blob/v6.18/kernel/sched/fair.c"><code>kernel/sched/fair.c</code></a> (base slice, công thức lag và deadline, giới hạn slice tùy chỉnh), <a href="https://github.com/torvalds/linux/blob/v6.18/kernel/sched/core.c"><code>kernel/sched/core.c</code></a> (bảng trọng số, tham số <code>preempt=</code>), <a href="https://github.com/torvalds/linux/blob/v6.18/kernel/sched/deadline.c"><code>kernel/sched/deadline.c</code></a> (tham số mặc định của fair server), <a href="https://github.com/torvalds/linux/blob/v6.18/kernel/sched/rt.c"><code>kernel/sched/rt.c</code></a>, <a href="https://github.com/torvalds/linux/blob/v6.18/kernel/sched/debug.c"><code>kernel/sched/debug.c</code></a> (các file debugfs), <a href="https://github.com/torvalds/linux/blob/v6.18/include/asm-generic/vmlinux.lds.h"><code>include/asm-generic/vmlinux.lds.h</code></a> (thứ tự các class).</li>
+<li>I. Stoica, H. Abdel-Wahab, <a href="https://citeseerx.ist.psu.edu/document?repid=rep1&amp;type=pdf&amp;doi=805acf7726282721504c8f00575d91ebfd750564">Earliest Eligible Virtual Deadline First: A Flexible and Accurate Mechanism for Proportional Share Resource Allocation</a>, 1995.</li>
+<li>LWN: <a href="https://lwn.net/Articles/925371/">An EEVDF CPU scheduler for Linux</a>, <a href="https://lwn.net/Articles/969062/">Completing the EEVDF scheduler</a>.</li>
+<li>Phoronix: <a href="https://phoronix.com/news/Linux-6.12-Scheduler">Linux 6.12 Scheduler Code Adds SCHED_DEADLINE Servers &amp; Complete EEVDF</a>.</li>
+<li><a href="https://lkml.indiana.edu/1401.2/01843.html">Scheduler pull request cho v3.14 (SCHED_DEADLINE)</a>, <a href="https://lkml.iu.edu/2411.2/01726.html">Scheduler pull request cho v6.13 (PREEMPT_LAZY)</a>.</li>
+<li>Endoflife.date: <a href="https://endoflife.date/linux">Linux Kernel</a> (trạng thái LTS của 6.18).</li>
 </ul>
 
 
@@ -15241,7 +15860,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 9, 2026 02:56:34 UTC">November 9, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 15, 2026 03:05:58 UTC">November 15, 2026</span>
   </span>
 
     

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 272" role="img" font-family="Helvetica, Arial, sans-serif" font-size="14">
+<rect x="0" y="0" width="760" height="250" rx="8" fill="#ffffff"/>
+<title>Scheduling classes in priority order: stop, deadline, real-time, fair, ext and idle; the scheduler asks each class in turn for a runnable task.</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#455a64"/></marker></defs>
+<text x="380" y="30" text-anchor="middle" font-weight="bold" fill="#1f2d3d" font-size="15">pick_next_task(): ask each class in priority order</text>
+<rect x="13" y="60" width="110" height="70" rx="6" fill="#fdecea" stroke="#c0392b" stroke-width="1.5"/>
+<text x="68.0" y="88" text-anchor="middle" font-weight="bold" fill="#1f2d3d" font-size="16">stop</text>
+<text x="68.0" y="112" text-anchor="middle" fill="#2c3a42" font-size="13">1st</text>
+<text x="68.0" y="160" text-anchor="middle" fill="#2c3a42" font-size="13">CPU stop,</text>
+<text x="68.0" y="177" text-anchor="middle" fill="#2c3a42" font-size="13">migration</text>
+<line x1="124" y1="95" x2="136" y2="95" stroke="#455a64" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="137" y="60" width="110" height="70" rx="6" fill="#f6e8f0" stroke="#a23b72" stroke-width="1.5"/>
+<text x="192.0" y="88" text-anchor="middle" font-weight="bold" fill="#1f2d3d" font-size="16">deadline</text>
+<text x="192.0" y="112" text-anchor="middle" fill="#2c3a42" font-size="13">2nd</text>
+<text x="192.0" y="160" text-anchor="middle" fill="#2c3a42" font-size="13">SCHED_DEADLINE</text>
+<line x1="248" y1="95" x2="260" y2="95" stroke="#455a64" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="261" y="60" width="110" height="70" rx="6" fill="#fdf3e3" stroke="#b7791f" stroke-width="1.5"/>
+<text x="316.0" y="88" text-anchor="middle" font-weight="bold" fill="#1f2d3d" font-size="16">rt</text>
+<text x="316.0" y="112" text-anchor="middle" fill="#2c3a42" font-size="13">3rd</text>
+<text x="316.0" y="160" text-anchor="middle" fill="#2c3a42" font-size="13">SCHED_FIFO,</text>
+<text x="316.0" y="177" text-anchor="middle" fill="#2c3a42" font-size="13">SCHED_RR</text>
+<line x1="372" y1="95" x2="384" y2="95" stroke="#455a64" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="385" y="60" width="110" height="70" rx="6" fill="#e8eef8" stroke="#2f5d9e" stroke-width="1.5"/>
+<text x="440.0" y="88" text-anchor="middle" font-weight="bold" fill="#1f2d3d" font-size="16">fair</text>
+<text x="440.0" y="112" text-anchor="middle" fill="#2c3a42" font-size="13">4th</text>
+<text x="440.0" y="160" text-anchor="middle" fill="#2c3a42" font-size="13">SCHED_NORMAL,</text>
+<text x="440.0" y="177" text-anchor="middle" fill="#2c3a42" font-size="13">BATCH,</text>
+<text x="440.0" y="194" text-anchor="middle" fill="#2c3a42" font-size="13">IDLE</text>
+<line x1="496" y1="95" x2="508" y2="95" stroke="#455a64" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="509" y="60" width="110" height="70" rx="6" fill="#e9f5ee" stroke="#2e7d4f" stroke-width="1.5"/>
+<text x="564.0" y="88" text-anchor="middle" font-weight="bold" fill="#1f2d3d" font-size="16">ext</text>
+<text x="564.0" y="112" text-anchor="middle" fill="#2c3a42" font-size="13">5th</text>
+<text x="564.0" y="160" text-anchor="middle" fill="#2c3a42" font-size="13">SCHED_EXT (BPF)</text>
+<line x1="620" y1="95" x2="632" y2="95" stroke="#455a64" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="633" y="60" width="110" height="70" rx="6" fill="#eceff1" stroke="#78909c" stroke-width="1.5"/>
+<text x="688.0" y="88" text-anchor="middle" font-weight="bold" fill="#1f2d3d" font-size="16">idle</text>
+<text x="688.0" y="112" text-anchor="middle" fill="#2c3a42" font-size="13">6th</text>
+<text x="688.0" y="160" text-anchor="middle" fill="#2c3a42" font-size="13">idle task</text>
+<line x1="30" y1="210" x2="730" y2="210" stroke="#455a64" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="30" y="235" fill="#1f2d3d" font-size="13">higher priority: a runnable task here always runs before any task in a class to the right</text>
+<text id="wm" x="751.2" y="265.4" text-anchor="end" font-size="11" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
+</svg>
