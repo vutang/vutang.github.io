@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Bộ nhớ ảo trong Linux kernel ở mức hệ thống: page table, page fault, page cache, thu hồi bộ nhớ, OOM killer, CMA và huge page (chưa viết).">
+        <meta name="description" content="Bộ nhớ ảo trong Linux kernel ở mức hệ thống: không gian địa chỉ và VMA, page table trên Arm64, page fault và copy-on-write, thu hồi bộ nhớ, swap, OOM killer, CMA và huge page.">
       
       
         <meta name="author" content="Vu Tang">
@@ -73,7 +73,7 @@
   
 <meta property="og:type" content="website">
 <meta property="og:title" content="Virtual Memory - Vu Tang's Docs">
-<meta property="og:description" content="Bộ nhớ ảo trong Linux kernel ở mức hệ thống: page table, page fault, page cache, thu hồi bộ nhớ, OOM killer, CMA và huge page (chưa viết).">
+<meta property="og:description" content="Bộ nhớ ảo trong Linux kernel ở mức hệ thống: không gian địa chỉ và VMA, page table trên Arm64, page fault và copy-on-write, thu hồi bộ nhớ, swap, OOM killer, CMA và huge page.">
 <meta property="og:image" content="https://note.vutang.dev/assets/images/social/lnx_kernel/mm/vm.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
@@ -81,7 +81,7 @@
 <meta property="og:url" content="https://note.vutang.dev/lnx_kernel/mm/vm/">
 <meta property="twitter:card" content="summary_large_image">
 <meta property="twitter:title" content="Virtual Memory - Vu Tang's Docs">
-<meta property="twitter:description" content="Bộ nhớ ảo trong Linux kernel ở mức hệ thống: page table, page fault, page cache, thu hồi bộ nhớ, OOM killer, CMA và huge page (chưa viết).">
+<meta property="twitter:description" content="Bộ nhớ ảo trong Linux kernel ở mức hệ thống: không gian địa chỉ và VMA, page table trên Arm64, page fault và copy-on-write, thu hồi bộ nhớ, swap, OOM killer, CMA và huge page.">
 <meta property="twitter:image" content="https://note.vutang.dev/assets/images/social/lnx_kernel/mm/vm.png">
 <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
@@ -6819,7 +6819,7 @@
   <span class="md-ellipsis">
     
   
-    Virtual Memory (WIP)
+    Virtual Memory
   
 
     
@@ -6837,7 +6837,7 @@
   <span class="md-ellipsis">
     
   
-    Virtual Memory (WIP)
+    Virtual Memory
   
 
     
@@ -6863,10 +6863,159 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#khong-gian-ia-chi-cua-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Không gian địa chỉ của process
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-table-tren-arm64" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Page table trên Arm64
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-fault" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Page fault
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Page fault">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#copy-on-write" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Copy-on-write
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overcommit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overcommit
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cac-loai-trang-va-page-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các loại trang và page cache
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thu-hoi-bo-nho" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thu hồi bộ nhớ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#swap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Swap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oom-killer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OOM killer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contiguous-memory-allocator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contiguous Memory Allocator
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#huge-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Huge page
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quan-sat-va-tinh-chinh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quan sát và tinh chỉnh
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#lien-quan" class="md-nav__link">
     <span class="md-ellipsis">
       
         Liên quan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài liệu tham khảo
       
     </span>
   </a>
@@ -15208,10 +15357,159 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#khong-gian-ia-chi-cua-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Không gian địa chỉ của process
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-table-tren-arm64" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Page table trên Arm64
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-fault" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Page fault
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Page fault">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#copy-on-write" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Copy-on-write
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overcommit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overcommit
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cac-loai-trang-va-page-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các loại trang và page cache
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thu-hoi-bo-nho" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thu hồi bộ nhớ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#swap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Swap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oom-killer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OOM killer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contiguous-memory-allocator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contiguous Memory Allocator
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#huge-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Huge page
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quan-sat-va-tinh-chinh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quan sát và tinh chỉnh
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#lien-quan" class="md-nav__link">
     <span class="md-ellipsis">
       
         Liên quan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài liệu tham khảo
       
     </span>
   </a>
@@ -15264,16 +15562,271 @@
 
 
 <h1 id="virtual-memory">Virtual Memory<a class="headerlink" href="#virtual-memory" title="Permanent link">¶</a></h1>
-<div class="admonition todo">
-<p class="admonition-title">Trang chưa viết</p>
-<p>Trang này trình bày quản lý bộ nhớ ở mức hệ thống, bổ sung cho góc nhìn driver trong Quản lý bộ nhớ trong driver. Nội dung dự kiến: không gian địa chỉ của process (<code>mm_struct</code>, VMA), page table nhiều cấp, xử lý page fault và copy-on-write, page cache và cơ chế thu hồi bộ nhớ (reclaim), swap, OOM killer, Contiguous Memory Allocator (CMA), huge page và transparent huge page.</p>
-</div>
+<p>Trang này trình bày cách Linux kernel quản lý bộ nhớ ảo ở mức hệ thống, theo thứ tự: không gian địa chỉ của process và VMA, page table trên Arm64, xử lý page fault và copy-on-write, overcommit, các loại trang và cơ chế thu hồi bộ nhớ (reclaim), swap, OOM killer, Contiguous Memory Allocator (CMA), huge page, và cách quan sát, tinh chỉnh trên hệ thống. Phần phụ thuộc kiến trúc lấy theo Arm64, mã nguồn tham chiếu Linux 6.18. Các API cấp phát bộ nhớ trong driver (<code>kmalloc</code>, <code>vmalloc</code>, cờ GFP, zone) nằm ở <a href="../memory/">Quản lý bộ nhớ trong driver</a>; khái niệm page, TLB ở mức phần cứng nằm ở <a href="../../../computer_arch/microarch/memory/">Memory Hierarchy</a>.</p>
+<h2 id="khong-gian-ia-chi-cua-process">Không gian địa chỉ của process<a class="headerlink" href="#khong-gian-ia-chi-cua-process" title="Permanent link">¶</a></h2>
+<p>Mỗi process có một không gian địa chỉ ảo riêng, biểu diễn bằng <code>struct mm_struct</code> và được mọi thread của process dùng chung (xem <a href="../../process/process/#tao-task-clone">Process và thread trong kernel</a>). <code>mm_struct</code> giữ con trỏ tới page table gốc của process, các bộ đếm sử dụng bộ nhớ và danh sách các vùng nhớ đã ánh xạ.</p>
+<p>Không gian địa chỉ không được dùng liền một khối mà chia thành các vùng, mỗi vùng là một <code>struct vm_area_struct</code> (VMA). Một VMA mô tả một dải địa chỉ liên tục có cùng quyền truy cập và cùng nguồn dữ liệu, ví dụ đoạn mã của chương trình, heap, stack, một thư viện dùng chung hay một vùng <code>mmap()</code>. Từ Linux 6.1, các VMA của một process được lưu trong maple tree (<code>mm-&gt;mm_mt</code>) để tìm nhanh VMA chứa một địa chỉ.</p>
+<p>VMA chia thành hai loại theo nguồn dữ liệu:</p>
+<table>
+<thead>
+<tr>
+<th>Loại</th>
+<th>Nguồn dữ liệu</th>
+<th>Ví dụ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>File-backed</td>
+<td>Nội dung một file; trang được đọc từ file khi cần</td>
+<td>Mã chương trình, thư viện, <code>mmap()</code> một file</td>
+</tr>
+<tr>
+<td>Anonymous</td>
+<td>Không có file; trang mới cấp được điền 0</td>
+<td>Heap (<code>malloc</code>), stack, <code>mmap(MAP_ANONYMOUS)</code></td>
+</tr>
+</tbody>
+</table>
+<p>Danh sách VMA của một process đọc được ở <code>/proc/&lt;pid&gt;/maps</code>, mỗi dòng một VMA với dải địa chỉ, quyền, offset và file tương ứng:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>aaaab5e10000-aaaab5e31000 r-xp 00000000 b3:02 1311  /usr/bin/myapp
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>aaaab5e40000-aaaab5e42000 rw-p 00020000 b3:02 1311  /usr/bin/myapp
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>aaaace3a1000-aaaace3c2000 rw-p 00000000 00:00 0     [heap]
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>ffff8a210000-ffff8a398000 r-xp 00000000 b3:02 2048  /usr/lib/libc.so.6
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>ffffd3f60000-ffffd3f81000 rw-p 00000000 00:00 0     [stack]
+</code></pre></div>
+<p>Tạo VMA (bằng <code>mmap()</code>, <code>brk()</code> hay lúc <code>exec</code>) chỉ ghi nhận dải địa chỉ được phép dùng; kernel chưa cấp trang vật lý nào. Trang vật lý chỉ được cấp khi process truy cập địa chỉ lần đầu, qua cơ chế page fault.</p>
+<h2 id="page-table-tren-arm64">Page table trên Arm64<a class="headerlink" href="#page-table-tren-arm64" title="Permanent link">¶</a></h2>
+<p>MMU dịch địa chỉ ảo sang địa chỉ vật lý bằng page table nhiều cấp. Với cấu hình page 4 KB và địa chỉ ảo 48 bit, Arm64 dùng 4 cấp bảng, mỗi bảng có 512 mục; địa chỉ ảo được chia thành bốn chỉ số 9 bit và 12 bit offset trong trang. Kernel đặt tên bốn cấp theo quy ước chung PGD, PUD, PMD, PTE. Cấu hình 39 bit dùng 3 cấp; cấu hình page 64 KB dùng 2 hoặc 3 cấp.</p>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/vm-arm64-page-walk.svg" data-desc-position="bottom"><img alt="A 48-bit virtual address split into four 9-bit indices for the PGD, PUD, PMD and PTE tables and a 12-bit page offset, with the walk starting from TTBR0 or TTBR1." src="../img/vm-arm64-page-walk.svg"></a></p>
+<figcaption>Dịch địa chỉ 48 bit qua 4 cấp page table trên Arm64 với page 4 KB.</figcaption>
+</figure>
+<p>Arm64 có hai thanh ghi chứa địa chỉ bảng gốc. Địa chỉ có các bit cao bằng 0 (nửa dưới) thuộc user space và được dịch qua TTBR0, thanh ghi này đổi theo process ở mỗi lần chuyển ngữ cảnh. Địa chỉ có các bit cao bằng 1 (nửa trên) thuộc kernel và được dịch qua TTBR1, trỏ tới bảng của kernel (<code>swapper_pg_dir</code>) dùng chung cho mọi process. Nhờ tách hai nửa, kernel không phải chép phần ánh xạ của mình vào page table của từng process.</p>
+<p>TLB lưu các phép dịch đã thực hiện. Mỗi mục TLB của user space được gắn một Address Space Identifier (ASID) của process, nên khi chuyển ngữ cảnh kernel chỉ cần đổi ASID mà không phải xóa toàn bộ TLB. Khi page table thay đổi, kernel phải xóa các mục TLB cũ; trên Arm64 thao tác này dùng lệnh <code>TLBI</code> được phần cứng phát tới mọi core, xem <a href="../../smp/smp/#inter-processor-interrupt">SMP và CPU hotplug</a>.</p>
+<p>Mỗi mục page table ngoài địa chỉ vật lý còn chứa các bit thuộc tính: quyền đọc, ghi, thực thi; trang thuộc user hay kernel; bit Access (trang đã được truy cập) và trạng thái dirty. Kernel dựa vào các bit này để thực hiện copy-on-write và để biết trang nào đang được dùng khi thu hồi bộ nhớ.</p>
+<h2 id="page-fault">Page fault<a class="headerlink" href="#page-fault" title="Permanent link">¶</a></h2>
+<p>Page fault là exception mà MMU sinh ra khi không dịch được địa chỉ, hoặc khi truy cập vi phạm quyền ghi trong page table. Kernel bắt exception (trên Arm64 là <code>do_page_fault()</code> trong <code>arch/arm64/mm/fault.c</code>), tìm VMA chứa địa chỉ bị lỗi, rồi quyết định:</p>
+<ul>
+<li>Địa chỉ không thuộc VMA nào, hoặc kiểu truy cập không được VMA cho phép (ghi vào vùng chỉ đọc, thực thi vùng không có quyền thực thi): gửi <code>SIGSEGV</code> cho task nếu lỗi từ user space, hoặc báo oops nếu lỗi từ mã kernel.</li>
+<li>Truy cập hợp lệ: gọi <code>handle_mm_fault()</code> để điền page table, sau đó lệnh gây lỗi được thực hiện lại.</li>
+</ul>
+<pre class="mermaid"><code>flowchart TD
+    A[Page fault tại địa chỉ X] --&gt; B{X thuộc một VMA&lt;br/&gt;và quyền hợp lệ?}
+    B -- Không --&gt; C[SIGSEGV, hoặc oops nếu từ kernel]
+    B -- Có --&gt; D{Mục PTE đang có?}
+    D -- Chưa có, VMA anonymous --&gt; E[Cấp trang mới điền 0&lt;br/&gt;đọc: dùng zero page chung]
+    D -- Chưa có, VMA file-backed --&gt; F[Lấy trang từ page cache&lt;br/&gt;đọc file nếu chưa có]
+    D -- Trang nằm trong swap --&gt; G[Đọc trang từ swap]
+    D -- Có, ghi vào trang chỉ đọc COW --&gt; H[Sao chép trang&lt;br/&gt;copy-on-write]
+    E --&gt; I[Cập nhật PTE, chạy lại lệnh]
+    F --&gt; I
+    G --&gt; I
+    H --&gt; I</code></pre>
+<p>Để giảm tranh chấp trên process nhiều thread, Arm64 trước hết thử xử lý page fault chỉ với lock của riêng VMA đó (per-VMA lock), và chỉ khóa cả không gian địa chỉ (<code>mmap_lock</code>) khi cách này không áp dụng được.</p>
+<p>Page fault được chia thành hai loại theo chi phí. Minor fault là fault giải quyết được mà không cần I/O, ví dụ cấp trang anonymous mới hay ánh xạ một trang file đã có sẵn trong page cache. Major fault là fault phải đọc dữ liệu từ thiết bị lưu trữ hoặc swap, chậm hơn nhiều bậc. Số lần mỗi loại của một process có trong <code>/proc/&lt;pid&gt;/stat</code> (trường <code>minflt</code>, <code>majflt</code>) và trong lệnh <code>ps -o min_flt,maj_flt</code>. Ứng dụng real-time thường gọi <code>mlockall()</code> và chạm trước toàn bộ bộ nhớ để tránh page fault khi đang chạy, xem <a href="../../../programming/lnx/rt-app/">Ứng dụng real-time trên Linux</a>.</p>
+<h3 id="copy-on-write">Copy-on-write<a class="headerlink" href="#copy-on-write" title="Permanent link">¶</a></h3>
+<p>Copy-on-write (COW) cho phép hai không gian địa chỉ dùng chung một trang vật lý cho tới khi một bên ghi vào. Khi <code>fork()</code>, kernel sao chép page table của process cha cho process con, đánh dấu các trang ghi được của vùng private là chỉ đọc ở cả hai phía, và tăng bộ đếm tham chiếu của trang. Khi một bên ghi, page fault xảy ra; kernel nhận ra đây là trang COW (VMA cho phép ghi nhưng PTE chỉ đọc), cấp trang mới, sao chép nội dung và ánh xạ trang mới với quyền ghi cho bên đó. Nếu trang chỉ còn một bên tham chiếu, kernel bật lại quyền ghi mà không cần sao chép.</p>
+<p>COW cũng áp dụng cho <code>mmap()</code> một file với <code>MAP_PRIVATE</code>: các trang ban đầu là trang của file trong page cache, và chỉ bị sao chép khi process ghi vào. Thay đổi đó không được ghi ngược về file.</p>
+<p>Với vùng anonymous chưa từng được ghi, page fault do đọc được giải quyết bằng cách ánh xạ một zero page chung, chỉ đọc. Trang riêng chỉ được cấp khi process ghi lần đầu.</p>
+<h2 id="overcommit">Overcommit<a class="headerlink" href="#overcommit" title="Permanent link">¶</a></h2>
+<p>Vì trang vật lý chỉ được cấp khi truy cập, tổng dung lượng các VMA có thể vượt xa RAM và swap. Kernel kiểm soát mức cam kết này qua <code>vm.overcommit_memory</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Giá trị</th>
+<th>Chính sách</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 (mặc định)</td>
+<td>Heuristic: chỉ từ chối các yêu cầu vượt rõ ràng tổng RAM và swap</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Luôn chấp nhận, cho tới khi thật sự hết bộ nhớ</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Không overcommit: tổng cam kết không vượt swap cộng một tỷ lệ RAM (<code>overcommit_ratio</code>, hoặc <code>overcommit_kbytes</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>Với giá trị 0 và 1, <code>malloc()</code> gần như luôn thành công, và việc thiếu bộ nhớ chỉ lộ ra lúc page fault cần cấp trang. Khi đó kernel không thể trả lỗi cho lời gọi đã thành công từ trước, nên phải thu hồi bộ nhớ hoặc kích hoạt OOM killer. Giá trị 2 chuyển lỗi về thời điểm cấp phát (<code>malloc()</code> trả <code>NULL</code>), phù hợp với thiết bị muốn hành vi dự đoán được, nhưng cần đặt tỷ lệ cẩn thận vì nhiều chương trình đặt trước vùng nhớ lớn mà không dùng hết. Tổng cam kết hiện tại và giới hạn xem ở <code>Committed_AS</code> và <code>CommitLimit</code> trong <code>/proc/meminfo</code>.</p>
+<h2 id="cac-loai-trang-va-page-cache">Các loại trang và page cache<a class="headerlink" href="#cac-loai-trang-va-page-cache" title="Permanent link">¶</a></h2>
+<p>Ở góc độ thu hồi bộ nhớ, trang của user space chia thành hai nhóm:</p>
+<ul>
+<li>Trang file-backed, gồm page cache: bản sao trong RAM của dữ liệu file. Trang sạch (chưa sửa) có thể bỏ ngay vì đọc lại được từ file; trang dirty phải ghi về file trước (writeback).</li>
+<li>Trang anonymous: không có bản gốc ở đâu khác. Muốn giải phóng, kernel phải ghi trang ra swap; nếu không có swap, trang anonymous không thể thu hồi.</li>
+</ul>
+<p>Linux dùng RAM rảnh làm page cache, nên trên hệ thống chạy lâu, lượng bộ nhớ "free" thường thấp mà không có nghĩa là thiếu bộ nhớ. Đại lượng phản ánh đúng hơn là <code>MemAvailable</code> trong <code>/proc/meminfo</code>, ước lượng bộ nhớ có thể cấp cho ứng dụng mới mà không phải dùng swap, gồm cả phần page cache thu hồi được. Đường đi đọc ghi file qua page cache và writeback được trình bày ở <a href="../../vfs/vfs/">VFS và page cache</a>.</p>
+<h2 id="thu-hoi-bo-nho">Thu hồi bộ nhớ<a class="headerlink" href="#thu-hoi-bo-nho" title="Permanent link">¶</a></h2>
+<p>Khi bộ nhớ trống giảm, kernel thu hồi (reclaim) trang đang dùng để có trang trống. Kernel theo dõi các trang file-backed và anonymous trong danh sách LRU (Least Recently Used): trang lâu không được truy cập (bit Access không được bật lại) được chọn để thu hồi trước. Ngoài LRU hai danh sách active và inactive truyền thống, từ Linux 6.1 kernel còn có cài đặt Multi-Gen LRU (<code>CONFIG_LRU_GEN</code>), chia trang thành nhiều thế hệ theo thời điểm truy cập; việc bật mặc định do tùy chọn <code>CONFIG_LRU_GEN_ENABLED</code> và có thể đổi lúc chạy qua <code>/sys/kernel/mm/lru_gen/enabled</code>.</p>
+<p>Mỗi zone có ba ngưỡng (watermark) min, low và high, tính từ <code>vm.min_free_kbytes</code> và <code>vm.watermark_scale_factor</code>:</p>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/vm-watermarks.svg" data-desc-position="bottom"><img alt="Free memory of a zone over time against the high, low and min watermarks: kswapd wakes when free memory drops below low and sleeps when it reaches high; below min, allocations perform direct reclaim." src="../img/vm-watermarks.svg"></a></p>
+<figcaption>Watermark của zone quyết định khi nào thu hồi nền và khi nào thu hồi trực tiếp.</figcaption>
+</figure>
+<ul>
+<li>Khi bộ nhớ trống xuống dưới low, kernel đánh thức thread <code>kswapd</code> (một thread cho mỗi node bộ nhớ) để thu hồi ở nền cho tới khi đạt high.</li>
+<li>Khi bộ nhớ trống xuống dưới min, task đang cấp phát phải tự thu hồi (direct reclaim) trước khi được cấp trang. Direct reclaim làm task bị trễ không dự đoán được, đáng chú ý với ứng dụng có yêu cầu độ trễ.</li>
+<li>Phần dưới min được giữ cho các cấp phát khẩn cấp của kernel. Không nên đặt <code>min_free_kbytes</code> dưới 1024 KB, vì kernel có thể bị deadlock khi tải cao.</li>
+</ul>
+<p>Thu hồi chưa đủ để cấp được một khối nhiều trang liên tục, vì trang trống có thể nằm rải rác. Khi cần khối liên tục (cho huge page hay bộ đệm DMA), kernel thực hiện compaction: di chuyển các trang đang dùng để gom trang trống thành khối liền. Compaction chạy trực tiếp khi cấp phát hoặc ở nền trong thread <code>kcompactd</code>.</p>
+<h2 id="swap">Swap<a class="headerlink" href="#swap" title="Permanent link">¶</a></h2>
+<p>Swap là vùng trên thiết bị lưu trữ để chứa trang anonymous bị thu hồi. Khi process truy cập lại trang đã bị đẩy ra swap, page fault xảy ra và kernel đọc trang về (major fault). Tham số <code>vm.swappiness</code> (0 tới 200, mặc định 60) cho kernel biết chi phí I/O tương đối giữa swap và đọc lại file: giá trị thấp ưu tiên thu hồi page cache, giá trị cao ưu tiên đẩy trang anonymous ra swap. Với swap trong RAM như zram, giá trị trên 100 là hợp lý vì swap rẻ hơn đọc file.</p>
+<p>Trên thiết bị nhúng, swap trên flash thường bị tránh vì làm mòn flash và có độ trễ không ổn định. Lựa chọn phổ biến là zram: một block device nén dữ liệu trong RAM, dùng làm swap. Trang anonymous ít dùng được nén lại trong RAM thay vì ghi ra flash, đổi lấy thời gian CPU để nén và giải nén. Zswap là cơ chế gần giống, làm bộ đệm nén đặt trước một thiết bị swap thật.</p>
+<h2 id="oom-killer">OOM killer<a class="headerlink" href="#oom-killer" title="Permanent link">¶</a></h2>
+<p>Khi kernel không thể cấp trang dù đã thu hồi và compaction, Out-Of-Memory (OOM) killer được kích hoạt để chọn một process và kill nó, giải phóng bộ nhớ cho hệ thống tiếp tục chạy. Kernel tính điểm (badness) cho từng process, chủ yếu từ bộ nhớ nó chiếm: số trang trong RAM (RSS), số trang trong swap và kích thước page table. Điểm được điều chỉnh bởi <code>oom_score_adj</code> của process, trong khoảng -1000 tới 1000: -1000 loại hẳn process khỏi danh sách bị chọn, 1000 khiến process bị chọn trước.</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Ý nghĩa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/proc/&lt;pid&gt;/oom_score</code></td>
+<td>Điểm hiện tại của process</td>
+</tr>
+<tr>
+<td><code>/proc/&lt;pid&gt;/oom_score_adj</code></td>
+<td>Điều chỉnh điểm, ghi được (giảm giá trị cần quyền)</td>
+</tr>
+</tbody>
+</table>
+<p>Trên thiết bị nhúng, các process quan trọng (agent quản lý, watchdog) thường được đặt <code>oom_score_adj</code> thấp, ví dụ qua <code>OOMScoreAdjust=</code> của systemd. Khi cgroup v2 đặt giới hạn <code>memory.max</code>, OOM có thể xảy ra trong phạm vi một cgroup mà không ảnh hưởng phần còn lại của hệ thống. Log của OOM killer trong <code>dmesg</code> liệt kê bộ nhớ từng process và process bị kill, là điểm bắt đầu khi phân tích sự cố.</p>
+<h2 id="contiguous-memory-allocator">Contiguous Memory Allocator<a class="headerlink" href="#contiguous-memory-allocator" title="Permanent link">¶</a></h2>
+<p>Một số thiết bị, như bộ giải mã video hay bộ điều khiển hiển thị không có IOMMU, cần bộ đệm lớn liên tục về mặt vật lý. Sau khi hệ thống chạy một thời gian, bộ nhớ bị phân mảnh và việc cấp khối liên tục vài chục MB gần như không thể. Đặt riêng một vùng nhớ cho thiết bị giải quyết được việc này nhưng lãng phí vùng đó khi thiết bị không dùng.</p>
+<p>CMA (Contiguous Memory Allocator) dành trước một vùng nhớ lúc boot, nhưng cho phép page allocator dùng vùng đó cho các trang di chuyển được (movable), như trang anonymous và page cache. Khi driver cần khối liên tục, CMA di chuyển (migrate) các trang đang chiếm vùng đó ra chỗ khác rồi giao khối cho driver. Đổi lại, việc cấp phát từ CMA có thể chậm và thất bại nếu có trang bị ghim (pinned) trong vùng.</p>
+<p>Vùng CMA mặc định được đặt bằng tham số boot <code>cma=</code> hoặc trong Device Tree bằng node <code>reserved-memory</code> có <code>compatible = "shared-dma-pool"</code>, <code>reusable</code> và <code>linux,cma-default</code>. Nếu không chỉ định, kích thước lấy từ cấu hình kernel (<code>CONFIG_CMA_SIZE_MBYTES</code>, mặc định 16 MB trên các kiến trúc khác x86). Lượng CMA tổng và còn trống xem ở <code>CmaTotal</code>, <code>CmaFree</code> trong <code>/proc/meminfo</code>. Cách driver cấp bộ nhớ CMA qua DMA API được trình bày ở <a href="../../dma/dma/#vung-nho-danh-rieng-va-cma">DMA</a>.</p>
+<h2 id="huge-page">Huge page<a class="headerlink" href="#huge-page" title="Permanent link">¶</a></h2>
+<p>Mỗi mục TLB phủ một trang. Với trang 4 KB, ứng dụng dùng vài GB bộ nhớ cần rất nhiều mục TLB và mỗi lần TLB miss phải đi qua 4 cấp bảng. Huge page dùng một mục page table ở cấp cao hơn để ánh xạ cả một khối lớn, giảm số mục TLB cần và rút ngắn đường dịch. Trên Arm64 với page 4 KB, kích thước huge page được hỗ trợ là:</p>
+<table>
+<thead>
+<tr>
+<th>Kích thước</th>
+<th>Cách ánh xạ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>64 KB</td>
+<td>16 mục PTE liên tiếp có bit Contiguous, TLB lưu như một mục</td>
+</tr>
+<tr>
+<td>2 MB</td>
+<td>Một mục PMD trỏ thẳng tới khối (block mapping)</td>
+</tr>
+<tr>
+<td>32 MB</td>
+<td>Các mục PMD liên tiếp có bit Contiguous</td>
+</tr>
+<tr>
+<td>1 GB</td>
+<td>Một mục PUD trỏ thẳng tới khối</td>
+</tr>
+</tbody>
+</table>
+<p>Kernel có hai cơ chế dùng huge page:</p>
+<ul>
+<li>HugeTLB: một nhóm (pool) huge page được dành trước, qua tham số boot <code>hugepages=</code> hoặc <code>/proc/sys/vm/nr_hugepages</code>, và ứng dụng dùng tường minh qua hugetlbfs hoặc <code>mmap(MAP_HUGETLB)</code>. Trang trong pool không bị swap và không dùng được cho việc khác. Cơ chế này phù hợp với ứng dụng biết trước nhu cầu, như DPDK.</li>
+<li>Transparent Huge Page (THP): kernel tự dùng huge page cho vùng anonymous khi có thể, không cần ứng dụng thay đổi. Chế độ đặt ở <code>/sys/kernel/mm/transparent_hugepage/enabled</code>: <code>always</code>, <code>madvise</code> (chỉ vùng được đánh dấu bằng <code>madvise(MADV_HUGEPAGE)</code>) hoặc <code>never</code>. Thread <code>khugepaged</code> quét bộ nhớ để gộp các trang nhỏ thành huge page ở nền. Kernel còn hỗ trợ THP nhiều kích thước (multi-size THP), mỗi kích thước được bật riêng trong <code>hugepages-&lt;size&gt;kB/enabled</code>.</li>
+</ul>
+<p>THP giảm TLB miss nhưng có thể làm tăng bộ nhớ dùng (một trang 2 MB được cấp dù chỉ dùng vài KB) và gây trễ khi kernel phải compaction để có khối 2 MB. Với ứng dụng real-time hoặc thiết bị ít RAM, chế độ <code>madvise</code> hoặc <code>never</code> thường được chọn để hành vi dự đoán được.</p>
+<h2 id="quan-sat-va-tinh-chinh">Quan sát và tinh chỉnh<a class="headerlink" href="#quan-sat-va-tinh-chinh" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Công cụ hoặc file</th>
+<th>Thông tin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/proc/meminfo</code></td>
+<td>Toàn hệ thống: <code>MemAvailable</code>, <code>Cached</code>, <code>AnonPages</code>, <code>SwapTotal</code>, <code>Committed_AS</code>, <code>CmaFree</code>, <code>AnonHugePages</code></td>
+</tr>
+<tr>
+<td><code>/proc/&lt;pid&gt;/maps</code>, <code>/proc/&lt;pid&gt;/smaps</code></td>
+<td>VMA của process; <code>smaps</code> thêm RSS, PSS (phần chia đều của trang dùng chung), dirty, swap của từng VMA</td>
+</tr>
+<tr>
+<td><code>/proc/&lt;pid&gt;/status</code></td>
+<td><code>VmRSS</code>, <code>VmSwap</code>, <code>VmHWM</code> (RSS cao nhất) của process</td>
+</tr>
+<tr>
+<td><code>vmstat 1</code></td>
+<td>Theo dõi swap in/out (<code>si</code>, <code>so</code>) và số trang trống theo thời gian</td>
+</tr>
+<tr>
+<td><code>/proc/vmstat</code></td>
+<td>Bộ đếm chi tiết: <code>pgmajfault</code>, <code>allocstall_*</code> (số lần direct reclaim), <code>compact_*</code>, <code>oom_kill</code></td>
+</tr>
+<tr>
+<td><code>/proc/pressure/memory</code></td>
+<td>Pressure Stall Information: tỷ lệ thời gian task bị chặn vì thiếu bộ nhớ</td>
+</tr>
+</tbody>
+</table>
+<p>Các tham số <code>vm.*</code> thường được chỉnh trên thiết bị nhúng:</p>
+<table>
+<thead>
+<tr>
+<th>Tham số</th>
+<th>Mặc định</th>
+<th>Ý nghĩa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>vm.swappiness</code></td>
+<td>60</td>
+<td>Cân bằng giữa đẩy trang anonymous ra swap và thu hồi page cache</td>
+</tr>
+<tr>
+<td><code>vm.overcommit_memory</code></td>
+<td>0</td>
+<td>Chính sách overcommit, xem mục <a href="#overcommit">Overcommit</a></td>
+</tr>
+<tr>
+<td><code>vm.min_free_kbytes</code></td>
+<td>Tính theo dung lượng RAM</td>
+<td>Dự trữ trang trống, quyết định watermark min</td>
+</tr>
+<tr>
+<td><code>vm.watermark_scale_factor</code></td>
+<td>10 (0,1% bộ nhớ)</td>
+<td>Khoảng cách giữa các watermark, tức mức chủ động của <code>kswapd</code></td>
+</tr>
+</tbody>
+</table>
 <h2 id="lien-quan">Liên quan<a class="headerlink" href="#lien-quan" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="../memory/">Quản lý bộ nhớ trong driver</a>: cấp phát bộ nhớ trong driver.</li>
 <li><a href="../../dma/dma/">DMA</a>: CMA và bộ nhớ liên tục cho DMA.</li>
 <li><a href="../../vfs/vfs/">VFS và page cache</a>: page cache dưới góc độ file.</li>
+<li><a href="../../process/process/">Process và thread trong kernel</a>: <code>mm_struct</code> dùng chung giữa các thread, <code>fork()</code> và <code>exec</code>.</li>
+<li><a href="../../smp/smp/">SMP và CPU hotplug</a>: TLB shootdown trên Arm64 và x86.</li>
+<li><a href="../../../computer_arch/microarch/memory/">Memory Hierarchy</a> (Chip &amp; SoC): page, TLB và page fault ở mức phần cứng.</li>
+<li><a href="../../../programming/lnx/rt-app/">Ứng dụng real-time trên Linux</a> (Programming): <code>mlockall()</code> và tránh page fault khi chạy.</li>
 <li><a href="../../../virtualization/foundations/memory/">Memory Virtualization</a> (Virtualization): bộ nhớ ảo khi chạy VM.</li>
+</ul>
+<h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="https://docs.kernel.org/arch/arm64/memory.html">Kernel docs: Memory Layout on AArch64 Linux (<code>Documentation/arch/arm64/memory.rst</code>)</a></li>
+<li><a href="https://docs.kernel.org/arch/arm64/hugetlbpage.html">Kernel docs: HugeTLBpage on ARM64 (<code>Documentation/arch/arm64/hugetlbpage.rst</code>)</a></li>
+<li><a href="https://docs.kernel.org/admin-guide/mm/concepts.html">Kernel docs: Concepts overview (<code>Documentation/admin-guide/mm/concepts.rst</code>)</a></li>
+<li><a href="https://docs.kernel.org/admin-guide/sysctl/vm.html">Kernel docs: Documentation for /proc/sys/vm/</a> (<code>swappiness</code>, <code>overcommit_memory</code>, <code>min_free_kbytes</code>, <code>watermark_scale_factor</code>)</li>
+<li><a href="https://docs.kernel.org/mm/overcommit-accounting.html">Kernel docs: Overcommit Accounting</a></li>
+<li><a href="https://docs.kernel.org/admin-guide/mm/transhuge.html">Kernel docs: Transparent Hugepage Support</a>, <a href="https://docs.kernel.org/admin-guide/mm/hugetlbpage.html">HugeTLB Pages</a></li>
+<li><a href="https://docs.kernel.org/admin-guide/mm/multigen_lru.html">Kernel docs: Multi-Gen LRU</a></li>
+<li><a href="https://docs.kernel.org/admin-guide/blockdev/zram.html">Kernel docs: zram</a></li>
+<li><a href="https://docs.kernel.org/filesystems/proc.html">Kernel docs: The /proc Filesystem</a> (<code>meminfo</code>, <code>smaps</code>, <code>oom_score_adj</code>)</li>
+<li>Mã nguồn Linux 6.18: <a href="https://github.com/torvalds/linux/blob/v6.18/include/linux/mm_types.h"><code>include/linux/mm_types.h</code></a> (<code>mm_struct</code>, maple tree), <a href="https://github.com/torvalds/linux/blob/v6.18/mm/memory.c"><code>mm/memory.c</code></a> (<code>handle_mm_fault()</code>, <code>do_wp_page()</code>, <code>do_anonymous_page()</code>), <a href="https://github.com/torvalds/linux/blob/v6.18/arch/arm64/mm/fault.c"><code>arch/arm64/mm/fault.c</code></a> (per-VMA lock), <a href="https://github.com/torvalds/linux/blob/v6.18/mm/oom_kill.c"><code>mm/oom_kill.c</code></a> (<code>oom_badness()</code>), <a href="https://github.com/torvalds/linux/blob/v6.18/mm/Kconfig"><code>mm/Kconfig</code></a> (<code>LRU_GEN</code>, <code>LRU_GEN_ENABLED</code>), <a href="https://github.com/torvalds/linux/blob/v6.18/kernel/dma/Kconfig"><code>kernel/dma/Kconfig</code></a> (<code>CMA_SIZE_MBYTES</code>)</li>
+<li><a href="https://lkml.indiana.edu/2210.1/00272.html">MM pull request cho Linux 6.1-rc1</a> (maple tree và Multi-Gen LRU vào mainline), Phoronix: <a href="https://www.phoronix.com/news/MGLRU-In-Linux-6.1">MGLRU Merged For Linux 6.1</a></li>
 </ul>
 
 
@@ -15297,7 +15850,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 9, 2026 02:56:34 UTC">November 9, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 15, 2026 23:20:42 UTC">November 15, 2026</span>
   </span>
 
     

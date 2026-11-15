@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 352" role="img" font-family="Helvetica, Arial, sans-serif" font-size="14">
+<rect x="0" y="0" width="760" height="330" rx="8" fill="#ffffff"/>
+<title>A 48-bit Arm64 virtual address with 4 KB pages is split into four 9-bit table indices and a 12-bit page offset; the MMU walks four table levels starting from TTBR0 for user addresses or TTBR1 for kernel addresses.</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#455a64"/></marker></defs>
+<text x="380" y="28" text-anchor="middle" font-weight="bold" fill="#1f2d3d" font-size="15">48-bit virtual address, 4 KB pages, 4-level walk</text>
+<rect x="35" y="48" width="110" height="50" fill="#eceff1" stroke="#78909c" stroke-width="1.4"/>
+<text x="90.0" y="68" text-anchor="middle" fill="#1f2d3d" font-size="13">bits 63..48</text>
+<text x="90.0" y="88" text-anchor="middle" fill="#1f2d3d" font-size="13" font-weight="bold">TTBR select</text>
+<rect x="145" y="48" width="110" height="50" fill="#e8eef8" stroke="#2f5d9e" stroke-width="1.4"/>
+<text x="200.0" y="68" text-anchor="middle" fill="#1f2d3d" font-size="13">47..39</text>
+<text x="200.0" y="88" text-anchor="middle" fill="#1f2d3d" font-size="13" font-weight="bold">PGD index</text>
+<rect x="255" y="48" width="110" height="50" fill="#e8eef8" stroke="#2f5d9e" stroke-width="1.4"/>
+<text x="310.0" y="68" text-anchor="middle" fill="#1f2d3d" font-size="13">38..30</text>
+<text x="310.0" y="88" text-anchor="middle" fill="#1f2d3d" font-size="13" font-weight="bold">PUD index</text>
+<rect x="365" y="48" width="110" height="50" fill="#e8eef8" stroke="#2f5d9e" stroke-width="1.4"/>
+<text x="420.0" y="68" text-anchor="middle" fill="#1f2d3d" font-size="13">29..21</text>
+<text x="420.0" y="88" text-anchor="middle" fill="#1f2d3d" font-size="13" font-weight="bold">PMD index</text>
+<rect x="475" y="48" width="110" height="50" fill="#e8eef8" stroke="#2f5d9e" stroke-width="1.4"/>
+<text x="530.0" y="68" text-anchor="middle" fill="#1f2d3d" font-size="13">20..12</text>
+<text x="530.0" y="88" text-anchor="middle" fill="#1f2d3d" font-size="13" font-weight="bold">PTE index</text>
+<rect x="585" y="48" width="110" height="50" fill="#e9f5ee" stroke="#2e7d4f" stroke-width="1.4"/>
+<text x="640.0" y="68" text-anchor="middle" fill="#1f2d3d" font-size="13">11..0</text>
+<text x="640.0" y="88" text-anchor="middle" fill="#1f2d3d" font-size="13" font-weight="bold">page offset</text>
+<rect x="42.0" y="170" width="96" height="70" rx="5" fill="#ffffff" stroke="#78909c" stroke-width="1.4"/>
+<text x="90.0" y="210" text-anchor="middle" fill="#1f2d3d" font-size="14">TTBRx</text>
+<line x1="90.0" y1="98" x2="90.0" y2="168" stroke="#90a4ae" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#a)"/>
+<line x1="138.0" y1="205" x2="150.0" y2="205" stroke="#455a64" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="152.0" y="170" width="96" height="70" rx="5" fill="#ffffff" stroke="#2f5d9e" stroke-width="1.4"/>
+<text x="200.0" y="210" text-anchor="middle" fill="#1f2d3d" font-size="14">PGD</text>
+<line x1="200.0" y1="98" x2="200.0" y2="168" stroke="#90a4ae" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#a)"/>
+<line x1="248.0" y1="205" x2="260.0" y2="205" stroke="#455a64" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="262.0" y="170" width="96" height="70" rx="5" fill="#ffffff" stroke="#2f5d9e" stroke-width="1.4"/>
+<text x="310.0" y="210" text-anchor="middle" fill="#1f2d3d" font-size="14">PUD</text>
+<line x1="310.0" y1="98" x2="310.0" y2="168" stroke="#90a4ae" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#a)"/>
+<line x1="358.0" y1="205" x2="370.0" y2="205" stroke="#455a64" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="372.0" y="170" width="96" height="70" rx="5" fill="#ffffff" stroke="#2f5d9e" stroke-width="1.4"/>
+<text x="420.0" y="210" text-anchor="middle" fill="#1f2d3d" font-size="14">PMD</text>
+<line x1="420.0" y1="98" x2="420.0" y2="168" stroke="#90a4ae" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#a)"/>
+<line x1="468.0" y1="205" x2="480.0" y2="205" stroke="#455a64" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="482.0" y="170" width="96" height="70" rx="5" fill="#ffffff" stroke="#2f5d9e" stroke-width="1.4"/>
+<text x="530.0" y="210" text-anchor="middle" fill="#1f2d3d" font-size="14">PTE</text>
+<line x1="530.0" y1="98" x2="530.0" y2="168" stroke="#90a4ae" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#a)"/>
+<line x1="578.0" y1="205" x2="590.0" y2="205" stroke="#455a64" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="592.0" y="170" width="96" height="70" rx="5" fill="#ffffff" stroke="#2e7d4f" stroke-width="1.4"/>
+<text x="640.0" y="210" text-anchor="middle" fill="#1f2d3d" font-size="14">4 KB page</text>
+<line x1="640.0" y1="98" x2="640.0" y2="168" stroke="#90a4ae" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#a)"/>
+<text x="380" y="270" text-anchor="middle" fill="#2c3a42" font-size="13">Each table holds 512 entries (9 bits); each entry points to the next table, or to a block for a huge page.</text>
+<text x="380" y="292" text-anchor="middle" fill="#2c3a42" font-size="13">User addresses (top bits 0) use TTBR0, per process; kernel addresses (top bits 1) use TTBR1, shared.</text>
+<text x="380" y="314" text-anchor="middle" fill="#2c3a42" font-size="13">The TLB caches finished translations, tagged with an ASID so a context switch need not flush it.</text>
+<text id="wm" x="751.2" y="345.4" text-anchor="end" font-size="11" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
+</svg>
