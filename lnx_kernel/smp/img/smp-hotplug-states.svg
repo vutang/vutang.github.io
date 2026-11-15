@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 322" role="img" font-family="Helvetica, Arial, sans-serif" font-size="14">
+<rect x="0" y="0" width="760" height="300" rx="8" fill="#ffffff"/>
+<title>CPU hotplug states run from CPUHP_OFFLINE to CPUHP_ONLINE in three sections: PREPARE on a control CPU, STARTING on the new CPU with interrupts off, and ONLINE in the per-CPU hotplug thread.</title>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#455a64"/></marker></defs>
+<text x="380" y="28" text-anchor="middle" font-weight="bold" fill="#1f2d3d" font-size="15">CPU hotplug state machine</text>
+<rect x="20" y="70" width="240" height="120" rx="6" fill="#e8eef8" stroke="#2f5d9e" stroke-width="1.5"/>
+<text x="140.0" y="98" text-anchor="middle" font-weight="bold" fill="#1f2d3d" font-size="16">PREPARE</text>
+<text x="140.0" y="126" text-anchor="middle" fill="#2c3a42" font-size="13">runs on a control CPU</text>
+<text x="140.0" y="148" text-anchor="middle" fill="#2c3a42" font-size="13">allocate resources</text>
+<text x="140.0" y="170" text-anchor="middle" fill="#2c3a42" font-size="13">for the new CPU</text>
+<rect x="260" y="70" width="240" height="120" rx="6" fill="#fdf3e3" stroke="#b7791f" stroke-width="1.5"/>
+<text x="380.0" y="98" text-anchor="middle" font-weight="bold" fill="#1f2d3d" font-size="16">STARTING</text>
+<text x="380.0" y="126" text-anchor="middle" fill="#2c3a42" font-size="13">runs on the new CPU</text>
+<text x="380.0" y="148" text-anchor="middle" fill="#2c3a42" font-size="13">interrupts disabled</text>
+<text x="380.0" y="170" text-anchor="middle" fill="#2c3a42" font-size="13">low-level hardware setup</text>
+<rect x="500" y="70" width="240" height="120" rx="6" fill="#e9f5ee" stroke="#2e7d4f" stroke-width="1.5"/>
+<text x="620.0" y="98" text-anchor="middle" font-weight="bold" fill="#1f2d3d" font-size="16">ONLINE</text>
+<text x="620.0" y="126" text-anchor="middle" fill="#2c3a42" font-size="13">runs in cpuhp/N thread</text>
+<text x="620.0" y="148" text-anchor="middle" fill="#2c3a42" font-size="13">preemptible, may sleep</text>
+<text x="620.0" y="170" text-anchor="middle" fill="#2c3a42" font-size="13">drivers, subsystems</text>
+<line x1="20" y1="58" x2="20" y2="200" stroke="#1f2d3d" stroke-width="2"/>
+<text x="20" y="52" text-anchor="start" fill="#1f2d3d" font-size="13">CPUHP_OFFLINE</text>
+<line x1="260" y1="58" x2="260" y2="200" stroke="#1f2d3d" stroke-width="2"/>
+<text x="260" y="52" text-anchor="middle" fill="#1f2d3d" font-size="13">CPUHP_BRINGUP_CPU</text>
+<line x1="500" y1="58" x2="500" y2="200" stroke="#1f2d3d" stroke-width="2"/>
+<text x="500" y="52" text-anchor="middle" fill="#1f2d3d" font-size="13">CPUHP_AP_ONLINE</text>
+<line x1="740" y1="58" x2="740" y2="200" stroke="#1f2d3d" stroke-width="2"/>
+<text x="740" y="52" text-anchor="end" fill="#1f2d3d" font-size="13">CPUHP_ONLINE</text>
+<line x1="30" y1="225" x2="730" y2="225" stroke="#2e7d4f" stroke-width="2" marker-end="url(#a)"/>
+<text x="380" y="245" text-anchor="middle" fill="#2e7d4f" font-size="13">CPU online: startup() callbacks in increasing state order</text>
+<line x1="730" y1="265" x2="30" y2="265" stroke="#c0392b" stroke-width="2" marker-end="url(#a)"/>
+<text x="380" y="286" text-anchor="middle" fill="#c0392b" font-size="13">CPU offline: teardown() callbacks in reverse order</text>
+<text id="wm" x="751.2" y="315.4" text-anchor="end" font-size="11" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
+</svg>
