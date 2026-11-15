@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Cách Linux kernel biểu diễn và quản lý process, thread và kernel thread: task_struct, fork, exec, exit và signal (chưa viết).">
+        <meta name="description" content="Cách Linux kernel biểu diễn và quản lý process, thread và kernel thread: task_struct, trạng thái task, clone và các cờ chia sẻ, exec, exit, zombie, kernel thread và signal.">
       
       
         <meta name="author" content="Vu Tang">
@@ -73,7 +73,7 @@
   
 <meta property="og:type" content="website">
 <meta property="og:title" content="Process và thread trong kernel - Vu Tang's Docs">
-<meta property="og:description" content="Cách Linux kernel biểu diễn và quản lý process, thread và kernel thread: task_struct, fork, exec, exit và signal (chưa viết).">
+<meta property="og:description" content="Cách Linux kernel biểu diễn và quản lý process, thread và kernel thread: task_struct, trạng thái task, clone và các cờ chia sẻ, exec, exit, zombie, kernel thread và signal.">
 <meta property="og:image" content="https://note.vutang.dev/assets/images/social/lnx_kernel/process/process.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
@@ -81,7 +81,7 @@
 <meta property="og:url" content="https://note.vutang.dev/lnx_kernel/process/process/">
 <meta property="twitter:card" content="summary_large_image">
 <meta property="twitter:title" content="Process và thread trong kernel - Vu Tang's Docs">
-<meta property="twitter:description" content="Cách Linux kernel biểu diễn và quản lý process, thread và kernel thread: task_struct, fork, exec, exit và signal (chưa viết).">
+<meta property="twitter:description" content="Cách Linux kernel biểu diễn và quản lý process, thread và kernel thread: task_struct, trạng thái task, clone và các cờ chia sẻ, exec, exit, zombie, kernel thread và signal.">
 <meta property="twitter:image" content="https://note.vutang.dev/assets/images/social/lnx_kernel/process/process.png">
 <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
@@ -6735,7 +6735,7 @@
   <span class="md-ellipsis">
     
   
-    Process &amp; Thread (WIP)
+    Process &amp; Thread
   
 
     
@@ -6753,7 +6753,7 @@
   <span class="md-ellipsis">
     
   
-    Process &amp; Thread (WIP)
+    Process &amp; Thread
   
 
     
@@ -6779,10 +6779,204 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#task-va-task_struct" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task và task_struct
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Task và task_struct">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pid-tgid-va-thread-group" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PID, TGID và thread group
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trang-thai-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trạng thái task
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-va-kernel-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        current và kernel stack
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tao-task-clone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tạo task: clone
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tạo task: clone">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#copy-on-write" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Copy-on-write
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#namespace-va-cgroup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Namespace và cgroup
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thay-chuong-trinh-exec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thay chương trình: exec
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ket-thuc-task-exit-zombie-va-wait" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kết thúc task: exit, zombie và wait
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kernel-thread" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kernel thread
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#signal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signal
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Signal">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#du-lieu-lien-quan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dữ liệu liên quan
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gui-signal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gửi signal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xu-ly-signal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Xử lý signal
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quan-sat-tren-he-thong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quan sát trên hệ thống
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#lien-quan" class="md-nav__link">
     <span class="md-ellipsis">
       
         Liên quan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài liệu tham khảo
       
     </span>
   </a>
@@ -15208,10 +15402,204 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#task-va-task_struct" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task và task_struct
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Task và task_struct">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pid-tgid-va-thread-group" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PID, TGID và thread group
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trang-thai-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trạng thái task
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-va-kernel-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        current và kernel stack
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tao-task-clone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tạo task: clone
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tạo task: clone">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#copy-on-write" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Copy-on-write
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#namespace-va-cgroup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Namespace và cgroup
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thay-chuong-trinh-exec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thay chương trình: exec
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ket-thuc-task-exit-zombie-va-wait" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kết thúc task: exit, zombie và wait
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kernel-thread" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kernel thread
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#signal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signal
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Signal">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#du-lieu-lien-quan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dữ liệu liên quan
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gui-signal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gửi signal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xu-ly-signal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Xử lý signal
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quan-sat-tren-he-thong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quan sát trên hệ thống
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#lien-quan" class="md-nav__link">
     <span class="md-ellipsis">
       
         Liên quan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài liệu tham khảo
       
     </span>
   </a>
@@ -15264,16 +15652,322 @@
 
 
 <h1 id="process-va-thread-trong-kernel">Process và thread trong kernel<a class="headerlink" href="#process-va-thread-trong-kernel" title="Permanent link">¶</a></h1>
-<div class="admonition todo">
-<p class="admonition-title">Trang chưa viết</p>
-<p>Trang này trình bày process và thread từ phía kernel. Nội dung dự kiến: <code>task_struct</code> và các trường chính, trạng thái của task, process và thread cùng dùng một cấu trúc (<code>clone</code> với các cờ chia sẻ), đường đi của <code>fork</code>, <code>exec</code> và <code>exit</code>, kernel thread (<code>kthread_run</code>), cách kernel gửi và xử lý signal, <code>current</code> và kernel stack.</p>
-</div>
+<p>Trang này trình bày process và thread từ phía kernel, theo thứ tự: cấu trúc <code>task_struct</code> và các định danh, trạng thái của task, <code>current</code> và kernel stack, cách tạo task bằng <code>clone</code> (và sự khác nhau giữa process với thread chỉ nằm ở các cờ chia sẻ), <code>exec</code>, kết thúc task và zombie, kernel thread, và cách kernel gửi, xử lý signal. Phần phụ thuộc kiến trúc lấy theo Arm64, mã nguồn tham chiếu Linux 6.18. Cách lập lịch các task được trình bày ở <a href="../../sched/sched/">Scheduler</a>; API process và thread ở user space thuộc tab Programming.</p>
+<h2 id="task-va-task_struct">Task và task_struct<a class="headerlink" href="#task-va-task_struct" title="Permanent link">¶</a></h2>
+<p>Kernel không có hai cấu trúc riêng cho process và thread. Mỗi luồng thực thi, dù là process đơn luồng, một thread của process nhiều luồng hay một kernel thread, đều là một task, biểu diễn bằng một <code>struct task_struct</code> (định nghĩa trong <code>include/linux/sched.h</code>). Đây là đối tượng mà scheduler chọn để chạy, và là đối tượng mà signal, ptrace hay <code>/proc</code> làm việc cùng.</p>
+<p><code>task_struct</code> là cấu trúc lớn, phần lớn các trường là con trỏ tới các cấu trúc khác. Có thể chia các trường thành các nhóm:</p>
+<table>
+<thead>
+<tr>
+<th>Nhóm</th>
+<th>Trường tiêu biểu</th>
+<th>Nội dung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trạng thái và lập lịch</td>
+<td><code>__state</code>, <code>prio</code>, <code>policy</code>, <code>se</code>, <code>rt</code>, <code>dl</code></td>
+<td>Trạng thái task, chính sách và tham số lập lịch</td>
+</tr>
+<tr>
+<td>Định danh và quan hệ</td>
+<td><code>pid</code>, <code>tgid</code>, <code>real_parent</code>, <code>parent</code>, <code>children</code>, <code>group_leader</code></td>
+<td>ID của task và cây quan hệ cha con</td>
+</tr>
+<tr>
+<td>Bộ nhớ</td>
+<td><code>mm</code>, <code>active_mm</code></td>
+<td>Không gian địa chỉ user space (<code>mm_struct</code>)</td>
+</tr>
+<tr>
+<td>File</td>
+<td><code>fs</code>, <code>files</code></td>
+<td>Thư mục gốc, thư mục hiện tại; bảng file descriptor</td>
+</tr>
+<tr>
+<td>Signal</td>
+<td><code>signal</code>, <code>sighand</code>, <code>blocked</code>, <code>pending</code></td>
+<td>Trạng thái signal của thread group, bảng handler, mask và hàng đợi signal</td>
+</tr>
+<tr>
+<td>Quyền</td>
+<td><code>cred</code>, <code>real_cred</code></td>
+<td>UID, GID, capabilities</td>
+</tr>
+<tr>
+<td>Namespace và cgroup</td>
+<td><code>nsproxy</code>, <code>cgroups</code></td>
+<td>Các namespace và cgroup mà task thuộc về</td>
+</tr>
+<tr>
+<td>Ngữ cảnh CPU</td>
+<td><code>thread</code></td>
+<td>Thanh ghi được lưu khi task không chạy (phụ thuộc kiến trúc)</td>
+</tr>
+</tbody>
+</table>
+<p>Vì các tài nguyên như bộ nhớ hay bảng file được tham chiếu qua con trỏ, nhiều task có thể trỏ chung tới cùng một cấu trúc. Đây là cơ sở của việc chia sẻ giữa các thread, trình bày ở mục <a href="#tao-task-clone">Tạo task: clone</a>.</p>
+<h3 id="pid-tgid-va-thread-group">PID, TGID và thread group<a class="headerlink" href="#pid-tgid-va-thread-group" title="Permanent link">¶</a></h3>
+<p>Mỗi task có một số định danh <code>pid</code> duy nhất trong hệ thống (trong một PID namespace). Các thread của cùng một process tạo thành một thread group, và trường <code>tgid</code> (thread group ID) của chúng bằng <code>pid</code> của thread đầu tiên, gọi là thread group leader. Tên gọi ở user space và trong kernel lệch nhau:</p>
+<table>
+<thead>
+<tr>
+<th>Khái niệm</th>
+<th>Trong kernel</th>
+<th>User space thấy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ID của từng thread</td>
+<td><code>task-&gt;pid</code></td>
+<td><code>gettid()</code>, TID trong <code>ps -L</code>, thư mục <code>/proc/&lt;pid&gt;/task/&lt;tid&gt;</code></td>
+</tr>
+<tr>
+<td>ID của process</td>
+<td><code>task-&gt;tgid</code></td>
+<td><code>getpid()</code>, PID trong <code>ps</code></td>
+</tr>
+</tbody>
+</table>
+<p>Process đơn luồng có <code>pid</code> bằng <code>tgid</code>. Hai task đặc biệt được tạo lúc boot: PID 1 là tiến trình init đầu tiên ở user space, PID 2 là <code>kthreadd</code>, cha của các kernel thread. Mỗi CPU còn có một idle task (PID 0) không hiện trong <code>/proc</code>.</p>
+<h2 id="trang-thai-task">Trạng thái task<a class="headerlink" href="#trang-thai-task" title="Permanent link">¶</a></h2>
+<p>Trường <code>__state</code> cho biết task đang làm gì. Các trạng thái chính và ký tự tương ứng trong cột <code>STAT</code> của <code>ps</code> (lấy từ <code>/proc/&lt;pid&gt;/stat</code>):</p>
+<table>
+<thead>
+<tr>
+<th>Ký tự</th>
+<th>Trạng thái kernel</th>
+<th>Ý nghĩa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R</td>
+<td><code>TASK_RUNNING</code></td>
+<td>Đang chạy hoặc đang chờ trên runqueue</td>
+</tr>
+<tr>
+<td>S</td>
+<td><code>TASK_INTERRUPTIBLE</code></td>
+<td>Ngủ chờ sự kiện, có thể bị đánh thức bởi signal</td>
+</tr>
+<tr>
+<td>D</td>
+<td><code>TASK_UNINTERRUPTIBLE</code></td>
+<td>Ngủ chờ sự kiện, không bị signal đánh thức; thường gặp khi chờ I/O</td>
+</tr>
+<tr>
+<td>T</td>
+<td><code>__TASK_STOPPED</code></td>
+<td>Bị dừng bởi <code>SIGSTOP</code>, <code>SIGTSTP</code></td>
+</tr>
+<tr>
+<td>t</td>
+<td><code>__TASK_TRACED</code></td>
+<td>Bị dừng dưới ptrace, ví dụ khi debugger đặt breakpoint</td>
+</tr>
+<tr>
+<td>Z</td>
+<td><code>EXIT_ZOMBIE</code></td>
+<td>Đã kết thúc, chờ process cha thu hồi</td>
+</tr>
+<tr>
+<td>X</td>
+<td><code>EXIT_DEAD</code></td>
+<td>Đang bị giải phóng, hầu như không quan sát được</td>
+</tr>
+<tr>
+<td>I</td>
+<td><code>TASK_IDLE</code></td>
+<td>Kernel thread ngủ không bị gián đoạn nhưng không tính vào load average</td>
+</tr>
+</tbody>
+</table>
+<p>Ngoài các trạng thái trên có <code>TASK_KILLABLE</code>: task ngủ như <code>TASK_UNINTERRUPTIBLE</code> nhưng vẫn bị đánh thức bởi signal gây kết thúc (fatal signal). Driver dùng trạng thái này qua <code>wait_event_killable()</code> để task chờ phần cứng không trở thành không thể kill.</p>
+<pre class="mermaid"><code>stateDiagram-v2
+    [*] --&gt; Runnable: clone()
+    Runnable --&gt; Running: scheduler chọn
+    Running --&gt; Runnable: bị preempt, hết slice
+    Running --&gt; Sleeping: chờ sự kiện (S, D)
+    Sleeping --&gt; Runnable: wakeup
+    Running --&gt; Stopped: SIGSTOP, ptrace (T, t)
+    Stopped --&gt; Runnable: SIGCONT
+    Running --&gt; Zombie: exit() (Z)
+    Zombie --&gt; [*]: cha gọi wait()</code></pre>
+<p>Trạng thái R trong <code>ps</code> gộp cả task đang chạy trên CPU và task đang chờ trên runqueue, vì kernel dùng cùng giá trị <code>TASK_RUNNING</code> cho hai trường hợp. Load average đếm task ở trạng thái R và D, nên một hệ có nhiều task chờ I/O ở trạng thái D có load cao dù CPU rảnh.</p>
+<h2 id="current-va-kernel-stack">current và kernel stack<a class="headerlink" href="#current-va-kernel-stack" title="Permanent link">¶</a></h2>
+<p>Mã kernel đang chạy thay cho task nào thì truy cập task đó qua macro <code>current</code>. Trên Arm64, khi CPU chạy trong kernel, thanh ghi <code>sp_el0</code> (không dùng làm stack pointer ở mức đặc quyền EL1) được dùng để giữ con trỏ tới <code>task_struct</code> của task hiện tại; <code>current</code> chỉ là một lệnh đọc thanh ghi này. Lúc chuyển ngữ cảnh, hàm <code>cpu_switch_to</code> lưu các thanh ghi callee-saved của task cũ vào <code>task-&gt;thread</code>, nạp thanh ghi của task mới và ghi <code>sp_el0</code> bằng con trỏ task mới.</p>
+<p>Mỗi task có một kernel stack riêng, dùng khi task chạy trong kernel (system call, xử lý exception). Trên Arm64 với page 4 KB, kernel stack có kích thước 16 KB (gấp đôi khi bật KASAN). Kernel stack nhỏ và cố định, nên mã kernel không được khai báo mảng lớn trên stack hay đệ quy sâu. Khi bật <code>CONFIG_VMAP_STACK</code>, kernel stack được cấp phát trong vùng vmalloc có trang bảo vệ, nên tràn stack gây lỗi ngay thay vì âm thầm ghi đè bộ nhớ khác.</p>
+<h2 id="tao-task-clone">Tạo task: clone<a class="headerlink" href="#tao-task-clone" title="Permanent link">¶</a></h2>
+<p>Mọi task mới (trừ các task tạo lúc boot) đều được tạo bằng cách nhân bản một task có sẵn. Ở user space, <code>fork()</code>, <code>vfork()</code>, <code>pthread_create()</code> đều đi qua system call <code>clone()</code> hoặc <code>clone3()</code>; trong kernel, tất cả đi vào <code>kernel_clone()</code> rồi <code>copy_process()</code>.</p>
+<p><code>copy_process()</code> cấp phát <code>task_struct</code> và kernel stack mới, sao chép phần lớn trường của task cha, rồi với từng nhóm tài nguyên quyết định chia sẻ hay sao chép theo các cờ <code>CLONE_*</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Cờ</th>
+<th>Có cờ: dùng chung với task cha</th>
+<th>Không có cờ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CLONE_VM</code></td>
+<td>Không gian địa chỉ (<code>mm_struct</code>)</td>
+<td>Bản sao copy-on-write của không gian địa chỉ</td>
+</tr>
+<tr>
+<td><code>CLONE_FILES</code></td>
+<td>Bảng file descriptor</td>
+<td>Bản sao bảng file descriptor</td>
+</tr>
+<tr>
+<td><code>CLONE_FS</code></td>
+<td>Thư mục gốc, thư mục hiện tại, umask</td>
+<td>Bản sao</td>
+</tr>
+<tr>
+<td><code>CLONE_SIGHAND</code></td>
+<td>Bảng signal handler</td>
+<td>Bản sao</td>
+</tr>
+<tr>
+<td><code>CLONE_THREAD</code></td>
+<td>Cùng thread group (cùng TGID, cùng trạng thái signal chung)</td>
+<td>Thread group mới, task con là leader</td>
+</tr>
+<tr>
+<td><code>CLONE_NEW*</code></td>
+<td>(ngược lại) Tạo namespace mới thay vì dùng namespace của cha</td>
+<td>Dùng chung namespace của cha</td>
+</tr>
+</tbody>
+</table>
+<p>Kernel ràng buộc các tổ hợp cờ: <code>CLONE_THREAD</code> đòi hỏi <code>CLONE_SIGHAND</code>, và <code>CLONE_SIGHAND</code> đòi hỏi <code>CLONE_VM</code>. Nghĩa là các thread trong một thread group luôn dùng chung bộ nhớ và signal handler.</p>
+<p>Process và thread vì vậy chỉ khác nhau ở cờ truyền cho <code>clone</code>:</p>
+<ul>
+<li><code>fork()</code> của glibc gọi <code>clone</code> với <code>SIGCHLD</code> và hai cờ quản lý TID, không có cờ chia sẻ tài nguyên nào: task con có bản sao của mọi thứ.</li>
+<li><code>pthread_create()</code> của glibc dùng <code>CLONE_VM | CLONE_FS | CLONE_FILES | CLONE_SYSVSEM | CLONE_SIGHAND | CLONE_THREAD</code> cùng các cờ đặt TLS và TID: task mới dùng chung gần như mọi tài nguyên.</li>
+<li><code>vfork()</code> dùng <code>CLONE_VM | CLONE_VFORK</code>: task con dùng chung bộ nhớ và task cha bị chặn cho tới khi con gọi <code>exec</code> hoặc kết thúc.</li>
+</ul>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/process-fork-vs-thread.svg" data-desc-position="bottom"><img alt="After fork, parent and child task_struct each point to their own mm_struct, files_struct and sighand_struct; after pthread_create, two task_structs point to the same shared structures." src="../img/process-fork-vs-thread.svg"></a></p>
+<figcaption>Process mới có bản sao tài nguyên; thread mới trỏ chung tới tài nguyên của process.</figcaption>
+</figure>
+<h3 id="copy-on-write">Copy-on-write<a class="headerlink" href="#copy-on-write" title="Permanent link">¶</a></h3>
+<p>Sao chép toàn bộ bộ nhớ của process cha khi <code>fork()</code> sẽ tốn thời gian, trong khi task con thường gọi <code>exec</code> ngay sau đó và bỏ đi bản sao này. Kernel dùng copy-on-write (COW): task con nhận bản sao của page table, các trang vật lý được dùng chung và đánh dấu chỉ đọc ở cả hai phía. Khi một bên ghi vào trang, page fault xảy ra và kernel mới cấp trang mới, sao chép nội dung cho bên ghi. Chi phí của <code>fork()</code> do đó tỷ lệ với kích thước page table chứ không phải dung lượng bộ nhớ đã dùng. Cơ chế page fault được trình bày ở <a href="../../mm/vm/">Virtual Memory</a>.</p>
+<h3 id="namespace-va-cgroup">Namespace và cgroup<a class="headerlink" href="#namespace-va-cgroup" title="Permanent link">¶</a></h3>
+<p>Các cờ <code>CLONE_NEWNS</code>, <code>CLONE_NEWPID</code>, <code>CLONE_NEWNET</code>, <code>CLONE_NEWUTS</code>, <code>CLONE_NEWIPC</code>, <code>CLONE_NEWUSER</code>, <code>CLONE_NEWCGROUP</code>, <code>CLONE_NEWTIME</code> yêu cầu task con nằm trong namespace mới. Task tham chiếu tới tập namespace của nó qua <code>task-&gt;nsproxy</code> (riêng user namespace nằm trong <code>cred</code>), và tới các cgroup qua <code>task-&gt;cgroups</code>. <code>clone3()</code> còn có cờ <code>CLONE_INTO_CGROUP</code> để đặt task con vào một cgroup chỉ định ngay khi tạo. Namespace và cgroup là nền tảng của container, được trình bày ở <a href="../../../virtualization/container/internals/">Container Internals</a>.</p>
+<h2 id="thay-chuong-trinh-exec">Thay chương trình: exec<a class="headerlink" href="#thay-chuong-trinh-exec" title="Permanent link">¶</a></h2>
+<p><code>execve()</code> không tạo task mới mà thay chương trình đang chạy trong task hiện tại. PID giữ nguyên; không gian địa chỉ, nội dung thanh ghi và một phần trạng thái được thay mới. Kernel thực hiện qua các bước chính:</p>
+<ol>
+<li>Mở file thực thi, đọc phần đầu file và tìm trình xử lý định dạng phù hợp (<code>binfmt_elf</code> cho ELF, <code>binfmt_script</code> cho script bắt đầu bằng <code>#!</code>).</li>
+<li>Nếu process có nhiều thread, kết thúc mọi thread khác, task gọi <code>exec</code> trở thành thread duy nhất và giữ TGID của process (<code>de_thread()</code>).</li>
+<li>Thay không gian địa chỉ cũ bằng không gian địa chỉ mới, rồi trình xử lý ELF ánh xạ các segment của file và dynamic linker vào đó.</li>
+<li>Đóng các file descriptor có cờ close-on-exec (<code>O_CLOEXEC</code>), đưa các signal handler về mặc định (signal đang bị bỏ qua vẫn bị bỏ qua), cập nhật quyền nếu file có bit setuid hoặc setgid.</li>
+<li>Đặt thanh ghi để khi về user space, task bắt đầu chạy tại entry point của dynamic linker hoặc của chương trình.</li>
+</ol>
+<p>Phần ELF, memory layout và các bước từ <code>_start</code> tới <code>main</code> ở user space được trình bày ở <a href="../../../programming/C/toolchain/process/">Từ executable đến process</a>.</p>
+<h2 id="ket-thuc-task-exit-zombie-va-wait">Kết thúc task: exit, zombie và wait<a class="headerlink" href="#ket-thuc-task-exit-zombie-va-wait" title="Permanent link">¶</a></h2>
+<p>Task kết thúc khi gọi <code>exit()</code> hoặc <code>exit_group()</code>, khi nhận signal gây kết thúc, hoặc khi gây lỗi nghiêm trọng. Lệnh <code>exit()</code> của thư viện C gọi <code>exit_group()</code>, kết thúc mọi thread trong process. Trong kernel, <code>do_exit()</code> lần lượt nhả tài nguyên của task: không gian địa chỉ, bảng file, thông tin filesystem, namespace. Sau đó <code>exit_notify()</code> báo cho process cha bằng signal <code>SIGCHLD</code> và đưa task về trạng thái zombie.</p>
+<p>Task zombie đã nhả gần hết tài nguyên nhưng <code>task_struct</code> vẫn còn, để giữ mã thoát và thống kê sử dụng tài nguyên cho process cha đọc. Chỉ khi process cha gọi <code>wait()</code>, <code>waitpid()</code> hoặc <code>waitid()</code>, kernel mới giải phóng hẳn task. Process cha không bao giờ gọi <code>wait()</code> sẽ để lại zombie, mỗi zombie chiếm một PID. Nếu process cha đặt <code>SIGCHLD</code> là <code>SIG_IGN</code> hoặc dùng cờ <code>SA_NOCLDWAIT</code>, kernel tự thu hồi task con mà không để lại zombie.</p>
+<p>Khi một process kết thúc trong lúc vẫn còn process con, các process con được chuyển cho cha mới (reparent). Cha mới là tổ tiên gần nhất đã đăng ký làm subreaper bằng <code>prctl(PR_SET_CHILD_SUBREAPER)</code>, nếu không có thì là init của PID namespace. Init có nhiệm vụ gọi <code>wait()</code> cho các process mồ côi này; đây là lý do process đầu tiên trong một container cần thu hồi zombie.</p>
+<h2 id="kernel-thread">Kernel thread<a class="headerlink" href="#kernel-thread" title="Permanent link">¶</a></h2>
+<p>Kernel thread là task chỉ chạy trong kernel và không có không gian địa chỉ user space (<code>task-&gt;mm</code> bằng <code>NULL</code>). Khi được lập lịch, kernel thread mượn page table của task chạy trước đó (<code>active_mm</code>), vì nó chỉ truy cập vùng nhớ kernel, phần chung của mọi không gian địa chỉ. Trong <code>ps</code>, tên kernel thread hiển thị trong ngoặc vuông, ví dụ <code>[kworker/0:1]</code>, <code>[ksoftirqd/0]</code>, <code>[migration/0]</code>.</p>
+<p>Mọi kernel thread được tạo qua <code>kthreadd</code> (PID 2), để chúng có môi trường sạch thay vì kế thừa trạng thái của task gọi. Driver dùng API trong <code>&lt;linux/kthread.h&gt;</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;linux/kthread.h&gt;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">static</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">task_struct</span><span class="w"> </span><span class="o">*</span><span class="n">poll_task</span><span class="p">;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">poll_fn</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="p">)</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">{</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">kthread_should_stop</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">        </span><span class="cm">/* Đọc trạng thái phần cứng */</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">        </span><span class="n">msleep_interruptible</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="p">}</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="cm">/* Khi probe */</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="n">poll_task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kthread_run</span><span class="p">(</span><span class="n">poll_fn</span><span class="p">,</span><span class="w"> </span><span class="n">priv</span><span class="p">,</span><span class="w"> </span><span class="s">"mydrv-poll"</span><span class="p">);</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">IS_ERR</span><span class="p">(</span><span class="n">poll_task</span><span class="p">))</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">PTR_ERR</span><span class="p">(</span><span class="n">poll_task</span><span class="p">);</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="cm">/* Khi remove */</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="n">kthread_stop</span><span class="p">(</span><span class="n">poll_task</span><span class="p">);</span>
+</code></pre></div>
+<p><code>kthread_run()</code> tạo thread và đánh thức ngay. <code>kthread_stop()</code> đặt cờ dừng, đánh thức thread và chờ hàm thread trả về, nên vòng lặp của thread phải kiểm tra <code>kthread_should_stop()</code> thường xuyên. <code>kthread_create_on_cpu()</code> tạo thread gắn với một CPU; các thread per-CPU như <code>ksoftirqd/N</code> được tạo qua cơ chế smpboot, vốn dùng hàm này.</p>
+<p>Với công việc ngắn, xảy ra không thường xuyên, driver nên dùng workqueue thay vì tạo kernel thread riêng: workqueue dùng chung một nhóm thread <code>kworker</code> do kernel quản lý. Kernel thread riêng phù hợp với vòng lặp chạy liên tục hoặc cần chính sách lập lịch riêng. So sánh chi tiết nằm ở <a href="../../interrupt/interrupt/#workqueue">Interrupt và bottom half</a>.</p>
+<h2 id="signal">Signal<a class="headerlink" href="#signal" title="Permanent link">¶</a></h2>
+<p>Signal là thông báo bất đồng bộ gửi tới một task hoặc một process. Phía kernel, việc xử lý signal gồm hai giai đoạn tách rời: gửi (generate), tức đánh dấu signal đang chờ, và xử lý (deliver), tức thực hiện hành động tương ứng.</p>
+<h3 id="du-lieu-lien-quan">Dữ liệu liên quan<a class="headerlink" href="#du-lieu-lien-quan" title="Permanent link">¶</a></h3>
+<p>Mỗi task có hàng đợi signal riêng (<code>task-&gt;pending</code>) và mask các signal đang chặn (<code>task-&gt;blocked</code>). Thread group có thêm hàng đợi chung (<code>signal-&gt;shared_pending</code>) cho các signal gửi tới cả process. Bảng hành động cho từng signal (handler, bỏ qua hoặc mặc định) nằm trong <code>sighand_struct</code>, dùng chung giữa các thread. Vì vậy mỗi thread có mask riêng, nhưng hành động khi nhận một signal là chung cho cả process.</p>
+<h3 id="gui-signal">Gửi signal<a class="headerlink" href="#gui-signal" title="Permanent link">¶</a></h3>
+<p>Signal gửi tới một thread cụ thể (<code>tgkill()</code>, hoặc exception như <code>SIGSEGV</code> do chính thread gây ra) được đặt vào hàng đợi của thread đó. Signal gửi tới process (<code>kill()</code>, <code>SIGINT</code> từ terminal) được đặt vào hàng đợi chung, rồi kernel chọn một thread không chặn signal đó để báo. Kernel đặt cờ <code>TIF_SIGPENDING</code> trên thread được chọn và đánh thức nó nếu đang ngủ ở trạng thái cho phép (<code>TASK_INTERRUPTIBLE</code>, hoặc <code>TASK_KILLABLE</code> với fatal signal).</p>
+<p>Signal có hành động gây kết thúc process, như <code>SIGKILL</code> hay signal không có handler mà hành động mặc định là kết thúc, được xử lý ngay ở bước gửi: kernel đánh dấu cả thread group sắp kết thúc và đánh thức mọi thread. Một fatal signal tới bất kỳ thread nào luôn kết thúc toàn bộ process.</p>
+<h3 id="xu-ly-signal">Xử lý signal<a class="headerlink" href="#xu-ly-signal" title="Permanent link">¶</a></h3>
+<p>Signal chỉ được xử lý khi task chuẩn bị quay về user space, sau system call, ngắt hoặc exception. Tại điểm này kernel kiểm tra <code>TIF_SIGPENDING</code>, lấy signal ra khỏi hàng đợi và thực hiện hành động:</p>
+<ul>
+<li>Bỏ qua: không làm gì.</li>
+<li>Mặc định: kết thúc process, kết thúc kèm core dump, dừng, hoặc bỏ qua, tùy signal.</li>
+<li>Handler do process đăng ký: kernel dựng một signal frame trên user stack chứa trạng thái thanh ghi hiện tại, rồi chỉnh thanh ghi để task về user space tại hàm handler. Khi handler trả về, nó đi vào <code>rt_sigreturn()</code>, system call này khôi phục thanh ghi từ frame để task chạy tiếp từ điểm bị gián đoạn.</li>
+</ul>
+<p><code>SIGKILL</code> và <code>SIGSTOP</code> không thể bị chặn, bỏ qua hay gắn handler. Một task ở trạng thái D không xử lý signal cho tới khi được đánh thức vì lý do khác, đó là lý do task kẹt trong driver ở trạng thái D không kill được kể cả bằng <code>SIGKILL</code>.</p>
+<p>Khi task đang ngủ trong một system call bị signal đánh thức, system call trả về sớm với lỗi <code>EINTR</code>, hoặc được kernel tự khởi động lại nếu handler được đăng ký với cờ <code>SA_RESTART</code>. Driver cần trả về <code>-ERESTARTSYS</code> khi việc chờ bị signal gián đoạn để kernel áp dụng đúng quy tắc này.</p>
+<h2 id="quan-sat-tren-he-thong">Quan sát trên hệ thống<a class="headerlink" href="#quan-sat-tren-he-thong" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Lệnh hoặc file</th>
+<th>Thông tin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ps -eLo pid,tid,stat,comm</code></td>
+<td>PID, TID, trạng thái từng thread</td>
+</tr>
+<tr>
+<td><code>/proc/&lt;pid&gt;/status</code></td>
+<td>Trạng thái, <code>Tgid</code>, <code>PPid</code>, mask signal (<code>SigPnd</code>, <code>SigBlk</code>, <code>SigIgn</code>, <code>SigCgt</code>), số lần chuyển ngữ cảnh</td>
+</tr>
+<tr>
+<td><code>/proc/&lt;pid&gt;/task/</code></td>
+<td>Một thư mục cho mỗi thread của process</td>
+</tr>
+<tr>
+<td><code>/proc/&lt;pid&gt;/stack</code></td>
+<td>Kernel stack hiện tại của task (cần root), hữu ích khi task kẹt ở trạng thái D</td>
+</tr>
+<tr>
+<td><code>/proc/&lt;pid&gt;/ns/</code></td>
+<td>Các namespace của task</td>
+</tr>
+<tr>
+<td><code>ps -o pid,ppid,stat,comm --ppid 2</code></td>
+<td>Danh sách kernel thread</td>
+</tr>
+</tbody>
+</table>
 <h2 id="lien-quan">Liên quan<a class="headerlink" href="#lien-quan" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="../../sched/sched/">Scheduler</a>: lập lịch các task.</li>
+<li><a href="../../smp/smp/">SMP và CPU hotplug</a>: idle task, task chạy trên nhiều core.</li>
 <li><a href="../../kernel_user_space/syscall/">System Call</a>: đường vào kernel từ user space.</li>
+<li><a href="../../interrupt/interrupt/">Interrupt và bottom half</a>: workqueue và threaded IRQ, các lựa chọn thay cho kernel thread riêng.</li>
+<li><a href="../../mm/vm/">Virtual Memory</a>: không gian địa chỉ, page fault và copy-on-write.</li>
+<li><a href="../../../programming/C/toolchain/process/">Từ executable đến process</a> (Programming): ELF và quá trình nạp chương trình ở user space.</li>
 <li><a href="../../../programming/lnx/lpi/">Linux Programming Interfaces</a> (Programming): API process và thread ở user space.</li>
 <li><a href="../../../virtualization/container/internals/">Container Internals</a> (Virtualization): namespaces và cgroups.</li>
+</ul>
+<h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
+<ul>
+<li>Mã nguồn Linux 6.18: <a href="https://github.com/torvalds/linux/blob/v6.18/include/linux/sched.h"><code>include/linux/sched.h</code></a> (<code>task_struct</code>, các trạng thái), <a href="https://github.com/torvalds/linux/blob/v6.18/include/uapi/linux/sched.h"><code>include/uapi/linux/sched.h</code></a> (cờ <code>CLONE_*</code>), <a href="https://github.com/torvalds/linux/blob/v6.18/kernel/fork.c"><code>kernel/fork.c</code></a> (<code>kernel_clone()</code>, <code>copy_process()</code>, ràng buộc giữa các cờ), <a href="https://github.com/torvalds/linux/blob/v6.18/fs/exec.c"><code>fs/exec.c</code></a> (<code>begin_new_exec()</code>), <a href="https://github.com/torvalds/linux/blob/v6.18/kernel/exit.c"><code>kernel/exit.c</code></a> (<code>do_exit()</code>, reparent, subreaper), <a href="https://github.com/torvalds/linux/blob/v6.18/kernel/signal.c"><code>kernel/signal.c</code></a>, <a href="https://github.com/torvalds/linux/blob/v6.18/kernel/kthread.c"><code>kernel/kthread.c</code></a>, <a href="https://github.com/torvalds/linux/blob/v6.18/fs/proc/array.c"><code>fs/proc/array.c</code></a> (ký tự trạng thái trong <code>/proc</code>), <a href="https://github.com/torvalds/linux/blob/v6.18/kernel/sched/loadavg.c"><code>kernel/sched/loadavg.c</code></a> (load average đếm task R và D)</li>
+<li>Mã nguồn Arm64 trong Linux 6.18: <a href="https://github.com/torvalds/linux/blob/v6.18/arch/arm64/include/asm/current.h"><code>arch/arm64/include/asm/current.h</code></a> (<code>current</code> qua <code>sp_el0</code>), <a href="https://github.com/torvalds/linux/blob/v6.18/arch/arm64/include/asm/memory.h"><code>arch/arm64/include/asm/memory.h</code></a> (<code>THREAD_SIZE</code>), <a href="https://github.com/torvalds/linux/blob/v6.18/arch/arm64/kernel/entry.S"><code>arch/arm64/kernel/entry.S</code></a> (<code>cpu_switch_to</code>)</li>
+<li>glibc: <a href="https://sourceware.org/git/?p=glibc.git;a=blob;f=nptl/pthread_create.c"><code>nptl/pthread_create.c</code></a> (cờ clone của <code>pthread_create()</code>), <a href="https://sourceware.org/git/?p=glibc.git;a=blob;f=sysdeps/unix/sysv/linux/arch-fork.h"><code>sysdeps/unix/sysv/linux/arch-fork.h</code></a> (cờ clone của <code>fork()</code>)</li>
+<li>Man page: <a href="https://man7.org/linux/man-pages/man2/clone.2.html">clone(2)</a>, <a href="https://man7.org/linux/man-pages/man2/execve.2.html">execve(2)</a>, <a href="https://man7.org/linux/man-pages/man7/signal.7.html">signal(7)</a>, <a href="https://man7.org/linux/man-pages/man5/proc_pid_status.5.html">proc_pid_status(5)</a>, <a href="https://man7.org/linux/man-pages/man2/prctl.2.html">prctl(2)</a></li>
+<li><a href="https://docs.kernel.org/driver-api/basics.html">Kernel docs: Driver Basics</a> (API kthread sinh từ <code>include/linux/kthread.h</code> và <code>kernel/kthread.c</code>)</li>
 </ul>
 
 
@@ -15297,7 +15991,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 9, 2026 02:56:34 UTC">November 9, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 15, 2026 14:59:53 UTC">November 15, 2026</span>
   </span>
 
     
