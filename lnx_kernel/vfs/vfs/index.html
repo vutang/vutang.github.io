@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Virtual File System trong Linux kernel: superblock, inode, dentry, file, page cache và cách một file system đăng ký với kernel (chưa viết).">
+        <meta name="description" content="Lớp Virtual File System của Linux kernel: superblock, inode, dentry, file, tra cứu đường dẫn và dentry cache, đường đi của open, read, write qua page cache, writeback, đăng ký file system và các file system thường gặp trên thiết bị nhúng.">
       
       
         <meta name="author" content="Vu Tang">
@@ -73,7 +73,7 @@
   
 <meta property="og:type" content="website">
 <meta property="og:title" content="VFS và page cache - Vu Tang's Docs">
-<meta property="og:description" content="Virtual File System trong Linux kernel: superblock, inode, dentry, file, page cache và cách một file system đăng ký với kernel (chưa viết).">
+<meta property="og:description" content="Lớp Virtual File System của Linux kernel: superblock, inode, dentry, file, tra cứu đường dẫn và dentry cache, đường đi của open, read, write qua page cache, writeback, đăng ký file system và các file system thường gặp trên thiết bị nhúng.">
 <meta property="og:image" content="https://note.vutang.dev/assets/images/social/lnx_kernel/vfs/vfs.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
@@ -81,7 +81,7 @@
 <meta property="og:url" content="https://note.vutang.dev/lnx_kernel/vfs/vfs/">
 <meta property="twitter:card" content="summary_large_image">
 <meta property="twitter:title" content="VFS và page cache - Vu Tang's Docs">
-<meta property="twitter:description" content="Virtual File System trong Linux kernel: superblock, inode, dentry, file, page cache và cách một file system đăng ký với kernel (chưa viết).">
+<meta property="twitter:description" content="Lớp Virtual File System của Linux kernel: superblock, inode, dentry, file, tra cứu đường dẫn và dentry cache, đường đi của open, read, write qua page cache, writeback, đăng ký file system và các file system thường gặp trên thiết bị nhúng.">
 <meta property="twitter:image" content="https://note.vutang.dev/assets/images/social/lnx_kernel/vfs/vfs.png">
 <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
@@ -6847,7 +6847,7 @@
   <span class="md-ellipsis">
     
   
-    VFS &amp; Page Cache (WIP)
+    VFS &amp; Page Cache
   
 
     
@@ -6865,7 +6865,7 @@
   <span class="md-ellipsis">
     
   
-    VFS &amp; Page Cache (WIP)
+    VFS &amp; Page Cache
   
 
     
@@ -6891,10 +6891,120 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#vai-tro-cua-vfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vai trò của VFS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cac-oi-tuong-chinh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các đối tượng chính
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tra-cuu-uong-dan-va-dentry-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tra cứu đường dẫn và dentry cache
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uong-i-cua-open" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Đường đi của open
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oc-file-qua-page-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Đọc file qua page cache
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ghi-file-va-writeback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ghi file và writeback
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ang-ky-mot-file-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Đăng ký một file system
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-system-thuong-gap-tren-thiet-bi-nhung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File system thường gặp trên thiết bị nhúng
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quan-sat-tren-he-thong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quan sát trên hệ thống
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#lien-quan" class="md-nav__link">
     <span class="md-ellipsis">
       
         Liên quan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài liệu tham khảo
       
     </span>
   </a>
@@ -15208,10 +15318,120 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#vai-tro-cua-vfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vai trò của VFS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cac-oi-tuong-chinh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các đối tượng chính
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tra-cuu-uong-dan-va-dentry-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tra cứu đường dẫn và dentry cache
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uong-i-cua-open" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Đường đi của open
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oc-file-qua-page-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Đọc file qua page cache
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ghi-file-va-writeback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ghi file và writeback
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ang-ky-mot-file-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Đăng ký một file system
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-system-thuong-gap-tren-thiet-bi-nhung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File system thường gặp trên thiết bị nhúng
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quan-sat-tren-he-thong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quan sát trên hệ thống
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#lien-quan" class="md-nav__link">
     <span class="md-ellipsis">
       
         Liên quan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài liệu tham khảo
       
     </span>
   </a>
@@ -15246,14 +15466,14 @@
       
       
       
-        <a href="../../../articles/tags/#tag:linux-kernel" class="md-tag">linux-kernel</a>
+        <a href="../../../articles/tags/#tag:internals" class="md-tag">internals</a>
       
     
       
       
       
       
-        <a href="../../../articles/tags/#tag:vfs" class="md-tag">vfs</a>
+        <a href="../../../articles/tags/#tag:linux-kernel" class="md-tag">linux-kernel</a>
       
     
   </nav>
@@ -15264,16 +15484,308 @@
 
 
 <h1 id="vfs-va-page-cache">VFS và page cache<a class="headerlink" href="#vfs-va-page-cache" title="Permanent link">¶</a></h1>
-<div class="admonition todo">
-<p class="admonition-title">Trang chưa viết</p>
-<p>Trang này trình bày lớp Virtual File System (VFS) của kernel. Nội dung dự kiến: các đối tượng chính (superblock, inode, dentry, file) và bảng thao tác đi kèm, đường đi của <code>open</code> và <code>read</code> qua VFS, dentry cache, page cache và writeback, cách đăng ký một file system, đặc điểm của các file system thường gặp trên thiết bị nhúng (ext4, squashfs, overlayfs, tmpfs) ở phía kernel.</p>
-</div>
+<p>Virtual File System (VFS) là lớp trong kernel cung cấp một giao diện chung cho mọi loại file system. Trang này trình bày VFS ở mức khái niệm, theo thứ tự: vai trò của VFS, bốn đối tượng chính và bảng thao tác đi kèm, tra cứu đường dẫn và dentry cache, đường đi của <code>open</code>, <code>read</code> và <code>write</code> qua page cache, writeback, cách một file system đăng ký với VFS, và đặc điểm phía kernel của các file system thường gặp trên thiết bị nhúng. Mã nguồn tham chiếu Linux 6.18. Page cache dưới góc độ quản lý bộ nhớ (thu hồi, <code>MemAvailable</code>) nằm ở <a href="../../mm/vm/">Virtual Memory</a>; việc chọn file system và dựng rootfs nằm ở <a href="../../../lnx_es/linux_system/rootfs/">Root filesystem cho thiết bị nhúng</a>.</p>
+<h2 id="vai-tro-cua-vfs">Vai trò của VFS<a class="headerlink" href="#vai-tro-cua-vfs" title="Permanent link">¶</a></h2>
+<p>Ứng dụng dùng cùng một bộ system call (<code>open</code>, <code>read</code>, <code>write</code>, <code>stat</code>, <code>mmap</code>) cho mọi file, dù file nằm trên ext4 trong eMMC, trên squashfs nén, trong tmpfs ở RAM hay là một file ảo trong <code>/proc</code>. VFS nhận các system call này, thực hiện phần việc chung (tra cứu đường dẫn, kiểm tra quyền, quản lý file descriptor, page cache), rồi gọi vào các hàm do từng file system cung cấp cho phần việc riêng.</p>
+<p>Các file system mà VFS phục vụ có thể chia thành nhiều nhóm:</p>
+<table>
+<thead>
+<tr>
+<th>Nhóm</th>
+<th>Ví dụ</th>
+<th>Dữ liệu nằm ở</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trên block device</td>
+<td>ext4, squashfs, vfat, f2fs</td>
+<td>Thiết bị lưu trữ, qua block layer</td>
+</tr>
+<tr>
+<td>Trên flash thô</td>
+<td>UBIFS, JFFS2</td>
+<td>Flash NAND/NOR, qua MTD hoặc UBI</td>
+</tr>
+<tr>
+<td>Trong bộ nhớ</td>
+<td>tmpfs, ramfs</td>
+<td>Page cache, có thể cả swap</td>
+</tr>
+<tr>
+<td>Pseudo</td>
+<td>procfs, sysfs, debugfs</td>
+<td>Sinh ra từ dữ liệu của kernel khi đọc</td>
+</tr>
+<tr>
+<td>Xếp chồng (stacking)</td>
+<td>overlayfs</td>
+<td>Một hoặc nhiều file system khác bên dưới</td>
+</tr>
+<tr>
+<td>Qua mạng</td>
+<td>NFS, CIFS</td>
+<td>Máy chủ từ xa</td>
+</tr>
+</tbody>
+</table>
+<p>Device file (<code>/dev/ttyS0</code>) cũng đi qua VFS: inode của nó trỏ tới thao tác của driver thay vì của file system, xem <a href="../../kernel_user_space/device_file/">Device File và ioctl</a>.</p>
+<h2 id="cac-oi-tuong-chinh">Các đối tượng chính<a class="headerlink" href="#cac-oi-tuong-chinh" title="Permanent link">¶</a></h2>
+<p>VFS mô tả file system bằng bốn loại đối tượng. Mỗi loại có một bảng con trỏ hàm (operations) mà file system điền vào để cài đặt phần việc riêng của mình.</p>
+<table>
+<thead>
+<tr>
+<th>Đối tượng</th>
+<th>Đại diện cho</th>
+<th>Bảng thao tác</th>
+<th>Thao tác tiêu biểu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>super_block</code></td>
+<td>Một file system đã mount</td>
+<td><code>super_operations</code></td>
+<td>Cấp và hủy inode, ghi inode, <code>statfs</code>, <code>sync_fs</code></td>
+</tr>
+<tr>
+<td><code>inode</code></td>
+<td>Một file trên file system (file thường, thư mục, symlink, device file)</td>
+<td><code>inode_operations</code>, <code>file_operations</code> mặc định</td>
+<td><code>lookup</code>, <code>create</code>, <code>mkdir</code>, <code>unlink</code>, <code>setattr</code></td>
+</tr>
+<tr>
+<td><code>dentry</code></td>
+<td>Một thành phần của đường dẫn, liên kết tên với inode</td>
+<td><code>dentry_operations</code></td>
+<td>So sánh tên, kiểm tra dentry còn hợp lệ</td>
+</tr>
+<tr>
+<td><code>file</code></td>
+<td>Một lần mở file của một process</td>
+<td><code>file_operations</code></td>
+<td><code>read_iter</code>, <code>write_iter</code>, <code>mmap</code>, <code>fsync</code>, <code>unlocked_ioctl</code></td>
+</tr>
+</tbody>
+</table>
+<p>Ngoài ra, mỗi inode có một <code>address_space</code> quản lý page cache của file đó, kèm <code>address_space_operations</code> (<code>read_folio</code>, <code>readahead</code>, <code>writepages</code>, <code>dirty_folio</code>) để đọc ghi dữ liệu giữa page cache và nơi lưu trữ.</p>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/vfs-objects.svg" data-desc-position="bottom"><img alt="Two processes each hold a file descriptor pointing to its own struct file; both files point to the same dentry, which points to one inode; the inode points to its super_block and to its address_space holding cached folios." src="../img/vfs-objects.svg"></a></p>
+<figcaption>Hai lần mở cùng một đường dẫn: mỗi lần có `file` riêng, dùng chung dentry, inode và page cache.</figcaption>
+</figure>
+<p>Quan hệ giữa các đối tượng giải thích nhiều hành vi quen thuộc:</p>
+<ul>
+<li>Vị trí đọc ghi (offset) nằm trong <code>file</code>, nên hai process mở cùng một file độc lập với nhau, còn hai process dùng chung một file descriptor (sau <code>fork()</code>) dùng chung offset.</li>
+<li>Hard link là nhiều dentry (nhiều tên) trỏ tới cùng một inode. File chỉ bị xóa khỏi file system khi không còn tên nào trỏ tới và không còn process nào đang mở nó.</li>
+<li>Kích thước, chủ sở hữu, quyền và thời gian nằm trong inode, nên mọi tên của cùng một file có chung các thuộc tính này.</li>
+</ul>
+<p>Một vị trí trong cây thư mục được xác định bởi cặp (mount, dentry), gọi là <code>struct path</code>. Mount gắn root dentry của một file system vào một dentry của file system khác; cùng một file system có thể được mount ở nhiều nơi, và mỗi mount namespace có cây mount riêng.</p>
+<h2 id="tra-cuu-uong-dan-va-dentry-cache">Tra cứu đường dẫn và dentry cache<a class="headerlink" href="#tra-cuu-uong-dan-va-dentry-cache" title="Permanent link">¶</a></h2>
+<p>Để mở <code>/etc/app/config</code>, VFS phải tìm lần lượt <code>etc</code> trong thư mục gốc, <code>app</code> trong <code>etc</code>, rồi <code>config</code> trong <code>app</code>. Mỗi bước, VFS kiểm tra quyền thực thi (search) trên thư mục, xử lý symlink, và chuyển sang file system khác nếu dentry hiện tại là điểm mount.</p>
+<p>Gọi vào file system (<code>inode_operations-&gt;lookup</code>) cho mỗi thành phần là thao tác tốn kém, có thể cần đọc thiết bị. VFS vì vậy giữ dentry cache (dcache): bảng băm các dentry đã tra cứu, theo cặp (dentry cha, tên). Phần lớn lần tra cứu trên hệ thống đang chạy được giải quyết hoàn toàn trong dcache. Dcache còn lưu dentry âm (negative dentry), ghi nhận rằng một tên không tồn tại, để các lần tìm lặp lại một file không có (ví dụ tìm thư viện qua nhiều thư mục trong <code>LD_LIBRARY_PATH</code>) không phải hỏi file system.</p>
+<p>Để nhiều core tra cứu đồng thời mà không tranh lock, VFS trước hết thử chế độ RCU-walk: đi qua các dentry dưới bảo vệ của RCU, không lấy lock hay tăng bộ đếm tham chiếu. Nếu gặp tình huống không xử lý được ở chế độ này (dentry bị đổi trong lúc đi qua, cần gọi vào file system), VFS chuyển sang REF-walk, lấy tham chiếu và lock như bình thường. RCU được trình bày ở <a href="../../locking/locking/#rcu">Đồng bộ hóa trong kernel</a>.</p>
+<p>Dentry và inode được cấp từ slab cache (<code>dentry</code>, <code>inode_cache</code> và cache riêng của từng file system như <code>ext4_inode_cache</code>). Các đối tượng không còn được dùng có thể bị thu hồi khi thiếu bộ nhớ, như page cache.</p>
+<h2 id="uong-i-cua-open">Đường đi của open<a class="headerlink" href="#uong-i-cua-open" title="Permanent link">¶</a></h2>
+<p><code>open()</code> và <code>openat()</code> trong kernel đi qua các bước chính:</p>
+<ol>
+<li>Cấp một số file descriptor trống trong bảng file của process.</li>
+<li>Tra cứu đường dẫn tới dentry của thành phần cuối (<code>path_openat()</code>). Nếu có <code>O_CREAT</code> và file chưa tồn tại, gọi <code>inode_operations-&gt;create</code> của thư mục cha.</li>
+<li>Kiểm tra quyền theo cờ mở (đọc, ghi), kể cả các kiểm tra của LSM.</li>
+<li>Cấp <code>struct file</code>, gắn với dentry và inode, lấy <code>file_operations</code> từ inode, rồi gọi <code>file_operations-&gt;open</code> nếu file system hoặc driver có cài đặt (<code>do_dentry_open()</code>).</li>
+<li>Đặt <code>file</code> vào vị trí của file descriptor đã cấp và trả số đó cho user space.</li>
+</ol>
+<p>Sau bước này, các thao tác trên file descriptor đi thẳng tới <code>struct file</code> và bảng <code>file_operations</code> của nó mà không cần tra cứu lại đường dẫn.</p>
+<h2 id="oc-file-qua-page-cache">Đọc file qua page cache<a class="headerlink" href="#oc-file-qua-page-cache" title="Permanent link">¶</a></h2>
+<p>Page cache là bản sao trong RAM của dữ liệu file, tổ chức theo từng file: <code>address_space</code> của mỗi inode giữ các trang của file đó trong một xarray, đánh chỉ số theo vị trí trong file. Đơn vị quản lý trong page cache là folio, một nhóm trang liên tục gồm một hoặc nhiều trang. Folio được đưa vào kernel từ Linux 5.16, và hỗ trợ folio lớn trong page cache được bổ sung từ 5.17, cho phép file system đọc ghi theo khối lớn hơn một trang.</p>
+<p><code>read()</code> gọi <code>vfs_read()</code>, rồi <code>file_operations-&gt;read_iter</code> của file system. Phần lớn file system trên block device dùng hàm chung <code>generic_file_read_iter()</code>, đi vào <code>filemap_read()</code>:</p>
+<pre class="mermaid"><code>flowchart TD
+    A["read(fd, buf, n)"] --&gt; B["vfs_read() → f_op-&gt;read_iter"]
+    B --&gt; C["filemap_read(): tìm folio trong address_space"]
+    C --&gt; D{Có trong page cache?}
+    D -- Có --&gt; G[Chép dữ liệu sang buffer user]
+    D -- Không --&gt; E["Readahead: cấp folio mới,&lt;br/&gt;gọi a_ops-&gt;readahead / read_folio"]
+    E --&gt; F[File system tạo bio, block layer&lt;br/&gt;đọc từ thiết bị; task chờ I/O]
+    F --&gt; G
+    G --&gt; H[Cập nhật offset trong struct file, trả về]</code></pre>
+<p>Khi đọc tuần tự, kernel đọc trước (readahead) phần tiếp theo của file vào page cache trước khi ứng dụng yêu cầu, để các lần <code>read()</code> sau tìm thấy dữ liệu sẵn trong RAM. Kích thước cửa sổ đọc trước mặc định là 128 KB, chỉnh được theo từng thiết bị ở <code>/sys/block/&lt;dev&gt;/queue/read_ahead_kb</code>. Kernel phát hiện kiểu truy cập: cửa sổ được mở rộng khi đọc tuần tự và thu nhỏ khi đọc ngẫu nhiên.</p>
+<p><code>mmap()</code> một file dùng chính các trang trong page cache: page fault trên vùng ánh xạ tìm trang trong <code>address_space</code> của file và ánh xạ nó vào không gian địa chỉ của process, xem <a href="../../mm/vm/#page-fault">Virtual Memory</a>. Vì <code>read()</code> và <code>mmap()</code> dùng chung page cache, dữ liệu mà một process ghi qua <code>write()</code> được process khác thấy ngay qua <code>mmap()</code> và ngược lại.</p>
+<p>Mở file với <code>O_DIRECT</code> bỏ qua page cache: dữ liệu đi thẳng giữa buffer của ứng dụng và thiết bị, với yêu cầu căn chỉnh địa chỉ và kích thước theo block. Cách này dùng cho ứng dụng tự quản lý cache, như cơ sở dữ liệu.</p>
+<h2 id="ghi-file-va-writeback">Ghi file và writeback<a class="headerlink" href="#ghi-file-va-writeback" title="Permanent link">¶</a></h2>
+<p><code>write()</code> trên file system dùng page cache không ghi ngay xuống thiết bị. Kernel chép dữ liệu vào folio tương ứng trong page cache (đọc folio từ thiết bị trước nếu chỉ ghi một phần của nó), đánh dấu folio là dirty và trả về cho ứng dụng. Việc ghi xuống thiết bị (writeback) diễn ra sau, do các flusher thread của kernel thực hiện.</p>
+<p>Writeback được kích hoạt trong các trường hợp:</p>
+<table>
+<thead>
+<tr>
+<th>Điều kiện</th>
+<th>Tham số</th>
+<th>Mặc định</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Định kỳ, flusher thức dậy kiểm tra dữ liệu dirty</td>
+<td><code>vm.dirty_writeback_centisecs</code></td>
+<td>500 (5 giây)</td>
+</tr>
+<tr>
+<td>Dữ liệu đã dirty quá lâu thì được ghi ở lần thức dậy kế tiếp</td>
+<td><code>vm.dirty_expire_centisecs</code></td>
+<td>3000 (30 giây)</td>
+</tr>
+<tr>
+<td>Lượng dirty vượt ngưỡng nền, flusher bắt đầu ghi</td>
+<td><code>vm.dirty_background_ratio</code></td>
+<td>10% bộ nhớ khả dụng</td>
+</tr>
+<tr>
+<td>Lượng dirty vượt ngưỡng cứng, process đang ghi bị chặn lại để chờ ghi bớt</td>
+<td><code>vm.dirty_ratio</code></td>
+<td>20% bộ nhớ khả dụng</td>
+</tr>
+<tr>
+<td>Ứng dụng yêu cầu tường minh</td>
+<td><code>fsync()</code>, <code>fdatasync()</code>, <code>sync()</code>, <code>syncfs()</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Thiếu bộ nhớ, reclaim cần giải phóng trang dirty</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Khi vượt ngưỡng cứng, process gọi <code>write()</code> bị điều tiết trong <code>balance_dirty_pages()</code>, nên tốc độ ghi của ứng dụng bị kéo về tốc độ thực của thiết bị. Các tham số tỷ lệ có bản theo byte (<code>dirty_background_bytes</code>, <code>dirty_bytes</code>), hữu ích trên hệ có nhiều RAM nhưng thiết bị lưu trữ chậm, nơi 10% bộ nhớ là quá nhiều dữ liệu chưa ghi.</p>
+<p>Hệ quả quan trọng trên thiết bị nhúng: <code>write()</code> trả về thành công không có nghĩa dữ liệu đã nằm trên flash. Nếu mất nguồn trong khoảng 30 giây sau khi ghi, dữ liệu có thể mất. Ứng dụng cần dữ liệu bền vững phải gọi <code>fsync()</code> trên file (và trên thư mục chứa nó khi vừa tạo hoặc đổi tên file), hoặc mở file với <code>O_SYNC</code>. Cách thao tác ở mức lệnh nằm ở <a href="../../../lnx_es/linux_system/cmdline-fs/#ghi-du-lieu-truoc-khi-ngat-nguon">Command line và filesystem</a>.</p>
+<p>File system có journal như ext4 bảo đảm cấu trúc file system nhất quán sau khi mất nguồn, nhưng không thay cho <code>fsync()</code>: dữ liệu chưa được writeback vẫn mất.</p>
+<h2 id="ang-ky-mot-file-system">Đăng ký một file system<a class="headerlink" href="#ang-ky-mot-file-system" title="Permanent link">¶</a></h2>
+<p>Một file system đăng ký với VFS bằng <code>struct file_system_type</code> và <code>register_filesystem()</code>. Khi người dùng mount, VFS gọi <code>init_fs_context</code> để tạo ngữ cảnh mount (mount API dựa trên <code>fs_context</code>), phân tích các option, rồi gọi thao tác tạo superblock. Thao tác này đọc thông tin của file system (từ thiết bị, hoặc tạo mới với file system trong bộ nhớ), tạo inode và dentry gốc. Ví dụ rút gọn theo cấu trúc của ramfs:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">myfs_fill_super</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">super_block</span><span class="w"> </span><span class="o">*</span><span class="n">sb</span><span class="p">,</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">fs_context</span><span class="w"> </span><span class="o">*</span><span class="n">fc</span><span class="p">)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">{</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">inode</span><span class="w"> </span><span class="o">*</span><span class="n">root</span><span class="p">;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">sb</span><span class="o">-&gt;</span><span class="n">s_magic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MYFS_MAGIC</span><span class="p">;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="n">sb</span><span class="o">-&gt;</span><span class="n">s_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">myfs_super_ops</span><span class="p">;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="n">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">myfs_get_inode</span><span class="p">(</span><span class="n">sb</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">S_IFDIR</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mo">0755</span><span class="p">);</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="n">sb</span><span class="o">-&gt;</span><span class="n">s_root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d_make_root</span><span class="p">(</span><span class="n">root</span><span class="p">);</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">sb</span><span class="o">-&gt;</span><span class="n">s_root</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="n">ENOMEM</span><span class="p">;</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="p">}</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">myfs_get_tree</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">fs_context</span><span class="w"> </span><span class="o">*</span><span class="n">fc</span><span class="p">)</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="p">{</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">get_tree_nodev</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span><span class="w"> </span><span class="n">myfs_fill_super</span><span class="p">);</span><span class="w">   </span><span class="cm">/* không cần block device */</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="p">}</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">fs_context_operations</span><span class="w"> </span><span class="n">myfs_context_ops</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span><span class="p">.</span><span class="n">get_tree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">myfs_get_tree</span><span class="p">,</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="p">};</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">myfs_init_fs_context</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">fs_context</span><span class="w"> </span><span class="o">*</span><span class="n">fc</span><span class="p">)</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="p">{</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">    </span><span class="n">fc</span><span class="o">-&gt;</span><span class="n">ops</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">myfs_context_ops</span><span class="p">;</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="p">}</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="k">static</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">file_system_type</span><span class="w"> </span><span class="n">myfs_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">    </span><span class="p">.</span><span class="n">owner</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="n">THIS_MODULE</span><span class="p">,</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">    </span><span class="p">.</span><span class="n">name</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s">"myfs"</span><span class="p">,</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">    </span><span class="p">.</span><span class="n">init_fs_context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">myfs_init_fs_context</span><span class="p">,</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">    </span><span class="p">.</span><span class="n">kill_sb</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="n">kill_litter_super</span><span class="p">,</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="p">};</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">__init</span><span class="w"> </span><span class="nf">myfs_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="p">{</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">register_filesystem</span><span class="p">(</span><span class="o">&amp;</span><span class="n">myfs_type</span><span class="p">);</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="p">}</span>
+</code></pre></div>
+<p>File system trên block device dùng <code>get_tree_bdev()</code> thay cho <code>get_tree_nodev()</code> và có cờ <code>FS_REQUIRES_DEV</code>. Danh sách file system đã đăng ký đọc ở <code>/proc/filesystems</code>; dòng có chữ <code>nodev</code> là file system không cần block device.</p>
+<h2 id="file-system-thuong-gap-tren-thiet-bi-nhung">File system thường gặp trên thiết bị nhúng<a class="headerlink" href="#file-system-thuong-gap-tren-thiet-bi-nhung" title="Permanent link">¶</a></h2>
+<p>Bảng dưới tóm tắt đặc điểm phía kernel của các file system thường dùng trên thiết bị nhúng. Việc chọn và cấu hình chúng khi dựng rootfs nằm ở <a href="../../../lnx_es/linux_system/rootfs/">Root filesystem cho thiết bị nhúng</a>; UBIFS trên flash thô nằm ở <a href="../../storage/flash_storage/">Flash Storage (MTD, MMC)</a>.</p>
+<table>
+<thead>
+<tr>
+<th>File system</th>
+<th>Đặc điểm phía kernel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ext4</td>
+<td>Ghi metadata qua journal (lớp jbd2). Chế độ mặc định <code>data=ordered</code> ghi dữ liệu xuống thiết bị trước khi commit metadata liên quan vào journal; <code>data=journal</code> ghi cả dữ liệu qua journal; <code>data=writeback</code> không ràng buộc thứ tự, nhanh hơn nhưng có thể để lộ dữ liệu cũ sau sự cố</td>
+</tr>
+<tr>
+<td>squashfs</td>
+<td>Chỉ đọc, nén theo block (mặc định 128 KB, tối đa 1 MB) bằng zlib, lz4, lzo, xz hoặc zstd. Dữ liệu được giải nén khi đọc và page cache giữ bản đã giải nén; thuật toán nén đổi kích thước image lấy thời gian CPU khi đọc</td>
+</tr>
+<tr>
+<td>overlayfs</td>
+<td>Xếp một lớp ghi được (upper) lên một hoặc nhiều lớp chỉ đọc (lower). Lần ghi đầu vào file của lớp lower kích hoạt copy-up: file được chép lên lớp upper rồi mới sửa. File bị xóa được đánh dấu bằng whiteout ở lớp upper</td>
+</tr>
+<tr>
+<td>tmpfs</td>
+<td>Không có thiết bị bên dưới: file nằm hoàn toàn trong page cache, có thể bị đẩy ra swap. Kích thước mặc định khi không chỉ định là 50% RAM; dữ liệu mất khi khởi động lại</td>
+</tr>
+</tbody>
+</table>
+<h2 id="quan-sat-tren-he-thong">Quan sát trên hệ thống<a class="headerlink" href="#quan-sat-tren-he-thong" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Lệnh hoặc file</th>
+<th>Thông tin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/proc/filesystems</code></td>
+<td>Các file system kernel hỗ trợ</td>
+</tr>
+<tr>
+<td><code>findmnt</code>, <code>/proc/self/mountinfo</code></td>
+<td>Cây mount và option của từng mount</td>
+</tr>
+<tr>
+<td><code>/proc/meminfo</code></td>
+<td><code>Cached</code> (page cache), <code>Dirty</code>, <code>Writeback</code></td>
+</tr>
+<tr>
+<td><code>slabtop</code></td>
+<td>Kích thước slab <code>dentry</code>, <code>inode_cache</code> và cache inode của từng file system</td>
+</tr>
+<tr>
+<td><code>echo 1 &gt; /proc/sys/vm/drop_caches</code></td>
+<td>Bỏ page cache sạch (2: dentry và inode; 3: cả hai), dùng khi đo hiệu năng đọc không cache</td>
+</tr>
+<tr>
+<td><code>/sys/block/&lt;dev&gt;/queue/read_ahead_kb</code></td>
+<td>Kích thước readahead của thiết bị</td>
+</tr>
+<tr>
+<td><code>strace -e trace=file,read,write</code></td>
+<td>Các system call file mà ứng dụng thực hiện</td>
+</tr>
+</tbody>
+</table>
 <h2 id="lien-quan">Liên quan<a class="headerlink" href="#lien-quan" title="Permanent link">¶</a></h2>
 <ul>
-<li><a href="../../mm/vm/">Virtual Memory</a>: page cache dưới góc độ bộ nhớ.</li>
+<li><a href="../../mm/vm/">Virtual Memory</a>: page cache dưới góc độ bộ nhớ, page fault trên vùng <code>mmap()</code>.</li>
+<li><a href="../../process/process/">Process và thread trong kernel</a>: bảng file descriptor và <code>CLONE_FILES</code>, close-on-exec khi <code>exec</code>.</li>
 <li><a href="../../kernel_user_space/pseudo_fs/">Pseudo Filesystem</a>: procfs, sysfs, debugfs.</li>
+<li><a href="../../kernel_user_space/device_file/">Device File và ioctl</a>: <code>file_operations</code> của driver.</li>
 <li><a href="../../storage/flash_storage/">Flash Storage (MTD, MMC)</a>: UBIFS và lớp lưu trữ bên dưới.</li>
 <li><a href="../../../lnx_es/linux_system/rootfs/">Root filesystem cho thiết bị</a> (Embedded): dùng các file system này khi dựng rootfs.</li>
+<li><a href="../../../lnx_es/linux_system/cmdline-fs/">Command line và filesystem</a> (Embedded): mount, <code>/etc/fstab</code>, <code>sync</code> trước khi ngắt nguồn.</li>
+<li><a href="../../../virtualization/container/internals/">Container Internals</a> (Virtualization): overlayfs cho image container.</li>
+</ul>
+<h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="https://docs.kernel.org/filesystems/vfs.html">Kernel docs: Overview of the Linux Virtual File System (<code>Documentation/filesystems/vfs.rst</code>)</a></li>
+<li><a href="https://docs.kernel.org/filesystems/path-lookup.html">Kernel docs: Pathname lookup (<code>Documentation/filesystems/path-lookup.rst</code>)</a></li>
+<li><a href="https://docs.kernel.org/filesystems/mount_api.html">Kernel docs: Filesystem Mount API (<code>Documentation/filesystems/mount_api.rst</code>)</a></li>
+<li><a href="https://docs.kernel.org/admin-guide/sysctl/vm.html">Kernel docs: Documentation for /proc/sys/vm/</a> (các tham số <code>dirty_*</code>, <code>drop_caches</code>)</li>
+<li><a href="https://docs.kernel.org/admin-guide/ext4.html">Kernel docs: ext4 General Information</a>, <a href="https://docs.kernel.org/filesystems/squashfs.html">Squashfs</a>, <a href="https://docs.kernel.org/filesystems/overlayfs.html">Overlay Filesystem</a>, <a href="https://docs.kernel.org/filesystems/tmpfs.html">Tmpfs</a></li>
+<li>Mã nguồn Linux 6.18: <a href="https://github.com/torvalds/linux/blob/v6.18/include/linux/fs.h"><code>include/linux/fs.h</code></a> (các đối tượng và bảng thao tác), <a href="https://github.com/torvalds/linux/blob/v6.18/fs/namei.c"><code>fs/namei.c</code></a> (<code>path_openat()</code>), <a href="https://github.com/torvalds/linux/blob/v6.18/fs/open.c"><code>fs/open.c</code></a> (<code>do_dentry_open()</code>), <a href="https://github.com/torvalds/linux/blob/v6.18/fs/read_write.c"><code>fs/read_write.c</code></a> (<code>vfs_read()</code>), <a href="https://github.com/torvalds/linux/blob/v6.18/mm/filemap.c"><code>mm/filemap.c</code></a> (<code>filemap_read()</code>), <a href="https://github.com/torvalds/linux/blob/v6.18/mm/readahead.c"><code>mm/readahead.c</code></a>, <a href="https://github.com/torvalds/linux/blob/v6.18/mm/page-writeback.c"><code>mm/page-writeback.c</code></a> (giá trị mặc định các ngưỡng dirty, <code>balance_dirty_pages()</code>), <a href="https://github.com/torvalds/linux/blob/v6.18/fs/ramfs/inode.c"><code>fs/ramfs/inode.c</code></a> (ví dụ đăng ký file system), <a href="https://github.com/torvalds/linux/blob/v6.18/include/linux/pagemap.h"><code>include/linux/pagemap.h</code></a> (<code>VM_READAHEAD_PAGES</code>)</li>
+<li><a href="https://lkml.rescloud.iu.edu/2110.3/07527.html">Pull request "Memory folios for v5.16"</a>, Phoronix: <a href="https://www.phoronix.com/news/Memory-Folios-Lands-Linux-5.16">Memory Folios Merged For Linux 5.16</a></li>
 </ul>
 
 
@@ -15297,7 +15809,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 9, 2026 02:56:34 UTC">November 9, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 16, 2026 14:31:22 UTC">November 16, 2026</span>
   </span>
 
     
