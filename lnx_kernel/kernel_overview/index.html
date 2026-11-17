@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
+        <meta name="description" content="Tổng quan Linux kernel và bản đồ tab Linux Kernel: các thành phần chính, ba lối vào theo mục tiêu đọc (viết driver, cơ chế bên trong và real-time, tìm lỗi), danh sách trang theo nhóm và danh mục subsystem.">
       
       
         <meta name="author" content="Vu Tang">
@@ -15,7 +15,7 @@
         <link rel="prev" href="../../lnx_es/bmc/openbmc/">
       
       
-        <link rel="next" href="../release/kernel_release/">
+        <link rel="next" href="../kernel_boot/">
       
       
         
@@ -73,7 +73,7 @@
   
 <meta property="og:type" content="website">
 <meta property="og:title" content="Linux Kernel Overview - Vu Tang's Docs">
-<meta property="og:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
+<meta property="og:description" content="Tổng quan Linux kernel và bản đồ tab Linux Kernel: các thành phần chính, ba lối vào theo mục tiêu đọc (viết driver, cơ chế bên trong và real-time, tìm lỗi), danh sách trang theo nhóm và danh mục subsystem.">
 <meta property="og:image" content="https://note.vutang.dev/assets/images/social/lnx_kernel/kernel_overview.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
@@ -81,7 +81,7 @@
 <meta property="og:url" content="https://note.vutang.dev/lnx_kernel/kernel_overview/">
 <meta property="twitter:card" content="summary_large_image">
 <meta property="twitter:title" content="Linux Kernel Overview - Vu Tang's Docs">
-<meta property="twitter:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
+<meta property="twitter:description" content="Tổng quan Linux kernel và bản đồ tab Linux Kernel: các thành phần chính, ba lối vào theo mục tiêu đọc (viết driver, cơ chế bên trong và real-time, tìm lỗi), danh sách trang theo nhóm và danh mục subsystem.">
 <meta property="twitter:image" content="https://note.vutang.dev/assets/images/social/lnx_kernel/kernel_overview.png">
 <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
@@ -4357,6 +4357,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#buc-tranh-chung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bức tranh chung
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#lo-trinh-oc" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4368,55 +4379,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#linux-kernel-la-gi" class="md-nav__link">
+  <a href="#cac-nhom-trang" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Linux Kernel là gì
+        Các nhóm trang
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#kernel-space-va-user-space" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Kernel Space và User Space
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cac-thanh-phan-chinh-trong-kernel" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Các thành phần chính trong kernel
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cac-subsystem" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Các subsystem
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Các subsystem">
+    <nav class="md-nav" aria-label="Các nhóm trang">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#core-kernel" class="md-nav__link">
+  <a href="#kernel-basics" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Core kernel
+        Kernel Basics
       
     </span>
   </a>
@@ -4424,10 +4402,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#device-model-va-bus" class="md-nav__link">
+  <a href="#driver-model-device-tree" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Device model và bus
+        Driver Model &amp; Device Tree
       
     </span>
   </a>
@@ -4435,10 +4413,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#framework-phan-cung-dung-chung" class="md-nav__link">
+  <a href="#interrupt-memory-concurrency" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Framework phần cứng dùng chung
+        Interrupt, Memory &amp; Concurrency
       
     </span>
   </a>
@@ -4446,10 +4424,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#giao-tiep-io-va-media" class="md-nav__link">
+  <a href="#kernel-space-user-space-interfaces" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Giao tiếp, I/O và media
+        Kernel Space, User Space Interfaces
       
     </span>
   </a>
@@ -4457,10 +4435,43 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#mang-va-luu-tru" class="md-nav__link">
+  <a href="#subsystem-drivers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Mạng và lưu trữ
+        Subsystem Drivers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kernel-internals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kernel Internals
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#real-time-cpu-isolation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Real-time &amp; CPU Isolation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tracing-debug" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tracing &amp; Debug
       
     </span>
   </a>
@@ -4473,10 +4484,93 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#device-model-va-device-tree" class="md-nav__link">
+  <a href="#danh-muc-subsystem" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Device Model và Device Tree
+        Danh mục subsystem
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Danh mục subsystem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#device-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Device model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bus
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware-frameworks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware Frameworks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#io-media" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        I/O &amp; Media
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Storage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mang" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mạng
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lien-quan-en-cac-tab-khac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Liên quan đến các tab khác
       
     </span>
   </a>
@@ -4484,54 +4578,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#kernel-module" class="md-nav__link">
+  <a href="#bai-viet-lien-quan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Kernel Module
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#source-tree-va-build" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Source tree và build
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#boot" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Boot
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#debug-va-quan-sat" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Debug và quan sát
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#lien-quan" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Liên quan
+        Bài viết liên quan
       
     </span>
   </a>
@@ -4612,34 +4662,6 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../release/kernel_release/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Kernel Release Process
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -4787,24 +4809,441 @@
   
   
   
-    
-    
-    
-    
-      
-      
+    <li class="md-nav__item">
+      <a href="../release/kernel_release/" class="md-nav__link">
         
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kernel Release Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    
+    
       
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_7">
+      
         
           
-          <label class="md-nav__link" for="__nav_4_2_7" id="__nav_4_2_7_label" tabindex="0">
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3">
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Driver Model &amp; Device Tree
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Driver Model &amp; Device Tree
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lnx_ldd/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux Device Driver Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devicetree/devicetree/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Device Tree
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lnx_ldd/platform_dev/platform_device/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform Device
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../driver_core/driver_core/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Driver Core (kobject, sysfs, devres) (WIP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interrupt, Memory &amp; Concurrency
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Interrupt, Memory &amp; Concurrency
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interrupt/interrupt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interrupt &amp; Bottom Half
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../locking/locking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Đồng bộ hóa (Locking)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mm/memory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quản lý bộ nhớ trong driver
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dma/dma/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DMA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../time/time/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Timer &amp; Delay (WIP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5">
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="">
             
   
   
@@ -4822,8 +5261,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_2_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -4876,6 +5315,34 @@
     
   
     System Call
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lnx_ldd/char_device/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Character Device
   
 
     
@@ -5121,14 +5588,6 @@
 
               
             
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
               
                 
   
@@ -5152,17 +5611,17 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6">
         
           
-          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="">
             
   
   
   <span class="md-ellipsis">
     
   
-    Driver Model &amp; Device Tree
+    Subsystem Drivers
   
 
     
@@ -5173,12 +5632,64 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_3">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Driver Model &amp; Device Tree
+    Subsystem Drivers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6_1">
+        
+          
+          <label class="md-nav__link" for="__nav_4_6_1" id="__nav_4_6_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bus
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Bus
   
 
           </label>
@@ -5191,14 +5702,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lnx_ldd/overview/" class="md-nav__link">
+      <a href="../../lnx_ldd/i2c/i2c/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Linux Device Driver Overview
+    I2C Subsystem
   
 
     
@@ -5219,14 +5730,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../driver_core/driver_core/" class="md-nav__link">
+      <a href="../../lnx_ldd/spi_dev/spi_dev/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Driver Core (kobject, sysfs, devres) (WIP)
+    SPI Subsystem
   
 
     
@@ -5247,14 +5758,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../devicetree/devicetree/" class="md-nav__link">
+      <a href="../../lnx_ldd/spi_dev/spi_advance/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Device Tree
+    SPI Subsystem (Advanced)
   
 
     
@@ -5275,14 +5786,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lnx_ldd/platform_dev/platform_device/" class="md-nav__link">
+      <a href="../../lnx_ldd/pcie/pcie/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Platform Device
+    PCIe
   
 
     
@@ -5303,14 +5814,685 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lnx_ldd/char_device/" class="md-nav__link">
+      <a href="../../lnx_ldd/jesd/jesd/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Character Device
+    JESD204
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6_2">
+        
+          
+          <label class="md-nav__link" for="__nav_4_6_2" id="__nav_4_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware Frameworks
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hardware Frameworks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lnx_ldd/gpio/gpio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPIO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clk/clk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Common Clock Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pinctrl/pinctrl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pin Control (pinctrl)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../regulator/regulator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Regulator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pm/pm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Power Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lnx_ldd/fpga/fpga_mgr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FPGA Manager
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6_3">
+        
+          
+          <label class="md-nav__link" for="__nav_4_6_3" id="__nav_4_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I/O &amp; Media
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    I/O &amp; Media
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lnx_ldd/uart/uart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UART
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lnx_ldd/audio/linux_audio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4_6_4" id="__nav_4_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Storage
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Storage
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../storage/flash_storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flash Storage (MTD, MMC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7">
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kernel Internals
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Kernel Internals
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../process/process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Process &amp; Thread
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sched/sched/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scheduler
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../smp/smp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SMP &amp; CPU Hotplug
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mm/vm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Virtual Memory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vfs/vfs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VFS &amp; Page Cache
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security/security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security Subsystem (WIP)
   
 
     
@@ -5355,10 +6537,185 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8">
         
           
-          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Real-time &amp; CPU Isolation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Real-time &amp; CPU Isolation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpu_isolation/preempt_rt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Real-time Linux (PREEMPT_RT)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpu_isolation/isolcpus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    isolcpus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpu_isolation/nohz_full/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    nohz_full
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpu_isolation/irq_affinity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IRQ Affinity &amp; irqbalance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_9">
+        
+          
+          <label class="md-nav__link" for="__nav_4_9" id="__nav_4_9_label" tabindex="">
             
   
   
@@ -5376,8 +6733,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5435,10 +6792,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_2">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_9_2">
         
           
-          <label class="md-nav__link" for="__nav_4_4_2" id="__nav_4_4_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_9_2" id="__nav_4_9_2_label" tabindex="0">
             
   
   
@@ -5456,8 +6813,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_4_2">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_9_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_9_2">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5691,10 +7048,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_3">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_9_3">
         
           
-          <label class="md-nav__link" for="__nav_4_4_3" id="__nav_4_4_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_9_3" id="__nav_4_9_3_label" tabindex="0">
             
   
   
@@ -5712,8 +7069,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_4_3">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_9_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_9_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5891,10 +7248,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_4">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_9_4">
         
           
-          <label class="md-nav__link" for="__nav_4_4_4" id="__nav_4_4_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_9_4" id="__nav_4_9_4_label" tabindex="0">
             
   
   
@@ -5912,8 +7269,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_4_4">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_9_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_9_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -6035,10 +7392,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_5">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_9_5">
         
           
-          <label class="md-nav__link" for="__nav_4_4_5" id="__nav_4_4_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_9_5" id="__nav_4_9_5_label" tabindex="0">
             
   
   
@@ -6056,8 +7413,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_4_5">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_9_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_9_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -6098,1196 +7455,6 @@
           </ul>
         </nav>
       
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5">
-        
-          
-          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Interrupt, Memory &amp; Concurrency
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_5">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Interrupt, Memory &amp; Concurrency
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../interrupt/interrupt/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Interrupt &amp; Bottom Half
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../locking/locking/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Đồng bộ hóa (Locking)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../mm/memory/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Quản lý bộ nhớ trong driver
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../dma/dma/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    DMA
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../time/time/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Timer &amp; Delay (WIP)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6">
-        
-          
-          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Bus Drivers
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_6">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Bus Drivers
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../lnx_ldd/i2c/i2c/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    I2C Subsystem
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../lnx_ldd/spi_dev/spi_dev/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    SPI Subsystem
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../lnx_ldd/spi_dev/spi_advance/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    SPI Subsystem (Advanced)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../lnx_ldd/pcie/pcie/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    PCIe
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../lnx_ldd/jesd/jesd/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    JESD204
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7">
-        
-          
-          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Hardware Frameworks
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_7">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Hardware Frameworks
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../lnx_ldd/gpio/gpio/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    GPIO
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../clk/clk/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Common Clock Framework
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../pinctrl/pinctrl/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Pin Control (pinctrl)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../regulator/regulator/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Regulator
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../pm/pm/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Power Management
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../lnx_ldd/uart/uart/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    UART
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../lnx_ldd/audio/linux_audio/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Audio
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../lnx_ldd/fpga/fpga_mgr/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    FPGA Manager
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8">
-        
-          
-          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Storage
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_8">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Storage
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../storage/flash_storage/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Flash Storage (MTD, MMC)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_9">
-        
-          
-          <label class="md-nav__link" for="__nav_4_9" id="__nav_4_9_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Kernel Internals
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_9">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Kernel Internals
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../process/process/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Process &amp; Thread
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../sched/sched/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Scheduler
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../smp/smp/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    SMP &amp; CPU Hotplug
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../mm/vm/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Virtual Memory
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../vfs/vfs/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    VFS &amp; Page Cache
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../security/security/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Security Subsystem (WIP)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_10">
-        
-          
-          <label class="md-nav__link" for="__nav_4_10" id="__nav_4_10_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Real-time &amp; CPU Isolation
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_10_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_10">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Real-time &amp; CPU Isolation
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../cpu_isolation/preempt_rt/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Real-time Linux (PREEMPT_RT)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../cpu_isolation/isolcpus/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    isolcpus
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../cpu_isolation/nohz_full/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    nohz_full
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../cpu_isolation/irq_affinity/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    IRQ Affinity &amp; irqbalance
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -15388,6 +15555,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#buc-tranh-chung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bức tranh chung
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#lo-trinh-oc" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -15399,55 +15577,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#linux-kernel-la-gi" class="md-nav__link">
+  <a href="#cac-nhom-trang" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Linux Kernel là gì
+        Các nhóm trang
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#kernel-space-va-user-space" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Kernel Space và User Space
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cac-thanh-phan-chinh-trong-kernel" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Các thành phần chính trong kernel
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cac-subsystem" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Các subsystem
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Các subsystem">
+    <nav class="md-nav" aria-label="Các nhóm trang">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#core-kernel" class="md-nav__link">
+  <a href="#kernel-basics" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Core kernel
+        Kernel Basics
       
     </span>
   </a>
@@ -15455,10 +15600,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#device-model-va-bus" class="md-nav__link">
+  <a href="#driver-model-device-tree" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Device model và bus
+        Driver Model &amp; Device Tree
       
     </span>
   </a>
@@ -15466,10 +15611,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#framework-phan-cung-dung-chung" class="md-nav__link">
+  <a href="#interrupt-memory-concurrency" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Framework phần cứng dùng chung
+        Interrupt, Memory &amp; Concurrency
       
     </span>
   </a>
@@ -15477,10 +15622,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#giao-tiep-io-va-media" class="md-nav__link">
+  <a href="#kernel-space-user-space-interfaces" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Giao tiếp, I/O và media
+        Kernel Space, User Space Interfaces
       
     </span>
   </a>
@@ -15488,10 +15633,43 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#mang-va-luu-tru" class="md-nav__link">
+  <a href="#subsystem-drivers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Mạng và lưu trữ
+        Subsystem Drivers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kernel-internals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kernel Internals
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#real-time-cpu-isolation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Real-time &amp; CPU Isolation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tracing-debug" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tracing &amp; Debug
       
     </span>
   </a>
@@ -15504,10 +15682,93 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#device-model-va-device-tree" class="md-nav__link">
+  <a href="#danh-muc-subsystem" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Device Model và Device Tree
+        Danh mục subsystem
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Danh mục subsystem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#device-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Device model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bus
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware-frameworks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware Frameworks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#io-media" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        I/O &amp; Media
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Storage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mang" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mạng
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lien-quan-en-cac-tab-khac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Liên quan đến các tab khác
       
     </span>
   </a>
@@ -15515,54 +15776,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#kernel-module" class="md-nav__link">
+  <a href="#bai-viet-lien-quan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Kernel Module
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#source-tree-va-build" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Source tree và build
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#boot" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Boot
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#debug-va-quan-sat" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Debug và quan sát
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#lien-quan" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Liên quan
+        Bài viết liên quan
       
     </span>
   </a>
@@ -15626,275 +15843,321 @@
 
 
 <h1 id="linux-kernel-overview">Linux Kernel Overview<a class="headerlink" href="#linux-kernel-overview" title="Permanent link">¶</a></h1>
-<p>Tài liệu này giới thiệu nhanh về Linux kernel: lộ trình đọc các trang trong tab,
-vai trò, các thành phần bên trong và các subsystem. Mỗi mục chỉ ở mức tổng quan, nội dung chi tiết nằm
-trong các page được link kèm theo.</p>
+<p>Trang này giới thiệu Linux kernel và cách tổ chức các trang trong tab Linux Kernel. Phần đầu trình bày bức tranh chung: kernel làm gì, ranh giới giữa kernel space và user space, các thành phần chính. Tiếp theo là lộ trình đọc gồm ba lối vào theo mục tiêu của người đọc, rồi danh sách trang của từng nhóm theo đúng thứ tự trong menu bên trái. Cuối trang là danh mục subsystem của kernel kèm trang tương ứng, và bảng các chủ đề liên quan nằm ở tab khác.</p>
 <div class="admonition note">
 <p class="admonition-title">Phiên bản kernel</p>
-<p>Trang này tham chiếu kernel mainline dòng 6.x. Một số page con được viết từ
-các phiên bản cũ hơn; khi chi tiết phụ thuộc phiên bản, page sẽ ghi rõ.</p>
+<p>Trang này tham chiếu kernel mainline dòng 6.x. Một số trang con được viết từ
+các phiên bản cũ hơn; khi chi tiết phụ thuộc phiên bản, trang con ghi rõ.</p>
 </div>
-<h2 id="lo-trinh-oc">Lộ trình đọc<a class="headerlink" href="#lo-trinh-oc" title="Permanent link">¶</a></h2>
-<p>Các nhóm trang trong tab Linux Kernel được sắp theo hướng thực hành trước, lý thuyết sau: viết được driver đầu tiên, biết cách debug nó, rồi mới đi sâu vào các cơ chế bên dưới và các chủ đề chuyên biệt.</p>
-<table>
-<thead>
-<tr>
-<th>Bước</th>
-<th>Nhóm</th>
-<th>Mục đích</th>
-<th>Trang bắt đầu</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>Kernel Basics</td>
-<td>Nắm boot, command line, build kernel, module và giao tiếp với user space</td>
-<td><a href="../kernel_boot/">Kernel Boot Process</a>, <a href="../build/kbuild/">Kernel Build</a>, <a href="../../lnx_ldd/kernel_module/">Kernel Module</a></td>
-</tr>
-<tr>
-<td>2</td>
-<td>Driver Model &amp; Device Tree</td>
-<td>Viết driver đầu tiên: platform device, character device</td>
-<td><a href="../../lnx_ldd/overview/">Linux Device Driver Overview</a>, <a href="../../lnx_ldd/platform_dev/platform_device/">Platform Device</a></td>
-</tr>
-<tr>
-<td>3</td>
-<td>Tracing &amp; Debug</td>
-<td>Quan sát và tìm lỗi trong driver vừa viết</td>
-<td><a href="../tracing_debug/">Tracing &amp; Debug</a>, <a href="../oops/oops/">Đọc oops và panic</a></td>
-</tr>
-<tr>
-<td>4</td>
-<td>Interrupt, Memory &amp; Concurrency</td>
-<td>Cơ chế lõi cần khi driver phức tạp hơn: ngắt, lock, bộ nhớ, DMA, timer</td>
-<td><a href="../interrupt/interrupt/">Interrupt và bottom half</a>, <a href="../locking/locking/">Đồng bộ hóa</a></td>
-</tr>
-<tr>
-<td>5</td>
-<td>Bus Drivers</td>
-<td>Driver cho I2C, SPI, PCIe, JESD204</td>
-<td><a href="../../lnx_ldd/i2c/i2c/">I2C Subsystem</a></td>
-</tr>
-<tr>
-<td>6</td>
-<td>Hardware Frameworks</td>
-<td>GPIO, clock, pinctrl, regulator, power management và các framework thiết bị</td>
-<td><a href="../../lnx_ldd/gpio/gpio/">GPIO</a>, <a href="../pm/pm/">Power management</a></td>
-</tr>
-<tr>
-<td>7</td>
-<td>Storage</td>
-<td>Driver lưu trữ: MTD, MMC</td>
-<td><a href="../storage/flash_storage/">Flash Storage</a></td>
-</tr>
-<tr>
-<td>8</td>
-<td>Kernel Internals</td>
-<td>Cơ chế bên trong kernel: process, scheduler, bộ nhớ ảo, VFS, bảo mật</td>
-<td><a href="../process/process/">Process và thread</a>, <a href="../sched/sched/">Scheduler</a></td>
-</tr>
-<tr>
-<td>9</td>
-<td>Real-time &amp; CPU Isolation</td>
-<td>Chủ đề chuyên sâu cho hệ thống có yêu cầu độ trễ, dựa trên scheduler và timer</td>
-<td><a href="../cpu_isolation/preempt_rt/">Real-time Linux (PREEMPT_RT)</a></td>
-</tr>
-</tbody>
-</table>
-<p>Người đọc đã có kinh nghiệm có thể vào thẳng nhóm cần dùng. Các trang có link tới kiến thức nền liên quan.</p>
-<h2 id="linux-kernel-la-gi">Linux Kernel là gì<a class="headerlink" href="#linux-kernel-la-gi" title="Permanent link">¶</a></h2>
-<p>Linux kernel là phần lõi của hệ điều hành, đóng vai trò lớp trung gian giữa
-phần cứng và các ứng dụng: quản lý CPU, bộ nhớ, thiết bị ngoại vi và cung cấp
-một giao diện thống nhất để ứng dụng sử dụng các tài nguyên đó.</p>
+<h2 id="buc-tranh-chung">Bức tranh chung<a class="headerlink" href="#buc-tranh-chung" title="Permanent link">¶</a></h2>
+<p>Linux kernel là phần lõi của hệ điều hành, đóng vai trò lớp trung gian giữa phần cứng và các ứng dụng: quản lý CPU, bộ nhớ, thiết bị ngoại vi và cung cấp một giao diện thống nhất để ứng dụng sử dụng các tài nguyên đó.</p>
 <p>Một số đặc điểm chính:</p>
 <ul>
-<li><strong>Monolithic kernel</strong>: các thành phần chính (scheduler, memory management,
-  file system, network, driver) chạy chung trong kernel space. Khác với
-  microkernel, nhưng kernel vẫn có thể mở rộng động bằng
-  <a href="../../lnx_ldd/kernel_module/">loadable module</a>.</li>
+<li><strong>Monolithic kernel</strong>: các thành phần chính (scheduler, quản lý bộ nhớ, file system, network, driver) chạy chung trong kernel space. Khác với microkernel, nhưng kernel vẫn mở rộng được lúc chạy bằng <a href="../../lnx_ldd/kernel_module/">loadable module</a>.</li>
 <li><strong>Mã nguồn mở</strong>, hỗ trợ nhiều kiến trúc (x86, ARM/ARM64, RISC-V...).</li>
-<li><strong>Cấu hình được</strong> thông qua Kconfig/defconfig: chỉ build những tính năng cần
-  thiết, phù hợp từ hệ nhúng nhỏ đến server.</li>
-<li><strong>Hỗ trợ real-time</strong>: PREEMPT_RT đã vào mainline từ 6.12, không cần vá
-  patch ngoài để có kernel real-time (bật bằng <code>CONFIG_PREEMPT_RT</code>).</li>
+<li><strong>Cấu hình được</strong> thông qua Kconfig và defconfig: chỉ build những tính năng cần thiết, phù hợp từ hệ nhúng nhỏ đến server.</li>
+<li><strong>Hỗ trợ real-time</strong>: PREEMPT_RT đã vào mainline từ 6.12, không cần vá patch ngoài để có kernel real-time (bật bằng <code>CONFIG_PREEMPT_RT</code>).</li>
 </ul>
-<h2 id="kernel-space-va-user-space">Kernel Space và User Space<a class="headerlink" href="#kernel-space-va-user-space" title="Permanent link">¶</a></h2>
-<figure>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../lnx_ldd/img/ldd1.png" data-desc-position="bottom"><img alt="userspace-kernelspace" src="../../lnx_ldd/img/ldd1.png"></a></p>
-<figcaption> Linux overview </figcaption>
-</figure>
-<ul>
-<li><strong>User space</strong>: nơi chạy ứng dụng và thư viện (glibc...). Ứng dụng không truy
-  cập trực tiếp phần cứng.</li>
-<li><strong>Kernel space</strong>: chạy ở mức đặc quyền cao của CPU, truy cập được toàn bộ
-  phần cứng và bộ nhớ.</li>
-<li><strong>System call</strong> là cửa ngõ để ứng dụng yêu cầu dịch vụ từ kernel (<code>open</code>,
-  <code>read</code>, <code>write</code>, <code>mmap</code>, <code>ioctl</code>...).</li>
-<li>Ngoài system call, kernel còn trao đổi với user space qua các file đặc biệt:
-  <code>/dev</code> (device file), <code>/proc</code> và <code>/sys</code> (thông tin và cấu hình kernel),
-  <code>debugfs</code>, <code>configfs</code>.</li>
-<li><strong>Netlink</strong> socket: kênh hai chiều dạng message, dùng cho cấu hình mạng
-  (<code>ip</code>, <code>ethtool</code>), uevent cho udev, và nhiều subsystem khác.</li>
-</ul>
-<p>Xem thêm: <a href="../kernel_user_space/">Kernel Space, User Space Interfaces</a>.</p>
-<h2 id="cac-thanh-phan-chinh-trong-kernel">Các thành phần chính trong kernel<a class="headerlink" href="#cac-thanh-phan-chinh-trong-kernel" title="Permanent link">¶</a></h2>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/kernel-architecture-layers.svg" data-desc-position="bottom"><img alt="Linux system layers: user space programs, kernel interfaces, core subsystems, core mechanisms, drivers and architecture code, hardware" src="../img/kernel-architecture-layers.svg"></a></p>
+<p><em>Các lớp của một hệ thống Linux: ứng dụng ở user space đi vào kernel qua một số interface cố định; bên trong kernel là các subsystem lõi, cơ chế lõi, driver và mã phụ thuộc kiến trúc, nằm trên phần cứng.</em></p>
+<p><strong>User space</strong> là nơi chạy ứng dụng và thư viện (glibc...); ứng dụng không truy cập trực tiếp phần cứng. <strong>Kernel space</strong> chạy ở mức đặc quyền cao của CPU, truy cập được toàn bộ phần cứng và bộ nhớ. Hai bên trao đổi qua các interface do kernel định nghĩa: system call (<code>open</code>, <code>read</code>, <code>write</code>, <code>mmap</code>, <code>ioctl</code>...), device file trong <code>/dev</code>, các pseudo filesystem (<code>/proc</code>, <code>/sys</code>, <code>debugfs</code>, <code>configfs</code>) và netlink socket, kênh hai chiều dạng message dùng cho cấu hình mạng và uevent của udev. Các interface này được trình bày trong nhóm Kernel Space, User Space Interfaces.</p>
+<p>Bảng dưới liệt kê các thành phần chính bên trong kernel, thư mục tương ứng trong source và trang trình bày thành phần đó.</p>
 <table>
 <thead>
 <tr>
 <th>Thành phần</th>
 <th>Nhiệm vụ</th>
 <th>Thư mục trong source</th>
+<th>Trang liên quan</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Process Scheduler</td>
-<td>Quản lý process/thread, phân chia thời gian CPU</td>
-<td><code>kernel/sched/</code></td>
+<td>Process và scheduler</td>
+<td>Quản lý process và thread, phân chia thời gian CPU, hỗ trợ nhiều core</td>
+<td><code>kernel/</code>, <code>kernel/sched/</code></td>
+<td><a href="../process/process/">Process và thread</a>, <a href="../sched/sched/">Scheduler</a>, <a href="../smp/smp/">SMP và CPU hotplug</a></td>
 </tr>
 <tr>
-<td>Memory Management</td>
-<td>Bộ nhớ ảo, page, cấp phát (buddy, slab allocator SLUB), <code>mmap</code></td>
+<td>Quản lý bộ nhớ</td>
+<td>Bộ nhớ ảo, page, cấp phát (buddy, slab allocator SLUB), <code>mmap</code>, DMA mapping</td>
 <td><code>mm/</code></td>
+<td><a href="../mm/memory/">Quản lý bộ nhớ trong driver</a>, <a href="../mm/vm/">Virtual Memory</a>, <a href="../dma/dma/">DMA</a></td>
 </tr>
 <tr>
 <td>Virtual File System (VFS)</td>
-<td>Giao diện file thống nhất trên nhiều file system</td>
+<td>Giao diện file thống nhất trên nhiều file system (ext4, tmpfs, procfs, sysfs...)</td>
 <td><code>fs/</code></td>
+<td><a href="../vfs/vfs/">VFS và page cache</a>, <a href="../kernel_user_space/pseudo_fs/">Pseudo Filesystem</a> (chưa viết)</td>
 </tr>
 <tr>
 <td>Networking</td>
-<td>Network stack (socket, TCP/IP, ...)</td>
+<td>Network stack (socket, TCP/IP, netfilter, netdev)</td>
 <td><code>net/</code></td>
+<td>Chưa có trang trong tab</td>
 </tr>
 <tr>
 <td>IPC</td>
 <td>SysV IPC, POSIX mqueue (<code>ipc/</code>); signal (<code>kernel/signal.c</code>); pipe (<code>fs/pipe.c</code>)</td>
 <td><code>ipc/</code>, <code>kernel/</code>, <code>fs/</code></td>
+<td>Chưa có trang trong tab</td>
 </tr>
 <tr>
-<td>Device Drivers</td>
-<td>Điều khiển phần cứng, chiếm phần lớn source</td>
-<td><code>drivers/</code></td>
-</tr>
-<tr>
-<td>Architecture code</td>
-<td>Mã phụ thuộc kiến trúc (boot, interrupt, MMU...)</td>
-<td><code>arch/</code></td>
-</tr>
-</tbody>
-</table>
-<p>Các cấu trúc dữ liệu dùng chung trong kernel (list, rbtree, kfifo...) xem tại
-<a href="../kernel_data_structure/">Kernel Data Structure</a>.</p>
-<p>Lưu ý: allocator SLAB cũ đã bị bỏ từ 6.8, hiện kernel chỉ còn SLUB (API
-<code>kmalloc</code>/<code>kmem_cache_*</code> không đổi).</p>
-<h2 id="cac-subsystem">Các subsystem<a class="headerlink" href="#cac-subsystem" title="Permanent link">¶</a></h2>
-<p>Subsystem là một framework chung do kernel cung cấp cho một nhóm thiết bị hoặc
-chức năng. Driver của từng phần cứng cụ thể chỉ cần đăng ký vào framework này
-thay vì tự làm lại phần chung. Dưới đây là các subsystem chính, chia theo nhóm
-(cột cuối để trống nếu tài liệu chưa có page tương ứng).</p>
-<h3 id="core-kernel">Core kernel<a class="headerlink" href="#core-kernel" title="Permanent link">¶</a></h3>
-<table>
-<thead>
-<tr>
-<th>Subsystem</th>
-<th>Chức năng</th>
-<th>Page liên quan</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Scheduler</td>
-<td>Lập lịch process/thread</td>
-<td><a href="../process/process/">Process và thread</a>, <a href="../sched/sched/">Scheduler</a></td>
-</tr>
-<tr>
-<td>Memory Management</td>
-<td>Bộ nhớ ảo, cấp phát, <code>mmap</code>, DMA mapping</td>
-<td><a href="../mm/memory/">Quản lý bộ nhớ trong driver</a>, <a href="../mm/vm/">Virtual Memory</a>, <a href="../dma/dma/">DMA</a></td>
-</tr>
-<tr>
-<td>VFS và file system</td>
-<td>ext4, tmpfs, procfs, sysfs, debugfs...</td>
-<td><a href="../vfs/vfs/">VFS và page cache</a>, <a href="../kernel_user_space/pseudo_fs/">Pseudo Filesystem</a></td>
-</tr>
-<tr>
-<td>IRQ (interrupt)</td>
-<td>Quản lý ngắt, irqchip, threaded IRQ</td>
+<td>Interrupt, workqueue, kthread</td>
+<td>Quản lý ngắt, irqchip, threaded IRQ, hoãn xử lý sang ngữ cảnh process</td>
+<td><code>kernel/irq/</code>, <code>kernel/</code></td>
 <td><a href="../interrupt/interrupt/">Interrupt và bottom half</a></td>
 </tr>
 <tr>
-<td>Timer / Time</td>
-<td>hrtimer, clocksource, clockevent</td>
-<td><a href="../time/time/">Timer và delay</a></td>
-</tr>
-<tr>
-<td>Workqueue, tasklet, kthread</td>
-<td>Hoãn xử lý, chạy ngữ cảnh process</td>
-<td><a href="../interrupt/interrupt/">Interrupt và bottom half</a></td>
-</tr>
-<tr>
-<td>Locking / Synchronization</td>
+<td>Đồng bộ hóa</td>
 <td>spinlock, mutex, RCU, atomic</td>
+<td><code>kernel/locking/</code>, <code>kernel/rcu/</code></td>
 <td><a href="../locking/locking/">Đồng bộ hóa trong kernel</a></td>
+</tr>
+<tr>
+<td>Timer và thời gian</td>
+<td>hrtimer, clocksource, clockevent</td>
+<td><code>kernel/time/</code></td>
+<td><a href="../time/time/">Timer và delay</a> (chưa viết)</td>
 </tr>
 <tr>
 <td>Security</td>
 <td>LSM, SELinux, AppArmor, seccomp, capabilities</td>
-<td><a href="../security/security/">Security Subsystem</a></td>
+<td><code>security/</code></td>
+<td><a href="../security/security/">Security Subsystem</a> (chưa viết)</td>
 </tr>
 <tr>
-<td>cgroups / namespaces</td>
-<td>Giới hạn tài nguyên và cô lập process (nền tảng của container)</td>
-<td><a href="../../virtualization/container/internals/">Container Internals</a></td>
+<td>cgroups, namespaces</td>
+<td>Giới hạn tài nguyên và cô lập process, nền tảng của container</td>
+<td><code>kernel/cgroup/</code>, <code>kernel/</code></td>
+<td><a href="../../virtualization/container/internals/">Container Internals</a> (Virtualization)</td>
 </tr>
 <tr>
-<td>Tracing / Debug</td>
-<td>ftrace, perf, kprobe, eBPF, dynamic debug</td>
-<td><a href="../ftrace/ftrace/">FTrace</a>, <a href="../ddebug/ddebug/">Dynamic Debug</a>, <a href="../../programming/perf/perf/">Perf</a></td>
+<td>Tracing và debug</td>
+<td>printk, ftrace, tracepoint, kprobe, eBPF, KGDB, kdump</td>
+<td><code>kernel/trace/</code>, <code>kernel/debug/</code></td>
+<td><a href="../tracing_debug/">Tracing và debug Linux kernel</a></td>
+</tr>
+<tr>
+<td>Device driver</td>
+<td>Điều khiển phần cứng, chiếm phần lớn source</td>
+<td><code>drivers/</code></td>
+<td>Xem mục "Danh mục subsystem"</td>
+</tr>
+<tr>
+<td>Mã phụ thuộc kiến trúc</td>
+<td>Boot, xử lý ngắt mức thấp, MMU</td>
+<td><code>arch/</code></td>
+<td><a href="../kernel_boot/">Linux Kernel Boot Process</a></td>
 </tr>
 </tbody>
 </table>
-<h3 id="device-model-va-bus">Device model và bus<a class="headerlink" href="#device-model-va-bus" title="Permanent link">¶</a></h3>
+<p>Allocator SLAB cũ đã bị bỏ từ 6.8, kernel hiện chỉ còn SLUB; API <code>kmalloc</code> và <code>kmem_cache_*</code> không đổi.</p>
+<h2 id="lo-trinh-oc">Lộ trình đọc<a class="headerlink" href="#lo-trinh-oc" title="Permanent link">¶</a></h2>
+<p>Các nhóm trang được sắp theo quan hệ phụ thuộc: nhóm đứng trước cung cấp khái niệm cho nhóm đứng sau. Sau phần nền chung, tab tách thành hai nhánh theo mục tiêu đọc là viết driver và tìm hiểu cơ chế bên trong cùng real-time. Tracing &amp; Debug đứng cuối như một bộ công cụ dùng song song với cả hai nhánh, đọc theo tình huống.</p>
+<pre class="mermaid"><code>flowchart TD
+    B[Kernel Basics] --&gt; D[Driver Model &amp; Device Tree]
+    D --&gt; C[Interrupt, Memory &amp; Concurrency]
+    B -. "path B: interrupt and locking only" .-&gt; C
+    C --&gt; I[Kernel Space, User Space Interfaces]
+    I --&gt; S[Subsystem Drivers]
+    C --&gt; K[Kernel Internals]
+    K --&gt; R[Real-time &amp; CPU Isolation]
+    T[Tracing &amp; Debug: used alongside every path]</code></pre>
+<p>Bảng dưới nêu ba lối vào. Cột cuối chỉ nêu các trang đã viết xong; mỗi nhóm còn các trang khác, liệt kê ở mục "Các nhóm trang".</p>
+<table>
+<thead>
+<tr>
+<th>Lối vào</th>
+<th>Mục tiêu</th>
+<th>Các nhóm theo thứ tự</th>
+<th>Trang bắt đầu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A. Viết driver</td>
+<td>Viết và tích hợp driver cho một thiết bị</td>
+<td>Kernel Basics, Driver Model &amp; Device Tree, Interrupt, Memory &amp; Concurrency, Kernel Space, User Space Interfaces, sau đó tra Subsystem Drivers khi cần</td>
+<td><a href="../kernel_boot/">Linux Kernel Boot Process</a>, <a href="../../lnx_ldd/platform_dev/platform_device/">Platform Device</a>, <a href="../interrupt/interrupt/">Interrupt và bottom half</a>, <a href="../kernel_user_space/">Kernel Space, User Space Interfaces</a></td>
+</tr>
+<tr>
+<td>B. Cơ chế bên trong và real-time</td>
+<td>Hiểu kernel lập lịch, quản lý bộ nhớ, file system thế nào, và cấu hình hệ thống có yêu cầu độ trễ</td>
+<td>Kernel Basics, hai trang Interrupt và Đồng bộ hóa của nhóm Interrupt, Memory &amp; Concurrency, Kernel Internals, Real-time &amp; CPU Isolation</td>
+<td><a href="../interrupt/interrupt/">Interrupt và bottom half</a>, <a href="../locking/locking/">Đồng bộ hóa trong kernel</a>, <a href="../process/process/">Process và thread</a>, <a href="../cpu_isolation/preempt_rt/">Real-time Linux (PREEMPT_RT)</a></td>
+</tr>
+<tr>
+<td>C. Tìm lỗi</td>
+<td>Chọn công cụ và tìm lỗi trong code kernel</td>
+<td>Tracing &amp; Debug, chọn trang theo triệu chứng</td>
+<td><a href="../tracing_debug/">Tracing và debug Linux kernel</a>, <a href="../oops/oops/">Đọc kernel oops và panic</a>, <a href="../printk/printk/">printk và kernel log</a></td>
+</tr>
+</tbody>
+</table>
+<p>Lối vào B không cần nhóm Driver Model &amp; Device Tree, nhưng các trang Kernel Internals và Real-time dùng khái niệm ngắt, softirq, spinlock và RCU, nên cần đọc hai trang Interrupt và Đồng bộ hóa trước. Người đọc đã có nền có thể vào thẳng nhóm cần dùng; các trang có link tới khái niệm nền khi dùng tới.</p>
+<h2 id="cac-nhom-trang">Các nhóm trang<a class="headerlink" href="#cac-nhom-trang" title="Permanent link">¶</a></h2>
+<p>Các nhóm dưới đây theo đúng thứ tự trong menu bên trái. Trang ghi "chưa viết" đã có chỗ trong menu nhưng mới có dàn ý.</p>
+<h3 id="kernel-basics">Kernel Basics<a class="headerlink" href="#kernel-basics" title="Permanent link">¶</a></h3>
+<p>Nhóm này trình bày kernel từ lúc được nạp tới lúc chạy init, cách cấu hình và build kernel, cách mở rộng kernel bằng module, và chu kỳ phát hành.</p>
+<ul>
+<li><a href="../kernel_boot/">Linux Kernel Boot Process</a>: giao diện giữa bootloader và kernel, quá trình kernel khởi động, initcall, mount root filesystem và chạy init, debug quá trình boot.</li>
+<li><a href="../kernel_cmdline/">Kernel Command Line</a>: nguồn và cú pháp của command line, các tham số thường dùng, cách đặt trên từng nền tảng và cách kernel xử lý tham số.</li>
+<li><a href="../build/kbuild/">Kernel Build (Kconfig, Kbuild)</a> (chưa viết): Kconfig, Kbuild, cross compile, các sản phẩm build (<code>Image</code>, <code>vmlinux</code>, <code>System.map</code>, <code>.dtb</code>, <code>.ko</code>), build module ngoài cây nguồn.</li>
+<li><a href="../../lnx_ldd/kernel_module/">Kernel Module</a>: định nghĩa, <code>module_init</code> và <code>module_exit</code>, ví dụ hello world, build, in log, nạp và gỡ module.</li>
+<li><a href="../kernel_data_structure/">Kernel Data Structure</a>: linked list của kernel và <code>container_of()</code>.</li>
+<li><a href="../release/kernel_release/">Kernel Release Process</a>: chu kỳ phát triển, các nhánh, bản stable và LTS, cách đánh số phiên bản, chọn kernel cho sản phẩm nhúng.</li>
+</ul>
+<p>Một driver không chỉ là một module: nó phải được kernel ghép với thiết bị mà nó điều khiển, việc của driver model.</p>
+<h3 id="driver-model-device-tree">Driver Model &amp; Device Tree<a class="headerlink" href="#driver-model-device-tree" title="Permanent link">¶</a></h3>
+<p>Nhóm này trình bày mô hình bus, device, driver của kernel và cách thiết bị được khai báo trên hệ nhúng.</p>
+<ul>
+<li><a href="../../lnx_ldd/overview/">Linux Device Driver Overview</a>: nhập môn về device model, kernel module và character device.</li>
+<li><a href="../devicetree/devicetree/">Device Tree</a>: các loại file, cú pháp node và property, địa chỉ, ngắt, tài nguyên clock và GPIO, binding, overlay, quan hệ với driver.</li>
+<li><a href="../../lnx_ldd/platform_dev/platform_device/">Platform Device</a>: platform bus, ghép thiết bị và driver, cấu trúc <code>platform_driver</code>, lấy tài nguyên trong <code>probe()</code>, deferred probe.</li>
+<li><a href="../driver_core/driver_core/">Driver Core (kobject, sysfs, devres)</a> (chưa viết): kobject, sysfs, uevent, devres và các hàm <code>devm_*</code>, thứ tự probe, device link.</li>
+</ul>
+<p>Khi <code>probe()</code> đã lấy được thanh ghi và ngắt, driver cần các cơ chế lõi của kernel để xử lý ngắt, bảo vệ dữ liệu dùng chung và cấp phát bộ nhớ.</p>
+<h3 id="interrupt-memory-concurrency">Interrupt, Memory &amp; Concurrency<a class="headerlink" href="#interrupt-memory-concurrency" title="Permanent link">¶</a></h3>
+<p>Nhóm này trình bày các cơ chế lõi mà driver dựa vào, từ góc nhìn người viết driver. Hai trang đầu cũng là nền của lối vào B.</p>
+<ul>
+<li><a href="../interrupt/interrupt/">Interrupt và bottom half</a>: đường đi của một ngắt, irqchip và IRQ domain, đăng ký handler, quy tắc trong ngữ cảnh ngắt, top half và bottom half (threaded IRQ, softirq, tasklet, workqueue).</li>
+<li><a href="../locking/locking/">Đồng bộ hóa trong kernel</a>: nguồn gây đồng thời, atomic, spinlock, mutex, semaphore và wait queue, seqlock, RCU, memory barrier, chọn cơ chế.</li>
+<li><a href="../mm/memory/">Quản lý bộ nhớ trong driver</a>: địa chỉ ảo và vật lý, zone, page allocator, <code>kmalloc</code>, <code>vmalloc</code> và <code>kmem_cache</code>, cờ GFP, cấp phát gắn với vòng đời thiết bị, truy cập vùng I/O.</li>
+<li><a href="../dma/dma/">DMA</a>: DMA mask, hai kiểu ánh xạ DMA, scatter-gather, IOMMU, CMA, dmaengine.</li>
+<li><a href="../time/time/">Timer và delay</a> (chưa viết): timer, hrtimer và các hàm delay mà driver dùng trực tiếp.</li>
+</ul>
+<p>Với các cơ chế này, driver đã điều khiển được phần cứng; bước tiếp theo là cung cấp dữ liệu và lệnh điều khiển cho ứng dụng.</p>
+<h3 id="kernel-space-user-space-interfaces">Kernel Space, User Space Interfaces<a class="headerlink" href="#kernel-space-user-space-interfaces" title="Permanent link">¶</a></h3>
+<p>Nhóm này trình bày ranh giới giữa kernel và user space và các interface để ứng dụng giao tiếp với kernel và driver.</p>
+<ul>
+<li><a href="../kernel_user_space/">Kernel Space, User Space Interfaces</a>: privilege level, chia không gian địa chỉ, các hàm uaccess, bảng so sánh và cách chọn interface.</li>
+<li><a href="../kernel_user_space/syscall/">System Call</a>: cơ chế gọi trên x86_64 và arm64, đường đi trong kernel, vDSO, thêm system call mới, công cụ theo dõi.</li>
+<li><a href="../../lnx_ldd/char_device/">Character Device Driver</a>: device file, số major và minor, khai báo character device, mutex, mmap, ioctl.</li>
+<li><a href="../kernel_user_space/device_file/">Device File và ioctl</a>: <code>file_operations</code>, thiết kế lệnh ioctl, misc device, header UAPI, ví dụ đầy đủ.</li>
+<li><a href="../kernel_user_space/pseudo_fs/">Pseudo Filesystem</a> (chưa viết): procfs, sysfs, debugfs, configfs.</li>
+<li><a href="../kernel_user_space/mmap/">mmap, UIO, dma-buf</a> (chưa viết): chia sẻ bộ nhớ giữa kernel và user space.</li>
+<li><a href="../kernel_user_space/notification/">Thông báo bất đồng bộ</a> (chưa viết): các cách kernel chủ động báo event cho user space.</li>
+<li><a href="../kernel_user_space/netlink/">Netlink</a> (chưa viết): giao tiếp hai chiều qua socket.</li>
+<li><a href="../kernel_user_space/advanced/">Interface nâng cao</a> (chưa viết): các interface mới hoặc chuyên biệt.</li>
+<li><a href="../kernel_user_space/abi_security/">ABI, bảo mật và độ ổn định</a> (chưa viết): nguyên tắc thiết kế interface cho user space.</li>
+<li><a href="../kernel_user_space/lab/">Lab tổng hợp</a> (chưa viết): một driver mẫu xuất dữ liệu qua nhiều interface để so sánh.</li>
+</ul>
+<p>Tới đây driver đã đủ các phần chung; phần còn lại phụ thuộc subsystem mà thiết bị thuộc về.</p>
+<h3 id="subsystem-drivers">Subsystem Drivers<a class="headerlink" href="#subsystem-drivers" title="Permanent link">¶</a></h3>
+<p>Nhóm này là danh mục tra cứu, không có thứ tự đọc giữa các trang. Mỗi trang trình bày một subsystem hoặc framework: driver của thiết bị cụ thể đăng ký vào đó thay vì tự làm lại phần chung. Các trang được chia thành bốn nhóm con Bus, Hardware Frameworks, I/O &amp; Media và Storage; danh sách trang nằm trong mục "Danh mục subsystem" bên dưới, cùng các subsystem chưa có trang.</p>
+<p>Nhóm tiếp theo bắt đầu lối vào B: thay vì nhìn kernel qua các API mà driver dùng, các trang đi vào cơ chế bên trong.</p>
+<h3 id="kernel-internals">Kernel Internals<a class="headerlink" href="#kernel-internals" title="Permanent link">¶</a></h3>
+<p>Nhóm này trình bày cơ chế bên trong kernel ở mức hệ thống, độc lập với việc viết driver.</p>
+<ul>
+<li><a href="../process/process/">Process và thread</a>: <code>task_struct</code>, trạng thái task, <code>current</code> và kernel stack, <code>clone</code>, <code>exec</code>, kết thúc task, kernel thread, signal.</li>
+<li><a href="../sched/sched/">Scheduler</a>: scheduling class, runqueue theo CPU, thời điểm lập lịch lại, preemption, lập lịch task thường, real-time class, deadline class, cân bằng tải, sched_ext.</li>
+<li><a href="../smp/smp/">SMP và CPU hotplug</a>: mô hình SMP, khởi động core phụ, biến per-CPU, IPI, CPU hotplug, CPU topology, hệ nhiều core không đồng nhất.</li>
+<li><a href="../mm/vm/">Virtual Memory</a>: VMA, page table trên Arm64, page fault và copy-on-write, reclaim, swap, OOM killer, CMA, huge page.</li>
+<li><a href="../vfs/vfs/">VFS và page cache</a>: các đối tượng VFS, tra cứu đường dẫn, đường đi của <code>open</code>, <code>read</code>, <code>write</code>, page cache và writeback.</li>
+<li><a href="../security/security/">Security Subsystem</a> (chưa viết): LSM, capabilities, seccomp xét như subsystem của kernel.</li>
+</ul>
+<p>Scheduler và cơ chế ngắt là nền để giới hạn độ trễ, chủ đề của nhóm cuối trong lối vào B.</p>
+<h3 id="real-time-cpu-isolation">Real-time &amp; CPU Isolation<a class="headerlink" href="#real-time-cpu-isolation" title="Permanent link">¶</a></h3>
+<p>Nhóm này trình bày cách giới hạn độ trễ của kernel và dành riêng core cho workload real-time.</p>
+<ul>
+<li><a href="../cpu_isolation/preempt_rt/">Real-time Linux (PREEMPT_RT)</a>: các mô hình preemption, ba cơ chế chính của PREEMPT_RT, viết mã cho kernel real-time, chính sách lập lịch real-time, cấu hình và đo độ trễ.</li>
+<li><a href="../cpu_isolation/isolcpus/">isolcpus</a>: housekeeping, tham số <code>isolcpus=</code>, thay thế bằng cpuset của cgroup v2.</li>
+<li><a href="../cpu_isolation/nohz_full/">nohz_full</a>: các chế độ quản lý tick, điều kiện dừng tick, RCU offload, chi phí đánh đổi.</li>
+<li><a href="../cpu_isolation/irq_affinity/">IRQ affinity và irqbalance</a>: giao diện <code>/proc/irq</code>, managed interrupt, irqbalance, cấu hình cho core cô lập.</li>
+</ul>
+<p>Mọi nhóm trên đều cần công cụ để quan sát và tìm lỗi; nhóm cuối gom các công cụ đó.</p>
+<h3 id="tracing-debug">Tracing &amp; Debug<a class="headerlink" href="#tracing-debug" title="Permanent link">¶</a></h3>
+<p>Nhóm này là bộ công cụ dùng xuyên suốt, đọc theo tình huống: trang tổng quan của nhóm giúp chọn công cụ theo triệu chứng, rồi dẫn tới trang chi tiết. Khi bắt đầu viết driver, nên đọc sớm trang printk.</p>
+<ul>
+<li><a href="../tracing_debug/">Tracing và debug Linux kernel</a>: phân nhóm công cụ, so sánh mức can thiệp, chọn công cụ theo triệu chứng, cấu hình kernel cần có sẵn.</li>
+<li>Log và tracing:<ul>
+<li><a href="../printk/printk/">printk và kernel log</a>: mức log, họ macro <code>pr_*()</code> và <code>dev_*()</code>, đọc log qua <code>dmesg</code> và <code>/dev/kmsg</code>.</li>
+<li><a href="../ddebug/ddebug/">Dynamic Debug</a>: bật và tắt log debug lúc chạy, kể cả lúc boot và lúc nạp module.</li>
+<li><a href="../ftrace/ftrace/">FTrace</a>: nguyên lý, kiến trúc và frontend của ftrace.</li>
+<li><a href="../trace_events/trace_events/">Tracepoint và trace events</a>: hook tĩnh, bật và lọc event, định nghĩa trace event, <code>trace-cmd</code>.</li>
+<li><a href="../ebpf/ebpf/">eBPF và bpftrace</a> (chưa viết).</li>
+<li><a href="../perf_kernel/perf_kernel/">perf trong kernel</a> (chưa viết).</li>
+<li><a href="../latency_trace/latency_trace/">Đo độ trễ bằng tracing</a> (chưa viết).</li>
+</ul>
+</li>
+<li>Chẩn đoán lỗi:<ul>
+<li><a href="../oops/oops/">Đọc kernel oops và panic</a>: các mức báo lỗi, cấu trúc bản tin oops, cờ taint, giải mã call trace, treo mà kernel tự phát hiện, giữ lại log.</li>
+<li><a href="../bug_detectors/bug_detectors/">Bộ phát hiện lỗi bộ nhớ và đồng bộ</a> (chưa viết).</li>
+<li><a href="../mem_debug/mem_debug/">Debug bộ nhớ kernel</a> (chưa viết).</li>
+<li><a href="../fault_injection/fault_injection/">Fault injection</a> (chưa viết).</li>
+<li><a href="../debugfs_debug/debugfs_debug/">debugfs và truy cập thanh ghi</a> (chưa viết).</li>
+</ul>
+</li>
+<li>Live debug:<ul>
+<li><a href="../kgdb/kgdb/">KGDB và kdb</a>: hai frontend kgdb và kdb, debug core, cấu hình, kết nối gdb qua cổng serial, GDB helper script.</li>
+<li><a href="../kgdb/kgdb_qemu/">KGDB trên QEMU</a>: môi trường thực hành KGDB bằng máy ảo.</li>
+<li><a href="../jtag/jtag/">Debug kernel bằng JTAG</a>: OpenOCD và gdb với khối debug phần cứng của SoC.</li>
+</ul>
+</li>
+<li>Post-mortem:<ul>
+<li><a href="../kdump/kdump/">Kernel crash dump (kdump)</a>: nguyên lý capture kernel, cấu hình, tham số <code>crashkernel</code>, ghi và phân tích dump.</li>
+</ul>
+</li>
+</ul>
+<h2 id="danh-muc-subsystem">Danh mục subsystem<a class="headerlink" href="#danh-muc-subsystem" title="Permanent link">¶</a></h2>
+<p>Subsystem là một framework chung do kernel cung cấp cho một nhóm thiết bị hoặc chức năng. Các bảng dưới chia subsystem theo nhóm con của Subsystem Drivers, thêm hai bảng cho device model và mạng; cột cuối để trống khi tab chưa có trang tương ứng. Danh sách không đầy đủ tuyệt đối; danh sách đầy đủ nằm trong <code>Documentation/</code> của kernel source hoặc tại <a href="https://docs.kernel.org/">docs.kernel.org</a>.</p>
+<h3 id="device-model">Device model<a class="headerlink" href="#device-model" title="Permanent link">¶</a></h3>
 <table>
 <thead>
 <tr>
 <th>Subsystem</th>
 <th>Chức năng</th>
-<th>Page liên quan</th>
+<th>Trang liên quan</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Driver core / Device model</td>
+<td>Driver core, device model</td>
 <td>bus, device, driver, kobject, sysfs</td>
-<td><a href="../../lnx_ldd/overview/">Linux Device Driver Overview</a>, <a href="../driver_core/driver_core/">Driver Core</a></td>
+<td><a href="../../lnx_ldd/overview/">Linux Device Driver Overview</a>, <a href="../driver_core/driver_core/">Driver Core</a> (chưa viết)</td>
 </tr>
 <tr>
 <td>Platform bus</td>
-<td>Pseudo-bus cho thiết bị không tự dò được (thường là ngoại vi MMIO trên SoC); cần Device Tree/ACPI khai báo</td>
+<td>Pseudo-bus cho thiết bị không tự dò được (thường là ngoại vi MMIO trên SoC), cần Device Tree hoặc ACPI khai báo</td>
 <td><a href="../../lnx_ldd/platform_dev/platform_device/">Platform Device</a></td>
 </tr>
 <tr>
-<td>Device Tree / OF</td>
+<td>Device Tree, OF</td>
 <td>Mô tả phần cứng cho kernel</td>
 <td><a href="../devicetree/devicetree/">Device Tree</a></td>
 </tr>
+</tbody>
+</table>
+<h3 id="bus">Bus<a class="headerlink" href="#bus" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Subsystem</th>
+<th>Chức năng</th>
+<th>Trang liên quan</th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>I2C</td>
-<td>Bus I2C/SMBus</td>
+<td>Bus I2C và SMBus</td>
 <td><a href="../../lnx_ldd/i2c/i2c/">I2C Subsystem</a></td>
 </tr>
 <tr>
 <td>SPI</td>
 <td>Bus SPI</td>
-<td><a href="../../lnx_ldd/spi_dev/spi_dev/">SPI Device</a></td>
+<td><a href="../../lnx_ldd/spi_dev/spi_dev/">SPI Device Driver</a>, <a href="../../lnx_ldd/spi_dev/spi_advance/">SPI nâng cao</a></td>
 </tr>
 <tr>
-<td>PCI / PCIe</td>
+<td>PCI, PCIe</td>
 <td>Bus PCI Express</td>
-<td><a href="../../lnx_ldd/pcie/pcie/">PCIe</a></td>
+<td><a href="../../lnx_ldd/pcie/pcie/">PCIe trong Linux kernel</a></td>
+</tr>
+<tr>
+<td>JESD204</td>
+<td>Liên kết nối tiếp giữa ADC/DAC và FPGA (không phải subsystem mainline, xem ghi chú dưới bảng)</td>
+<td><a href="../../lnx_ldd/jesd/jesd/">JESD204 trên Linux</a></td>
 </tr>
 <tr>
 <td>USB</td>
@@ -15902,37 +16165,33 @@ thay vì tự làm lại phần chung. Dưới đây là các subsystem chính, 
 <td></td>
 </tr>
 <tr>
-<td>MMC / SD / SDIO</td>
-<td>Thẻ nhớ, eMMC</td>
-<td><a href="../storage/flash_storage/">Flash Storage</a></td>
-</tr>
-<tr>
-<td>MTD / NAND / NOR</td>
-<td>Flash memory</td>
-<td><a href="../storage/flash_storage/">Flash Storage</a></td>
-</tr>
-<tr>
 <td>Virtio</td>
 <td>Thiết bị ảo hóa</td>
-<td><a href="../../virtualization/foundations/io/">I/O Virtualization</a></td>
+<td><a href="../../virtualization/foundations/io/">I/O Virtualization</a> (Virtualization)</td>
 </tr>
 <tr>
-<td>UIO / VFIO</td>
+<td>UIO, VFIO</td>
 <td>Đưa thiết bị ra cho driver chạy ở user space (nền tảng của DPDK)</td>
-<td><a href="../../lnx_es/dpdk/dpdk/">DPDK</a></td>
+<td><a href="../../lnx_es/dpdk/dpdk/">DPDK</a> (Embedded)</td>
 </tr>
 </tbody>
 </table>
-<h3 id="framework-phan-cung-dung-chung">Framework phần cứng dùng chung<a class="headerlink" href="#framework-phan-cung-dung-chung" title="Permanent link">¶</a></h3>
+<p>JESD204 không phải subsystem trong mainline: các driver JESD204 (AXI JESD204, framework <code>jesd204</code>) chủ yếu nằm trong tree Linux của Analog Devices, dùng cùng các driver IIO của ADC/DAC tốc độ cao.</p>
+<h3 id="hardware-frameworks">Hardware Frameworks<a class="headerlink" href="#hardware-frameworks" title="Permanent link">¶</a></h3>
 <table>
 <thead>
 <tr>
 <th>Subsystem</th>
 <th>Chức năng</th>
-<th>Page liên quan</th>
+<th>Trang liên quan</th>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>GPIO</td>
+<td>GPIO controller, gpiolib</td>
+<td><a href="../../lnx_ldd/gpio/gpio/">GPIO</a></td>
+</tr>
 <tr>
 <td>Clock (CCF)</td>
 <td>Quản lý clock tree</td>
@@ -15944,29 +16203,29 @@ thay vì tự làm lại phần chung. Dưới đây là các subsystem chính, 
 <td><a href="../pinctrl/pinctrl/">Pin control</a></td>
 </tr>
 <tr>
-<td>GPIO</td>
-<td>GPIO controller, gpiolib</td>
-<td><a href="../../lnx_ldd/gpio/gpio/">GPIO</a></td>
-</tr>
-<tr>
 <td>Regulator</td>
 <td>Quản lý nguồn cấp</td>
 <td><a href="../regulator/regulator/">Regulator</a></td>
 </tr>
 <tr>
 <td>Power management</td>
-<td>runtime PM, suspend/resume, cpufreq, cpuidle, devfreq</td>
+<td>Runtime PM, suspend và resume, cpufreq, cpuidle, devfreq</td>
 <td><a href="../pm/pm/">Power management</a></td>
 </tr>
 <tr>
-<td>Reset</td>
-<td>Reset controller</td>
-<td></td>
+<td>FPGA Manager</td>
+<td>Nạp bitstream, FPGA region và bridge (Zynq, ZynqMP)</td>
+<td><a href="../../lnx_ldd/fpga/fpga_mgr/">FPGA Manager framework</a></td>
 </tr>
 <tr>
 <td>DMA Engine</td>
 <td>DMA controller, dmaengine API</td>
 <td><a href="../dma/dma/">DMA</a></td>
+</tr>
+<tr>
+<td>Reset</td>
+<td>Reset controller</td>
+<td></td>
 </tr>
 <tr>
 <td>Thermal</td>
@@ -15989,8 +16248,8 @@ thay vì tự làm lại phần chung. Dưới đây là các subsystem chính, 
 <td></td>
 </tr>
 <tr>
-<td>Mailbox / Remoteproc / RPMsg</td>
-<td>Giao tiếp với core/processor khác</td>
+<td>Mailbox, Remoteproc, RPMsg</td>
+<td>Giao tiếp với core hoặc processor khác</td>
 <td></td>
 </tr>
 <tr>
@@ -16001,12 +16260,7 @@ thay vì tự làm lại phần chung. Dưới đây là các subsystem chính, 
 <tr>
 <td>NVMEM</td>
 <td>EEPROM, OTP, eFuse</td>
-<td><a href="../../lnx_es/eeprom/eeprom/">EEPROM</a></td>
-</tr>
-<tr>
-<td>FPGA Manager</td>
-<td>Nạp bitstream, FPGA region/bridge (Zynq, ZynqMP)</td>
-<td></td>
+<td><a href="../../lnx_es/eeprom/eeprom/">EEPROM</a> (Embedded)</td>
 </tr>
 <tr>
 <td>Firmware loader</td>
@@ -16015,20 +16269,30 @@ thay vì tự làm lại phần chung. Dưới đây là các subsystem chính, 
 </tr>
 </tbody>
 </table>
-<h3 id="giao-tiep-io-va-media">Giao tiếp, I/O và media<a class="headerlink" href="#giao-tiep-io-va-media" title="Permanent link">¶</a></h3>
+<h3 id="io-media">I/O &amp; Media<a class="headerlink" href="#io-media" title="Permanent link">¶</a></h3>
 <table>
 <thead>
 <tr>
 <th>Subsystem</th>
 <th>Chức năng</th>
-<th>Page liên quan</th>
+<th>Trang liên quan</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>TTY / Serial</td>
+<td>TTY, serial</td>
 <td>UART, console</td>
 <td><a href="../../lnx_ldd/uart/uart/">UART</a></td>
+</tr>
+<tr>
+<td>Sound (ALSA, ASoC)</td>
+<td>Audio</td>
+<td><a href="../../lnx_ldd/audio/linux_audio/">Audio</a></td>
+</tr>
+<tr>
+<td>IIO</td>
+<td>ADC, DAC, cảm biến</td>
+<td><a href="../../lnx_ldd/jesd/jesd/">JESD204 trên Linux</a> (liên quan)</td>
 </tr>
 <tr>
 <td>Input</td>
@@ -16036,22 +16300,12 @@ thay vì tự làm lại phần chung. Dưới đây là các subsystem chính, 
 <td></td>
 </tr>
 <tr>
-<td>IIO</td>
-<td>ADC, DAC, cảm biến</td>
-<td><a href="../../lnx_ldd/jesd/jesd/">JESD</a> (liên quan)</td>
-</tr>
-<tr>
-<td>Sound (ALSA / ASoC)</td>
-<td>Audio</td>
-<td><a href="../../lnx_ldd/audio/linux_audio/">Audio</a></td>
-</tr>
-<tr>
-<td>V4L2 / Media</td>
+<td>V4L2, Media</td>
 <td>Camera, video capture, codec</td>
 <td></td>
 </tr>
 <tr>
-<td>DRM / KMS / fbdev</td>
+<td>DRM, KMS, fbdev</td>
 <td>Đồ họa và hiển thị</td>
 <td></td>
 </tr>
@@ -16061,7 +16315,7 @@ thay vì tự làm lại phần chung. Dưới đây là các subsystem chính, 
 <td></td>
 </tr>
 <tr>
-<td>Bluetooth, Wireless (cfg80211/mac80211)</td>
+<td>Bluetooth, Wireless (cfg80211, mac80211)</td>
 <td>Kết nối không dây</td>
 <td></td>
 </tr>
@@ -16072,90 +16326,115 @@ thay vì tự làm lại phần chung. Dưới đây là các subsystem chính, 
 </tr>
 </tbody>
 </table>
-<h3 id="mang-va-luu-tru">Mạng và lưu trữ<a class="headerlink" href="#mang-va-luu-tru" title="Permanent link">¶</a></h3>
+<h3 id="storage">Storage<a class="headerlink" href="#storage" title="Permanent link">¶</a></h3>
 <table>
 <thead>
 <tr>
 <th>Subsystem</th>
 <th>Chức năng</th>
-<th>Page liên quan</th>
+<th>Trang liên quan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MTD (NAND, NOR)</td>
+<td>Flash memory</td>
+<td><a href="../storage/flash_storage/">Flash Storage</a></td>
+</tr>
+<tr>
+<td>MMC, SD, SDIO</td>
+<td>Thẻ nhớ, eMMC</td>
+<td><a href="../storage/flash_storage/">Flash Storage</a></td>
+</tr>
+<tr>
+<td>Block layer</td>
+<td>Block device, I/O scheduler, device-mapper, NBD</td>
+<td><a href="../../lnx_es/nbd/nbd/">Network Block Device</a> (Embedded)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mang">Mạng<a class="headerlink" href="#mang" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Subsystem</th>
+<th>Chức năng</th>
+<th>Trang liên quan</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Networking</td>
 <td>Socket, TCP/IP, netfilter, netdev, phylib</td>
-<td><a href="../../lnx_es/dpdk/dpdk/">DPDK</a> (bypass kernel)</td>
+<td><a href="../../lnx_es/dpdk/dpdk/">DPDK</a> (Embedded, bypass kernel)</td>
 </tr>
 <tr>
 <td>PTP hardware clock</td>
 <td>PHC, hardware timestamping (<code>drivers/ptp</code>)</td>
-<td><a href="../../lnx_es/linuxptp/linuxptp/">Linux PTP</a></td>
-</tr>
-<tr>
-<td>Block layer</td>
-<td>Block device, I/O scheduler, device-mapper, NBD</td>
-<td><a href="../../lnx_es/nbd/nbd/">Network Block Device</a></td>
+<td><a href="../../lnx_es/linuxptp/linuxptp/">Linux PTP</a> (Embedded)</td>
 </tr>
 </tbody>
 </table>
-<p>JESD204 không phải subsystem trong mainline: các driver JESD204 (AXI JESD204,
-framework <code>jesd204</code>) chủ yếu nằm trong tree Linux của Analog Devices, dùng
-cùng các driver IIO của ADC/DAC tốc độ cao.</p>
-<p>Danh sách trên mang tính tổng quan, không phải đầy đủ tuyệt đối; xem danh sách
-đầy đủ trong <code>Documentation/</code> của kernel source hoặc tại
-<a href="https://docs.kernel.org/">docs.kernel.org</a>.</p>
-<h2 id="device-model-va-device-tree">Device Model và Device Tree<a class="headerlink" href="#device-model-va-device-tree" title="Permanent link">¶</a></h2>
-<p>Linux xem mọi thiết bị theo mô hình <strong>bus – device – driver</strong>: device được khai
-báo (thường qua <strong>device-tree</strong> trên hệ nhúng), driver được đăng ký, và kernel
-ghép (match) hai bên rồi gọi <code>probe()</code>. Thông tin này được phơi ra user space
-qua sysfs (<code>/sys</code>).</p>
-<p>Thiết bị trên bus tự dò được (PCI, USB) được kernel tự enumerate. Thiết bị
-không tự dò được (I2C, SPI, ngoại vi MMIO trên <strong>platform bus</strong>) phải được khai
-báo, đó là lý do hệ nhúng cần Device Tree.</p>
-<p>Xem thêm: <a href="../../lnx_ldd/overview/">Linux Device Driver Overview</a>, <a href="../devicetree/devicetree/">Device Tree</a>.</p>
-<h2 id="kernel-module">Kernel Module<a class="headerlink" href="#kernel-module" title="Permanent link">¶</a></h2>
-<p>Kernel hỗ trợ hai dạng: <strong>built-in</strong> (nằm trong kernel image, khởi tạo lúc
-boot) và <strong>loadable module</strong> (nạp lúc chạy bằng <code>insmod</code>/<code>modprobe</code>, gỡ bằng
-<code>rmmod</code>/<code>modprobe -r</code>).
-Device driver thường được viết dưới dạng kernel module.</p>
-<p>Xem thêm: <a href="../../lnx_ldd/kernel_module/">Kernel Module</a>.</p>
-<h2 id="source-tree-va-build">Source tree và build<a class="headerlink" href="#source-tree-va-build" title="Permanent link">¶</a></h2>
+<h2 id="lien-quan-en-cac-tab-khac">Liên quan đến các tab khác<a class="headerlink" href="#lien-quan-en-cac-tab-khac" title="Permanent link">¶</a></h2>
+<p>Tab này trình bày cách Linux điều khiển phần cứng và cơ chế bên trong kernel. Các chủ đề gần kề nằm ở tab khác:</p>
+<table>
+<thead>
+<tr>
+<th>Chủ đề</th>
+<th>Nằm ở đâu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Build kernel trong một build system hoàn chỉnh</td>
+<td><a href="../../lnx_es/tool_chain/yocto/yocto/">Yocto</a> (Embedded)</td>
+</tr>
+<tr>
+<td>Debug ứng dụng user space trên board (gdbserver, core dump, strace)</td>
+<td><a href="../../lnx_es/debug/userspace-debug/">Debug ứng dụng user space</a> (Embedded)</td>
+</tr>
+<tr>
+<td>Nạp bitstream FPGA từ Linux ở mức tích hợp board</td>
+<td><a href="../../lnx_es/fpga/fpga-linux/">Nạp bitstream FPGA từ Linux (Zynq)</a> (Embedded)</td>
+</tr>
+<tr>
+<td>Chọn bộ nhớ non-volatile cho board, cấu tạo cell flash</td>
+<td><a href="../../lnx_es/storage/memory-types/">Chọn bộ nhớ non-volatile</a> (Embedded), <a href="../../computer_arch/storage/flash/">Flash: NOR, NAND và eMMC</a> (Chip &amp; SoC)</td>
+</tr>
+<tr>
+<td>cgroups và namespaces dưới góc độ container</td>
+<td><a href="../../virtualization/container/internals/">Container Internals</a> (Virtualization)</td>
+</tr>
+<tr>
+<td>CPU isolation cho host và guest của VM real-time</td>
+<td><a href="../../virtualization/realtime/rt-kvm/">Real-time KVM tuning</a> (Virtualization)</td>
+</tr>
+<tr>
+<td>API user space (kiểu TLPI)</td>
+<td><a href="../../programming/lnx/lpi/">Linux Programming Interfaces</a> (Programming)</td>
+</tr>
+<tr>
+<td>Coding style của kernel</td>
+<td><a href="../../programming/coding_convention/linux_kernel/">Linux Kernel Coding Style</a> (Programming)</td>
+</tr>
+<tr>
+<td>Công cụ perf ở mức lệnh</td>
+<td><a href="../../programming/perf/perf/">Perf</a> (Programming)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="bai-viet-lien-quan">Bài viết liên quan<a class="headerlink" href="#bai-viet-lien-quan" title="Permanent link">¶</a></h2>
+<p>Các bài mang tính cập nhật theo thời điểm nằm ở mục Articles (category Linux Kernel), ví dụ:</p>
 <ul>
-<li>Chu kỳ phát triển và các bản stable/LTS: <a href="../release/kernel_release/">Kernel Release Process</a>.</li>
-<li>Các thư mục cấp cao: <code>arch/</code>, <code>drivers/</code>, <code>fs/</code>, <code>kernel/</code>, <code>mm/</code>, <code>net/</code>,
-  <code>include/</code>, <code>Documentation/</code>.</li>
-<li>Cấu hình bằng <strong>Kconfig</strong> (<code>make menuconfig</code>, <code>defconfig</code>) và build bằng
-  <strong>Kbuild/Makefile</strong>. Chi tiết: <a href="../build/kbuild/">Kernel Build</a>.</li>
-<li>Kết quả build gồm:<ul>
-<li>Kernel image, tùy kiến trúc: <code>Image</code> (arm64), <code>zImage</code> (arm32),
-  <code>bzImage</code> (x86).</li>
-<li><code>vmlinux</code> (ELF chưa nén, có symbol) và <code>System.map</code>: dùng khi debug,
-  giải mã Oops.</li>
-<li>Device-tree blob (<code>.dtb</code>) và các module (<code>.ko</code>).</li>
-</ul>
-</li>
-</ul>
-<h2 id="boot">Boot<a class="headerlink" href="#boot" title="Permanent link">¶</a></h2>
-<p>Quá trình boot (bootloader → kernel → init, initcall) xem tại
-<a href="../kernel_boot/">Linux Kernel Boot Process</a>; các tham số truyền cho kernel lúc
-boot xem tại <a href="../kernel_cmdline/">Kernel Command Line</a>.</p>
-<h2 id="debug-va-quan-sat">Debug và quan sát<a class="headerlink" href="#debug-va-quan-sat" title="Permanent link">¶</a></h2>
-<ul>
-<li><code>printk</code>/<code>dmesg</code> và <a href="../ddebug/ddebug/">Dynamic Debug</a>.</li>
-<li><a href="../oops/oops/">Đọc kernel oops và panic</a> khi kernel gặp lỗi nghiêm trọng.</li>
-<li><a href="../ftrace/ftrace/">FTrace</a> để trace hoạt động của kernel.</li>
-<li><code>/proc</code> và <code>/sys</code> để xem trạng thái và cấu hình.</li>
-</ul>
-<h2 id="lien-quan">Liên quan<a class="headerlink" href="#lien-quan" title="Permanent link">¶</a></h2>
-<ul>
-<li><a href="../cpu_isolation/preempt_rt/">Real-time Linux (PREEMPT_RT)</a>: cơ chế, cấu hình và cách đo độ trễ của kernel real-time.</li>
+<li><a href="../../articles/2026/09/28/linux-kernel-release-status/">Hiện trạng các dòng Linux kernel: từ 3.x đến 7.0</a></li>
+<li><a href="../../articles/2026/10/21/linux-kernel-design-patterns-1/">Design Pattern kinh điển trong Linux Kernel (1/3): OOP và vòng đời object</a></li>
 </ul>
 <h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="https://docs.kernel.org/">The Linux Kernel documentation</a></li>
-<li>Linux Device Drivers (LDD3) - Corbet, Rubini, Kroah-Hartman (viết cho kernel
-  2.6.10, năm 2005: khái niệm vẫn đúng, nhiều API đã đổi)</li>
+<li><a href="https://www.phoronix.com/news/Linux-6.12-Does-Real-Time">Phoronix: Real-Time "PREEMPT_RT" Support Merged For Linux 6.12</a> (09/2024): mốc PREEMPT_RT vào mainline.</li>
+<li><a href="https://kernelnewbies.org/Linux_6.8">Kernel Newbies: Linux 6.8</a>: bản 6.8 bỏ allocator SLAB.</li>
+<li>Linux Device Drivers (LDD3) - Corbet, Rubini, Kroah-Hartman (viết cho kernel 2.6.10, năm 2005: khái niệm vẫn đúng, nhiều API đã đổi)</li>
 <li>Understanding the Linux Kernel, 3rd ed. - Bovet, Cesati (kernel 2.6.11)</li>
 <li><a href="https://linux-kernel-labs.github.io/">Linux Kernel Labs</a></li>
 </ul>
@@ -16181,7 +16460,7 @@ boot xem tại <a href="../kernel_cmdline/">Kernel Command Line</a>.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 9, 2026 02:56:34 UTC">November 9, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 17, 2026 09:58:19 UTC">November 17, 2026</span>
   </span>
 
     
@@ -16247,13 +16526,13 @@ boot xem tại <a href="../kernel_cmdline/">Kernel Command Line</a>.</p>
         
         
           
-          <a href="../release/kernel_release/" class="md-footer__link md-footer__link--next" aria-label="Next: Kernel Release Process">
+          <a href="../kernel_boot/" class="md-footer__link md-footer__link--next" aria-label="Next: Kernel Boot Process">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Kernel Release Process
+                Kernel Boot Process
               </div>
             </div>
             <div class="md-footer__button md-icon">
