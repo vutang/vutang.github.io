@@ -1,0 +1,25 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 760 274" role='img' font-family='DejaVu Sans, sans-serif' font-size='13'>
+<rect x='0' y='0' width='760' height='252' rx='8' fill='#ffffff'/>
+<title>Frame of one I3C SDR transaction: the address phase is open-drain, data and T-bit are push-pull</title>
+<text x='24' y='34' font-size='15' font-weight='600' fill='#1f2d3d'>After ACK, SDA switches to push-pull and SCL rises to 12.5 MHz</text>
+<rect x='24' y='72' width='60' height='48' rx='8' fill='none' stroke='#90a4ae' stroke-width='1.25'/>
+<text x='54.0' y='101' text-anchor='middle' font-size='13' font-weight='600' fill='#1f2d3d'>START</text>
+<rect x='92' y='72' width='200' height='48' rx='8' fill='none' stroke='#90a4ae' stroke-width='1.25'/>
+<text x='192.0' y='101' text-anchor='middle' font-size='13' font-weight='600' fill='#1f2d3d'>7-bit address + RnW</text>
+<rect x='300' y='72' width='60' height='48' rx='8' fill='none' stroke='#90a4ae' stroke-width='1.25'/>
+<text x='330.0' y='101' text-anchor='middle' font-size='13' font-weight='600' fill='#1f2d3d'>ACK</text>
+<rect x='368' y='72' width='200' height='48' rx='8' fill='#14b8a6' fill-opacity='0.12' stroke='#14b8a6' stroke-width='2'/>
+<text x='468.0' y='101' text-anchor='middle' font-size='13' font-weight='600' fill='#1f2d3d'>8-bit data</text>
+<rect x='576' y='72' width='60' height='48' rx='8' fill='#14b8a6' fill-opacity='0.12' stroke='#14b8a6' stroke-width='2'/>
+<text x='606.0' y='101' text-anchor='middle' font-size='13' font-weight='600' fill='#1f2d3d'>T-bit</text>
+<rect x='644' y='72' width='92' height='48' rx='8' fill='none' stroke='#90a4ae' stroke-width='1.25'/>
+<text x='690.0' y='101' text-anchor='middle' font-size='13' font-weight='600' fill='#1f2d3d'>STOP</text>
+<path d='M92 136V144H360V136' fill='none' stroke='#90a4ae' stroke-width='1.25'/>
+<path d='M368 136V144H636V136' fill='none' stroke='#14b8a6' stroke-width='1.5'/>
+<text x='226' y='168' text-anchor='middle' font-size='13' font-weight='600' fill='#1f2d3d'>Open-drain, with pull-up</text>
+<text x='226' y='186' text-anchor='middle' font-size='12' fill='#2c3a42'>SCL up to ~4 MHz, high pulse &lt; 45 ns</text>
+<text x='502' y='168' text-anchor='middle' font-size='13' font-weight='600' fill='#1f2d3d'>Push-pull</text>
+<text x='502' y='186' text-anchor='middle' font-size='12' fill='#2c3a42'>SCL up to 12.5 MHz, repeated per byte</text>
+<text x='380' y='226' text-anchor='middle' font-size='12' fill='#2c3a42'>I2C devices with a 50 ns spike filter ignore these short SCL pulses</text>
+<text id="wm" x="751.2" y="267.4" text-anchor="end" font-size="11" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
+</svg>

@@ -1,0 +1,32 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 760 462" role='img' font-family='DejaVu Sans, sans-serif' font-size='13'>
+<rect x='0' y='0' width='760' height='440' rx='8' fill='#ffffff'/>
+<title>I3C bus with a hub: one host controller, one I3C target, one legacy I2C device and a hub with two downstream ports</title>
+<text x='24' y='30' font-size='15' font-weight='600' fill='#1f2d3d'>A hub lets one controller manage several bus branches</text>
+<path d='M380 116V150M120 150H640M120 150V178M380 150V178M640 150V178' fill='none' stroke='#90a4ae' stroke-width='1.25'/>
+<text x='560' y='142' font-size='12' fill='#2c3a42'>host bus</text>
+<rect x='230' y='60' width='300' height='56' rx='8' fill='none' stroke='#90a4ae' stroke-width='1.25'/>
+<text x='380' y='84' text-anchor='middle' font-size='13' font-weight='600' fill='#1f2d3d'>Host controller (SoC / BMC)</text>
+<text x='380' y='102' text-anchor='middle' font-size='12' fill='#2c3a42'>driver in drivers/i3c/master</text>
+<rect x='30' y='178' width='180' height='56' rx='8' fill='none' stroke='#90a4ae' stroke-width='1.25'/>
+<text x='120' y='202' text-anchor='middle' font-size='13' font-weight='600' fill='#1f2d3d'>I3C target</text>
+<text x='120' y='220' text-anchor='middle' font-size='12' fill='#2c3a42'>sensor, PMIC</text>
+<rect x='550' y='178' width='180' height='56' rx='8' fill='none' stroke='#90a4ae' stroke-width='1.25'/>
+<text x='640' y='202' text-anchor='middle' font-size='13' font-weight='600' fill='#1f2d3d'>Legacy I2C device</text>
+<text x='640' y='220' text-anchor='middle' font-size='12' fill='#2c3a42'>with 50 ns filter</text>
+<rect x='230' y='178' width='300' height='72' rx='8' fill='#14b8a6' fill-opacity='0.12' stroke='#14b8a6' stroke-width='2'/>
+<text x='380' y='202' text-anchor='middle' font-size='13' font-weight='600' fill='#1f2d3d'>I3C hub (NXP P3H2x4x)</text>
+<text x='380' y='220' text-anchor='middle' font-size='12' fill='#1f2d3d'>DCR = 0xC2 (194)</text>
+<text x='380' y='238' text-anchor='middle' font-size='12' fill='#1f2d3d'>include/linux/i3c/hub.h</text>
+<path d='M380 250V290M250 290H510M250 290V318M510 290V318' fill='none' stroke='#90a4ae' stroke-width='1.25'/>
+<text x='392' y='274' font-size='12' fill='#2c3a42'>downstream ports</text>
+<rect x='140' y='318' width='220' height='72' rx='8' fill='none' stroke='#90a4ae' stroke-width='1.25'/>
+<text x='250' y='342' text-anchor='middle' font-size='13' font-weight='600' fill='#1f2d3d'>Port 1: I3C</text>
+<text x='250' y='360' text-anchor='middle' font-size='12' fill='#2c3a42'>I3C targets behind the hub</text>
+<text x='250' y='378' text-anchor='middle' font-size='12' fill='#2c3a42'>managed via hub framework</text>
+<rect x='400' y='318' width='220' height='72' rx='8' fill='none' stroke='#90a4ae' stroke-width='1.25'/>
+<text x='510' y='342' text-anchor='middle' font-size='13' font-weight='600' fill='#1f2d3d'>Port 2: I2C / SMBus</text>
+<text x='510' y='360' text-anchor='middle' font-size='12' fill='#2c3a42'>seen by Linux as an I2C bus</text>
+<text x='510' y='378' text-anchor='middle' font-size='12' fill='#2c3a42'>legacy devices keep working</text>
+<text x='380' y='420' text-anchor='middle' font-size='12' fill='#2c3a42'>Port count depends on the part (P3H2440/2441, P3H2840/2841)</text>
+<text id="wm" x="751.2" y="455.4" text-anchor="end" font-size="11" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
+</svg>
