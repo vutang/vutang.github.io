@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Bảo mật cho thiết bị nhúng: threat model, quản lý lỗ hổng, mật mã, giao thức bảo mật, secure boot, kiểm thử và chứng nhận.">
+        <meta name="description" content="Bảo mật cho thiết bị nhúng: phạm vi, mô hình mối đe dọa, các lớp bảo vệ (quản lý lỗ hổng, mật mã và giao thức, secure boot, tuân thủ, kiểm thử, IoT) và lộ trình đọc.">
       
       
         <meta name="author" content="Vu Tang">
@@ -73,7 +73,7 @@
   
 <meta property="og:type" content="website">
 <meta property="og:title" content="Embedded Security Overview - Vu Tang's Docs">
-<meta property="og:description" content="Bảo mật cho thiết bị nhúng: threat model, quản lý lỗ hổng, mật mã, giao thức bảo mật, secure boot, kiểm thử và chứng nhận.">
+<meta property="og:description" content="Bảo mật cho thiết bị nhúng: phạm vi, mô hình mối đe dọa, các lớp bảo vệ (quản lý lỗ hổng, mật mã và giao thức, secure boot, tuân thủ, kiểm thử, IoT) và lộ trình đọc.">
 <meta property="og:image" content="https://note.vutang.dev/assets/images/social/embedded_security/index.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
@@ -81,7 +81,7 @@
 <meta property="og:url" content="https://note.vutang.dev/embedded_security/">
 <meta property="twitter:card" content="summary_large_image">
 <meta property="twitter:title" content="Embedded Security Overview - Vu Tang's Docs">
-<meta property="twitter:description" content="Bảo mật cho thiết bị nhúng: threat model, quản lý lỗ hổng, mật mã, giao thức bảo mật, secure boot, kiểm thử và chứng nhận.">
+<meta property="twitter:description" content="Bảo mật cho thiết bị nhúng: phạm vi, mô hình mối đe dọa, các lớp bảo vệ (quản lý lỗ hổng, mật mã và giao thức, secure boot, tuân thủ, kiểm thử, IoT) và lộ trình đọc.">
 <meta property="twitter:image" content="https://note.vutang.dev/assets/images/social/embedded_security/index.png">
 <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
@@ -10150,6 +10150,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#pham-vi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phạm vi
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#mo-hinh-moi-e-doa" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -10172,10 +10183,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ban-o-chu-e" class="md-nav__link">
+  <a href="#lien-quan-en-cac-topic-khac" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Bản đồ chủ đề
+        Liên quan đến các topic khác
       
     </span>
   </a>
@@ -10183,10 +10194,93 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#chua-co" class="md-nav__link">
+  <a href="#lo-trinh-oc" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Chưa có
+        Lộ trình đọc
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lộ trình đọc">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quan-ly-lo-hong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quản lý lỗ hổng
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cryptography-transport-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cryptography &amp; Transport Security
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secure-boot-trusted-execution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Secure Boot &amp; Trusted Execution
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compliance-certification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compliance &amp; Certification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Security Testing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IoT
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bai-viet-lien-quan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bài viết liên quan
       
     </span>
   </a>
@@ -15258,6 +15352,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#pham-vi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phạm vi
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#mo-hinh-moi-e-doa" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -15280,10 +15385,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ban-o-chu-e" class="md-nav__link">
+  <a href="#lien-quan-en-cac-topic-khac" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Bản đồ chủ đề
+        Liên quan đến các topic khác
       
     </span>
   </a>
@@ -15291,10 +15396,93 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#chua-co" class="md-nav__link">
+  <a href="#lo-trinh-oc" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Chưa có
+        Lộ trình đọc
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lộ trình đọc">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quan-ly-lo-hong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quản lý lỗ hổng
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cryptography-transport-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cryptography &amp; Transport Security
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secure-boot-trusted-execution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Secure Boot &amp; Trusted Execution
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compliance-certification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compliance &amp; Certification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Security Testing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IoT
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bai-viet-lien-quan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bài viết liên quan
       
     </span>
   </a>
@@ -15333,15 +15521,53 @@
 
 
 <h1 id="embedded-security">Embedded Security<a class="headerlink" href="#embedded-security" title="Permanent link">¶</a></h1>
-<p>Trả lời câu hỏi: <strong>làm sao để thiết bị nhúng đáng tin cậy khi nằm ngoài tầm kiểm soát vật lý và kết nối mạng?</strong></p>
+<p>Trang tổng quan về bảo mật cho thiết bị nhúng: thiết bị nằm ngoài tầm kiểm soát vật lý và nối mạng thì phải được bảo vệ ở những lớp nào, mỗi lớp trả lời câu hỏi gì, và trang nào của tab trình bày lớp đó. Trang đi theo thứ tự: phạm vi, mô hình mối đe dọa, các lớp bảo vệ, liên hệ với các tab khác, rồi lộ trình đọc theo đúng thứ tự trong menu bên trái.</p>
+<h2 id="pham-vi">Phạm vi<a class="headerlink" href="#pham-vi" title="Permanent link">¶</a></h2>
+<p>Tab này tập trung vào bảo mật của thiết bị và sản phẩm. Các chủ đề giáp ranh được trình bày ở tab khác, theo cột bên phải.</p>
+<table>
+<thead>
+<tr>
+<th>Thuộc phạm vi</th>
+<th>Không thuộc phạm vi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Threat model và quản lý lỗ hổng (CVE, công cụ quét)</td>
+<td>Networking nói chung (network stack, cấu hình mạng): tab Embedded</td>
+</tr>
+<tr>
+<td>Thuật toán mật mã (RSA, ECC, AES, hash) và giao thức TLS, HTTPS, SSH, IPsec</td>
+<td>Nền toán học của mật mã (số học modulo, trường hữu hạn): tab Notes (Math &amp; Physics)</td>
+</tr>
+<tr>
+<td>Secure boot (UEFI Secure Boot, MOK và mokutil) và TrustZone</td>
+<td>Crypto engine phần cứng trong SoC: tab Chip &amp; SoC</td>
+</tr>
+<tr>
+<td>Kiểm thử bảo mật: phương pháp pentest (OWASP WSTG), công cụ SAST (Checkmarx, Klocwork)</td>
+<td>LSM, seccomp xét như subsystem của kernel: tab Linux Kernel</td>
+</tr>
+<tr>
+<td>Tuân thủ và chứng nhận bảo mật cho thiết bị IoT, viễn thông và RAN, công nghiệp, ô tô</td>
+<td>License và SBOM của phần mềm trên thiết bị: tab Embedded</td>
+</tr>
+<tr>
+<td>Bảo mật cho thiết bị IoT</td>
+<td>OTA, provisioning và vòng đời sản phẩm: tab Embedded</td>
+</tr>
+</tbody>
+</table>
+<p>Các chủ đề thuộc phạm vi nhưng chưa có trang: thuật toán mật mã khác (ECC, AES, hash), quản lý khóa và chứng chỉ, measured boot và TPM, hardening Linux, và góc nhìn bảo mật của cập nhật OTA.</p>
 <h2 id="mo-hinh-moi-e-doa">Mô hình mối đe dọa<a class="headerlink" href="#mo-hinh-moi-e-doa" title="Permanent link">¶</a></h2>
-<p>Thiết bị nhúng thường bị triển khai hàng loạt, ít được cập nhật và kẻ tấn công có thể chạm vào phần cứng. Ba nhóm tấn công chính:</p>
+<p>Thiết bị nhúng thường được triển khai hàng loạt, ít được cập nhật và kẻ tấn công có thể chạm vào phần cứng. Ba nhóm tấn công chính:</p>
 <ul>
 <li><strong>Từ xa qua mạng</strong>: khai thác dịch vụ có lỗ hổng, nghe lén hoặc giả mạo kết nối.</li>
 <li><strong>Cục bộ qua phần mềm</strong>: thay firmware, leo thang đặc quyền, đọc khóa trong bộ nhớ.</li>
-<li><strong>Vật lý</strong>: cắm UART/JTAG, đọc flash, chèn lỗi (fault injection).</li>
+<li><strong>Vật lý</strong>: cắm UART hoặc JTAG, đọc flash, chèn lỗi (fault injection).</li>
 </ul>
 <h2 id="cac-lop-bao-ve">Các lớp bảo vệ<a class="headerlink" href="#cac-lop-bao-ve" title="Permanent link">¶</a></h2>
+<p>Tab tổ chức theo các lớp bảo vệ của một thiết bị: bắt đầu từ vốn từ vựng chung về lỗ hổng, tới hai biện pháp kỹ thuật (mật mã cùng giao thức bảo vệ kênh truyền, và secure boot), tới yêu cầu và kiểm chứng (tuân thủ, kiểm thử), và cuối cùng là IoT, nơi các lớp trước được áp dụng cho một loại thiết bị. Bảng dưới theo cùng thứ tự với menu bên trái.</p>
 <table>
 <thead>
 <tr>
@@ -15352,29 +15578,29 @@
 </thead>
 <tbody>
 <tr>
-<td>Boot</td>
-<td>Code chạy lên có đúng là code được ký không?</td>
-<td><a href="secure_boot/secure-boot-trustzone/">Secure boot và TrustZone</a></td>
-</tr>
-<tr>
-<td>Giao tiếp</td>
-<td>Dữ liệu trên đường truyền có bí mật và xác thực không?</td>
-<td><a href="crypto/rsa/">RSA</a>, <a href="tls/tls/">TLS</a>, <a href="https/https/">HTTPS</a>, <a href="ssh/ssh/">SSH</a>, <a href="ipsec/ipsec/">IPsec</a></td>
-</tr>
-<tr>
 <td>Quản lý lỗ hổng</td>
 <td>Thiết bị đang chứa lỗ hổng đã biết nào?</td>
 <td><a href="cve/cve/">CVE</a>, <a href="insightvm/insightvm/">InsightVM (Rapid7)</a></td>
 </tr>
 <tr>
+<td>Mật mã và bảo vệ kênh truyền</td>
+<td>Dữ liệu trên đường truyền có bí mật và xác thực không?</td>
+<td><a href="crypto/public-key-crypto/">Mật mã khóa công khai</a>, <a href="crypto/rsa/">RSA</a>, <a href="tls/tls/">TLS</a>, <a href="https/https/">HTTPS</a>, <a href="ssh/ssh/">SSH</a>, <a href="crypto/ssh-key-pair/">Cặp khóa SSH</a>, <a href="ipsec/ipsec/">IPsec</a></td>
+</tr>
+<tr>
+<td>Secure boot</td>
+<td>Code chạy lên có đúng là code được ký không?</td>
+<td><a href="secure_boot/secure-boot-trustzone/">Secure boot và TrustZone</a>, <a href="secure_boot/uefi-secure-boot-mokutil/">UEFI Secure Boot và mokutil</a></td>
+</tr>
+<tr>
 <td>Tuân thủ và chứng nhận</td>
 <td>Thiết bị phải đáp ứng quy định, tiêu chuẩn và chương trình chứng nhận nào?</td>
-<td><a href="compliance/">Chứng nhận và tuân thủ bảo mật</a>, <a href="compliance/ce-red/">CE marking &amp; RED</a>, <a href="compliance/iot/">Consumer IoT</a>, <a href="compliance/telecom/">Telecom &amp; RAN</a></td>
+<td><a href="compliance/">Chứng nhận và tuân thủ bảo mật</a>, <a href="compliance/ce-red/">CE marking và RED</a>, <a href="compliance/iot/">Consumer IoT</a>, <a href="compliance/telecom/">Telecom và RAN</a></td>
 </tr>
 <tr>
 <td>Kiểm thử bảo mật</td>
-<td>Kiểm tra giao diện web và API của thiết bị bằng phương pháp nào?</td>
-<td><a href="testing/">Kiểm thử bảo mật</a>, <a href="testing/wstg/">OWASP WSTG</a></td>
+<td>Kiểm tra thiết bị bằng phương pháp và công cụ nào?</td>
+<td><a href="testing/">Kiểm thử bảo mật</a>, <a href="testing/wstg/">OWASP WSTG</a>, <a href="testing/sast/">Checkmarx và Klocwork</a></td>
 </tr>
 <tr>
 <td>IoT</td>
@@ -15383,17 +15609,97 @@
 </tr>
 </tbody>
 </table>
-<h2 id="ban-o-chu-e">Bản đồ chủ đề<a class="headerlink" href="#ban-o-chu-e" title="Permanent link">¶</a></h2>
+<h2 id="lien-quan-en-cac-topic-khac">Liên quan đến các topic khác<a class="headerlink" href="#lien-quan-en-cac-topic-khac" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Chủ đề</th>
+<th>Nằm ở đâu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cập nhật firmware từ xa (OTA)</td>
+<td><a href="../lnx_es/iot/device_mgmt/ota/">OTA Update</a></td>
+</tr>
+<tr>
+<td>Danh tính thiết bị khi sản xuất</td>
+<td><a href="../lnx_es/iot/device_mgmt/provisioning/">Provisioning &amp; Device Identity</a></td>
+</tr>
+<tr>
+<td>Bootloader mà chuỗi secure boot dựa vào</td>
+<td><a href="../lnx_es/bootloader/u-boot/">U-Boot</a></td>
+</tr>
+<tr>
+<td>LSM, capabilities, seccomp trong kernel</td>
+<td><a href="../lnx_kernel/security/security/">Security Subsystem</a></td>
+</tr>
+<tr>
+<td>Boot flow và Root of Trust ở mức SoC</td>
+<td><a href="../computer_arch/soc/soc/#5-boot-flow">SoC / System</a></td>
+</tr>
+<tr>
+<td>Bảo mật giao diện mở của O-RAN</td>
+<td><a href="../wireless/oran/wg11/">O-RAN WG11: Security</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="lo-trinh-oc">Lộ trình đọc<a class="headerlink" href="#lo-trinh-oc" title="Permanent link">¶</a></h2>
+<p>Các nhóm dưới đây theo đúng thứ tự trong menu bên trái. Người đã có nền có thể nhảy thẳng vào nhóm cần đọc.</p>
+<h3 id="quan-ly-lo-hong">Quản lý lỗ hổng<a class="headerlink" href="#quan-ly-lo-hong" title="Permanent link">¶</a></h3>
+<p>Từ vựng chung của cả tab: một lỗ hổng được định danh, chấm điểm và theo dõi ra sao, và công cụ nào quét ra chúng.</p>
 <ul>
-<li><strong>Cryptography &amp; Transport Security</strong>: thuật toán mật mã (RSA) và giao thức bảo vệ kênh truyền (TLS 1.3, HTTPS, SSH, IPsec).</li>
-<li><strong>Secure Boot &amp; Trusted Execution</strong>: chain of trust, Root of Trust, TrustZone, TF-A, OP-TEE.</li>
-<li><strong>Vulnerability Management</strong>: định danh và quản lý CVE (CVSS, EPSS, KEV, SBOM, VEX), quét lỗ hổng, chấm điểm rủi ro.</li>
-<li><strong>Compliance &amp; Certification</strong>: quy định, tiêu chuẩn và chương trình chứng nhận bảo mật cho thiết bị; dấu CE và RED cho thiết bị vô tuyến tại EU; IoT tiêu dùng (ETSI EN 303 645, EU CRA, UK PSTI) và viễn thông, RAN (3GPP SCAS, GSMA NESAS, O-RAN WG11).</li>
-<li><strong>Security Testing</strong>: các loại hoạt động kiểm thử, so sánh phương pháp (NIST SP 800-115, PTES, OSSTMM, các guide của OWASP, test case theo tiêu chuẩn), và OWASP Web Security Testing Guide (WSTG) cho giao diện web và API.</li>
-<li><strong>IoT</strong>: yêu cầu bảo mật kỹ thuật riêng cho thiết bị IoT.</li>
+<li><a href="cve/cve/">CVE</a>: định danh CVE, CVSS, EPSS, KEV, SBOM, VEX, cách một CVE ra đời, tra cứu và quản lý CVE cho sản phẩm embedded.</li>
+<li><a href="insightvm/insightvm/">InsightVM (Rapid7)</a>: luồng hoạt động của một công cụ quét lỗ hổng, cơ chế phát hiện, chấm điểm rủi ro và các công cụ tương đương.</li>
 </ul>
-<h2 id="chua-co">Chưa có<a class="headerlink" href="#chua-co" title="Permanent link">¶</a></h2>
-<p>Các chủ đề dự kiến bổ sung: các thuật toán mật mã khác (ECC, AES, hash), measured boot/TPM, hardening Linux, secure OTA update, quản lý khóa và chứng chỉ.</p>
+<p>Biết thiết bị có lỗ hổng gì chưa đủ; lớp tiếp theo giảm bề mặt tấn công ở kênh truyền, bắt đầu từ mật mã.</p>
+<h3 id="cryptography-transport-security">Cryptography &amp; Transport Security<a class="headerlink" href="#cryptography-transport-security" title="Permanent link">¶</a></h3>
+<p>Các trang đi từ nguyên lý tới giao thức: mật mã khóa công khai và RSA làm nền, TLS và HTTPS bảo vệ kênh truyền ứng dụng, SSH và IPsec bảo vệ truy cập từ xa và kết nối mạng.</p>
+<ul>
+<li><a href="crypto/public-key-crypto/">Mật mã khóa công khai</a>: bài toán phân phối khóa, cặp khóa và các bài toán khó, ba cách dùng (mã hóa, chữ ký, thỏa thuận khóa), mã hóa lai, tin cậy public key, lưu trữ private key.</li>
+<li><a href="crypto/rsa/">RSA</a>: nền toán học, sinh khóa, mã hóa và chữ ký, padding, độ dài khóa, tấn công thường gặp, RSA trên thiết bị nhúng, thao tác với OpenSSL.</li>
+<li><a href="tls/tls/">TLS</a>: TLS 1.3, handshake, key schedule, record protocol và các thuật toán mật mã.</li>
+<li><a href="https/https/">HTTPS</a>: các lớp của HTTPS, việc client kiểm tra server, cơ chế bảo vệ ở tầng HTTP, proxy, HTTPS trên thiết bị nhúng, lab và checklist.</li>
+<li><a href="ssh/ssh/">SSH</a>: kiến trúc ba lớp, một kết nối diễn ra thế nào, so sánh với TLS, SSH trên thiết bị nhúng.</li>
+<li><a href="crypto/ssh-key-pair/">Cặp khóa SSH</a>: nguyên lý chữ ký, thuật toán và định dạng file, passphrase và ssh-agent, đăng nhập SSH và xác thực GitHub.</li>
+<li><a href="ipsec/ipsec/">IPsec</a>: thành phần chính, transport mode và tunnel mode, cách thiết lập một tunnel, so sánh với TLS và SSH.</li>
+</ul>
+<p>Các giao thức trên bảo vệ dữ liệu khi di chuyển; secure boot bảo vệ chính code chạy trên thiết bị, và dùng lại chữ ký số đã trình bày ở nhóm này.</p>
+<h3 id="secure-boot-trusted-execution">Secure Boot &amp; Trusted Execution<a class="headerlink" href="#secure-boot-trusted-execution" title="Permanent link">¶</a></h3>
+<p>Chain of trust từ Root of Trust tới hệ điều hành, và vùng thực thi tin cậy bên cạnh hệ điều hành thường.</p>
+<ul>
+<li><a href="secure_boot/secure-boot-trustzone/">Secure boot và TrustZone</a>: chuỗi boot, Root of Trust, TrustZone, Exception Level, TF-A và OP-TEE, với ví dụ trên SoC Rockchip.</li>
+<li><a href="secure_boot/uefi-secure-boot-mokutil/">UEFI Secure Boot và mokutil</a>: UEFI Secure Boot trên máy x86 chạy Linux, vai trò của shim và Machine Owner Key (MOK), công cụ <code>mokutil</code>.</li>
+</ul>
+<p>Các lớp kỹ thuật trên cuối cùng phải đáp ứng những yêu cầu bên ngoài, do quy định và chương trình chứng nhận đặt ra.</p>
+<h3 id="compliance-certification">Compliance &amp; Certification<a class="headerlink" href="#compliance-certification" title="Permanent link">¶</a></h3>
+<p>Phân biệt quy định, tiêu chuẩn và chương trình chứng nhận, rồi đi vào từng nhóm sản phẩm.</p>
+<ul>
+<li><a href="compliance/">Chứng nhận và tuân thủ bảo mật</a>: ba loại văn bản (quy định, tiêu chuẩn, chương trình chứng nhận) và bản đồ các nhóm thiết bị.</li>
+<li><a href="compliance/ce-red/">CE marking và RED</a>: dấu CE và Radio Equipment Directive cho thiết bị vô tuyến tại EU.</li>
+<li><a href="compliance/iot/">Consumer IoT</a>: ETSI EN 303 645, EU CRA, UK PSTI cho thiết bị IoT tiêu dùng.</li>
+<li><a href="compliance/telecom/">Telecom và RAN</a>: 3GPP SCAS, GSMA NESAS, O-RAN WG11 cho thiết bị viễn thông và RAN.</li>
+</ul>
+<p>Yêu cầu tuân thủ thường kèm bằng chứng kiểm thử; nhóm tiếp theo nói về cách kiểm thử.</p>
+<h3 id="security-testing">Security Testing<a class="headerlink" href="#security-testing" title="Permanent link">¶</a></h3>
+<p>Các loại hoạt động kiểm thử, cách chọn phương pháp, và hai công cụ hoặc guide cụ thể.</p>
+<ul>
+<li><a href="testing/">Kiểm thử bảo mật</a>: các loại hoạt động kiểm thử, mức hiểu biết của người kiểm thử, so sánh phương pháp (NIST SP 800-115, PTES, OSSTMM, các guide của OWASP).</li>
+<li><a href="testing/wstg/">OWASP WSTG</a>: Web Security Testing Guide cho giao diện web và API của thiết bị.</li>
+<li><a href="testing/sast/">Checkmarx và Klocwork</a>: so sánh hai công cụ SAST, quy trình quét và xử lý kết quả cho mã nhúng C/C++.</li>
+</ul>
+<p>Các lớp ở trên đều áp dụng cho một loại thiết bị cụ thể là IoT.</p>
+<h3 id="iot">IoT<a class="headerlink" href="#iot" title="Permanent link">¶</a></h3>
+<ul>
+<li><a href="iot/iot-security/">IoT Security</a>: yêu cầu bảo mật kỹ thuật riêng cho thiết bị IoT. Trang đang hoàn thiện; phần quy định và chứng nhận nằm ở <a href="compliance/iot/">Consumer IoT</a>.</li>
+</ul>
+<h2 id="bai-viet-lien-quan">Bài viết liên quan<a class="headerlink" href="#bai-viet-lien-quan" title="Permanent link">¶</a></h2>
+<p>Các bài mang tính cập nhật theo thời điểm nằm ở mục Articles (category Security):</p>
+<ul>
+<li><a href="../articles/2026/10/25/u-boot-boot-chain-security-2026/">U-Boot 2026: verified boot không còn dừng ở chữ ký kernel</a></li>
+<li><a href="../articles/2026/10/22/rk3399-secure-efuse/">Rockchip RK3399 secure eFuse: vì sao kernel Linux đọc vào là panic</a></li>
+<li><a href="../articles/2026/10/28/php2shell-rce/">PHP2Shell: từ lỗi sử dụng bộ nhớ đến thực thi mã từ xa trên server</a></li>
+</ul>
 
 
 
@@ -15416,7 +15722,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 7, 2026 07:35:13 UTC">November 7, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 18, 2026 06:22:39 UTC">November 18, 2026</span>
   </span>
 
     

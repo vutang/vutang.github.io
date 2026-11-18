@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Instruction Set Architecture: tập lệnh và mô hình lập trình, hợp đồng giữa phần cứng và phần mềm; RISC-V, Arm, x86.">
+        <meta name="description" content="Instruction Set Architecture: tập lệnh và mô hình lập trình, hợp đồng giữa phần cứng và phần mềm; so sánh RISC-V, Arm, x86 và danh sách các trang.">
       
       
         <meta name="author" content="Vu Tang">
@@ -73,7 +73,7 @@
   
 <meta property="og:type" content="website">
 <meta property="og:title" content="ISA Overview - Vu Tang's Docs">
-<meta property="og:description" content="Instruction Set Architecture: tập lệnh và mô hình lập trình, hợp đồng giữa phần cứng và phần mềm; RISC-V, Arm, x86.">
+<meta property="og:description" content="Instruction Set Architecture: tập lệnh và mô hình lập trình, hợp đồng giữa phần cứng và phần mềm; so sánh RISC-V, Arm, x86 và danh sách các trang.">
 <meta property="og:image" content="https://note.vutang.dev/assets/images/social/computer_arch/isa/isa.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
@@ -81,7 +81,7 @@
 <meta property="og:url" content="https://note.vutang.dev/computer_arch/isa/isa/">
 <meta property="twitter:card" content="summary_large_image">
 <meta property="twitter:title" content="ISA Overview - Vu Tang's Docs">
-<meta property="twitter:description" content="Instruction Set Architecture: tập lệnh và mô hình lập trình, hợp đồng giữa phần cứng và phần mềm; RISC-V, Arm, x86.">
+<meta property="twitter:description" content="Instruction Set Architecture: tập lệnh và mô hình lập trình, hợp đồng giữa phần cứng và phần mềm; so sánh RISC-V, Arm, x86 và danh sách các trang.">
 <meta property="twitter:image" content="https://note.vutang.dev/assets/images/social/computer_arch/isa/isa.png">
 <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
@@ -12763,10 +12763,32 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#so-sanh-o-muc-mo-hinh-phat-trien" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        So sánh ở mức mô hình phát triển
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#noi-dung" class="md-nav__link">
     <span class="md-ellipsis">
       
         Nội dung
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lien-quan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Liên quan
       
     </span>
   </a>
@@ -15217,10 +15239,32 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#so-sanh-o-muc-mo-hinh-phat-trien" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        So sánh ở mức mô hình phát triển
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#noi-dung" class="md-nav__link">
     <span class="md-ellipsis">
       
         Nội dung
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lien-quan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Liên quan
       
     </span>
   </a>
@@ -15248,12 +15292,45 @@
 
 
 <h1 id="isa">ISA<a class="headerlink" href="#isa" title="Permanent link">¶</a></h1>
-<p>Instruction Set Architecture: tập lệnh và mô hình lập trình, "hợp đồng" giữa phần cứng và phần mềm.</p>
+<p>Instruction Set Architecture (ISA) là tập lệnh và mô hình lập trình, "hợp đồng" giữa phần cứng và phần mềm: phần mềm biết CPU hiểu những lệnh nào, có những thanh ghi nào, xử lý ngắt và ngoại lệ ra sao, còn cách CPU hiện thực hợp đồng đó thuộc về <a href="../../microarch/microarch/">Microarchitecture</a>. Trang này liệt kê ba ISA có trang riêng, kèm bảng so sánh ở mức mô hình phát triển; nguồn và số liệu nằm ở từng trang.</p>
+<h2 id="so-sanh-o-muc-mo-hinh-phat-trien">So sánh ở mức mô hình phát triển<a class="headerlink" href="#so-sanh-o-muc-mo-hinh-phat-trien" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>ISA</th>
+<th>Ai quyết định ISA</th>
+<th>Mô hình sử dụng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RISC-V</td>
+<td>RISC-V International, tổ chức phi lợi nhuận</td>
+<td>ISA mở, miễn phí bản quyền: ai cũng được thiết kế chip dùng RISC-V</td>
+</tr>
+<tr>
+<td>Arm</td>
+<td>Arm Holdings</td>
+<td>ISA gắn với mô hình cấp phép IP: hãng khác trả phí để dùng ISA hoặc core do Arm thiết kế</td>
+</tr>
+<tr>
+<td>x86</td>
+<td>Intel và AMD</td>
+<td>ISA đóng, kiểu CISC, thực tế chỉ hai hãng này sản xuất</td>
+</tr>
+</tbody>
+</table>
 <h2 id="noi-dung">Nội dung<a class="headerlink" href="#noi-dung" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="../riscv/">RISC-V</a>: ISA mở, miễn phí bản quyền; nguồn gốc, cấu trúc extension và hiện trạng ứng dụng.</li>
 <li><a href="../arm/">Arm</a>: lịch sử của ISA Arm và hiện trạng sử dụng đến 2026.</li>
 <li><a href="../x86/">x86</a>: lịch sử của ISA x86 và hiện trạng Intel, AMD đến 2026.</li>
+</ul>
+<h2 id="lien-quan">Liên quan<a class="headerlink" href="#lien-quan" title="Permanent link">¶</a></h2>
+<ul>
+<li>Cách CPU hiện thực một ISA: <a href="../../microarch/microarch/">Microarchitecture</a>.</li>
+<li>Phần mở rộng ảo hóa của CPU (VT-x, EL2): <a href="../../../virtualization/foundations/cpu/">CPU Virtualization</a>.</li>
+<li>So sánh ba ISA theo thời điểm 2026: <a href="../../../articles/2026/10/21/cpu-architecture-2026/">Kiến trúc CPU thương mại 2026</a>.</li>
 </ul>
 
 
@@ -15277,7 +15354,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 7, 2026 07:35:13 UTC">November 7, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 18, 2026 06:22:39 UTC">November 18, 2026</span>
   </span>
 
     
