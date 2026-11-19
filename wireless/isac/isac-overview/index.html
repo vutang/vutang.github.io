@@ -15548,6 +15548,9 @@
 <li><strong>Dùng chung hạ tầng.</strong> Sensing chạy trên trạm có sẵn, chi phí thêm chủ yếu là phần mềm và một số thay đổi ở RF.</li>
 <li><strong>Hai chức năng hỗ trợ nhau.</strong> Thông tin sensing (hướng và vị trí của UE hoặc vật cản) giúp beamforming và quản lý beam. Ngược lại, truyền thông cung cấp đồng bộ và phối hợp giữa các nút cho sensing.</li>
 </ul>
+<p>Hình dưới đây minh họa ISAC trong một khu đô thị với ba chế độ sensing. gNB A phát tín hiệu và tự thu echo phản xạ từ drone (BS monostatic). Tín hiệu của gNB A còn phản xạ từ một chiếc xe và được gNB B thu (BS–BS bistatic); đường trực tiếp (LoS) giữa hai trạm là tham chiếu để đo độ trễ của echo. gNB B truyền dữ liệu downlink cho UE, và chính tín hiệu đó phản xạ từ người đi bộ rồi tới UE (BS–UE bistatic). Tòa nhà là thành phần nền (clutter) mà bộ xử lý cần loại bỏ để tách mục tiêu. Kết quả sensing được xử lý rồi đưa tới ứng dụng qua 5GC, nhưng vị trí của khối xử lý và cơ chế đưa kết quả ra ngoài (exposure) chưa được chuẩn hóa, nên hai khối này vẽ bằng khung nét đứt. Danh sách đủ sáu chế độ nằm ở mục <a href="#cac-che-o-sensing">Các chế độ sensing</a>.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/isac-system-overview.svg" data-desc-position="bottom"><img alt="An urban ISAC scene: gNB A senses a drone from its own echo, gNB B receives gNB A's echo from a car, and a UE receives downlink data plus the echo from a pedestrian; sensing results go through a sensing processing block and the 5G Core to applications" src="../img/isac-system-overview.svg"></a></p>
+<p><em>ISAC trong mạng di động: (1) BS monostatic, (2) BS–BS bistatic, (3) BS–UE bistatic. Khung nét đứt là phần kiến trúc đang được 3GPP nghiên cứu.</em></p>
 <p>Mức độ tích hợp có thể chia làm ba bậc:</p>
 <table>
 <thead>
@@ -15651,7 +15654,7 @@
 <p>Thao tác nặng là FFT 2D và phát hiện CFAR trên toàn bộ ma trận, cùng loại tính toán với L1 hiện tại, nhưng chạy thêm và theo cấu trúc khác với giải mã dữ liệu.</p>
 <h2 id="cac-che-o-sensing">Các chế độ sensing<a class="headerlink" href="#cac-che-o-sensing" title="Permanent link">¶</a></h2>
 <p>3GPP đang xét sáu chế độ, chia theo vị trí bộ phát và bộ thu:</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/isac-modes.svg" data-desc-position="bottom"><img alt="So sánh sensing monostatic và bistatic" src="../img/isac-modes.svg"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/isac-modes.svg" data-desc-position="bottom"><img alt="Monostatic sensing with transmitter and receiver in one node versus bistatic sensing with transmitter and receiver in two nodes" src="../img/isac-modes.svg"></a></p>
 <p><em>Monostatic: một nút vừa phát vừa thu. Bistatic: hai nút khác nhau, cần đồng bộ giữa hai nút.</em></p>
 <table>
 <thead>
@@ -15835,7 +15838,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 6, 2026 14:03:39 UTC">November 6, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 19, 2026 06:53:04 UTC">November 19, 2026</span>
   </span>
 
     
