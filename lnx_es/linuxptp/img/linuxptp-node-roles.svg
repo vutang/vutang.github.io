@@ -1,0 +1,86 @@
+<svg role="img" viewBox="0 0 760 452" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, sans-serif">
+  <title>linuxptp programs on a grandmaster, a boundary clock and an ordinary clock: ts2phc steers the PHC from GNSS, ptp4l exchanges PTP messages and steers the PHC on client ports, phc2sys steers CLOCK_REALTIME from the PHC</title>
+  <defs>
+    <marker id="k" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2c3a42"/></marker>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2f5d9e"/></marker>
+    <marker id="o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#b7791f"/></marker>
+  </defs>
+  <rect x="0" y="0" width="760" height="430" rx="8" fill="#ffffff"/>
+
+  <!-- Node titles -->
+  <text x="120" y="30" font-size="14" font-weight="700" text-anchor="middle" fill="#1f2d3d">Grandmaster</text>
+  <text x="380" y="30" font-size="14" font-weight="700" text-anchor="middle" fill="#1f2d3d">Boundary clock</text>
+  <text x="640" y="30" font-size="14" font-weight="700" text-anchor="middle" fill="#1f2d3d">Ordinary clock (client)</text>
+
+  <!-- Node frames -->
+  <rect x="10" y="42" width="220" height="330" rx="8" fill="#f5f7fa" stroke="#d0d7e2" stroke-width="1.5"/>
+  <rect x="270" y="42" width="220" height="330" rx="8" fill="#f5f7fa" stroke="#d0d7e2" stroke-width="1.5"/>
+  <rect x="530" y="42" width="220" height="330" rx="8" fill="#f5f7fa" stroke="#d0d7e2" stroke-width="1.5"/>
+
+  <!-- ===== Grandmaster ===== -->
+  <rect x="20" y="56" width="200" height="34" rx="6" fill="#e8eef8" stroke="#2f5d9e" stroke-width="1.5"/>
+  <text x="120" y="78" font-size="13" font-weight="700" text-anchor="middle" fill="#2f5d9e">GNSS receiver</text>
+  <line x1="70" y1="90" x2="70" y2="130" stroke="#2f5d9e" stroke-width="2" marker-end="url(#b)"/>
+  <text x="78" y="115" font-size="12.5" fill="#2f5d9e">1PPS + ToD</text>
+
+  <rect x="20" y="134" width="96" height="34" rx="6" fill="#fff3cf" stroke="#b7791f" stroke-width="1.5"/>
+  <text x="68" y="156" font-size="13" font-weight="700" text-anchor="middle" fill="#6e4508">ts2phc</text>
+  <rect x="124" y="134" width="96" height="34" rx="6" fill="#fff3cf" stroke="#b7791f" stroke-width="1.5"/>
+  <text x="172" y="156" font-size="13" font-weight="700" text-anchor="middle" fill="#6e4508">ptp4l</text>
+
+  <rect x="20" y="206" width="200" height="40" rx="6" fill="#d4efdf" stroke="#2e7d4f" stroke-width="1.5"/>
+  <text x="120" y="231" font-size="13" font-weight="700" text-anchor="middle" fill="#1f2d3d">PHC (NIC)</text>
+  <line x1="68" y1="168" x2="68" y2="202" stroke="#2c3a42" stroke-width="2" marker-end="url(#k)"/>
+  <line x1="172" y1="202" x2="172" y2="172" stroke="#2c3a42" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#k)"/>
+
+  <rect x="72" y="274" width="96" height="32" rx="6" fill="#fff3cf" stroke="#b7791f" stroke-width="1.5"/>
+  <text x="120" y="295" font-size="13" font-weight="700" text-anchor="middle" fill="#6e4508">phc2sys</text>
+  <line x1="120" y1="246" x2="120" y2="270" stroke="#2c3a42" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#k)"/>
+  <rect x="20" y="326" width="200" height="34" rx="6" fill="#eceff1" stroke="#2c3a42" stroke-width="1.5"/>
+  <text x="120" y="348" font-size="13" font-weight="700" text-anchor="middle" fill="#1f2d3d">CLOCK_REALTIME</text>
+  <line x1="120" y1="306" x2="120" y2="322" stroke="#2c3a42" stroke-width="2" marker-end="url(#k)"/>
+
+  <!-- ===== Boundary clock ===== -->
+  <text x="380" y="68" font-size="12.5" text-anchor="middle" fill="#2c3a42">Port 1: client (upstream)</text>
+  <text x="380" y="86" font-size="12.5" text-anchor="middle" fill="#2c3a42">Port 2: server (downstream)</text>
+  <rect x="280" y="134" width="200" height="34" rx="6" fill="#fff3cf" stroke="#b7791f" stroke-width="1.5"/>
+  <text x="380" y="156" font-size="13" font-weight="700" text-anchor="middle" fill="#6e4508">ptp4l (2 ports)</text>
+  <rect x="280" y="206" width="200" height="40" rx="6" fill="#d4efdf" stroke="#2e7d4f" stroke-width="1.5"/>
+  <text x="380" y="231" font-size="13" font-weight="700" text-anchor="middle" fill="#1f2d3d">PHC (shared)</text>
+  <line x1="380" y1="168" x2="380" y2="202" stroke="#2c3a42" stroke-width="2" marker-end="url(#k)"/>
+  <rect x="332" y="274" width="96" height="32" rx="6" fill="#fff3cf" stroke="#b7791f" stroke-width="1.5"/>
+  <text x="380" y="295" font-size="13" font-weight="700" text-anchor="middle" fill="#6e4508">phc2sys</text>
+  <line x1="380" y1="246" x2="380" y2="270" stroke="#2c3a42" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#k)"/>
+  <rect x="280" y="326" width="200" height="34" rx="6" fill="#eceff1" stroke="#2c3a42" stroke-width="1.5"/>
+  <text x="380" y="348" font-size="13" font-weight="700" text-anchor="middle" fill="#1f2d3d">CLOCK_REALTIME</text>
+  <line x1="380" y1="306" x2="380" y2="322" stroke="#2c3a42" stroke-width="2" marker-end="url(#k)"/>
+
+  <!-- ===== Ordinary clock ===== -->
+  <text x="640" y="77" font-size="12.5" text-anchor="middle" fill="#2c3a42">clientOnly 1</text>
+  <rect x="540" y="134" width="200" height="34" rx="6" fill="#fff3cf" stroke="#b7791f" stroke-width="1.5"/>
+  <text x="640" y="156" font-size="13" font-weight="700" text-anchor="middle" fill="#6e4508">ptp4l</text>
+  <rect x="540" y="206" width="200" height="40" rx="6" fill="#d4efdf" stroke="#2e7d4f" stroke-width="1.5"/>
+  <text x="640" y="231" font-size="13" font-weight="700" text-anchor="middle" fill="#1f2d3d">PHC (NIC)</text>
+  <line x1="640" y1="168" x2="640" y2="202" stroke="#2c3a42" stroke-width="2" marker-end="url(#k)"/>
+  <rect x="592" y="274" width="96" height="32" rx="6" fill="#fff3cf" stroke="#b7791f" stroke-width="1.5"/>
+  <text x="640" y="295" font-size="13" font-weight="700" text-anchor="middle" fill="#6e4508">phc2sys</text>
+  <line x1="640" y1="246" x2="640" y2="270" stroke="#2c3a42" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#k)"/>
+  <rect x="540" y="326" width="200" height="34" rx="6" fill="#eceff1" stroke="#2c3a42" stroke-width="1.5"/>
+  <text x="640" y="348" font-size="13" font-weight="700" text-anchor="middle" fill="#1f2d3d">CLOCK_REALTIME</text>
+  <line x1="640" y1="306" x2="640" y2="322" stroke="#2c3a42" stroke-width="2" marker-end="url(#k)"/>
+
+  <!-- PTP links between nodes -->
+  <line x1="220" y1="226" x2="276" y2="226" stroke="#b7791f" stroke-width="2.5" marker-end="url(#o)"/>
+  <text x="250" y="218" font-size="12.5" font-weight="700" text-anchor="middle" fill="#6e4508">PTP</text>
+  <line x1="480" y1="226" x2="536" y2="226" stroke="#b7791f" stroke-width="2.5" marker-end="url(#o)"/>
+  <text x="510" y="218" font-size="12.5" font-weight="700" text-anchor="middle" fill="#6e4508">PTP</text>
+
+  <!-- Legend -->
+  <line x1="30" y1="398" x2="70" y2="398" stroke="#2c3a42" stroke-width="2" marker-end="url(#k)"/>
+  <text x="78" y="403" font-size="12.5" fill="#1f2d3d">steers the clock</text>
+  <line x1="230" y1="398" x2="270" y2="398" stroke="#2c3a42" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#k)"/>
+  <text x="278" y="403" font-size="12.5" fill="#1f2d3d">reads the clock</text>
+  <line x1="430" y1="398" x2="470" y2="398" stroke="#b7791f" stroke-width="2.5" marker-end="url(#o)"/>
+  <text x="478" y="403" font-size="12.5" fill="#1f2d3d">time flow over the network</text>
+<text id="wm" x="751.2" y="445.4" text-anchor="end" font-size="11" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
+</svg>

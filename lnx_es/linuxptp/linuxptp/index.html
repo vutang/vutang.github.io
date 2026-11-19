@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
+        <meta name="description" content="Chạy PTP trên thiết bị Linux: PHC và hardware timestamping, các công cụ ptp4l, phc2sys, ts2phc, pmc của linuxptp, cách đọc log, chọn profile và xử lý lỗi thường gặp.">
       
       
         <meta name="author" content="Vu Tang">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Linux PTP - Vu Tang's Docs</title>
+        <title>PTP trên Linux (linuxptp) - Vu Tang's Docs</title>
       
     
     
@@ -72,16 +72,16 @@
     
   
 <meta property="og:type" content="website">
-<meta property="og:title" content="Linux PTP - Vu Tang's Docs">
-<meta property="og:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
+<meta property="og:title" content="PTP trên Linux (linuxptp) - Vu Tang's Docs">
+<meta property="og:description" content="Chạy PTP trên thiết bị Linux: PHC và hardware timestamping, các công cụ ptp4l, phc2sys, ts2phc, pmc của linuxptp, cách đọc log, chọn profile và xử lý lỗi thường gặp.">
 <meta property="og:image" content="https://note.vutang.dev/assets/images/social/lnx_es/linuxptp/linuxptp.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://note.vutang.dev/lnx_es/linuxptp/linuxptp/">
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:title" content="Linux PTP - Vu Tang's Docs">
-<meta property="twitter:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
+<meta property="twitter:title" content="PTP trên Linux (linuxptp) - Vu Tang's Docs">
+<meta property="twitter:description" content="Chạy PTP trên thiết bị Linux: PHC và hardware timestamping, các công cụ ptp4l, phc2sys, ts2phc, pmc của linuxptp, cách đọc log, chọn profile và xử lý lỗi thường gặp.">
 <meta property="twitter:image" content="https://note.vutang.dev/assets/images/social/lnx_es/linuxptp/linuxptp.png">
 <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
@@ -112,7 +112,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ong-bo-thoi-gian-qua-mang-ptp" class="md-skip">
+        <a href="#ptp-tren-linux-linuxptp" class="md-skip">
           Skip to content
         </a>
       
@@ -145,7 +145,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Linux PTP
+              PTP trên Linux (linuxptp)
             
           </span>
         </div>
@@ -3290,22 +3290,44 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#gioi-thieu" class="md-nav__link">
+  <a href="#nguyen-ly-ptp" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Giới thiệu
+        Nguyên lý PTP
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Giới thiệu">
+    <nav class="md-nav" aria-label="Nguyên lý PTP">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ieee-1588-itu-t-g8260" class="md-nav__link">
+  <a href="#ieee-1588-va-profile" class="md-nav__link">
     <span class="md-ellipsis">
       
-        IEEE 1588 &amp; ITU-T G.8260?
+        IEEE 1588 và profile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#co-che-delay-request-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cơ chế delay request-response
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thang-thoi-gian" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thang thời gian
       
     </span>
   </a>
@@ -3318,10 +3340,171 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#nguyen-ly-co-ban" class="md-nav__link">
+  <a href="#phc-va-hardware-timestamping" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Nguyên lý cơ bản
+        PHC và hardware timestamping
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PHC và hardware timestamping">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ptp-hardware-clock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PTP hardware clock
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware-timestamping-va-software-timestamping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware timestamping và software timestamping
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiem-tra-kha-nang-cua-nic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kiểm tra khả năng của NIC
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cac-cong-cu-cua-linuxptp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các công cụ của linuxptp
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Các công cụ của linuxptp">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ptp4l" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ptp4l
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phc2sys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        phc2sys
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ts2phc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ts2phc
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pmc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pmc
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oc-log-va-cac-chi-so" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Đọc log và các chỉ số
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Đọc log và các chỉ số">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#trang-thai-cong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trạng thái cổng
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#offset-tan-so-va-path-delay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Offset, tần số và path delay
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chon-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chọn profile
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loi-thuong-gap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lỗi thường gặp
       
     </span>
   </a>
@@ -15298,22 +15481,44 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#gioi-thieu" class="md-nav__link">
+  <a href="#nguyen-ly-ptp" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Giới thiệu
+        Nguyên lý PTP
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Giới thiệu">
+    <nav class="md-nav" aria-label="Nguyên lý PTP">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ieee-1588-itu-t-g8260" class="md-nav__link">
+  <a href="#ieee-1588-va-profile" class="md-nav__link">
     <span class="md-ellipsis">
       
-        IEEE 1588 &amp; ITU-T G.8260?
+        IEEE 1588 và profile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#co-che-delay-request-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cơ chế delay request-response
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thang-thoi-gian" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thang thời gian
       
     </span>
   </a>
@@ -15326,10 +15531,171 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#nguyen-ly-co-ban" class="md-nav__link">
+  <a href="#phc-va-hardware-timestamping" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Nguyên lý cơ bản
+        PHC và hardware timestamping
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PHC và hardware timestamping">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ptp-hardware-clock" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PTP hardware clock
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware-timestamping-va-software-timestamping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware timestamping và software timestamping
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiem-tra-kha-nang-cua-nic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kiểm tra khả năng của NIC
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cac-cong-cu-cua-linuxptp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Các công cụ của linuxptp
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Các công cụ của linuxptp">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ptp4l" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ptp4l
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phc2sys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        phc2sys
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ts2phc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ts2phc
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pmc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pmc
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oc-log-va-cac-chi-so" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Đọc log và các chỉ số
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Đọc log và các chỉ số">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#trang-thai-cong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trạng thái cổng
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#offset-tan-so-va-path-delay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Offset, tần số và path delay
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chon-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chọn profile
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loi-thuong-gap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lỗi thường gặp
       
     </span>
   </a>
@@ -15403,30 +15769,636 @@
   
 
 
-<h1 id="ong-bo-thoi-gian-qua-mang-ptp">Đồng bộ thời gian qua mạng (PTP)<a class="headerlink" href="#ong-bo-thoi-gian-qua-mang-ptp" title="Permanent link">¶</a></h1>
-<h2 id="gioi-thieu">Giới thiệu<a class="headerlink" href="#gioi-thieu" title="Permanent link">¶</a></h2>
-<h3 id="ieee-1588-itu-t-g8260">IEEE 1588 &amp; ITU-T G.8260?<a class="headerlink" href="#ieee-1588-itu-t-g8260" title="Permanent link">¶</a></h3>
-<p>Precision Time Protocol (PTP) là giao thức truyền thời gian hai chiều, ra đời trong chuẩn IEEE 1588-2002. PTPv2 được định nghĩa trong IEEE 1588-2008, bản hiện hành là IEEE 1588-2019. IEEE 1588 chỉ đặc tả giao thức đồng bộ thời gian và tần số trong mạng gói; chuẩn này không mô tả use case và không đặt yêu cầu độ chính xác cho ứng dụng cụ thể.</p>
-<p>Việc áp dụng PTP cho từng lĩnh vực do các tổ chức chuẩn hóa khác đảm nhận, dưới dạng các <em>profile</em>. Với viễn thông, đó là ITU-T: Question 13 (Q13) của Study Group 15 phụ trách các chuẩn đồng bộ tần số, pha và thời gian, gồm đặc tính đồng hồ, kiến trúc mạng, giới hạn sai số, chỉ số và phương pháp đo. Các chuẩn này thuộc họ G.826x (đồng bộ tần số qua mạng gói, mở đầu bằng G.8260 về định nghĩa và thuật ngữ) và G.827x (đồng bộ pha và thời gian), ví dụ profile G.8275.1 dùng trong fronthaul 5G. Xem thêm <a href="../../../wireless/sync/sync/">Synchronization</a>.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../ITU-T-1588-standards.png" data-desc-position="bottom"><img alt="itu-t" src="../ITU-T-1588-standards.png"></a></p>
-<h2 id="nguyen-ly-co-ban">Nguyên lý cơ bản<a class="headerlink" href="#nguyen-ly-co-ban" title="Permanent link">¶</a></h2>
-<p>Cơ chế delay request-response dùng các bản tin PTP Sync, Delay_Req, Delay_Resp và có thể có thêm Follow_Up, theo sơ đồ thời gian dưới đây.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../timestamp-model.png" data-desc-position="bottom"><img alt="timestamp-model" src="../timestamp-model.png"></a></p>
-<p>Mean Path Delay (MPD) được tính như sau:</p>
+<h1 id="ptp-tren-linux-linuxptp">PTP trên Linux (linuxptp)<a class="headerlink" href="#ptp-tren-linux-linuxptp" title="Permanent link">¶</a></h1>
+<p>Trang này trình bày cách chạy Precision Time Protocol (PTP) trên một thiết bị Linux bằng bộ công cụ linuxptp. Thứ tự trình bày: nguyên lý PTP ở mức cần thiết để đọc log, đồng hồ phần cứng PTP (PTP hardware clock, PHC) và hardware timestamping trong Linux, vai trò và cấu hình của từng công cụ (<code>ptp4l</code>, <code>phc2sys</code>, <code>ts2phc</code>, <code>pmc</code>), cách đọc log và các chỉ số offset, path delay, cách chọn profile, và cuối cùng là các lỗi thường gặp. Yêu cầu đồng bộ của mạng RAN và các telecom profile ở góc độ mạng nằm ở trang <a href="../../../wireless/sync/sync/">Đồng bộ trong RAN</a>.</p>
+<p>Lệnh, tùy chọn và giá trị mặc định trong trang lấy theo man page và các file cấu hình mẫu của linuxptp v4.4 (tag <code>v4.4</code> trong kho mã nguồn, tháng 9/2024). Phiên bản khác có thể đổi tên hoặc thêm tùy chọn, nên cần đối chiếu với <code>man ptp4l</code> của bản đang cài (<code>ptp4l -v</code> in ra phiên bản).</p>
+<div class="admonition todo">
+<p class="admonition-title">Chưa kiểm chứng</p>
+<p>Các ví dụ lệnh và log trong trang được dựng từ man page và mã nguồn linuxptp v4.4, chưa chạy trên thiết bị thật. Cần kiểm chứng trên NIC cụ thể: mẫu log <code>ptp4l</code> khi khóa, cấu hình <code>ts2phc</code> với module GNSS thật (chân PPS, độ rộng xung, cạnh kích hoạt), và hành vi <code>clockClass</code> của grandmaster khi mất GNSS.</p>
+</div>
+<h2 id="nguyen-ly-ptp">Nguyên lý PTP<a class="headerlink" href="#nguyen-ly-ptp" title="Permanent link">¶</a></h2>
+<h3 id="ieee-1588-va-profile">IEEE 1588 và profile<a class="headerlink" href="#ieee-1588-va-profile" title="Permanent link">¶</a></h3>
+<p>PTP là giao thức truyền thời gian hai chiều, ra đời trong chuẩn IEEE 1588-2002. PTPv2 được định nghĩa trong IEEE 1588-2008, bản hiện hành là IEEE 1588-2019. IEEE 1588 chỉ đặc tả giao thức đồng bộ thời gian và tần số trong mạng gói; chuẩn này không mô tả use case và không đặt yêu cầu độ chính xác cho ứng dụng cụ thể.</p>
+<p>Việc áp dụng PTP cho từng lĩnh vực do các tổ chức chuẩn hóa khác đảm nhận dưới dạng <em>profile</em>: một bộ giá trị cố định cho phương thức truyền tải, domain, chu kỳ bản tin và thuật toán chọn master. Với viễn thông, đó là ITU-T: Question 13 (Q13) của Study Group 15 phụ trách các chuẩn đồng bộ tần số, pha và thời gian. Các chuẩn này thuộc họ G.826x (đồng bộ tần số qua mạng gói) và G.827x (đồng bộ pha và thời gian), cùng dùng chung G.8260 về định nghĩa và thuật ngữ. Ngoài viễn thông còn có profile gPTP (IEEE 802.1AS) cho TSN và ô tô. Cách chọn profile khi cấu hình <code>ptp4l</code> nằm ở mục <a href="#chon-profile">Chọn profile</a>.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/ptp-itu-t-sync-standards.svg" data-desc-position="bottom"><img alt="ITU-T synchronization Recommendations grouped by frequency (G.826x) and phase/time (G.827x) series, from basics and network requirements to clocks, architecture and PTP profiles" src="../img/ptp-itu-t-sync-standards.svg"></a></p>
+<h3 id="co-che-delay-request-response">Cơ chế delay request-response<a class="headerlink" href="#co-che-delay-request-response" title="Permanent link">¶</a></h3>
+<p>Cơ chế delay request-response (còn gọi là end-to-end, E2E) dùng các bản tin Sync, Delay_Req, Delay_Resp và có thể có thêm Follow_Up. Với đồng hồ two-step, master gửi timestamp t1 của Sync trong bản tin Follow_Up; với đồng hồ one-step, t1 được ghi thẳng vào Sync khi gói rời cổng. Slave thu được bốn timestamp t1 đến t4 theo sơ đồ dưới đây.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../timestamp-model.png" data-desc-position="bottom"><img alt="Delay request-response exchange: master sends Sync and Follow_Up, slave sends Delay_Req, master replies with Delay_Resp, giving the slave timestamps t1 to t4" src="../timestamp-model.png"></a></p>
+<p>Mean path delay (MPD) được tính như sau:</p>
 <p><strong>MPD = [(t2 – t1) + (t4 – t3)]/2 = [(t2 – t3) + (t4 – t1)]/2</strong></p>
 <p>Offset được tính như sau:</p>
 <p><strong>Offset = t2 - t1 - (previous MPD)</strong></p>
-<p>trong đó <em>previous MPD</em> là giá trị MPD đo được ở chu kỳ trước.</p>
+<p>trong đó <em>previous MPD</em> là giá trị MPD đo được ở chu kỳ trước. Trong <code>ptp4l</code>, MPD được lọc qua bộ lọc trung vị trượt (<code>delay_filter moving_median</code>, độ dài mặc định <code>delay_filter_length 10</code> mẫu) trước khi dùng để tính offset.</p>
+<p>Công thức giả định độ trễ hai chiều bằng nhau. Chênh lệch độ trễ giữa hai chiều (asymmetry) không đo được bằng PTP và trở thành sai số offset cố định bằng một nửa chênh lệch đó. Cơ chế còn lại là peer delay (P2P), trong đó mỗi chặng tự đo độ trễ liên kết bằng Pdelay_Req và Pdelay_Resp; gPTP dùng cơ chế này.</p>
+<h3 id="thang-thoi-gian">Thang thời gian<a class="headerlink" href="#thang-thoi-gian" title="Permanent link">¶</a></h3>
+<p>PTP dùng thang thời gian PTP, có gốc và tốc độ trùng với TAI (International Atomic Time) và không có giây nhuận. Đồng hồ hệ thống Linux (<code>CLOCK_REALTIME</code>) chạy theo UTC. Chênh lệch TAI−UTC bằng 37 giây kể từ ngày 1/1/2017 theo IERS Bulletin C. Khi dùng hardware timestamping, PHC chạy theo thang PTP còn <code>CLOCK_REALTIME</code> chạy theo UTC, và <code>phc2sys</code> chịu trách nhiệm giữ đúng độ lệch này (xem <a href="#phc2sys">phc2sys</a>). Grandmaster thông báo độ lệch trong trường <code>currentUtcOffset</code> của bản tin Announce.</p>
+<h2 id="phc-va-hardware-timestamping">PHC và hardware timestamping<a class="headerlink" href="#phc-va-hardware-timestamping" title="Permanent link">¶</a></h2>
+<h3 id="ptp-hardware-clock">PTP hardware clock<a class="headerlink" href="#ptp-hardware-clock" title="Permanent link">¶</a></h3>
+<p>PHC là bộ đếm thời gian nằm trên NIC (hoặc trên PHY, switch, card thời gian), chạy từ bộ dao động của thiết bị đó. Driver đăng ký PHC với lớp PTP clock của kernel (<code>CONFIG_PTP_1588_CLOCK</code>), và kernel tạo một character device <code>/dev/ptpN</code> cho mỗi PHC. User space mở thiết bị này và dùng file descriptor như một POSIX clock id cho <code>clock_gettime</code>, <code>clock_settime</code>, <code>clock_adjtime</code>, để đọc giờ, đặt giờ, dịch giờ và chỉnh tần số. Các tính năng phụ (ghi timestamp sự kiện ngoài, xuất xung tuần hoàn, cấu hình chân) điều khiển qua ioctl trên cùng thiết bị.</p>
+<p>Thông tin của mỗi PHC nằm trong sysfs dưới <code>/sys/class/ptp/ptpN/</code>:</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Nội dung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>clock_name</code></td>
+<td>Tên PHC do driver đặt</td>
+</tr>
+<tr>
+<td><code>max_adjustment</code></td>
+<td>Mức chỉnh tần số tối đa, đơn vị ppb (parts per billion)</td>
+</tr>
+<tr>
+<td><code>n_external_timestamps</code></td>
+<td>Số kênh ghi timestamp sự kiện ngoài (EXTTS), dùng cho <code>ts2phc</code> nhận 1PPS</td>
+</tr>
+<tr>
+<td><code>n_periodic_outputs</code></td>
+<td>Số kênh xuất xung tuần hoàn (PEROUT), ví dụ xuất 1PPS ra chân SMA</td>
+</tr>
+<tr>
+<td><code>n_pins</code></td>
+<td>Số chân lập trình được; cấu hình từng chân nằm trong thư mục <code>pins/</code></td>
+</tr>
+<tr>
+<td><code>pps_available</code></td>
+<td>PHC có thể cấp sự kiện PPS cho PPS subsystem của kernel hay không</td>
+</tr>
+</tbody>
+</table>
+<p>Cách driver hiện thực PHC (struct <code>ptp_clock_info</code>, các hàm <code>adjfine</code>, <code>adjtime</code>, <code>enable</code>) thuộc tab Linux Kernel, xem <a href="../../../lnx_kernel/kernel_overview/">Kernel Overview</a>.</p>
+<h3 id="hardware-timestamping-va-software-timestamping">Hardware timestamping và software timestamping<a class="headerlink" href="#hardware-timestamping-va-software-timestamping" title="Permanent link">¶</a></h3>
+<p>Timestamp của gói PTP có thể lấy ở hai nơi:</p>
+<table>
+<thead>
+<tr>
+<th>Kiểu</th>
+<th>Nơi lấy timestamp</th>
+<th>Đồng hồ</th>
+<th>Đặc điểm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hardware timestamping</td>
+<td>MAC hoặc PHY, khi gói đi qua cổng</td>
+<td>PHC</td>
+<td>Không chịu độ trễ của network stack và lập lịch CPU; cần NIC và driver hỗ trợ</td>
+</tr>
+<tr>
+<td>Software timestamping</td>
+<td>Driver hoặc network stack</td>
+<td><code>CLOCK_REALTIME</code></td>
+<td>Không cần phần cứng riêng; sai số chịu ảnh hưởng của ngắt, lập lịch và tải CPU</td>
+</tr>
+</tbody>
+</table>
+<p>Ứng dụng yêu cầu timestamp qua socket option <code>SO_TIMESTAMPING</code> (cờ <code>SOF_TIMESTAMPING_RAW_HARDWARE</code> cho timestamp phần cứng). Việc bật timestamp phần cứng trên NIC dùng ioctl <code>SIOCSHWTSTAMP</code>, với kiểu phát (ví dụ <code>HWTSTAMP_TX_ON</code>) và bộ lọc thu (ví dụ <code>HWTSTAMP_FILTER_PTP_V2_EVENT</code>). Kernel mới hơn có thêm giao diện cấu hình qua ethtool netlink (<code>ETHTOOL_MSG_TSCONFIG_SET</code>). <code>ptp4l</code> tự bật timestamp phần cứng khi khởi động, nên thường không cần cấu hình tay; công cụ <code>hwstamp_ctl</code> trong linuxptp dùng khi cần thử riêng bước này.</p>
+<h3 id="kiem-tra-kha-nang-cua-nic">Kiểm tra khả năng của NIC<a class="headerlink" href="#kiem-tra-kha-nang-cua-nic" title="Permanent link">¶</a></h3>
+<p>Trước khi cấu hình PTP, cần xác nhận NIC có hardware timestamping và biết PHC tương ứng với cổng nào:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ethtool<span class="w"> </span>-T<span class="w"> </span>eth0<span class="w">                               </span><span class="c1"># khả năng timestamp và chỉ số PHC của cổng</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>ls<span class="w"> </span>/sys/class/ptp/<span class="w">                            </span><span class="c1"># danh sách PHC: ptp0, ptp1, ...</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>cat<span class="w"> </span>/sys/class/ptp/ptp0/clock_name
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>cat<span class="w"> </span>/sys/class/ptp/ptp0/n_external_timestamps<span class="w"> </span><span class="c1"># &gt; 0 thì nhận được 1PPS từ ngoài</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>phc_ctl<span class="w"> </span>eth0<span class="w"> </span>caps<span class="w">                             </span><span class="c1"># khả năng của PHC gắn với eth0</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>phc_ctl<span class="w"> </span>eth0<span class="w"> </span>cmp<span class="w">                              </span><span class="c1"># so PHC với CLOCK_REALTIME</span>
+</code></pre></div>
+<p>Trong kết quả <code>ethtool -T</code>, cần có <code>hardware-transmit</code>, <code>hardware-receive</code> và <code>hardware-raw-clock</code> trong danh sách khả năng, dòng <code>PTP Hardware Clock</code> cho biết chỉ số N của <code>/dev/ptpN</code>, và các dòng <code>Hardware Transmit Timestamp Modes</code>, <code>Hardware Receive Filter Modes</code> liệt kê chế độ driver hỗ trợ. Nếu chỉ có các khả năng <code>software-*</code>, NIC hoặc driver không hỗ trợ hardware timestamping và <code>ptp4l</code> chỉ chạy được với <code>-S</code>. Nhiều cổng của cùng một NIC có thể dùng chung một PHC. <code>phc_ctl</code> chỉ nên dùng để kiểm tra và debug; khi <code>ptp4l</code> hoặc <code>phc2sys</code> đang chạy, các lệnh <code>set</code>, <code>adj</code>, <code>freq</code> của <code>phc_ctl</code> sẽ tranh quyền điều khiển đồng hồ với chúng.</p>
+<h2 id="cac-cong-cu-cua-linuxptp">Các công cụ của linuxptp<a class="headerlink" href="#cac-cong-cu-cua-linuxptp" title="Permanent link">¶</a></h2>
+<p>linuxptp là hiện thực IEEE 1588 cho Linux do Richard Cochran duy trì. Gói gồm các chương trình sau:</p>
+<table>
+<thead>
+<tr>
+<th>Chương trình</th>
+<th>Vai trò</th>
+<th>Đồng hồ điều khiển</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ptp4l</code></td>
+<td>Chạy giao thức PTP: ordinary clock (OC), boundary clock (BC) hoặc transparent clock (TC)</td>
+<td>PHC của các cổng PTP (hoặc <code>CLOCK_REALTIME</code> khi dùng software timestamping)</td>
+</tr>
+<tr>
+<td><code>phc2sys</code></td>
+<td>Đồng bộ hai hay nhiều đồng hồ trong máy, thường là <code>CLOCK_REALTIME</code> theo PHC</td>
+<td><code>CLOCK_REALTIME</code> hoặc PHC khác</td>
+</tr>
+<tr>
+<td><code>ts2phc</code></td>
+<td>Đồng bộ PHC theo timestamp của tín hiệu ngoài, thường là 1PPS từ GNSS</td>
+<td>PHC</td>
+</tr>
+<tr>
+<td><code>pmc</code></td>
+<td>Client quản lý PTP: gửi lệnh GET, SET, CMD tới <code>ptp4l</code></td>
+<td>Không</td>
+</tr>
+<tr>
+<td><code>phc_ctl</code></td>
+<td>Đọc, đặt, chỉnh trực tiếp một PHC, dùng để debug</td>
+<td>PHC được chỉ định</td>
+</tr>
+<tr>
+<td><code>hwstamp_ctl</code></td>
+<td>Bật hoặc tắt hardware timestamping trên một cổng</td>
+<td>Không</td>
+</tr>
+<tr>
+<td><code>timemaster</code></td>
+<td>Chạy <code>ptp4l</code>, <code>phc2sys</code> cùng chronyd hoặc ntpd theo một file cấu hình chung</td>
+<td>Không trực tiếp</td>
+</tr>
+</tbody>
+</table>
+<p>Hình dưới cho thấy chương trình nào chạy trên từng loại nút. Ở grandmaster, <code>ts2phc</code> khóa PHC theo GNSS và <code>ptp4l</code> phát thời gian từ PHC ra mạng. Ở boundary clock, một <code>ptp4l</code> quản lý nhiều cổng dùng chung một PHC, nhận thời gian ở cổng client và phát lại ở cổng server. Ở ordinary clock chỉ làm client, <code>ptp4l</code> chỉnh PHC theo master. Ở cả ba loại nút, <code>phc2sys</code> đưa thời gian từ PHC sang <code>CLOCK_REALTIME</code> cho ứng dụng.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/linuxptp-node-roles.svg" data-desc-position="bottom"><img alt="linuxptp programs on a grandmaster, a boundary clock and a client-only ordinary clock: ts2phc steers the PHC from GNSS, ptp4l steers the PHC on client ports, phc2sys steers CLOCK_REALTIME from the PHC" src="../img/linuxptp-node-roles.svg"></a></p>
+<h3 id="ptp4l">ptp4l<a class="headerlink" href="#ptp4l" title="Permanent link">¶</a></h3>
+<p><code>ptp4l</code> cần ít nhất một cổng, khai báo bằng <code>-i</code> hoặc bằng một section cổng trong file cấu hình. Các tùy chọn dòng lệnh thường dùng:</p>
+<table>
+<thead>
+<tr>
+<th>Tùy chọn</th>
+<th>Ý nghĩa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-i &lt;ifname&gt;</code></td>
+<td>Cổng PTP, lặp lại được nhiều lần</td>
+</tr>
+<tr>
+<td><code>-f &lt;file&gt;</code></td>
+<td>File cấu hình; mặc định không đọc file nào</td>
+</tr>
+<tr>
+<td><code>-s</code></td>
+<td>Chế độ client-only (<code>clientOnly 1</code>)</td>
+</tr>
+<tr>
+<td><code>-2</code>, <code>-4</code>, <code>-6</code></td>
+<td>Truyền tải IEEE 802.3 (lớp 2), UDP IPv4 (mặc định), UDP IPv6</td>
+</tr>
+<tr>
+<td><code>-E</code>, <code>-P</code>, <code>-A</code></td>
+<td>Cơ chế đo độ trễ E2E (mặc định), P2P, hoặc tự chọn</td>
+</tr>
+<tr>
+<td><code>-H</code>, <code>-S</code></td>
+<td>Hardware timestamping (mặc định), software timestamping</td>
+</tr>
+<tr>
+<td><code>-m</code></td>
+<td>In log ra stdout</td>
+</tr>
+<tr>
+<td><code>-q</code></td>
+<td>Không gửi log vào syslog</td>
+</tr>
+<tr>
+<td><code>-l &lt;level&gt;</code></td>
+<td>Mức log tối đa theo syslog, mặc định 6 (<code>LOG_INFO</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>Mọi tùy chọn trong file cấu hình đều dùng được dưới dạng long option, ví dụ <code>--clientOnly 1</code> hoặc <code>--clientOnly=1</code>. Giá trị trên dòng lệnh ghi đè giá trị trong section <code>[global]</code>.</p>
+<p>File cấu hình chia thành section. Section <code>[global]</code> chứa tùy chọn của chương trình, của đồng hồ và giá trị mặc định cho mọi cổng. Section mang tên cổng (ví dụ <code>[eth0]</code>) ghi đè tùy chọn cổng cho riêng cổng đó; một section cổng rỗng tương đương với <code>-i eth0</code>. Section <code>[unicast_master_table]</code> khai báo danh sách master cho chế độ unicast. Các file mẫu nằm trong thư mục <code>configs/</code> của mã nguồn (<code>default.cfg</code> liệt kê mọi tùy chọn với giá trị mặc định, cùng các file cho G.8275.1, G.8275.2, G.8265.1, gPTP, transparent clock); vị trí cài đặt của các file này tùy bản phân phối.</p>
+<p>Các tùy chọn cấu hình thường phải chỉnh:</p>
+<table>
+<thead>
+<tr>
+<th>Tùy chọn</th>
+<th>Mặc định</th>
+<th>Ý nghĩa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>domainNumber</code></td>
+<td>0</td>
+<td>Domain PTP; mọi nút trong cùng miền đồng bộ phải giống nhau</td>
+</tr>
+<tr>
+<td><code>network_transport</code></td>
+<td><code>UDPv4</code></td>
+<td><code>UDPv4</code>, <code>UDPv6</code> hoặc <code>L2</code></td>
+</tr>
+<tr>
+<td><code>delay_mechanism</code></td>
+<td><code>E2E</code></td>
+<td><code>E2E</code>, <code>P2P</code>, <code>Auto</code>, <code>COMMON_P2P</code>, <code>NONE</code></td>
+</tr>
+<tr>
+<td><code>time_stamping</code></td>
+<td><code>hardware</code></td>
+<td><code>hardware</code>, <code>software</code>, <code>legacy</code>, <code>onestep</code>, <code>p2p1step</code></td>
+</tr>
+<tr>
+<td><code>logSyncInterval</code></td>
+<td>0</td>
+<td>Chu kỳ Sync, lũy thừa của 2 tính bằng giây (−4 là 16 bản tin mỗi giây)</td>
+</tr>
+<tr>
+<td><code>clientOnly</code>, <code>serverOnly</code></td>
+<td>0</td>
+<td>Không bao giờ làm master, hoặc cổng không bao giờ vào trạng thái client</td>
+</tr>
+<tr>
+<td><code>priority1</code>, <code>clockClass</code></td>
+<td>128, 248</td>
+<td>Thuộc tính đồng hồ dùng trong thuật toán chọn master (BMCA)</td>
+</tr>
+<tr>
+<td><code>dataset_comparison</code></td>
+<td><code>ieee1588</code></td>
+<td><code>G.8275.x</code> để dùng BMCA của telecom profile</td>
+</tr>
+<tr>
+<td><code>clock_servo</code></td>
+<td><code>pi</code></td>
+<td><code>pi</code>, <code>linreg</code>, <code>ntpshm</code>, <code>refclock_sock</code>, <code>nullf</code></td>
+</tr>
+<tr>
+<td><code>step_threshold</code></td>
+<td>0.0</td>
+<td>Offset (giây) lớn hơn ngưỡng này thì nhảy đồng hồ thay vì chỉnh tần số; 0.0 là chỉ nhảy lúc khởi động</td>
+</tr>
+<tr>
+<td><code>first_step_threshold</code></td>
+<td>0.00002</td>
+<td>Ngưỡng nhảy đồng hồ ở lần cập nhật đầu tiên (20 µs)</td>
+</tr>
+<tr>
+<td><code>tx_timestamp_timeout</code></td>
+<td>10</td>
+<td>Thời gian chờ (ms) timestamp phát từ kernel</td>
+</tr>
+<tr>
+<td><code>summary_interval</code></td>
+<td>0</td>
+<td>Chu kỳ in thống kê, lũy thừa của 2 tính bằng giây</td>
+</tr>
+<tr>
+<td><code>delayAsymmetry</code></td>
+<td>0</td>
+<td>Bù chênh lệch độ trễ hai chiều (ns)</td>
+</tr>
+<tr>
+<td><code>egressLatency</code>, <code>ingressLatency</code></td>
+<td>0</td>
+<td>Bù độ lệch giữa điểm lấy timestamp và điểm tham chiếu của cổng (ns)</td>
+</tr>
+<tr>
+<td><code>boundary_clock_jbod</code></td>
+<td>0</td>
+<td>Cho phép boundary clock dùng nhiều PHC không chung nhau; khi đó cần <code>phc2sys -a</code> đồng bộ các PHC</td>
+</tr>
+</tbody>
+</table>
+<p>Ví dụ một thiết bị đầu cuối (ordinary clock, client-only) theo profile G.8275.1, dùng file mẫu trong mã nguồn:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ptp4l<span class="w"> </span>-f<span class="w"> </span>configs/G.8275.1.cfg<span class="w"> </span>-i<span class="w"> </span>eth0<span class="w"> </span>-s<span class="w"> </span>-m
+</code></pre></div>
+<p>Ví dụ boundary clock với hai cổng của cùng một NIC. Mọi cổng khai báo bằng <code>-i</code> hoặc trong file cấu hình phải gắn với cùng một PHC, trừ khi bật <code>boundary_clock_jbod</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ptp4l<span class="w"> </span>-f<span class="w"> </span>configs/G.8275.1.cfg<span class="w"> </span>-i<span class="w"> </span>eth0<span class="w"> </span>-i<span class="w"> </span>eth1<span class="w"> </span>-m
+</code></pre></div>
+<h3 id="phc2sys">phc2sys<a class="headerlink" href="#phc2sys" title="Permanent link">¶</a></h3>
+<p><code>phc2sys</code> có hai cách dùng. Ở chế độ tự động (<code>-a</code>), chương trình hỏi <code>ptp4l</code> đang chạy để biết các đồng hồ cần đồng bộ và tự đổi chiều đồng bộ khi trạng thái cổng thay đổi. Ở chế độ thủ công, nguồn chỉ định bằng <code>-s</code> và đích bằng <code>-c</code> (mặc định là <code>CLOCK_REALTIME</code>).</p>
+<table>
+<thead>
+<tr>
+<th>Tùy chọn</th>
+<th>Ý nghĩa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-a</code></td>
+<td>Lấy danh sách đồng hồ từ <code>ptp4l</code>, theo dõi trạng thái cổng</td>
+</tr>
+<tr>
+<td><code>-r</code></td>
+<td>Dùng với <code>-a</code>: đồng bộ cả <code>CLOCK_REALTIME</code>; ghi <code>-rr</code> để <code>CLOCK_REALTIME</code> cũng được làm nguồn khi máy là grandmaster</td>
+</tr>
+<tr>
+<td><code>-s &lt;dev&gt;</code></td>
+<td>Đồng hồ nguồn: <code>/dev/ptpN</code>, tên cổng hoặc <code>CLOCK_REALTIME</code></td>
+</tr>
+<tr>
+<td><code>-c &lt;dev&gt;</code></td>
+<td>Đồng hồ đích, mặc định <code>CLOCK_REALTIME</code></td>
+</tr>
+<tr>
+<td><code>-w</code></td>
+<td>Chờ <code>ptp4l</code> đồng bộ xong; nếu không có <code>-O</code> thì lấy độ lệch UTC từ <code>ptp4l</code></td>
+</tr>
+<tr>
+<td><code>-O &lt;offset&gt;</code></td>
+<td>Độ lệch giữa đích và nguồn (giây), dùng khi không chờ <code>ptp4l</code></td>
+</tr>
+<tr>
+<td><code>-R &lt;rate&gt;</code></td>
+<td>Số lần cập nhật đích mỗi giây, mặc định 1</td>
+</tr>
+<tr>
+<td><code>-N &lt;num&gt;</code></td>
+<td>Số lần đọc nguồn cho mỗi lần cập nhật, chỉ dùng lần đọc nhanh nhất, mặc định 5</td>
+</tr>
+<tr>
+<td><code>-u &lt;num&gt;</code></td>
+<td>In thống kê sau mỗi <code>num</code> lần cập nhật thay vì in từng mẫu</td>
+</tr>
+<tr>
+<td><code>-n &lt;domain&gt;</code></td>
+<td>Domain của <code>ptp4l</code>, cần khi <code>ptp4l</code> không chạy ở domain 0</td>
+</tr>
+</tbody>
+</table>
+<p>Các cách dùng thường gặp, theo phần EXAMPLES của man page:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>phc2sys<span class="w"> </span>-a<span class="w"> </span>-r<span class="w">                          </span><span class="c1"># tự động, đồng bộ CLOCK_REALTIME theo master từ xa</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>phc2sys<span class="w"> </span>-s<span class="w"> </span>eth0<span class="w"> </span>-w<span class="w"> </span>-m<span class="w">                  </span><span class="c1"># client: CLOCK_REALTIME theo PHC của eth0, lấy độ lệch UTC từ ptp4l</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>phc2sys<span class="w"> </span>-s<span class="w"> </span>eth0<span class="w"> </span>-O<span class="w"> </span>-37<span class="w">                 </span><span class="c1"># như trên nhưng tự khai độ lệch, không chờ ptp4l</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>phc2sys<span class="w"> </span>-s<span class="w"> </span>CLOCK_REALTIME<span class="w"> </span>-c<span class="w"> </span>eth0<span class="w"> </span>-w<span class="w">   </span><span class="c1"># máy là grandmaster, PHC theo CLOCK_REALTIME</span>
+</code></pre></div>
+<p>Với profile dùng domain khác 0 (G.8275.1 dùng domain 24), <code>phc2sys -w</code> hoặc <code>-a</code> cần thêm <code>-n 24</code> để giao tiếp được với <code>ptp4l</code>. Man page khuyến nghị dùng file cấu hình riêng cho <code>ptp4l</code> và <code>phc2sys</code>, vì tùy chọn chung của hai chương trình đặt trong một file sẽ áp dụng cho cả hai.</p>
+<p>Không nên để <code>phc2sys</code> và một chương trình khác (chronyd, ntpd, systemd-timesyncd) cùng chỉnh <code>CLOCK_REALTIME</code>. Khi tần số của đồng hồ bị thay đổi ngoài ý muốn giữa hai lần cập nhật, linuxptp in cảnh báo <code>clockcheck: clock frequency changed unexpectedly!</code> và reset servo. Nếu cần kết hợp PTP với NTP, dùng <code>timemaster</code>, hoặc cho chronyd đọc PHC làm reference clock như ở trang <a href="../../../virtualization/realtime/vran/#ptp-qua-vf">vRAN trên VM</a>.</p>
+<h3 id="ts2phc">ts2phc<a class="headerlink" href="#ts2phc" title="Permanent link">¶</a></h3>
+<p><code>ts2phc</code> đồng bộ một hoặc nhiều PHC theo tín hiệu timestamp từ ngoài. PHC phải có kênh EXTTS (<code>n_external_timestamps</code> lớn hơn 0) và chân nối với tín hiệu 1PPS. Nguồn thời gian trong ngày (time of day, ToD) chọn bằng <code>-s</code> hoặc <code>ts2phc.tod_source</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Nguồn</th>
+<th>Ý nghĩa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>generic</code></td>
+<td>1PPS từ ngoài, không có thông tin ToD; giây lấy từ <code>CLOCK_REALTIME</code></td>
+</tr>
+<tr>
+<td><code>nmea</code></td>
+<td>1PPS từ bộ thu GNSS, ToD lấy từ câu NMEA RMC qua cổng serial hoặc qua mạng</td>
+</tr>
+<tr>
+<td>PHC (<code>/dev/ptpN</code> hoặc tên cổng)</td>
+<td>Một PHC khác làm nguồn, PHC đó xuất 1PPS qua kênh PEROUT</td>
+</tr>
+</tbody>
+</table>
+<p>Ví dụ cấu hình cho grandmaster lấy 1PPS từ module GNSS vào chân SDP0 của NIC và ToD qua UART, dựa trên <code>configs/ts2phc-generic.cfg</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">[global]</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="na">use_syslog              0</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="na">verbose                 1</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="na">logging_level           6</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="na">ts2phc.tod_source       nmea</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="na">ts2phc.nmea_serialport  /dev/ttyS1</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="na">ts2phc.nmea_baudrate    9600</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="na">ts2phc.pulsewidth       100000000</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="na">leapfile                /usr/share/zoneinfo/leap-seconds.list</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="k">[eth0]</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="na">ts2phc.pin_index        0</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="na">ts2phc.channel          0</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="na">ts2phc.extts_polarity   rising</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ts2phc<span class="w"> </span>-f<span class="w"> </span>ts2phc-gnss.cfg<span class="w"> </span>-m
+</code></pre></div>
+<p>Các tùy chọn trong ví dụ:</p>
+<ul>
+<li><code>ts2phc.pulsewidth</code> là độ rộng xung PPS (ns), mặc định 500000000. Giá trị phải khớp với cấu hình của bộ thu GNSS.</li>
+<li><code>ts2phc.extts_polarity</code> chọn cạnh lấy timestamp: <code>rising</code> (mặc định), <code>falling</code> hoặc <code>both</code>. Một số PHC luôn ghi cả hai cạnh (file mẫu ghi ví dụ Intel i210); khi đó đặt <code>both</code> và đặt đúng <code>ts2phc.pulsewidth</code> để <code>ts2phc</code> loại cạnh không dùng.</li>
+<li><code>ts2phc.pin_index</code> và <code>ts2phc.channel</code> chọn chân và kênh EXTTS của PHC, mặc định cùng là 0. Số chân và chức năng của chúng phụ thuộc NIC.</li>
+<li><code>leapfile</code> trỏ tới bảng giây nhuận; nếu không đặt, <code>ts2phc</code> dùng bảng cố định tại thời điểm phát hành linuxptp.</li>
+<li><code>ts2phc.extts_correction</code> (ns) bù độ trễ cố định của đường PPS, ví dụ do cáp.</li>
+</ul>
+<p><code>ts2phc</code> có tùy chọn <code>ts2phc.holdover</code> (giây): khi mất ToD, chương trình được tiếp tục đồng bộ PHC theo PPS trong khoảng thời gian này, với điều kiện servo đang ở trạng thái <code>SERVO_LOCKED_STABLE</code>. Trạng thái này chỉ có khi đặt <code>servo_offset_threshold</code> khác 0. Holdover của <code>ts2phc</code> không dùng được với <code>-a</code> và với <code>ts2phc.extts_polarity both</code>.</p>
+<p>Trình tự trên grandmaster:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>ts2phc<span class="w"> </span>-f<span class="w"> </span>ts2phc-gnss.cfg<span class="w"> </span>-m<span class="w">                    </span><span class="c1"># PHC của eth0 theo GNSS</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>ptp4l<span class="w"> </span>-f<span class="w"> </span>gm.cfg<span class="w"> </span>-i<span class="w"> </span>eth0<span class="w"> </span>-m<span class="w">                      </span><span class="c1"># phát PTP từ PHC ra mạng</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>phc2sys<span class="w"> </span>-s<span class="w"> </span>eth0<span class="w"> </span>-w<span class="w"> </span>-m<span class="w">                           </span><span class="c1"># CLOCK_REALTIME theo PHC (tùy chọn)</span>
+</code></pre></div>
+<p>trong đó <code>gm.cfg</code> là file profile (ví dụ <code>G.8275.1.cfg</code>) cộng các thuộc tính của grandmaster như <code>serverOnly 1</code> và <code>clockClass</code>. Giá trị <code>clockClass</code> trong file cấu hình là tĩnh; khi cần đổi lúc chạy (ví dụ khi GNSS mất khóa) thì dùng <code>pmc</code> với <code>SET GRANDMASTER_SETTINGS_NP</code>. Phần nối module GNSS, kiểm tra PPS bằng <code>ppstest</code> và chia sẻ dữ liệu NMEA với <code>gpsd</code> nằm ở trang <a href="../../gnss/gnss-linux/">GNSS trên Linux</a>. <code>ts2phc</code> và <code>gpsd</code> không nên cùng mở một cổng UART của module GNSS.</p>
+<div class="admonition todo">
+<p class="admonition-title">Chưa kiểm chứng</p>
+<p>Chưa kiểm chứng: trong linuxptp v4.4, <code>ts2phc</code> có tự cập nhật <code>clockClass</code> của <code>ptp4l</code> theo trạng thái khóa GNSS hay không. Theo mã nguồn đã đọc, <code>GRANDMASTER_SETTINGS_NP</code> chỉ được đổi qua bản tin quản lý, nên trên thiết bị thật cần một tiến trình giám sát GNSS gọi <code>pmc</code>. Giá trị <code>clockClass</code> cho từng trạng thái (khóa, holdover, free-run) cần đối chiếu với bảng trong ITU-T G.8275.1.</p>
+</div>
+<h3 id="pmc">pmc<a class="headerlink" href="#pmc" title="Permanent link">¶</a></h3>
+<p><code>pmc</code> gửi bản tin quản lý PTP. Với <code>-u</code>, <code>pmc</code> dùng Unix domain socket để giao tiếp với <code>ptp4l</code> trên cùng máy (mặc định <code>/var/run/ptp4l</code>); <code>-b 0</code> đặt boundary hops bằng 0 để chỉ <code>ptp4l</code> cục bộ trả lời. <code>ptp4l</code> bỏ qua bản tin có domain khác domain của nó, nên với G.8275.1 cần thêm <code>-d 24</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>pmc<span class="w"> </span>-u<span class="w"> </span>-b<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="s1">'GET CURRENT_DATA_SET'</span><span class="w">      </span><span class="c1"># stepsRemoved, offsetFromMaster, meanPathDelay</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>pmc<span class="w"> </span>-u<span class="w"> </span>-b<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="s1">'GET PARENT_DATA_SET'</span><span class="w">       </span><span class="c1"># master đang theo và grandmaster</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>pmc<span class="w"> </span>-u<span class="w"> </span>-b<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="s1">'GET TIME_STATUS_NP'</span><span class="w">        </span><span class="c1"># master_offset, gmPresent, gmIdentity</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>pmc<span class="w"> </span>-u<span class="w"> </span>-b<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="s1">'GET PORT_DATA_SET'</span><span class="w">         </span><span class="c1"># trạng thái từng cổng (portState)</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>pmc<span class="w"> </span>-u<span class="w"> </span>-b<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="s1">'GET TIME_PROPERTIES_DATA_SET'</span><span class="w">  </span><span class="c1"># currentUtcOffset, cờ traceable</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>pmc<span class="w"> </span>-u<span class="w"> </span>-b<span class="w"> </span><span class="m">0</span><span class="w"> </span>-d<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="s1">'GET TIME_STATUS_NP'</span><span class="w">  </span><span class="c1"># khi ptp4l chạy domain 24 (G.8275.1)</span>
+</code></pre></div>
+<p>Đổi thuộc tính grandmaster lúc chạy cần đủ 11 trường theo đúng thứ tự:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>pmc<span class="w"> </span>-u<span class="w"> </span>-b<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="s1">'SET GRANDMASTER_SETTINGS_NP clockClass 6 clockAccuracy 0x21 offsetScaledLogVariance 0x4e5d currentUtcOffset 37 leap61 0 leap59 0 currentUtcOffsetValid 1 ptpTimescale 1 timeTraceable 1 frequencyTraceable 1 timeSource 0x20'</span>
+</code></pre></div>
+<p>Các giá trị <code>clockAccuracy</code>, <code>offsetScaledLogVariance</code>, <code>timeSource</code> trong ví dụ chỉ để minh họa cú pháp; giá trị đúng cho từng trạng thái lấy theo IEEE 1588 và profile đang dùng. Lệnh <code>help</code> trong <code>pmc</code> liệt kê các management ID được hỗ trợ. Có thể mở socket chỉ đọc <code>/var/run/ptp4lro</code> (<code>-s /var/run/ptp4lro</code>) cho chương trình giám sát, socket này chỉ nhận lệnh GET.</p>
+<h2 id="oc-log-va-cac-chi-so">Đọc log và các chỉ số<a class="headerlink" href="#oc-log-va-cac-chi-so" title="Permanent link">¶</a></h2>
+<h3 id="trang-thai-cong">Trạng thái cổng<a class="headerlink" href="#trang-thai-cong" title="Permanent link">¶</a></h3>
+<p>Mỗi lần cổng đổi trạng thái, <code>ptp4l</code> in một dòng ở mức <code>LOG_NOTICE</code> theo dạng <code>port N (ifname): &lt;trạng thái cũ&gt; to &lt;trạng thái mới&gt; on &lt;sự kiện&gt;</code>. Trình tự thường gặp ở một client:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ptp4l[1201.512]: port 1 (eth0): INITIALIZING to LISTENING on INIT_COMPLETE
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>ptp4l[1202.350]: port 1 (eth0): new foreign master 001122.fffe.334455-1
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>ptp4l[1206.351]: selected best master clock 001122.fffe.334455
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>ptp4l[1206.351]: port 1 (eth0): LISTENING to UNCALIBRATED on RS_SLAVE
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>ptp4l[1208.102]: port 1 (eth0): UNCALIBRATED to SLAVE on MASTER_CLOCK_SELECTED
+</code></pre></div>
+<p>Số trong ngoặc vuông là thời gian <code>CLOCK_MONOTONIC</code> (giây) lúc in log. Các thời gian và clock identity trong ví dụ là giá trị minh họa; định dạng dòng lấy từ mã nguồn <code>port.c</code> và <code>clock.c</code>. Cổng ở <code>UNCALIBRATED</code> khi đã chọn được master nhưng servo chưa khóa, và chuyển sang <code>SLAVE</code> khi servo khóa. Ở grandmaster, log có dòng <code>selected local clock ... as best master</code> và <code>assuming the grand master role</code>, sau đó cổng chuyển sang <code>MASTER</code>. Trạng thái <code>FAULTY</code> kèm loại lỗi trong ngoặc đơn cho biết cổng gặp lỗi, thường là lỗi timestamp hoặc mất liên kết.</p>
+<h3 id="offset-tan-so-va-path-delay">Offset, tần số và path delay<a class="headerlink" href="#offset-tan-so-va-path-delay" title="Permanent link">¶</a></h3>
+<p>Mỗi lần cập nhật đồng hồ, <code>ptp4l</code> in một dòng:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>ptp4l[1210.104]: master offset         -3 s2 freq   +1532 path delay       512
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Trường</th>
+<th>Ý nghĩa</th>
+<th>Đơn vị</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>master offset</code></td>
+<td>Offset của đồng hồ cục bộ so với master, đo ở lần cập nhật này</td>
+<td>ns</td>
+</tr>
+<tr>
+<td><code>s0</code>, <code>s1</code>, <code>s2</code>, <code>s3</code></td>
+<td>Trạng thái servo: 0 chưa khóa (<code>SERVO_UNLOCKED</code>), 1 đang nhảy đồng hồ (<code>SERVO_JUMP</code>), 2 đã khóa (<code>SERVO_LOCKED</code>), 3 đã khóa ổn định (<code>SERVO_LOCKED_STABLE</code>, chỉ có khi đặt <code>servo_offset_threshold</code>)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>freq</code></td>
+<td>Lượng chỉnh tần số đang áp cho đồng hồ</td>
+<td>ppb</td>
+</tr>
+<tr>
+<td><code>path delay</code></td>
+<td>MPD sau bộ lọc</td>
+<td>ns</td>
+</tr>
+</tbody>
+</table>
+<p>Khi một khoảng <code>summary_interval</code> chứa nhiều hơn một lần cập nhật, <code>ptp4l</code> in thống kê thay cho từng mẫu:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>ptp4l[1226.104]: rms    4 max   11 freq  +1530 +/-   6 delay   512 +/-   2
+</code></pre></div>
+<p>trong đó <code>rms</code> và <code>max</code> là trung bình bình phương và giá trị tuyệt đối lớn nhất của offset, <code>freq</code> là trung bình và độ lệch chuẩn của lượng chỉnh tần số, <code>delay</code> là trung bình và độ lệch chuẩn của path delay. Với G.8275.1 (<code>logSyncInterval -4</code>, 16 lần cập nhật mỗi giây) và <code>summary_interval</code> mặc định 0 (1 giây), log luôn ở dạng thống kê này. <code>phc2sys</code> in theo định dạng tương tự: <code>&lt;đích&gt; &lt;nguồn&gt; offset &lt;ns&gt; s&lt;N&gt; freq &lt;ppb&gt; delay &lt;ns&gt;</code>, trong đó <code>delay</code> là thời gian đọc đồng hồ nguồn. <code>ts2phc</code> in <code>&lt;PHC&gt; offset &lt;ns&gt; s&lt;N&gt; freq &lt;ppb&gt;</code>.</p>
+<p>Cách đọc các chỉ số:</p>
+<ul>
+<li><strong>Offset</strong> sau khi khóa dao động quanh 0. Biên độ phụ thuộc chất lượng timestamp, số chặng và nhiễu trên đường truyền. Offset bằng 0 không chứng minh thời gian đúng, vì sai số do asymmetry không xuất hiện trong offset.</li>
+<li><strong><code>freq</code></strong> phản ánh độ lệch tần số giữa bộ dao động cục bộ và master. Giá trị ổn định là bình thường; giá trị dao động mạnh theo nhiệt độ cho thấy chất lượng bộ dao động, xem <a href="../../oscillator/oscillator/#lien-he-voi-linux">Thạch anh và bộ dao động</a>.</li>
+<li><strong><code>path delay</code></strong> phải gần như không đổi trên một đường truyền cố định. Path delay nhảy hoặc có độ lệch chuẩn lớn thường do switch không hỗ trợ PTP trên đường, hoặc do tải mạng.</li>
+<li><strong>Servo về <code>s0</code> hoặc <code>s1</code></strong> khi đang chạy cho thấy đồng hồ bị reset hoặc offset vượt <code>step_threshold</code>.</li>
+</ul>
+<p>Log của <code>ptp4l</code> chỉ cho biết PHC so với master. Để biết thời gian ứng dụng thấy, cần xem thêm log của <code>phc2sys</code> (offset <code>CLOCK_REALTIME</code> so với PHC) hoặc đo bằng thiết bị ngoài, ví dụ so sánh 1PPS xuất từ PHC với 1PPS tham chiếu trên máy hiện sóng.</p>
+<h2 id="chon-profile">Chọn profile<a class="headerlink" href="#chon-profile" title="Permanent link">¶</a></h2>
+<p>Profile được chọn theo yêu cầu của mạng và của thiết bị ở đầu bên kia, không theo thiết bị Linux. Thiết bị phải dùng đúng domain, phương thức truyền tải và cơ chế đo độ trễ như master. Bảng dưới tóm tắt các giá trị trong file mẫu của linuxptp v4.4:</p>
+<table>
+<thead>
+<tr>
+<th>Profile</th>
+<th>File mẫu</th>
+<th>Truyền tải</th>
+<th>Domain</th>
+<th>Đặc điểm cấu hình</th>
+<th>Ứng dụng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mặc định IEEE 1588</td>
+<td><code>default.cfg</code></td>
+<td>UDPv4 multicast</td>
+<td>0</td>
+<td>E2E, Sync mỗi giây, BMCA của IEEE 1588</td>
+<td>Mạng LAN, đo lường, thử nghiệm</td>
+</tr>
+<tr>
+<td>ITU-T G.8275.1</td>
+<td><code>G.8275.1.cfg</code></td>
+<td>L2 multicast, MAC đích <code>01:80:C2:00:00:0E</code></td>
+<td>24</td>
+<td><code>dataset_comparison G.8275.x</code>, Sync 16 lần mỗi giây (<code>logSyncInterval -4</code>), Announce 8 lần mỗi giây</td>
+<td>Đồng bộ pha cho viễn thông với mọi nút hỗ trợ PTP, fronthaul 5G</td>
+</tr>
+<tr>
+<td>ITU-T G.8275.2</td>
+<td><code>G.8275.2.cfg</code></td>
+<td>UDP unicast</td>
+<td>44</td>
+<td><code>dataset_comparison G.8275.x</code>, <code>unicast_listen 1</code>, <code>hybrid_e2e 1</code></td>
+<td>Đồng bộ pha qua mạng IP có nút không hỗ trợ PTP</td>
+</tr>
+<tr>
+<td>ITU-T G.8265.1</td>
+<td><code>G.8265.1.cfg</code></td>
+<td>UDP unicast</td>
+<td>4</td>
+<td><code>unicast_listen 1</code>, <code>hybrid_e2e 1</code></td>
+<td>Chỉ đồng bộ tần số</td>
+</tr>
+<tr>
+<td>gPTP (IEEE 802.1AS)</td>
+<td><code>gPTP.cfg</code></td>
+<td>L2</td>
+<td>0</td>
+<td>P2P, <code>transportSpecific 0x1</code>, <code>neighborPropDelayThresh 800</code></td>
+<td>TSN, ô tô, audio/video</td>
+</tr>
+</tbody>
+</table>
+<p>Các lưu ý khi chọn:</p>
+<ul>
+<li>File mẫu G.8275.2 và G.8265.1 cấu hình phía nhận yêu cầu unicast (<code>unicast_listen</code>). Client unicast cần thêm bảng <code>[unicast_master_table]</code> trỏ tới địa chỉ master, xem <code>configs/UNICAST-SLAVE.cfg</code>.</li>
+<li>G.8275.1 dùng địa chỉ multicast lớp 2 không được switch thông thường chuyển tiếp (<code>01:80:C2:00:00:0E</code>), nên mọi switch trên đường phải là boundary clock hoặc transparent clock. Ý nghĩa của full và partial on-path support ở góc độ mạng nằm ở trang <a href="../../../wireless/sync/sync/#telecom-profile-cua-ptp">Đồng bộ trong RAN</a>.</li>
+<li>Khi cấu hình theo profile, nên giữ nguyên file mẫu và chỉ ghi đè các tùy chọn của thiết bị (cổng, <code>clientOnly</code>, <code>serverOnly</code>, <code>clockClass</code>) bằng section cổng hoặc long option, để dễ so sánh với file gốc khi nâng cấp linuxptp.</li>
+<li>O-RAN fronthaul quy định cấu hình đồng bộ LLS-C1 đến LLS-C4 quyết định thiết bị là master hay client, xem <a href="../../../wireless/sync/sync/#cau-hinh-ong-bo-trong-o-ran">Đồng bộ trong RAN</a>.</li>
+</ul>
+<h2 id="loi-thuong-gap">Lỗi thường gặp<a class="headerlink" href="#loi-thuong-gap" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Hiện tượng</th>
+<th>Nguyên nhân thường gặp</th>
+<th>Cách xử lý</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ptp4l</code> báo không lấy được hardware timestamp hoặc không tìm thấy PHC khi khởi động</td>
+<td>NIC hoặc driver không hỗ trợ hardware timestamping, kernel thiếu <code>CONFIG_PTP_1588_CLOCK</code>, cổng là interface ảo (bridge, VLAN, bond)</td>
+<td>Kiểm tra <code>ethtool -T</code>; chạy <code>ptp4l</code> trên interface vật lý; VF của SR-IOV xem <a href="../../../virtualization/realtime/vran/#ptp-qua-vf">vRAN trên VM</a></td>
+</tr>
+<tr>
+<td><code>timed out while polling for tx timestamp</code></td>
+<td>Driver trả timestamp phát chậm hơn <code>tx_timestamp_timeout</code>, hoặc kworker xử lý timestamp bị đói CPU</td>
+<td>Tăng <code>tx_timestamp_timeout</code>; theo man page, có thể tăng độ ưu tiên kworker <code>ptpN</code> (với Intel E810 là <code>ice-ptp</code>) bằng <code>chrt</code>; man page cũng lưu ý nguyên nhân thường là lỗi driver</td>
+</tr>
+<tr>
+<td>Cổng đứng ở <code>LISTENING</code></td>
+<td>Không nhận được Announce: sai domain, sai transport (L2 so với UDP), sai MAC đích, VLAN, switch chặn multicast</td>
+<td>So cấu hình với master; bắt gói bằng <code>tcpdump -i eth0 ether proto 0x88f7</code> (L2) hoặc <code>udp port 319 or udp port 320</code> (UDP)</td>
+</tr>
+<tr>
+<td>Cổng chuyển qua lại giữa <code>UNCALIBRATED</code>, <code>SLAVE</code> và <code>LISTENING</code></td>
+<td>Mất Announce liên tục (<code>announceReceiptTimeout</code>), nhiều master cạnh tranh, cấu hình BMCA không nhất quán</td>
+<td>Kiểm tra <code>pmc 'GET PARENT_DATA_SET'</code>, <code>priority1</code>, <code>clockClass</code> của các master</td>
+</tr>
+<tr>
+<td>Servo liên tục về <code>s0</code>, <code>s1</code>, offset lớn</td>
+<td>Chương trình khác cùng chỉnh đồng hồ, <code>step_threshold</code> quá nhỏ, đồng hồ bị đặt giờ từ ngoài</td>
+<td>Đảm bảo chỉ một chương trình chỉnh mỗi đồng hồ; xem cảnh báo <code>clockcheck</code> trong log</td>
+</tr>
+<tr>
+<td><code>CLOCK_REALTIME</code> lệch đúng 37 giây (hoặc một số nguyên giây)</td>
+<td><code>phc2sys</code> chạy không có <code>-w</code> và không có <code>-O</code>, hoặc grandmaster thông báo sai <code>currentUtcOffset</code></td>
+<td>Dùng <code>phc2sys -w</code> (thêm <code>-n &lt;domain&gt;</code> khi cần); kiểm tra <code>pmc 'GET TIME_PROPERTIES_DATA_SET'</code></td>
+</tr>
+<tr>
+<td><code>phc2sys -w</code> chờ mãi</td>
+<td><code>ptp4l</code> chạy domain khác 0 hoặc dùng socket khác mặc định</td>
+<td>Thêm <code>-n &lt;domain&gt;</code>, <code>-z &lt;uds-address&gt;</code> cho khớp với <code>ptp4l</code></td>
+</tr>
+<tr>
+<td>Offset ổn định nhưng đo bằng thiết bị ngoài thấy lệch cố định</td>
+<td>Asymmetry của đường truyền, độ trễ cố định giữa điểm timestamp và đầu nối</td>
+<td>Bù bằng <code>delayAsymmetry</code>, <code>egressLatency</code>, <code>ingressLatency</code> sau khi đo</td>
+</tr>
+<tr>
+<td><code>ts2phc</code> không nhận PPS</td>
+<td>Chân hoặc kênh EXTTS sai, sai cạnh, module GNSS chưa có fix nên chưa xuất PPS</td>
+<td>Kiểm tra <code>n_external_timestamps</code>, <code>ts2phc.pin_index</code>, <code>ts2phc.extts_polarity</code>; xác nhận PPS bằng máy hiện sóng</td>
+</tr>
+</tbody>
+</table>
 <h2 id="lien-quan">Liên quan<a class="headerlink" href="#lien-quan" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="../../../wireless/baseband/du-cu-architecture/#phan-mem-he-thong-tren-du">Kiến trúc DU và CU</a> (Wireless): <code>ptp4l</code>, <code>phc2sys</code> trong phần mềm hệ thống của DU.</li>
 <li><a href="../../../wireless/ru/ru-architecture/#phan-mem-nhung-tren-ru">Kiến trúc Radio Unit</a> (Wireless): RU là PTP client trên mạng fronthaul.</li>
 <li><a href="../../../virtualization/realtime/vran/#ptp-qua-vf">vRAN trên VM</a>: chạy PTP với VF SR-IOV trong guest KVM (<code>ptp4l</code> phía host, <code>ptp_kvm</code>, hoặc passthrough cả NIC).</li>
 <li><a href="../../dpll/dpll/">DPLL và đồng bộ mạng</a>: DPLL trên NIC quyết định PHC và clock PHY khóa vào nguồn nào, DPLL subsystem của Linux.</li>
+<li><a href="../../../wireless/sync/sync/">Đồng bộ trong RAN</a> (Wireless): yêu cầu đồng bộ, các thành phần PRTC, T-GM, T-BC, T-TSC, telecom profile và cấu hình LLS.</li>
+<li><a href="../../../wireless/ieee/ieee/">IEEE</a> (Wireless): IEEE 1588 trong bối cảnh các chuẩn của IEEE cho RAN.</li>
+<li><a href="../../gnss/gnss-linux/">GNSS trên Linux</a>: nối module GNSS, PPS trong kernel, nguồn 1PPS cho <code>ts2phc</code>.</li>
+<li><a href="../../oscillator/oscillator/">Thạch anh và bộ dao động</a>: bộ dao động của PHC, ý nghĩa cột <code>freq</code> và holdover.</li>
 </ul>
 <h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="https://ieeexplore.ieee.org/document/9120376">1588-2019 - IEEE Standard for a Precision Clock Synchronization Protocol for Networked Measurement and Control Systems</a></li>
+<li><a href="https://linuxptp.sourceforge.net/">The Linux PTP Project</a>: trang chủ của linuxptp.</li>
+<li><a href="https://github.com/richardcochran/linuxptp/tree/v4.4">linuxptp v4.4, mã nguồn</a>: man page <code>ptp4l.8</code>, <code>phc2sys.8</code>, <code>ts2phc.8</code>, <code>pmc.8</code>, <code>phc_ctl.8</code> và thư mục <code>configs/</code> (bản sao trên GitHub của kho chính tại <code>git.code.sf.net/p/linuxptp/code</code>).</li>
+<li><a href="https://docs.kernel.org/driver-api/ptp.html">Kernel docs: PTP hardware clock infrastructure for Linux</a></li>
+<li><a href="https://docs.kernel.org/networking/timestamping.html">Kernel docs: Timestamping</a>: <code>SO_TIMESTAMPING</code>, <code>SIOCSHWTSTAMP</code>, cấu hình qua ethtool netlink.</li>
+<li><a href="https://github.com/torvalds/linux/blob/master/Documentation/ABI/testing/sysfs-ptp">Kernel ABI: sysfs-ptp</a>: các file trong <code>/sys/class/ptp/</code>.</li>
+<li><a href="https://man7.org/linux/man-pages/man8/ethtool.8.html">ethtool(8)</a>: tùy chọn <code>-T</code>, <code>--show-time-stamping</code>.</li>
+<li><a href="https://hpiers.obspm.fr/iers/bul/bulc/bulletinc.dat">IERS Bulletin C</a>: giá trị TAI−UTC hiện hành.</li>
+<li><a href="https://www.itu.int/rec/T-REC-G/en">ITU-T Recommendations, series G</a>: G.8260, G.8261 đến G.8266, G.8271 đến G.8275.2 (cấu trúc họ chuẩn trong hình ở mục IEEE 1588 và profile).</li>
 </ul>
 
 
@@ -15450,7 +16422,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 17, 2026 05:47:30 UTC">November 17, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 19, 2026 23:40:36 UTC">November 19, 2026</span>
   </span>
 
     
