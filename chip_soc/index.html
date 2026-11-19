@@ -15698,6 +15698,7 @@
 </ul>
 <p>Khi CPU, bộ nhớ, lưu trữ và I/O đã rõ, nhóm cuối của Computer Architecture ghép chúng thành một chip.</p>
 <h3 id="soc-va-ac-ta-he-thong">SoC và đặc tả hệ thống<a class="headerlink" href="#soc-va-ac-ta-he-thong" title="Permanent link">¶</a></h3>
+<p>SoC ghép CPU core, bộ nhớ và ngoại vi thành một chip qua interconnect. Trang tổng quan trình bày các khối chung, hai trang sau đi sâu vào một khối (DMA controller) và một bộ yêu cầu mức SoC (đặc tả RISC-V Server SoC).</p>
 <ul>
 <li><a href="../computer_arch/soc/soc/">SoC / System</a>: các khối của SoC, interconnect và bus, interrupt controller, IOMMU và DMA, boot flow.</li>
 <li><a href="../computer_arch/soc/dma/">DMA Controller</a>: các khối bên trong DMA controller, descriptor và scatter-gather, giao dịch AXI, cache coherency, ví dụ PL330, AXI DMA, ZynqMP.</li>
@@ -15712,16 +15713,20 @@
 </ul>
 <p>RTL được đưa lên FPGA để chạy thử trên phần cứng thật.</p>
 <h3 id="fpga">FPGA<a class="headerlink" href="#fpga" title="Permanent link">¶</a></h3>
+<p>FPGA là nền tảng để chạy RTL trên phần cứng thật mà không cần chế tạo chip: tài nguyên của FPGA, flow từ RTL đến bitstream, và IP core có sẵn của nhà sản xuất.</p>
 <ul>
 <li><a href="../ic_design/fpga/fpga/">FPGA</a>: tài nguyên (LUT, flip-flop, BRAM, DSP, clocking), flow Vivado từ RTL đến bitstream, constraint, debug bằng ILA và VIO.</li>
 <li><a href="../ic_design/fpga/x_ipcore/xipcore/">Xilinx IPCore</a>: ghi chú về IP core của Xilinx, hiện có phần Clocking Wizard.</li>
 </ul>
 <p>Thiết kế trên FPGA chỉ dùng được khi đạt yêu cầu timing, việc của phần tiếp theo.</p>
 <h3 id="phan-tich-timing">Phân tích timing<a class="headerlink" href="#phan-tich-timing" title="Permanent link">¶</a></h3>
+<p>Phân tích timing tĩnh kiểm tra mọi đường tín hiệu giữa các flip-flop có đáp ứng ràng buộc setup và hold ở tần số clock mong muốn hay không, mà không cần mô phỏng.</p>
 <ul>
 <li><a href="../ic_design/timing_analysis/timing_analysis/">Static Timing Analysis</a>: kiến thức nền về STA (setup, hold) và cách áp dụng với Vivado.</li>
 </ul>
+<p>Đạt timing mới chỉ cho biết thiết kế đủ nhanh; nhóm cuối kiểm tra thiết kế có làm đúng chức năng hay không.</p>
 <h3 id="verification">Verification<a class="headerlink" href="#verification" title="Permanent link">¶</a></h3>
+<p>Kiểm chứng (verification) chứng minh RTL làm đúng đặc tả, từ testbench mô phỏng tới phương pháp hình thức (formal).</p>
 <ul>
 <li><a href="../ic_design/verification/verification/">Verification</a>: các cấp kiểm chứng, testbench, constrained-random và coverage, UVM, assertion và formal, kiểm chứng cùng firmware.</li>
 </ul>
@@ -15754,7 +15759,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 18, 2026 06:22:39 UTC">November 18, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 19, 2026 23:29:58 UTC">November 19, 2026</span>
   </span>
 
     
