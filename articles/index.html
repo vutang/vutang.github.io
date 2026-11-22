@@ -15414,7 +15414,7 @@
           
           <li class="md-meta__item">
             
-              22 min read
+              24 min read
             
           </li>
         
@@ -15426,7 +15426,7 @@
   <div class="md-post__content md-typeset">
     <h2 id="ai-that-su-ieu-khien-xung-nhip-cpu-tren-raspberry-pi-3b-o-bang-soak-test"><a class="toclink" href="2026/11/22/pi3b-cpu-clock-throttling/">Ai thật sự điều khiển xung nhịp CPU trên Raspberry Pi 3B: đo bằng soak test</a></h2>
 <p><img alt="Raspberry Pi 3B clock throttling" class="article-cover" src="img/cover-pi3b-cpu-clock-throttling.svg"></p>
-<p>Trên Raspberry Pi 3 Model B, <code>cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq</code> có thể trả về 1 200 000 kHz trong khi lõi ARM đang chạy ở 600 MHz. Hai con số không mâu thuẫn: con số thứ nhất là mức xung Linux <em>yêu cầu</em>, con số thứ hai là mức firmware VideoCore <em>cho phép</em>. Bài viết trình bày đường điều khiển xung nhịp trên Pi 3B theo mã nguồn kernel 6.18 và tài liệu Raspberry Pi, rồi dùng dữ liệu một soak test 4 chu kỳ (16,7 giờ, 21–22/11/2026) để định lượng: firmware ép hạ xung bao lâu, ép xuống mức nào, và hiệu năng mất bao nhiêu khi nguồn cấp bị sụt áp.</p>
+<p>Trên Raspberry Pi 3 Model B, <code>cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq</code> có thể trả về 1 200 000 kHz trong khi lõi ARM đang chạy ở 600 MHz. Hai con số không mâu thuẫn: con số thứ nhất là mức xung Linux <em>yêu cầu</em>, con số thứ hai là mức firmware VideoCore <em>cho phép</em>. Bài viết trình bày đường điều khiển xung nhịp trên Pi 3B theo mã nguồn kernel 6.18 và tài liệu Raspberry Pi, rồi dùng dữ liệu một soak test gồm 4 chu kỳ tải (cửa sổ đo 16,7 giờ, 21–22/11/2026) để định lượng: firmware ép hạ xung bao lâu, ép xuống mức nào, và hiệu năng mất bao nhiêu khi nguồn cấp bị sụt áp.</p>
 
     
       <nav class="md-post__action">

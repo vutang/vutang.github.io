@@ -15332,6 +15332,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#oi-chieu-hai-nguon-mau-5-giay-va-log-kernel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Đối chiếu hai nguồn: mẫu 5 giây và log kernel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#theo-tung-nac-va-tung-chu-ky" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -15365,10 +15376,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#so-sanh-chieu-toi-va-em" class="md-nav__link">
+  <a href="#so-sanh-theo-thoi-iem-trong-ngay" class="md-nav__link">
     <span class="md-ellipsis">
       
-        So sánh chiều tối và đêm
+        So sánh theo thời điểm trong ngày
       
     </span>
   </a>
@@ -15380,17 +15391,6 @@
     <span class="md-ellipsis">
       
         Hiệu năng mất đi
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#oi-chieu-hai-nguon-mau-5-giay-va-log-kernel" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Đối chiếu hai nguồn: mẫu 5 giây và log kernel
       
     </span>
   </a>
@@ -15414,10 +15414,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#bai-hoc-ve-nguon-cho-pi-3b" class="md-nav__link">
+  <a href="#bai-hoc-rut-ra" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Bài học về nguồn cho Pi 3B
+        Bài học rút ra
       
     </span>
   </a>
@@ -15536,7 +15536,7 @@
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"></path></svg>
                           <span class="md-ellipsis">
                             
-                              22 min read
+                              24 min read
                             
                           </span>
                         </div>
@@ -15680,10 +15680,10 @@
 
 <h1 id="ai-that-su-ieu-khien-xung-nhip-cpu-tren-raspberry-pi-3b-o-bang-soak-test">Ai thật sự điều khiển xung nhịp CPU trên Raspberry Pi 3B: đo bằng soak test<a class="headerlink" href="#ai-that-su-ieu-khien-xung-nhip-cpu-tren-raspberry-pi-3b-o-bang-soak-test" title="Permanent link">¶</a></h1>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../img/cover-pi3b-cpu-clock-throttling.svg" data-desc-position="bottom"><img alt="Raspberry Pi 3B clock throttling" class="article-cover" src="../../../../img/cover-pi3b-cpu-clock-throttling.svg"></a></p>
-<p>Trên Raspberry Pi 3 Model B, <code>cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq</code> có thể trả về 1 200 000 kHz trong khi lõi ARM đang chạy ở 600 MHz. Hai con số không mâu thuẫn: con số thứ nhất là mức xung Linux <em>yêu cầu</em>, con số thứ hai là mức firmware VideoCore <em>cho phép</em>. Bài viết trình bày đường điều khiển xung nhịp trên Pi 3B theo mã nguồn kernel 6.18 và tài liệu Raspberry Pi, rồi dùng dữ liệu một soak test 4 chu kỳ (16,7 giờ, 21–22/11/2026) để định lượng: firmware ép hạ xung bao lâu, ép xuống mức nào, và hiệu năng mất bao nhiêu khi nguồn cấp bị sụt áp.</p>
+<p>Trên Raspberry Pi 3 Model B, <code>cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq</code> có thể trả về 1 200 000 kHz trong khi lõi ARM đang chạy ở 600 MHz. Hai con số không mâu thuẫn: con số thứ nhất là mức xung Linux <em>yêu cầu</em>, con số thứ hai là mức firmware VideoCore <em>cho phép</em>. Bài viết trình bày đường điều khiển xung nhịp trên Pi 3B theo mã nguồn kernel 6.18 và tài liệu Raspberry Pi, rồi dùng dữ liệu một soak test gồm 4 chu kỳ tải (cửa sổ đo 16,7 giờ, 21–22/11/2026) để định lượng: firmware ép hạ xung bao lâu, ép xuống mức nào, và hiệu năng mất bao nhiêu khi nguồn cấp bị sụt áp.</p>
 <!-- more -->
 
-<p>Thứ tự trình bày: đường điều khiển (firmware và kernel), các nguyên nhân ép hạ xung và thanh ghi <code>get_throttled</code>, phương pháp đo, kết quả, giới hạn của phép đo và bài học về nguồn.</p>
+<p>Thứ tự trình bày: đường điều khiển (firmware và kernel), các mức xung và điện áp mặc định, các nguyên nhân ép hạ xung và thanh ghi <code>get_throttled</code>, phương pháp đo, kết quả, giới hạn của phép đo, bài học rút ra và kết luận.</p>
 <h2 id="quyen-quyet-inh-xung-nhip">Quyền quyết định xung nhịp<a class="headerlink" href="#quyen-quyet-inh-xung-nhip" title="Permanent link">¶</a></h2>
 <h3 id="firmware-so-huu-pll-cua-loi-arm">Firmware sở hữu PLL của lõi ARM<a class="headerlink" href="#firmware-so-huu-pll-cua-loi-arm" title="Permanent link">¶</a></h3>
 <p>Trên các SoC BCM283x, xung ARM được tạo từ PLLB. Kernel không ghi trực tiếp vào thanh ghi của PLLB mà gửi yêu cầu qua giao diện mailbox tới firmware chạy trên VideoCore. Lý do được ghi ngay trong phần đầu file <code>drivers/clk/bcm/clk-raspberrypi.c</code>: firmware "sở hữu" PLLB, và nếu kernel tự đổi thanh ghi thì có thể tranh chấp với cơ chế bảo vệ quá nhiệt và sụt áp của firmware (<a href="https://github.com/raspberrypi/linux/blob/rpi-6.18.y/drivers/clk/bcm/clk-raspberrypi.c">clk-raspberrypi.c, nhánh rpi-6.18.y</a>). Một chú thích khác trong cùng file nói rõ firmware là bên cuối cùng xử lý tình huống quá nhiệt/sụt áp, nên kernel phải đi qua firmware để không "đổi tần số sau lưng" firmware.</p>
@@ -15760,7 +15760,7 @@
 </tbody>
 </table>
 <p>Nguồn: <a href="https://www.raspberrypi.com/documentation/computers/config_txt.html#overclocking-options">Raspberry Pi Documentation – config.txt, Overclocking options</a>; cột máy đo lấy từ <code>clock-snapshot-start.txt</code> (21/11/2026 15:26:28, firmware build 14/09/2026, version <code>a86983925695a7e63166327d7c002d64040ed31d</code>).</p>
-<p>Theo cùng tài liệu, firmware dùng Adaptive Voltage Scaling để chọn điện áp trong khoảng từ <code>over_voltage_min</code> đến <code>over_voltage</code>; mặc định firmware nâng clock lên mức tối đa khi lõi ARM bận và hạ xuống mức tối thiểu khi lõi ARM rảnh. Cũng theo tài liệu này, thay đổi firmware tháng 11/2024 đặt <code>initial_turbo</code> mặc định là 60 và chuyển governor mặc định từ <code>powersave</code> sang <code>ondemand</code> (<a href="https://www.raspberrypi.com/documentation/computers/config_txt.html#overclocking-options">config.txt, initial_turbo</a>).</p>
+<p>Theo cùng tài liệu, firmware dùng Adaptive Voltage Scaling để chọn điện áp trong khoảng từ <code>over_voltage_min</code> đến <code>over_voltage</code>; mặc định firmware nâng clock lên mức tối đa khi lõi ARM bận và hạ xuống mức tối thiểu khi lõi ARM rảnh. Cũng theo tài liệu này, từ tháng 11/2024 <code>initial_turbo</code> mặc định là 60 và governor cpufreq mặc định chuyển từ <code>powersave</code> sang <code>ondemand</code> (<a href="https://www.raspberrypi.com/documentation/computers/config_txt.html#overclocking-options">config.txt, initial_turbo</a>).</p>
 <p>Dòng <code>over_voltage_avs=0x186a0</code> (100 000) trong cấu hình máy đo chưa tìm được tài liệu mô tả; tác giả đoán là độ lệch điện áp tính bằng µV do firmware tính, chưa kiểm chứng.</p>
 <h2 id="cac-nguyen-nhan-ep-ha-xung-va-thanh-ghi-get_throttled">Các nguyên nhân ép hạ xung và thanh ghi <code>get_throttled</code><a class="headerlink" href="#cac-nguyen-nhan-ep-ha-xung-va-thanh-ghi-get_throttled" title="Permanent link">¶</a></h2>
 <h3 id="sut-ap">Sụt áp<a class="headerlink" href="#sut-ap" title="Permanent link">¶</a></h3>
@@ -15769,7 +15769,7 @@
 <ul>
 <li>mỗi dòng <code>Undervoltage detected!</code> là <em>một đợt</em> sụt áp (có thể gồm nhiều lần sụt áp ngắn liên tiếp), không phải một lần sụt áp;</li>
 <li>độ phân giải thời gian của log là 2 giây;</li>
-<li>thời lượng tính từ <code>detected</code> đến <code>normalised</code> dài hơn thời lượng sụt áp thật khoảng 2 giây trung bình, do bit sticky của chu kỳ cuối vẫn còn ở lần đọc tiếp theo (nhận định của tác giả, suy ra từ mã nguồn).</li>
+<li>theo mô hình đơn giản suy ra từ mã nguồn, thời lượng tính từ <code>detected</code> đến <code>normalised</code> dài hơn thời lượng sụt áp thật khoảng 2 giây trung bình, do bit sticky của khoảng đọc cuối vẫn còn ở lần đọc tiếp theo (nhận định của tác giả). Dữ liệu đo không hoàn toàn khớp với mô hình này, xem mục đối chiếu hai nguồn ở phần kết quả.</li>
 </ul>
 <p>Driver xin xoá bit sticky, trong khi <code>vcgencmd get_throttled</code> trên máy đo vẫn giữ <code>0x50000</code> suốt bài test. Cơ chế firmware giữ trạng thái sticky riêng cho từng bên đọc chưa được tác giả kiểm chứng.</p>
 <h3 id="nhiet">Nhiệt<a class="headerlink" href="#nhiet" title="Permanent link">¶</a></h3>
@@ -15881,6 +15881,7 @@
 </tbody>
 </table>
 <p>Log Monit chỉ ghi khi trạng thái đổi hoặc khi kiểm tra thất bại, không ghi mọi lần kiểm tra, nên không dùng để tính tỷ lệ thời gian.</p>
+<p>Tỷ lệ thời gian bị ép xung được ước lượng bằng tỷ lệ mẫu 5 giây có xung kernel yêu cầu 1 200 MHz nhưng xung đo được 600 MHz, ghi trong các bảng là "% mẫu req 1200 / act 600". Log kernel dùng để đếm số đợt sụt áp ("đợt/giờ"). Quan hệ giữa hai nguồn này được đối chiếu ở đầu phần kết quả.</p>
 <p>Chỉ số hiệu năng là <strong>bogo-ops trên mỗi giây CPU</strong> (<code>bogo ops/s (usr+sys time)</code>) của worker <code>cpu</code>. Chỉ số này chuẩn hoá theo thời gian CPU thực sự dùng, nên không phụ thuộc mức <code>--cpu-load</code>; nếu xung ARM giảm một nửa trong một phần thời gian, số ops trên mỗi giây CPU giảm tương ứng.</p>
 <h2 id="ket-qua">Kết quả<a class="headerlink" href="#ket-qua" title="Permanent link">¶</a></h2>
 <h3 id="trang-thai-may-khi-bi-ep-xung">Trạng thái máy khi bị ép xung<a class="headerlink" href="#trang-thai-may-khi-bi-ep-xung" title="Permanent link">¶</a></h3>
@@ -15941,6 +15942,21 @@
 </ul>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../img/pi3b-throttle-zoom.png" data-desc-position="bottom"><img alt="Six minutes of 5-second samples: actual ARM clock, core clock and core voltage drop together to 600 MHz, 250 MHz and 1.20 V while the requested clock stays at 1200 MHz; shaded bands are kernel undervoltage episodes" src="../../../../img/pi3b-throttle-zoom.png"></a></p>
 <p><em>Hình 2. Sáu phút trong nấc C2 "30%" (21/11/2026 22:37–22:43). Xung ARM thực tế, xung core và điện áp core cùng giảm trong các mẫu bị ép; xung kernel yêu cầu giữ 1 200 MHz. Vùng tô là các đợt sụt áp theo log kernel. Nguồn: <code>pilog.txt</code>, <code>uv-events.txt</code>.</em></p>
+<h3 id="oi-chieu-hai-nguon-mau-5-giay-va-log-kernel">Đối chiếu hai nguồn: mẫu 5 giây và log kernel<a class="headerlink" href="#oi-chieu-hai-nguon-mau-5-giay-va-log-kernel" title="Permanent link">¶</a></h3>
+<p>Các bảng tiếp theo dùng hai đại lượng từ hai nguồn khác nhau: tỷ lệ mẫu bị ép (từ <code>pilog</code>) và số đợt sụt áp (từ log kernel). Mục này đối chiếu hai nguồn trước khi dùng chúng.</p>
+<p>File <code>uv-events.txt</code> có 1 468 cặp <code>detected</code>/<code>normalised</code> từ 21/11 14:34:20 đến 22/11 08:09:01. Trong đó 78 đợt xảy ra trước khi khởi động lại bài test lúc 15:26:47, khi chạy các lệnh stress-ng thử, và không được tính; 1 390 đợt còn lại nằm trong cửa sổ đo. Trong cùng cửa sổ, 1 094 mẫu 5 giây (9,2%) có bit 0 (sụt áp) bật.</p>
+<ul>
+<li>Thời lượng đợt theo log: trung vị 6 s, phân vị 90% là 10 s, dài nhất 31 s, ngắn nhất 4 s; khoảng cách trung vị giữa hai đợt là 21 s.</li>
+<li>Tất cả 1 094 mẫu có bit 0 bật đều nằm trong một đợt sụt áp của log kernel (dung sai ±2 s).</li>
+<li>Ngược lại, chỉ 69% trong 1 390 đợt có ít nhất một mẫu 5 giây bắt được; tỷ lệ này là 66% với các đợt ≤ 6 s, 79% với các đợt 6–10 s và 90% với các đợt 10–20 s. Lấy mẫu 5 giây bỏ sót khoảng 1/3 số đợt, chủ yếu là đợt ngắn, nên số đợt/giờ trong các bảng lấy từ log kernel.</li>
+<li>Trong một số đợt dài trên Hình 2, các mẫu 5 giây lại cho thấy máy chạy 1 200 MHz. Cách giải thích phù hợp với mã nguồn hwmon là một "đợt" trong log có thể gồm nhiều lần sụt áp ngắn cách nhau dưới 2 s, không phải sụt áp liên tục (nhận định của tác giả).</li>
+<li>Tổng thời lượng các đợt theo log là 2,34 giờ, tức 14,0% cửa sổ đo, cao hơn tỷ lệ 9,2% tính từ mẫu. Nếu trừ 2 s cho mỗi đợt theo mô hình ở phần sụt áp, tổng còn khoảng 1,57 giờ (9,4%), gần với tỷ lệ từ mẫu.</li>
+</ul>
+<p>Sự trùng khớp ở gạch đầu dòng cuối chưa đủ để xác nhận mô hình 2 s. Theo mô hình đó, một lần sụt áp rất ngắn sẽ tạo một đợt dài 2 s trong log (bit sticky bật ở một lần đọc, xoá ở lần đọc kế tiếp), nhưng trong 1 390 đợt không có đợt nào ngắn hơn 4 s. Vì vậy độ lệch thật giữa log và thời gian sụt áp chưa xác định được, và bài viết dùng tỷ lệ mẫu 5 giây làm thước đo chính cho thời gian bị ép xung.</p>
+<div class="admonition todo">
+<p class="admonition-title">Chưa kiểm chứng</p>
+<p>Nguyên nhân không có đợt nào ngắn hơn 4 s trong log: firmware có thể giữ bit sticky lâu hơn một khoảng đọc (chú thích trong <code>raspberrypi-hwmon.c</code> có nhắc tới "sticky shift" 100 ms), hoặc cách tính thời lượng trong <code>uv-events.txt</code> có sai lệch. Cần đối chiếu bằng cách đọc <code>get_throttled</code> với chu kỳ ngắn hơn 2 s trong lúc driver hwmon đang chạy.</p>
+</div>
 <h3 id="theo-tung-nac-va-tung-chu-ky">Theo từng nấc và từng chu kỳ<a class="headerlink" href="#theo-tung-nac-va-tung-chu-ky" title="Permanent link">¶</a></h3>
 <table>
 <thead>
@@ -16225,7 +16241,7 @@
 <p>Các điểm chính:</p>
 <ul>
 <li>Sụt áp xảy ra ngay ở nấc nhẹ nhất (≈1,4 nhân): trung bình 78,9 đợt/giờ, 8,1% thời gian chạy ở 600 MHz.</li>
-<li>Tỷ lệ ép xung tăng theo tải thật: 8,1% → 13,9% → 14,9%. Từ ≈1,8 lên ≈2,2 nhân, mức tăng nhỏ (1 điểm phần trăm) so với chênh lệch giữa hai chu kỳ của cùng một nấc (tới 3,3 điểm).</li>
+<li>Tỷ lệ ép xung tăng rõ từ ≈1,4 lên ≈1,8 nhân (8,1% → 13,9%). Từ ≈1,8 lên ≈2,2 nhân, tỷ lệ chỉ tăng 1 điểm phần trăm (lên 14,9%), nhỏ hơn chênh lệch giữa hai chu kỳ của cùng một nấc (tới 3,3 điểm), và số đợt/giờ không tăng (123,0 so với 120,0). Với 4 chu kỳ, dữ liệu không phân biệt được hai nấc này.</li>
 <li>Trong 4 chu kỳ đủ, log kernel ghi 1 363 đợt sụt áp trong 14,0 giờ có tải (97 đợt/giờ) và 4 đợt trong 2,0 giờ nghỉ.</li>
 <li>Trong các nấc có tải, governor không yêu cầu 600 MHz lần nào (0% mẫu <code>req=600</code>), nên toàn bộ thời gian ở 600 MHz khi có tải là do firmware.</li>
 <li>Nhiệt cao nhất 73,6 °C, thấp hơn ngưỡng 80 °C khoảng 6 °C; không có dữ liệu về throttle do nhiệt. Guard không can thiệp: giá trị lớn nhất là 38 đợt/10 phút (22/11 01:17, ngưỡng 60) và 73 °C (ngưỡng 75).</li>
@@ -16234,7 +16250,7 @@
 <p><em>Hình 4. Tỷ lệ mẫu có xung yêu cầu 1 200 MHz nhưng xung thực tế 600 MHz: cột là trung bình 4 chu kỳ, chấm là từng chu kỳ. Nguồn: <code>pilog.txt</code>.</em></p>
 <h3 id="co-tai-va-khong-tai">Có tải và không tải<a class="headerlink" href="#co-tai-va-khong-tai" title="Permanent link">¶</a></h3>
 <p>Sau khi dừng tải lúc 07:44:30 ngày 22/11, <code>pilog</code> ghi thêm 26 phút (đến 08:10:26) làm mốc. Trong khoảng này log kernel có 6 đợt sụt áp: 5 đợt trong 5 phút đầu (07:44:50–07:49:34) và 1 đợt lúc 08:09:01. Governor vẫn yêu cầu 1 200 MHz trong 53 / 307 mẫu (17%), và 5 trong số đó bị ép về 600 MHz. Đợt lúc 08:09:01 xảy ra gần thời điểm chạy lệnh xuất dữ liệu (khoảng 08:10); mối liên hệ này chưa kiểm chứng.</p>
-<p>Tóm lại: khi có tải, sụt áp xảy ra 79–123 đợt/giờ; khi nghỉ giữa các chu kỳ còn 2 đợt/giờ; sau khi dừng test còn 13,9 đợt/giờ, chủ yếu trong vài phút đầu. Sụt áp gắn với dòng tiêu thụ khi CPU chạy ở 1 200 MHz, không phải trạng thái thường trực của nguồn (nhận định của tác giả, suy ra từ số liệu trên, chưa đo dòng trực tiếp).</p>
+<p>Tóm lại: khi có tải, sụt áp xảy ra 79–123 đợt/giờ; khi nghỉ giữa các chu kỳ còn 2 đợt/giờ; sau khi dừng test còn 13,9 đợt/giờ, chủ yếu trong vài phút đầu. Nhiều khả năng sụt áp gắn với dòng tiêu thụ khi có tải, không phải trạng thái thường trực của nguồn (nhận định của tác giả, chưa đo dòng trực tiếp). Số liệu không tách được ảnh hưởng của tải với ảnh hưởng của mức xung, vì khi có tải governor luôn yêu cầu 1 200 MHz. Năm đợt trong 5 phút đầu sau khi dừng test chưa được giải thích; trong khoảng này governor vẫn yêu cầu 1 200 MHz ở một phần mẫu, cho thấy máy vẫn còn hoạt động nào đó, nhưng hoạt động cụ thể không được ghi lại.</p>
 <h3 id="time_in_state-so-voi-xung-o-uoc"><code>time_in_state</code> so với xung đo được<a class="headerlink" href="#time_in_state-so-voi-xung-o-uoc" title="Permanent link">¶</a></h3>
 <p>Hai bản chụp <code>time_in_state</code> (21/11 15:26:28 và 22/11 08:10:26) cho phép tính thời gian kernel ghi nhận ở từng mức trong 16,73 giờ. So với <code>pilog</code> trong cùng khoảng:</p>
 <table>
@@ -16264,8 +16280,8 @@
 </tbody>
 </table>
 <p>Nguồn: <code>clock-snapshot-start.txt</code>, <code>clock-snapshot-end.txt</code>, <code>pilog.txt</code>. Các mức 700–1 100 MHz chiếm dưới 1% và không đưa vào bảng.</p>
-<p><code>time_in_state</code> khớp với xung kernel yêu cầu trong khoảng 0,6 điểm phần trăm và đánh giá cao thời gian ở 1 200 MHz khoảng 9,3 điểm so với xung thực tế, xấp xỉ tỷ lệ mẫu bị ép (9,2%). Số liệu này xác nhận nhận định ở phần đầu bài: thống kê cpufreq không thấy việc firmware ép xung.</p>
-<h3 id="so-sanh-chieu-toi-va-em">So sánh chiều tối và đêm<a class="headerlink" href="#so-sanh-chieu-toi-va-em" title="Permanent link">¶</a></h3>
+<p><code>time_in_state</code> khớp với xung kernel yêu cầu trong khoảng 0,6 điểm phần trăm và đánh giá cao thời gian ở 1 200 MHz khoảng 9,3 điểm so với xung thực tế, xấp xỉ tỷ lệ mẫu có bit sụt áp (9,2%, xem mục đối chiếu hai nguồn). Số liệu này xác nhận nhận định ở phần đầu bài: thống kê cpufreq không thấy việc firmware ép xung.</p>
+<h3 id="so-sanh-theo-thoi-iem-trong-ngay">So sánh theo thời điểm trong ngày<a class="headerlink" href="#so-sanh-theo-thoi-iem-trong-ngay" title="Permanent link">¶</a></h3>
 <p>Chu kỳ 1 chạy chiều tối (15:26–19:26), chu kỳ 2–4 chạy đêm (19:26–07:26); không có dữ liệu ban ngày. Tỷ lệ ép xung theo chu kỳ:</p>
 <table>
 <thead>
@@ -16302,7 +16318,7 @@
 </tbody>
 </table>
 <p>Nguồn: bảng theo nấc ở trên (% mẫu req 1200 / act 600).</p>
-<p>Ở nấc "20%" và "30%", chu kỳ 3–4 (sau 01:26) cao hơn chu kỳ 1–2 khoảng 1–3 điểm, trong khi nhiệt trung bình thấp hơn khoảng 1 °C. Nấc "10%" không có xu hướng tương tự. Với 4 chu kỳ, chưa đủ để kết luận có khác biệt theo giờ (nhận định của tác giả). Giả thuyết điện áp lưới thay đổi theo giờ ảnh hưởng tới củ sạc chưa kiểm chứng.</p>
+<p>Vì chỉ chu kỳ 1 chạy chiều tối, so sánh dưới đây chia theo nửa đầu (chu kỳ 1–2, 15:26–23:26) và nửa sau (chu kỳ 3–4, 23:26–07:26) của cửa sổ đo. Ở nấc "20%" và "30%", chu kỳ 3–4 cao hơn chu kỳ 1–2 từ 0,2 đến 3,3 điểm, trong khi nhiệt trung bình thấp hơn khoảng 0,5–1 °C. Nấc "10%" không có xu hướng tương tự. Với 4 chu kỳ, chưa đủ để kết luận có khác biệt theo giờ (nhận định của tác giả). Giả thuyết điện áp lưới thay đổi theo giờ ảnh hưởng tới củ sạc chưa kiểm chứng.</p>
 <h3 id="hieu-nang-mat-i">Hiệu năng mất đi<a class="headerlink" href="#hieu-nang-mat-i" title="Permanent link">¶</a></h3>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../img/pi3b-perf-vs-throttle.svg" data-desc-position="bottom"><img alt="Bogo-ops per CPU second versus share of throttled samples for 12 load steps, with a linear regression line and a dashed half-speed model line, both decreasing" src="../../../../img/pi3b-perf-vs-throttle.svg"></a></p>
 <p><em>Hình 5. Mỗi điểm là một nấc tải đủ thời lượng (12 nấc, 4 chu kỳ). Đường liền: hồi quy tuyến tính. Đường đứt: mô hình "phần thời gian ở 600 MHz cho một nửa số ops". Nguồn: <code>soak-steps-metrics.txt</code>, <code>pilog.txt</code>.</em></p>
@@ -16310,7 +16326,7 @@
 <div class="arithmatex">\[
 \text{ops/giây CPU} \approx 282{,}3 - 125{,}3\, f \qquad (R^2 = 0{,}87)
 \]</div>
-<p>Hệ số góc chia cho hệ số chặn bằng 0,44: khi bị ép toàn thời gian, hiệu năng còn khoảng 56%, gần mức 50% kỳ vọng khi xung giảm từ 1 200 xuống 600 MHz. Mô hình nửa tốc độ (đường đứt) cho mức không bị ép khoảng 284,3 ops/giây CPU.</p>
+<p>Hệ số góc chia cho hệ số chặn bằng 0,44: nếu kéo đường hồi quy tới f = 1 (bị ép toàn thời gian), hiệu năng còn khoảng 56%, gần mức 50% kỳ vọng khi xung giảm từ 1 200 xuống 600 MHz. Vì f trong dữ liệu chỉ nằm trong khoảng 6,8–15,8%, con số 56% là ngoại suy xa và chỉ dùng để kiểm tra rằng mô hình nửa tốc độ hợp lý, không phải số đo. Mô hình nửa tốc độ (đường đứt) cho mức không bị ép khoảng 284,3 ops/giây CPU.</p>
 <p>Lấy mức không bị ép trong khoảng 282–284 ops/giây CPU (hai ước tính trên, chưa đo trực tiếp với nguồn tốt), mức hiệu năng mất theo nấc là:</p>
 <table>
 <thead>
@@ -16345,42 +16361,27 @@
 <p>Nguồn: tính từ bảng trên. Các con số này là ước lượng; mức hiệu năng khi không bị ép cần được đo trực tiếp với nguồn không sụt áp.</p>
 <p>Giữa nấc "20%" và "30%", trung bình 4 chu kỳ chỉ chênh 0,3% (264,72 so với 263,83), phù hợp với tỷ lệ ép xung của hai nấc chỉ chênh 1 điểm. Chu kỳ 2 là trường hợp lệch nhất: nấc "30%" thấp hơn nấc "20%" 2,3% (260,10 so với 266,34), nên không thể rút ra kết luận về hai nấc này từ một chu kỳ riêng lẻ.</p>
 <p>Worker <code>vm</code> (ràng buộc bởi băng thông bộ nhớ) cho 10 879–11 417 ops/giây CPU, không có xu hướng rõ theo tỷ lệ ép xung; chỉ số này không dùng để đánh giá ảnh hưởng của xung ARM.</p>
-<h3 id="oi-chieu-hai-nguon-mau-5-giay-va-log-kernel">Đối chiếu hai nguồn: mẫu 5 giây và log kernel<a class="headerlink" href="#oi-chieu-hai-nguon-mau-5-giay-va-log-kernel" title="Permanent link">¶</a></h3>
-<ul>
-<li>Tất cả 1 094 mẫu có bit 0 bật đều nằm trong một đợt sụt áp của log kernel (dung sai ±2 s).</li>
-<li>Ngược lại, chỉ 69% trong 1 390 đợt có ít nhất một mẫu 5 giây bắt được; tỷ lệ này là 66% với các đợt ≤ 6 s, 79% với các đợt 6–10 s và 90% với các đợt 10–20 s. Lấy mẫu 5 giây bỏ sót khoảng 1/3 số đợt, chủ yếu là đợt ngắn.</li>
-<li>Thời lượng đợt theo log: trung vị 6 s, phân vị 90% là 10 s, dài nhất 31 s, ngắn nhất 4 s; khoảng cách trung vị giữa hai đợt là 21 s.</li>
-<li>Tổng thời lượng các đợt theo log là 2,34 giờ, tức 14,0% cửa sổ đo, cao hơn 9,2% tính từ mẫu 5 giây. Nếu trừ khoảng 2 s sai lệch hệ thống cho mỗi đợt (xem phần sụt áp ở trên), tổng còn khoảng 1,57 giờ, tức 9,4%, gần với tỷ lệ từ mẫu (ước tính của tác giả).</li>
-<li>Trong một số đợt dài trên Hình 2, các mẫu 5 giây lại cho thấy máy chạy 1 200 MHz. Cách giải thích phù hợp với mã nguồn hwmon là một "đợt" trong log có thể gồm nhiều lần sụt áp ngắn cách nhau dưới 2 s, không phải sụt áp liên tục (nhận định của tác giả).</li>
-</ul>
-<p>File <code>uv-events.txt</code> có 1 468 cặp <code>detected</code>/<code>normalised</code> từ 21/11 14:34:20 đến 22/11 08:09:01 (trung bình 83,5 đợt/giờ trên toàn khoảng, tính cả nghỉ). Trong đó 78 đợt xảy ra trước khi khởi động lại bài test lúc 15:26:47, khi chạy các lệnh stress-ng thử; các đợt này không được tính vào bảng.</p>
 <h2 id="gioi-han-cua-phep-o">Giới hạn của phép đo<a class="headerlink" href="#gioi-han-cua-phep-o" title="Permanent link">¶</a></h2>
 <ul>
 <li>Chỉ quan sát được ép xung do sụt áp; nhiệt cao nhất 73,6 °C nên chưa có dữ liệu throttle do nhiệt.</li>
 <li>Không đo trực tiếp điện áp đầu vào 5 V hay dòng tiêu thụ; toàn bộ kết luận về sụt áp dựa trên cờ của firmware. Tài liệu chỉ nêu cách đọc điện áp nguồn trên Pi 5 (<code>vcgencmd pmic_read_adc EXT5V_V</code>) (<a href="https://www.raspberrypi.com/documentation/computers/config_txt.html#monitoring-voltage">config.txt, Monitoring voltage</a>); tác giả chưa tìm thấy cách tương đương cho Pi 3B.</li>
-<li>Mẫu 5 giây bỏ sót khoảng 1/3 số đợt sụt áp; log kernel có độ phân giải 2 s và sai lệch thời lượng khoảng 2 s mỗi đợt.</li>
+<li>Mẫu 5 giây bỏ sót khoảng 1/3 số đợt sụt áp; log kernel có độ phân giải 2 s và độ lệch giữa thời lượng đợt trong log với thời gian sụt áp thật chưa xác định.</li>
 <li>Các giá trị trong một mẫu <code>pilog</code> được đọc tuần tự, nên một phần trong 116 mẫu nhóm "Khác" có giá trị lệch nhau ở thời điểm chuyển trạng thái.</li>
 <li>Mức hiệu năng không bị ép (282–284 ops/giây CPU) là ngoại suy từ 12 nấc.</li>
 <li>Worker <code>--vm</code> chạy gần trọn một nhân ở mọi nấc, nên tải thấp nhất là ≈1,4 nhân; chưa có điểm đo ở tải dưới 1 nhân.</li>
 <li>Dữ liệu chỉ gồm chiều tối và đêm; chưa so sánh được với ban ngày nóng hơn.</li>
 <li>Nguyên nhân xung core và điện áp không giảm khi governor hạ xung lúc rảnh chưa xác định.</li>
 </ul>
-<h2 id="bai-hoc-ve-nguon-cho-pi-3b">Bài học về nguồn cho Pi 3B<a class="headerlink" href="#bai-hoc-ve-nguon-cho-pi-3b" title="Permanent link">¶</a></h2>
+<h2 id="bai-hoc-rut-ra">Bài học rút ra<a class="headerlink" href="#bai-hoc-rut-ra" title="Permanent link">¶</a></h2>
 <ol>
-<li>Công suất danh định lớn của củ sạc không bảo đảm đủ áp ở 5 V. Trên máy đo, củ sạc 65 W USB-PD cấp qua micro-USB vẫn sụt áp ở tải ≈1,4 nhân, và tần suất sụt áp tăng theo tải. Nguyên nhân cụ thể (cáp, đầu chuyển, hay củ sạc) chưa kiểm chứng.</li>
+<li>Công suất danh định lớn của củ sạc không bảo đảm đủ áp ở 5 V. Trên máy đo, củ sạc 65 W USB-PD cấp qua micro-USB vẫn sụt áp ở tải ≈1,4 nhân, và tần suất sụt áp tăng khi tải tăng lên ≈1,8 nhân. Nguyên nhân cụ thể (cáp, đầu chuyển, hay củ sạc) chưa kiểm chứng.</li>
 <li>Không dùng <code>scaling_cur_freq</code>, <code>cpuinfo_cur_freq</code> hay <code>time_in_state</code> để kết luận máy có bị ép xung hay không; trên máy đo, <code>time_in_state</code> báo 88,0% thời gian ở 1 200 MHz trong khi xung thực tế chỉ ở 1 200 MHz 78,7% thời gian. Cần đọc <code>vcgencmd measure_clock arm</code> và bit 0–3 của <code>vcgencmd get_throttled</code>.</li>
-<li>Đếm dòng <code>Undervoltage detected!</code> cho biết số đợt, không cho biết thời gian bị ép xung; muốn có tỷ lệ thời gian cần lấy mẫu <code>get_throttled</code>, hoặc hiệu chỉnh thời lượng đợt theo chu kỳ 2 s của driver.</li>
-<li>Với cấu hình đo, sụt áp làm mất ước tính 4–7% hiệu năng trên mỗi giây CPU tuỳ tải, chưa kể nguy cơ mất ổn định. 14,0 giờ chạy tải trong 4 chu kỳ (16,3 giờ tính cả các nấc nghỉ, 21/11 15:26:47 đến 22/11 07:44:30) không ghi nhận treo hay reboot: <code>pilog</code> ghi liên tục, khoảng trống lớn nhất giữa hai mẫu là 16 s, và guard không cắt nấc lần nào.</li>
+<li>Đếm dòng <code>Undervoltage detected!</code> cho biết số đợt, không cho biết thời gian bị ép xung; muốn có tỷ lệ thời gian cần lấy mẫu bit 0–3 của <code>get_throttled</code>. Thời lượng đợt trong log không dùng trực tiếp được, vì độ lệch so với thời gian sụt áp thật chưa xác định.</li>
+<li>Với cấu hình đo, sụt áp làm mất ước tính 4–7% hiệu năng trên mỗi giây CPU tuỳ tải, chưa kể nguy cơ mất ổn định. 14,0 giờ chạy tải trong 4 chu kỳ (16,3 giờ tính cả các nấc nghỉ và 17 phút của chu kỳ 5, 21/11 15:26:47 đến 22/11 07:44:30) không ghi nhận treo hay reboot: <code>pilog</code> ghi liên tục, khoảng trống lớn nhất giữa hai mẫu là 16 s, và guard không cắt nấc lần nào.</li>
 </ol>
 <p>Bước tiếp theo đã lên kế hoạch: đổi cáp và nguồn (ví dụ bộ nguồn micro-USB chính hãng cho Pi 3) rồi chạy lại cùng bài test, bỏ hoặc tách riêng worker <code>--vm</code>, để có số liệu trước/sau và đo trực tiếp mức hiệu năng khi không bị ép xung.</p>
 <h2 id="ket-luan">Kết luận<a class="headerlink" href="#ket-luan" title="Permanent link">¶</a></h2>
-<p>Trên Raspberry Pi 3B, Linux cpufreq chỉ chọn mức xung <em>yêu cầu</em>; firmware VideoCore quyết định xung thực tế, xung core và điện áp, và có thể hạ cả ba mà kernel không biết. Trong soak test 4 chu kỳ với nguồn bị sụt áp, firmware ép máy về 600 MHz / 250 MHz / 1,20 V trong 8,1–14,9% thời gian tuỳ tải, kéo hiệu năng trên mỗi giây CPU xuống khoảng 4–7%, trong khi <code>scaling_cur_freq</code> và <code>time_in_state</code> vẫn ghi nhận 1 200 MHz.</p>
-<p>Ba điều cần kiểm tra khi đo hiệu năng Pi 3B:</p>
-<ol>
-<li>So <code>scaling_cur_freq</code> với <code>vcgencmd measure_clock arm</code>.</li>
-<li>Đọc bit 0–3 của <code>vcgencmd get_throttled</code> theo thời gian, không chỉ bit sticky.</li>
-<li>Coi số dòng <code>Undervoltage detected!</code> là số đợt sụt áp có độ phân giải 2 s.</li>
-</ol>
+<p>Trên Raspberry Pi 3B, Linux cpufreq chỉ chọn mức xung <em>yêu cầu</em>; firmware VideoCore quyết định xung thực tế, xung core và điện áp, và có thể hạ cả ba mà kernel không biết. Trong soak test 4 chu kỳ với nguồn bị sụt áp, firmware ép máy về 600 MHz / 250 MHz / 1,20 V trong 8,1–14,9% thời gian tuỳ tải, làm hiệu năng trên mỗi giây CPU giảm ước tính 4–7%, trong khi <code>scaling_cur_freq</code> và <code>time_in_state</code> vẫn ghi nhận 1 200 MHz. Vì vậy, khi đo hiệu năng trên Pi 3B cần đọc xung thực tế bằng <code>vcgencmd measure_clock arm</code> và lấy mẫu bit 0–3 của <code>vcgencmd get_throttled</code> theo thời gian, như đã nêu ở mục bài học rút ra.</p>
 <h2 id="lien-quan">Liên quan<a class="headerlink" href="#lien-quan" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="../../../../../projects/pi3b/">Raspberry Pi 3 Model B</a>: ghi chú porting Linux lên board dùng trong bài đo.</li>
@@ -16435,7 +16436,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 22, 2026 01:44:25 UTC">November 22, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 22, 2026 02:24:58 UTC">November 22, 2026</span>
   </span>
 
     
