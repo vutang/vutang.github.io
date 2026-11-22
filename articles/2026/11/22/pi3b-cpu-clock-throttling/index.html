@@ -15343,10 +15343,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#theo-tung-nac-va-tung-chu-ky" class="md-nav__link">
+  <a href="#theo-tung-muc-tai-va-tung-chu-ky" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Theo từng nấc và từng chu kỳ
+        Theo từng mức tải và từng chu kỳ
       
     </span>
   </a>
@@ -15837,11 +15837,11 @@
 <li>Nguồn: củ sạc điện thoại 65 W USB-PD cấp vào cổng micro-USB. Cổng micro-USB của Pi 3B không thương lượng USB-PD, nên củ sạc cấp mức 5 V mặc định. Nguyên nhân sụt áp (cáp, đầu chuyển, hay củ sạc tụt áp ở 5 V) <strong>chưa kiểm chứng</strong>. Để so sánh, Raspberry Pi khuyến nghị nguồn micro-USB đến 2,5 A cho Pi 3B (<a href="https://www.raspberrypi.com/products/raspberry-pi-3-model-b/">trang sản phẩm Pi 3B</a>) và hiện giới thiệu bộ nguồn micro-USB chính hãng 12,5 W (<a href="https://www.raspberrypi.com/products/raspberry-pi-universal-power-supply/">trang sản phẩm bộ nguồn</a>).</li>
 </ul>
 <h3 id="tai">Tải<a class="headerlink" href="#tai" title="Permanent link">¶</a></h3>
-<p>stress-ng chạy theo chu kỳ 4 giờ: nhãn "10%" trong 2 giờ, "20%" trong 1 giờ, "30%" trong 30 phút, nghỉ 30 phút. Chu kỳ 1 bắt đầu 21/11/2026 15:26:47; 4 chu kỳ chạy đủ đến 07:26:50 ngày 22/11. Chu kỳ 5 chạy 17 phút rồi dừng lúc 07:44:30 và không được tính. Sau đó máy để không tải 26 phút (đến 08:10:26) làm mốc so sánh. Lệnh mỗi nấc:</p>
+<p>stress-ng chạy theo chu kỳ 4 giờ: nhãn "10%" trong 2 giờ, "20%" trong 1 giờ, "30%" trong 30 phút, nghỉ 30 phút. Chu kỳ 1 bắt đầu 21/11/2026 15:26:47; 4 chu kỳ chạy đủ đến 07:26:50 ngày 22/11. Chu kỳ 5 chạy 17 phút rồi dừng lúc 07:44:30 và không được tính. Sau đó máy để không tải 26 phút (đến 08:10:26) làm mốc so sánh. Lệnh cho mỗi mức tải:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>stress-ng<span class="w"> </span>--cpu<span class="w"> </span><span class="m">4</span><span class="w"> </span>--cpu-load<span class="w"> </span>N<span class="w"> </span>--cpu-method<span class="w"> </span>int64<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">          </span>--vm<span class="w"> </span><span class="m">1</span><span class="w"> </span>--vm-bytes<span class="w"> </span>150M<span class="w"> </span>--timeout<span class="w"> </span>&lt;thời<span class="w"> </span>lượng&gt;<span class="w"> </span>--metrics-brief
 </code></pre></div>
-<p><code>--cpu-load</code> chỉ giới hạn 4 worker <code>--cpu</code>; worker <code>--vm</code> chạy gần trọn một nhân. Số liệu <code>usr+sys</code> của stress-ng xác nhận điều này: worker <code>cpu</code> dùng 0,40 / 0,81 / 1,21 nhân và worker <code>vm</code> dùng 1,00 nhân ở cả ba nấc, tức tải thật ≈1,4 / 1,8 / 2,2 nhân (≈35 / 45 / 55% của 4 nhân). Bài viết dùng nhãn "10%", "20%", "30%" trong ngoặc kép để chỉ tên nấc, không phải mức tải.</p>
+<p><code>--cpu-load</code> chỉ giới hạn 4 worker <code>--cpu</code>; worker <code>--vm</code> chạy gần trọn một nhân. Số liệu <code>usr+sys</code> của stress-ng xác nhận điều này: worker <code>cpu</code> dùng 0,40 / 0,81 / 1,21 nhân và worker <code>vm</code> dùng 1,00 nhân ở cả ba mức tải, tức tải thực tế ≈1,4 / 1,8 / 2,2 nhân (≈35 / 45 / 55% của 4 nhân). Bài viết dùng nhãn "10%", "20%", "30%" trong ngoặc kép làm tên của ba mức tải; con số trong nhãn không phải phần trăm tải thực tế. Mỗi khoảng thời gian chạy một mức tải (hoặc nghỉ) trong một chu kỳ gọi là một giai đoạn, ký hiệu theo số chu kỳ và nhãn, ví dụ C2 "30%" là giai đoạn chạy mức tải "30%" của chu kỳ 2.</p>
 <p>Khi chạy với <code>--metrics-brief</code>, stress-ng in dòng "boost is disabled …" nếu file <code>/sys/devices/system/cpu/cpufreq/boost</code> có giá trị 0 (<a href="https://github.com/ColinIanKing/stress-ng/blob/606ad1bf935f743c2355322f1a6d109cc7e9a2b9/core-config-check.c">core-config-check.c, stress-ng 0.22.02</a>). <code>cpufreq-dt</code> luôn khai báo <code>.set_boost = cpufreq_boost_set_sw</code>, nên file <code>boost</code> luôn tồn tại (<a href="https://github.com/raspberrypi/linux/blob/rpi-6.18.y/drivers/cpufreq/cpufreq-dt.c">cpufreq-dt.c</a>). Bảng OPP do <code>raspberrypi-cpufreq</code> sinh ra không có mức boost, nên trên Pi 3B thông báo này vô hại và bật <code>boost=1</code> không làm tăng xung tối đa (nhận định của tác giả từ mã nguồn, chưa thử trên máy).</p>
 <h3 id="thu-thap-du-lieu">Thu thập dữ liệu<a class="headerlink" href="#thu-thap-du-lieu" title="Permanent link">¶</a></h3>
 <table>
@@ -15865,13 +15865,13 @@
 </tr>
 <tr>
 <td>stress-ng <code>--metrics-brief</code></td>
-<td>mỗi nấc</td>
+<td>mỗi giai đoạn</td>
 <td>bogo ops, thời gian thực, <code>usr</code>, <code>sys</code></td>
 </tr>
 <tr>
 <td>Service <code>soak-guard</code></td>
 <td>30 s</td>
-<td>số đợt sụt áp trong 10 phút và nhiệt; tự cắt nấc tải khi &gt; 60 đợt/10 phút hoặc &gt; 75 °C</td>
+<td>số đợt sụt áp trong 10 phút và nhiệt; tự dừng giai đoạn tải khi &gt; 60 đợt/10 phút hoặc &gt; 75 °C</td>
 </tr>
 <tr>
 <td>Monit</td>
@@ -15941,7 +15941,7 @@
 <li>Điện áp 1,30 V ở 1 200 MHz nằm trong khoảng AVS 1,2–1,35 V theo tài liệu.</li>
 </ul>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../img/pi3b-throttle-zoom.png" data-desc-position="bottom"><img alt="Six minutes of 5-second samples: actual ARM clock, core clock and core voltage drop together to 600 MHz, 250 MHz and 1.20 V while the requested clock stays at 1200 MHz; shaded bands are kernel undervoltage episodes" src="../../../../img/pi3b-throttle-zoom.png"></a></p>
-<p><em>Hình 2. Sáu phút trong nấc C2 "30%" (21/11/2026 22:37–22:43). Xung ARM thực tế, xung core và điện áp core cùng giảm trong các mẫu bị ép; xung kernel yêu cầu giữ 1 200 MHz. Vùng tô là các đợt sụt áp theo log kernel. Nguồn: <code>pilog.txt</code>, <code>uv-events.txt</code>.</em></p>
+<p><em>Hình 2. Sáu phút trong giai đoạn C2 "30%" (21/11/2026 22:37–22:43). Xung ARM thực tế, xung core và điện áp core cùng giảm trong các mẫu bị ép; xung kernel yêu cầu giữ 1 200 MHz. Vùng tô là các đợt sụt áp theo log kernel. Nguồn: <code>pilog.txt</code>, <code>uv-events.txt</code>.</em></p>
 <h3 id="oi-chieu-hai-nguon-mau-5-giay-va-log-kernel">Đối chiếu hai nguồn: mẫu 5 giây và log kernel<a class="headerlink" href="#oi-chieu-hai-nguon-mau-5-giay-va-log-kernel" title="Permanent link">¶</a></h3>
 <p>Các bảng tiếp theo dùng hai đại lượng từ hai nguồn khác nhau: tỷ lệ mẫu bị ép (từ <code>pilog</code>) và số đợt sụt áp (từ log kernel). Mục này đối chiếu hai nguồn trước khi dùng chúng.</p>
 <p>File <code>uv-events.txt</code> có 1 468 cặp <code>detected</code>/<code>normalised</code> từ 21/11 14:34:20 đến 22/11 08:09:01. Trong đó 78 đợt xảy ra trước khi khởi động lại bài test lúc 15:26:47, khi chạy các lệnh stress-ng thử, và không được tính; 1 390 đợt còn lại nằm trong cửa sổ đo. Trong cùng cửa sổ, 1 094 mẫu 5 giây (9,2%) có bit 0 (sụt áp) bật.</p>
@@ -15957,14 +15957,14 @@
 <p class="admonition-title">Chưa kiểm chứng</p>
 <p>Nguyên nhân không có đợt nào ngắn hơn 4 s trong log: firmware có thể giữ bit sticky lâu hơn một khoảng đọc (chú thích trong <code>raspberrypi-hwmon.c</code> có nhắc tới "sticky shift" 100 ms), hoặc cách tính thời lượng trong <code>uv-events.txt</code> có sai lệch. Cần đối chiếu bằng cách đọc <code>get_throttled</code> với chu kỳ ngắn hơn 2 s trong lúc driver hwmon đang chạy.</p>
 </div>
-<h3 id="theo-tung-nac-va-tung-chu-ky">Theo từng nấc và từng chu kỳ<a class="headerlink" href="#theo-tung-nac-va-tung-chu-ky" title="Permanent link">¶</a></h3>
+<h3 id="theo-tung-muc-tai-va-tung-chu-ky">Theo từng mức tải và từng chu kỳ<a class="headerlink" href="#theo-tung-muc-tai-va-tung-chu-ky" title="Permanent link">¶</a></h3>
 <table>
 <thead>
 <tr>
-<th>Nấc</th>
+<th>Giai đoạn</th>
 <th>Bắt đầu</th>
 <th>Thời lượng (h)</th>
-<th>Tải thật (nhân)</th>
+<th>Tải thực tế (nhân)</th>
 <th>Đợt sụt áp</th>
 <th>Đợt/giờ</th>
 <th>% mẫu req 1200 / act 600</th>
@@ -16173,13 +16173,13 @@
 </tr>
 </tbody>
 </table>
-<p>Nguồn: <code>pilog.txt</code>, <code>uv-events.txt</code>, <code>soak-steps-metrics.txt</code>; tính bằng <code>analyze.py</code>. Tải thật = (<code>usr</code> + <code>sys</code>) / thời gian thực của hai worker theo <code>--metrics-brief</code>. Nhiệt max của nấc nghỉ là giá trị ở đầu nấc, ngay sau khi dừng tải.</p>
+<p>Nguồn: <code>pilog.txt</code>, <code>uv-events.txt</code>, <code>soak-steps-metrics.txt</code>; tính bằng <code>analyze.py</code>. Tải thực tế = (<code>usr</code> + <code>sys</code>) / thời gian thực của hai worker theo <code>--metrics-brief</code>. Nhiệt max của giai đoạn nghỉ là giá trị ở đầu giai đoạn, ngay sau khi dừng tải.</p>
 <p>Gộp 4 chu kỳ đủ theo nhãn:</p>
 <table>
 <thead>
 <tr>
-<th>Nấc</th>
-<th>Số nấc</th>
+<th>Mức tải</th>
+<th>Số giai đoạn</th>
 <th>Giờ</th>
 <th>Đợt/giờ</th>
 <th>% mẫu req 1200 / act 600</th>
@@ -16237,13 +16237,13 @@
 </table>
 <p>Nguồn: như bảng trên.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../img/pi3b-soak-timeline.png" data-desc-position="bottom"><img alt="Whole 16.7-hour soak window in three panels: SoC temperature, share of throttled 5-second samples and number of kernel undervoltage messages per 10 minutes, all rising with load steps and near zero during rest" src="../../../../img/pi3b-soak-timeline.png"></a></p>
-<p><em>Hình 3. Toàn bộ cửa sổ đo (16,7 giờ). Nền xanh đậm dần theo nấc tải; nền trắng là các nấc nghỉ 30 phút và 26 phút không tải sau khi dừng test. Tỷ lệ ép xung và số đợt sụt áp tăng theo tải và gần như bằng 0 khi nghỉ, còn nhiệt luôn dưới 74 °C. Nguồn: <code>pilog.txt</code>, <code>uv-events.txt</code>.</em></p>
+<p><em>Hình 3. Toàn bộ cửa sổ đo (16,7 giờ). Nền xanh đậm dần theo mức tải; nền trắng là các giai đoạn nghỉ 30 phút và 26 phút không tải sau khi dừng test. Tỷ lệ ép xung và số đợt sụt áp tăng theo tải và gần như bằng 0 khi nghỉ, còn nhiệt luôn dưới 74 °C. Nguồn: <code>pilog.txt</code>, <code>uv-events.txt</code>.</em></p>
 <p>Các điểm chính:</p>
 <ul>
-<li>Sụt áp xảy ra ngay ở nấc nhẹ nhất (≈1,4 nhân): trung bình 78,9 đợt/giờ, 8,1% thời gian chạy ở 600 MHz.</li>
-<li>Tỷ lệ ép xung tăng rõ từ ≈1,4 lên ≈1,8 nhân (8,1% → 13,9%). Từ ≈1,8 lên ≈2,2 nhân, tỷ lệ chỉ tăng 1 điểm phần trăm (lên 14,9%), nhỏ hơn chênh lệch giữa hai chu kỳ của cùng một nấc (tới 3,3 điểm), và số đợt/giờ không tăng (123,0 so với 120,0). Với 4 chu kỳ, dữ liệu không phân biệt được hai nấc này.</li>
+<li>Sụt áp xảy ra ngay ở mức tải nhẹ nhất (≈1,4 nhân): trung bình 78,9 đợt/giờ, 8,1% thời gian chạy ở 600 MHz.</li>
+<li>Tỷ lệ ép xung tăng rõ từ ≈1,4 lên ≈1,8 nhân (8,1% → 13,9%). Từ ≈1,8 lên ≈2,2 nhân, tỷ lệ chỉ tăng 1 điểm phần trăm (lên 14,9%), nhỏ hơn chênh lệch giữa hai chu kỳ của cùng một mức tải (tới 3,3 điểm), và số đợt/giờ không tăng (123,0 so với 120,0). Với 4 chu kỳ, dữ liệu không phân biệt được hai mức tải này.</li>
 <li>Trong 4 chu kỳ đủ, log kernel ghi 1 363 đợt sụt áp trong 14,0 giờ có tải (97 đợt/giờ) và 4 đợt trong 2,0 giờ nghỉ.</li>
-<li>Trong các nấc có tải, governor không yêu cầu 600 MHz lần nào (0% mẫu <code>req=600</code>), nên toàn bộ thời gian ở 600 MHz khi có tải là do firmware.</li>
+<li>Trong các giai đoạn có tải, governor không yêu cầu 600 MHz lần nào (0% mẫu <code>req=600</code>), nên toàn bộ thời gian ở 600 MHz khi có tải là do firmware.</li>
 <li>Nhiệt cao nhất 73,6 °C, thấp hơn ngưỡng 80 °C khoảng 6 °C; không có dữ liệu về throttle do nhiệt. Guard không can thiệp: giá trị lớn nhất là 38 đợt/10 phút (22/11 01:17, ngưỡng 60) và 73 °C (ngưỡng 75).</li>
 </ul>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../img/pi3b-throttle-by-step.svg" data-desc-position="bottom"><img alt="Share of samples requested at 1200 MHz but running at 600 MHz per load step: 8.1, 13.9 and 14.9 percent on average over four cycles, with one dot per cycle" src="../../../../img/pi3b-throttle-by-step.svg"></a></p>
@@ -16286,7 +16286,7 @@
 <table>
 <thead>
 <tr>
-<th>Nấc</th>
+<th>Mức tải</th>
 <th>C1</th>
 <th>C2</th>
 <th>C3</th>
@@ -16317,21 +16317,21 @@
 </tr>
 </tbody>
 </table>
-<p>Nguồn: bảng theo nấc ở trên (% mẫu req 1200 / act 600).</p>
-<p>Vì chỉ chu kỳ 1 chạy chiều tối, so sánh dưới đây chia theo nửa đầu (chu kỳ 1–2, 15:26–23:26) và nửa sau (chu kỳ 3–4, 23:26–07:26) của cửa sổ đo. Ở nấc "20%" và "30%", chu kỳ 3–4 cao hơn chu kỳ 1–2 từ 0,2 đến 3,3 điểm, trong khi nhiệt trung bình thấp hơn khoảng 0,5–1 °C. Nấc "10%" không có xu hướng tương tự. Với 4 chu kỳ, chưa đủ để kết luận có khác biệt theo giờ (nhận định của tác giả). Giả thuyết điện áp lưới thay đổi theo giờ ảnh hưởng tới củ sạc chưa kiểm chứng.</p>
+<p>Nguồn: bảng theo giai đoạn ở trên (% mẫu req 1200 / act 600).</p>
+<p>Vì chỉ chu kỳ 1 chạy chiều tối, so sánh dưới đây chia theo nửa đầu (chu kỳ 1–2, 15:26–23:26) và nửa sau (chu kỳ 3–4, 23:26–07:26) của cửa sổ đo. Ở mức tải "20%" và "30%", chu kỳ 3–4 cao hơn chu kỳ 1–2 từ 0,2 đến 3,3 điểm, trong khi nhiệt trung bình thấp hơn khoảng 0,5–1 °C. Mức tải "10%" không có xu hướng tương tự. Với 4 chu kỳ, chưa đủ để kết luận có khác biệt theo giờ (nhận định của tác giả). Giả thuyết điện áp lưới thay đổi theo giờ ảnh hưởng tới củ sạc chưa kiểm chứng.</p>
 <h3 id="hieu-nang-mat-i">Hiệu năng mất đi<a class="headerlink" href="#hieu-nang-mat-i" title="Permanent link">¶</a></h3>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../img/pi3b-perf-vs-throttle.svg" data-desc-position="bottom"><img alt="Bogo-ops per CPU second versus share of throttled samples for 12 load steps, with a linear regression line and a dashed half-speed model line, both decreasing" src="../../../../img/pi3b-perf-vs-throttle.svg"></a></p>
-<p><em>Hình 5. Mỗi điểm là một nấc tải đủ thời lượng (12 nấc, 4 chu kỳ). Đường liền: hồi quy tuyến tính. Đường đứt: mô hình "phần thời gian ở 600 MHz cho một nửa số ops". Nguồn: <code>soak-steps-metrics.txt</code>, <code>pilog.txt</code>.</em></p>
-<p>Hồi quy tuyến tính trên 12 nấc đủ (f là tỷ lệ mẫu bị ép về 600 MHz):</p>
+<p><em>Hình 5. Mỗi điểm là một giai đoạn có tải chạy đủ thời lượng (12 giai đoạn, 4 chu kỳ). Đường liền: hồi quy tuyến tính. Đường đứt: mô hình "phần thời gian ở 600 MHz cho một nửa số ops". Nguồn: <code>soak-steps-metrics.txt</code>, <code>pilog.txt</code>.</em></p>
+<p>Hồi quy tuyến tính trên 12 giai đoạn đủ (f là tỷ lệ mẫu bị ép về 600 MHz):</p>
 <div class="arithmatex">\[
 \text{ops/giây CPU} \approx 282{,}3 - 125{,}3\, f \qquad (R^2 = 0{,}87)
 \]</div>
 <p>Hệ số góc chia cho hệ số chặn bằng 0,44: nếu kéo đường hồi quy tới f = 1 (bị ép toàn thời gian), hiệu năng còn khoảng 56%, gần mức 50% kỳ vọng khi xung giảm từ 1 200 xuống 600 MHz. Vì f trong dữ liệu chỉ nằm trong khoảng 6,8–15,8%, con số 56% là ngoại suy xa và chỉ dùng để kiểm tra rằng mô hình nửa tốc độ hợp lý, không phải số đo. Mô hình nửa tốc độ (đường đứt) cho mức không bị ép khoảng 284,3 ops/giây CPU.</p>
-<p>Lấy mức không bị ép trong khoảng 282–284 ops/giây CPU (hai ước tính trên, chưa đo trực tiếp với nguồn tốt), mức hiệu năng mất theo nấc là:</p>
+<p>Lấy mức không bị ép trong khoảng 282–284 ops/giây CPU (hai ước tính trên, chưa đo trực tiếp với nguồn tốt), mức hiệu năng mất theo mức tải là:</p>
 <table>
 <thead>
 <tr>
-<th>Nấc</th>
+<th>Mức tải</th>
 <th>Ops/giây CPU (TB 4 chu kỳ)</th>
 <th>Mất so với 282,3</th>
 <th>Mất so với 284,3</th>
@@ -16359,7 +16359,7 @@
 </tbody>
 </table>
 <p>Nguồn: tính từ bảng trên. Các con số này là ước lượng; mức hiệu năng khi không bị ép cần được đo trực tiếp với nguồn không sụt áp.</p>
-<p>Giữa nấc "20%" và "30%", trung bình 4 chu kỳ chỉ chênh 0,3% (264,72 so với 263,83), phù hợp với tỷ lệ ép xung của hai nấc chỉ chênh 1 điểm. Chu kỳ 2 là trường hợp lệch nhất: nấc "30%" thấp hơn nấc "20%" 2,3% (260,10 so với 266,34), nên không thể rút ra kết luận về hai nấc này từ một chu kỳ riêng lẻ.</p>
+<p>Giữa mức tải "20%" và "30%", trung bình 4 chu kỳ chỉ chênh 0,3% (264,72 so với 263,83), phù hợp với tỷ lệ ép xung của hai mức tải chỉ chênh 1 điểm. Chu kỳ 2 là trường hợp lệch nhất: mức "30%" thấp hơn mức "20%" 2,3% (260,10 so với 266,34), nên không thể rút ra kết luận về hai mức tải này từ một chu kỳ riêng lẻ.</p>
 <p>Worker <code>vm</code> (ràng buộc bởi băng thông bộ nhớ) cho 10 879–11 417 ops/giây CPU, không có xu hướng rõ theo tỷ lệ ép xung; chỉ số này không dùng để đánh giá ảnh hưởng của xung ARM.</p>
 <h2 id="gioi-han-cua-phep-o">Giới hạn của phép đo<a class="headerlink" href="#gioi-han-cua-phep-o" title="Permanent link">¶</a></h2>
 <ul>
@@ -16367,8 +16367,8 @@
 <li>Không đo trực tiếp điện áp đầu vào 5 V hay dòng tiêu thụ; toàn bộ kết luận về sụt áp dựa trên cờ của firmware. Tài liệu chỉ nêu cách đọc điện áp nguồn trên Pi 5 (<code>vcgencmd pmic_read_adc EXT5V_V</code>) (<a href="https://www.raspberrypi.com/documentation/computers/config_txt.html#monitoring-voltage">config.txt, Monitoring voltage</a>); tác giả chưa tìm thấy cách tương đương cho Pi 3B.</li>
 <li>Mẫu 5 giây bỏ sót khoảng 1/3 số đợt sụt áp; log kernel có độ phân giải 2 s và độ lệch giữa thời lượng đợt trong log với thời gian sụt áp thật chưa xác định.</li>
 <li>Các giá trị trong một mẫu <code>pilog</code> được đọc tuần tự, nên một phần trong 116 mẫu nhóm "Khác" có giá trị lệch nhau ở thời điểm chuyển trạng thái.</li>
-<li>Mức hiệu năng không bị ép (282–284 ops/giây CPU) là ngoại suy từ 12 nấc.</li>
-<li>Worker <code>--vm</code> chạy gần trọn một nhân ở mọi nấc, nên tải thấp nhất là ≈1,4 nhân; chưa có điểm đo ở tải dưới 1 nhân.</li>
+<li>Mức hiệu năng không bị ép (282–284 ops/giây CPU) là ngoại suy từ 12 giai đoạn.</li>
+<li>Worker <code>--vm</code> chạy gần trọn một nhân ở mọi mức tải, nên tải thấp nhất là ≈1,4 nhân; chưa có điểm đo ở tải dưới 1 nhân.</li>
 <li>Dữ liệu chỉ gồm chiều tối và đêm; chưa so sánh được với ban ngày nóng hơn.</li>
 <li>Nguyên nhân xung core và điện áp không giảm khi governor hạ xung lúc rảnh chưa xác định.</li>
 </ul>
@@ -16377,7 +16377,7 @@
 <li>Công suất danh định lớn của củ sạc không bảo đảm đủ áp ở 5 V. Trên máy đo, củ sạc 65 W USB-PD cấp qua micro-USB vẫn sụt áp ở tải ≈1,4 nhân, và tần suất sụt áp tăng khi tải tăng lên ≈1,8 nhân. Nguyên nhân cụ thể (cáp, đầu chuyển, hay củ sạc) chưa kiểm chứng.</li>
 <li>Không dùng <code>scaling_cur_freq</code>, <code>cpuinfo_cur_freq</code> hay <code>time_in_state</code> để kết luận máy có bị ép xung hay không; trên máy đo, <code>time_in_state</code> báo 88,0% thời gian ở 1 200 MHz trong khi xung thực tế chỉ ở 1 200 MHz 78,7% thời gian. Cần đọc <code>vcgencmd measure_clock arm</code> và bit 0–3 của <code>vcgencmd get_throttled</code>.</li>
 <li>Đếm dòng <code>Undervoltage detected!</code> cho biết số đợt, không cho biết thời gian bị ép xung; muốn có tỷ lệ thời gian cần lấy mẫu bit 0–3 của <code>get_throttled</code>. Thời lượng đợt trong log không dùng trực tiếp được, vì độ lệch so với thời gian sụt áp thật chưa xác định.</li>
-<li>Với cấu hình đo, sụt áp làm mất ước tính 4–7% hiệu năng trên mỗi giây CPU tuỳ tải, chưa kể nguy cơ mất ổn định. 14,0 giờ chạy tải trong 4 chu kỳ (16,3 giờ tính cả các nấc nghỉ và 17 phút của chu kỳ 5, 21/11 15:26:47 đến 22/11 07:44:30) không ghi nhận treo hay reboot: <code>pilog</code> ghi liên tục, khoảng trống lớn nhất giữa hai mẫu là 16 s, và guard không cắt nấc lần nào.</li>
+<li>Với cấu hình đo, sụt áp làm mất ước tính 4–7% hiệu năng trên mỗi giây CPU tuỳ tải, chưa kể nguy cơ mất ổn định. 14,0 giờ chạy tải trong 4 chu kỳ (16,3 giờ tính cả các giai đoạn nghỉ và 17 phút của chu kỳ 5, 21/11 15:26:47 đến 22/11 07:44:30) không ghi nhận treo hay reboot: <code>pilog</code> ghi liên tục, khoảng trống lớn nhất giữa hai mẫu là 16 s, và guard không dừng giai đoạn tải nào.</li>
 </ol>
 <p>Bước tiếp theo đã lên kế hoạch: đổi cáp và nguồn (ví dụ bộ nguồn micro-USB chính hãng cho Pi 3) rồi chạy lại cùng bài test, bỏ hoặc tách riêng worker <code>--vm</code>, để có số liệu trước/sau và đo trực tiếp mức hiệu năng khi không bị ép xung.</p>
 <h2 id="ket-luan">Kết luận<a class="headerlink" href="#ket-luan" title="Permanent link">¶</a></h2>
@@ -16436,7 +16436,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 22, 2026 02:24:58 UTC">November 22, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 22, 2026 04:07:14 UTC">November 22, 2026</span>
   </span>
 
     
