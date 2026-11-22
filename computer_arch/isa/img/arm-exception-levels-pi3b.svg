@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 462" role="img" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif">
+  <title>AArch64 exception levels EL0 to EL3 in Secure and Non-secure state, with the software that runs at each level on a Raspberry Pi 3B.</title>
+  <rect x="0" y="0" width="760" height="440" rx="8" fill="#ffffff"/>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2c3a42"/></marker>
+  </defs>
+
+  <!-- column headers -->
+  <text x="250" y="34" font-size="16" font-weight="600" fill="#a23b72" text-anchor="middle">Secure state</text>
+  <text x="560" y="34" font-size="16" font-weight="600" fill="#2f5d9e" text-anchor="middle">Non-secure state</text>
+
+  <!-- row labels -->
+  <text x="30" y="88" font-size="16" font-weight="600" fill="#1f2d3d">EL0</text>
+  <text x="30" y="108" font-size="13" fill="#2c3a42">applications</text>
+  <text x="30" y="173" font-size="16" font-weight="600" fill="#1f2d3d">EL1</text>
+  <text x="30" y="193" font-size="13" fill="#2c3a42">OS kernel</text>
+  <text x="30" y="258" font-size="16" font-weight="600" fill="#1f2d3d">EL2</text>
+  <text x="30" y="278" font-size="13" fill="#2c3a42">hypervisor</text>
+  <text x="30" y="343" font-size="16" font-weight="600" fill="#1f2d3d">EL3</text>
+  <text x="30" y="363" font-size="13" fill="#2c3a42">secure monitor</text>
+
+  <!-- secure column (unused on Pi 3B) -->
+  <rect x="130" y="60" width="240" height="70" rx="8" fill="#f2f4f6" stroke="#78909c" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="250" y="100" font-size="14" fill="#2c3a42" text-anchor="middle">Trusted apps (not used)</text>
+  <rect x="130" y="145" width="240" height="70" rx="8" fill="#f2f4f6" stroke="#78909c" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="250" y="185" font-size="14" fill="#2c3a42" text-anchor="middle">Trusted OS (not used)</text>
+  <rect x="130" y="230" width="240" height="70" rx="8" fill="#f2f4f6" stroke="#78909c" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="250" y="262" font-size="14" fill="#2c3a42" text-anchor="middle">Secure EL2</text>
+  <text x="250" y="282" font-size="13" fill="#2c3a42" text-anchor="middle">(Armv8.4+, absent on A53)</text>
+
+  <!-- non-secure column -->
+  <rect x="440" y="60" width="240" height="70" rx="8" fill="#e8eef8" stroke="#2f5d9e" stroke-width="2"/>
+  <text x="560" y="100" font-size="14" fill="#1f2d3d" text-anchor="middle">Linux user space</text>
+  <rect x="440" y="145" width="240" height="70" rx="8" fill="#e8eef8" stroke="#2f5d9e" stroke-width="2"/>
+  <text x="560" y="177" font-size="14" fill="#1f2d3d" text-anchor="middle">Linux kernel</text>
+  <text x="560" y="197" font-size="13" fill="#2c3a42" text-anchor="middle">(no VHE on Cortex-A53)</text>
+  <rect x="440" y="230" width="240" height="70" rx="8" fill="#e8eef8" stroke="#2f5d9e" stroke-width="2"/>
+  <text x="560" y="262" font-size="14" fill="#1f2d3d" text-anchor="middle">Kernel entry, then hyp stub</text>
+  <text x="560" y="282" font-size="13" fill="#2c3a42" text-anchor="middle">(or KVM)</text>
+
+  <!-- EL3 spans both -->
+  <rect x="130" y="315" width="550" height="70" rx="8" fill="#fdecea" stroke="#c0392b" stroke-width="2"/>
+  <text x="405" y="345" font-size="14" fill="#1f2d3d" text-anchor="middle">armstub8: runs only at boot, sets SCR_EL3.NS = 1, then ERET to EL2</text>
+  <text x="405" y="366" font-size="13" fill="#2c3a42" text-anchor="middle">EL3 is always Secure; no resident firmware (no TF-A, no PSCI)</text>
+
+  <!-- arrows: boot path -->
+  <line x1="700" y1="330" x2="700" y2="270" stroke="#2c3a42" stroke-width="2" marker-end="url(#ah)"/>
+  <line x1="700" y1="250" x2="700" y2="185" stroke="#2c3a42" stroke-width="2" marker-end="url(#ah)"/>
+  <text x="712" y="300" font-size="13" fill="#2c3a42">ERET</text>
+  <text x="712" y="222" font-size="13" fill="#2c3a42">ERET</text>
+
+  <text x="30" y="420" font-size="13" fill="#2c3a42">Higher EL = more privilege. Exceptions are taken to the same or a higher EL; ERET returns to the same or a lower EL.</text>
+<text id="wm" x="751.2" y="455.4" text-anchor="end" font-size="11" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
+</svg>

@@ -1134,6 +1134,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#boot-phia-arm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boot phía ARM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#porting-linux" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -15408,6 +15419,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#boot-phia-arm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boot phía ARM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#porting-linux" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -15507,7 +15529,7 @@
 
 
 <h1 id="raspberry-pi-3-model-b">Raspberry Pi 3 Model B<a class="headerlink" href="#raspberry-pi-3-model-b" title="Permanent link">¶</a></h1>
-<p>Trang này gom ghi chú để chạy và porting Linux trên Raspberry Pi 3 Model B. Thứ tự trình bày: liên kết chính, nguồn cấp, xung nhịp và điện áp, giới hạn nhiệt, cách theo dõi trạng thái ép hạ xung, rồi đến porting kernel và U-Boot.</p>
+<p>Trang này gom ghi chú để chạy và porting Linux trên Raspberry Pi 3 Model B. Thứ tự trình bày: liên kết chính, nguồn cấp, xung nhịp và điện áp, giới hạn nhiệt, cách theo dõi trạng thái ép hạ xung, trình tự boot phía ARM, rồi đến porting kernel và U-Boot.</p>
 <div class="admonition todo">
 <p class="admonition-title">Trang chưa hoàn thành</p>
 <p>Các phần còn thiếu:</p>
@@ -15619,6 +15641,45 @@
 </tbody>
 </table>
 <p>Các bit 16–19 giữ nguyên tới khi reboot, nên chỉ cho biết sự kiện đã từng xảy ra. Muốn biết tỷ lệ thời gian bị ép hạ xung, cần lấy mẫu bit 0–3 theo chu kỳ. Mỗi dòng <code>Undervoltage detected!</code> trong kernel log ứng với một đợt sụt áp, do driver <code>raspberrypi-hwmon</code> đọc cờ mỗi 2 giây.</p>
+<h2 id="boot-phia-arm">Boot phía ARM<a class="headerlink" href="#boot-phia-arm" title="Permanent link">¶</a></h2>
+<p>Trên Pi 3B, firmware chạy trên VideoCore khởi động trước các core ARM: firmware đọc <code>config.txt</code>, nạp kernel và device tree vào RAM, rồi mới cho các core Cortex-A53 chạy (<a href="https://www.raspberrypi.com/documentation/computers/config_txt.html">config.txt</a>). Với kernel 64-bit, đoạn mã đầu tiên các core ARM thực thi là <code>armstub8</code>, chạy ở EL3 (<a href="https://github.com/raspberrypi/tools/blob/master/armstubs/armstub8.S">armstub8.S</a>):</p>
+<ol>
+<li>Cấu hình bộ đếm của Generic Timer chạy từ thạch anh 19,2 MHz và ghi tần số vào <code>CNTFRQ_EL0</code>.</li>
+<li>Cho phép FP/SIMD, bật bit <code>SMPEN</code> để core tham gia cache coherency.</li>
+<li>Đặt <code>SCR_EL3</code> để các mức thấp hơn chạy Non-secure và ở AArch64, rồi <code>ERET</code> xuống EL2.</li>
+<li>Core 0 nhảy vào kernel, truyền địa chỉ device tree. Core 1–3 lặp <code>wfe</code> và chờ kernel ghi địa chỉ vào ô <code>cpu-release-addr</code> của mình (cơ chế <code>spin-table</code>).</li>
+</ol>
+<p>Sau bước này không còn phần mềm nào chạy ở EL3. Ý nghĩa của EL3, EL2 và bit <code>NS</code> được giải thích ở <a href="../../computer_arch/isa/arm/#phan-3-mo-hinh-lap-trinh-aarch64">Arm, Phần 3</a>. Hệ quả thực tế trên board:</p>
+<table>
+<thead>
+<tr>
+<th>Đặc điểm</th>
+<th>Hệ quả</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Không có PSCI, core phụ dùng <code>spin-table</code></td>
+<td>Không offline được core phụ qua <code>/sys/devices/system/cpu/cpuN/online</code> (xem <a href="../../lnx_kernel/smp/smp/#enable-method">SMP &amp; CPU Hotplug</a>)</td>
+</tr>
+<tr>
+<td>Không có firmware EL3 thường trú</td>
+<td>Không có trusted OS hay OP-TEE mặc định; muốn dùng TrustZone phải thay <code>armstub</code> bằng firmware EL3 khác</td>
+</tr>
+<tr>
+<td>Kernel vào ở EL2, Cortex-A53 không có VHE</td>
+<td>Kernel chạy ở EL1, EL2 chỉ giữ hyp stub hoặc KVM</td>
+</tr>
+<tr>
+<td>Không có GIC</td>
+<td>Ngắt và IPI đi qua interrupt controller của Broadcom (xem <a href="../../computer_arch/soc/soc/#3-interrupt-controller">SoC Overview</a>)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition todo">
+<p class="admonition-title">Chưa kiểm chứng</p>
+<p>Tên tham số <code>config.txt</code> dùng để chọn kernel 64-bit (<code>arm_64bit</code>) và thay <code>armstub</code> chưa được đối chiếu lại với tài liệu hiện hành của Raspberry Pi, nên trang chưa ghi cấu hình cụ thể.</p>
+</div>
 <h2 id="porting-linux">Porting Linux<a class="headerlink" href="#porting-linux" title="Permanent link">¶</a></h2>
 <h3 id="kernel">Kernel<a class="headerlink" href="#kernel" title="Permanent link">¶</a></h3>
 <p>Trang <a href="https://www.raspberrypi.org/">https://www.raspberrypi.org/</a> có hướng dẫn <a href="https://www.raspberrypi.org/documentation/linux/kernel/building.md">Kernel Building</a> cho Pi.</p>
@@ -15628,6 +15689,9 @@
 <h2 id="lien-quan">Liên quan<a class="headerlink" href="#lien-quan" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="../../articles/2026/11/22/pi3b-cpu-clock-throttling/">Ai thật sự điều khiển xung nhịp CPU trên Raspberry Pi 3B</a>: đường điều khiển xung nhịp giữa firmware VideoCore và cpufreq, kèm số liệu soak test về ép hạ xung khi nguồn sụt áp.</li>
+<li><a href="../../computer_arch/isa/arm/#phan-3-mo-hinh-lap-trinh-aarch64">Arm, Phần 3</a> (Chip &amp; SoC): mô hình lập trình AArch64, với Cortex-A53 trên Pi 3B làm ví dụ.</li>
+<li><a href="../../lnx_kernel/smp/smp/#enable-method">SMP &amp; CPU Hotplug</a> (Linux Kernel): cách kernel bật core phụ bằng <code>spin-table</code>.</li>
+<li><a href="../../computer_arch/soc/soc/#3-interrupt-controller">SoC Overview</a> (Chip &amp; SoC): interrupt controller, gồm ví dụ BCM2837 không dùng GIC.</li>
 </ul>
 <h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
 <ul>
@@ -15635,6 +15699,8 @@
 <li><a href="https://www.raspberrypi.com/documentation/computers/os.html">Raspberry Pi Documentation – Raspberry Pi OS: vcgencmd</a></li>
 <li><a href="https://www.raspberrypi.com/products/raspberry-pi-3-model-b/">Raspberry Pi 3 Model B – trang sản phẩm</a></li>
 <li><a href="https://www.raspberrypi.com/products/raspberry-pi-universal-power-supply/">Raspberry Pi 1, 2 and 3 Power Supply – trang sản phẩm</a></li>
+<li><a href="https://github.com/raspberrypi/tools/blob/master/armstubs/armstub8.S"><code>armstubs/armstub8.S</code>, raspberrypi/tools</a></li>
+<li><a href="https://github.com/raspberrypi/linux/blob/rpi-6.18.y/arch/arm/boot/dts/broadcom/bcm2837.dtsi"><code>arch/arm/boot/dts/broadcom/bcm2837.dtsi</code>, nhánh rpi-6.18.y</a></li>
 </ul>
 
 
@@ -15658,7 +15724,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 22, 2026 01:51:04 UTC">November 22, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 22, 2026 01:58:25 UTC">November 22, 2026</span>
   </span>
 
     
