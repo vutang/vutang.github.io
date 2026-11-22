@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 442" role="img" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif">
+<title>Share of samples requested at 1200 MHz but running at 600 MHz, per load step, average and individual cycles.</title>
+<rect x="0" y="0" width="760" height="420" rx="8" fill="#ffffff"/>
+<text x="20.0" y="32.0" font-size="16" fill="#1f2d3d" text-anchor="start" font-weight="600" >Time throttled to 600 MHz by the firmware, per load step (4 cycles)</text>
+<line x1="80" y1="340.0" x2="730" y2="340.0" stroke="#d9dee5" stroke-width="1"/>
+<text x="72.0" y="345.0" font-size="14" fill="#2c3a42" text-anchor="end" font-weight="normal" >0</text>
+<line x1="80" y1="295.0" x2="730" y2="295.0" stroke="#d9dee5" stroke-width="1"/>
+<text x="72.0" y="300.0" font-size="14" fill="#2c3a42" text-anchor="end" font-weight="normal" >3</text>
+<line x1="80" y1="250.0" x2="730" y2="250.0" stroke="#d9dee5" stroke-width="1"/>
+<text x="72.0" y="255.0" font-size="14" fill="#2c3a42" text-anchor="end" font-weight="normal" >6</text>
+<line x1="80" y1="205.0" x2="730" y2="205.0" stroke="#d9dee5" stroke-width="1"/>
+<text x="72.0" y="210.0" font-size="14" fill="#2c3a42" text-anchor="end" font-weight="normal" >9</text>
+<line x1="80" y1="160.0" x2="730" y2="160.0" stroke="#d9dee5" stroke-width="1"/>
+<text x="72.0" y="165.0" font-size="14" fill="#2c3a42" text-anchor="end" font-weight="normal" >12</text>
+<line x1="80" y1="115.0" x2="730" y2="115.0" stroke="#d9dee5" stroke-width="1"/>
+<text x="72.0" y="120.0" font-size="14" fill="#2c3a42" text-anchor="end" font-weight="normal" >15</text>
+<line x1="80" y1="70.0" x2="730" y2="70.0" stroke="#d9dee5" stroke-width="1"/>
+<text x="72.0" y="75.0" font-size="14" fill="#2c3a42" text-anchor="end" font-weight="normal" >18</text>
+<text x="24.0" y="205.0" font-size="14" fill="#2c3a42" text-anchor="middle" font-weight="normal" transform="rotate(-90 24 205.0)">% samples req 1200 / act 600 MHz</text>
+<rect x="128.7" y="218.5" width="119.2" height="121.5" fill="#7fa6d9"/>
+<text x="255.9" y="223.5" font-size="15" fill="#1f2d3d" text-anchor="start" font-weight="600" >8.1</text>
+<circle cx="143.6" cy="206.5" r="6" fill="#ffffff" stroke="#1f2d3d" stroke-width="2.5"/>
+<circle cx="173.4" cy="238.0" r="6" fill="#ffffff" stroke="#1f2d3d" stroke-width="2.5"/>
+<circle cx="203.2" cy="199.0" r="6" fill="#ffffff" stroke="#1f2d3d" stroke-width="2.5"/>
+<circle cx="233.0" cy="230.5" r="6" fill="#ffffff" stroke="#1f2d3d" stroke-width="2.5"/>
+<text x="188.3" y="364.0" font-size="15" fill="#1f2d3d" text-anchor="middle" font-weight="normal" >"10%"</text>
+<text x="188.3" y="384.0" font-size="14" fill="#2c3a42" text-anchor="middle" font-weight="normal" >≈1.4 cores</text>
+<rect x="345.4" y="131.5" width="119.2" height="208.5" fill="#7fa6d9"/>
+<text x="472.6" y="136.5" font-size="15" fill="#1f2d3d" text-anchor="start" font-weight="600" >13.9</text>
+<circle cx="360.3" cy="152.5" r="6" fill="#ffffff" stroke="#1f2d3d" stroke-width="2.5"/>
+<circle cx="390.1" cy="148.0" r="6" fill="#ffffff" stroke="#1f2d3d" stroke-width="2.5"/>
+<circle cx="419.9" cy="103.0" r="6" fill="#ffffff" stroke="#1f2d3d" stroke-width="2.5"/>
+<circle cx="449.7" cy="124.0" r="6" fill="#ffffff" stroke="#1f2d3d" stroke-width="2.5"/>
+<text x="405.0" y="364.0" font-size="15" fill="#1f2d3d" text-anchor="middle" font-weight="normal" >"20%"</text>
+<text x="405.0" y="384.0" font-size="14" fill="#2c3a42" text-anchor="middle" font-weight="normal" >≈1.8 cores</text>
+<rect x="562.1" y="116.5" width="119.2" height="223.5" fill="#7fa6d9"/>
+<text x="689.2" y="121.5" font-size="15" fill="#1f2d3d" text-anchor="start" font-weight="600" >14.9</text>
+<circle cx="577.0" cy="136.0" r="6" fill="#ffffff" stroke="#1f2d3d" stroke-width="2.5"/>
+<circle cx="606.8" cy="115.0" r="6" fill="#ffffff" stroke="#1f2d3d" stroke-width="2.5"/>
+<circle cx="636.6" cy="103.0" r="6" fill="#ffffff" stroke="#1f2d3d" stroke-width="2.5"/>
+<circle cx="666.4" cy="112.0" r="6" fill="#ffffff" stroke="#1f2d3d" stroke-width="2.5"/>
+<text x="621.7" y="364.0" font-size="15" fill="#1f2d3d" text-anchor="middle" font-weight="normal" >"30%"</text>
+<text x="621.7" y="384.0" font-size="14" fill="#2c3a42" text-anchor="middle" font-weight="normal" >≈2.2 cores</text>
+<line x1="80" y1="340" x2="730" y2="340" stroke="#2c3a42" stroke-width="1.2"/>
+<rect x="94" y="72" width="22" height="12" fill="#7fa6d9"/>
+<text x="124.0" y="83.0" font-size="14" fill="#2c3a42" text-anchor="start" font-weight="normal" >Average of 4 cycles</text>
+<circle cx="105" cy="100" r="6" fill="#ffffff" stroke="#1f2d3d" stroke-width="2.5"/>
+<text x="124.0" y="105.0" font-size="14" fill="#2c3a42" text-anchor="start" font-weight="normal" >Each cycle (C1 to C4, left to right)</text>
+<text id="wm" x="751.2" y="435.4" text-anchor="end" font-size="11" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
+</svg>

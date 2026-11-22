@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 492" role="img" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif">
+<title>Raspberry Pi 3B ARM clock control path: Linux sends clock requests to the VideoCore firmware, which decides the actual clock, voltage and throttling.</title>
+<rect x="0" y="0" width="760" height="470" rx="8" fill="#ffffff"/>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2c3a42"/></marker></defs>
+<text x="20.0" y="34.0" font-size="16" fill="#2f5d9e" text-anchor="start" font-weight="600" >Linux (ARM, kernel 6.18)</text>
+<text x="510.0" y="34.0" font-size="16" fill="#c0392b" text-anchor="start" font-weight="600" >VideoCore IV (firmware start.elf)</text>
+<rect x="20" y="56" width="220" height="72" rx="10" fill="#e8eef8" stroke="#2f5d9e" stroke-width="2"/>
+<text x="130.0" y="86.5" font-size="16" fill="#1f2d3d" text-anchor="middle" font-weight="600" >ondemand governor</text>
+<text x="130.0" y="108.5" font-size="14" fill="#2c3a42" text-anchor="middle" font-weight="normal" >picks 600 to 1200 MHz</text>
+<rect x="20" y="170" width="220" height="84" rx="10" fill="#e8eef8" stroke="#2f5d9e" stroke-width="2"/>
+<text x="130.0" y="197.0" font-size="16" fill="#1f2d3d" text-anchor="middle" font-weight="600" >cpufreq-dt</text>
+<text x="130.0" y="219.0" font-size="14" fill="#2c3a42" text-anchor="middle" font-weight="normal" >OPP 600 to 1200, 100 MHz step</text>
+<text x="130.0" y="238.0" font-size="14" fill="#2c3a42" text-anchor="middle" font-weight="normal" >(raspberrypi-cpufreq)</text>
+<rect x="20" y="290" width="220" height="84" rx="10" fill="#e8eef8" stroke="#2f5d9e" stroke-width="2"/>
+<text x="130.0" y="317.0" font-size="16" fill="#1f2d3d" text-anchor="middle" font-weight="600" >clk-raspberrypi</text>
+<text x="130.0" y="339.0" font-size="14" fill="#2c3a42" text-anchor="middle" font-weight="normal" >fw-clk-arm clock</text>
+<text x="130.0" y="358.0" font-size="14" fill="#2c3a42" text-anchor="middle" font-weight="normal" >SET/GET_CLOCK_RATE</text>
+<line x1="130" y1="128" x2="130" y2="168" stroke="#2c3a42" stroke-width="2" marker-end="url(#ah)"/>
+<line x1="130" y1="254" x2="130" y2="288" stroke="#2c3a42" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="265" y="56" width="210" height="72" rx="10" fill="#e8eef8" stroke="#2f5d9e" stroke-width="2"/>
+<text x="370.0" y="86.5" font-size="16" fill="#1f2d3d" text-anchor="middle" font-weight="600" >vcgencmd</text>
+<text x="370.0" y="108.5" font-size="14" fill="#2c3a42" text-anchor="middle" font-weight="normal" >measure_clock, get_throttled</text>
+<rect x="265" y="170" width="210" height="84" rx="10" fill="#e8eef8" stroke="#2f5d9e" stroke-width="2"/>
+<text x="370.0" y="197.0" font-size="16" fill="#1f2d3d" text-anchor="middle" font-weight="600" >raspberrypi-hwmon</text>
+<text x="370.0" y="219.0" font-size="14" fill="#2c3a42" text-anchor="middle" font-weight="normal" >GET_THROTTLED every 2 s</text>
+<text x="370.0" y="238.0" font-size="14" fill="#2c3a42" text-anchor="middle" font-weight="normal" >logs "Undervoltage detected!"</text>
+<rect x="510" y="56" width="230" height="312" rx="10" fill="#fdecea" stroke="#c0392b" stroke-width="2"/>
+<text x="625.0" y="92.0" font-size="16" fill="#1f2d3d" text-anchor="middle" font-weight="600" >Firmware: final decision</text>
+<text x="530.0" y="160.0" font-size="14" fill="#2c3a42" text-anchor="start" font-weight="normal" >• actual ARM clock (PLLB)</text>
+<text x="530.0" y="186.0" font-size="14" fill="#2c3a42" text-anchor="start" font-weight="normal" >• core/GPU clock, core voltage</text>
+<text x="530.0" y="212.0" font-size="14" fill="#2c3a42" text-anchor="start" font-weight="normal" >• throttling on UV or heat</text>
+<text x="530.0" y="238.0" font-size="14" fill="#2c3a42" text-anchor="start" font-weight="normal" >• get_throttled register</text>
+<line x1="475" y1="92" x2="508" y2="92" stroke="#2c3a42" stroke-width="2" marker-end="url(#ah)"/>
+<line x1="508" y1="212" x2="477" y2="212" stroke="#2c3a42" stroke-width="2" marker-end="url(#ah)"/>
+<line x1="240" y1="332" x2="508" y2="332" stroke="#2c3a42" stroke-width="2" marker-end="url(#ah)"/>
+<text x="374.0" y="322.0" font-size="14" fill="#2c3a42" text-anchor="middle" font-weight="normal" >mailbox: SET_CLOCK_RATE (request)</text>
+<rect x="510" y="392" width="108" height="64" rx="10" fill="#f2f4f6" stroke="#2c3a42" stroke-width="2"/>
+<text x="564.0" y="418.5" font-size="15" fill="#1f2d3d" text-anchor="middle" font-weight="600" >UV detector</text>
+<text x="564.0" y="440.5" font-size="14" fill="#2c3a42" text-anchor="middle" font-weight="normal" >≈4.63 V</text>
+<rect x="632" y="392" width="108" height="64" rx="10" fill="#f2f4f6" stroke="#2c3a42" stroke-width="2"/>
+<text x="686.0" y="418.5" font-size="15" fill="#1f2d3d" text-anchor="middle" font-weight="600" >Temp sensor</text>
+<text x="686.0" y="440.5" font-size="14" fill="#2c3a42" text-anchor="middle" font-weight="normal" >80 / 85 °C</text>
+<line x1="564" y1="392" x2="564" y2="370" stroke="#2c3a42" stroke-width="2" marker-end="url(#ah)"/>
+<line x1="686" y1="392" x2="686" y2="370" stroke="#2c3a42" stroke-width="2" marker-end="url(#ah)"/>
+<text x="20.0" y="404.0" font-size="14" fill="#c0392b" text-anchor="start" font-weight="normal" >scaling_cur_freq = policy-&gt;cur</text>
+<text x="20.0" y="424.0" font-size="14" fill="#c0392b" text-anchor="start" font-weight="normal" >(level requested by the kernel, not measured)</text>
+<text id="wm" x="751.2" y="485.4" text-anchor="end" font-size="11" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
+</svg>

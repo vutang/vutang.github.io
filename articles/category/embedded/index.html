@@ -15138,6 +15138,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#ai-that-su-ieu-khien-xung-nhip-cpu-tren-raspberry-pi-3b-o-bang-soak-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ai thật sự điều khiển xung nhịp CPU trên Raspberry Pi 3B: đo bằng soak test
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#i3c-giao-thuc-ke-nhiem-i2c-va-ho-tro-trong-linux-74" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -15181,17 +15192,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#yocto-project-hien-trang-release-va-15-nam-phat-trien" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Yocto Project: hiện trạng release và 15 năm phát triển
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -15206,6 +15206,58 @@
       <header class="md-typeset">
         <h1 id="embedded">Embedded<a class="headerlink" href="#embedded" title="Permanent link">¶</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://github.com/vutang.png?size=128" alt="Vu Tang">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2026-11-22 00:00:00+00:00">Nov 22, 2026</time></li>
+        
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="./" class="md-meta__link">Embedded</a>, 
+              <a href="../linux-kernel/" class="md-meta__link">Linux Kernel</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              22 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="ai-that-su-ieu-khien-xung-nhip-cpu-tren-raspberry-pi-3b-o-bang-soak-test"><a class="toclink" href="../../2026/11/22/pi3b-cpu-clock-throttling/">Ai thật sự điều khiển xung nhịp CPU trên Raspberry Pi 3B: đo bằng soak test</a></h2>
+<p><img alt="Raspberry Pi 3B clock throttling" class="article-cover" src="../../img/cover-pi3b-cpu-clock-throttling.svg"></p>
+<p>Trên Raspberry Pi 3 Model B, <code>cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq</code> có thể trả về 1 200 000 kHz trong khi lõi ARM đang chạy ở 600 MHz. Hai con số không mâu thuẫn: con số thứ nhất là mức xung Linux <em>yêu cầu</em>, con số thứ hai là mức firmware VideoCore <em>cho phép</em>. Bài viết trình bày đường điều khiển xung nhịp trên Pi 3B theo mã nguồn kernel 6.18 và tài liệu Raspberry Pi, rồi dùng dữ liệu một soak test 4 chu kỳ (16,7 giờ, 21–22/11/2026) để định lượng: firmware ép hạ xung bao lâu, ép xuống mức nào, và hiệu năng mất bao nhiêu khi nguồn cấp bị sụt áp.</p>
+
+    
+      <nav class="md-post__action">
+        <a href="../../2026/11/22/pi3b-cpu-clock-throttling/">
+          Continue reading
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -15413,57 +15465,6 @@
   </div>
 </article>
       
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://github.com/vutang.png?size=128" alt="Vu Tang">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2026-10-21 00:00:00+00:00">Oct 21, 2026</time></li>
-        
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="./" class="md-meta__link">Embedded</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              6 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="yocto-project-hien-trang-release-va-15-nam-phat-trien"><a class="toclink" href="../../2026/10/21/yocto-release-status/">Yocto Project: hiện trạng release và 15 năm phát triển</a></h2>
-<p><img alt="Yocto" class="article-cover" src="../../img/cover-yocto-release-status.svg"></p>
-<p>Tính đến tháng 10/2026, bản mới nhất là Yocto 6.0.2 Wrynose (LTS, hỗ trợ đến tháng 4/2030), còn 6.1 Blacksail vẫn đang phát triển và được lên lịch phát hành vào đầu tháng 11/2026.</p>
-
-    
-      <nav class="md-post__action">
-        <a href="../../2026/10/21/yocto-release-status/">
-          Continue reading
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
       
         
           
@@ -15471,7 +15472,7 @@
 
 
 <nav class="md-pagination">
-  
+  <span class="md-pagination__current">1</span> <a class="md-pagination__link" href="page/2/">2</a>
 </nav>
         
       
