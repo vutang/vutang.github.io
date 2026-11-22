@@ -1090,6 +1090,50 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#nguon-cap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nguồn cấp
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xung-nhip-va-ien-ap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Xung nhịp và điện áp
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gioi-han-nhiet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Giới hạn nhiệt
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#theo-doi-ep-ha-xung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Theo dõi ép hạ xung
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#porting-linux" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1133,6 +1177,17 @@
     <span class="md-ellipsis">
       
         Liên quan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài liệu tham khảo
       
     </span>
   </a>
@@ -15309,6 +15364,50 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#nguon-cap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nguồn cấp
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xung-nhip-va-ien-ap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Xung nhịp và điện áp
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gioi-han-nhiet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Giới hạn nhiệt
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#theo-doi-ep-ha-xung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Theo dõi ép hạ xung
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#porting-linux" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -15358,6 +15457,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tài liệu tham khảo
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -15397,29 +15507,134 @@
 
 
 <h1 id="raspberry-pi-3-model-b">Raspberry Pi 3 Model B<a class="headerlink" href="#raspberry-pi-3-model-b" title="Permanent link">¶</a></h1>
-<p>Trang này gom liên kết và ghi chú để porting Linux lên Raspberry Pi 3 Model B.</p>
+<p>Trang này gom ghi chú để chạy và porting Linux trên Raspberry Pi 3 Model B. Thứ tự trình bày: liên kết chính, nguồn cấp, xung nhịp và điện áp, giới hạn nhiệt, cách theo dõi trạng thái ép hạ xung, rồi đến porting kernel và U-Boot.</p>
 <div class="admonition todo">
 <p class="admonition-title">Trang chưa hoàn thành</p>
 <p>Các phần còn thiếu:</p>
 <ul>
 <li>Các bước build kernel và U-Boot đã chạy thử trên board, thay cho liên kết tới hướng dẫn bên ngoài.</li>
 <li>Cách backup image thẻ SD (chưa kiểm chứng).</li>
+<li>Kiểm tra lại các liên kết tới <code>raspberrypi.org</code> và <code>projects.raspberrypi.org</code> ở mục Liên kết và Porting Linux. Tài liệu của Raspberry Pi hiện đặt ở <code>raspberrypi.com</code>, nên các liên kết cũ có thể đã chuyển chỗ.</li>
 </ul>
 </div>
 <h2 id="lien-ket">Liên kết<a class="headerlink" href="#lien-ket" title="Permanent link">¶</a></h2>
 <ul>
-<li><a href="https://www.raspberrypi.org/products/raspberry-pi-3-model-b/">Trang sản phẩm</a> - www.raspberrypi.org</li>
+<li><a href="https://www.raspberrypi.com/products/raspberry-pi-3-model-b/">Trang sản phẩm Raspberry Pi 3 Model B</a></li>
 <li><a href="https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up">Hướng dẫn bắt đầu</a></li>
 </ul>
+<h2 id="nguon-cap">Nguồn cấp<a class="headerlink" href="#nguon-cap" title="Permanent link">¶</a></h2>
+<p>Pi 3B nhận nguồn 5 V qua cổng micro-USB. Raspberry Pi khuyến nghị nguồn micro-USB đến 2,5 A cho Pi 3B (<a href="https://www.raspberrypi.com/products/raspberry-pi-3-model-b/">trang sản phẩm Pi 3B</a>) và có bộ nguồn micro-USB chính hãng 12,5 W (<a href="https://www.raspberrypi.com/products/raspberry-pi-universal-power-supply/">Raspberry Pi 1, 2 and 3 Power Supply</a>).</p>
+<p>Tài liệu <code>config.txt</code> khuyến nghị giữ điện áp nguồn trên 4,8 V. Khi điện áp xuống dưới 4,63 V (±5%), firmware hạ xung lõi ARM và GPU, đồng thời kernel log ghi <code>Undervoltage detected!</code> (<a href="https://www.raspberrypi.com/documentation/computers/config_txt.html#monitoring-voltage">config.txt, Monitoring voltage</a>).</p>
+<p>Cổng micro-USB của Pi 3B không thương lượng USB Power Delivery (USB-PD), nên củ sạc USB-PD công suất lớn chỉ cấp mức 5 V mặc định. Trên board dùng trong <a href="../../articles/2026/11/22/pi3b-cpu-clock-throttling/">bài đo soak test</a>, củ sạc điện thoại 65 W USB-PD vẫn gây sụt áp từ mức tải khoảng 1,4 nhân. Nguyên nhân cụ thể (cáp, đầu chuyển hay củ sạc) chưa được kiểm chứng.</p>
+<h2 id="xung-nhip-va-ien-ap">Xung nhịp và điện áp<a class="headerlink" href="#xung-nhip-va-ien-ap" title="Permanent link">¶</a></h2>
+<p>Giá trị mặc định cho Pi 3 theo tài liệu <code>config.txt</code> (<a href="https://www.raspberrypi.com/documentation/computers/config_txt.html#overclocking-options">Overclocking options</a>):</p>
+<table>
+<thead>
+<tr>
+<th>Tham số</th>
+<th>Mặc định</th>
+<th>Ý nghĩa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>arm_freq</code></td>
+<td>1 200 MHz</td>
+<td>Xung tối đa của lõi ARM</td>
+</tr>
+<tr>
+<td><code>arm_freq_min</code></td>
+<td>600 MHz</td>
+<td>Xung tối thiểu của lõi ARM</td>
+</tr>
+<tr>
+<td><code>core_freq</code></td>
+<td>400 MHz</td>
+<td>Xung tối đa của khối core/GPU</td>
+</tr>
+<tr>
+<td><code>core_freq_min</code></td>
+<td>250 MHz</td>
+<td>Xung tối thiểu của khối core/GPU</td>
+</tr>
+<tr>
+<td><code>over_voltage</code></td>
+<td>0 (≈1,35 V)</td>
+<td>Điện áp core tối đa</td>
+</tr>
+<tr>
+<td><code>over_voltage_min</code></td>
+<td>0 (1,2 V)</td>
+<td>Điện áp core tối thiểu</td>
+</tr>
+</tbody>
+</table>
+<p>Firmware VideoCore sở hữu PLL của lõi ARM và chọn điện áp core bằng Adaptive Voltage Scaling (AVS) trong khoảng từ <code>over_voltage_min</code> đến <code>over_voltage</code>. Linux chỉ gửi yêu cầu tần số qua mailbox: driver <code>raspberrypi-cpufreq</code> sinh bảng OPP 600–1 200 MHz với bước 100 MHz, còn governor chọn mức trong bảng. Firmware quyết định xung thực tế và có thể hạ xung mà kernel không biết. Chi tiết và mã nguồn liên quan nằm trong <a href="../../articles/2026/11/22/pi3b-cpu-clock-throttling/">bài viết về xung nhịp Pi 3B</a>.</p>
+<p>Khi bị ép hạ xung do sụt áp, firmware hạ cả ba đại lượng về mức tối thiểu: ARM 600 MHz, core 250 MHz, điện áp core 1,2 V (số liệu đo trên board trong bài viết nói trên).</p>
+<h2 id="gioi-han-nhiet">Giới hạn nhiệt<a class="headerlink" href="#gioi-han-nhiet" title="Permanent link">¶</a></h2>
+<p>Lõi ARM bị hạ xung khi nhiệt SoC trong khoảng 80–85 °C; trên 85 °C (<code>temp_limit</code>) cả ARM và GPU bị hạ xung (<a href="https://www.raspberrypi.com/documentation/computers/config_txt.html#monitoring-core-temperature">config.txt, Monitoring core temperature</a>). Soft limit 60 °C (<code>temp_soft_limit</code>) chỉ có trên Pi 3A+ và 3B+, Pi 3B không có.</p>
+<h2 id="theo-doi-ep-ha-xung">Theo dõi ép hạ xung<a class="headerlink" href="#theo-doi-ep-ha-xung" title="Permanent link">¶</a></h2>
+<p>Các file sysfs của cpufreq (<code>scaling_cur_freq</code>, <code>cpuinfo_cur_freq</code>, <code>stats/time_in_state</code>) chỉ phản ánh mức kernel yêu cầu, không phải xung thực tế. Để biết board có bị ép hạ xung hay không, cần hỏi firmware bằng <code>vcgencmd</code> (<a href="https://www.raspberrypi.com/documentation/computers/os.html">tài liệu vcgencmd</a>):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>vcgencmd<span class="w"> </span>measure_clock<span class="w"> </span>arm<span class="w">    </span><span class="c1"># xung ARM thực tế (Hz)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>vcgencmd<span class="w"> </span>measure_clock<span class="w"> </span>core<span class="w">   </span><span class="c1"># xung khối core/GPU</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>vcgencmd<span class="w"> </span>measure_volts<span class="w"> </span>core<span class="w">   </span><span class="c1"># điện áp core</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>vcgencmd<span class="w"> </span>measure_temp<span class="w">         </span><span class="c1"># nhiệt SoC</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>vcgencmd<span class="w"> </span>get_throttled<span class="w">        </span><span class="c1"># cờ sụt áp và ép hạ xung</span>
+</code></pre></div>
+<p>Ý nghĩa các bit của <code>get_throttled</code> (cùng nguồn):</p>
+<table>
+<thead>
+<tr>
+<th>Bit</th>
+<th>Giá trị</th>
+<th>Ý nghĩa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td><code>0x1</code></td>
+<td>Đang sụt áp</td>
+</tr>
+<tr>
+<td>1</td>
+<td><code>0x2</code></td>
+<td>Xung ARM đang bị giới hạn (capped)</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>0x4</code></td>
+<td>Đang bị throttle</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>0x8</code></td>
+<td>Soft temperature limit đang hoạt động</td>
+</tr>
+<tr>
+<td>16–19</td>
+<td><code>0x10000</code>–<code>0x80000</code></td>
+<td>Các trạng thái tương ứng đã từng xảy ra kể từ khi boot</td>
+</tr>
+</tbody>
+</table>
+<p>Các bit 16–19 giữ nguyên tới khi reboot, nên chỉ cho biết sự kiện đã từng xảy ra. Muốn biết tỷ lệ thời gian bị ép hạ xung, cần lấy mẫu bit 0–3 theo chu kỳ. Mỗi dòng <code>Undervoltage detected!</code> trong kernel log ứng với một đợt sụt áp, do driver <code>raspberrypi-hwmon</code> đọc cờ mỗi 2 giây.</p>
 <h2 id="porting-linux">Porting Linux<a class="headerlink" href="#porting-linux" title="Permanent link">¶</a></h2>
 <h3 id="kernel">Kernel<a class="headerlink" href="#kernel" title="Permanent link">¶</a></h3>
 <p>Trang <a href="https://www.raspberrypi.org/">https://www.raspberrypi.org/</a> có hướng dẫn <a href="https://www.raspberrypi.org/documentation/linux/kernel/building.md">Kernel Building</a> cho Pi.</p>
-<p>Hướng dẫn này dùng toolchain <code>gcc-linaro-arm-linux-gnueabihf-raspbian</code>.</p>
+<p>Hướng dẫn này dùng toolchain <code>gcc-linaro-arm-linux-gnueabihf-raspbian</code>. Tiền tố <code>arm-linux-gnueabihf</code> cho biết đây là toolchain ARM 32-bit (hard-float), chỉ dùng cho kernel 32-bit. Raspberry Pi OS 64-bit chạy kernel arm64 (ví dụ <code>6.18.50+rpt-rpi-v8</code> trên board trong bài đo), nên cần toolchain <code>aarch64-linux-gnu</code>.</p>
 <h3 id="rpi-u-boot">RPi U-Boot<a class="headerlink" href="#rpi-u-boot" title="Permanent link">¶</a></h3>
 <p>Trang <a href="https://elinux.org/RPi_U-Boot">https://elinux.org/RPi_U-Boot</a> hướng dẫn build U-Boot cho Raspberry Pi.</p>
 <h2 id="lien-quan">Liên quan<a class="headerlink" href="#lien-quan" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="../../articles/2026/11/22/pi3b-cpu-clock-throttling/">Ai thật sự điều khiển xung nhịp CPU trên Raspberry Pi 3B</a>: đường điều khiển xung nhịp giữa firmware VideoCore và cpufreq, kèm số liệu soak test về ép hạ xung khi nguồn sụt áp.</li>
+</ul>
+<h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="https://www.raspberrypi.com/documentation/computers/config_txt.html#overclocking-options">Raspberry Pi Documentation – config.txt: Overclocking options, Monitoring core temperature, Monitoring voltage</a></li>
+<li><a href="https://www.raspberrypi.com/documentation/computers/os.html">Raspberry Pi Documentation – Raspberry Pi OS: vcgencmd</a></li>
+<li><a href="https://www.raspberrypi.com/products/raspberry-pi-3-model-b/">Raspberry Pi 3 Model B – trang sản phẩm</a></li>
+<li><a href="https://www.raspberrypi.com/products/raspberry-pi-universal-power-supply/">Raspberry Pi 1, 2 and 3 Power Supply – trang sản phẩm</a></li>
 </ul>
 
 
@@ -15443,7 +15658,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 22, 2026 01:44:25 UTC">November 22, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 22, 2026 01:51:04 UTC">November 22, 2026</span>
   </span>
 
     
