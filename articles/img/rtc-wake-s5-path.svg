@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 492" role="img" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif">
+  <title>Wake path from S5 by RTC alarm through the RTC well, the PCH suspend well and the main power rails.</title>
+  <rect x="0" y="0" width="760" height="470" rx="8" fill="#ffffff"/>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2c3a42"/></marker>
+  </defs>
+
+  <!-- RTC well -->
+  <rect x="16" y="16" width="200" height="236" rx="10" fill="#fff4e0" stroke="#b7791f" stroke-width="2"/>
+  <text x="28" y="40" font-size="16" font-weight="600" fill="#6e4508">RTC well</text>
+  <text x="28" y="58" font-size="13" fill="#2c3a42">CMOS battery, alive in G3</text>
+  <rect x="30" y="72" width="172" height="74" rx="8" fill="#ffffff" stroke="#b7791f" stroke-width="1.5"/>
+  <text x="116" y="96" font-size="13" fill="#1f2d3d" text-anchor="middle">RTC (MC146818-like)</text>
+  <text x="116" y="115" font-size="13" fill="#1f2d3d" text-anchor="middle">time + alarm regs</text>
+  <text x="116" y="134" font-size="13" fill="#1f2d3d" text-anchor="middle">DAY_ALRM / MON_ALRM</text>
+  <rect x="30" y="160" width="172" height="74" rx="8" fill="#ffffff" stroke="#b7791f" stroke-width="1.5"/>
+  <text x="116" y="187" font-size="13" fill="#1f2d3d" text-anchor="middle">Reg B: AIE = 1</text>
+  <text x="116" y="206" font-size="13" fill="#1f2d3d" text-anchor="middle">Reg C: AF set on match</text>
+  <circle cx="40" cy="166" r="11" fill="#b7791f"/><text x="40" y="171" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">1</text>
+
+  <!-- Suspend well -->
+  <rect x="236" y="16" width="300" height="236" rx="10" fill="#e8eef8" stroke="#2f5d9e" stroke-width="2"/>
+  <text x="248" y="40" font-size="16" font-weight="600" fill="#2f5d9e">Suspend well (PCH)</text>
+  <text x="248" y="58" font-size="13" fill="#2c3a42">+5VSB, alive in S3/S4/S5 while plugged in</text>
+  <rect x="250" y="76" width="118" height="60" rx="8" fill="#ffffff" stroke="#2f5d9e" stroke-width="1.5"/>
+  <text x="309" y="101" font-size="13" fill="#1f2d3d" text-anchor="middle">PM1_STS</text>
+  <text x="309" y="120" font-size="13" fill="#1f2d3d" text-anchor="middle">RTC_STS (bit 10)</text>
+  <rect x="250" y="168" width="118" height="60" rx="8" fill="#ffffff" stroke="#2f5d9e" stroke-width="1.5"/>
+  <text x="309" y="193" font-size="13" fill="#1f2d3d" text-anchor="middle">PM1_EN</text>
+  <text x="309" y="212" font-size="13" fill="#1f2d3d" text-anchor="middle">RTC_EN (bit 10)</text>
+  <rect x="394" y="116" width="128" height="74" rx="8" fill="#ffffff" stroke="#2f5d9e" stroke-width="1.5"/>
+  <text x="458" y="141" font-size="13" fill="#1f2d3d" text-anchor="middle">Wake logic</text>
+  <text x="458" y="160" font-size="13" fill="#1f2d3d" text-anchor="middle">RTC_STS AND RTC_EN</text>
+  <text x="458" y="179" font-size="13" fill="#1f2d3d" text-anchor="middle">= wake event</text>
+  <circle cx="260" cy="82" r="11" fill="#2f5d9e"/><text x="260" y="87" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">2</text>
+  <line x1="202" y1="197" x2="248" y2="112" stroke="#2c3a42" stroke-width="2" marker-end="url(#ah)"/>
+  <line x1="368" y1="112" x2="392" y2="140" stroke="#2c3a42" stroke-width="2" marker-end="url(#ah)"/>
+  <line x1="368" y1="196" x2="392" y2="168" stroke="#2c3a42" stroke-width="2" marker-end="url(#ah)"/>
+
+  <!-- Board + PSU -->
+  <rect x="566" y="56" width="178" height="74" rx="10" fill="#f2f4f6" stroke="#2c3a42" stroke-width="1.5"/>
+  <text x="655" y="86" font-size="13" fill="#1f2d3d" text-anchor="middle">Board power sequencing</text>
+  <text x="655" y="105" font-size="13" fill="#1f2d3d" text-anchor="middle">(Super I/O or EC)</text>
+  <rect x="566" y="178" width="178" height="74" rx="10" fill="#f2f4f6" stroke="#2c3a42" stroke-width="1.5"/>
+  <text x="655" y="208" font-size="13" fill="#1f2d3d" text-anchor="middle">PSU</text>
+  <text x="655" y="227" font-size="13" fill="#1f2d3d" text-anchor="middle">PS_ON# low: main rails on</text>
+  <line x1="522" y1="140" x2="564" y2="100" stroke="#2c3a42" stroke-width="2" marker-end="url(#ah)"/>
+  <text x="566" y="44" font-size="13" fill="#2c3a42">release SLP_S5#..SLP_S3#</text>
+  <circle cx="548" cy="150" r="11" fill="#2f5d9e"/><text x="548" y="155" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">3</text>
+  <line x1="655" y1="130" x2="655" y2="176" stroke="#2c3a42" stroke-width="2" marker-end="url(#ah)"/>
+  <text x="663" y="158" font-size="13" fill="#2c3a42">PS_ON#</text>
+
+  <!-- Main rails -->
+  <rect x="16" y="300" width="728" height="154" rx="10" fill="#e9f5ee" stroke="#2e7d4f" stroke-width="2"/>
+  <text x="28" y="324" font-size="16" font-weight="600" fill="#2e7d4f">Core well and main rails</text>
+  <text x="28" y="342" font-size="13" fill="#2c3a42">S0 only</text>
+  <rect x="40" y="362" width="170" height="70" rx="8" fill="#ffffff" stroke="#2e7d4f" stroke-width="1.5"/>
+  <text x="125" y="402" font-size="13" fill="#1f2d3d" text-anchor="middle">CPU leaves reset</text>
+  <rect x="270" y="362" width="200" height="70" rx="8" fill="#ffffff" stroke="#2e7d4f" stroke-width="1.5"/>
+  <text x="370" y="392" font-size="13" fill="#1f2d3d" text-anchor="middle">Firmware POST</text>
+  <text x="370" y="411" font-size="13" fill="#2c3a42" text-anchor="middle">alarm to kernel: about 28 s</text>
+  <rect x="530" y="362" width="200" height="70" rx="8" fill="#ffffff" stroke="#2e7d4f" stroke-width="1.5"/>
+  <text x="630" y="392" font-size="13" fill="#1f2d3d" text-anchor="middle">Boot loader, kernel,</text>
+  <text x="630" y="411" font-size="13" fill="#1f2d3d" text-anchor="middle">systemd, VMs (not timed)</text>
+  <line x1="210" y1="397" x2="268" y2="397" stroke="#2c3a42" stroke-width="2" marker-end="url(#ah)"/>
+  <line x1="470" y1="397" x2="528" y2="397" stroke="#2c3a42" stroke-width="2" marker-end="url(#ah)"/>
+  <path d="M655,252 C655,290 200,300 125,360" fill="none" stroke="#2c3a42" stroke-width="2" marker-end="url(#ah)"/>
+  <text x="420" y="285" font-size="13" fill="#2c3a42">rails stable, PWROK</text>
+  <circle cx="676" cy="268" r="11" fill="#2c3a42"/><text x="676" y="273" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">4</text>
+  <circle cx="50" cy="368" r="11" fill="#2e7d4f"/><text x="50" y="373" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">5</text>
+<text id="wm" x="751.2" y="485.4" text-anchor="end" font-size="11" font-family="DejaVu Sans, sans-serif" style="fill:#888;fill-opacity:0.55">note.vutang.dev</text>
+</svg>

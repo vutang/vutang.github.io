@@ -15138,6 +15138,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#tu-bat-may-x86-tu-s5-bang-rtc-alarm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tự bật máy x86 từ S5 bằng RTC alarm
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ai-that-su-ieu-khien-xung-nhip-cpu-tren-raspberry-pi-3b-o-bang-soak-test" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -15181,17 +15192,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#linux-73-chinh-thuc-release-va-lap-ky-luc-linux-74-buoc-vao-merge-window" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Linux 7.3 chính thức release và lập kỷ lục, Linux 7.4 bước vào merge window
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -15206,6 +15206,58 @@
       <header class="md-typeset">
         <h1 id="linux-kernel">Linux Kernel<a class="headerlink" href="#linux-kernel" title="Permanent link">¶</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://github.com/vutang.png?size=128" alt="Vu Tang">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2026-11-24 00:00:00+00:00">Nov 24, 2026</time></li>
+        
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="./" class="md-meta__link">Linux Kernel</a>, 
+              <a href="../embedded/" class="md-meta__link">Embedded</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              13 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="tu-bat-may-x86-tu-s5-bang-rtc-alarm"><a class="toclink" href="../../2026/11/24/x86-rtc-wake-from-s5/">Tự bật máy x86 từ S5 bằng RTC alarm</a></h2>
+<p><img alt="RTC alarm wake from S5" class="article-cover" src="../../img/cover-x86-rtc-wake-from-s5.svg"></p>
+<p>Một máy chủ chỉ dùng trong giờ hành chính có thể tắt hẳn vào buổi tối và tự bật lại vào buổi sáng bằng RTC alarm. Cách làm chỉ gồm một dòng lệnh <code>rtcwake</code>; bài viết trình bày phần bên dưới dòng lệnh đó: một bộ đếm 32,768 kHz chạy bằng pin CMOS bật nguồn cả máy như thế nào, và vì sao cơ chế này không phải lúc nào cũng hoạt động.</p>
+
+    
+      <nav class="md-post__action">
+        <a href="../../2026/11/24/x86-rtc-wake-from-s5/">
+          Continue reading
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -15404,57 +15456,6 @@
     
       <nav class="md-post__action">
         <a href="../../2026/11/02/sched-ext-bpf-scheduler/">
-          Continue reading
-        </a>
-      </nav>
-    
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://github.com/vutang.png?size=128" alt="Vu Tang">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2026-10-23 00:00:00+00:00">Oct 23, 2026</time></li>
-        
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="./" class="md-meta__link">Linux Kernel</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              4 min read
-            
-          </li>
-        
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="linux-73-chinh-thuc-release-va-lap-ky-luc-linux-74-buoc-vao-merge-window"><a class="toclink" href="../../2026/10/23/linux-7-3-release-7-4-merge-window/">Linux 7.3 chính thức release và lập kỷ lục, Linux 7.4 bước vào merge window</a></h2>
-<p><img alt="Linux 7.3 và 7.4" class="article-cover" src="../../img/cover-linux-7-3-release-7-4-merge-window.svg"></p>
-<p>Linux 7.3 đã được Linus Torvalds phát hành chính thức vào Chủ nhật 18/10/2026, và merge window của Linux 7.4 mở ngay hôm sau. Bài viết điểm lại hai mốc này, và mô tả ngắn quy trình release của kernel Linux, phần được đào sâu trong tech note <a href="../../../lnx_kernel/release/kernel_release/">Kernel Release Process</a>.</p>
-
-    
-      <nav class="md-post__action">
-        <a href="../../2026/10/23/linux-7-3-release-7-4-merge-window/">
           Continue reading
         </a>
       </nav>
