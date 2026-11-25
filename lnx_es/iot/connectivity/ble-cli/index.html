@@ -26,7 +26,7 @@
     
     
       
-        <title>Bluetooth CLI trên Pi 3B (WIP) - Vu Tang's Docs</title>
+        <title>Bluetooth CLI trên Pi 3B - Vu Tang's Docs</title>
       
     
     
@@ -72,7 +72,7 @@
     
   
 <meta property="og:type" content="website">
-<meta property="og:title" content="Bluetooth CLI trên Pi 3B (WIP) - Vu Tang's Docs">
+<meta property="og:title" content="Bluetooth CLI trên Pi 3B - Vu Tang's Docs">
 <meta property="og:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
 <meta property="og:image" content="https://note.vutang.dev/assets/images/social/lnx_es/iot/connectivity/ble-cli.png">
 <meta property="og:image:type" content="image/png">
@@ -80,7 +80,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://note.vutang.dev/lnx_es/iot/connectivity/ble-cli/">
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:title" content="Bluetooth CLI trên Pi 3B (WIP) - Vu Tang's Docs">
+<meta property="twitter:title" content="Bluetooth CLI trên Pi 3B - Vu Tang's Docs">
 <meta property="twitter:description" content="Technical notes on embedded Linux, kernel drivers, FPGA and programming.">
 <meta property="twitter:image" content="https://note.vutang.dev/assets/images/social/lnx_es/iot/connectivity/ble-cli.png">
 <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
@@ -145,7 +145,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Bluetooth CLI trên Pi 3B (WIP)
+              Bluetooth CLI trên Pi 3B
             
           </span>
         </div>
@@ -3675,7 +3675,7 @@
   <span class="md-ellipsis">
     
   
-    Bluetooth CLI trên Pi 3B (WIP)
+    Bluetooth CLI trên Pi 3B
   
 
     
@@ -3693,7 +3693,7 @@
   <span class="md-ellipsis">
     
   
-    Bluetooth CLI trên Pi 3B (WIP)
+    Bluetooth CLI trên Pi 3B
   
 
     
@@ -3800,6 +3800,17 @@
     <span class="md-ellipsis">
       
         Bluetooth trong container Home Assistant
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loi-hci-uart-khi-quet-lien-tuc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lỗi HCI UART khi quét liên tục
       
     </span>
   </a>
@@ -15465,6 +15476,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#loi-hci-uart-khi-quet-lien-tuc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lỗi HCI UART khi quét liên tục
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#bang-tra-lenh" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -15539,20 +15561,7 @@
 
 
 <h1 id="quan-ly-bluetooth-bang-dong-lenh-tren-raspberry-pi-3b">Quản lý Bluetooth bằng dòng lệnh trên Raspberry Pi 3B<a class="headerlink" href="#quan-ly-bluetooth-bang-dong-lenh-tren-raspberry-pi-3b" title="Permanent link">¶</a></h1>
-<p>Trang này trình bày cách đưa Bluetooth tích hợp sẵn (onboard) của một board Linux không có màn hình (headless) vào trạng thái dùng được, chỉ bằng SSH và dòng lệnh. Ví dụ lấy từ một Raspberry Pi 3B được chuẩn bị làm hub nhà thông minh, dùng Bluetooth để đọc cảm biến BLE cho Home Assistant chạy trong container. Thứ tự trình bày: môi trường thử nghiệm, các lớp của stack Bluetooth trên Linux, đường nối phần cứng trên Pi 3B, kiểm tra adapter, xử lý adapter bị soft block, quét BLE, theo dõi gói HCI bằng <code>btmon</code>, cấp Bluetooth cho container, và bảng tra lệnh. Lý thuyết BLE (HCI, GAP, GATT, PHY) nằm ở trang <a href="../ble/">BLE trên Linux</a>.</p>
-<div class="admonition todo">
-<p class="admonition-title">Trang chưa hoàn thành</p>
-<p>Các phần còn thiếu:</p>
-<ul>
-<li>Output nguyên văn của <code>bluetoothctl show</code>, <code>rfkill list</code> trước và sau khi gỡ block, <code>journalctl -b -u systemd-rfkill</code>.</li>
-<li>Kết quả kiểm chứng PL011 đang gắn với Bluetooth qua serdev (lệnh ở mục "Đường nối Bluetooth trên Pi 3B").</li>
-<li>Nguồn gốc soft block ở lần boot đầu tiên: so sánh với một thẻ nhớ ghi mới.</li>
-<li>Một đoạn log quét BLE (che địa chỉ MAC của thiết bị không thuộc thử nghiệm) và một capture <code>btmon</code> kèm ảnh Wireshark.</li>
-<li>Đọc cảm biến Xiaomi LYWSD03MMC: dữ liệu advertising thụ động so với kết nối GATT, firmware gốc (cần bindkey) so với firmware pvvx phát định dạng BTHome. Cảm biến chưa về.</li>
-<li>Tự động hóa: các bước trong role Ansible, lưu ý khi gọi <code>bluetoothctl</code> từ script, và khi nào chuyển sang D-Bus.</li>
-<li>Thông số Bluetooth 4.1 của BCM43430A1 theo tài liệu chính thức của Raspberry Pi.</li>
-</ul>
-</div>
+<p>Trang này trình bày cách đưa Bluetooth tích hợp sẵn (onboard) của một board Linux không có màn hình (headless) vào trạng thái dùng được, chỉ bằng SSH và dòng lệnh. Ví dụ lấy từ một Raspberry Pi 3B được chuẩn bị làm hub nhà thông minh, dùng Bluetooth để đọc cảm biến BLE cho Home Assistant chạy trong container. Thứ tự trình bày: môi trường thử nghiệm, các lớp của stack Bluetooth trên Linux, đường nối phần cứng trên Pi 3B, kiểm tra adapter, xử lý adapter bị soft block, quét BLE, theo dõi gói HCI bằng <code>btmon</code>, cấp Bluetooth cho container, lỗi HCI UART khi quét liên tục, và bảng tra lệnh. Lý thuyết BLE (HCI, GAP, GATT, PHY) nằm ở trang <a href="../ble/">BLE trên Linux</a>.</p>
 <h2 id="moi-truong-thu-nghiem">Môi trường thử nghiệm<a class="headerlink" href="#moi-truong-thu-nghiem" title="Permanent link">¶</a></h2>
 <table>
 <thead>
@@ -15579,8 +15588,16 @@
 <td><code>6.18.50+rpt-rpi-v8</code>, <code>SMP PREEMPT</code></td>
 </tr>
 <tr>
+<td>Controller Bluetooth</td>
+<td>Manufacturer <code>0x000f</code> (Broadcom), HCI version <code>0x07</code> (Bluetooth 4.1)</td>
+</tr>
+<tr>
 <td>BlueZ</td>
 <td>5.82</td>
+</tr>
+<tr>
+<td>D-Bus</td>
+<td><code>dbus-daemon</code> 1.16.2</td>
 </tr>
 <tr>
 <td>Ứng dụng</td>
@@ -15592,24 +15609,30 @@
 </tr>
 </tbody>
 </table>
-<p>Các giá trị trên đọc từ board trong khoảng 20 đến 24/11/2026 bằng <code>/proc/cpuinfo</code>, <code>/etc/os-release</code>, <code>uname -a</code> và <code>bluetoothctl --version</code>.</p>
+<p>Các giá trị trên đọc từ board trong khoảng 20 đến 25/11/2026 bằng <code>/proc/cpuinfo</code>, <code>/etc/os-release</code>, <code>uname -a</code>, <code>bluetoothctl --version</code>, <code>bluetoothctl show</code> và <code>dpkg -l</code>.</p>
 <p>Board không có màn hình và chỉ truy cập qua SSH, nên mọi bước dưới đây dùng lệnh không tương tác hoặc phiên <code>bluetoothctl</code> qua SSH, và có thể chuyển thành task Ansible. Các công cụ cũ <code>hcitool</code> và <code>hciconfig</code> không được dùng: trong BlueZ hiện tại chúng chỉ được build khi bật tùy chọn <code>--enable-deprecated</code> (<a href="https://github.com/bluez/bluez/blob/master/Makefile.tools">Makefile.tools</a>). Công cụ thay thế là <code>bluetoothctl</code>, <code>btmgmt</code> và <code>btmon</code>.</p>
 <h2 id="stack-bluetooth-tren-linux">Stack Bluetooth trên Linux<a class="headerlink" href="#stack-bluetooth-tren-linux" title="Permanent link">¶</a></h2>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../img/ble-linux-stack-pi3b.svg" data-desc-position="bottom"><img alt="Bluetooth stack on Raspberry Pi 3B, from bluetoothctl and Home Assistant through D-Bus, bluetoothd, the kernel Bluetooth core and hci_uart down to the PL011 UART and the BCM43430A1 chip, with btmon and rfkill on the side" src="../img/ble-linux-stack-pi3b.svg"></a></p>
-<p>Chip BCM43430A1 chứa controller Bluetooth, giao tiếp với host theo giao thức Host Controller Interface (HCI) qua UART. Trong kernel, driver <code>hci_uart</code> cùng phần riêng cho Broadcom (<code>btbcm</code>) mở cổng UART, nạp bản vá firmware dạng <code>.hcd</code> vào chip lúc khởi động, rồi đăng ký controller với lớp Bluetooth core dưới tên <code>hci0</code>.</p>
+<p>Chip BCM43430A1 chứa controller Bluetooth, giao tiếp với host theo giao thức Host Controller Interface (HCI) qua UART. Trong kernel, driver <code>hci_uart</code> (trên board này là serdev driver <code>hci_uart_bcm</code>) cùng phần riêng cho Broadcom (<code>btbcm</code>) mở cổng UART, nạp bản vá firmware dạng <code>.hcd</code> vào chip lúc khởi động, rồi đăng ký controller với lớp Bluetooth core dưới tên <code>hci0</code>.</p>
 <p>Bluetooth core cung cấp cho user space hai giao diện chính: management API (mgmt), qua đó daemon <code>bluetoothd</code> của BlueZ điều khiển adapter, và kênh monitor, qua đó <code>btmon</code> đọc mọi gói HCI. <code>bluetoothd</code> công bố adapter và thiết bị lên D-Bus system bus dưới tên <code>org.bluez</code>. <code>bluetoothctl</code> và Home Assistant là client của D-Bus này, nên các bước ở host phải đạt trước khi debug ở client.</p>
 <p>Home Assistant còn mở socket trực tiếp tới kernel, không qua <code>bluetoothd</code>, để reset adapter khi adapter ngừng phản hồi và để nhận dữ liệu advertising thô (<a href="https://www.home-assistant.io/integrations/bluetooth/">Home Assistant Bluetooth</a>). Điều này giải thích vì sao container của Home Assistant cần thêm capability (mục "Bluetooth trong container Home Assistant").</p>
 <p>Ngoài cùng là rfkill, cơ chế của kernel để tắt phát sóng của từng radio. Khi <code>hci0</code> bị block, <code>bluetoothd</code> vẫn chạy và vẫn thấy adapter, nhưng adapter không bật được.</p>
 <h2 id="uong-noi-bluetooth-tren-pi-3b">Đường nối Bluetooth trên Pi 3B<a class="headerlink" href="#uong-noi-bluetooth-tren-pi-3b" title="Permanent link">¶</a></h2>
 <p>Trên Pi 3B, UART PL011 (UART0) nối với chip Bluetooth, còn mini UART (UART1) đưa ra chân GPIO14/15 trên header. Device tree của nhánh kernel Raspberry Pi khai báo chip Bluetooth là node con <code>bluetooth</code> (compatible <code>brcm,bcm43438-bt</code>) dưới <code>uart0</code> (<a href="https://github.com/raspberrypi/linux/blob/rpi-6.18.y/arch/arm/boot/dts/broadcom/bcm271x-rpi-bt.dtsi">bcm271x-rpi-bt.dtsi</a>). Với node con kiểu này, kernel gắn driver <code>hci_uart</code> vào UART thông qua serdev (serial device bus).</p>
 <p>Khi một cổng UART có thiết bị serdev, kernel không tạo character device cho cổng đó (<a href="https://github.com/torvalds/linux/blob/master/drivers/tty/tty_port.c">tty_port.c</a>, hàm <code>tty_port_register_device_attr_serdev</code>). Vì vậy trên board thử nghiệm, <code>ls /dev</code> không có <code>/dev/ttyAMA0</code>, trong khi <code>/dev/serial0</code> trỏ tới <code>/dev/ttyS0</code> (mini UART, dùng làm console <code>ttyS0,115200</code>). Việc thiếu <code>/dev/ttyAMA0</code> là dấu hiệu phù hợp với cấu hình mặc định, không phải lỗi.</p>
-<div class="admonition todo">
-<p class="admonition-title">Chưa kiểm chứng</p>
-<p>Chưa kiểm chứng trên board rằng PL011 đang gắn với Bluetooth qua serdev. Các lệnh kiểm tra:</p>
+<p>Kiểm tra trên board xác nhận PL011 (địa chỉ <code>3f201000</code> trong không gian vật lý của ARM, <code>7e201000</code> trong device tree) đang gắn với driver Bluetooth qua serdev:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ls<span class="w"> </span>/sys/bus/serial/devices/
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>-E<span class="w"> </span><span class="s2">"ttyAMA|hci_uart|serial"</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>readlink<span class="w"> </span>-f<span class="w"> </span>/sys/bus/serial/devices/serial0-0/driver
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>tr<span class="w"> </span>-d<span class="w"> </span><span class="s2">"\0"</span><span class="w"> </span>&lt;<span class="w"> </span>/proc/device-tree/aliases/bluetooth<span class="p">;</span><span class="w"> </span><span class="nb">echo</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>ls<span class="w"> </span>-l<span class="w"> </span>/dev/serial0<span class="w"> </span>/dev/ttyAMA0
 </code></pre></div>
-</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>serial0  serial0-0
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>/sys/bus/serial/drivers/hci_uart_bcm
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>/soc/serial@7e201000/bluetooth
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>ls: cannot access '/dev/ttyAMA0': No such file or directory
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>lrwxrwxrwx 1 root root 5 Nov 24 08:13 /dev/serial0 -&gt; ttyS0
+</code></pre></div>
+<p><code>serial0</code> là serdev controller tạo từ PL011, <code>serial0-0</code> là thiết bị con ứng với node <code>bluetooth</code>, và driver đang giữ nó là <code>hci_uart_bcm</code>.</p>
 <p>Muốn đưa PL011 ra header (ví dụ cho console ổn định hơn), cần đổi cấu hình Bluetooth trong <code>config.txt</code> bằng một trong hai overlay (<a href="https://github.com/raspberrypi/firmware/blob/master/boot/overlays/README">overlays README</a>):</p>
 <table>
 <thead>
@@ -15633,19 +15656,19 @@
 <p>Chip BCM43430A1 dùng chung radio 2,4 GHz cho Wi-Fi và Bluetooth. Trên board thử nghiệm, Wi-Fi là đường mạng duy nhất, nên khi quét BLE liên tục, hai chức năng chia nhau cùng một radio. Vì vậy khi thử, cảm biến dự kiến được đặt cách board 1 đến 2 m.</p>
 <h2 id="kiem-tra-trang-thai-adapter">Kiểm tra trạng thái adapter<a class="headerlink" href="#kiem-tra-trang-thai-adapter" title="Permanent link">¶</a></h2>
 <p>Các lệnh dưới đây kiểm tra lần lượt từ dịch vụ ở user space xuống driver và rfkill. Lệnh nào cũng chạy được không tương tác, nên có thể đưa vào bước kiểm tra sau cài đặt.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>systemctl<span class="w"> </span>status<span class="w"> </span>bluetooth<span class="w"> </span>--no-pager
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>bluetoothctl<span class="w"> </span>--version
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>rfkill<span class="w"> </span>list
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>-E<span class="w"> </span><span class="s2">"bluetooth|hci|brcm"</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>bluetoothctl<span class="w"> </span>list
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>bluetoothctl<span class="w"> </span>show
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>systemctl<span class="w"> </span>status<span class="w"> </span>bluetooth<span class="w"> </span>--no-pager
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>bluetoothctl<span class="w"> </span>--version
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>rfkill<span class="w"> </span>list
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>-E<span class="w"> </span><span class="s2">"bluetooth|hci|brcm"</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>bluetoothctl<span class="w"> </span>list
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>bluetoothctl<span class="w"> </span>show
 </code></pre></div>
 <table>
 <thead>
 <tr>
 <th>Lệnh</th>
 <th>Điều cần thấy</th>
-<th>Kết quả trên board thử nghiệm (23/11)</th>
+<th>Kết quả trên board thử nghiệm</th>
 </tr>
 </thead>
 <tbody>
@@ -15662,7 +15685,7 @@
 <tr>
 <td><code>dmesg</code></td>
 <td>Driver nhận chip và nạp patch <code>.hcd</code> thành công</td>
-<td>BCM43430A1, nạp patch thành công</td>
+<td>23/11: BCM43430A1, nạp patch thành công. 25/11: dòng lúc boot đã bị đẩy khỏi ring buffer bởi lỗi HCI UART (mục "Lỗi HCI UART khi quét liên tục")</td>
 </tr>
 <tr>
 <td><code>bluetoothctl list</code></td>
@@ -15672,7 +15695,7 @@
 <tr>
 <td><code>rfkill list</code></td>
 <td><code>hci0</code> có <code>Soft blocked: no</code>, <code>Hard blocked: no</code></td>
-<td><code>Soft blocked: yes</code> (mục kế tiếp)</td>
+<td>23/11: <code>Soft blocked: yes</code> (mục kế tiếp). 25/11: đạt</td>
 </tr>
 <tr>
 <td><code>bluetoothctl show</code></td>
@@ -15681,68 +15704,186 @@
 </tr>
 </tbody>
 </table>
+<p>Phần đầu output <code>bluetoothctl show</code> ngày 25/11 (đã che địa chỉ, lược các dòng UUID):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Controller B8:27:EB:xx:xx:xx (public)
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    Manufacturer: 0x000f (15)
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    Version: 0x07 (7)
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    Name: rpi3b
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    Powered: yes
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    PowerState: on
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    Discoverable: no
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    Pairable: no
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    Discovering: yes
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    Roles: central
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    Roles: peripheral
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>Advertising Features:
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>    SupportedInstances: 0x05 (5)
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>    SupportedCapabilities.MaxAdvLen: 0x1f (31)
+</code></pre></div>
+<p><code>Manufacturer</code> là mã công ty do Bluetooth SIG cấp, 15 ứng với Broadcom Corporation (<a href="https://github.com/bluez/bluez/blob/master/lib/bluetooth/bluetooth.c">bluetooth.c</a>, hàm <code>bt_compidtostr</code>). <code>Version</code> là phiên bản HCI mà controller báo, <code>0x07</code> ứng với Bluetooth 4.1 (<a href="https://github.com/bluez/bluez/blob/master/lib/bluetooth/hci.c">hci.c</a>, bảng <code>ver_map</code>). <code>Discovering: yes</code> cho thấy đang có một client quét (ở đây là Home Assistant), dù phiên <code>bluetoothctl</code> không chạy <code>scan on</code>.</p>
+<p><code>btmgmt info</code> cho cùng thông tin qua management API, kèm danh sách cờ:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>hci0:   Primary controller
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    addr B8:27:EB:xx:xx:xx version 7 manufacturer 15 class 0x400000
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    supported settings: powered connectable fast-connectable discoverable bondable link-security ssp br/edr le advertising secure-conn debug-keys privacy configuration static-addr phy-configuration
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    current settings: powered ssp br/edr le secure-conn
+</code></pre></div>
+<p><code>supported settings</code> là các cờ controller hỗ trợ, <code>current settings</code> là các cờ đang bật. Trên board này adapter đang bật cả BR/EDR (Bluetooth Classic) lẫn LE, không ở chế độ connectable hay discoverable.</p>
+<p>Khi gọi <code>bluetoothctl</code> từ script trong lúc có client khác đang quét, output của <code>bluetoothctl list</code> hoặc <code>bluetoothctl show</code> lẫn cả các dòng sự kiện <code>[NEW]</code>, <code>[CHG]</code> của thiết bị xung quanh, vì <code>bluetoothctl</code> in mọi sự kiện D-Bus nhận được. Trên board thử nghiệm, <code>bluetoothctl list</code> trả về một dòng controller kèm hơn mười dòng <code>[CHG]</code>. Script cần lọc đúng dòng cần đọc, ví dụ:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>bluetoothctl<span class="w"> </span>show<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">"^\s+(Powered|Discovering):"</span>
+</code></pre></div>
 <p>Tiền tố <code>B8:27:EB</code> của địa chỉ Bluetooth trùng với tiền tố MAC của <code>eth0</code> và <code>wlan0</code> trên cùng board, đây là OUI (mã định danh nhà sản xuất) của Raspberry Pi.</p>
 <p>Home Assistant yêu cầu BlueZ từ 5.43 và khuyến nghị từ 5.63, vì các bản cũ hơn được báo là chạy không ổn định (<a href="https://www.home-assistant.io/integrations/bluetooth/">Home Assistant Bluetooth</a>). BlueZ 5.82 của Debian trixie đáp ứng mức này.</p>
 <h2 id="adapter-bi-soft-block">Adapter bị soft block<a class="headerlink" href="#adapter-bi-soft-block" title="Permanent link">¶</a></h2>
-<p>Trên board thử nghiệm, adapter không bật được dù driver và <code>bluetoothd</code> đều chạy bình thường. Triệu chứng:</p>
-<ul>
-<li><code>scan on</code> trong <code>bluetoothctl</code> báo lỗi <code>org.bluez.Error.NotReady</code>.</li>
-<li><code>rfkill list</code> cho thấy <code>hci0</code> có <code>Soft blocked: yes</code>, <code>Hard blocked: no</code>.</li>
-</ul>
-<p>Soft block là trạng thái do phần mềm đặt, khác với hard block do công tắc phần cứng. Cách gỡ:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>rfkill<span class="w"> </span>unblock<span class="w"> </span>bluetooth
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>rfkill<span class="w"> </span>list<span class="w"> </span>bluetooth
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>bluetoothctl<span class="w"> </span>show
+<p>Trên board thử nghiệm, adapter không bật được dù driver và <code>bluetoothd</code> đều chạy bình thường. Soft block là trạng thái do phần mềm đặt, khác với hard block do công tắc phần cứng. Triệu chứng được tái hiện ngày 25/11 bằng cách block lại adapter:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo<span class="w"> </span>rfkill<span class="w"> </span>block<span class="w"> </span>bluetooth
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>rfkill<span class="w"> </span>list<span class="w"> </span>bluetooth<span class="p">;</span><span class="w"> </span>bluetoothctl<span class="w"> </span>--timeout<span class="w"> </span><span class="m">5</span><span class="w"> </span>scan<span class="w"> </span>on
 </code></pre></div>
-<p>Sau khi gỡ block, <code>bluetoothctl show</code> báo <code>Powered: yes</code>. Nếu gõ <code>power on</code> ngay khi vừa gỡ block, <code>bluetoothctl</code> có thể báo <code>org.bluez.Error.Busy</code>, vì adapter đang khởi động. Đợi vài giây rồi thử lại; đây không phải lỗi phần cứng.</p>
-<p>Trạng thái rfkill được giữ qua reboot nhờ <code>systemd-rfkill.service</code>: dịch vụ này lưu trạng thái mỗi khi có thay đổi vào <code>/var/lib/systemd/rfkill/</code> và khôi phục lúc boot (<a href="https://www.freedesktop.org/software/systemd/man/latest/systemd-rfkill.service.html">systemd-rfkill.service(8)</a>). Vì vậy gỡ block một lần là đủ trên cùng một thẻ nhớ, và trên board thử nghiệm <code>hci0</code> vẫn ở <code>Soft blocked: no</code> sau reboot. Có thể xem trạng thái đã lưu bằng:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ls<span class="w"> </span>/var/lib/systemd/rfkill/
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>journalctl<span class="w"> </span>-b<span class="w"> </span>-u<span class="w"> </span>systemd-rfkill<span class="w"> </span>--no-pager
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>0: hci0: Bluetooth
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>        Soft blocked: yes
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>        Hard blocked: no
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>SetDiscoveryFilter failed: org.bluez.Error.NotReady
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>Failed to start discovery: org.bluez.Error.NotReady
 </code></pre></div>
+<p><code>bluetoothd</code> vẫn thấy adapter nên không báo lỗi "không có controller", nhưng mọi thao tác cần radio đều bị từ chối với <code>NotReady</code>. Gỡ block, rồi bật adapter ngay lập tức:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo<span class="w"> </span>rfkill<span class="w"> </span>unblock<span class="w"> </span>bluetooth<span class="p">;</span><span class="w"> </span>bluetoothctl<span class="w"> </span>power<span class="w"> </span>on
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>Failed to set power on: org.bluez.Error.Busy
+</code></pre></div>
+<p>Lệnh <code>power on</code> gửi ngay sau khi gỡ block bị từ chối với <code>Busy</code>, vì adapter đang trong quá trình bật lại. Đây không phải lỗi phần cứng. Năm giây sau, không cần gửi lại <code>power on</code>, adapter đã bật:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sleep<span class="w"> </span><span class="m">5</span><span class="p">;</span><span class="w"> </span>bluetoothctl<span class="w"> </span>show<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-8
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Controller B8:27:EB:xx:xx:xx (public)
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>        Manufacturer: 0x000f (15)
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>        Version: 0x07 (7)
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>        Name: rpi3b
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>        Alias: rpi3b
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>        Class: 0x00400000 (4194304)
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>        Powered: yes
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>        PowerState: on
+</code></pre></div>
+<p>Như vậy sau khi gỡ block, adapter tự trở về trạng thái bật mà không cần lệnh <code>power on</code>. Trong script, nên chờ rồi kiểm tra <code>Powered: yes</code> thay vì gửi <code>power on</code> ngay sau <code>rfkill unblock</code>.</p>
+<p>Trạng thái rfkill được giữ qua reboot nhờ <code>systemd-rfkill.service</code>: dịch vụ này lưu trạng thái mỗi khi có thay đổi vào <code>/var/lib/systemd/rfkill/</code> và khôi phục lúc boot (<a href="https://www.freedesktop.org/software/systemd/man/latest/systemd-rfkill.service.html">systemd-rfkill.service(8)</a>). Vì vậy gỡ block một lần là đủ trên cùng một thẻ nhớ, và trên board thử nghiệm <code>hci0</code> vẫn ở <code>Soft blocked: no</code> sau reboot. Trạng thái hiện tại (25/11):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>0: hci0: Bluetooth
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    Soft blocked: no
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    Hard blocked: no
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>1: phy0: Wireless LAN
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>    Soft blocked: no
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>    Hard blocked: no
+</code></pre></div>
+<p>Mỗi radio có một file trạng thái riêng, đặt tên theo đường dẫn thiết bị và loại radio; nội dung <code>0</code> là không bị block, <code>1</code> là bị block:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>sudo<span class="w"> </span>ls<span class="w"> </span>-l<span class="w"> </span>--time-style<span class="o">=</span>full-iso<span class="w"> </span>/var/lib/systemd/rfkill/
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>sudo<span class="w"> </span>journalctl<span class="w"> </span>-b<span class="w"> </span>-u<span class="w"> </span>systemd-rfkill<span class="w"> </span>--no-pager
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Thời điểm ghi</th>
+<th>Giá trị</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>platform-soc-amba-3f201000.serial:bluetooth</code></td>
+<td>2026-11-24 08:34:08</td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>platform-3f300000.mmcnr:wlan</code></td>
+<td>2026-11-24 08:13:14</td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>platform-3f215040.serial:bluetooth</code>, <code>platform-fe215040.serial:bluetooth</code>, <code>platform-20215040.serial:bluetooth</code>, <code>platform-107d50c000.serial:bluetooth</code>, <code>platform-soc:bluetooth</code></td>
+<td>2026-10-06 07:22:05</td>
+<td><code>0</code></td>
+</tr>
+</tbody>
+</table>
+<p>File đầu tiên ứng với Bluetooth trên PL011 của board này. Nhóm file cuối có cùng một mốc thời gian, trước ngày ghi thẻ, nên nhiều khả năng có sẵn trong image cho các đường dẫn Bluetooth khác (mini UART, các model Pi khác). Journal cho thấy <code>systemd-rfkill</code> chạy lúc boot (08:13) và chạy lại lúc 08:34 ngày 24/11, đúng thời điểm file của <code>hci0</code> được ghi, tức trạng thái rfkill của <code>hci0</code> thay đổi vào lúc đó.</p>
 <p>Không cần thêm một unit systemd riêng để gỡ block lúc boot. Một unit như vậy nếu chạy trước khi <code>hci0</code> xuất hiện sẽ không có tác dụng, và nếu chạy sau thì trùng việc với <code>systemd-rfkill</code>. Khi dựng lại thẻ nhớ, bước gỡ block được đặt trong role Ansible cấu hình Bluetooth.</p>
 <div class="admonition todo">
 <p class="admonition-title">Chưa kiểm chứng</p>
-<p>Soft block đã có ngay từ lần boot đầu tiên sau khi ghi thẻ bằng Raspberry Pi Imager, trước khi có thao tác nào với Bluetooth. Nguồn gốc (cấu hình mặc định của image, của Imager hay của cloud-init) chưa được xác định.</p>
+<p>Soft block đã có ngay từ lần boot đầu tiên sau khi ghi thẻ bằng Raspberry Pi Imager, trước khi có thao tác nào với Bluetooth. Nguồn gốc (cấu hình mặc định của image, của Imager hay của cloud-init) chưa được xác định. Image có sẵn file trạng thái cho các đường dẫn Bluetooth khác nhưng không có file cho đường dẫn PL011 của Pi 3B (bảng trên). Chưa rõ ai đổi trạng thái lúc 08:34 ngày 24/11 (role Ansible hay Home Assistant).</p>
 </div>
 <h2 id="quet-ble">Quét BLE<a class="headerlink" href="#quet-ble" title="Permanent link">¶</a></h2>
 <p><code>bluetoothctl</code> quét được theo hai cách. Cách thứ nhất là một lệnh không tương tác, phù hợp để kiểm tra nhanh hoặc dùng trong script:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>bluetoothctl<span class="w"> </span>--timeout<span class="w"> </span><span class="m">30</span><span class="w"> </span>scan<span class="w"> </span>le
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>bluetoothctl<span class="w"> </span>--timeout<span class="w"> </span><span class="m">30</span><span class="w"> </span>scan<span class="w"> </span>le
 </code></pre></div>
 <p>Cách thứ hai là phiên tương tác, cho phép đặt bộ lọc trước khi quét:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>bluetoothctl
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>menu<span class="w"> </span>scan
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>transport<span class="w"> </span>le
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>duplicate-data<span class="w"> </span>on
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>back
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>scan<span class="w"> </span>on
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>bluetoothctl
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>menu<span class="w"> </span>scan
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>transport<span class="w"> </span>le
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>duplicate-data<span class="w"> </span>on
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>back
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>scan<span class="w"> </span>on
 </code></pre></div>
 <p><code>transport le</code> giới hạn việc quét ở BLE, bỏ qua Bluetooth Classic. <code>duplicate-data on</code> yêu cầu báo lại cả các gói advertising trùng nội dung, cần khi theo dõi RSSI hoặc giá trị cảm biến thay đổi theo thời gian.</p>
-<p>Mỗi thiết bị mới hiện thành một dòng <code>[NEW] Device &lt;địa chỉ&gt; &lt;tên&gt;</code>, các thay đổi sau đó (RSSI, dữ liệu) hiện ở dòng <code>[CHG]</code>. Nhiều thiết bị BLE dùng địa chỉ ngẫu nhiên (random address) thay đổi theo thời gian, nên một thiết bị có thể hiện thành nhiều dòng <code>[NEW]</code>. Trên board thử nghiệm, lần quét 30 giây ngày 23/11 thấy khoảng 32 thiết bị (tai nghe, điện thoại), RSSI từ khoảng -25 đến -84 dBm.</p>
+<p>Mỗi thiết bị mới hiện thành một dòng <code>[NEW] Device &lt;địa chỉ&gt; &lt;tên&gt;</code>, các thay đổi sau đó (RSSI, dữ liệu) hiện ở dòng <code>[CHG]</code>. Một đoạn output trên board thử nghiệm (đã che địa chỉ):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>[CHG] Device 42:CE:77:xx:xx:xx RSSI: 0xffffffc1 (-63)
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>[CHG] Device 53:1B:82:xx:xx:xx ServiceData.0000fdee-0000-1000-8000-00805f9b34fb:
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>  01 02 03 9f 0c 00 00 01 45 0c 03 0a b0 64 fc 00  ........E....d..
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>[CHG] Device 53:1B:82:xx:xx:xx AdvertisingFlags:
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>  04                                               .
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>[CHG] Device 5B:EF:4A:xx:xx:xx ManufacturerData.Key: 0x004c (76)
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>[NEW] Device D2:8E:5A:xx:xx:xx D2-8E-5A-xx-xx-xx
+</code></pre></div>
+<p>RSSI được in cả dạng hex lẫn số thập phân (dBm). <code>ServiceData</code> đi kèm UUID của service, <code>ManufacturerData.Key</code> là mã công ty của nhà sản xuất, phần sau là dữ liệu thô dạng hex. Thiết bị không quảng bá tên thì hiện tên là chính địa chỉ của nó, viết bằng dấu gạch ngang.</p>
+<p>Số liệu thay đổi theo việc có client khác đang quét hay không:</p>
+<table>
+<thead>
+<tr>
+<th>Lần quét 30 giây</th>
+<th><code>[NEW]</code></th>
+<th>Số địa chỉ khác nhau</th>
+<th>Dòng <code>[CHG]</code></th>
+<th>RSSI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>23/11, chưa có Home Assistant</td>
+<td>khoảng 32 thiết bị</td>
+<td></td>
+<td></td>
+<td>khoảng -25 đến -84 dBm</td>
+</tr>
+<tr>
+<td>25/11, Home Assistant đang quét</td>
+<td>13</td>
+<td>70</td>
+<td>2 729</td>
+<td>-93 đến -33 dBm</td>
+</tr>
+</tbody>
+</table>
+<p>Khi Home Assistant đang quét, <code>bluetoothd</code> đã biết phần lớn thiết bị xung quanh, nên <code>bluetoothctl</code> chỉ in <code>[NEW]</code> cho thiết bị mới xuất hiện; số thiết bị thấy được phải đếm theo địa chỉ trong cả dòng <code>[NEW]</code> và <code>[CHG]</code>. Nhiều thiết bị BLE dùng địa chỉ ngẫu nhiên (random address) đổi theo thời gian, nên số địa chỉ lớn hơn số thiết bị thật.</p>
 <p>Để tìm một cảm biến cụ thể, lọc theo tên hoặc tiền tố địa chỉ. Ví dụ, cảm biến Xiaomi LYWSD03MMC quảng bá tên <code>LYWSD03MMC</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>bluetoothctl<span class="w"> </span>--timeout<span class="w"> </span><span class="m">30</span><span class="w"> </span>scan<span class="w"> </span>le<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>lywsd03mmc
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>bluetoothctl<span class="w"> </span>--timeout<span class="w"> </span><span class="m">30</span><span class="w"> </span>scan<span class="w"> </span>le<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>lywsd03mmc
 </code></pre></div>
 <h2 id="theo-doi-hci-bang-btmon">Theo dõi HCI bằng btmon<a class="headerlink" href="#theo-doi-hci-bang-btmon" title="Permanent link">¶</a></h2>
 <p><code>btmon</code> đọc mọi gói HCI giữa host và controller qua kênh monitor của kernel, kể cả khi gói do <code>bluetoothd</code> hoặc Home Assistant tạo ra. Cách dùng thường gặp là mở <code>btmon</code> ở một phiên SSH và quét ở phiên khác:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>btmon
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>sudo<span class="w"> </span>btmon
 </code></pre></div>
-<p>Mỗi gói advertising nhận được hiện thành một sự kiện <code>LE Advertising Report</code> (hoặc <code>LE Extended Advertising Report</code> với controller hỗ trợ Bluetooth 5), trong đó có địa chỉ, loại địa chỉ, RSSI và các trường dữ liệu advertising (tên, service data, manufacturer data).</p>
+<p>Mỗi gói advertising nhận được hiện thành một sự kiện <code>LE Advertising Report</code>, trong đó có địa chỉ, loại địa chỉ, RSSI và các trường dữ liệu advertising (tên, service data, manufacturer data). Controller của board là Bluetooth 4.1, nên không có sự kiện <code>LE Extended Advertising Report</code> của extended advertising, vốn chỉ có từ Bluetooth 5.</p>
 <p>Để phân tích trên máy khác, ghi ra file btsnoop rồi mở bằng Wireshark:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo<span class="w"> </span>btmon<span class="w"> </span>-w<span class="w"> </span>ble-scan.btsnoop
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>sudo<span class="w"> </span>btmon<span class="w"> </span>-w<span class="w"> </span>ble-scan.btsnoop
 </code></pre></div>
 <p><code>btmgmt info</code> in các cờ hỗ trợ và cờ đang bật của controller (<code>powered</code>, <code>le</code>, <code>bredr</code>, <code>secure-conn</code>) qua management API, hữu ích khi cần biết adapter đang ở chế độ nào mà không đi qua D-Bus.</p>
 <h2 id="bluetooth-trong-container-home-assistant">Bluetooth trong container Home Assistant<a class="headerlink" href="#bluetooth-trong-container-home-assistant" title="Permanent link">¶</a></h2>
 <p>Khi Home Assistant chạy dạng container, <code>bluetoothd</code> vẫn chạy trên host, container chỉ là client. Theo tài liệu của Home Assistant, container cần hai thứ để dùng Bluetooth: socket D-Bus của host được mount vào container, và hai capability <code>NET_ADMIN</code>, <code>NET_RAW</code> (<a href="https://www.home-assistant.io/integrations/bluetooth/">Home Assistant Bluetooth</a>). Phần Compose liên quan trên board thử nghiệm:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nt">services</span><span class="p">:</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span><span class="nt">homeassistant</span><span class="p">:</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/home-assistant/home-assistant:2026.11.2</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="nt">network_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">host</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="nt">cap_add</span><span class="p">:</span>
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NET_ADMIN</span>
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NET_RAW</span>
-<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
-<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/opt/smarthome/ha:/config</span>
-<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/run/dbus:/run/dbus:ro</span>
-<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nt">services</span><span class="p">:</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">  </span><span class="nt">homeassistant</span><span class="p">:</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/home-assistant/home-assistant:2026.11.2</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="w">    </span><span class="nt">network_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">host</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="w">    </span><span class="nt">cap_add</span><span class="p">:</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NET_ADMIN</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NET_RAW</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/opt/homeassistant/config:/config</span>
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/localtime:/etc/localtime:ro</span>
+<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/run/dbus:/run/dbus:ro</span>
+<a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
 </code></pre></div>
 <table>
 <thead>
@@ -15765,13 +15906,92 @@
 </tr>
 </tbody>
 </table>
+<p><code>docker inspect</code> xác nhận cấu hình của container đang chạy (định dạng dưới đây không in chế độ <code>ro</code>/<code>rw</code> của mount):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>sudo<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> </span>homeassistant<span class="w"> </span>--format<span class="w"> </span><span class="s1">'CapAdd={{.HostConfig.CapAdd}} Network={{.HostConfig.NetworkMode}} Mounts={{range .Mounts}}{{.Source}}:{{.Destination}} {{end}}'</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>CapAdd=[NET_ADMIN NET_RAW] Network=host Mounts=/opt/homeassistant/config:/config /etc/localtime:/etc/localtime /run/dbus:/run/dbus
+</code></pre></div>
 <p>Trên board thử nghiệm, phiên bản Compose đầu tiên thiếu cả hai mục trên. Home Assistant báo <code>PermissionError</code> và liên tục thử khôi phục adapter. Sau khi bổ sung, mục Settings → Devices &amp; services → Bluetooth thấy <code>hci0</code>. Capability chỉ được áp dụng khi container được tạo lại (<code>docker compose up -d</code>), khởi động lại container là chưa đủ (<a href="https://www.home-assistant.io/integrations/bluetooth/">Home Assistant Bluetooth</a>).</p>
 <p>Hai điểm liên quan tới nền Docker trên Pi 3B:</p>
 <ul>
-<li>Device tree của nhánh kernel Raspberry Pi đặt sẵn <code>cgroup_disable=memory</code> trong <code>bootargs</code> (<a href="https://github.com/raspberrypi/linux/blob/rpi-6.18.y/arch/arm/boot/dts/broadcom/bcm271x-rpi-bt.dtsi">bcm271x-rpi-bt.dtsi</a>). Board thử nghiệm phải thêm <code>cgroup_enable=memory</code> vào <code>cmdline.txt</code> khi cài Docker; nhiều khả năng tham số này ghi đè giá trị mặc định nói trên (chưa kiểm chứng).</li>
-<li>Home Assistant khuyến nghị dùng dbus-broker làm D-Bus implementation. Board thử nghiệm chưa kiểm tra đang dùng dbus-daemon hay dbus-broker.</li>
+<li>Device tree của nhánh kernel Raspberry Pi đặt sẵn <code>cgroup_disable=memory</code> trong <code>bootargs</code> (<a href="https://github.com/raspberrypi/linux/blob/rpi-6.18.y/arch/arm/boot/dts/broadcom/bcm271x-rpi-bt.dtsi">bcm271x-rpi-bt.dtsi</a>). Board thử nghiệm thêm <code>cgroup_enable=memory</code> vào cuối <code>cmdline.txt</code>. <code>/proc/cmdline</code> chứa cả hai tham số (<code>cgroup_disable=memory</code> ở đầu, <code>cgroup_enable=memory</code> ở cuối), và <code>/sys/fs/cgroup/cgroup.controllers</code> có <code>memory</code>, tức memory controller đang bật.</li>
+<li>Home Assistant khuyến nghị dùng dbus-broker làm D-Bus implementation. Board thử nghiệm dùng <code>dbus-daemon</code> 1.16.2, gói <code>dbus-broker</code> chưa cài. Ảnh hưởng của việc này tới lỗi ở mục kế tiếp chưa được kiểm chứng.</li>
 </ul>
 <p>Cấu hình Docker và Compose nói chung nằm ở trang <a href="../../../../virtualization/container/compose/">Docker Compose</a>.</p>
+<h2 id="loi-hci-uart-khi-quet-lien-tuc">Lỗi HCI UART khi quét liên tục<a class="headerlink" href="#loi-hci-uart-khi-quet-lien-tuc" title="Permanent link">¶</a></h2>
+<p>Sau khoảng 30 giờ chạy (boot lúc 08:13 ngày 24/11, kiểm tra lúc 13:54 ngày 25/11) với Home Assistant quét liên tục, <code>dmesg</code> có khoảng 1 300 dòng lỗi từ <code>hci0</code>. Các dòng này đẩy toàn bộ log lúc boot ra khỏi ring buffer của kernel, nên dòng nạp patch <code>.hcd</code> không còn.</p>
+<table>
+<thead>
+<tr>
+<th>Thông báo trong <code>dmesg</code></th>
+<th>Số dòng</th>
+<th>Ý nghĩa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Frame reassembly failed (-84)</code></td>
+<td>1 018</td>
+<td>Driver nhận một byte loại gói H4 không hợp lệ (<code>EILSEQ</code>)</td>
+</tr>
+<tr>
+<td><code>Frame reassembly failed (-90)</code></td>
+<td>68</td>
+<td>Trường độ dài trong gói vượt quá bộ đệm (<code>EMSGSIZE</code>)</td>
+</tr>
+<tr>
+<td><code>ACL/SCO/ISO packet for unknown connection handle</code></td>
+<td>53</td>
+<td>Gói thuộc một kết nối không tồn tại</td>
+</tr>
+<tr>
+<td><code>Unable to disable scanning: -16</code>, <code>Opcode 0x200c failed: -16</code>, <code>stop background scanning failed: -16</code></td>
+<td>133</td>
+<td>Lệnh bật/tắt quét bị từ chối vì controller đang bận (<code>EBUSY</code>)</td>
+</tr>
+<tr>
+<td><code>command 0x200c tx timeout</code>, <code>Opcode 0x200c failed: -110</code>, <code>Unable to disable scanning: -110</code>, <code>stop background scanning failed: -110</code></td>
+<td>26</td>
+<td>Controller không trả lời lệnh trong thời gian chờ (<code>ETIMEDOUT</code>)</td>
+</tr>
+</tbody>
+</table>
+<p><code>hci_uart_bcm</code> ghép luồng byte từ UART thành gói theo định dạng H4: byte đầu cho biết loại gói (command, ACL, SCO, event, ISO), các byte tiếp theo chứa độ dài. Hai lỗi <code>Frame reassembly failed</code> được trả về từ hàm ghép gói khi byte loại gói không hợp lệ hoặc độ dài vượt bộ đệm (<a href="https://github.com/torvalds/linux/blob/master/drivers/bluetooth/hci_bcm.c">hci_bcm.c</a>, <a href="https://github.com/torvalds/linux/blob/master/net/bluetooth/hci_h4.c">net/bluetooth/hci_h4.c</a>). Board không có kết nối SCO hay ISO nào, nên các dòng <code>unknown connection handle</code> nhiều khả năng là byte hỏng bị đọc thành gói. Theo đánh giá này, luồng byte trên UART giữa SoC và chip Bluetooth bị hỏng hoặc mất đồng bộ.</p>
+<p>Opcode <code>0x200c</code> là lệnh HCI LE Set Scan Enable (<a href="https://github.com/bluez/bluez/blob/master/monitor/bt.h">monitor/bt.h</a>, <code>BT_HCI_CMD_LE_SET_SCAN_ENABLE</code>), dùng để bật và tắt quét LE. Khi lệnh này hết thời gian chờ, Home Assistant thử khôi phục adapter và thất bại:</p>
+<table>
+<thead>
+<tr>
+<th>Thời điểm <code>tx timeout</code> trong <code>dmesg</code> (quy đổi từ uptime)</th>
+<th>Log của Home Assistant</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Không còn trong ring buffer</td>
+<td>24/11 09:22: <code>Error stopping scanner</code>; 09:23: <code>Could not cycle the Bluetooth adapter hci0 ... [Errno 110] Operation timed out</code></td>
+</tr>
+<tr>
+<td>25/11 khoảng 02:31</td>
+<td>25/11 02:33: <code>Could not reset the power state of the Bluetooth adapter hci0 ... due to timeout after 5 seconds</code></td>
+</tr>
+<tr>
+<td>25/11 khoảng 10:36</td>
+<td>25/11 10:38: cùng thông báo</td>
+</tr>
+</tbody>
+</table>
+<p>Thời điểm trong <code>dmesg</code> được quy đổi từ uptime với mốc boot 08:13:18 (thời điểm <code>bluetooth.service</code> khởi động), nên lệch được khoảng vài phút. Dòng cũ nhất còn trong ring buffer ở mốc uptime khoảng 13,8 giờ; từ giờ thứ 26 trở đi, tốc độ lỗi tăng lên vài trăm dòng mỗi giờ.</p>
+<div class="admonition todo">
+<p class="admonition-title">Chưa kiểm chứng</p>
+<p>Nguyên nhân chưa được xác định. Các giả thuyết và cách kiểm tra:</p>
+<ul>
+<li>Tốc độ UART cao: device tree đặt <code>max-speed = &lt;3000000&gt;</code> cho node Bluetooth trên PL011, và có tham số <code>krnbt_baudrate</code> để đổi tốc độ (<a href="https://github.com/raspberrypi/linux/blob/rpi-6.18.y/arch/arm/boot/dts/broadcom/bcm271x-rpi-bt.dtsi">bcm271x-rpi-bt.dtsi</a>). Thử giảm tốc độ rồi đếm lại số lỗi trong cùng khoảng thời gian.</li>
+<li>Tải trên radio dùng chung: Wi-Fi là đường mạng duy nhất của board. Đối chiếu thời điểm lỗi với lưu lượng Wi-Fi.</li>
+<li>Sụt áp: board đã từng báo under-voltage. Ghi <code>vcgencmd get_throttled</code> theo chu kỳ để đối chiếu.</li>
+<li>Chế độ quét: chuyển Home Assistant sang quét Passive và so sánh tốc độ lỗi.</li>
+<li>Thay adapter: dùng USB adapter hoặc node ESP32 làm Bluetooth proxy, như kế hoạch mở rộng.</li>
+</ul>
+</div>
 <h2 id="bang-tra-lenh">Bảng tra lệnh<a class="headerlink" href="#bang-tra-lenh" title="Permanent link">¶</a></h2>
 <table>
 <thead>
@@ -15829,6 +16049,14 @@
 <td>Trạng thái rfkill đã lưu</td>
 <td><code>ls /var/lib/systemd/rfkill/</code></td>
 </tr>
+<tr>
+<td>Driver serdev đang giữ UART Bluetooth</td>
+<td><code>readlink -f /sys/bus/serial/devices/serial0-0/driver</code></td>
+</tr>
+<tr>
+<td>Đếm lỗi HCI UART</td>
+<td><code>sudo dmesg \| grep -c "Frame reassembly failed"</code></td>
+</tr>
 </tbody>
 </table>
 <h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">¶</a></h2>
@@ -15837,6 +16065,9 @@
 <li><a href="https://www.home-assistant.io/integrations/bluetooth/">Home Assistant, Bluetooth integration</a>: yêu cầu BlueZ, cấu hình cho container.</li>
 <li><a href="https://github.com/raspberrypi/firmware/blob/master/boot/overlays/README">Raspberry Pi firmware, overlays README</a>: <code>miniuart-bt</code>, <code>disable-bt</code>.</li>
 <li><a href="https://github.com/raspberrypi/linux/blob/rpi-6.18.y/arch/arm/boot/dts/broadcom/bcm271x-rpi-bt.dtsi">Raspberry Pi Linux, bcm271x-rpi-bt.dtsi</a>: node Bluetooth dưới <code>uart0</code> và <code>bootargs</code> mặc định.</li>
+<li><a href="https://github.com/bluez/bluez/blob/master/lib/bluetooth/hci.c">BlueZ, lib/bluetooth/hci.c</a> và <a href="https://github.com/bluez/bluez/blob/master/lib/bluetooth/bluetooth.c">lib/bluetooth/bluetooth.c</a>: bảng phiên bản HCI và mã công ty.</li>
+<li><a href="https://github.com/bluez/bluez/blob/master/monitor/bt.h">BlueZ, monitor/bt.h</a>: opcode <code>0x200c</code> (LE Set Scan Enable).</li>
+<li><a href="https://github.com/torvalds/linux/blob/master/drivers/bluetooth/hci_bcm.c">Linux, drivers/bluetooth/hci_bcm.c</a> và <a href="https://github.com/torvalds/linux/blob/master/net/bluetooth/hci_h4.c">net/bluetooth/hci_h4.c</a>: ghép gói H4 và các mã lỗi <code>EILSEQ</code>, <code>EMSGSIZE</code>.</li>
 <li><a href="https://github.com/torvalds/linux/blob/master/drivers/tty/tty_port.c">Linux, drivers/tty/tty_port.c</a>: bỏ qua việc tạo character device khi cổng có thiết bị serdev.</li>
 <li><a href="https://www.freedesktop.org/software/systemd/man/latest/systemd-rfkill.service.html">systemd-rfkill.service(8)</a>: lưu và khôi phục trạng thái rfkill.</li>
 </ul>
@@ -15862,7 +16093,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 25, 2026 05:13:34 UTC">November 25, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 25, 2026 09:52:54 UTC">November 25, 2026</span>
   </span>
 
     
